@@ -1,0 +1,64 @@
+{
+  "stages": [
+    {
+      "id": "js-basics",
+      "title": "JS Basics",
+      "level": 1,
+      "description": "Types, coercion, let/const/var"
+    },
+    {
+      "id": "js-functions",
+      "title": "Functions & Closures",
+      "level": 2,
+      "description": "Declarations, arrow functions, closures"
+    },
+    {
+      "id": "js-scope",
+      "title": "Scope & Context",
+      "level": 3,
+      "description": "Scope chain, this, bind/call/apply"
+    },
+    {
+      "id": "js-prototypes",
+      "title": "Objects & Prototypes",
+      "level": 4,
+      "description": "Prototype chain, inheritance"
+    },
+    {
+      "id": "js-arrays",
+      "title": "Arrays & Iteration",
+      "level": 5,
+      "description": "map/filter/reduce, immutability"
+    },
+    {
+      "id": "js-async",
+      "title": "Async JavaScript",
+      "level": 6,
+      "description": "Promises, async/await, event loop"
+    },
+    {
+      "id": "js-errors",
+      "title": "Errors & Pitfalls",
+      "level": 7,
+      "description": "try/catch, common pitfalls"
+    },
+    {
+      "id": "js-performance",
+      "title": "Memory & Performance",
+      "level": 8,
+      "description": "Garbage collection, memory leaks"
+    },
+    {
+      "id": "js-browser",
+      "title": "Browser JavaScript",
+      "level": 9,
+      "description": "DOM, events, delegation"
+    },
+    {
+      "id": "js-advanced",
+      "title": "Advanced Topics",
+      "level": 10,
+      "description": "Hoisting, currying, debounce/throttle"
+    }
+  ]
+}
