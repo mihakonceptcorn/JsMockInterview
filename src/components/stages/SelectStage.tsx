@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
-import jsStages from "@/data/js.stages.json";
+import jsStages from "@/data/js/js.stages.json";
 import { s, vs } from "react-native-size-matters";
 import SelectStageItem from "./SelectStageItem";
 
