@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { Bar } from "react-native-progress";
-import { s, vs } from "react-native-size-matters";
-import ProgressionBar from "./ProgressionBar";
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { s, vs } from 'react-native-size-matters';
+import ProgressionBar from './ProgressionBar';
 
 const Progression = () => {
   return (
@@ -17,7 +16,7 @@ export default Progression;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: s(20),
     marginTop: vs(20),
   },

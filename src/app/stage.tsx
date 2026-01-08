@@ -12,9 +12,14 @@ const Stage = () => {
           title: `${id}`,
         }}
       />
-      <Text>Stage: {id}</Text>
+      <Text style={styles.title}>Stage: {id}</Text>
     </View>
   );
 };
 export default Stage;
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    color: '#fff',
+  },
+});

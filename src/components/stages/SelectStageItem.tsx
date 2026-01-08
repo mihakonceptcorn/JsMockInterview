@@ -1,9 +1,9 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { FC } from "react";
-import { s, vs } from "react-native-size-matters";
-import Entypo from "@expo/vector-icons/Entypo";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import RadioButton from "./RadioButton";
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { FC } from 'react';
+import { s, vs } from 'react-native-size-matters';
+import Entypo from '@expo/vector-icons/Entypo';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import RadioButton from './RadioButton';
 
 interface SelectStageItemProps {
   title: string;
@@ -22,7 +22,7 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.titleContainer}>
         <RadioButton isSelected={isSelected} />
-        <Text>{title}</Text>
+        <Text style={styles.title}>{title}</Text>
       </View>
 
       <View style={styles.statusContainer}>
@@ -46,21 +46,25 @@ export default SelectStageItem;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     borderTopWidth: 1,
-    borderTopColor: "#ccc",
+    borderTopColor: '#ccc',
     paddingVertical: vs(10),
   },
   titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  title: {
+    color: '#fff',
   },
   statusContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   statusTitle: {
     marginLeft: s(6),
+    color: '#fff',
   },
 });

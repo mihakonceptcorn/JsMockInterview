@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
-import React, { FC } from "react";
-import { Bar } from "react-native-progress";
-import { s, vs } from "react-native-size-matters";
+import { StyleSheet, Text, View } from 'react-native';
+import React, { FC } from 'react';
+import { Bar } from 'react-native-progress';
+import { s, vs } from 'react-native-size-matters';
 
 interface ProgressionBarProps {
   title: string;
@@ -13,7 +13,7 @@ const ProgressionBar: FC<ProgressionBarProps> = ({ title, progress }) => {
     <View style={styles.barContainer}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.bar}>
-        <Bar progress={progress} width={null} color="green" />
+        <Bar progress={progress} width={null} color="#306FB4" />
       </View>
     </View>
   );
@@ -26,8 +26,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: s(12),
+    color: '#fff',
   },
   bar: {
     marginVertical: vs(8),
