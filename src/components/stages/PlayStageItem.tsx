@@ -23,9 +23,13 @@ interface Question {
 
 type PlayStageItemProps = {
   item: Question;
+  onNextPressed: () => void;
 };
 
-const PlayStageItem: React.FC<PlayStageItemProps> = ({ item }) => {
+const PlayStageItem: React.FC<PlayStageItemProps> = ({
+  item,
+  onNextPressed,
+}) => {
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const [isAnswerShown, setIsAnswerShown] = useState(false);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
@@ -58,6 +62,13 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({ item }) => {
 
       setIsAnswerCorrect(result);
     }
+  };
+
+  const setNextQuestion = () => {
+    setSelectedOptions([]);
+    setIsAnswerShown(false);
+    setIsAnswerCorrect(false);
+    onNextPressed();
   };
 
   return (
@@ -132,7 +143,10 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({ item }) => {
       </View>
 
       <View style={styles.actions}>
-        <AppButton title="Check Answer" onPress={onCheckAnswer} />
+        <AppButton
+          title={isAnswerShown ? 'Next Question' : 'Check Answer'}
+          onPress={isAnswerShown ? setNextQuestion : onCheckAnswer}
+        />
       </View>
     </View>
   );

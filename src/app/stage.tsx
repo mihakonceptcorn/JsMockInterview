@@ -21,12 +21,21 @@ interface Question {
 const Stage = () => {
   const { id, mode, section, title } = useLocalSearchParams();
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [questionIndex, setQuestionIndex] = useState(0);
 
   useEffect(() => {
     const key = `${section}/${id}`;
     const questionsData = dataMap[key as DataKey] as any;
     setQuestions(questionsData?.default ?? []);
   }, []);
+
+  const onNextPressed = () => {
+    if (questionIndex < questions.length - 1) {
+      setQuestionIndex(questionIndex + 1);
+    } else {
+      console.log('completed!!!');
+    }
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -35,7 +44,12 @@ const Stage = () => {
           title: `${title}`,
         }}
       />
-      {questions.length > 0 && <PlayStageItem item={questions[0]} />}
+      {questions.length > 0 && (
+        <PlayStageItem
+          item={questions[questionIndex]}
+          onNextPressed={onNextPressed}
+        />
+      )}
     </View>
   );
 };
