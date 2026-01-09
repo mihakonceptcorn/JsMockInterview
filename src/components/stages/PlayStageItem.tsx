@@ -1,10 +1,4 @@
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import CodeHighlighter from 'react-native-code-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -13,6 +7,7 @@ import SelectOption from '@/components/stages/SelectOption';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
 import AppButton from '@/components/ui/AppButton';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface Question {
   id: string;
@@ -80,16 +75,20 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({ item }) => {
         <ScrollView>
           <Text style={styles.sectionTitle}>{item.prompt}</Text>
           <View style={styles.optionsContainer}>
-            {item.options.map((option, index) => (
-              <SelectOption
-                key={index}
-                title={option}
-                isSelected={selectedOptions.includes(index)}
-                onPress={() => {
-                  onSelectOption(index);
-                }}
-              />
-            ))}
+            <LinearGradient colors={['rgba(0,0,0,0.2)', 'transparent']}>
+              <View style={styles.gradientInner}>
+                {item.options.map((option, index) => (
+                  <SelectOption
+                    key={index}
+                    title={option}
+                    isSelected={selectedOptions.includes(index)}
+                    onPress={() => {
+                      onSelectOption(index);
+                    }}
+                  />
+                ))}
+              </View>
+            </LinearGradient>
           </View>
           {isAnswerShown && (
             <>
@@ -119,8 +118,14 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({ item }) => {
                 </>
               )}
 
-              <Text style={styles.sectionTitle}>Explanation:</Text>
-              <Text style={styles.sectionTitle}>{item.explanation}</Text>
+              <View style={styles.explanationContainer}>
+                <Text style={styles.sectionTitle}>Explanation:</Text>
+                <LinearGradient colors={['rgba(0,0,0,0.2)', 'transparent']}>
+                  <View style={styles.gradientInner}>
+                    <Text style={styles.explanation}>{item.explanation}</Text>
+                  </View>
+                </LinearGradient>
+              </View>
             </>
           )}
         </ScrollView>
@@ -139,17 +144,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: s(20),
   },
   sectionTitle: {
-    fontSize: s(20),
+    fontSize: s(16),
+    fontWeight: 'bold',
     color: '#fff',
     paddingVertical: vs(12),
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    borderBottomColor: '#666',
   },
   codeContainerWrapper: {
-    paddingVertical: vs(12),
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: s(12),
+    overflow: 'hidden',
+    marginTop: vs(10),
+    marginBottom: vs(10),
   },
   codeContainerStyle: {
-    padding: 16,
+    padding: s(16),
     minWidth: '100%',
   },
   webview: {
@@ -164,10 +175,21 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
-  optionsContainer: {},
+  optionsContainer: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#666',
+    marginBottom: vs(10),
+  },
+  gradientInner: {
+    paddingHorizontal: s(10),
+  },
   resultContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#666',
+    paddingBottom: vs(10),
+    marginBottom: vs(10),
   },
   resultText: {
     fontSize: s(16),
@@ -175,7 +197,13 @@ const styles = StyleSheet.create({
     marginLeft: s(10),
   },
   resultTextIncorrect: {
-    color: 'red',
+    color: '#8f0303',
+  },
+  explanationContainer: {},
+  explanation: {
+    fontSize: s(12),
+    color: '#fff',
+    paddingVertical: vs(12),
   },
   actions: {
     alignItems: 'center',

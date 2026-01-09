@@ -28,8 +28,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderTopWidth: 1,
-    borderTopColor: '#ccc',
     paddingVertical: vs(10),
   },
   titleContainer: {
