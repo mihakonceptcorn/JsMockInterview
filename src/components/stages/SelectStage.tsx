@@ -1,4 +1,10 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, { useState } from 'react';
 import jsStages from '@/data/js/js.stages.json';
 import { s, vs } from 'react-native-size-matters';
@@ -8,16 +14,23 @@ import { useRouter } from 'expo-router';
 const SelectStage = () => {
   const router = useRouter();
   const [selectedStageId, setSelectedStageId] = useState('');
+  const [selectedStageTitle, setSelectedStageTitle] = useState('');
 
-  const onSelectStage = (id: string) => {
+  const onSelectStage = (id: string, name: string) => {
     setSelectedStageId(id);
+    setSelectedStageTitle(name);
   };
 
-  const onPracticeMode = () => {
+  const onStartStage = (mode: 'practice' | 'interview') => {
     if (selectedStageId) {
       router.push({
         pathname: 'stage',
-        params: { id: selectedStageId },
+        params: {
+          id: selectedStageId,
+          mode: mode,
+          section: 'js',
+          title: selectedStageTitle,
+        },
       });
     }
   };
@@ -33,7 +46,7 @@ const SelectStage = () => {
             <SelectStageItem
               title={item.title}
               isSelected={item.id === selectedStageId}
-              onPress={() => onSelectStage(item.id)}
+              onPress={() => onSelectStage(item.id, item.title)}
             />
           )}
           showsVerticalScrollIndicator={false}
@@ -41,10 +54,16 @@ const SelectStage = () => {
       </View>
 
       <View style={styles.actions}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => onStartStage('interview')}
+        >
           <Text style={styles.buttonText}>Start Interview</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonSecondary} onPress={onPracticeMode}>
+        <TouchableOpacity
+          style={styles.buttonSecondary}
+          onPress={() => onStartStage('practice')}
+        >
           <Text style={styles.buttonSecondaryText}>Practice Mode</Text>
         </TouchableOpacity>
       </View>
