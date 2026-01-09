@@ -10,6 +10,7 @@ import jsStages from '@/data/js/js.stages.json';
 import { s, vs } from 'react-native-size-matters';
 import SelectStageItem from './SelectStageItem';
 import { useRouter } from 'expo-router';
+import AppButton from '@/components/ui/AppButton';
 
 const SelectStage = () => {
   const router = useRouter();
@@ -54,18 +55,15 @@ const SelectStage = () => {
       </View>
 
       <View style={styles.actions}>
-        <TouchableOpacity
-          style={styles.button}
+        <AppButton
+          title={'Start Interview'}
           onPress={() => onStartStage('interview')}
-        >
-          <Text style={styles.buttonText}>Start Interview</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonSecondary}
+        />
+        <AppButton
+          title={'Practice Mode'}
           onPress={() => onStartStage('practice')}
-        >
-          <Text style={styles.buttonSecondaryText}>Practice Mode</Text>
-        </TouchableOpacity>
+          isSecondary
+        />
       </View>
     </>
   );

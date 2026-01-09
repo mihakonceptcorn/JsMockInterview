@@ -12,6 +12,7 @@ import { s, vs } from 'react-native-size-matters';
 import SelectOption from '@/components/stages/SelectOption';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
+import AppButton from '@/components/ui/AppButton';
 
 interface Question {
   id: string;
@@ -126,9 +127,7 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({ item }) => {
       </View>
 
       <View style={styles.actions}>
-        <TouchableOpacity style={styles.button} onPress={onCheckAnswer}>
-          <Text style={styles.buttonText}>Check Answer</Text>
-        </TouchableOpacity>
+        <AppButton title="Check Answer" onPress={onCheckAnswer} />
       </View>
     </View>
   );
@@ -182,18 +181,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: vs(20),
     marginBottom: vs(10),
-  },
-  button: {
-    padding: 16,
-    textAlign: 'center',
-    backgroundColor: '#306FB4',
-    borderRadius: 8,
-    width: '50%',
-  },
-  buttonText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontSize: 16,
   },
   scrollContainer: {
     flex: 1,
