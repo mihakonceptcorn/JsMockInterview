@@ -29,7 +29,7 @@ const Stage = () => {
   }, []);
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Stack.Screen
         options={{
           title: `${title}`,

@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { s, vs } from 'react-native-size-matters';
 import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import RadioButton from './RadioButton';
+import RadioButton from '../ui/RadioButton';
 
 interface SelectStageItemProps {
   title: string;
