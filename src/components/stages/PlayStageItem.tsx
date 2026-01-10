@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import CodeHighlighter from 'react-native-code-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { s, vs } from 'react-native-size-matters';
 import SelectOption from '@/components/stages/SelectOption';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -73,34 +73,41 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.sectionTitle}>Scenario:</Text>
-      <View style={styles.codeContainerWrapper}>
-        <CodeHighlighter
-          hljsStyle={atomOneDark}
-          containerStyle={styles.codeContainerStyle}
-        >
-          {item.code}
-        </CodeHighlighter>
-      </View>
       <View style={styles.scrollContainer}>
         <ScrollView>
-          <Text style={styles.sectionTitle}>{item.prompt}</Text>
-          <View style={styles.optionsContainer}>
-            <LinearGradient colors={['rgba(0,0,0,0.2)', 'transparent']}>
+          <View style={styles.questionContainer}>
+            <LinearGradient
+              colors={['#0B1F36', '#102C4C']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+            >
               <View style={styles.gradientInner}>
-                {item.options.map((option, index) => (
-                  <SelectOption
-                    key={index}
-                    title={option}
-                    isSelected={selectedOptions.includes(index)}
-                    onPress={() => {
-                      onSelectOption(index);
-                    }}
-                  />
-                ))}
+                <Text style={styles.sectionTitle}>{item.prompt}</Text>
+                <View style={styles.codeContainerWrapper}>
+                  <CodeHighlighter
+                    hljsStyle={a11yDark}
+                    containerStyle={styles.codeContainerStyle}
+                    language="JavaScript"
+                  >
+                    {item.code}
+                  </CodeHighlighter>
+                </View>
+                <View style={styles.optionsContainer}>
+                  {item.options.map((option, index) => (
+                    <SelectOption
+                      key={index}
+                      title={option}
+                      isSelected={selectedOptions.includes(index)}
+                      onPress={() => {
+                        onSelectOption(index);
+                      }}
+                    />
+                  ))}
+                </View>
               </View>
             </LinearGradient>
           </View>
+
           {isAnswerShown && (
             <>
               {isAnswerCorrect && (
@@ -126,20 +133,28 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                       Incorrect
                     </Text>
                   </View>
-                  <View style={styles.correctAnswerContainer}>
-                    <Text style={styles.correctAnswerTitle}>Correct:</Text>
-                    <Text style={styles.correctAnswerText}>
-                      {item.correct.map((index) => item.options[index] + '; ')}
-                    </Text>
-                  </View>
                 </>
               )}
 
-              <View style={styles.explanationContainer}>
-                <Text style={styles.sectionTitle}>Explanation:</Text>
-                <LinearGradient colors={['rgba(0,0,0,0.2)', 'transparent']}>
+              <View style={styles.questionContainer}>
+                <LinearGradient
+                  colors={['#0B1F36', '#102C4C']}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
+                >
                   <View style={styles.gradientInner}>
-                    <Text style={styles.explanation}>{item.explanation}</Text>
+                    <View style={styles.correctAnswerContainer}>
+                      <Text style={styles.sectionTitle}>Correct:</Text>
+                      <Text style={styles.correctAnswerText}>
+                        {item.correct.map(
+                          (index) => item.options[index] + '; '
+                        )}
+                      </Text>
+                    </View>
+                    <View style={styles.explanationContainer}>
+                      <Text style={styles.sectionTitle}>Explanation:</Text>
+                      <Text style={styles.explanation}>{item.explanation}</Text>
+                    </View>
                   </View>
                 </LinearGradient>
               </View>
@@ -167,21 +182,19 @@ const styles = StyleSheet.create({
     fontSize: s(16),
     fontWeight: 'bold',
     color: '#fff',
-    paddingVertical: vs(12),
-    borderBottomWidth: 1,
-    borderBottomColor: '#666',
+    marginBottom: vs(10),
   },
   codeContainerWrapper: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#444',
     borderRadius: s(12),
     overflow: 'hidden',
-    marginTop: vs(10),
     marginBottom: vs(10),
   },
   codeContainerStyle: {
     padding: s(16),
     minWidth: '100%',
+    backgroundColor: '#0F182D',
   },
   webview: {
     backgroundColor: '#0d1117',
@@ -195,21 +208,23 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
+  questionContainer: {
+    borderWidth: 1,
+    borderRadius: s(12),
+    overflow: 'hidden',
+    borderColor: '#ccc',
+    marginTop: vs(10),
+  },
   optionsContainer: {
-    borderBottomWidth: 1,
     borderBottomColor: '#666',
-    marginBottom: vs(10),
   },
   gradientInner: {
-    paddingHorizontal: s(10),
+    padding: s(10),
   },
   resultContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#666',
-    paddingBottom: vs(10),
-    marginBottom: vs(10),
+    marginTop: vs(10),
   },
   resultText: {
     fontSize: s(16),
@@ -220,8 +235,6 @@ const styles = StyleSheet.create({
     color: '#8f0303',
   },
   correctAnswerContainer: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
     borderBottomWidth: 1,
     borderBottomColor: '#666',
     paddingBottom: vs(10),
@@ -235,11 +248,12 @@ const styles = StyleSheet.create({
     fontSize: s(12),
     color: '#fff',
   },
-  explanationContainer: {},
+  explanationContainer: {
+    marginTop: vs(10),
+  },
   explanation: {
     fontSize: s(12),
     color: '#fff',
-    paddingVertical: vs(12),
   },
   actions: {
     alignItems: 'center',

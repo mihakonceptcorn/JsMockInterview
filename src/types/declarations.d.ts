@@ -16,6 +16,5 @@ declare module 'react-native-code-highlighter' {
 
 declare module 'react-syntax-highlighter/dist/esm/styles/hljs' {
   export const atomOneDark: any;
-  export const atomOneLight: any;
-  // Додайте інші стилі за потреби
+  export const a11yDark: any;
 }
