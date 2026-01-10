@@ -23,7 +23,7 @@ interface Question {
 
 type PlayStageItemProps = {
   item: Question;
-  onNextPressed: () => void;
+  onNextPressed: (isAnswerCorrect: boolean) => void;
 };
 
 const PlayStageItem: React.FC<PlayStageItemProps> = ({
@@ -65,10 +65,10 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
   };
 
   const setNextQuestion = () => {
+    onNextPressed(isAnswerCorrect);
     setSelectedOptions([]);
     setIsAnswerShown(false);
     setIsAnswerCorrect(false);
-    onNextPressed();
   };
 
   return (

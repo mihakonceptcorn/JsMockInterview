@@ -1,10 +1,9 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { dataMap } from '@/data/dataMap';
 import PlayStageItem from '@/components/stages/PlayStageItem';
 import ProgressionBar from '@/components/progressionBar/ProgressionBar';
-import { Bar } from 'react-native-progress';
 import { s, vs } from 'react-native-size-matters';
 import StageResult from '@/components/stages/StageResult';
 
@@ -27,6 +26,7 @@ const Stage = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [isResult, setIsResult] = useState(false);
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
 
   const router = useRouter();
 
@@ -37,7 +37,11 @@ const Stage = () => {
     setQuestions(shuffled.slice(0, 10) ?? []);
   }, []);
 
-  const onNextPressed = () => {
+  const onNextPressed = (isCorrect: boolean) => {
+    if (isCorrect) {
+      setCorrectAnswersCount((prev) => prev + 1);
+    }
+
     if (questionIndex < questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
     } else {
@@ -64,7 +68,11 @@ const Stage = () => {
           </View>
 
           {isResult ? (
-            <StageResult onPress={() => router.replace('/')} />
+            <StageResult
+              score={correctAnswersCount}
+              total={questions.length}
+              onPress={() => router.replace('/')}
+            />
           ) : (
             <PlayStageItem
               item={questions[questionIndex]}

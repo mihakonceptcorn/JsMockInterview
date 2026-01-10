@@ -5,11 +5,16 @@ import AppButton from '@/components/ui/AppButton';
 
 interface StageResultProps {
   onPress: () => void;
+  score: number;
+  total: number;
 }
-const StageResult: FC<StageResultProps> = ({ onPress }) => {
+const StageResult: FC<StageResultProps> = ({ score, total, onPress }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>StageResult</Text>
+      <Text style={styles.title}>
+        {score} correct answers from {total} questions
+      </Text>
       <AppButton title={'Go To Stages'} onPress={onPress} />
     </View>
   );
@@ -18,8 +23,9 @@ export default StageResult;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
+    padding: s(20),
   },
   title: {
     fontSize: s(24),
