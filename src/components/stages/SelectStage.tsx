@@ -11,6 +11,7 @@ import { s, vs } from 'react-native-size-matters';
 import SelectStageItem from './SelectStageItem';
 import { useRouter } from 'expo-router';
 import AppButton from '@/components/ui/AppButton';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const SelectStage = () => {
   const router = useRouter();
@@ -39,19 +40,27 @@ const SelectStage = () => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.title}>SelectStage</Text>
-        <FlatList
-          data={jsStages.stages}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <SelectStageItem
-              title={item.title}
-              isSelected={item.id === selectedStageId}
-              onPress={() => onSelectStage(item.id, item.title)}
+        <LinearGradient
+          colors={['#0B1F36', '#102C4C']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+        >
+          <View style={styles.gradientInner}>
+            <Text style={styles.title}>SelectStage</Text>
+            <FlatList
+              data={jsStages.stages}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+                <SelectStageItem
+                  title={item.title}
+                  isSelected={item.id === selectedStageId}
+                  onPress={() => onSelectStage(item.id, item.title)}
+                />
+              )}
+              showsVerticalScrollIndicator={false}
             />
-          )}
-          showsVerticalScrollIndicator={false}
-        />
+          </View>
+        </LinearGradient>
       </View>
 
       <View style={styles.actions}>
@@ -74,9 +83,14 @@ export default SelectStage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderTopWidth: 1,
-    borderTopColor: '#ccc',
-    marginTop: s(10),
+    marginTop: s(20),
+    borderWidth: 1,
+    borderRadius: s(12),
+    overflow: 'hidden',
+    borderColor: '#ccc',
+  },
+  gradientInner: {
+    padding: s(10),
   },
   title: {
     fontSize: s(16),
@@ -88,8 +102,6 @@ const styles = StyleSheet.create({
     gap: 12,
     flexDirection: 'row',
     justifyContent: 'center',
-    borderTopWidth: 1,
-    borderTopColor: '#fff',
     paddingTop: s(20),
   },
   button: {
