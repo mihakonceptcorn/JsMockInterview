@@ -74,7 +74,7 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.scrollContainer}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.questionContainer}>
             <LinearGradient
               colors={['#0B1F36', '#102C4C']}
@@ -138,7 +138,7 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                 </>
               )}
 
-              <View style={styles.questionContainer}>
+              <View style={[styles.questionContainer, styles.bottomMargin]}>
                 <LinearGradient
                   colors={['#0B1F36', '#102C4C']}
                   start={{ x: 0, y: 0 }}
@@ -223,6 +223,9 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     marginTop: vs(10),
   },
+  bottomMargin: {
+    marginBottom: vs(20),
+  },
   optionsContainer: {
     borderBottomColor: '#666',
   },
@@ -267,6 +270,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: vs(20),
     marginBottom: vs(10),
+    borderTopWidth: 1,
+    borderTopColor: '#ccc',
   },
   scrollContainer: {
     flex: 1,
