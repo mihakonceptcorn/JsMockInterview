@@ -70,7 +70,6 @@
       "stageId": "js-basics",
       "type": "multiple",
       "prompt": "Which statements are correct?",
-      "code": "var let const",
       "options": [
         "`var` is function-scoped",
         "`let` is block-scoped",

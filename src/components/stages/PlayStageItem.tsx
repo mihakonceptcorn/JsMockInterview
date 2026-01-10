@@ -84,13 +84,15 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
               <View style={styles.gradientInner}>
                 <Text style={styles.sectionTitle}>{item.prompt}</Text>
                 <View style={styles.codeContainerWrapper}>
-                  <CodeHighlighter
-                    hljsStyle={a11yDark}
-                    containerStyle={styles.codeContainerStyle}
-                    language="JavaScript"
-                  >
-                    {item.code}
-                  </CodeHighlighter>
+                  {item.code && (
+                    <CodeHighlighter
+                      hljsStyle={a11yDark}
+                      containerStyle={styles.codeContainerStyle}
+                      language="JavaScript"
+                    >
+                      {item.code}
+                    </CodeHighlighter>
+                  )}
                 </View>
                 <View style={styles.optionsContainer}>
                   {item.options.map((option, index) => (
@@ -154,6 +156,12 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                     <View style={styles.explanationContainer}>
                       <Text style={styles.sectionTitle}>Explanation:</Text>
                       <Text style={styles.explanation}>{item.explanation}</Text>
+                    </View>
+                    <View style={styles.explanationContainer}>
+                      <Text style={styles.sectionTitle}>Interview Tip:</Text>
+                      <Text style={styles.explanation}>
+                        {item.interviewTip}
+                      </Text>
                     </View>
                   </View>
                 </LinearGradient>
