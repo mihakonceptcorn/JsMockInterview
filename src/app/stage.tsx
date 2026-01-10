@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { dataMap } from '@/data/dataMap';
 import PlayStageItem from '@/components/stages/PlayStageItem';
+import ProgressionBar from '@/components/progressionBar/ProgressionBar';
+import { Bar } from 'react-native-progress';
+import { s, vs } from 'react-native-size-matters';
 
 type DataKey = keyof typeof dataMap;
 
@@ -45,10 +48,19 @@ const Stage = () => {
         }}
       />
       {questions.length > 0 && (
-        <PlayStageItem
-          item={questions[questionIndex]}
-          onNextPressed={onNextPressed}
-        />
+        <>
+          <View style={styles.progressContainer}>
+            <ProgressionBar
+              title={`Questions: ${questionIndex + 1}/${questions.length}`}
+              progress={Number((questionIndex / questions.length).toFixed(2))}
+            />
+          </View>
+
+          <PlayStageItem
+            item={questions[questionIndex]}
+            onNextPressed={onNextPressed}
+          />
+        </>
       )}
     </View>
   );
@@ -58,5 +70,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     color: '#fff',
+  },
+  progressContainer: {
+    height: 50,
+    paddingHorizontal: s(20),
+    marginTop: vs(10),
   },
 });

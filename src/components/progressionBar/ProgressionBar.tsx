@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: s(12),
     color: '#fff',
+    fontWeight: 'bold',
   },
   bar: {
     marginVertical: vs(8),
