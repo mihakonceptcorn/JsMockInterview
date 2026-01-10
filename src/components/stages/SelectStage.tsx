@@ -44,8 +44,9 @@ const SelectStage = () => {
           colors={['#0B1F36', '#102C4C']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
+          style={styles.flex}
         >
-          <View style={styles.gradientInner}>
+          <View style={[styles.gradientInner, styles.flex]}>
             <Text style={styles.title}>SelectStage</Text>
             <FlatList
               data={jsStages.stages}
@@ -88,6 +89,9 @@ const styles = StyleSheet.create({
     borderRadius: s(12),
     overflow: 'hidden',
     borderColor: '#ccc',
+  },
+  flex: {
+    flex: 1,
   },
   gradientInner: {
     padding: s(10),
