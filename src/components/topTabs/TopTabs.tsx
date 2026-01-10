@@ -1,7 +1,7 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
-import TopTabItem from "./TopTabItem";
-import { s } from "react-native-size-matters";
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import TopTabItem from './TopTabItem';
+import { s } from 'react-native-size-matters';
 
 const TopTabs = () => {
   return (
@@ -9,7 +9,7 @@ const TopTabs = () => {
       <View style={styles.separatorHorizontal} />
 
       <View style={styles.tabsContainer}>
-        <TopTabItem title="JS" isBlocked={false} />
+        <TopTabItem title="JS" isBlocked={false} isActive />
         <View style={styles.separatorVertical} />
         <TopTabItem title="React" isBlocked={true} />
         <View style={styles.separatorVertical} />
@@ -29,16 +29,16 @@ const styles = StyleSheet.create({
   container: {},
   separatorHorizontal: {
     height: 1,
-    backgroundColor: "#ccc",
-    width: "100%",
+    backgroundColor: '#ccc',
+    width: '100%',
     marginVertical: s(5),
   },
   tabsContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   separatorVertical: {
     width: 1,
-    backgroundColor: "#ccc",
+    backgroundColor: '#ccc',
     marginHorizontal: s(5),
   },
 });

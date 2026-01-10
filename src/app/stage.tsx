@@ -29,7 +29,8 @@ const Stage = () => {
   useEffect(() => {
     const key = `${section}/${id}`;
     const questionsData = dataMap[key as DataKey] as any;
-    setQuestions(questionsData?.default ?? []);
+    const shuffled = [...questionsData.default].sort(() => 0.5 - Math.random());
+    setQuestions(shuffled.slice(0, 10) ?? []);
   }, []);
 
   const onNextPressed = () => {
@@ -52,7 +53,9 @@ const Stage = () => {
           <View style={styles.progressContainer}>
             <ProgressionBar
               title={`Questions: ${questionIndex + 1}/${questions.length}`}
-              progress={Number((questionIndex / questions.length).toFixed(2))}
+              progress={Number(
+                ((questionIndex + 1) / questions.length).toFixed(2)
+              )}
             />
           </View>
 

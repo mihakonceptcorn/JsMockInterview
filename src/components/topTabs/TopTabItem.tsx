@@ -6,12 +6,21 @@ import Entypo from '@expo/vector-icons/Entypo';
 interface TopTabItemProps {
   title: string;
   isBlocked: boolean;
+  isActive?: boolean;
 }
 
-const TopTabItem: FC<TopTabItemProps> = ({ title, isBlocked }) => {
+const TopTabItem: FC<TopTabItemProps> = ({
+  title,
+  isBlocked,
+  isActive = false,
+}) => {
   return (
-    <TouchableOpacity style={styles.tabContainer}>
-      <Text style={[styles.tabTitle, isBlocked && styles.tabTitleBlocked]}>{title}</Text>
+    <TouchableOpacity
+      style={[styles.tabContainer, isActive && styles.activeTab]}
+    >
+      <Text style={[styles.tabTitle, isBlocked && styles.tabTitleBlocked]}>
+        {title}
+      </Text>
       {isBlocked && (
         <>
           <Entypo name="lock" size={20} color="#888" />
@@ -29,6 +38,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  activeTab: {
+    backgroundColor: '#306FB4',
   },
   tabTitle: {
     textAlign: 'center',
