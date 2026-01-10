@@ -1,11 +1,12 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { dataMap } from '@/data/dataMap';
 import PlayStageItem from '@/components/stages/PlayStageItem';
 import ProgressionBar from '@/components/progressionBar/ProgressionBar';
 import { Bar } from 'react-native-progress';
 import { s, vs } from 'react-native-size-matters';
+import StageResult from '@/components/stages/StageResult';
 
 type DataKey = keyof typeof dataMap;
 
@@ -25,6 +26,9 @@ const Stage = () => {
   const { id, mode, section, title } = useLocalSearchParams();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
+  const [isResult, setIsResult] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     const key = `${section}/${id}`;
@@ -37,7 +41,7 @@ const Stage = () => {
     if (questionIndex < questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
     } else {
-      console.log('completed!!!');
+      setIsResult(true);
     }
   };
 
@@ -59,10 +63,14 @@ const Stage = () => {
             />
           </View>
 
-          <PlayStageItem
-            item={questions[questionIndex]}
-            onNextPressed={onNextPressed}
-          />
+          {isResult ? (
+            <StageResult onPress={() => router.replace('/')} />
+          ) : (
+            <PlayStageItem
+              item={questions[questionIndex]}
+              onNextPressed={onNextPressed}
+            />
+          )}
         </>
       )}
     </View>

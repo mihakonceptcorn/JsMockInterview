@@ -126,6 +126,12 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                       Incorrect
                     </Text>
                   </View>
+                  <View style={styles.correctAnswerContainer}>
+                    <Text style={styles.correctAnswerTitle}>Correct:</Text>
+                    <Text style={styles.correctAnswerText}>
+                      {item.correct.map((index) => item.options[index] + '; ')}
+                    </Text>
+                  </View>
                 </>
               )}
 
@@ -212,6 +218,22 @@ const styles = StyleSheet.create({
   },
   resultTextIncorrect: {
     color: '#8f0303',
+  },
+  correctAnswerContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    borderBottomWidth: 1,
+    borderBottomColor: '#666',
+    paddingBottom: vs(10),
+  },
+  correctAnswerTitle: {
+    fontSize: s(16),
+    color: '#fff',
+    marginRight: s(10),
+  },
+  correctAnswerText: {
+    fontSize: s(12),
+    color: '#fff',
   },
   explanationContainer: {},
   explanation: {

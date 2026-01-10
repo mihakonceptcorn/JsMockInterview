@@ -25,7 +25,7 @@ const SelectStage = () => {
   const onStartStage = (mode: 'practice' | 'interview') => {
     if (selectedStageId) {
       router.push({
-        pathname: 'stage',
+        pathname: '/stage',
         params: {
           id: selectedStageId,
           mode: mode,
