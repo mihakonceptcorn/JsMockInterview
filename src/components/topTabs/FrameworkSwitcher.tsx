@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Lock } from 'lucide-react-native';
+import Entypo from '@expo/vector-icons/Entypo';
 import { s } from 'react-native-size-matters';
 
 type Framework = 'js' | 'react' | 'react-native' | 'vue';
@@ -51,7 +51,12 @@ export const FrameworkSwitcher = ({ value, onChange }: Props) => {
                 <View style={styles.inactiveItem}>
                   <Text style={styles.inactiveText}>{item.label}</Text>
                   {item.locked && (
-                    <Lock size={14} color="#9CA3AF" style={{ marginLeft: 6 }} />
+                    <Entypo
+                      name="lock"
+                      size={14}
+                      color="#9CA3AF"
+                      style={{ marginLeft: 6 }}
+                    />
                   )}
                 </View>
               )}
