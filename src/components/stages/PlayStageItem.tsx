@@ -8,6 +8,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
 import AppButton from '@/components/ui/AppButton';
 import { LinearGradient } from 'expo-linear-gradient';
+import { COLORS } from '@/theme/colors';
 
 interface Question {
   id: string;
@@ -127,7 +128,7 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                     <Entypo
                       name="circle-with-cross"
                       size={24}
-                      color="#8f0303"
+                      color={COLORS.danger}
                     />
                     <Text
                       style={[styles.resultText, styles.resultTextIncorrect]}
@@ -189,12 +190,12 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: s(16),
     fontWeight: 'bold',
-    color: '#fff',
+    color: COLORS.textPrimary,
     marginBottom: vs(10),
   },
   codeContainerWrapper: {
     borderWidth: 1,
-    borderColor: '#444',
+    borderColor: COLORS.borderColor,
     borderRadius: s(12),
     overflow: 'hidden',
     marginBottom: vs(10),
@@ -202,32 +203,27 @@ const styles = StyleSheet.create({
   codeContainerStyle: {
     padding: s(16),
     minWidth: '100%',
-    backgroundColor: '#0F182D',
-  },
-  webview: {
-    backgroundColor: '#0d1117',
-    opacity: 0.99,
-    height: 200,
+    backgroundColor: COLORS.bgTop,
   },
   prompt: {
     fontSize: s(20),
-    color: '#fff',
+    color: COLORS.textPrimary,
     paddingVertical: vs(12),
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    borderBottomColor: COLORS.borderColor,
   },
   questionContainer: {
     borderWidth: 1,
     borderRadius: s(12),
     overflow: 'hidden',
-    borderColor: '#ccc',
+    borderColor: COLORS.borderColor,
     marginTop: vs(10),
   },
   bottomMargin: {
     marginBottom: vs(20),
   },
   optionsContainer: {
-    borderBottomColor: '#666',
+    borderBottomColor: COLORS.borderColor,
   },
   gradientInner: {
     padding: s(10),
@@ -239,39 +235,39 @@ const styles = StyleSheet.create({
   },
   resultText: {
     fontSize: s(16),
-    color: '#fff',
+    color: COLORS.textPrimary,
     marginLeft: s(10),
   },
   resultTextIncorrect: {
-    color: '#8f0303',
+    color: COLORS.danger,
   },
   correctAnswerContainer: {
     borderBottomWidth: 1,
-    borderBottomColor: '#666',
+    borderBottomColor: COLORS.borderColor,
     paddingBottom: vs(10),
   },
   correctAnswerTitle: {
     fontSize: s(16),
-    color: '#fff',
+    color: COLORS.textPrimary,
     marginRight: s(10),
   },
   correctAnswerText: {
     fontSize: s(12),
-    color: '#fff',
+    color: COLORS.textPrimary,
   },
   explanationContainer: {
     marginTop: vs(10),
   },
   explanation: {
     fontSize: s(12),
-    color: '#fff',
+    color: COLORS.textPrimary,
   },
   actions: {
     alignItems: 'center',
     paddingVertical: vs(20),
     marginBottom: vs(10),
     borderTopWidth: 1,
-    borderTopColor: '#ccc',
+    borderTopColor: COLORS.borderColor,
   },
   scrollContainer: {
     flex: 1,

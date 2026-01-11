@@ -35,7 +35,7 @@ const Stage = () => {
     const key = `${section}/${id}`;
     const questionsData = dataMap[key as DataKey] as any;
     const shuffled = [...questionsData.default].sort(() => 0.5 - Math.random());
-    setQuestions(shuffled.slice(0, 10) ?? []);
+    setQuestions(shuffled.slice(0, 3) ?? []);
   }, []);
 
   const onNextPressed = (isCorrect: boolean) => {
@@ -60,14 +60,16 @@ const Stage = () => {
         />
         {questions.length > 0 && (
           <>
-            <View style={styles.progressContainer}>
-              <ProgressionBar
-                title={`Questions: ${questionIndex + 1}/${questions.length}`}
-                progress={Number(
-                  ((questionIndex + 1) / questions.length).toFixed(2)
-                )}
-              />
-            </View>
+            {!isResult && (
+              <View style={styles.progressContainer}>
+                <ProgressionBar
+                  title={`Questions: ${questionIndex + 1}/${questions.length}`}
+                  progress={Number(
+                    ((questionIndex + 1) / questions.length).toFixed(2)
+                  )}
+                />
+              </View>
+            )}
 
             {isResult ? (
               <StageResult

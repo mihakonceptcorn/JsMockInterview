@@ -2,6 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import TopTabItem from './TopTabItem';
 import { s } from 'react-native-size-matters';
+import { COLORS } from '@/theme/colors';
 
 const TopTabs = () => {
   return (
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   container: {},
   separatorHorizontal: {
     height: 1,
-    backgroundColor: '#ccc',
+    backgroundColor: COLORS.borderColor,
     width: '100%',
     marginVertical: s(5),
   },
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
   },
   separatorVertical: {
     width: 1,
-    backgroundColor: '#ccc',
+    backgroundColor: COLORS.borderColor,
     marginHorizontal: s(5),
   },
 });

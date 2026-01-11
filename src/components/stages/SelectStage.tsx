@@ -1,10 +1,4 @@
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import jsStages from '@/data/js/js.stages.json';
 import { s, vs } from 'react-native-size-matters';
@@ -12,6 +6,7 @@ import SelectStageItem from './SelectStageItem';
 import { useRouter } from 'expo-router';
 import AppButton from '@/components/ui/AppButton';
 import { LinearGradient } from 'expo-linear-gradient';
+import { COLORS } from '@/theme/colors';
 
 const SelectStage = () => {
   const router = useRouter();
@@ -88,7 +83,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: s(12),
     overflow: 'hidden',
-    borderColor: '#ccc',
+    borderColor: COLORS.borderColor,
   },
   flex: {
     flex: 1,

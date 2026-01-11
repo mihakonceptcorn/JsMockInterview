@@ -3,6 +3,7 @@ import React from 'react';
 import { s, vs } from 'react-native-size-matters';
 import ProgressionBar from './ProgressionBar';
 import { LinearGradient } from 'expo-linear-gradient';
+import { COLORS } from '@/theme/colors';
 
 const Progression = () => {
   return (
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: s(12),
     overflow: 'hidden',
-    borderColor: '#ccc',
+    borderColor: COLORS.borderColor,
     marginTop: vs(10),
   },
   gradientInner: {

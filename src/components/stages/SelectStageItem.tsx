@@ -4,6 +4,7 @@ import { s, vs } from 'react-native-size-matters';
 import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import RadioButton from '../ui/RadioButton';
+import { COLORS } from '@/theme/colors';
 
 interface SelectStageItemProps {
   title: string;
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderTopWidth: 1,
-    borderTopColor: '#ccc',
+    borderTopColor: COLORS.borderColor,
     paddingVertical: vs(10),
   },
   titleContainer: {
@@ -65,6 +66,6 @@ const styles = StyleSheet.create({
   },
   statusTitle: {
     marginLeft: s(6),
-    color: '#fff',
+    color: COLORS.textSecondary,
   },
 });

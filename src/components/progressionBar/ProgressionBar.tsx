@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import React, { FC } from 'react';
 import { Bar } from 'react-native-progress';
 import { s, vs } from 'react-native-size-matters';
+import { COLORS } from '@/theme/colors';
 
 interface ProgressionBarProps {
   title: string;
@@ -13,7 +14,7 @@ const ProgressionBar: FC<ProgressionBarProps> = ({ title, progress }) => {
     <View style={styles.barContainer}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.bar}>
-        <Bar progress={progress} width={null} color="#306FB4" />
+        <Bar progress={progress} width={null} color={COLORS.success} />
       </View>
     </View>
   );
