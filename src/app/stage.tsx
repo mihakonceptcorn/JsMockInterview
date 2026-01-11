@@ -31,7 +31,7 @@ const Stage = () => {
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const timerRef = useRef(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const router = useRouter();
 
@@ -66,7 +66,10 @@ const Stage = () => {
   };
 
   const stopTimer = () => {
-    clearInterval(timerRef.current);
+    if (timerRef.current !== null) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
     setIsRunning(false);
   };
 
@@ -76,7 +79,7 @@ const Stage = () => {
   //   setTime(0);
   // };
 
-  const formatTime = (ms) => {
+  const formatTime = (ms: number) => {
     const minutes = Math.floor(ms / 60000);
     const seconds = Math.floor((ms % 60000) / 1000);
     const centiseconds = Math.floor((ms % 1000) / 10);
