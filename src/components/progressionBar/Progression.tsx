@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     borderRadius: s(12),
     overflow: 'hidden',
     borderColor: COLORS.borderColor,
-    marginTop: vs(10),
+    marginTop: vs(20),
   },
   gradientInner: {
     flexDirection: 'row',
