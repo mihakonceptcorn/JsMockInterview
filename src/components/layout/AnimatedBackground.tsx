@@ -31,7 +31,6 @@ export const AnimatedBackground = ({ children }: Props) => {
 
   return (
     <View style={styles.container}>
-      {/* Gradient */}
       <LinearGradient
         colors={['#0A1A33', '#102B55']}
         start={{ x: 1, y: 0 }}
@@ -39,7 +38,6 @@ export const AnimatedBackground = ({ children }: Props) => {
         style={StyleSheet.absoluteFillObject}
       />
 
-      {/* Animated Noise */}
       <Animated.Image
         source={require('@/assets/noise.png')}
         resizeMode="cover"
@@ -51,7 +49,6 @@ export const AnimatedBackground = ({ children }: Props) => {
         ]}
       />
 
-      {/* Content */}
       <View style={styles.content}>{children}</View>
     </View>
   );

@@ -75,6 +75,7 @@ const Stage = () => {
               <StageResult
                 score={correctAnswersCount}
                 total={questions.length}
+                title={title.toString()}
                 onPress={() => router.replace('/')}
               />
             ) : (
