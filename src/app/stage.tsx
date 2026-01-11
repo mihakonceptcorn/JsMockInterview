@@ -6,6 +6,7 @@ import PlayStageItem from '@/components/stages/PlayStageItem';
 import ProgressionBar from '@/components/progressionBar/ProgressionBar';
 import { s, vs } from 'react-native-size-matters';
 import StageResult from '@/components/stages/StageResult';
+import { BackgroundLayout } from '@/components/layout/BackgroundLayout';
 
 type DataKey = keyof typeof dataMap;
 
@@ -50,38 +51,40 @@ const Stage = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      <Stack.Screen
-        options={{
-          title: `${title}`,
-        }}
-      />
-      {questions.length > 0 && (
-        <>
-          <View style={styles.progressContainer}>
-            <ProgressionBar
-              title={`Questions: ${questionIndex + 1}/${questions.length}`}
-              progress={Number(
-                ((questionIndex + 1) / questions.length).toFixed(2)
-              )}
-            />
-          </View>
+    <BackgroundLayout>
+      <View style={{ flex: 1 }}>
+        <Stack.Screen
+          options={{
+            title: `${title}`,
+          }}
+        />
+        {questions.length > 0 && (
+          <>
+            <View style={styles.progressContainer}>
+              <ProgressionBar
+                title={`Questions: ${questionIndex + 1}/${questions.length}`}
+                progress={Number(
+                  ((questionIndex + 1) / questions.length).toFixed(2)
+                )}
+              />
+            </View>
 
-          {isResult ? (
-            <StageResult
-              score={correctAnswersCount}
-              total={questions.length}
-              onPress={() => router.replace('/')}
-            />
-          ) : (
-            <PlayStageItem
-              item={questions[questionIndex]}
-              onNextPressed={onNextPressed}
-            />
-          )}
-        </>
-      )}
-    </View>
+            {isResult ? (
+              <StageResult
+                score={correctAnswersCount}
+                total={questions.length}
+                onPress={() => router.replace('/')}
+              />
+            ) : (
+              <PlayStageItem
+                item={questions[questionIndex]}
+                onNextPressed={onNextPressed}
+              />
+            )}
+          </>
+        )}
+      </View>
+    </BackgroundLayout>
   );
 };
 export default Stage;

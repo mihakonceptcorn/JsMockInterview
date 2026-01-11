@@ -12,7 +12,7 @@ export default function RootLayout() {
   };
 
   return (
-    <ThemeProvider value={MyTheme}>
+    <>
       <StatusBar style="light" />
       <Stack
         screenOptions={{
@@ -25,7 +25,8 @@ export default function RootLayout() {
             fontWeight: 'bold',
           },
           headerTitleAlign: 'center',
-        }}>
+        }}
+      >
         <Stack.Screen
           name="index"
           options={{
@@ -38,6 +39,6 @@ export default function RootLayout() {
         />
         <Stack.Screen name="stage" options={{ title: 'Stage' }} />
       </Stack>
-    </ThemeProvider>
+    </>
   );
 }
