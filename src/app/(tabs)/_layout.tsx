@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '@/theme/colors';
+import { View } from 'react-native';
 
 export default function TabsLayout() {
   return (
@@ -8,7 +9,7 @@ export default function TabsLayout() {
       screenOptions={{
         headerShown: true,
         headerStyle: {
-          backgroundColor: COLORS.bgTop,
+          backgroundColor: COLORS.bgBottom,
         },
         headerTintColor: COLORS.textPrimary,
         headerTitleStyle: {
@@ -17,21 +18,14 @@ export default function TabsLayout() {
         headerTitleAlign: 'center',
         tabBarStyle: {
           backgroundColor: COLORS.bgBottom,
-          borderTopWidth: 1,
-          borderTopColor: COLORS.borderColor,
+          borderTopWidth: 0,
           height: 64,
         },
-        tabBarActiveTintColor: '#3B82F6',
-        tabBarInactiveTintColor: '#9CA3AF',
+        tabBarActiveTintColor: COLORS.accent,
+        tabBarInactiveTintColor: COLORS.textSecondary,
         tabBarShowLabel: false,
-        tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: '600',
-          marginBottom: 6,
-        },
       }}
     >
-      {/* HOME */}
       <Tabs.Screen
         name="index"
         options={{
@@ -46,7 +40,6 @@ export default function TabsLayout() {
         }}
       />
 
-      {/* PROFILE */}
       <Tabs.Screen
         name="profile"
         options={{

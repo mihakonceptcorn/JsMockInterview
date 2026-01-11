@@ -14,7 +14,7 @@ export default function RootLayout() {
         options={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: COLORS.bgTop,
+            backgroundColor: COLORS.bgBottom,
           },
           headerTintColor: COLORS.textPrimary,
           headerTitleStyle: {
