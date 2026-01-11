@@ -13,11 +13,13 @@ interface StageResultProps {
   score: number;
   total: number;
   title: string;
+  time: string;
 }
 const StageResult: FC<StageResultProps> = ({
   score,
   total,
   title,
+  time,
   onPress,
 }) => {
   const getScore = Math.round((score / total) * 100) + '%';
@@ -59,7 +61,7 @@ const StageResult: FC<StageResultProps> = ({
                 <Text style={styles.score}>
                   Score: <Text style={styles.scoreValue}>{getScore}</Text>
                 </Text>
-                <Text style={styles.time}>Time Taken: 2:55</Text>
+                <Text style={styles.time}>Time Taken: {time}</Text>
               </View>
             </View>
           </View>
