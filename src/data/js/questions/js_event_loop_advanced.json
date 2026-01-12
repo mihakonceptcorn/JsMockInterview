@@ -1,0 +1,339 @@
+{
+  "default": [
+    {
+      "id": "js-el-adv-01",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Which queue has higher priority in the event loop?",
+      "options": [
+        "Microtask queue",
+        "Macrotask queue",
+        "Animation frame queue",
+        "Idle queue"
+      ],
+      "correct": [0],
+      "explanation": "Microtasks run before the next macrotask.",
+      "interviewTip": "Promises can starve rendering."
+    },
+    {
+      "id": "js-el-adv-02",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Which API schedules a microtask?",
+      "options": [
+        "Promise.then",
+        "setTimeout",
+        "setInterval",
+        "requestAnimationFrame"
+      ],
+      "correct": [0],
+      "explanation": "Promise callbacks go to microtask queue.",
+      "interviewTip": "queueMicrotask exists."
+    },
+    {
+      "id": "js-el-adv-03",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "What happens if microtasks keep scheduling new microtasks?",
+      "options": [
+        "Macrotasks are delayed",
+        "Browser crashes",
+        "Call stack overflows",
+        "Tasks are merged"
+      ],
+      "correct": [0],
+      "explanation": "This causes starvation.",
+      "interviewTip": "Common performance pitfall."
+    },
+    {
+      "id": "js-el-adv-04",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "When does rendering occur?",
+      "options": [
+        "Between macrotasks",
+        "After each microtask",
+        "Before JS starts",
+        "Only on load"
+      ],
+      "correct": [0],
+      "explanation": "Rendering happens after microtasks drain.",
+      "interviewTip": "Why promises can block paint."
+    },
+    {
+      "id": "js-el-adv-05",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Where does requestAnimationFrame run?",
+      "options": [
+        "Before repaint",
+        "As a microtask",
+        "As a macrotask",
+        "In idle time"
+      ],
+      "correct": [0],
+      "explanation": "Runs before the next paint.",
+      "interviewTip": "Use for animations."
+    },
+    {
+      "id": "js-el-adv-06",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Which callback may never run under heavy load?",
+      "options": ["requestIdleCallback", "Promise.then", "setTimeout", "rAF"],
+      "correct": [0],
+      "explanation": "Idle time may never occur.",
+      "interviewTip": "Not guaranteed."
+    },
+    {
+      "id": "js-el-adv-07",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "What queue does MutationObserver use?",
+      "options": [
+        "Microtask queue",
+        "Macrotask queue",
+        "Render queue",
+        "Idle queue"
+      ],
+      "correct": [0],
+      "explanation": "Runs as microtask.",
+      "interviewTip": "Often forgotten."
+    },
+    {
+      "id": "js-el-adv-08",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Which task blocks rendering the most?",
+      "options": [
+        "Long JS execution",
+        "Network request",
+        "CSS download",
+        "Image loading"
+      ],
+      "correct": [0],
+      "explanation": "Main thread is blocked.",
+      "interviewTip": "Chunk long tasks."
+    },
+    {
+      "id": "js-el-adv-09",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "What is a long task?",
+      "options": ["Task > 50ms", "Task > 5ms", "Async task", "Microtask"],
+      "correct": [0],
+      "explanation": "Used in performance metrics.",
+      "interviewTip": "Related to TBT."
+    },
+    {
+      "id": "js-el-adv-10",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Which API helps split long tasks?",
+      "options": ["setTimeout", "requestIdleCallback", "Promise.then", "eval"],
+      "correct": [1],
+      "explanation": "Runs work in idle periods.",
+      "interviewTip": "Not supported everywhere."
+    },
+    {
+      "id": "js-el-adv-11",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "What happens after a macrotask finishes?",
+      "options": [
+        "Microtasks run",
+        "Rendering immediately",
+        "Next macrotask",
+        "Idle callbacks"
+      ],
+      "correct": [0],
+      "explanation": "Microtasks drain first.",
+      "interviewTip": "Key interview flow."
+    },
+    {
+      "id": "js-el-adv-12",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Which is a macrotask?",
+      "options": [
+        "setTimeout",
+        "Promise.then",
+        "MutationObserver",
+        "queueMicrotask"
+      ],
+      "correct": [0],
+      "explanation": "Timers create macrotasks.",
+      "interviewTip": "Know examples."
+    },
+    {
+      "id": "js-el-adv-13",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Why is setTimeout(fn, 0) not immediate?",
+      "options": [
+        "Minimum delay + queue",
+        "Blocked by GC",
+        "Network latency",
+        "Thread creation"
+      ],
+      "correct": [0],
+      "explanation": "Subject to clamping.",
+      "interviewTip": "4ms rule."
+    },
+    {
+      "id": "js-el-adv-14",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Which can delay input handling?",
+      "options": ["Heavy JS", "CSS parsing", "Image decoding", "Font loading"],
+      "correct": [0],
+      "explanation": "Main thread contention.",
+      "interviewTip": "INP metric."
+    },
+    {
+      "id": "js-el-adv-15",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Best way to avoid starvation?",
+      "options": [
+        "Yield to event loop",
+        "Use promises",
+        "Use sync code",
+        "Disable microtasks"
+      ],
+      "correct": [0],
+      "explanation": "Break work into chunks.",
+      "interviewTip": "Cooperative scheduling."
+    },
+    {
+      "id": "js-el-adv-16",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Which runs outside the event loop?",
+      "options": ["Web Worker", "Promise", "setTimeout", "rAF"],
+      "correct": [0],
+      "explanation": "Separate thread.",
+      "interviewTip": "No DOM access."
+    },
+    {
+      "id": "js-el-adv-17",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "What is cooperative scheduling?",
+      "options": [
+        "Manually yielding control",
+        "Browser scheduling",
+        "Preemptive threads",
+        "Async/await"
+      ],
+      "correct": [0],
+      "explanation": "JS must yield explicitly.",
+      "interviewTip": "Contrast with threads."
+    },
+    {
+      "id": "js-el-adv-18",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "What does await do internally?",
+      "options": [
+        "Splits function into microtasks",
+        "Blocks thread",
+        "Creates macrotask",
+        "Pauses browser"
+      ],
+      "correct": [0],
+      "explanation": "Continuation via promise.",
+      "interviewTip": "Syntactic sugar."
+    },
+    {
+      "id": "js-el-adv-19",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Which affects paint timing?",
+      "options": [
+        "Microtasks",
+        "Console.log",
+        "Network latency",
+        "LocalStorage"
+      ],
+      "correct": [0],
+      "explanation": "Microtasks delay paint.",
+      "interviewTip": "Subtle bug source."
+    },
+    {
+      "id": "js-el-adv-20",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "What metric measures JS blocking?",
+      "options": ["Total Blocking Time", "CLS", "FCP", "LCP"],
+      "correct": [0],
+      "explanation": "Part of Core Web Vitals.",
+      "interviewTip": "Performance interviews."
+    },
+    {
+      "id": "js-el-adv-21",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "What happens if JS never yields?",
+      "options": ["UI freezes", "GC stops", "Browser reloads", "Tasks reorder"],
+      "correct": [0],
+      "explanation": "Single-threaded limitation.",
+      "interviewTip": "Classic explanation."
+    },
+    {
+      "id": "js-el-adv-22",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Which callback runs first?",
+      "options": ["Promise.then", "setTimeout 0", "rAF", "setInterval"],
+      "correct": [0],
+      "explanation": "Microtasks first.",
+      "interviewTip": "Order questions common."
+    },
+    {
+      "id": "js-el-adv-23",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "What is task batching?",
+      "options": [
+        "Grouping work per frame",
+        "Parallel execution",
+        "Promise chaining",
+        "Thread pooling"
+      ],
+      "correct": [0],
+      "explanation": "Improves responsiveness.",
+      "interviewTip": "React uses it."
+    },
+    {
+      "id": "js-el-adv-24",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Which API is frame-aligned?",
+      "options": [
+        "requestAnimationFrame",
+        "setTimeout",
+        "Promise",
+        "IdleCallback"
+      ],
+      "correct": [0],
+      "explanation": "Synced with refresh rate.",
+      "interviewTip": "Avoid jank."
+    },
+    {
+      "id": "js-el-adv-25",
+      "stageId": "js_event_loop_advanced",
+      "type": "single",
+      "prompt": "Best rule for event loop optimization?",
+      "options": [
+        "Measure first",
+        "Use more promises",
+        "Avoid async",
+        "Use setTimeout everywhere"
+      ],
+      "correct": [0],
+      "explanation": "Always profile.",
+      "interviewTip": "Senior-level answer."
+    }
+  ]
+}

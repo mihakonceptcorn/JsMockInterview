@@ -1,0 +1,344 @@
+{
+  "default": [
+    {
+      "id": "js-br-01",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What is the first step in the rendering pipeline?",
+      "options": ["HTML parsing", "CSS parsing", "Layout", "Paint"],
+      "correct": [0],
+      "explanation": "HTML is parsed into the DOM first.",
+      "interviewTip": "Start of critical render path."
+    },
+    {
+      "id": "js-br-02",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What is created from parsing CSS?",
+      "options": ["CSSOM", "DOM", "Render Tree", "Layer Tree"],
+      "correct": [0],
+      "explanation": "CSSOM represents parsed CSS.",
+      "interviewTip": "DOM + CSSOM = Render Tree."
+    },
+    {
+      "id": "js-br-03",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What does the render tree contain?",
+      "options": [
+        "Visible nodes with styles",
+        "All DOM nodes",
+        "Only text nodes",
+        "Only layout info"
+      ],
+      "correct": [0],
+      "explanation": "Hidden nodes are excluded.",
+      "interviewTip": "display:none nodes skipped."
+    },
+    {
+      "id": "js-br-04",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What is layout (reflow)?",
+      "options": [
+        "Calculating element sizes and positions",
+        "Drawing pixels",
+        "Applying styles",
+        "Executing JS"
+      ],
+      "correct": [0],
+      "explanation": "Layout computes geometry.",
+      "interviewTip": "Very expensive step."
+    },
+    {
+      "id": "js-br-05",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What triggers a reflow?",
+      "options": [
+        "Changing width or height",
+        "Changing color",
+        "Changing opacity",
+        "Changing visibility"
+      ],
+      "correct": [0],
+      "explanation": "Geometry changes require reflow.",
+      "interviewTip": "Avoid layout thrashing."
+    },
+    {
+      "id": "js-br-06",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What is repaint?",
+      "options": [
+        "Redrawing pixels without layout",
+        "Recalculating layout",
+        "Rebuilding DOM",
+        "Running JS"
+      ],
+      "correct": [0],
+      "explanation": "Visual-only updates.",
+      "interviewTip": "Cheaper than reflow."
+    },
+    {
+      "id": "js-br-07",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "Which CSS property avoids reflow and repaint?",
+      "options": ["transform", "width", "top", "margin"],
+      "correct": [0],
+      "explanation": "Transforms are compositor-only.",
+      "interviewTip": "Key animation trick."
+    },
+    {
+      "id": "js-br-08",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What is compositing?",
+      "options": [
+        "Combining layers into final image",
+        "Parsing CSS",
+        "Calculating layout",
+        "Executing JS"
+      ],
+      "correct": [0],
+      "explanation": "Final step before display.",
+      "interviewTip": "GPU-accelerated."
+    },
+    {
+      "id": "js-br-09",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "Which properties are typically GPU-accelerated?",
+      "options": [
+        "transform and opacity",
+        "width and height",
+        "top and left",
+        "margin and padding"
+      ],
+      "correct": [0],
+      "explanation": "They skip layout.",
+      "interviewTip": "Smooth animations."
+    },
+    {
+      "id": "js-br-10",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What causes layout thrashing?",
+      "options": [
+        "Reading layout after writing styles",
+        "Batching DOM updates",
+        "Using rAF",
+        "Using transforms"
+      ],
+      "correct": [0],
+      "explanation": "Forces sync layout.",
+      "interviewTip": "Classic performance bug."
+    },
+    {
+      "id": "js-br-11",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What is forced synchronous layout?",
+      "options": [
+        "Immediate layout recalculation",
+        "Deferred layout",
+        "Async rendering",
+        "GPU compositing"
+      ],
+      "correct": [0],
+      "explanation": "Triggered by layout reads.",
+      "interviewTip": "Avoid offsetHeight after writes."
+    },
+    {
+      "id": "js-br-12",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "When does requestAnimationFrame run?",
+      "options": [
+        "Before next repaint",
+        "After repaint",
+        "As microtask",
+        "As macrotask"
+      ],
+      "correct": [0],
+      "explanation": "Frame-synced callback.",
+      "interviewTip": "Use for animations."
+    },
+    {
+      "id": "js-br-13",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What is a render layer?",
+      "options": [
+        "Element promoted for compositing",
+        "DOM node",
+        "CSS rule",
+        "JS object"
+      ],
+      "correct": [0],
+      "explanation": "Used in compositing.",
+      "interviewTip": "Too many layers hurt memory."
+    },
+    {
+      "id": "js-br-14",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What promotes an element to its own layer?",
+      "options": [
+        "transform or will-change",
+        "color change",
+        "font-size",
+        "margin change"
+      ],
+      "correct": [0],
+      "explanation": "Hints browser optimization.",
+      "interviewTip": "Use will-change sparingly."
+    },
+    {
+      "id": "js-br-15",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What is the critical render path?",
+      "options": [
+        "Steps to first paint",
+        "JS execution order",
+        "Event loop cycle",
+        "Network waterfall"
+      ],
+      "correct": [0],
+      "explanation": "From HTML to pixels.",
+      "interviewTip": "Optimize for FCP."
+    },
+    {
+      "id": "js-br-16",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "Why inline critical CSS?",
+      "options": [
+        "Avoid render blocking",
+        "Reduce bundle size",
+        "Improve caching",
+        "Reduce JS"
+      ],
+      "correct": [0],
+      "explanation": "CSS blocks rendering.",
+      "interviewTip": "Common optimization."
+    },
+    {
+      "id": "js-br-17",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "Which metric measures layout stability?",
+      "options": ["CLS", "FCP", "LCP", "TTFB"],
+      "correct": [0],
+      "explanation": "Cumulative Layout Shift.",
+      "interviewTip": "Web Vitals."
+    },
+    {
+      "id": "js-br-18",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "Which metric reflects render performance best?",
+      "options": ["LCP", "TTFB", "DNS", "CPU usage"],
+      "correct": [0],
+      "explanation": "Largest Contentful Paint.",
+      "interviewTip": "User-centric."
+    },
+    {
+      "id": "js-br-19",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What blocks first paint?",
+      "options": ["Render-blocking CSS", "Images", "Async JS", "Fonts always"],
+      "correct": [0],
+      "explanation": "CSS must be parsed first.",
+      "interviewTip": "Critical CSS again."
+    },
+    {
+      "id": "js-br-20",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What is paint flashing used for?",
+      "options": [
+        "Debug repaint areas",
+        "Measure FPS",
+        "Detect leaks",
+        "Profile JS"
+      ],
+      "correct": [0],
+      "explanation": "DevTools feature.",
+      "interviewTip": "Helps optimize UI."
+    },
+    {
+      "id": "js-br-21",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What happens if JS blocks main thread?",
+      "options": [
+        "Rendering pauses",
+        "CSS continues",
+        "Network stops",
+        "GPU crashes"
+      ],
+      "correct": [0],
+      "explanation": "Single-threaded rendering.",
+      "interviewTip": "Chunk JS work."
+    },
+    {
+      "id": "js-br-22",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "Why avoid large DOM trees?",
+      "options": [
+        "Slower layout and paint",
+        "More JS errors",
+        "Network overhead",
+        "Memory leaks"
+      ],
+      "correct": [0],
+      "explanation": "Layout cost grows.",
+      "interviewTip": "Virtualization helps."
+    },
+    {
+      "id": "js-br-23",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "Which tool profiles rendering?",
+      "options": [
+        "Chrome DevTools Performance tab",
+        "Console",
+        "Network tab",
+        "Lighthouse SEO"
+      ],
+      "correct": [0],
+      "explanation": "Shows frames and paint.",
+      "interviewTip": "Know how to read flame charts."
+    },
+    {
+      "id": "js-br-24",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "What is frame budget at 60fps?",
+      "options": ["~16ms", "~8ms", "~32ms", "~60ms"],
+      "correct": [0],
+      "explanation": "1000ms / 60 ≈ 16ms.",
+      "interviewTip": "Includes JS + render."
+    },
+    {
+      "id": "js-br-25",
+      "stageId": "js_browser_rendering",
+      "type": "single",
+      "prompt": "Golden rule of rendering optimization?",
+      "options": [
+        "Measure, then optimize",
+        "Use GPU everywhere",
+        "Avoid CSS",
+        "Avoid DOM"
+      ],
+      "correct": [0],
+      "explanation": "Data-driven optimization.",
+      "interviewTip": "Senior-level answer."
+    }
+  ]
+}

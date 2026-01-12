@@ -1,0 +1,342 @@
+{
+  "default": [
+    {
+      "id": "js-proto-01",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What is a JavaScript prototype?",
+      "options": [
+        "An object from which other objects inherit properties",
+        "A class definition",
+        "A function scope",
+        "A copy of an object"
+      ],
+      "correct": [0],
+      "explanation": "Every JS object has an internal link to a prototype object.",
+      "interviewTip": "JS uses prototypal inheritance, not classical."
+    },
+    {
+      "id": "js-proto-02",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What does `__proto__` point to?",
+      "options": [
+        "The constructor function",
+        "The object's prototype",
+        "The object's class",
+        "The global object"
+      ],
+      "correct": [1],
+      "explanation": "`__proto__` references the internal [[Prototype]].",
+      "interviewTip": "Preferred API is `Object.getPrototypeOf`."
+    },
+    {
+      "id": "js-proto-03",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What is `Function.prototype`?",
+      "options": [
+        "Prototype of all functions",
+        "Prototype of all objects",
+        "A method",
+        "The global scope"
+      ],
+      "correct": [0],
+      "explanation": "All functions inherit from Function.prototype.",
+      "interviewTip": "Functions are objects."
+    },
+    {
+      "id": "js-proto-04",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What is the result?",
+      "code": "function Foo() {}\nconst a = new Foo();\nconsole.log(a.__proto__ === Foo.prototype);",
+      "options": ["true", "false", "undefined", "TypeError"],
+      "correct": [0],
+      "explanation": "`new` links instance to constructor's prototype.",
+      "interviewTip": "`prototype` exists only on functions."
+    },
+    {
+      "id": "js-proto-05",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "Where are methods usually defined for all instances?",
+      "options": [
+        "On the prototype",
+        "Inside constructor",
+        "On the instance",
+        "In global scope"
+      ],
+      "correct": [0],
+      "explanation": "Methods on prototype are shared.",
+      "interviewTip": "Memory optimization."
+    },
+    {
+      "id": "js-proto-06",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "const obj = {};\nconsole.log(obj.__proto__ === Object.prototype);",
+      "options": ["true", "false", "undefined", "null"],
+      "correct": [0],
+      "explanation": "Plain objects inherit from Object.prototype.",
+      "interviewTip": "Base of prototype chain."
+    },
+    {
+      "id": "js-proto-07",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What ends the prototype chain?",
+      "options": ["null", "Object", "undefined", "Function.prototype"],
+      "correct": [0],
+      "explanation": "`Object.prototype.__proto__ === null`.",
+      "interviewTip": "Important chain termination."
+    },
+    {
+      "id": "js-proto-08",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What does `hasOwnProperty` check?",
+      "options": [
+        "Property exists on the object itself",
+        "Property exists in prototype chain",
+        "Property exists globally",
+        "Property is enumerable"
+      ],
+      "correct": [0],
+      "explanation": "Does not check prototypes.",
+      "interviewTip": "Avoid false positives."
+    },
+    {
+      "id": "js-proto-09",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "function Foo() {}\nFoo.prototype.x = 1;\nconst a = new Foo();\nconsole.log(a.x);",
+      "options": ["1", "undefined", "ReferenceError", "null"],
+      "correct": [0],
+      "explanation": "Property resolved via prototype chain.",
+      "interviewTip": "Property lookup order."
+    },
+    {
+      "id": "js-proto-10",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What happens when you overwrite prototype?",
+      "options": [
+        "Existing instances keep old prototype",
+        "All instances update automatically",
+        "Prototype chain breaks",
+        "Throws error"
+      ],
+      "correct": [0],
+      "explanation": "Prototype is set at creation time.",
+      "interviewTip": "Common pitfall."
+    },
+    {
+      "id": "js-proto-11",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What does `Object.create(proto)` do?",
+      "options": [
+        "Creates object with given prototype",
+        "Clones an object",
+        "Creates a class",
+        "Creates constructor"
+      ],
+      "correct": [0],
+      "explanation": "Direct prototype assignment.",
+      "interviewTip": "Clean inheritance."
+    },
+    {
+      "id": "js-proto-12",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "const a = { x: 1 };\nconst b = Object.create(a);\nconsole.log(b.x);",
+      "options": ["1", "undefined", "ReferenceError", "null"],
+      "correct": [0],
+      "explanation": "b inherits from a.",
+      "interviewTip": "Delegation, not copying."
+    },
+    {
+      "id": "js-proto-13",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What is `constructor` property?",
+      "options": [
+        "Reference to the function that created the object",
+        "The prototype itself",
+        "Class definition",
+        "Global constructor"
+      ],
+      "correct": [0],
+      "explanation": "Points back to constructor function.",
+      "interviewTip": "May be lost when overwriting prototype."
+    },
+    {
+      "id": "js-proto-14",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "function Foo() {}\nconst a = new Foo();\nconsole.log(a instanceof Foo);",
+      "options": ["true", "false", "undefined", "TypeError"],
+      "correct": [0],
+      "explanation": "`instanceof` checks prototype chain.",
+      "interviewTip": "Not type-safe."
+    },
+    {
+      "id": "js-proto-15",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "Why avoid modifying native prototypes?",
+      "options": [
+        "Can cause conflicts",
+        "Breaks libraries",
+        "Unexpected behavior",
+        "All of the above"
+      ],
+      "correct": [3],
+      "explanation": "Prototype pollution risks.",
+      "interviewTip": "Never extend Array/Object prototypes."
+    },
+    {
+      "id": "js-proto-16",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What does method lookup do?",
+      "options": [
+        "Searches up the prototype chain",
+        "Searches globally",
+        "Searches closures",
+        "Searches call stack"
+      ],
+      "correct": [0],
+      "explanation": "Stops when found or reaches null.",
+      "interviewTip": "Performance implication."
+    },
+    {
+      "id": "js-proto-17",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "const a = { x: 1 };\nconst b = Object.create(a);\nb.x = 2;\nconsole.log(a.x);",
+      "options": ["1", "2", "undefined", "null"],
+      "correct": [0],
+      "explanation": "Property assignment happens on object itself.",
+      "interviewTip": "Shadowing prototype properties."
+    },
+    {
+      "id": "js-proto-18",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What is prototype delegation?",
+      "options": [
+        "Objects delegate behavior to prototypes",
+        "Functions call other functions",
+        "Inheritance via classes",
+        "Copying properties"
+      ],
+      "correct": [0],
+      "explanation": "JS uses delegation, not copying.",
+      "interviewTip": "Mental model shift."
+    },
+    {
+      "id": "js-proto-19",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What is `Object.setPrototypeOf`?",
+      "options": [
+        "Changes object's prototype",
+        "Clones object",
+        "Creates inheritance",
+        "Optimizes performance"
+      ],
+      "correct": [0],
+      "explanation": "Allows changing prototype at runtime.",
+      "interviewTip": "Slow, avoid in hot paths."
+    },
+    {
+      "id": "js-proto-20",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What happens when method exists on both object and prototype?",
+      "options": [
+        "Object method is used",
+        "Prototype method is used",
+        "Both run",
+        "Error"
+      ],
+      "correct": [0],
+      "explanation": "Own property has priority.",
+      "interviewTip": "Lookup order."
+    },
+    {
+      "id": "js-proto-21",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "function A() {}\nfunction B() {}\nB.prototype = Object.create(A.prototype);\nconst b = new B();\nconsole.log(b instanceof A);",
+      "options": ["true", "false", "undefined", "TypeError"],
+      "correct": [0],
+      "explanation": "Prototype chain includes A.prototype.",
+      "interviewTip": "Manual inheritance."
+    },
+    {
+      "id": "js-proto-22",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What is the prototype of an arrow function?",
+      "options": [
+        "Function.prototype",
+        "Arrow.prototype",
+        "Object.prototype",
+        "null"
+      ],
+      "correct": [0],
+      "explanation": "Arrow functions are still functions.",
+      "interviewTip": "They just lack `prototype` property."
+    },
+    {
+      "id": "js-proto-23",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "console.log(typeof Object.prototype);",
+      "options": ["object", "function", "null", "undefined"],
+      "correct": [0],
+      "explanation": "Prototypes are objects.",
+      "interviewTip": "Not functions."
+    },
+    {
+      "id": "js-proto-24",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "What is prototype pollution?",
+      "options": [
+        "Modifying Object.prototype",
+        "Memory leak",
+        "Garbage collection bug",
+        "Hoisting issue"
+      ],
+      "correct": [0],
+      "explanation": "Security risk when prototypes are mutated.",
+      "interviewTip": "Common vulnerability."
+    },
+    {
+      "id": "js-proto-25",
+      "stageId": "js_prototypes",
+      "type": "single",
+      "prompt": "Why is prototypal inheritance powerful?",
+      "options": [
+        "Flexible object composition",
+        "Static typing",
+        "Faster execution always",
+        "Class safety"
+      ],
+      "correct": [0],
+      "explanation": "Enables dynamic behavior sharing.",
+      "interviewTip": "Better mental model than classes."
+    }
+  ]
+}

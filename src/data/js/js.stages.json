@@ -55,9 +55,33 @@
       "description": "DOM, events, delegation"
     },
     {
+      "id": "js_event_loop_advanced",
+      "title": "Event Loop — Advanced",
+      "level": 10,
+      "description": "Microtasks, macrotasks, rendering phases, starvation"
+    },
+    {
+      "id": "js_memory_management",
+      "title": "Memory Management",
+      "level": 11,
+      "description": "Heap, stack, garbage collection, memory leaks"
+    },
+    {
+      "id": "js_browser_rendering",
+      "title": "Browser Rendering",
+      "level": 9,
+      "description": "Render tree, reflow, repaint, compositing"
+    },
+    {
+      "id": "js_interview_hardcore",
+      "title": "JS Interview Hardcore",
+      "level": 12,
+      "description": "Edge cases, traps, real interview killers"
+    },
+    {
       "id": "js_advanced",
       "title": "Advanced Topics",
-      "level": 10,
+      "level": 14,
       "description": "Hoisting, currying, debounce/throttle"
     }
   ]

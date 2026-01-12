@@ -1,0 +1,344 @@
+{
+  "default": [
+    {
+      "id": "js-browser-01",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is the main responsibility of the browser?",
+      "options": [
+        "Render UI and execute JS",
+        "Compile JavaScript",
+        "Store databases",
+        "Manage servers"
+      ],
+      "correct": [0],
+      "explanation": "Browser renders UI and runs JS engine.",
+      "interviewTip": "Rendering pipeline matters."
+    },
+    {
+      "id": "js-browser-02",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What happens first when loading a webpage?",
+      "options": ["HTML parsing", "CSS parsing", "JS execution", "Painting"],
+      "correct": [0],
+      "explanation": "HTML is parsed into DOM.",
+      "interviewTip": "Critical render path."
+    },
+    {
+      "id": "js-browser-03",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is the DOM?",
+      "options": [
+        "Tree representation of HTML",
+        "JS runtime",
+        "CSS engine",
+        "Browser cache"
+      ],
+      "correct": [0],
+      "explanation": "DOM is a node tree.",
+      "interviewTip": "JS manipulates DOM."
+    },
+    {
+      "id": "js-browser-04",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is the CSSOM?",
+      "options": ["Parsed CSS tree", "CSS file", "DOM styles", "Browser theme"],
+      "correct": [0],
+      "explanation": "CSSOM is created from CSS.",
+      "interviewTip": "DOM + CSSOM = Render Tree."
+    },
+    {
+      "id": "js-browser-05",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What blocks HTML parsing?",
+      "options": ["Synchronous JavaScript", "Images", "Fonts", "Meta tags"],
+      "correct": [0],
+      "explanation": "Blocking scripts stop parsing.",
+      "interviewTip": "Use defer/async."
+    },
+    {
+      "id": "js-browser-06",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "Difference between async and defer?",
+      "options": [
+        "Async executes ASAP, defer after DOM",
+        "They are the same",
+        "Defer blocks parsing",
+        "Async waits for CSS"
+      ],
+      "correct": [0],
+      "explanation": "Defer preserves order.",
+      "interviewTip": "Classic interview question."
+    },
+    {
+      "id": "js-browser-07",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is reflow?",
+      "options": [
+        "Layout recalculation",
+        "Repainting colors",
+        "JS execution",
+        "Garbage collection"
+      ],
+      "correct": [0],
+      "explanation": "Reflow recalculates layout.",
+      "interviewTip": "Expensive operation."
+    },
+    {
+      "id": "js-browser-08",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What triggers repaint?",
+      "options": [
+        "Visual-only changes",
+        "Layout changes",
+        "JS execution",
+        "Network requests"
+      ],
+      "correct": [0],
+      "explanation": "Color/visibility changes.",
+      "interviewTip": "Cheaper than reflow."
+    },
+    {
+      "id": "js-browser-09",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is the render tree?",
+      "options": ["DOM + CSSOM", "Only DOM", "Only CSSOM", "JS heap"],
+      "correct": [0],
+      "explanation": "Used for layout and paint.",
+      "interviewTip": "Invisible nodes excluded."
+    },
+    {
+      "id": "js-browser-10",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What does the event loop handle?",
+      "options": [
+        "Async callbacks",
+        "Rendering only",
+        "Garbage collection",
+        "Networking"
+      ],
+      "correct": [0],
+      "explanation": "Manages task execution order.",
+      "interviewTip": "Macro vs micro tasks."
+    },
+    {
+      "id": "js-browser-11",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "Which task has higher priority?",
+      "options": [
+        "Microtask",
+        "Macrotask",
+        "setTimeout",
+        "requestIdleCallback"
+      ],
+      "correct": [0],
+      "explanation": "Promises resolve first.",
+      "interviewTip": "Critical for async bugs."
+    },
+    {
+      "id": "js-browser-12",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is same-origin policy?",
+      "options": [
+        "Security restriction",
+        "Caching rule",
+        "Rendering rule",
+        "Network optimization"
+      ],
+      "correct": [0],
+      "explanation": "Prevents cross-origin access.",
+      "interviewTip": "CORS exists because of it."
+    },
+    {
+      "id": "js-browser-13",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is CORS?",
+      "options": [
+        "Cross-Origin Resource Sharing",
+        "Client-Origin Request System",
+        "Cache-Oriented Response System",
+        "Cross-Object Rendering Style"
+      ],
+      "correct": [0],
+      "explanation": "Controls cross-origin requests.",
+      "interviewTip": "Server-controlled."
+    },
+    {
+      "id": "js-browser-14",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "Which storage is synchronous?",
+      "options": ["localStorage", "IndexedDB", "Cache API", "Cookies async"],
+      "correct": [0],
+      "explanation": "Blocks main thread.",
+      "interviewTip": "Avoid heavy usage."
+    },
+    {
+      "id": "js-browser-15",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "Best storage for large data?",
+      "options": ["IndexedDB", "localStorage", "sessionStorage", "Cookies"],
+      "correct": [0],
+      "explanation": "Async and large capacity.",
+      "interviewTip": "Used by PWAs."
+    },
+    {
+      "id": "js-browser-16",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is a Service Worker?",
+      "options": [
+        "Background script",
+        "JS framework",
+        "Browser thread",
+        "Rendering engine"
+      ],
+      "correct": [0],
+      "explanation": "Intercepts network requests.",
+      "interviewTip": "Offline support."
+    },
+    {
+      "id": "js-browser-17",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What enables offline support?",
+      "options": [
+        "Service Worker + Cache API",
+        "localStorage",
+        "Cookies",
+        "IndexedDB only"
+      ],
+      "correct": [0],
+      "explanation": "Core PWA feature.",
+      "interviewTip": "Ask about caching strategies."
+    },
+    {
+      "id": "js-browser-18",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is HTTP/2 advantage?",
+      "options": [
+        "Multiplexing",
+        "More headers",
+        "More TCP connections",
+        "Slower parsing"
+      ],
+      "correct": [0],
+      "explanation": "Multiple streams over one connection.",
+      "interviewTip": "Improves performance."
+    },
+    {
+      "id": "js-browser-19",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "Why minimize critical CSS?",
+      "options": [
+        "Faster first paint",
+        "Better SEO",
+        "Less memory",
+        "Better caching"
+      ],
+      "correct": [0],
+      "explanation": "Speeds up rendering.",
+      "interviewTip": "Inline critical CSS."
+    },
+    {
+      "id": "js-browser-20",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is First Contentful Paint?",
+      "options": [
+        "First visible content",
+        "Page fully loaded",
+        "JS executed",
+        "DOM ready"
+      ],
+      "correct": [0],
+      "explanation": "User-perceived performance.",
+      "interviewTip": "Web Vitals."
+    },
+    {
+      "id": "js-browser-21",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is layout shift?",
+      "options": [
+        "Unexpected UI movement",
+        "Slow rendering",
+        "Broken CSS",
+        "Async loading"
+      ],
+      "correct": [0],
+      "explanation": "Measured by CLS.",
+      "interviewTip": "Avoid dynamic content jumps."
+    },
+    {
+      "id": "js-browser-22",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "Which API runs off main thread?",
+      "options": [
+        "Web Workers",
+        "Promises",
+        "setTimeout",
+        "requestAnimationFrame"
+      ],
+      "correct": [0],
+      "explanation": "True multithreading.",
+      "interviewTip": "Cannot access DOM."
+    },
+    {
+      "id": "js-browser-23",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What is the JS heap?",
+      "options": ["Memory for objects", "Call stack", "Task queue", "DOM tree"],
+      "correct": [0],
+      "explanation": "Used for dynamic allocations.",
+      "interviewTip": "Leaks live here."
+    },
+    {
+      "id": "js-browser-24",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "What causes forced synchronous layout?",
+      "options": [
+        "Reading layout after write",
+        "Async JS",
+        "Promises",
+        "Event listeners"
+      ],
+      "correct": [0],
+      "explanation": "Triggers immediate reflow.",
+      "interviewTip": "Avoid layout thrashing."
+    },
+    {
+      "id": "js-browser-25",
+      "stageId": "js_browser",
+      "type": "single",
+      "prompt": "Best way to optimize rendering?",
+      "options": [
+        "Measure with DevTools",
+        "Rewrite in WebAssembly",
+        "Avoid JS",
+        "Remove CSS"
+      ],
+      "correct": [0],
+      "explanation": "Profiling first.",
+      "interviewTip": "Never guess."
+    }
+  ]
+}

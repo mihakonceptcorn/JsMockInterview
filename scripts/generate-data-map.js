@@ -4,7 +4,6 @@ const path = require('path');
 const DATA_DIR = path.resolve(__dirname, '../src/data');
 const OUT_FILE = path.join(DATA_DIR, 'dataMap.ts');
 
-let imports = [];
 let mapEntries = [];
 
 fs.readdirSync(DATA_DIR).forEach((framework) => {
@@ -20,19 +19,13 @@ fs.readdirSync(DATA_DIR).forEach((framework) => {
     const id = file.replace('.json', '');
 
     // імʼя без крапок
-    const varName = `${framework}_${id}`.replace(/[^a-zA-Z0-9_]/g, '_');
-
-    imports.push(
-      `import * as ${varName} from './${framework}/questions/${file}';`
-    );
+    const varName = `require('./${framework}/questions/${file}') `;
 
     mapEntries.push(`'${framework}/${id}': ${varName}`);
   });
 });
 
 const content = `
-${imports.join('\n')}
-
 export const dataMap = {
   ${mapEntries.join(',\n  ')}
 } as const;

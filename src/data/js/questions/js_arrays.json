@@ -1,0 +1,308 @@
+{
+  "default": [
+    {
+      "id": "js-arr-01",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What is an array in JavaScript?",
+      "options": [
+        "An ordered collection of values",
+        "A fixed-size list",
+        "A key-value store",
+        "A primitive type"
+      ],
+      "correct": [0],
+      "explanation": "Arrays are ordered, zero-indexed objects.",
+      "interviewTip": "Arrays are objects internally."
+    },
+    {
+      "id": "js-arr-02",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "console.log(typeof []);",
+      "options": ["array", "object", "undefined", "list"],
+      "correct": [1],
+      "explanation": "Arrays are a type of object.",
+      "interviewTip": "Use Array.isArray()."
+    },
+    {
+      "id": "js-arr-03",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "How to correctly check if value is an array?",
+      "options": [
+        "typeof value === 'array'",
+        "value instanceof Array",
+        "Array.isArray(value)",
+        "value.constructor === 'array'"
+      ],
+      "correct": [2],
+      "explanation": "Array.isArray is the safest method.",
+      "interviewTip": "Works across realms."
+    },
+    {
+      "id": "js-arr-04",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "Which method mutates the array?",
+      "options": ["map", "filter", "slice", "push"],
+      "correct": [3],
+      "explanation": "push mutates the original array.",
+      "interviewTip": "Mutation vs immutability."
+    },
+    {
+      "id": "js-arr-05",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "const a = [1,2,3];\na.length = 1;\nconsole.log(a);",
+      "options": ["[1]", "[1,2,3]", "[]", "Error"],
+      "correct": [0],
+      "explanation": "Reducing length truncates the array.",
+      "interviewTip": "Length is writable."
+    },
+    {
+      "id": "js-arr-06",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What does `slice` do?",
+      "options": [
+        "Returns a new array",
+        "Mutates array",
+        "Deletes items",
+        "Sorts array"
+      ],
+      "correct": [0],
+      "explanation": "slice is non-mutating.",
+      "interviewTip": "Common interview distinction."
+    },
+    {
+      "id": "js-arr-07",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "Which method removes the last element?",
+      "options": ["shift", "pop", "splice", "slice"],
+      "correct": [1],
+      "explanation": "pop removes last element.",
+      "interviewTip": "Mutates array."
+    },
+    {
+      "id": "js-arr-08",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "const a = [1,2,3];\nconst b = a.map(x => x * 2);\nconsole.log(a === b);",
+      "options": ["true", "false", "undefined", "Error"],
+      "correct": [1],
+      "explanation": "map returns a new array.",
+      "interviewTip": "Reference comparison."
+    },
+    {
+      "id": "js-arr-09",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What does `splice` do?",
+      "options": [
+        "Mutates array",
+        "Returns shallow copy",
+        "Does not affect original",
+        "Only removes items"
+      ],
+      "correct": [0],
+      "explanation": "splice mutates the array.",
+      "interviewTip": "Often confused with slice."
+    },
+    {
+      "id": "js-arr-10",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "const a = [1,2];\na[10] = 5;\nconsole.log(a.length);",
+      "options": ["3", "10", "11", "Error"],
+      "correct": [2],
+      "explanation": "Array length becomes highest index + 1.",
+      "interviewTip": "Sparse arrays."
+    },
+    {
+      "id": "js-arr-11",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "Which creates a shallow copy?",
+      "options": ["slice", "push", "pop", "shift"],
+      "correct": [0],
+      "explanation": "slice returns a new array.",
+      "interviewTip": "Still shallow."
+    },
+    {
+      "id": "js-arr-12",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What does `forEach` return?",
+      "options": ["New array", "Original array", "undefined", "Boolean"],
+      "correct": [2],
+      "explanation": "forEach always returns undefined.",
+      "interviewTip": "Not chainable."
+    },
+    {
+      "id": "js-arr-13",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "console.log([1,2,3].includes(2));",
+      "options": ["true", "false", "undefined", "Error"],
+      "correct": [0],
+      "explanation": "includes checks value existence.",
+      "interviewTip": "Uses SameValueZero."
+    },
+    {
+      "id": "js-arr-14",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "Which method flattens arrays?",
+      "options": ["flat", "map", "reduce", "concat"],
+      "correct": [0],
+      "explanation": "flat flattens nested arrays.",
+      "interviewTip": "Depth can be specified."
+    },
+    {
+      "id": "js-arr-15",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "console.log([1,2,3] + [4,5]);",
+      "options": ["[1,2,3,4,5]", "1,2,34,5", "1,2,34,5", "Error"],
+      "correct": [2],
+      "explanation": "Arrays are coerced to strings.",
+      "interviewTip": "Implicit coercion."
+    },
+    {
+      "id": "js-arr-16",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "Which method does NOT mutate?",
+      "options": ["sort", "reverse", "filter", "splice"],
+      "correct": [2],
+      "explanation": "filter returns a new array.",
+      "interviewTip": "sort mutates!"
+    },
+    {
+      "id": "js-arr-17",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What does `reduce` do?",
+      "options": [
+        "Accumulates values into one",
+        "Maps array",
+        "Filters array",
+        "Sorts array"
+      ],
+      "correct": [0],
+      "explanation": "reduce accumulates to a single value.",
+      "interviewTip": "Very powerful method."
+    },
+    {
+      "id": "js-arr-18",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "const a = [1,2,3];\nconst b = a;\nb.push(4);\nconsole.log(a.length);",
+      "options": ["3", "4", "Error", "undefined"],
+      "correct": [1],
+      "explanation": "Both references point to same array.",
+      "interviewTip": "Reference vs copy."
+    },
+    {
+      "id": "js-arr-19",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What does `Array.from` do?",
+      "options": [
+        "Creates array from iterable",
+        "Clones array",
+        "Sorts array",
+        "Filters array"
+      ],
+      "correct": [0],
+      "explanation": "Converts array-like objects.",
+      "interviewTip": "Useful for NodeList."
+    },
+    {
+      "id": "js-arr-20",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "console.log([].length);",
+      "options": ["0", "undefined", "null", "Error"],
+      "correct": [0],
+      "explanation": "Empty array length is 0.",
+      "interviewTip": "Basic but common."
+    },
+    {
+      "id": "js-arr-21",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What does `every` return?",
+      "options": ["Boolean", "Array", "Number", "Object"],
+      "correct": [0],
+      "explanation": "Checks all elements against condition.",
+      "interviewTip": "Stops early."
+    },
+    {
+      "id": "js-arr-22",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What does `some` do?",
+      "options": [
+        "Checks if at least one element matches",
+        "Checks all elements",
+        "Filters array",
+        "Maps array"
+      ],
+      "correct": [0],
+      "explanation": "Returns true if any element matches.",
+      "interviewTip": "Short-circuit."
+    },
+    {
+      "id": "js-arr-23",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "console.log([1,,3].length);",
+      "options": ["2", "3", "Error", "undefined"],
+      "correct": [1],
+      "explanation": "Sparse arrays count empty slots.",
+      "interviewTip": "Empty slots exist."
+    },
+    {
+      "id": "js-arr-24",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "What does `concat` do?",
+      "options": [
+        "Returns new combined array",
+        "Mutates original array",
+        "Sorts array",
+        "Flattens deeply"
+      ],
+      "correct": [0],
+      "explanation": "concat does not mutate.",
+      "interviewTip": "Immutable pattern."
+    },
+    {
+      "id": "js-arr-25",
+      "stageId": "js_arrays",
+      "type": "single",
+      "prompt": "Why avoid mutating arrays in React?",
+      "options": [
+        "State updates may not trigger re-render",
+        "Arrays are slow",
+        "JS forbids it",
+        "Garbage collection"
+      ],
+      "correct": [0],
+      "explanation": "Immutability helps change detection.",
+      "interviewTip": "Key React concept."
+    }
+  ]
+}

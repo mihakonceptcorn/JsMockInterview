@@ -1,0 +1,326 @@
+{
+  "default": [
+    {
+      "id": "js-err-01",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What is an Error object in JavaScript?",
+      "options": [
+        "An object representing a runtime error",
+        "A syntax construct",
+        "A promise rejection",
+        "A console message"
+      ],
+      "correct": [0],
+      "explanation": "Error objects carry message and stack trace.",
+      "interviewTip": "Used for exception handling."
+    },
+    {
+      "id": "js-err-02",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "Which error occurs at parse time?",
+      "options": ["SyntaxError", "ReferenceError", "TypeError", "RangeError"],
+      "correct": [0],
+      "explanation": "SyntaxError happens before execution.",
+      "interviewTip": "Code won't run at all."
+    },
+    {
+      "id": "js-err-03",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What will be thrown?",
+      "code": "console.log(a);",
+      "options": ["ReferenceError", "TypeError", "SyntaxError", "undefined"],
+      "correct": [0],
+      "explanation": "Accessing undeclared variable.",
+      "interviewTip": "Different from undefined variable."
+    },
+    {
+      "id": "js-err-04",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "When does TypeError occur?",
+      "options": [
+        "Invalid operation on a value",
+        "Invalid syntax",
+        "Out of range value",
+        "Missing variable"
+      ],
+      "correct": [0],
+      "explanation": "Calling non-function, accessing invalid property.",
+      "interviewTip": "Very common runtime error."
+    },
+    {
+      "id": "js-err-05",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "try {\n  JSON.parse('{');\n} catch (e) {\n  console.log(e.name);\n}",
+      "options": ["SyntaxError", "TypeError", "ReferenceError", "Error"],
+      "correct": [0],
+      "explanation": "Invalid JSON throws SyntaxError.",
+      "interviewTip": "Always validate JSON."
+    },
+    {
+      "id": "js-err-06",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What does try/catch catch?",
+      "options": [
+        "Runtime errors",
+        "Syntax errors",
+        "Async errors automatically",
+        "Compilation errors"
+      ],
+      "correct": [0],
+      "explanation": "Only synchronous runtime errors.",
+      "interviewTip": "Async needs await or .catch."
+    },
+    {
+      "id": "js-err-07",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "try {\n  setTimeout(() => { throw new Error('x'); }, 0);\n} catch (e) {\n  console.log('caught');\n}",
+      "options": ["Nothing", "caught", "Error", "Unhandled"],
+      "correct": [0],
+      "explanation": "Async errors are not caught.",
+      "interviewTip": "Classic async pitfall."
+    },
+    {
+      "id": "js-err-08",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "How to catch async errors with async/await?",
+      "options": ["try/catch", ".then only", "window.onerror", "finally"],
+      "correct": [0],
+      "explanation": "Await throws inside try/catch.",
+      "interviewTip": "Preferred pattern."
+    },
+    {
+      "id": "js-err-09",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What is finally used for?",
+      "options": [
+        "Cleanup logic",
+        "Error handling",
+        "Returning values",
+        "Catching errors"
+      ],
+      "correct": [0],
+      "explanation": "Runs regardless of outcome.",
+      "interviewTip": "Close resources."
+    },
+    {
+      "id": "js-err-10",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What does `throw` do?",
+      "options": [
+        "Throws an exception",
+        "Logs error",
+        "Stops program forever",
+        "Returns value"
+      ],
+      "correct": [0],
+      "explanation": "Interrupts normal execution.",
+      "interviewTip": "Can throw any value."
+    },
+    {
+      "id": "js-err-11",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What should you throw?",
+      "options": ["Error objects", "Strings", "Numbers", "Booleans"],
+      "correct": [0],
+      "explanation": "Errors include stack trace.",
+      "interviewTip": "Best practice."
+    },
+    {
+      "id": "js-err-12",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "try {\n  throw new Error('fail');\n} catch (e) {\n  console.log(e.message);\n}",
+      "options": ["fail", "Error", "undefined", "null"],
+      "correct": [0],
+      "explanation": "message property holds text.",
+      "interviewTip": "Access useful fields."
+    },
+    {
+      "id": "js-err-13",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What is ReferenceError?",
+      "options": [
+        "Accessing undeclared variable",
+        "Calling invalid function",
+        "Invalid syntax",
+        "Out of memory"
+      ],
+      "correct": [0],
+      "explanation": "Variable not found in scope.",
+      "interviewTip": "Common bug source."
+    },
+    {
+      "id": "js-err-14",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "try {\n  null.f();\n} catch (e) {\n  console.log(e instanceof TypeError);\n}",
+      "options": ["true", "false", "undefined", "Error"],
+      "correct": [0],
+      "explanation": "Calling method on null.",
+      "interviewTip": "TypeError is common."
+    },
+    {
+      "id": "js-err-15",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "How to create custom error?",
+      "options": [
+        "class MyError extends Error {}",
+        "throw {}",
+        "throw new Object()",
+        "Error.create()"
+      ],
+      "correct": [0],
+      "explanation": "Extend Error class.",
+      "interviewTip": "Preserve name & stack."
+    },
+    {
+      "id": "js-err-16",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What does Error.stack contain?",
+      "options": [
+        "Call stack trace",
+        "Error message",
+        "Error type",
+        "Execution time"
+      ],
+      "correct": [0],
+      "explanation": "Useful for debugging.",
+      "interviewTip": "Not standardized but common."
+    },
+    {
+      "id": "js-err-17",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What is an unhandled promise rejection?",
+      "options": [
+        "Promise rejected without catch",
+        "Syntax error",
+        "Async timeout",
+        "Cancelled promise"
+      ],
+      "correct": [0],
+      "explanation": "Leads to warnings or crashes.",
+      "interviewTip": "Always handle rejections."
+    },
+    {
+      "id": "js-err-18",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "Promise.reject('err').catch(e => console.log(e));",
+      "options": ["err", "Error", "undefined", "null"],
+      "correct": [0],
+      "explanation": "Rejected value is passed.",
+      "interviewTip": "Can reject any value."
+    },
+    {
+      "id": "js-err-19",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What does `catch` return?",
+      "options": ["A new Promise", "The same Promise", "Undefined", "Error"],
+      "correct": [0],
+      "explanation": "Allows chaining.",
+      "interviewTip": "Promise chain continues."
+    },
+    {
+      "id": "js-err-20",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What happens if you throw inside catch?",
+      "options": [
+        "Promise rejects again",
+        "Error is swallowed",
+        "Execution continues",
+        "Ignored"
+      ],
+      "correct": [0],
+      "explanation": "Error propagates.",
+      "interviewTip": "Re-throw pattern."
+    },
+    {
+      "id": "js-err-21",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What is RangeError?",
+      "options": [
+        "Value out of allowed range",
+        "Wrong variable",
+        "Invalid syntax",
+        "Async error"
+      ],
+      "correct": [0],
+      "explanation": "E.g. invalid array length.",
+      "interviewTip": "Less common."
+    },
+    {
+      "id": "js-err-22",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "Can try/catch catch JSON.parse errors?",
+      "options": ["Yes", "No", "Only async", "Only sync"],
+      "correct": [0],
+      "explanation": "JSON.parse throws synchronously.",
+      "interviewTip": "Wrap parsing logic."
+    },
+    {
+      "id": "js-err-23",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What is best practice for errors?",
+      "options": [
+        "Fail fast and log clearly",
+        "Ignore errors",
+        "Return null",
+        "Use console.log only"
+      ],
+      "correct": [0],
+      "explanation": "Errors should be explicit.",
+      "interviewTip": "Production mindset."
+    },
+    {
+      "id": "js-err-24",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "What will be logged?",
+      "code": "try {\n  throw 'oops';\n} catch (e) {\n  console.log(typeof e);\n}",
+      "options": ["string", "object", "error", "undefined"],
+      "correct": [0],
+      "explanation": "Any value can be thrown.",
+      "interviewTip": "But don't do this."
+    },
+    {
+      "id": "js-err-25",
+      "stageId": "js_errors",
+      "type": "single",
+      "prompt": "Why prefer Error over strings?",
+      "options": [
+        "Stack trace & consistency",
+        "Shorter syntax",
+        "Performance",
+        "Required by JS"
+      ],
+      "correct": [0],
+      "explanation": "Errors carry more context.",
+      "interviewTip": "Interview gold answer."
+    }
+  ]
+}
