@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
 
   activeItem: {
-    paddingHorizontal: s(18),
+    paddingHorizontal: s(14),
     paddingVertical: s(10),
     borderRadius: s(12),
     shadowColor: '#3B82F6',
@@ -117,13 +117,13 @@ const styles = StyleSheet.create({
 
   activeText: {
     color: '#fff',
-    fontWeight: '700',
+    fontWeight: '600',
     fontSize: s(12),
   },
 
   inactiveText: {
     color: '#9CA3AF',
-    fontWeight: '600',
+    fontWeight: '400',
     fontSize: s(12),
   },
 });
