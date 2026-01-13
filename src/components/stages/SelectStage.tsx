@@ -8,11 +8,18 @@ import { useRouter } from 'expo-router';
 import AppButton from '@/components/ui/AppButton';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '@/theme/colors';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 const SelectStage = () => {
   const router = useRouter();
   const [selectedStageId, setSelectedStageId] = useState('');
   const [selectedStageTitle, setSelectedStageTitle] = useState('');
+
+  let stagesData = jsStages;
+
+  const framework = useSelector((state: RootState) => state.framework.current);
+  if (framework === 'react') stagesData = reactStages;
 
   const onSelectStage = (id: string, name: string) => {
     setSelectedStageId(id);
@@ -26,7 +33,7 @@ const SelectStage = () => {
         params: {
           id: selectedStageId,
           mode: mode,
-          section: 'js',
+          section: framework,
           title: selectedStageTitle,
         },
       });
@@ -45,7 +52,7 @@ const SelectStage = () => {
           <View style={[styles.gradientInner, styles.flex]}>
             <Text style={styles.title}>SelectStage</Text>
             <FlatList
-              data={jsStages.stages}
+              data={stagesData.stages}
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => (
                 <SelectStageItem
