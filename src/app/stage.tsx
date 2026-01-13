@@ -33,6 +33,8 @@ const Stage = () => {
   const [isRunning, setIsRunning] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  const stageMode = (mode as string) === 'interview' ? 'interview' : 'practice';
+
   const router = useRouter();
 
   useEffect(() => {
@@ -125,6 +127,7 @@ const Stage = () => {
             ) : (
               <PlayStageItem
                 item={questions[questionIndex]}
+                mode={stageMode}
                 onNextPressed={onNextPressed}
               />
             )}
