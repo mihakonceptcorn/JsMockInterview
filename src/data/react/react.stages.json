@@ -1,0 +1,76 @@
+{
+  "stages": [
+    {
+      "id": "react_basics",
+      "title": "React Basics",
+      "level": 1,
+      "description": "JSX, components, props"
+    },
+    {
+      "id": "react_state",
+      "title": "State & Events",
+      "level": 2,
+      "description": "useState, events, re-render"
+    },
+    {
+      "id": "react_effects",
+      "title": "Effects & Lifecycle",
+      "level": 3,
+      "description": "useEffect, lifecycle flow"
+    },
+    {
+      "id": "react_lists",
+      "title": "Lists & Keys",
+      "level": 4,
+      "description": "Rendering lists, keys"
+    },
+    {
+      "id": "react_forms",
+      "title": "Forms & Inputs",
+      "level": 5,
+      "description": "Controlled components"
+    },
+    {
+      "id": "react_context",
+      "title": "Context API",
+      "level": 6,
+      "description": "useContext, providers"
+    },
+    {
+      "id": "react_hooks_advanced",
+      "title": "Advanced Hooks",
+      "level": 7,
+      "description": "useMemo, useCallback, useRef"
+    },
+    {
+      "id": "react_performance",
+      "title": "Performance",
+      "level": 8,
+      "description": "Memoization, re-renders"
+    },
+    {
+      "id": "react_patterns",
+      "title": "Patterns",
+      "level": 9,
+      "description": "Compound, render props"
+    },
+    {
+      "id": "react_concurrency",
+      "title": "Concurrent React",
+      "level": 10,
+      "description": "Suspense, transitions"
+    },
+    {
+      "id": "react_testing",
+      "title": "Testing",
+      "level": 11,
+      "description": "RTL, Jest basics"
+    },
+    {
+      "id": "react_interview_hardcore",
+      "title": "React Interview Hardcore",
+      "level": 12,
+      "description": "Tricky cases, real interviews"
+    }
+  ]
+}

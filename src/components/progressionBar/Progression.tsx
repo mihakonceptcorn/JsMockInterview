@@ -15,8 +15,8 @@ const Progression = () => {
         style={{ flex: 1 }}
       >
         <View style={styles.gradientInner}>
-          <ProgressionBar title="Stages Completed: 4/10" progress={0.4} />
-          <ProgressionBar title="Correct Answers: 75%" progress={0.75} />
+          <ProgressionBar title="Stages Completed: 0/0" progress={0} />
+          <ProgressionBar title="Correct Answers: 0%" progress={0} />
         </View>
       </LinearGradient>
     </View>

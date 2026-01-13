@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Entypo from '@expo/vector-icons/Entypo';
 import { s } from 'react-native-size-matters';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { setFramework } from '@/store/frameworkSlice';
 
 type Framework = 'js' | 'react' | 'react-native' | 'vue';
 
@@ -14,17 +17,26 @@ type Item = {
 
 const ITEMS: Item[] = [
   { key: 'js', label: 'JS' },
-  { key: 'react', label: 'React', locked: true },
+  { key: 'react', label: 'React', locked: false },
   { key: 'react-native', label: 'React Native', locked: true },
   { key: 'vue', label: 'Vue', locked: true },
 ];
 
-type Props = {
-  value: Framework;
-  onChange: (value: Framework) => void;
-};
+export const FrameworkSwitcher = () => {
+  const dispatch = useDispatch();
+  const value = useSelector((state: RootState) => state.framework.current);
 
-export const FrameworkSwitcher = ({ value, onChange }: Props) => {
+  const handlePress = (item: Item) => {
+    if (item.locked) {
+      // TODO: open paywall modal
+      Alert.alert('Premium', 'This framework is available in the Pro version', [
+        { text: 'OK' },
+      ]);
+      return;
+    }
+    dispatch(setFramework(item.key));
+  };
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
@@ -34,8 +46,7 @@ export const FrameworkSwitcher = ({ value, onChange }: Props) => {
           return (
             <Pressable
               key={item.key}
-              disabled={item.locked}
-              onPress={() => onChange(item.key)}
+              onPress={() => handlePress(item)}
               style={styles.itemWrapper}
             >
               {active ? (
@@ -82,8 +93,8 @@ const styles = StyleSheet.create({
   },
 
   itemWrapper: {
-    //marginHorizontal: s(2),
-    gap: s(4),
+    flex: 1,
+    alignItems: 'center',
   },
 
   activeItem: {
