@@ -3,19 +3,18 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
 
-const Profile = () => {
+const Statistics = () => {
   return (
     <AnimatedBackground>
       <SafeAreaProvider>
         <View style={styles.container}>
-          <Text style={{ fontSize: 30, color: 'white' }}>Profile</Text>
+          <Text style={{ fontSize: 30, color: 'white' }}>Statistics</Text>
         </View>
       </SafeAreaProvider>
     </AnimatedBackground>
   );
 };
-export default Profile;
-
+export default Statistics;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -1,6 +1,7 @@
 import { View, StyleSheet, Image, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ReactNode, useEffect, useRef } from 'react';
+import { COLORS } from '@/theme/colors';
 
 type Props = {
   children: ReactNode;
@@ -11,11 +12,18 @@ export const AnimatedBackground = ({ children }: Props) => {
 
   useEffect(() => {
     Animated.loop(
-      Animated.timing(translate, {
-        toValue: 1,
-        duration: 15000,
-        useNativeDriver: true,
-      })
+      Animated.sequence([
+        Animated.timing(translate, {
+          toValue: 1,
+          duration: 5000,
+          useNativeDriver: true,
+        }),
+        Animated.timing(translate, {
+          toValue: 0,
+          duration: 5000,
+          useNativeDriver: true,
+        }),
+      ])
     ).start();
   }, []);
 
@@ -32,7 +40,7 @@ export const AnimatedBackground = ({ children }: Props) => {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#0A1A33', '#102B55']}
+        colors={[COLORS.bgTop, COLORS.bgMiddle, COLORS.bgBottom]}
         start={{ x: 1, y: 0 }}
         end={{ x: 0, y: 1 }}
         style={StyleSheet.absoluteFillObject}
@@ -60,7 +68,7 @@ const styles = StyleSheet.create({
   },
   noise: {
     ...StyleSheet.absoluteFillObject,
-    opacity: 0.06,
+    opacity: 0.1,
   },
   content: {
     flex: 1,
