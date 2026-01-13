@@ -56,11 +56,15 @@ export const FrameworkSwitcher = () => {
                   end={{ x: 0, y: 1 }}
                   style={styles.activeItem}
                 >
-                  <Text style={styles.activeText}>{item.label}</Text>
+                  <Text style={styles.activeText} numberOfLines={1}>
+                    {item.label}
+                  </Text>
                 </LinearGradient>
               ) : (
                 <View style={styles.inactiveItem}>
-                  <Text style={styles.inactiveText}>{item.label}</Text>
+                  <Text style={styles.inactiveText} numberOfLines={1}>
+                    {item.label}
+                  </Text>
                   {item.locked && (
                     <Entypo
                       name="lock"
@@ -78,6 +82,7 @@ export const FrameworkSwitcher = () => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
@@ -93,7 +98,6 @@ const styles = StyleSheet.create({
   },
 
   itemWrapper: {
-    flex: 1,
     alignItems: 'center',
   },
 
@@ -110,7 +114,7 @@ const styles = StyleSheet.create({
   inactiveItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: s(10),
+    paddingHorizontal: s(14),
     paddingVertical: s(10),
     borderRadius: s(12),
   },
