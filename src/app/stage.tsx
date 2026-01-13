@@ -118,6 +118,7 @@ const Stage = () => {
 
             {isResult ? (
               <StageResult
+                stageId={id as string}
                 score={correctAnswersCount}
                 total={questions.length}
                 title={title.toString()}

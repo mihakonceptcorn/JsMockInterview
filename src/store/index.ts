@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import frameworkReducer from './frameworkSlice';
+import resultsReducer from './resultsSlice';
 
 export const store = configureStore({
   reducer: {
     framework: frameworkReducer,
+    results: resultsReducer,
   },
 });
 

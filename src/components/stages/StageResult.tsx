@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { s, vs } from 'react-native-size-matters';
 import AppButton from '@/components/ui/AppButton';
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
@@ -8,20 +8,44 @@ import { COLORS } from '@/theme/colors';
 import { Circle } from 'react-native-progress';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { setResult } from '@/store/resultsSlice';
+import { RootState } from '@/store';
+
 interface StageResultProps {
   onPress: () => void;
   score: number;
   total: number;
   title: string;
   time: string;
+  stageId: string;
 }
 const StageResult: FC<StageResultProps> = ({
+  stageId,
   score,
   total,
   title,
   time,
   onPress,
 }) => {
+  const dispatch = useDispatch();
+
+  const framework = useSelector((state: RootState) => state.framework.current);
+
+  useEffect(() => {
+    console.log('Dispatch!!!');
+    dispatch(
+      setResult({
+        framework,
+        stageId,
+        score,
+        total,
+        title,
+        time,
+      })
+    );
+  }, []);
+
   const getScore = Math.round((score / total) * 100) + '%';
   return (
     <AnimatedBackground>

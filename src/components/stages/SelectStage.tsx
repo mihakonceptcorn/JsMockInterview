@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import jsStages from '@/data/js/js.stages.json';
 import reactStages from '@/data/react/react.stages.json';
 import { s, vs } from 'react-native-size-matters';
@@ -20,6 +20,11 @@ const SelectStage = () => {
 
   const framework = useSelector((state: RootState) => state.framework.current);
   if (framework === 'react') stagesData = reactStages;
+
+  const results = useSelector((state: RootState) => state.results.current);
+  useEffect(() => {
+    console.log('results: ', JSON.stringify(results, null, 2));
+  }, [results]);
 
   const onSelectStage = (id: string, name: string) => {
     setSelectedStageId(id);
