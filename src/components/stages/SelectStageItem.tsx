@@ -11,6 +11,7 @@ interface SelectStageItemProps {
   isComplete?: boolean;
   onPress: () => void;
   isSelected?: boolean;
+  completePercentage?: number;
 }
 
 const SelectStageItem: FC<SelectStageItemProps> = ({
@@ -18,6 +19,7 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
   isComplete = false,
   onPress,
   isSelected = false,
+  completePercentage = 0,
 }) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
@@ -30,7 +32,14 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
         {isComplete ? (
           <>
             <FontAwesome name="check-circle" size={24} color="green" />
-            <Text style={styles.statusTitle}>Completed</Text>
+            <View>
+              <Text style={styles.statusTitle}>Completed</Text>
+              {completePercentage > 0 && (
+                <Text style={styles.statusSubTitle}>
+                  Correct: {completePercentage}%
+                </Text>
+              )}
+            </View>
           </>
         ) : (
           <>
@@ -67,5 +76,11 @@ const styles = StyleSheet.create({
   statusTitle: {
     marginLeft: s(6),
     color: COLORS.textSecondary,
+    fontSize: s(12),
+  },
+  statusSubTitle: {
+    fontSize: s(10),
+    marginLeft: s(6),
+    color: COLORS.accent,
   },
 });
