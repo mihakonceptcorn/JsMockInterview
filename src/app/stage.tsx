@@ -41,7 +41,7 @@ const Stage = () => {
     const key = `${section}/${id}`;
     const questionsData = dataMap[key as DataKey] as any;
     const shuffled = [...questionsData.default].sort(() => 0.5 - Math.random());
-    setQuestions(shuffled.slice(0, 3) ?? []);
+    setQuestions(shuffled.slice(0, 10) ?? []);
     startTimer();
   }, []);
 
