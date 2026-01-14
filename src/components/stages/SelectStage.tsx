@@ -18,6 +18,8 @@ const SelectStage = () => {
 
   let stagesData = jsStages;
 
+  const results = useSelector((state: RootState) => state.results.current);
+
   const framework = useSelector((state: RootState) => state.framework.current);
   if (framework === 'react') stagesData = reactStages;
 
@@ -40,6 +42,10 @@ const SelectStage = () => {
     }
   };
 
+  const isStageCompleted = (stageId: string) => {
+    return results[framework]?.[stageId]?.score > 0;
+  };
+
   return (
     <>
       <View style={styles.container}>
@@ -58,6 +64,7 @@ const SelectStage = () => {
                 <SelectStageItem
                   title={item.title}
                   isSelected={item.id === selectedStageId}
+                  isComplete={isStageCompleted(item.id)}
                   onPress={() => onSelectStage(item.id, item.title)}
                 />
               )}
