@@ -10,7 +10,10 @@ interface ResultData {
 }
 
 interface ResultsState {
-  current: Record<string, ResultData>;
+  current: Record<
+    string,
+    Record<string, Omit<ResultData, 'framework' | 'stageId'>>
+  >;
 }
 
 const initialState: ResultsState = {
