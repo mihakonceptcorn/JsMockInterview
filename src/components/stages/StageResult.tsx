@@ -33,7 +33,6 @@ const StageResult: FC<StageResultProps> = ({
   const framework = useSelector((state: RootState) => state.framework.current);
 
   useEffect(() => {
-    console.log('Dispatch!!!');
     dispatch(
       setResult({
         framework,
