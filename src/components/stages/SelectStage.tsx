@@ -66,7 +66,7 @@ const SelectStage = () => {
           style={styles.flex}
         >
           <View style={[styles.gradientInner, styles.flex]}>
-            <Text style={styles.title}>SelectStage</Text>
+            <Text style={styles.title}>Select Stage</Text>
             <FlatList
               data={stagesData.stages}
               keyExtractor={(item) => item.id}

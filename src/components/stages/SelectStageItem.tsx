@@ -31,7 +31,7 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
       <View style={styles.statusContainer}>
         {isComplete ? (
           <>
-            <FontAwesome name="check-circle" size={24} color="green" />
+            <FontAwesome name="check-circle" size={24} color={COLORS.success} />
             <View>
               <Text style={styles.statusTitle}>Completed</Text>
               {completePercentage > 0 && (
@@ -43,7 +43,7 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
           </>
         ) : (
           <>
-            <Entypo name="circle-with-cross" size={24} color="#8f0303" />
+            <Entypo name="circle-with-cross" size={24} color={COLORS.danger} />
             <Text style={styles.statusTitle}>Incomplete</Text>
           </>
         )}
