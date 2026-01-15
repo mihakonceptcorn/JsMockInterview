@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     borderRadius: s(12),
     overflow: 'hidden',
     borderColor: COLORS.borderColor,
-    marginTop: vs(6),
   },
   blockMarginTop: {
     marginTop: vs(20),
@@ -57,9 +56,6 @@ const styles = StyleSheet.create({
   progressTitle: {
     fontSize: s(14),
     color: COLORS.textPrimary,
-    borderBottomWidth: 1,
-    borderBottomColor: COLORS.borderColor,
-    paddingBottom: s(5),
   },
   progressText: {
     fontSize: s(10),

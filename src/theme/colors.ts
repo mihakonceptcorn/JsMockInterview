@@ -10,4 +10,5 @@ export const COLORS = {
   textSecondary: '#9CA3AF',
   borderColor: 'rgba(255,255,255,0.2)',
   borderColorActive: '#4DA3FF',
+  middleBar: '#eab800',
 };
