@@ -6,7 +6,7 @@ interface ResultData {
   score: number;
   total: number;
   title: string;
-  time: string;
+  time: number;
 }
 
 interface ResultsState {

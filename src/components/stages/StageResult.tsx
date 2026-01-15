@@ -17,7 +17,7 @@ interface StageResultProps {
   score: number;
   total: number;
   title: string;
-  time: string;
+  time: number;
   stageId: string;
 }
 const StageResult: FC<StageResultProps> = ({
@@ -46,6 +46,17 @@ const StageResult: FC<StageResultProps> = ({
   }, []);
 
   const getScore = Math.round((score / total) * 100) + '%';
+
+  const formatTime = (ms: number) => {
+    const minutes = Math.floor(ms / 60000);
+    const seconds = Math.floor((ms % 60000) / 1000);
+
+    return (
+      `${minutes.toString().padStart(2, '0')}:` +
+      `${seconds.toString().padStart(2, '0')}`
+    );
+  };
+
   return (
     <AnimatedBackground>
       <View style={styles.container}>
@@ -84,7 +95,7 @@ const StageResult: FC<StageResultProps> = ({
                 <Text style={styles.score}>
                   Score: <Text style={styles.scoreValue}>{getScore}</Text>
                 </Text>
-                <Text style={styles.time}>Time Taken: {time}</Text>
+                <Text style={styles.time}>Time Taken: {formatTime(time)}</Text>
               </View>
             </View>
           </View>
