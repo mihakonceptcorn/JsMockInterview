@@ -12,6 +12,7 @@ import { RootState } from '@/store';
 import OverallProgress from '@/components/statistics/OverallProgress';
 import MetricsItem from '@/components/statistics/MetricsItem';
 import Feather from '@expo/vector-icons/Feather';
+import { formatTime } from '@/helpers/formatTime';
 
 const Statistics = () => {
   const framework = useSelector((state: RootState) => state.framework.current);
@@ -20,6 +21,7 @@ const Statistics = () => {
   const [stagesCount, setStagesCount] = useState(0);
   const [completedStages, setCompletedStages] = useState(0);
   const [correctAnswersPercentage, setCorrectAnswersPercentage] = useState(0);
+  const [totalTimeSeconds, setTotalTimeSeconds] = useState(0);
 
   useEffect(() => {
     if (framework === 'js') setStagesCount(13);
@@ -32,19 +34,23 @@ const Statistics = () => {
         (acc, section) => {
           acc.totalScore += section.score;
           acc.totalQuestions += section.total;
+          acc.totalTime += section.time;
           return acc;
         },
-        { totalScore: 0, totalQuestions: 0 }
+        { totalScore: 0, totalQuestions: 0, totalTime: 0 }
       );
 
       const percentage =
         totals.totalQuestions > 0
           ? (totals.totalScore / totals.totalQuestions) * 100
           : 0;
+
       setCorrectAnswersPercentage(Number(percentage.toFixed(0)));
+      setTotalTimeSeconds(totals.totalTime);
     } else {
       setCompletedStages(0);
       setCorrectAnswersPercentage(0);
+      setTotalTimeSeconds(0);
     }
   }, [framework, results]);
 
@@ -70,7 +76,7 @@ const Statistics = () => {
 
             <MetricsItem
               data={'data'}
-              title={'Total Time'}
+              title={formatTime(totalTimeSeconds)}
               icon={<Feather name="clock" size={20} color={COLORS.accent} />}
             />
 

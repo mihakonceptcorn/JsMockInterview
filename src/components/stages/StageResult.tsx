@@ -7,6 +7,7 @@ import Feather from '@expo/vector-icons/Feather';
 import { COLORS } from '@/theme/colors';
 import { Circle } from 'react-native-progress';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { formatTime } from '@/helpers/formatTime';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setResult } from '@/store/resultsSlice';
@@ -46,16 +47,6 @@ const StageResult: FC<StageResultProps> = ({
   }, []);
 
   const getScore = Math.round((score / total) * 100) + '%';
-
-  const formatTime = (ms: number) => {
-    const minutes = Math.floor(ms / 60000);
-    const seconds = Math.floor((ms % 60000) / 1000);
-
-    return (
-      `${minutes.toString().padStart(2, '0')}:` +
-      `${seconds.toString().padStart(2, '0')}`
-    );
-  };
 
   return (
     <AnimatedBackground>
