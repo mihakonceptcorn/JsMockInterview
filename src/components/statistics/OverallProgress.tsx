@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { DimensionValue, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Bar } from 'react-native-progress';
@@ -8,14 +8,16 @@ import { s, vs } from 'react-native-size-matters';
 interface OverallProgressProps {
   stagesCount: number;
   completedStages: number;
+  marginTop?: DimensionValue;
 }
 
 const OverallProgress = ({
   stagesCount,
   completedStages,
+  marginTop = vs(20),
 }: OverallProgressProps) => {
   return (
-    <View style={[styles.blockContainer, styles.blockMarginTop]}>
+    <View style={[styles.blockContainer, { marginTop: marginTop }]}>
       <LinearGradient
         colors={['#0B1F36', '#102C4C']}
         start={{ x: 0, y: 0 }}
