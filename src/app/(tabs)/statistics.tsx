@@ -112,14 +112,6 @@ const Statistics = () => {
               {stages.map((item) => (
                 <StageStatItem {...item} key={item.title} />
               ))}
-
-              {/*<FlatList*/}
-              {/*  data={stages}*/}
-              {/*  renderItem={({ item }) => <StageStatItem {...item} />}*/}
-              {/*  keyExtractor={(item) => item.title}*/}
-              {/*  contentContainerStyle={styles.listContent}*/}
-              {/*  showsVerticalScrollIndicator={false}*/}
-              {/*/>*/}
             </View>
           </ScrollView>
         </View>

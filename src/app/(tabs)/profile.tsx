@@ -3,6 +3,7 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
 import UserData from '@/components/profile/UserData';
+import Account from '@/components/profile/Account';
 
 const Profile = () => {
   return (
@@ -10,6 +11,7 @@ const Profile = () => {
       <SafeAreaProvider>
         <View style={styles.container}>
           <UserData />
+          <Account />
         </View>
       </SafeAreaProvider>
     </AnimatedBackground>
