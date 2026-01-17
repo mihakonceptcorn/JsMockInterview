@@ -37,7 +37,6 @@ const AppButton: FC<AppButtonProps> = ({
 export default AppButton;
 const styles = StyleSheet.create({
   button: {
-    padding: 16,
     backgroundColor: COLORS.accent,
     fontSize: s(16),
     borderRadius: 8,
@@ -50,7 +49,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   buttonSecondary: {
-    padding: 14,
     backgroundColor: COLORS.bgMiddle,
     borderWidth: 1,
     borderRadius: 8,

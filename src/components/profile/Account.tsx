@@ -16,7 +16,7 @@ const Account = () => {
           end={{ x: 1, y: 1 }}
         >
           <View style={styles.innerContainer}>
-            <View style={{ width: '50%' }}>
+            <View style={{ width: '65%' }}>
               <Text style={styles.blockTitle}>Create an account</Text>
               <Text style={styles.blockText}>
                 Sync your progress across all your devices. Don't lose your
@@ -29,13 +29,18 @@ const Account = () => {
 
             <View
               style={{
-                width: '40%',
+                width: '35%',
                 flex: 1,
                 gap: s(10),
               }}
             >
-              <AppButton title="Sign Up" onPress={() => {}} />
-              <AppButton title="Sign In" onPress={() => {}} isSecondary />
+              <AppButton title="Sign Up" onPress={() => {}} height={vs(30)} />
+              <AppButton
+                title="Sign In"
+                onPress={() => {}}
+                height={vs(30)}
+                isSecondary
+              />
             </View>
           </View>
         </LinearGradient>

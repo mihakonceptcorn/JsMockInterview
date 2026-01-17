@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { s, vs } from 'react-native-size-matters';
 import { COLORS } from '@/theme/colors';
@@ -6,6 +6,7 @@ import { FrameworkSwitcher } from '@/components/topTabs/FrameworkSwitcher';
 import OverallProgress from '@/components/statistics/OverallProgress';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import Feather from '@expo/vector-icons/Feather';
 
 const FrameworkProgress = () => {
   const framework = useSelector((state: RootState) => state.framework.current);
@@ -34,6 +35,12 @@ const FrameworkProgress = () => {
         completedStages={completedStages}
         marginTop={vs(8)}
       />
+      <TouchableOpacity onPress={() => {}} style={styles.statsBtn}>
+        <Text style={styles.statsBtnText}>
+          View Statistics{' '}
+          <Feather name="arrow-right" size={12} color={COLORS.accent} />
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -47,5 +54,13 @@ const styles = StyleSheet.create({
     fontSize: s(16),
     color: COLORS.textPrimary,
     paddingBottom: vs(10),
+  },
+  statsBtn: {
+    alignItems: 'center',
+    marginTop: vs(10),
+  },
+  statsBtnText: {
+    fontSize: s(12),
+    color: COLORS.accent,
   },
 });
