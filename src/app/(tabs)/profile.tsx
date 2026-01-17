@@ -6,6 +6,7 @@ import UserData from '@/components/profile/UserData';
 import Account from '@/components/profile/Account';
 import { COLORS } from '@/theme/colors';
 import FrameworkProgress from '@/components/profile/FrameworkProgress';
+import VersionBlock from '@/components/profile/VersionBlock';
 
 const Profile = () => {
   return (
@@ -17,6 +18,7 @@ const Profile = () => {
           <View style={styles.separator} />
           <FrameworkProgress />
           <View style={styles.separator} />
+          <VersionBlock />
         </View>
       </SafeAreaProvider>
     </AnimatedBackground>

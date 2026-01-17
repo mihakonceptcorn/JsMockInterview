@@ -7,8 +7,10 @@ import OverallProgress from '@/components/statistics/OverallProgress';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import Feather from '@expo/vector-icons/Feather';
+import { useRouter } from 'expo-router';
 
 const FrameworkProgress = () => {
+  const router = useRouter();
   const framework = useSelector((state: RootState) => state.framework.current);
   const results = useSelector((state: RootState) => state.results.current);
 
@@ -35,7 +37,10 @@ const FrameworkProgress = () => {
         completedStages={completedStages}
         marginTop={vs(8)}
       />
-      <TouchableOpacity onPress={() => {}} style={styles.statsBtn}>
+      <TouchableOpacity
+        onPress={() => router.push('/statistics')}
+        style={styles.statsBtn}
+      >
         <Text style={styles.statsBtnText}>
           View Statistics{' '}
           <Feather name="arrow-right" size={12} color={COLORS.accent} />
