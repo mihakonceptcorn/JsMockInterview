@@ -11,5 +11,7 @@ export const dataMap = {
   'js/js_interview_hardcore': require('./js/questions/js_interview_hardcore.json') ,
   'js/js_memory_management': require('./js/questions/js_memory_management.json') ,
   'js/js_prototypes': require('./js/questions/js_prototypes.json') ,
-  'js/js_scope': require('./js/questions/js_scope.json') 
+  'js/js_scope': require('./js/questions/js_scope.json') ,
+  'react/jsx_components': require('./react/questions/jsx_components.json') ,
+  'react/react_intro': require('./react/questions/react_intro.json') 
 } as const;

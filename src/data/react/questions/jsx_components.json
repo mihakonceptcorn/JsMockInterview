@@ -1,0 +1,364 @@
+{
+  "default": [
+    {
+      "id": "jc-01",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What is the correct way to render a component named 'User'?",
+      "options": ["<user />", "<User />", "User()", "{User}"],
+      "correct": [1],
+      "explanation": "React components must start with a capital letter to be distinguished from HTML tags.",
+      "interviewTip": "Lower-case tags are treated as built-in DOM elements like <div> or <span>."
+    },
+    {
+      "id": "jc-02",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What will this component return?",
+      "code": "const App = () => {\n  return (\n    <h1>Hello</h1>\n    <p>World</p>\n  );\n};",
+      "options": [
+        "A heading and a paragraph",
+        "An error",
+        "Only the heading",
+        "A div containing both"
+      ],
+      "correct": [1],
+      "explanation": "JSX expressions must have one parent element.",
+      "interviewTip": "To fix this without adding extra DOM nodes, use a Fragment (<>...</>)."
+    },
+    {
+      "id": "jc-03",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "How do you embed a JavaScript expression inside JSX?",
+      "code": "const name = 'Alice';\nreturn <div>{ /* What goes here? */ }</div>",
+      "options": ["(name)", "[name]", "{name}", "<name>"],
+      "correct": [2],
+      "explanation": "Curly braces {} are used to evaluate JavaScript expressions inside JSX.",
+      "interviewTip": "You can put any valid JS expression inside braces, including function calls."
+    },
+    {
+      "id": "jc-04",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What is the correct syntax for an inline style in JSX?",
+      "code": "<div style={ /* ? */ }>Text</div>",
+      "options": [
+        "'color: red'",
+        "{color: 'red'}",
+        "{{color: 'red'}}",
+        "{color=red}"
+      ],
+      "correct": [2],
+      "explanation": "The style attribute accepts a JavaScript object. This results in 'double' braces.",
+      "interviewTip": "Remember that CSS properties are camelCased (e.g., backgroundColor) in React."
+    },
+    {
+      "id": "jc-05",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What does this JSX compile to eventually?",
+      "code": "<div className='container'>Hi</div>",
+      "options": [
+        "HTML string",
+        "React.createElement() call",
+        "A direct DOM node",
+        "A JSON file"
+      ],
+      "correct": [1],
+      "explanation": "JSX is a syntactic sugar for React.createElement(type, config, children).",
+      "interviewTip": "Knowing this helps explain why 'React' must be in scope in older versions."
+    },
+    {
+      "id": "jc-06",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "Why do we use 'className' instead of 'class' in JSX?",
+      "options": [
+        "It is faster",
+        "class is a reserved keyword in JavaScript",
+        "React requirement for CSS modules",
+        "To support older browsers"
+      ],
+      "correct": [1],
+      "explanation": "Since JSX is JavaScript, reserved words like 'class' cannot be used as attribute names.",
+      "interviewTip": "Similarly, we use 'htmlFor' instead of 'for' for labels."
+    },
+    {
+      "id": "jc-07",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "Which of the following is a valid React Fragment syntax?",
+      "code": "return (\n  <React.Fragment>\n    <li>Item 1</li>\n    <li>Item 2</li>\n  </React.Fragment>\n);",
+      "options": [
+        "Only the one in the code",
+        "<>...</>",
+        "Both <React.Fragment> and <>",
+        "None of the above"
+      ],
+      "correct": [2],
+      "explanation": "The short syntax <>...</> is a common shortcut for Fragments.",
+      "interviewTip": "Use the full <React.Fragment> if you need to pass a 'key' attribute during mapping."
+    },
+    {
+      "id": "jc-08",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "How do you write a comment inside a JSX return statement?",
+      "code": "return (\n  <div>\n    {/* Is this a comment? */}\n    <h1>Title</h1>\n  </div>\n);",
+      "options": ["// comment", "/", "{/* comment */}", "/* comment */"],
+      "correct": [2],
+      "explanation": "Comments in JSX are wrapped in curly braces and use JS block comment syntax.",
+      "interviewTip": "Single line // comments will comment out the rest of the line, potentially breaking JSX."
+    },
+    {
+      "id": "jc-09",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What is a 'Functional Component'?",
+      "code": "function Welcome() {\n  return <h1>Hello!</h1>;\n}",
+      "options": [
+        "A function that returns a JSX element",
+        "A function that manages a database",
+        "A method inside a class",
+        "A part of the browser DOM"
+      ],
+      "correct": [0],
+      "explanation": "A functional component is a plain JS function that returns React elements.",
+      "interviewTip": "Functional components are now preferred over Class components due to Hooks."
+    },
+    {
+      "id": "jc-10",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What will be rendered by this component?",
+      "code": "const MyComponent = () => {\n  const list = null;\n  return <div>{list}</div>;\n};",
+      "options": ["null", "undefined", "Nothing (empty div)", "An error"],
+      "correct": [2],
+      "explanation": "React does not render null, undefined, or booleans to the DOM.",
+      "interviewTip": "This is useful for conditional rendering: {isVisible && <Component />}."
+    },
+    {
+      "id": "jc-11",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What is the result of the following code?",
+      "code": "const element = <h1>{2 + 2}</h1>;",
+      "options": ["<h1>2 + 2</h1>", "<h1>4</h1>", "<h1>{4}</h1>", "Error"],
+      "correct": [1],
+      "explanation": "Expressions inside curly braces are evaluated and the result is rendered.",
+      "interviewTip": "JSX can handle any expression that evaluates to a string or number."
+    },
+    {
+      "id": "jc-12",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "Can you use if-else statements directly inside a JSX return?",
+      "code": "return (<div>{if(true){ 'Yes' }}</div>);",
+      "options": [
+        "Yes",
+        "No, only ternary or logical operators",
+        "Only if wrapped in a function",
+        "Only in class components"
+      ],
+      "correct": [1],
+      "explanation": "JSX is an expression, not a statement. if-else is a statement.",
+      "interviewTip": "Use ternary (condition ? x : y) for logic inside JSX."
+    },
+    {
+      "id": "jc-13",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What does 'Composition' mean in React?",
+      "options": [
+        "Writing CSS in JS",
+        "Nesting components inside other components",
+        "Compiling code with Babel",
+        "Using Redux"
+      ],
+      "correct": [1],
+      "explanation": "Composition is the practice of building complex UIs from small, simple components.",
+      "interviewTip": "React favors composition over inheritance."
+    },
+    {
+      "id": "jc-14",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What is wrong with this component?",
+      "code": "function button() {\n  return <button>Click me</button>;\n}",
+      "options": [
+        "Missing props",
+        "Function name is lowercase",
+        "Return needs parentheses",
+        "Nothing"
+      ],
+      "correct": [1],
+      "explanation": "React will look for an HTML tag named <button> (which exists) but it won't treat this as a custom component.",
+      "interviewTip": "Always capitalize component names: Button vs button."
+    },
+    {
+      "id": "jc-15",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "How do you pass a string literal as a prop?",
+      "code": "<Card title=... />",
+      "options": [
+        "title='My Card'",
+        "title={'My Card'}",
+        "Both are valid",
+        "title: 'My Card'"
+      ],
+      "correct": [2],
+      "explanation": "You can pass strings using quotes directly or curly braces.",
+      "interviewTip": "Use curly braces only when passing variables or non-string types."
+    },
+    {
+      "id": "jc-16",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "How would you render a list of items using JSX?",
+      "code": "const items = ['a', 'b'];\nreturn (\n  <ul>\n    {items.map(i => <li key={i}>{i}</li>)}\n  </ul>\n);",
+      "options": [
+        "Using a for loop",
+        "Using the .map() method",
+        "Using a while loop",
+        "Using forEach"
+      ],
+      "correct": [1],
+      "explanation": "The .map() method returns a new array of JSX elements, which React can render.",
+      "interviewTip": "Map is preferred because it returns a value, unlike forEach."
+    },
+    {
+      "id": "jc-17",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What is the 'children' prop?",
+      "code": "<Box><h1>Inner</h1></Box>",
+      "options": [
+        "A reference to child components in the DOM",
+        "Content passed between the opening and closing tags",
+        "A way to pass data to parents",
+        "A list of state variables"
+      ],
+      "correct": [1],
+      "explanation": "Whatever is nested inside the component tags is passed as the 'children' prop.",
+      "interviewTip": "This is a key part of the 'Composition' pattern."
+    },
+    {
+      "id": "jc-18",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "How do you prevent a component from rendering?",
+      "code": "const MyComp = ({ show }) => {\n  if (!show) return /* what? */;\n  return <div>Data</div>;\n}",
+      "options": [
+        "return false",
+        "return null",
+        "return undefined",
+        "return <div></div>"
+      ],
+      "correct": [1],
+      "explanation": "Returning null from a component tells React to render nothing.",
+      "interviewTip": "Returning null doesn't affect the triggering of lifecycle methods (or hooks)."
+    },
+    {
+      "id": "jc-19",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What is the benefit of using an Arrow Function for components?",
+      "code": "const MyComp = () => <div>Hi</div>;",
+      "options": [
+        "Better performance",
+        "Shorter syntax",
+        "Automatic binding of 'this'",
+        "It is required for Hooks"
+      ],
+      "correct": [1],
+      "explanation": "Arrow functions provide a more concise syntax for functional components.",
+      "interviewTip": "Technically, regular functions and arrow functions work the same for React components."
+    },
+    {
+      "id": "jc-20",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "Can JSX elements be assigned to variables?",
+      "code": "const header = <h1>Welcome</h1>;\nreturn <div>{header}</div>;",
+      "options": ["Yes", "No", "Only in class components", "Only if exported"],
+      "correct": [0],
+      "explanation": "JSX elements are regular JavaScript objects and can be stored in variables.",
+      "interviewTip": "This is useful for cleaning up complex return statements."
+    },
+    {
+      "id": "jc-21",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What is a 'pure' component in concept?",
+      "options": [
+        "A component with no CSS",
+        "A component that renders the same output for the same props",
+        "A component with no state",
+        "A component that uses only HTML tags"
+      ],
+      "correct": [1],
+      "explanation": "Pure components are predictable and don't have side effects during rendering.",
+      "interviewTip": "React assumes your components are pure functions of their props and state."
+    },
+    {
+      "id": "jc-22",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "How do you spread an object as props?",
+      "code": "const config = { id: 1, name: 'Test' };\nreturn <User ... />;",
+      "options": ["{...config}", "...config", "{config}", "spread(config)"],
+      "correct": [0],
+      "explanation": "The spread operator {...obj} passes all object properties as individual props.",
+      "interviewTip": "Use this sparingly as it can make it hard to see what data is being passed."
+    },
+    {
+      "id": "jc-23",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What happens if you pass a boolean to JSX?",
+      "code": "return <div>{true}</div>;",
+      "options": [
+        "It renders 'true'",
+        "It renders nothing",
+        "It throws an error",
+        "It renders '1'"
+      ],
+      "correct": [1],
+      "explanation": "Booleans are valid children but are not rendered.",
+      "interviewTip": "If you want to show a boolean, convert it to a string: {String(val)}."
+    },
+    {
+      "id": "jc-24",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "Which of these is NOT a valid return from a component?",
+      "options": [
+        "A JSX element",
+        "An array of JSX elements",
+        "A string",
+        "A JavaScript object"
+      ],
+      "correct": [3],
+      "explanation": "A component can return JSX, strings, numbers, Fragments, or arrays, but not a plain object.",
+      "interviewTip": "An error 'Objects are not valid as a React child' usually means you tried to render a JS object."
+    },
+    {
+      "id": "jc-25",
+      "stageId": "jsx_components",
+      "type": "single",
+      "prompt": "What is the correct way to handle a click in JSX?",
+      "code": "<button ... >Click</button>",
+      "options": [
+        "onclick='fn()'",
+        "onClick={fn}",
+        "onclick={fn()}",
+        "onClick='fn'"
+      ],
+      "correct": [1],
+      "explanation": "React event handlers use camelCase and are passed as functions, not strings.",
+      "interviewTip": "Don't call the function in the prop (onClick={fn()}) unless it returns another function."
+    }
+  ]
+}

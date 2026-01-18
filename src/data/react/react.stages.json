@@ -1,76 +1,100 @@
 {
   "stages": [
     {
-      "id": "react_basics",
-      "title": "React Basics",
+      "id": "react_intro",
+      "title": "Introduction to React",
       "level": 1,
-      "description": "JSX, components, props"
+      "description": "Library vs Framework, Virtual DOM"
     },
     {
-      "id": "react_state",
-      "title": "State & Events",
+      "id": "jsx_components",
+      "title": "JSX & Components",
       "level": 2,
-      "description": "useState, events, re-render"
+      "description": "Syntax, functional components, nesting"
     },
     {
-      "id": "react_effects",
-      "title": "Effects & Lifecycle",
+      "id": "props_communication",
+      "title": "Props & Communication",
       "level": 3,
-      "description": "useEffect, lifecycle flow"
+      "description": "Passing data, children prop, PropTypes"
     },
     {
-      "id": "react_lists",
-      "title": "Lists & Keys",
+      "id": "state_basics",
+      "title": "State Management Basics",
       "level": 4,
-      "description": "Rendering lists, keys"
+      "description": "useState hook, event handling"
     },
     {
-      "id": "react_forms",
-      "title": "Forms & Inputs",
+      "id": "rendering_lists",
+      "title": "Lists & Keys",
       "level": 5,
-      "description": "Controlled components"
+      "description": "Mapping arrays, unique key prop"
     },
     {
-      "id": "react_context",
-      "title": "Context API",
+      "id": "lifecycle_effects",
+      "title": "Effects & Lifecycle",
       "level": 6,
-      "description": "useContext, providers"
+      "description": "useEffect, dependencies, cleanups"
     },
     {
-      "id": "react_hooks_advanced",
-      "title": "Advanced Hooks",
+      "id": "conditional_rendering",
+      "title": "Conditional Rendering",
       "level": 7,
-      "description": "useMemo, useCallback, useRef"
+      "description": "Ternaries, logical AND, fragments"
     },
     {
-      "id": "react_performance",
-      "title": "Performance",
+      "id": "refs_dom",
+      "title": "Refs & DOM Access",
       "level": 8,
-      "description": "Memoization, re-renders"
+      "description": "useRef, accessing elements, forwardRef"
     },
     {
-      "id": "react_patterns",
-      "title": "Patterns",
+      "id": "custom_hooks",
+      "title": "Custom Hooks",
       "level": 9,
-      "description": "Compound, render props"
+      "description": "Logic extraction, reusability rules"
     },
     {
-      "id": "react_concurrency",
-      "title": "Concurrent React",
+      "id": "context_api",
+      "title": "Context API",
       "level": 10,
-      "description": "Suspense, transitions"
+      "description": "Prop drilling, Providers, Consumers"
     },
     {
-      "id": "react_testing",
-      "title": "Testing",
+      "id": "memoization",
+      "title": "Memoization",
       "level": 11,
-      "description": "RTL, Jest basics"
+      "description": "React.memo, useMemo, useCallback"
     },
     {
-      "id": "react_interview_hardcore",
-      "title": "React Interview Hardcore",
+      "id": "routing",
+      "title": "Routing",
       "level": 12,
-      "description": "Tricky cases, real interviews"
+      "description": "React Router, URL params, navigation"
+    },
+    {
+      "id": "advanced_state_redux",
+      "title": "Redux Toolkit",
+      "level": 13,
+      "description": "Slices, store, dispatch, thunks"
+    },
+    {
+      "id": "server_state",
+      "title": "Server State",
+      "level": 14,
+      "description": "React Query, caching, mutations"
+    },
+    {
+      "id": "performance_optimization",
+      "title": "Performance Optimization",
+      "level": 15,
+      "description": "Code splitting, lazy loading, Profiler"
+    },
+    {
+      "id": "design_patterns",
+      "title": "Advanced Design Patterns",
+      "level": 16,
+      "description": "HOCs, Compound Components, Render Props"
     }
   ]
 }

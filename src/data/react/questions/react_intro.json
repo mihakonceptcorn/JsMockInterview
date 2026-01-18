@@ -1,0 +1,349 @@
+{
+  "default": [
+    {
+      "id": "ri-01",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is React primarily used for?",
+      "options": [
+        "Building user interfaces",
+        "Managing databases",
+        "Server-side logic only",
+        "Mobile hardware control"
+      ],
+      "correct": [0],
+      "explanation": "React is a JavaScript library for building UI components.",
+      "interviewTip": "Emphasize that it is a library, not a full-blown framework like Angular."
+    },
+    {
+      "id": "ri-02",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "Who developed and maintains React?",
+      "options": ["Google", "Microsoft", "Meta (Facebook)", "Twitter"],
+      "correct": [2],
+      "explanation": "React was created by Jordan Walke at Facebook.",
+      "interviewTip": "Mentioning its corporate backing shows awareness of the ecosystem's stability."
+    },
+    {
+      "id": "ri-03",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is the Virtual DOM?",
+      "options": [
+        "A direct copy of the browser DOM",
+        "A lightweight representation of the real DOM in memory",
+        "A faster version of HTML",
+        "A database for storing UI state"
+      ],
+      "correct": [1],
+      "explanation": "The Virtual DOM is a node tree that lists elements and their attributes as objects.",
+      "interviewTip": "The Virtual DOM enables React's efficient 'diffing' process."
+    },
+    {
+      "id": "ri-04",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "How does React update the real DOM?",
+      "options": [
+        "By refreshing the entire page",
+        "By updating every node on every change",
+        "By batching changes and updating only what is necessary",
+        "By using jQuery selectors"
+      ],
+      "correct": [2],
+      "explanation": "React compares the Virtual DOM with a snapshot to find and update only changed parts.",
+      "interviewTip": "This process is called Reconciliation."
+    },
+    {
+      "id": "ri-05",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is the primary benefit of a component-based architecture?",
+      "options": [
+        "Faster internet connection",
+        "Reusability and modularity",
+        "No need for CSS",
+        "Automatic SEO optimization"
+      ],
+      "correct": [1],
+      "explanation": "Components allow you to split the UI into independent, reusable pieces.",
+      "interviewTip": "Think of components as 'LEGO' bricks for your interface."
+    },
+    {
+      "id": "ri-06",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is declarative programming in the context of React?",
+      "options": [
+        "Describing HOW to change the DOM step-by-step",
+        "Describing WHAT the UI should look like for a given state",
+        "Writing code without using variables",
+        "Declaring all functions in a separate file"
+      ],
+      "correct": [1],
+      "explanation": "You design views for each state, and React updates them when data changes.",
+      "interviewTip": "Contrast this with 'Imperative' programming (like jQuery)."
+    },
+    {
+      "id": "ri-07",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is JSX?",
+      "options": [
+        "A tool for styling components",
+        "A syntax extension for JavaScript that looks like HTML",
+        "A new version of Java",
+        "A type of database"
+      ],
+      "correct": [1],
+      "explanation": "JSX allows you to write HTML-like structures inside JavaScript files.",
+      "interviewTip": "Remember that browsers cannot read JSX directly; it must be transpiled."
+    },
+    {
+      "id": "ri-08",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What tool is commonly used to transpile JSX into standard JavaScript?",
+      "options": ["Webpack", "Babel", "NPM", "V8 Engine"],
+      "correct": [1],
+      "explanation": "Babel converts JSX into React.createElement() calls.",
+      "interviewTip": "Babel is the industry standard for modern JS transpilation."
+    },
+    {
+      "id": "ri-09",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "In React, data flows in which direction?",
+      "options": [
+        "Bi-directional",
+        "Upwards only",
+        "Unidirectional (Top-down)",
+        "Randomly"
+      ],
+      "correct": [2],
+      "explanation": "React uses one-way data binding, passing data from parent to child.",
+      "interviewTip": "One-way flow makes debugging and tracking state changes much easier."
+    },
+    {
+      "id": "ri-10",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What are the two main types of components in React history?",
+      "options": [
+        "Static and Dynamic",
+        "Functional and Class-based",
+        "Logic and View",
+        "HTML and JS components"
+      ],
+      "correct": [1],
+      "explanation": "Modern React favors Functional components, but Class components are still supported.",
+      "interviewTip": "Mention that Hooks made Functional components the standard."
+    },
+    {
+      "id": "ri-11",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "Which command is often used to create a new React app with an official template?",
+      "options": [
+        "npm start react",
+        "npx create-react-app my-app",
+        "install react-ui",
+        "make react-app"
+      ],
+      "correct": [1],
+      "explanation": "create-react-app is the classic CLI tool for scaffolding.",
+      "interviewTip": "Note that tools like Vite are now often preferred for speed."
+    },
+    {
+      "id": "ri-12",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is 'Reconciliation'?",
+      "options": [
+        "The process of merging two git branches",
+        "The algorithm React uses to diff one tree with another",
+        "A way to fix syntax errors",
+        "The connection between React and a database"
+      ],
+      "correct": [1],
+      "explanation": "Reconciliation determines which parts of the real DOM need to be updated.",
+      "interviewTip": "This is the core 'magic' behind React's performance."
+    },
+    {
+      "id": "ri-13",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "Can browsers execute JSX directly?",
+      "options": [
+        "Yes, in modern browsers",
+        "No, it must be compiled to JavaScript",
+        "Only if using Chrome",
+        "Only if the file extension is .jsx"
+      ],
+      "correct": [1],
+      "explanation": "JSX is not valid JavaScript for browsers.",
+      "interviewTip": "Always mention the build step (Babel/Vite/Esbuild)."
+    },
+    {
+      "id": "ri-14",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is an 'Element' in React?",
+      "options": [
+        "A complex class instance",
+        "The smallest building block; a plain object describing a component",
+        "A physical DOM node",
+        "A CSS selector"
+      ],
+      "correct": [1],
+      "explanation": "Elements are what components 'return'. They are cheap to create.",
+      "interviewTip": "Don't confuse 'Element' with 'Component' (the function/class)."
+    },
+    {
+      "id": "ri-15",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is the purpose of 'ReactDOM.render()' (or createRoot)?",
+      "options": [
+        "To compile CSS",
+        "To render a React element into the DOM",
+        "To create a new component",
+        "To fetch data from an API"
+      ],
+      "correct": [1],
+      "explanation": "It is the entry point that connects React to the HTML file.",
+      "interviewTip": "In React 18, we use createRoot instead of the old render()."
+    },
+    {
+      "id": "ri-16",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "React follows which design pattern for UI?",
+      "options": ["MVC", "Component-Based", "Monolithic", "Observer-only"],
+      "correct": [1],
+      "explanation": "React is strictly component-based architecture.",
+      "interviewTip": "In MVC terms, React is often considered just the 'View' layer."
+    },
+    {
+      "id": "ri-17",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What does 'Thinking in React' suggest starting with?",
+      "options": [
+        "Writing the backend",
+        "Breaking the UI into a component hierarchy",
+        "Installing all possible libraries",
+        "Configuring Webpack"
+      ],
+      "correct": [1],
+      "explanation": "The official documentation suggests starting by mapping out the component tree.",
+      "interviewTip": "Mentioning 'Thinking in React' shows you have read the official docs."
+    },
+    {
+      "id": "ri-18",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "Is React a Framework or a Library?",
+      "options": ["Framework", "Library", "Language", "Browser Plugin"],
+      "correct": [1],
+      "explanation": "React focuses on UI, leaving routing and state management to other libraries.",
+      "interviewTip": "Libraries give you more freedom; frameworks give you more structure."
+    },
+    {
+      "id": "ri-19",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is the extension usually used for React files containing JSX?",
+      "options": [".js or .jsx", ".html", ".css", ".react"],
+      "correct": [0],
+      "explanation": "Both .js and .jsx are common, though .jsx is more explicit.",
+      "interviewTip": "In TypeScript, we use .tsx."
+    },
+    {
+      "id": "ri-20",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is a 'Single Page Application' (SPA)?",
+      "options": [
+        "An app with only one HTML element",
+        "A web app that interacts with the user by dynamically rewriting the current page",
+        "An app that doesn't use JavaScript",
+        "A website with only one page of content"
+      ],
+      "correct": [1],
+      "explanation": "SPAs avoid full page reloads, providing a desktop-like experience.",
+      "interviewTip": "React is the most popular choice for building SPAs."
+    },
+    {
+      "id": "ri-21",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "Which of these is NOT a core feature of React?",
+      "options": ["Virtual DOM", "JSX", "Built-in HTTP client", "Components"],
+      "correct": [2],
+      "explanation": "React doesn't have a built-in 'fetch' or 'axios' equivalent; it uses standard JS APIs.",
+      "interviewTip": "React stays 'lean' by focusing only on the UI."
+    },
+    {
+      "id": "ri-22",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is the 'Diffing' algorithm?",
+      "options": [
+        "Comparing two versions of code in Git",
+        "Comparing the new Virtual DOM with the previous one",
+        "Comparing CSS with HTML",
+        "Sorting an array of numbers"
+      ],
+      "correct": [1],
+      "explanation": "Diffing identifies exactly what changed between renders.",
+      "interviewTip": "React assumes that different component types will produce different trees."
+    },
+    {
+      "id": "ri-23",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "Why are 'keys' important in React?",
+      "options": [
+        "To encrypt data",
+        "To help React identify which items in a list changed",
+        "To link to external websites",
+        "To define CSS classes"
+      ],
+      "correct": [1],
+      "explanation": "Keys provide a stable identity for list elements during diffing.",
+      "interviewTip": "Never use Math.random() as a key."
+    },
+    {
+      "id": "ri-24",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "Does React use a template engine?",
+      "options": [
+        "Yes, like Handlebars",
+        "No, it uses JavaScript (JSX) to define UI",
+        "Yes, it uses EJS",
+        "Yes, it uses PHP"
+      ],
+      "correct": [1],
+      "explanation": "React doesn't use templates; it uses the full power of JavaScript.",
+      "interviewTip": "This is why React is so flexible compared to traditional template engines."
+    },
+    {
+      "id": "ri-25",
+      "stageId": "react_intro",
+      "type": "single",
+      "prompt": "What is the role of the 'Strict Mode' in React?",
+      "options": [
+        "To stop the app if there's an error",
+        "To highlight potential problems in an application",
+        "To make the app run faster",
+        "To minify the code for production"
+      ],
+      "correct": [1],
+      "explanation": "StrictMode activates additional checks and warnings for its descendants.",
+      "interviewTip": "It only runs in development mode and doesn't affect production."
+    }
+  ]
+}
