@@ -1,10 +1,44 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { COLORS } from '@/theme/colors';
 import { s, vs } from 'react-native-size-matters';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { formatTime } from '@/helpers/formatTime';
 
 const UserData = () => {
+  const results = useSelector((state: RootState) => state.results.current);
+
+  const [stagesCompleted, setStagesCompleted] = useState(0);
+  const [accuracy, setAccuracy] = useState(0);
+  const [totalTime, setTotalTime] = useState(0);
+
+  useEffect(() => {
+    let totalScore = 0;
+    let totalQuestions = 0;
+    let totalTime = 0;
+    let totalStages = 0;
+
+    Object.values(results).forEach((framework) => {
+      Object.values(framework).forEach((stage) => {
+        totalScore += stage.score;
+        totalQuestions += stage.total;
+        totalTime += stage.time;
+        totalStages++;
+      });
+    });
+
+    const totalPercentage =
+      totalQuestions > 0
+        ? Number(((totalScore / totalQuestions) * 100).toFixed(0))
+        : 0;
+
+    setStagesCompleted(totalStages);
+    setAccuracy(totalPercentage);
+    setTotalTime(totalTime);
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.user}>
@@ -26,16 +60,16 @@ const UserData = () => {
       </View>
       <View style={styles.statsContainer}>
         <View style={styles.statsItem}>
-          <Text style={styles.statsItemValue}>12</Text>
-          <Text style={styles.statsItemTitle}>Sessions</Text>
+          <Text style={styles.statsItemValue}>{stagesCompleted}</Text>
+          <Text style={styles.statsItemTitle}>Stages Completed</Text>
         </View>
         <View style={styles.statsItem}>
-          <Text style={styles.statsItemValue}>57%</Text>
+          <Text style={styles.statsItemValue}>{accuracy}%</Text>
           <Text style={styles.statsItemTitle}>Accuracy</Text>
         </View>
         <View style={styles.statsItem}>
-          <Text style={styles.statsItemValue}>12:22</Text>
-          <Text style={styles.statsItemTitle}>Time</Text>
+          <Text style={styles.statsItemValue}>{formatTime(totalTime)}</Text>
+          <Text style={styles.statsItemTitle}>Total Time</Text>
         </View>
       </View>
     </View>
