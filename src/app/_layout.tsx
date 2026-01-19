@@ -28,6 +28,7 @@ export default function RootLayout() {
               headerTitleAlign: 'center',
             }}
           />
+          <Stack.Screen name="auth" />
         </Stack>
       </PersistGate>
     </Provider>
