@@ -6,9 +6,11 @@ import { s, vs } from 'react-native-size-matters';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { formatTime } from '@/helpers/formatTime';
+import { useAuth } from '@/context/AuthContext';
 
 const UserData = () => {
   const results = useSelector((state: RootState) => state.results.current);
+  const { user } = useAuth();
 
   const [stagesCompleted, setStagesCompleted] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
@@ -43,18 +45,32 @@ const UserData = () => {
     <View style={styles.container}>
       <View style={styles.user}>
         <View style={styles.avatarContainer}>
-          <FontAwesome
-            name="user-secret"
-            size={50}
-            color={COLORS.textSecondary}
-          />
+          {user && user.photoURL ? (
+            <Image
+              source={user?.photoURL ? { uri: user.photoURL } : undefined}
+              width={s(60)}
+              height={s(60)}
+            />
+          ) : (
+            <FontAwesome
+              name="user-secret"
+              size={50}
+              color={COLORS.textSecondary}
+            />
+          )}
         </View>
 
         <View style={styles.userData}>
-          <Text style={styles.userName}>Guest</Text>
-          <Text style={styles.localProgress}>Local progress only</Text>
+          <Text style={styles.userName}>
+            {user ? (user.displayName ?? user.email) : 'Guest'}
+          </Text>
+          <Text style={styles.localProgress}>
+            {user ? 'Cloud progress' : 'Local progress only'}
+          </Text>
           <Text style={styles.userDescription}>
-            Progress is stored on this device.
+            {user
+              ? 'Progress is stored on this device and synced with the cloud.'
+              : 'Progress is stored on this device.'}
           </Text>
         </View>
       </View>
@@ -93,6 +109,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: COLORS.bgTop,
+    overflow: 'hidden',
   },
   user: {
     flexDirection: 'row',
@@ -103,6 +120,8 @@ const styles = StyleSheet.create({
   },
   userData: {
     paddingStart: s(10),
+    paddingEnd: s(20),
+    flex: 1,
   },
   userName: {
     fontSize: s(16),
