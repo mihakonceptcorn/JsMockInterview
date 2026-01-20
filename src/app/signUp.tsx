@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'expo-router';
+import GoogleSignIn from '@/components/auth/GoogleSignIn';
 
 const SignUp = () => {
   const [email, setEmail] = useState<string>('');
@@ -72,6 +73,8 @@ const SignUp = () => {
       <View style={styles.formContainer}>
         <Text style={styles.title}>Create Account</Text>
 
+        <GoogleSignIn />
+
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -83,7 +86,6 @@ const SignUp = () => {
           returnKeyType="next"
           onSubmitEditing={() => passwordRef.current?.focus()}
         />
-
         <TextInput
           ref={passwordRef}
           style={styles.input}
@@ -95,7 +97,6 @@ const SignUp = () => {
           returnKeyType="next"
           onSubmitEditing={() => confirmPasswordRef.current?.focus()}
         />
-
         <TextInput
           ref={confirmPasswordRef}
           style={styles.input}
@@ -107,7 +108,6 @@ const SignUp = () => {
           returnKeyType="done"
           onSubmitEditing={handleSignUp}
         />
-
         <TouchableOpacity
           style={[styles.button, loading && styles.buttonDisabled]}
           onPress={handleSignUp}
@@ -119,7 +119,6 @@ const SignUp = () => {
             <Text style={styles.buttonText}>Sign Up</Text>
           )}
         </TouchableOpacity>
-
         <TouchableOpacity
           style={styles.linkButton}
           onPress={() => router.navigate('logIn')}

@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'expo-router';
+import GoogleSignIn from '@/components/auth/GoogleSignIn';
 
 const LoginScreen = () => {
   const router = useRouter();
@@ -78,6 +79,8 @@ const LoginScreen = () => {
     >
       <View style={styles.formContainer}>
         <Text style={styles.title}>Login</Text>
+
+        <GoogleSignIn />
 
         <TextInput
           style={styles.input}

@@ -7,14 +7,15 @@
     "icon": "./assets/icon.png",
     "backgroundColor": "#10203B",
     "userInterfaceStyle": "dark",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mihakonceptcorn.jsmockinterview"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,7 +24,8 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "package": "com.mihakonceptcorn.jsmockinterview"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -32,6 +34,7 @@
       "expo-router",
       "expo-asset",
       "expo-font",
+      "expo-file-system",
       "@react-native-google-signin/google-signin"
     ]
   }
