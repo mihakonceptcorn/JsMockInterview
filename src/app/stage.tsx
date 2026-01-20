@@ -76,12 +76,6 @@ const Stage = () => {
     setIsRunning(false);
   };
 
-  // const resetTimer = () => {
-  //   clearInterval(timerRef.current);
-  //   setIsRunning(false);
-  //   setTime(0);
-  // };
-
   return (
     <BackgroundLayout>
       <View style={{ flex: 1 }}>

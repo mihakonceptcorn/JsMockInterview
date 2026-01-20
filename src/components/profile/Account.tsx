@@ -4,8 +4,11 @@ import { s, vs } from 'react-native-size-matters';
 import { COLORS } from '@/theme/colors';
 import { LinearGradient } from 'expo-linear-gradient';
 import AppButton from '@/components/ui/AppButton';
+import { useNavigation, useRouter } from 'expo-router';
 
 const Account = () => {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Account</Text>
@@ -34,10 +37,22 @@ const Account = () => {
                 gap: s(10),
               }}
             >
-              <AppButton title="Sign Up" onPress={() => {}} height={vs(30)} />
+              <AppButton
+                title="Sign Up"
+                onPress={() => {
+                  router.navigate({
+                    pathname: '/signUp',
+                  });
+                }}
+                height={vs(30)}
+              />
               <AppButton
                 title="Sign In"
-                onPress={() => {}}
+                onPress={() => {
+                  router.navigate({
+                    pathname: '/logIn',
+                  });
+                }}
                 height={vs(30)}
                 isSecondary
               />
