@@ -1,4 +1,10 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, {
+  useState,
+  useEffect,
+  ReactNode,
+  useContext,
+  createContext,
+} from 'react';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -10,17 +16,19 @@ import {
 } from 'firebase/auth';
 import { auth } from '@/config/firebaseConfig';
 
-const AuthContextValue = React.createContext<{
+interface AuthContextType {
   user: User | null;
   loading: boolean;
   signup: (email: string, password: string) => Promise<UserCredential>;
   login: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
-} | null>(null);
+}
+
+const AuthContextValue = createContext<AuthContextType | null>(null);
 
 export function useAuth() {
-  const context = React.useContext(AuthContextValue);
+  const context = useContext(AuthContextValue);
   if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
@@ -66,7 +74,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     return sendPasswordResetEmail(auth, email);
   };
 
-  const contextValue = {
+  const contextValue: AuthContextType = {
     user,
     loading,
     signup,
@@ -75,13 +83,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     resetPassword,
   };
 
-  if (loading) {
-    return null;
-  }
-
-  return React.createElement(
-    AuthContextValue.Provider,
-    { value: contextValue },
-    children
+  return (
+    <AuthContextValue.Provider value={contextValue}>
+      {children}
+    </AuthContextValue.Provider>
   );
 }

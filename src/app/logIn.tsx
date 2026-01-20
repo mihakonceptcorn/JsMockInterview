@@ -29,6 +29,7 @@ const LoginScreen = () => {
     setLoading(true);
     try {
       await login(email.trim(), password);
+      router.replace('/profile');
     } catch (error: any) {
       let errorMessage = 'An error occurred during login';
 

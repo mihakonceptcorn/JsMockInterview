@@ -4,10 +4,12 @@ import { s, vs } from 'react-native-size-matters';
 import { COLORS } from '@/theme/colors';
 import { LinearGradient } from 'expo-linear-gradient';
 import AppButton from '@/components/ui/AppButton';
-import { useNavigation, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
+import { useAuth } from '@/context/AuthContext';
 
 const Account = () => {
   const router = useRouter();
+  const { user, logout } = useAuth();
 
   return (
     <View style={styles.container}>
@@ -19,44 +21,58 @@ const Account = () => {
           end={{ x: 1, y: 1 }}
         >
           <View style={styles.innerContainer}>
-            <View style={{ width: '65%' }}>
-              <Text style={styles.blockTitle}>Create an account</Text>
-              <Text style={styles.blockText}>
-                Sync your progress across all your devices. Don't lose your
-                stats if you change your phone.
-              </Text>
-              <Text style={styles.blockText}>
-                The app works fully without an account.
-              </Text>
-            </View>
+            {user ? (
+              <>
+                <AppButton
+                  title="Log Out"
+                  onPress={() => {
+                    logout();
+                  }}
+                  height={vs(30)}
+                />
+              </>
+            ) : (
+              <>
+                <View style={{ width: '65%' }}>
+                  <Text style={styles.blockTitle}>Create an account</Text>
+                  <Text style={styles.blockText}>
+                    Sync your progress across all your devices. Don't lose your
+                    stats if you change your phone.
+                  </Text>
+                  <Text style={styles.blockText}>
+                    The app works fully without an account.
+                  </Text>
+                </View>
 
-            <View
-              style={{
-                width: '35%',
-                flex: 1,
-                gap: s(10),
-              }}
-            >
-              <AppButton
-                title="Sign Up"
-                onPress={() => {
-                  router.navigate({
-                    pathname: '/signUp',
-                  });
-                }}
-                height={vs(30)}
-              />
-              <AppButton
-                title="Sign In"
-                onPress={() => {
-                  router.navigate({
-                    pathname: '/logIn',
-                  });
-                }}
-                height={vs(30)}
-                isSecondary
-              />
-            </View>
+                <View
+                  style={{
+                    width: '35%',
+                    flex: 1,
+                    gap: s(10),
+                  }}
+                >
+                  <AppButton
+                    title="Sign Up"
+                    onPress={() => {
+                      router.navigate({
+                        pathname: '/signUp',
+                      });
+                    }}
+                    height={vs(30)}
+                  />
+                  <AppButton
+                    title="Sign In"
+                    onPress={() => {
+                      router.navigate({
+                        pathname: '/logIn',
+                      });
+                    }}
+                    height={vs(30)}
+                    isSecondary
+                  />
+                </View>
+              </>
+            )}
           </View>
         </LinearGradient>
       </View>
