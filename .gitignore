@@ -42,3 +42,4 @@ yarn-error.*
 
 .prettierrc
 .env
+google-services.json
