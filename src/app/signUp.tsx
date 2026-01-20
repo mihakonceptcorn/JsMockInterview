@@ -11,7 +11,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { useAuth } from '@/context/AuthContext';
-import { Stack, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 
 const SignUp = () => {
   const [email, setEmail] = useState<string>('');
@@ -22,7 +22,6 @@ const SignUp = () => {
   const { signup } = useAuth();
   const router = useRouter();
 
-  // Refs to handle keyboard focus transitions
   const passwordRef = useRef<TextInput>(null);
   const confirmPasswordRef = useRef<TextInput>(null);
 
@@ -47,11 +46,10 @@ const SignUp = () => {
     try {
       await signup(email.trim(), password);
       Alert.alert('Success', 'Account created successfully!');
-      // navigation.navigate('Home'); // Example redirect
+      router.replace('/profile');
     } catch (error: any) {
       let errorMessage = 'An error occurred during registration';
 
-      // Standard Firebase error codes handling
       if (error.code === 'auth/email-already-in-use') {
         errorMessage = 'This email is already in use';
       } else if (error.code === 'auth/invalid-email') {
