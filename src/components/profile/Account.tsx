@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { s, vs } from 'react-native-size-matters';
 import { COLORS } from '@/theme/colors';
@@ -10,6 +10,21 @@ import { useAuth } from '@/context/AuthContext';
 const Account = () => {
   const router = useRouter();
   const { user, logout } = useAuth();
+
+  const showConfirmDialog = () => {
+    Alert.alert('Are you sure?', 'Do you really want to logOut?', [
+      {
+        text: 'Cancel',
+        onPress: () => {},
+        style: 'cancel',
+      },
+      {
+        text: 'LogOut',
+        onPress: () => logout(),
+        style: 'destructive',
+      },
+    ]);
+  };
 
   return (
     <View style={styles.container}>
@@ -24,10 +39,8 @@ const Account = () => {
             {user ? (
               <>
                 <AppButton
-                  title="Log Out"
-                  onPress={() => {
-                    logout();
-                  }}
+                  title="LogOut"
+                  onPress={showConfirmDialog}
                   height={vs(30)}
                 />
               </>
