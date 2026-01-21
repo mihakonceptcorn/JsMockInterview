@@ -31,20 +31,32 @@ const Stage = () => {
   const [isResult, setIsResult] = useState(false);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [time, setTime] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const stageMode = (mode as string) === 'interview' ? 'interview' : 'practice';
+  // Використовуємо useRef для інтервалу, щоб уникнути витоків пам'яті
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const router = useRouter();
 
   useEffect(() => {
     const key = `${section}/${id}`;
     const questionsData = dataMap[key as DataKey] as any;
-    const shuffled = [...questionsData.default].sort(() => 0.5 - Math.random());
-    setQuestions(shuffled.slice(0, 10) ?? []);
-    startTimer();
-  }, []);
+
+    if (questionsData?.default) {
+      const shuffled = [...questionsData.default].sort(
+        () => 0.5 - Math.random()
+      );
+      setQuestions(shuffled.slice(0, 10));
+    }
+
+    // Запускаємо таймер: 1000мс замість 10мс!
+    timerRef.current = setInterval(() => {
+      setTime((prev) => prev + 1000);
+    }, 1000);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [id, section]); // додаємо залежності
 
   const onNextPressed = (isCorrect: boolean) => {
     if (isCorrect) {
@@ -54,66 +66,50 @@ const Stage = () => {
     if (questionIndex < questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
     } else {
-      stopTimer();
+      if (timerRef.current) clearInterval(timerRef.current);
       setIsResult(true);
     }
   };
 
-  const startTimer = () => {
-    if (!isRunning) {
-      setIsRunning(true);
-      timerRef.current = setInterval(() => {
-        setTime((prevTime) => prevTime + 10);
-      }, 10);
-    }
-  };
-
-  const stopTimer = () => {
-    if (timerRef.current !== null) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-    setIsRunning(false);
-  };
+  // Безпечне отримання заголовка для уникнення крашу
+  const displayTitle = title?.toString() || 'Result';
 
   return (
     <BackgroundLayout>
       <View style={{ flex: 1 }}>
-        <Stack.Screen
-          options={{
-            title: `${title}`,
-          }}
-        />
+        <Stack.Screen options={{ title: displayTitle }} />
+
         {questions.length > 0 && (
           <>
-            {!isResult && (
-              <View style={styles.progressContainer}>
-                <View style={styles.timerContainer}>
-                  <Text style={styles.timerText}>Time: {formatTime(time)}</Text>
+            {!isResult ? (
+              <>
+                <View style={styles.progressContainer}>
+                  <View style={styles.timerContainer}>
+                    {/* Виводимо час, відформатований як 00:00 */}
+                    <Text style={styles.timerText}>
+                      Time: {formatTime(time)}
+                    </Text>
+                  </View>
+                  <ProgressionBar
+                    title={`Questions: ${questionIndex + 1}/${questions.length}`}
+                    progress={(questionIndex + 1) / questions.length}
+                  />
                 </View>
-                <ProgressionBar
-                  title={`Questions: ${questionIndex + 1}/${questions.length}`}
-                  progress={Number(
-                    ((questionIndex + 1) / questions.length).toFixed(2)
-                  )}
-                />
-              </View>
-            )}
 
-            {isResult ? (
+                <PlayStageItem
+                  item={questions[questionIndex]}
+                  mode={mode === 'interview' ? 'interview' : 'practice'}
+                  onNextPressed={onNextPressed}
+                />
+              </>
+            ) : (
               <StageResult
                 stageId={id as string}
                 score={correctAnswersCount}
                 total={questions.length}
-                title={title.toString()}
+                title={displayTitle}
                 time={time}
                 onPress={() => router.replace('/')}
-              />
-            ) : (
-              <PlayStageItem
-                item={questions[questionIndex]}
-                mode={stageMode}
-                onNextPressed={onNextPressed}
               />
             )}
           </>

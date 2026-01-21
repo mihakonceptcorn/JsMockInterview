@@ -25,7 +25,12 @@
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "googleServicesFile": "./google-services.json",
-      "package": "com.mihakonceptcorn.jsmockinterview"
+      "package": "com.mihakonceptcorn.jsmockinterview",
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.INTERNET"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,6 +41,12 @@
       "expo-font",
       "expo-file-system",
       "@react-native-google-signin/google-signin"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "2ac18649-d716-4ff9-af10-e7c1ec8014c8"
+      }
+    }
   }
 }

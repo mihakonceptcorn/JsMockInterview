@@ -44,7 +44,7 @@ const StageResult: FC<StageResultProps> = ({
         time,
       })
     );
-  }, []);
+  }, [dispatch, framework, stageId, score, total, title, time]);
 
   const getScore = Math.round((score / total) * 100) + '%';
 

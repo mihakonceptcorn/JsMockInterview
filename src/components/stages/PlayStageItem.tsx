@@ -107,6 +107,11 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                     </CodeHighlighter>
                   )}
                 </View>
+                <Text style={styles.questionType}>
+                  {item.type === 'single'
+                    ? 'Choose the correct answer'
+                    : 'Choose all correct answers'}
+                </Text>
                 <View style={styles.optionsContainer}>
                   {item.options.map((option, index) => (
                     <SelectOption
@@ -231,6 +236,10 @@ const styles = StyleSheet.create({
     paddingVertical: vs(12),
     borderBottomWidth: 1,
     borderBottomColor: COLORS.borderColor,
+  },
+  questionType: {
+    color: COLORS.textSecondary,
+    fontSize: s(12),
   },
   questionContainer: {
     borderWidth: 1,
