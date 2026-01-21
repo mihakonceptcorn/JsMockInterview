@@ -20,6 +20,7 @@ interface StageResultProps {
   title: string;
   time: number;
   stageId: string;
+  mode: 'interview' | 'practice';
 }
 const StageResult: FC<StageResultProps> = ({
   stageId,
@@ -27,6 +28,7 @@ const StageResult: FC<StageResultProps> = ({
   total,
   title,
   time,
+  mode,
   onPress,
 }) => {
   const dispatch = useDispatch();
@@ -34,16 +36,18 @@ const StageResult: FC<StageResultProps> = ({
   const framework = useSelector((state: RootState) => state.framework.current);
 
   useEffect(() => {
-    dispatch(
-      setResult({
-        framework,
-        stageId,
-        score,
-        total,
-        title,
-        time,
-      })
-    );
+    if (mode === 'interview') {
+      dispatch(
+        setResult({
+          framework,
+          stageId,
+          score,
+          total,
+          title,
+          time,
+        })
+      );
+    }
   }, [dispatch, framework, stageId, score, total, title, time]);
 
   const getScore = Math.round((score / total) * 100) + '%';

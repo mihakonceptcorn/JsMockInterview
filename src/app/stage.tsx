@@ -31,9 +31,9 @@ const Stage = () => {
   const [isResult, setIsResult] = useState(false);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [time, setTime] = useState(0);
+  const [countdown, setCountdown] = useState(15);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
   const router = useRouter();
 
   useEffect(() => {
@@ -54,7 +54,28 @@ const Stage = () => {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [id, section]); // додаємо залежності
+  }, [id, section]);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    if (mode === 'interview' && !isResult && questions.length > 0) {
+      setCountdown(15);
+
+      interval = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            clearInterval(interval);
+            onNextPressed(false);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+
+    return () => clearInterval(interval);
+  }, [questionIndex, mode, isResult, questions.length]);
 
   const onNextPressed = (isCorrect: boolean) => {
     if (isCorrect) {
@@ -67,6 +88,12 @@ const Stage = () => {
       if (timerRef.current) clearInterval(timerRef.current);
       setIsResult(true);
     }
+  };
+
+  const getCountdownColor = () => {
+    if (countdown > 10) return COLORS.success;
+    if (countdown > 5) return '#FFD700';
+    return COLORS.danger;
   };
 
   const displayTitle = title?.toString() || 'Result';
@@ -82,9 +109,20 @@ const Stage = () => {
               <>
                 <View style={styles.progressContainer}>
                   <View style={styles.timerContainer}>
-                    <Text style={styles.timerText}>
-                      Time: {formatTime(time)}
-                    </Text>
+                    {mode === 'interview' ? (
+                      <Text
+                        style={[
+                          styles.countdownText,
+                          { color: getCountdownColor() },
+                        ]}
+                      >
+                        Ends in: {countdown}
+                      </Text>
+                    ) : (
+                      <Text style={styles.timerText}>
+                        Time: {formatTime(time)}
+                      </Text>
+                    )}
                   </View>
                   <ProgressionBar
                     title={`Questions: ${questionIndex + 1}/${questions.length}`}
@@ -105,6 +143,7 @@ const Stage = () => {
                 total={questions.length}
                 title={displayTitle}
                 time={time}
+                mode={mode as 'practice' | 'interview'}
                 onPress={() => router.replace('/')}
               />
             )}
@@ -134,5 +173,10 @@ const styles = StyleSheet.create({
   timerText: {
     fontSize: 16,
     color: COLORS.textPrimary,
+  },
+  countdownText: {
+    fontSize: s(14),
+    fontWeight: 'bold',
+    marginTop: vs(2),
   },
 });
