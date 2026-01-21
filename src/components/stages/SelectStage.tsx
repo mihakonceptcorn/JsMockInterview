@@ -73,6 +73,7 @@ const SelectStage = () => {
               renderItem={({ item }) => (
                 <SelectStageItem
                   title={item.title}
+                  description={item.description}
                   isSelected={item.id === selectedStageId}
                   isComplete={isStageCompleted(item.id)}
                   completePercentage={getCompletePercentage(item.id)}

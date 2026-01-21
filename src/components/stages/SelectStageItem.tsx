@@ -8,6 +8,7 @@ import { COLORS } from '@/theme/colors';
 
 interface SelectStageItemProps {
   title: string;
+  description: string;
   isComplete?: boolean;
   onPress: () => void;
   isSelected?: boolean;
@@ -16,6 +17,7 @@ interface SelectStageItemProps {
 
 const SelectStageItem: FC<SelectStageItemProps> = ({
   title,
+  description,
   isComplete = false,
   onPress,
   isSelected = false,
@@ -25,7 +27,16 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.titleContainer}>
         <RadioButton isSelected={isSelected} />
-        <Text style={styles.title}>{title}</Text>
+        <View style={{ flex: 1 }}>
+          <Text style={styles.title}>{title}</Text>
+          <Text
+            style={styles.description}
+            numberOfLines={2}
+            lineBreakMode="tail"
+          >
+            {description}
+          </Text>
+        </View>
       </View>
 
       <View style={styles.statusContainer}>
@@ -65,9 +76,16 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    flex: 1,
+    marginRight: s(10),
   },
   title: {
-    color: '#fff',
+    color: COLORS.textPrimary,
+    fontSize: s(14),
+  },
+  description: {
+    fontSize: s(10),
+    color: COLORS.textSecondary,
   },
   statusContainer: {
     flexDirection: 'row',
