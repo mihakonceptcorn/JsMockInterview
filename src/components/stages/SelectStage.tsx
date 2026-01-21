@@ -88,14 +88,14 @@ const SelectStage = () => {
 
       <View style={styles.actions}>
         <AppButton
-          title={'Start Interview'}
-          onPress={() => onStartStage('interview')}
-          width={'50%'}
-        />
-        <AppButton
           title={'Practice Mode'}
           onPress={() => onStartStage('practice')}
           isSecondary
+          width={'50%'}
+        />
+        <AppButton
+          title={'Start Interview'}
+          onPress={() => onStartStage('interview')}
           width={'50%'}
         />
       </View>
