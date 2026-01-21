@@ -32,7 +32,6 @@ const Stage = () => {
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [time, setTime] = useState(0);
 
-  // Використовуємо useRef для інтервалу, щоб уникнути витоків пам'яті
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const router = useRouter();
@@ -48,7 +47,6 @@ const Stage = () => {
       setQuestions(shuffled.slice(0, 10));
     }
 
-    // Запускаємо таймер: 1000мс замість 10мс!
     timerRef.current = setInterval(() => {
       setTime((prev) => prev + 1000);
     }, 1000);
@@ -71,7 +69,6 @@ const Stage = () => {
     }
   };
 
-  // Безпечне отримання заголовка для уникнення крашу
   const displayTitle = title?.toString() || 'Result';
 
   return (
@@ -85,7 +82,6 @@ const Stage = () => {
               <>
                 <View style={styles.progressContainer}>
                   <View style={styles.timerContainer}>
-                    {/* Виводимо час, відформатований як 00:00 */}
                     <Text style={styles.timerText}>
                       Time: {formatTime(time)}
                     </Text>
