@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { formatTime } from '@/helpers/formatTime';
 import { useAuth } from '@/context/AuthContext';
+import jsStages from '@/data/js/js.stages.json';
+import reactStages from '@/data/react/react.stages.json';
 
 const UserData = () => {
   const results = useSelector((state: RootState) => state.results.current);
@@ -22,12 +24,18 @@ const UserData = () => {
     let totalTime = 0;
     let totalStages = 0;
 
-    Object.values(results).forEach((framework) => {
-      Object.values(framework).forEach((stage) => {
-        totalScore += stage.score;
-        totalQuestions += stage.total;
-        totalTime += stage.time;
-        totalStages++;
+    const jsIds = jsStages.stages.map((s) => s.id);
+    const reactIds = reactStages.stages.map((s) => s.id);
+
+    Object.entries(results).forEach(([framework, data]) => {
+      const validIds = framework === 'js' ? jsIds : reactIds;
+      Object.entries(data).forEach(([id, stage]) => {
+        if (validIds.includes(id) && stage.score > 0) {
+          totalScore += stage.score;
+          totalQuestions += stage.total;
+          totalTime += stage.time;
+          totalStages++;
+        }
       });
     });
 
@@ -39,7 +47,7 @@ const UserData = () => {
     setStagesCompleted(totalStages);
     setAccuracy(totalPercentage);
     setTotalTime(totalTime);
-  }, []);
+  }, [results]);
 
   return (
     <View style={styles.container}>

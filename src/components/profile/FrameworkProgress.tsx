@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import Feather from '@expo/vector-icons/Feather';
 import { useRouter } from 'expo-router';
+import jsStages from '@/data/js/js.stages.json';
+import reactStages from '@/data/react/react.stages.json';
 
 const FrameworkProgress = () => {
   const router = useRouter();
@@ -18,11 +20,16 @@ const FrameworkProgress = () => {
   const [completedStages, setCompletedStages] = useState(0);
 
   useEffect(() => {
-    if (framework === 'js') setStagesCount(13);
-    if (framework === 'react') setStagesCount(12);
+    const currentStages =
+      framework === 'js' ? jsStages.stages : reactStages.stages;
+    const stageIds = currentStages.map((stage) => stage.id);
+    setStagesCount(currentStages.length);
 
     if (results[framework]) {
-      setCompletedStages(Object.keys(results[framework]).length);
+      const completed = Object.entries(results[framework]).filter(
+        ([id, result]) => stageIds.includes(id) && result.score > 0
+      ).length;
+      setCompletedStages(completed);
     } else {
       setCompletedStages(0);
     }

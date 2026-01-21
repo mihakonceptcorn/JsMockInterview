@@ -13,6 +13,9 @@ import Feather from '@expo/vector-icons/Feather';
 import { formatTime } from '@/helpers/formatTime';
 import StageStatItem from '@/components/statistics/StageStatItem';
 
+import jsStages from '@/data/js/js.stages.json';
+import reactStages from '@/data/react/react.stages.json';
+
 interface StageResult {
   score: number;
   total: number;
@@ -31,17 +34,24 @@ const Statistics = () => {
   const [stages, setStages] = useState<StageResult[]>([]);
 
   useEffect(() => {
-    if (framework === 'js') setStagesCount(13);
-    if (framework === 'react') setStagesCount(12);
+    const currentStages =
+      framework === 'js' ? jsStages.stages : reactStages.stages;
+    const stageIds = currentStages.map((stage) => stage.id);
+    setStagesCount(currentStages.length);
 
     if (results[framework]) {
-      setCompletedStages(Object.keys(results[framework]).length);
+      const completed = Object.entries(results[framework]).filter(
+        ([id, result]) => stageIds.includes(id) && result.score > 0
+      ).length;
+      setCompletedStages(completed);
 
-      const totals = Object.values(results[framework]).reduce(
-        (acc, section) => {
-          acc.totalScore += section.score;
-          acc.totalQuestions += section.total;
-          acc.totalTime += section.time;
+      const totals = Object.entries(results[framework]).reduce(
+        (acc, [id, section]) => {
+          if (stageIds.includes(id) && section.score > 0) {
+            acc.totalScore += section.score;
+            acc.totalQuestions += section.total;
+            acc.totalTime += section.time;
+          }
           return acc;
         },
         { totalScore: 0, totalQuestions: 0, totalTime: 0 }
@@ -56,9 +66,9 @@ const Statistics = () => {
       setTotalTimeSeconds(totals.totalTime);
 
       setStages(
-        Object.keys(results[framework]).length
-          ? Object.values(results[framework])
-          : []
+        Object.entries(results[framework])
+          .filter(([id, section]) => stageIds.includes(id) && section.score > 0)
+          .map(([id, section]) => section)
       );
     } else {
       setCompletedStages(0);
