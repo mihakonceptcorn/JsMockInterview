@@ -15,6 +15,8 @@ import {
   UserCredential,
 } from 'firebase/auth';
 import { auth } from '@/config/firebaseConfig';
+import { store } from '@/store';
+import { syncWithFirestore } from '@/store/syncSlice';
 
 interface AuthContextType {
   user: User | null;
@@ -56,14 +58,48 @@ export function AuthProvider({ children }: AuthProviderProps) {
     email: string,
     password: string
   ): Promise<UserCredential> => {
-    return createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    try {
+      const state = store.getState();
+      const { uploadUserData } = await import('@/services/firestoreService');
+      await uploadUserData(userCredential.user.uid, {
+        framework: state.framework.current,
+        results: state.results.current,
+        lastModified: Date.now(),
+      });
+      console.log('Initial data uploaded to Firestore after signup');
+    } catch (error) {
+      console.error('Failed to upload data after signup:', error);
+    }
+
+    return userCredential;
   };
 
   const login = async (
     email: string,
     password: string
   ): Promise<UserCredential> => {
-    return signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    try {
+      await store.dispatch(
+        syncWithFirestore({ userId: userCredential.user.uid })
+      );
+      console.log('Data synced from Firestore after login');
+    } catch (error) {
+      console.error('Failed to sync data after login:', error);
+    }
+
+    return userCredential;
   };
 
   const logout = async (): Promise<void> => {

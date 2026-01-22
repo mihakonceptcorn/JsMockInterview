@@ -4,10 +4,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import frameworkReducer from './frameworkSlice';
 import resultsReducer from './resultsSlice';
+import syncReducer from './syncSlice';
+import firestoreSyncMiddleware from './middleware/firestoreSyncMiddleware';
 
 const rootReducer = combineReducers({
   framework: frameworkReducer,
   results: resultsReducer,
+  sync: syncReducer,
 });
 
 const persistConfig = {
@@ -23,7 +26,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }),
+    }).concat(firestoreSyncMiddleware),
 });
 
 export const persistor = persistStore(store);
