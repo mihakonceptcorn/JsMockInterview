@@ -12,7 +12,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { auth } from '@/config/firebaseConfig';
 import { useRouter } from 'expo-router';
 import { store } from '@/store';
-import { syncWithFirestore } from '@/store/syncSlice';
+import { downloadDataFromFirestore } from '@/store/syncSlice';
 
 const GoogleSignIn = () => {
   const [isSyncing, setIsSyncing] = useState(false);
@@ -32,12 +32,19 @@ const GoogleSignIn = () => {
       const credential = GoogleAuthProvider.credential(idToken);
       const userCredential = await signInWithCredential(auth, credential);
 
-      const isNewUser =
-        userCredential.user.metadata.creationTime ===
-        userCredential.user.metadata.lastSignInTime;
+      try {
+        const { downloadUserData } =
+          await import('@/services/firestoreService');
+        const firestoreData = await downloadUserData(userCredential.user.uid);
 
-      if (isNewUser) {
-        try {
+        if (firestoreData) {
+          await store.dispatch(
+            downloadDataFromFirestore({ userId: userCredential.user.uid })
+          );
+          console.log(
+            'Data downloaded from Firestore for existing Google user'
+          );
+        } else {
           const state = store.getState();
           const { uploadUserData } =
             await import('@/services/firestoreService');
@@ -47,18 +54,9 @@ const GoogleSignIn = () => {
             lastModified: Date.now(),
           });
           console.log('Initial data uploaded to Firestore for new Google user');
-        } catch (error) {
-          console.error('Failed to upload data for new user:', error);
         }
-      } else {
-        try {
-          await store.dispatch(
-            syncWithFirestore({ userId: userCredential.user.uid })
-          );
-          console.log('Data synced from Firestore for existing Google user');
-        } catch (error) {
-          console.error('Failed to sync data for existing user:', error);
-        }
+      } catch (error) {
+        console.error('Failed to sync/upload data:', error);
       }
 
       router.replace('/profile');

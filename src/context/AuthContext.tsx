@@ -16,7 +16,7 @@ import {
 } from 'firebase/auth';
 import { auth } from '@/config/firebaseConfig';
 import { store } from '@/store';
-import { syncWithFirestore } from '@/store/syncSlice';
+import { downloadDataFromFirestore } from '@/store/syncSlice';
 
 interface AuthContextType {
   user: User | null;
@@ -92,11 +92,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     try {
       await store.dispatch(
-        syncWithFirestore({ userId: userCredential.user.uid })
+        downloadDataFromFirestore({ userId: userCredential.user.uid })
       );
-      console.log('Data synced from Firestore after login');
+      console.log('Data downloaded from Firestore after login');
     } catch (error) {
-      console.error('Failed to sync data after login:', error);
+      console.error('Failed to download data after login:', error);
     }
 
     return userCredential;
