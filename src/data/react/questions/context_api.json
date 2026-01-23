@@ -1,0 +1,254 @@
+{
+  "default": [
+    {
+      "id": "ctx-01",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "What is the primary purpose of the React Context API?",
+      "options": [
+        "To manage complex asynchronous logic",
+        "To share data that can be considered 'global' for a tree of components",
+        "To replace the local state in every component",
+        "To improve the performance of rendering large lists"
+      ],
+      "correct": [1],
+      "explanation": "Context is designed to share data that can be considered global, such as the current authenticated user, theme, or preferred language.",
+      "interviewTip": "Use Context to solve 'prop drilling'—the process of passing data through many layers of components."
+    },
+    {
+      "id": "ctx-02",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "Which method is used to create a Context object?",
+      "options": [
+        "React.getContext()",
+        "React.useContext()",
+        "React.createContext()",
+        "React.provideContext()"
+      ],
+      "correct": [2],
+      "explanation": "React.createContext(defaultValue) creates a Context object that components can provide or consume.",
+      "interviewTip": "The defaultValue is only used when a component does not have a matching Provider above it in the tree."
+    },
+    {
+      "id": "ctx-03",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "What is the role of the 'Provider' component?",
+      "options": [
+        "It consumes the data from the context",
+        "It fetches data from an external API",
+        "It allows consuming components to subscribe to context changes",
+        "It is used to debug context values in DevTools"
+      ],
+      "correct": [2],
+      "explanation": "The Provider component accepts a 'value' prop and broadcasts it to all descendant components that consume the context.",
+      "interviewTip": "One Provider can be connected to many consumers."
+    },
+    {
+      "id": "ctx-04",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "Which hook is used to consume a value from a Context in a functional component?",
+      "options": ["useProvider", "useContext", "useState", "useGlobalState"],
+      "correct": [1],
+      "explanation": "useContext accepts a context object and returns the current context value for that context.",
+      "interviewTip": "Remember that the argument to useContext must be the context object itself, not the Provider or Consumer."
+    },
+    {
+      "id": "ctx-05",
+      "stageId": "context_api",
+      "type": "multiple",
+      "prompt": "What happens to a component when the context value it consumes changes?",
+      "options": [
+        "It re-renders automatically",
+        "It only re-renders if its props also change",
+        "It triggers a re-render even if it uses React.memo",
+        "It updates its internal state without re-rendering"
+      ],
+      "correct": [0, 2],
+      "explanation": "All consumers that are descendants of a Provider will re-render whenever the Provider’s value prop changes. This bypasses React.memo.",
+      "interviewTip": "This is why you should be careful with large context objects; one change can trigger many re-renders."
+    },
+    {
+      "id": "ctx-06",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "When is the 'defaultValue' passed to createContext used?",
+      "options": [
+        "When the Provider's value prop is null",
+        "When a component is not wrapped in a corresponding Provider",
+        "When the Provider's value prop is undefined",
+        "Every time the component re-renders"
+      ],
+      "correct": [1],
+      "explanation": "The defaultValue argument is ONLY used when a component does not have a matching Provider above it in the tree.",
+      "interviewTip": "Passing 'undefined' to the Provider value will not trigger the defaultValue."
+    },
+    {
+      "id": "ctx-07",
+      "stageId": "context_api",
+      "type": "multiple",
+      "prompt": "Which of these are valid use cases for Context API?",
+      "options": [
+        "UI Theme (Dark/Light mode)",
+        "User authentication state",
+        "Form input state for a single input field",
+        "Internationalization (language settings)"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Context is great for data that is needed globally. Local form state should remain in useState to avoid unnecessary global re-renders.",
+      "interviewTip": "Rule of thumb: If the data changes frequently (like every keystroke), Context might cause performance issues."
+    },
+    {
+      "id": "ctx-08",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "How can you pass multiple values through a single Context?",
+      "options": [
+        "It's impossible, you need multiple contexts",
+        "Pass an object or an array as the value prop",
+        "Pass multiple value props to the Provider",
+        "Use the useMultipleContext hook"
+      ],
+      "correct": [1],
+      "explanation": "You can pass an object containing multiple properties to the 'value' prop of the Provider.",
+      "interviewTip": "If you do this, use useMemo to prevent the object from being recreated on every render."
+    },
+    {
+      "id": "ctx-09",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "What is 'Prop Drilling'?",
+      "options": [
+        "A performance optimization technique",
+        "The process of passing data through levels of components that don't need it",
+        "A way to fetch data from a database",
+        "The process of naming props correctly"
+      ],
+      "correct": [1],
+      "explanation": "Prop drilling occurs when you pass props from a high-level component down to a deeply nested component through intermediate components.",
+      "interviewTip": "Context is one of the most common ways to solve prop drilling."
+    },
+    {
+      "id": "ctx-10",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "Can you have nested Providers for the same Context?",
+      "options": [
+        "No, it will cause an error",
+        "Yes, and the consumer will get the value from the furthest Provider",
+        "Yes, and the consumer will get the value from the nearest Provider above it",
+        "Yes, but they will merge their values"
+      ],
+      "correct": [2],
+      "explanation": "If Providers are nested, the consumer will take the value from the closest Provider above it in the tree.",
+      "interviewTip": "This is useful for overriding global settings in specific parts of the UI."
+    },
+    {
+      "id": "ctx-11",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "What is the main downside of using Context for everything?",
+      "options": [
+        "It makes components less reusable because they depend on the Context",
+        "It makes the app slower than using Redux",
+        "It is deprecated in React 18",
+        "It only works with class components"
+      ],
+      "correct": [0],
+      "explanation": "Context couples a component to its environment, making it harder to use that component elsewhere without the Provider.",
+      "interviewTip": "Component composition (passing components as children) is often a better alternative to Context for reusability."
+    },
+    {
+      "id": "ctx-12",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "How do you update a Context value from a child component?",
+      "options": [
+        "By using the setState function directly on the context",
+        "By passing a function through the context value",
+        "By using a global event listener",
+        "It is impossible to update context from children"
+      ],
+      "correct": [1],
+      "explanation": "You can include a function (like a setter from useState) in the context value object to allow children to trigger updates.",
+      "interviewTip": "This pattern is standard for things like toggling themes or logging in users."
+    },
+    {
+      "id": "ctx-13",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "Which component allows you to use Context in a Class Component?",
+      "options": [
+        "Context.Provider",
+        "Context.Consumer",
+        "useContext",
+        "this.state"
+      ],
+      "correct": [1],
+      "explanation": "While functional components use hooks, class components often use the <Context.Consumer> component which uses a render-prop pattern.",
+      "interviewTip": "You can also use 'static contextType' in class components if you only need one context."
+    },
+    {
+      "id": "ctx-14",
+      "stageId": "context_api",
+      "type": "multiple",
+      "prompt": "How can you optimize Context to prevent unnecessary re-renders?",
+      "options": [
+        "Split the context into multiple smaller contexts",
+        "Memoize the context value using useMemo",
+        "Always use Redux instead",
+        "Wrap the children of the Provider in React.memo"
+      ],
+      "correct": [0, 1],
+      "explanation": "Splitting context ensures that components only listen to what they need. useMemo prevents the value object from changing on every parent render.",
+      "interviewTip": "Mentioning 'Context Splitting' is a high-level answer in interviews."
+    },
+    {
+      "id": "ctx-15",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "Does Context replace Redux?",
+      "options": [
+        "Yes, they are identical",
+        "No, Context is for dependency injection, Redux is for state management",
+        "Yes, but only for small apps",
+        "No, Context is a database, Redux is a library"
+      ],
+      "correct": [1],
+      "explanation": "Context is a way to pass data without prop drilling. Redux is a full state management system with middleware, devtools, and specific patterns.",
+      "interviewTip": "Redux actually uses Context API internally to pass the store!"
+    },
+    {
+      "id": "ctx-16",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "What is the 'render prop' pattern in the context of Context API?",
+      "options": [
+        "The value prop of the Provider",
+        "The function child of a Context.Consumer",
+        "The way we render components with props",
+        "A performance optimization hook"
+      ],
+      "correct": [1],
+      "explanation": "The <Context.Consumer> component expects a function as its child, which receives the current context value as an argument.",
+      "interviewTip": "This was the primary way to use Context before hooks were introduced."
+    },
+    {
+      "id": "ctx-17",
+      "stageId": "context_api",
+      "type": "single",
+      "prompt": "If you don't use useMemo for a context value object, what happens?",
+      "options": [
+        "React will throw an error",
+        "The context will not update",
+        "All consumers re-render every time the Provider's parent renders",
+        "Nothing, React handles this automatically"
+      ],
+      "correct": [2],
+      "explanation": "If the value is an object defined in the render body, a new reference is created every time, triggering re-renders for all consumers.",
+      "interviewTip": "Stable references are the key to high-performance React applications."
+    }
+  ]
+}

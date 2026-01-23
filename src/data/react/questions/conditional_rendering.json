@@ -1,0 +1,214 @@
+{
+  "default": [
+    {
+      "id": "cr-01",
+      "stageId": "conditional_rendering",
+      "type": "single",
+      "prompt": "What is the most common way to conditionally render content in JSX?",
+      "options": [
+        "if statements inside JSX",
+        "Ternary operator",
+        "switch statements",
+        "try/catch blocks"
+      ],
+      "correct": [1],
+      "explanation": "The ternary operator is commonly used directly in JSX.",
+      "interviewTip": "`if` statements must be outside JSX."
+    },
+    {
+      "id": "cr-02",
+      "stageId": "conditional_rendering",
+      "type": "multiple",
+      "prompt": "Which conditional rendering patterns are valid in JSX?",
+      "options": [
+        "Ternary operator",
+        "Logical AND (&&)",
+        "if/else inside JSX",
+        "Conditional variables outside JSX"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "JSX supports expressions, not statements.",
+      "interviewTip": "Prepare logic before returning JSX."
+    },
+    {
+      "id": "cr-03",
+      "stageId": "conditional_rendering",
+      "type": "single",
+      "prompt": "What will `{isLoggedIn && <Profile />}` render when `isLoggedIn` is false?",
+      "options": ["<Profile />", "null", "false", "An empty div"],
+      "correct": [2],
+      "explanation": "React ignores `false`, `null`, and `undefined` in rendering.",
+      "interviewTip": "`false` renders nothing."
+    },
+    {
+      "id": "cr-04",
+      "stageId": "conditional_rendering",
+      "type": "single",
+      "prompt": "When should you prefer a ternary operator over `&&`?",
+      "options": [
+        "When rendering a list",
+        "When you need an else branch",
+        "When performance matters",
+        "When rendering fragments"
+      ],
+      "correct": [1],
+      "explanation": "`&&` does not support an else case.",
+      "interviewTip": "Ternary is clearer with two branches."
+    },
+    {
+      "id": "cr-05",
+      "stageId": "conditional_rendering",
+      "type": "multiple",
+      "prompt": "Which values will React render as nothing?",
+      "options": ["false", "null", "undefined", "0"],
+      "correct": [0, 1, 2],
+      "explanation": "React ignores falsey values except 0.",
+      "interviewTip": "0 will still be rendered."
+    },
+    {
+      "id": "cr-06",
+      "stageId": "conditional_rendering",
+      "type": "single",
+      "prompt": "What is a common pitfall when using `condition && <Component />`?",
+      "options": [
+        "It is slower than ternary",
+        "It breaks hooks rules",
+        "Numbers like 0 may render unexpectedly",
+        "It cannot be nested"
+      ],
+      "correct": [2],
+      "explanation": "If the condition is 0, React will render 0.",
+      "interviewTip": "Ensure conditions are booleans."
+    },
+    {
+      "id": "cr-07",
+      "stageId": "conditional_rendering",
+      "type": "single",
+      "prompt": "How can you conditionally render multiple elements without adding extra DOM nodes?",
+      "options": [
+        "Wrap them in a div",
+        "Use React.Fragment",
+        "Use an array",
+        "Use document.createElement"
+      ],
+      "correct": [1],
+      "explanation": "Fragments group elements without extra DOM.",
+      "interviewTip": "Short syntax <>...</> is common."
+    },
+    {
+      "id": "cr-08",
+      "stageId": "conditional_rendering",
+      "type": "multiple",
+      "prompt": "Which approaches help keep conditional rendering readable?",
+      "options": [
+        "Extracting components",
+        "Using deeply nested ternaries",
+        "Early returns",
+        "Using helper functions"
+      ],
+      "correct": [0, 2, 3],
+      "explanation": "Readable logic improves maintainability.",
+      "interviewTip": "Avoid deeply nested JSX conditions."
+    },
+    {
+      "id": "cr-09",
+      "stageId": "conditional_rendering",
+      "type": "single",
+      "prompt": "What will a component return if it explicitly returns `null`?",
+      "options": [
+        "An empty div",
+        "Nothing is rendered",
+        "An error",
+        "undefined behavior"
+      ],
+      "correct": [1],
+      "explanation": "Returning `null` means render nothing.",
+      "interviewTip": "Useful for guard conditions."
+    },
+    {
+      "id": "cr-10",
+      "stageId": "conditional_rendering",
+      "type": "multiple",
+      "prompt": "Which conditional rendering techniques are commonly used for loading states?",
+      "options": [
+        "Early return",
+        "Ternary operator",
+        "Logical AND (&&)",
+        "Switch statement inside JSX"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Several patterns are valid for loading UI.",
+      "interviewTip": "Choose clarity over cleverness."
+    },
+    {
+      "id": "cr-11",
+      "stageId": "conditional_rendering",
+      "type": "single",
+      "prompt": "Why can deeply nested ternary expressions be problematic?",
+      "options": [
+        "They break React rendering",
+        "They reduce readability",
+        "They cause performance issues",
+        "They are not supported in JSX"
+      ],
+      "correct": [1],
+      "explanation": "Nested ternaries are hard to read and maintain.",
+      "interviewTip": "Refactor complex logic."
+    },
+    {
+      "id": "cr-12",
+      "stageId": "conditional_rendering",
+      "type": "single",
+      "prompt": "How do you conditionally render a component based on a prop value?",
+      "options": [
+        "{prop && <Component />}",
+        "if (prop) <Component />",
+        "<Component if={prop} />",
+        "{Component(prop)}"
+      ],
+      "correct": [0],
+      "explanation": "Logical AND is commonly used for simple conditions.",
+      "interviewTip": "Ensure prop is boolean."
+    },
+    {
+      "id": "cr-13",
+      "stageId": "conditional_rendering",
+      "type": "multiple",
+      "prompt": "Which statements about conditional rendering are true?",
+      "options": [
+        "JSX supports expressions but not statements",
+        "Conditions can be extracted outside JSX",
+        "All conditions must be inside JSX",
+        "Returning null is valid"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Conditional logic can live outside JSX.",
+      "interviewTip": "This often improves readability."
+    },
+    {
+      "id": "cr-14",
+      "stageId": "conditional_rendering",
+      "type": "single",
+      "prompt": "What is an early return pattern?",
+      "options": [
+        "Returning JSX before hooks",
+        "Returning JSX conditionally at the top of a component",
+        "Using ternaries inside JSX",
+        "Returning multiple components"
+      ],
+      "correct": [1],
+      "explanation": "Early returns simplify conditional rendering.",
+      "interviewTip": "Common for loading and error states."
+    },
+    {
+      "id": "cr-15",
+      "stageId": "conditional_rendering",
+      "type": "single",
+      "prompt": "Which value can unexpectedly appear in the UI when using `&&`?",
+      "options": ["null", "false", "undefined", "0"],
+      "correct": [3],
+      "explanation": "0 is rendered, unlike other falsy values.",
+      "interviewTip": "Convert conditions to booleans if needed."
+    }
+  ]
+}

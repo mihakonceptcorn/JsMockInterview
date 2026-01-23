@@ -1,0 +1,214 @@
+{
+  "default": [
+    {
+      "id": "sb-01",
+      "stageId": "state_basics",
+      "type": "single",
+      "prompt": "What is state in React?",
+      "options": [
+        "A global variable",
+        "Immutable component data",
+        "Data that can change over time and trigger re-renders",
+        "Props passed from a parent"
+      ],
+      "correct": [2],
+      "explanation": "State holds data that can change and affects rendering.",
+      "interviewTip": "When state changes, React re-renders the component."
+    },
+    {
+      "id": "sb-02",
+      "stageId": "state_basics",
+      "type": "single",
+      "prompt": "Which hook is used to add state to a functional component?",
+      "options": ["useEffect", "useRef", "useState", "useContext"],
+      "correct": [2],
+      "explanation": "`useState` is the basic hook for state.",
+      "interviewTip": "It works only inside function components."
+    },
+    {
+      "id": "sb-03",
+      "stageId": "state_basics",
+      "type": "multiple",
+      "prompt": "Which of the following can be stored in React state?",
+      "options": ["Numbers", "Strings", "Objects", "Functions"],
+      "correct": [0, 1, 2, 3],
+      "explanation": "State can store any JavaScript value.",
+      "interviewTip": "Arrays and objects are very common in state."
+    },
+    {
+      "id": "sb-04",
+      "stageId": "state_basics",
+      "type": "single",
+      "prompt": "What does `useState` return?",
+      "options": [
+        "Only the state value",
+        "Only a setter function",
+        "An object",
+        "An array with state and a setter"
+      ],
+      "correct": [3],
+      "explanation": "`useState` returns `[state, setState]`.",
+      "interviewTip": "Array destructuring is usually used."
+    },
+    {
+      "id": "sb-05",
+      "stageId": "state_basics",
+      "type": "single",
+      "prompt": "How should state be updated?",
+      "options": [
+        "By direct assignment",
+        "By mutating the value",
+        "Using the setter function",
+        "By reassigning props"
+      ],
+      "correct": [2],
+      "explanation": "State must be updated using the setter function.",
+      "interviewTip": "Direct mutation does not trigger re-renders."
+    },
+    {
+      "id": "sb-06",
+      "stageId": "state_basics",
+      "type": "multiple",
+      "prompt": "Which actions will trigger a re-render?",
+      "options": [
+        "Calling the state setter",
+        "Mutating state directly",
+        "Updating props",
+        "Calling a regular function"
+      ],
+      "correct": [0, 2],
+      "explanation": "Re-renders happen when state or props change.",
+      "interviewTip": "Mutating state directly is ignored by React."
+    },
+    {
+      "id": "sb-07",
+      "stageId": "state_basics",
+      "type": "single",
+      "prompt": "How do you initialize state with an initial value of 0?",
+      "options": ["useState = 0", "useState(0)", "setState(0)", "state(0)"],
+      "correct": [1],
+      "explanation": "The initial value is passed to `useState`.",
+      "interviewTip": "This value is used only on the first render."
+    },
+    {
+      "id": "sb-08",
+      "stageId": "state_basics",
+      "type": "single",
+      "prompt": "How do you update state based on the previous value?",
+      "options": [
+        "setCount(count + 1)",
+        "setCount(prev => prev + 1)",
+        "count++",
+        "update(count)"
+      ],
+      "correct": [1],
+      "explanation": "The functional updater ensures correct previous state.",
+      "interviewTip": "This is important when updates are batched."
+    },
+    {
+      "id": "sb-09",
+      "stageId": "state_basics",
+      "type": "multiple",
+      "prompt": "Which statements about state updates are true?",
+      "options": [
+        "State updates may be batched",
+        "State updates are always synchronous",
+        "You should not rely on immediate state changes",
+        "State updates trigger a full page reload"
+      ],
+      "correct": [0, 2],
+      "explanation": "React may batch updates for performance.",
+      "interviewTip": "Always treat state updates as asynchronous."
+    },
+    {
+      "id": "sb-10",
+      "stageId": "state_basics",
+      "type": "single",
+      "prompt": "How can state be shared with child components?",
+      "options": [
+        "It cannot be shared",
+        "By passing it as props",
+        "Only via Context",
+        "Only using Redux"
+      ],
+      "correct": [1],
+      "explanation": "State is passed down through props.",
+      "interviewTip": "This follows React’s one-way data flow."
+    },
+    {
+      "id": "sb-11",
+      "stageId": "state_basics",
+      "type": "single",
+      "prompt": "What is a common mistake when updating object state?",
+      "options": [
+        "Using the spread operator",
+        "Creating a new object",
+        "Mutating the existing object",
+        "Using setState"
+      ],
+      "correct": [2],
+      "explanation": "Mutating existing state breaks React’s update logic.",
+      "interviewTip": "Always create a new object or array."
+    },
+    {
+      "id": "sb-12",
+      "stageId": "state_basics",
+      "type": "multiple",
+      "prompt": "Which are valid ways to update object state immutably?",
+      "options": [
+        "setState({...state, value: 1})",
+        "state.value = 1",
+        "setState(prev => ({ ...prev, value: 1 }))",
+        "Mutating nested properties directly"
+      ],
+      "correct": [0, 2],
+      "explanation": "State should always be updated immutably.",
+      "interviewTip": "Functional updates are safer."
+    },
+    {
+      "id": "sb-13",
+      "stageId": "state_basics",
+      "type": "single",
+      "prompt": "Where should state usually live?",
+      "options": [
+        "As high in the tree as possible",
+        "As low as possible",
+        "In the component that owns the data",
+        "Only in global stores"
+      ],
+      "correct": [2],
+      "explanation": "State should live where it is actually used.",
+      "interviewTip": "Lift state up only when needed."
+    },
+    {
+      "id": "sb-14",
+      "stageId": "state_basics",
+      "type": "single",
+      "prompt": "What can cause an infinite re-render loop?",
+      "options": [
+        "Using useState",
+        "Updating state during render",
+        "Passing props",
+        "Using conditional rendering"
+      ],
+      "correct": [1],
+      "explanation": "Updating state during render causes repeated renders.",
+      "interviewTip": "Use event handlers or effects instead."
+    },
+    {
+      "id": "sb-15",
+      "stageId": "state_basics",
+      "type": "multiple",
+      "prompt": "Which statements about multiple state variables are true?",
+      "options": [
+        "A component can have multiple useState hooks",
+        "State must be stored in a single object",
+        "Splitting state by concern is recommended",
+        "Multiple states are only allowed in class components"
+      ],
+      "correct": [0, 2],
+      "explanation": "Multiple `useState` hooks are common and encouraged.",
+      "interviewTip": "This improves readability and maintainability."
+    }
+  ]
+}

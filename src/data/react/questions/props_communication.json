@@ -1,0 +1,224 @@
+{
+  "default": [
+    {
+      "id": "pc-01",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "What is the correct way to pass a `name` prop with value \"John\" to a `User` component?",
+      "options": [
+        "<User name=\"John\" />",
+        "<User {name=\"John\"} />",
+        "<User name={\"John\"} />",
+        "<User props.name=\"John\" />"
+      ],
+      "correct": [0],
+      "explanation": "Props are passed as JSX attributes.",
+      "interviewTip": "Curly braces are only required for JavaScript expressions."
+    },
+    {
+      "id": "pc-02",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "How do you access the `age` prop inside a functional component?",
+      "options": [
+        "function User(props) { props.age }",
+        "function User(age) {}",
+        "function User({ age }) {}",
+        "function User() { this.props.age }"
+      ],
+      "correct": [2],
+      "explanation": "Destructuring props is the common approach in functional components.",
+      "interviewTip": "`this.props` is only used in class components."
+    },
+    {
+      "id": "pc-03",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "What does `props.children` represent?",
+      "options": [
+        "An array of child components",
+        "The JSX nested between component tags",
+        "A special React hook",
+        "A prop that must be passed manually"
+      ],
+      "correct": [1],
+      "explanation": "`props.children` contains the nested JSX passed to a component.",
+      "interviewTip": "Commonly used in layout and wrapper components."
+    },
+    {
+      "id": "pc-04",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "What is the main purpose of PropTypes?",
+      "options": [
+        "State management",
+        "Runtime props type checking",
+        "Render optimization",
+        "Context handling"
+      ],
+      "correct": [1],
+      "explanation": "PropTypes validate prop types during runtime.",
+      "interviewTip": "Often replaced by TypeScript in modern projects."
+    },
+    {
+      "id": "pc-05",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "Can props be modified inside a component?",
+      "options": [
+        "Yes, directly",
+        "Yes, using setState",
+        "No, props are read-only",
+        "Yes, if the prop is an object"
+      ],
+      "correct": [2],
+      "explanation": "Props are immutable and controlled by the parent component.",
+      "interviewTip": "Use state or callback props to handle changes."
+    },
+    {
+      "id": "pc-06",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "How do you pass a number as a prop?",
+      "options": [
+        "<User age=\"30\" />",
+        "<User age={30} />",
+        "<User age=(30) />",
+        "<User age={[30]} />"
+      ],
+      "correct": [1],
+      "explanation": "Numbers must be passed using curly braces.",
+      "interviewTip": "Strings don’t require curly braces."
+    },
+    {
+      "id": "pc-07",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "How do you pass a function as a prop?",
+      "options": [
+        "<Button onClick={handleClick} />",
+        "<Button onClick=\"handleClick\" />",
+        "<Button onClick={handleClick()} />",
+        "<Button onClick=[handleClick] />"
+      ],
+      "correct": [0],
+      "explanation": "You pass a function reference, not a function call.",
+      "interviewTip": "Calling the function will execute it during render."
+    },
+    {
+      "id": "pc-08",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "What is a callback prop?",
+      "options": [
+        "A boolean prop",
+        "A function passed from a parent component",
+        "A React hook",
+        "A DOM event"
+      ],
+      "correct": [1],
+      "explanation": "Callback props allow child components to communicate with parents.",
+      "interviewTip": "Often used for lifting state up."
+    },
+    {
+      "id": "pc-09",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "How can you define default values for props?",
+      "options": [
+        "Component.defaultProps",
+        "useState",
+        "PropTypes.default",
+        "props = {}"
+      ],
+      "correct": [0],
+      "explanation": "`defaultProps` provides fallback values for props.",
+      "interviewTip": "Function parameters can also be used for defaults."
+    },
+    {
+      "id": "pc-10",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "What happens if a required PropType is missing?",
+      "options": [
+        "Compile-time error",
+        "Application crash",
+        "Console warning",
+        "Nothing"
+      ],
+      "correct": [2],
+      "explanation": "PropTypes produce warnings, not runtime errors.",
+      "interviewTip": "They don’t prevent rendering."
+    },
+    {
+      "id": "pc-11",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "How do you pass JSX as a prop?",
+      "options": [
+        "<Box header={<h1>Title</h1>} />",
+        "<Box header=\"<h1>Title</h1>\" />",
+        "<Box header={h1} />",
+        "<Box header=[<h1 />] />"
+      ],
+      "correct": [0],
+      "explanation": "JSX can be passed as a JavaScript expression.",
+      "interviewTip": "This pattern is similar to slots."
+    },
+    {
+      "id": "pc-12",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "Can objects be passed as props?",
+      "options": ["No", "Yes", "Only arrays", "Only via Context"],
+      "correct": [1],
+      "explanation": "Objects can be passed using curly braces.",
+      "interviewTip": "Avoid mutating props objects."
+    },
+    {
+      "id": "pc-13",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "What is prop drilling?",
+      "options": [
+        "A performance optimization",
+        "Passing props through many component levels",
+        "Working with refs",
+        "Async prop handling"
+      ],
+      "correct": [1],
+      "explanation": "Prop drilling occurs when data is passed deeply through the tree.",
+      "interviewTip": "Context API helps reduce prop drilling."
+    },
+    {
+      "id": "pc-14",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "Which PropTypes helper restricts a prop to specific values?",
+      "options": [
+        "PropTypes.array",
+        "PropTypes.oneOf",
+        "PropTypes.shape",
+        "PropTypes.any"
+      ],
+      "correct": [1],
+      "explanation": "`oneOf` limits props to a predefined set of values.",
+      "interviewTip": "Useful for enums like sizes or variants."
+    },
+    {
+      "id": "pc-15",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "How do you pass multiple props at once from an object?",
+      "options": [
+        "<User props={user} />",
+        "<User {...user} />",
+        "<User user />",
+        "<User spread(user) />"
+      ],
+      "correct": [1],
+      "explanation": "The spread operator passes all object properties as props.",
+      "interviewTip": "Be careful not to pass unnecessary props."
+    }
+  ]
+}

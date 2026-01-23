@@ -1,0 +1,244 @@
+{
+  "default": [
+    {
+      "id": "sq-01",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What is the primary difference between 'Client State' and 'Server State'?",
+      "options": [
+        "Client State is stored in a database, Server State is in the browser",
+        "Server State is owned by a remote source and can change without the app knowing",
+        "Client State is faster to access than Server State",
+        "There is no difference"
+      ],
+      "correct": [1],
+      "explanation": "Server State is persisted remotely, requires asynchronous APIs for fetching/updating, and can be 'out of date' because other users might change it.",
+      "interviewTip": "Keywords to mention: 'Ownership', 'Asynchronous', and 'Staleness'."
+    },
+    {
+      "id": "sq-02",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What is the main benefit of using React Query instead of useEffect for data fetching?",
+      "options": [
+        "It makes the network requests faster",
+        "It provides built-in caching, background updates, and loading state management",
+        "It replaces the need for a backend server",
+        "It automatically writes the CSS for loading spinners"
+      ],
+      "correct": [1],
+      "explanation": "React Query handles complex logic like deduplicating requests, caching results, and automatic retries that you would otherwise have to write manually in useEffect.",
+      "interviewTip": "It turns 'imperative' fetching into 'declarative' state management."
+    },
+    {
+      "id": "sq-03",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What does the 'queryKey' do in React Query?",
+      "options": [
+        "It acts as a password for the API",
+        "It is a unique identifier used for caching and refetching data",
+        "It defines the URL of the request",
+        "It is used to encrypt the data"
+      ],
+      "correct": [1],
+      "explanation": "The queryKey (usually an array) allows React Query to track data across the application and decide when to serve a cached version.",
+      "interviewTip": "If the queryKey changes, React Query automatically refetches the data."
+    },
+    {
+      "id": "sq-04",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "Which hook is used for 'Read' operations (fetching data)?",
+      "options": ["useMutation", "useFetch", "useQuery", "useServerData"],
+      "correct": [2],
+      "explanation": "useQuery is the standard hook for fetching and subscribing to a resource.",
+      "interviewTip": "Remember: useQuery is for GET, useMutation is for POST/PUT/DELETE."
+    },
+    {
+      "id": "sq-05",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What does the 'staleTime' option control?",
+      "options": [
+        "How long the data remains in the cache before being deleted",
+        "The duration after which data is considered 'old' and needs a background refetch",
+        "The time the browser waits before showing a timeout error",
+        "The interval for automatic page refreshes"
+      ],
+      "correct": [1],
+      "explanation": "staleTime defines how long data is considered 'fresh'. While fresh, React Query will not trigger a background refetch.",
+      "interviewTip": "By default, staleTime is 0, meaning data becomes stale immediately after fetching."
+    },
+    {
+      "id": "sq-06",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What is the difference between 'staleTime' and 'gcTime' (formerly cacheTime)?",
+      "options": [
+        "staleTime is for queries, gcTime is for mutations",
+        "staleTime controls refetching; gcTime controls how long inactive data stays in memory",
+        "They are two names for the same thing",
+        "gcTime is only for local storage"
+      ],
+      "correct": [1],
+      "explanation": "Data can be stale but still in the cache. gcTime determines when the data is garbage-collected from the memory after the component unmounts.",
+      "interviewTip": "Usually, you want gcTime to be longer than staleTime."
+    },
+    {
+      "id": "sq-07",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "Which hook should you use to create, update, or delete data on the server?",
+      "options": ["useQuery", "useMutation", "usePost", "useAction"],
+      "correct": [1],
+      "explanation": "useMutation is used for any server side-effects that change data.",
+      "interviewTip": "useMutation returns a 'mutate' function that you call manually, unlike useQuery which runs automatically."
+    },
+    {
+      "id": "sq-08",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What is 'Query Invalidation'?",
+      "options": [
+        "Deleting the data because it is incorrect",
+        "Marking a query as stale to trigger an immediate refetch",
+        "Cancelling a network request",
+        "A way to hide data from the user"
+      ],
+      "correct": [1],
+      "explanation": "After a mutation (like adding a comment), you 'invalidate' the relevant query (the comments list) so the UI stays in sync with the server.",
+      "interviewTip": "You use `queryClient.invalidateQueries({ queryKey: [...] })` for this."
+    },
+    {
+      "id": "sq-09",
+      "stageId": "server_state",
+      "type": "multiple",
+      "prompt": "Which of these are states provided by the useQuery return object?",
+      "options": ["isLoading", "isError", "isSuccess", "isFetching"],
+      "correct": [0, 1, 2, 3],
+      "explanation": "React Query provides a full suite of booleans to track the lifecycle of a request.",
+      "interviewTip": "Know the difference: isLoading is for the first time; isFetching is for every background update."
+    },
+    {
+      "id": "sq-10",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What is 'Optimistic Updates'?",
+      "options": [
+        "Updating the UI before the server confirms the change to make the app feel faster",
+        "Always assuming the API will return a 200 OK",
+        "Fetching all data at once when the app starts",
+        "A mode that disables error messages"
+      ],
+      "correct": [0],
+      "explanation": "You manually update the cache immediately when a mutation starts, then roll back if the server request actually fails.",
+      "interviewTip": "This is a 'Pro' UX pattern used in apps like Instagram or Twitter for 'Liking' posts."
+    },
+    {
+      "id": "sq-11",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What is the purpose of the 'enabled' option in useQuery?",
+      "options": [
+        "To enable the query only in production",
+        "To prevent a query from running automatically (Conditional Fetching)",
+        "To enable logging for the query",
+        "To allow the query to run in the background"
+      ],
+      "correct": [1],
+      "explanation": "Setting 'enabled: false' allows you to wait for a specific piece of data (like a user ID) before starting the fetch.",
+      "interviewTip": "This is perfect for 'Dependent Queries'."
+    },
+    {
+      "id": "sq-12",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "How does React Query handle window refocus by default?",
+      "options": [
+        "It does nothing",
+        "It automatically refetches stale queries to ensure fresh data",
+        "It logs the user out",
+        "It clears the whole cache"
+      ],
+      "correct": [1],
+      "explanation": "By default, React Query triggers a refetch when the user refocuses the browser tab (refetchOnWindowFocus).",
+      "interviewTip": "This keeps data fresh without the user having to refresh the page."
+    },
+    {
+      "id": "sq-13",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What is the benefit of using 'Parallel Queries' in React Query?",
+      "options": [
+        "They use multiple CPU cores",
+        "They allow fetching multiple unrelated resources simultaneously without waiting for each other",
+        "They reduce the number of API endpoints needed",
+        "They automatically merge multiple JSON responses into one"
+      ],
+      "correct": [1],
+      "explanation": "If you call multiple useQuery hooks in one component, React Query fetches them in parallel by default, avoiding 'waterfalls'.",
+      "interviewTip": "For a dynamic number of queries, use the `useQueries` hook."
+    },
+    {
+      "id": "sq-14",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What is the purpose of 'Infinite Queries' (useInfiniteQuery)?",
+      "options": [
+        "To fetch a query that never ends",
+        "To handle 'Load More' or 'Infinite Scroll' pagination",
+        "To create a loop of API requests",
+        "To handle WebSockets"
+      ],
+      "correct": [1],
+      "explanation": "useInfiniteQuery helps you fetch data in pages and keeps track of the 'next page' token/index.",
+      "interviewTip": "It returns a 'data' object containing 'pages' and 'pageParams'."
+    },
+    {
+      "id": "sq-15",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What is a 'Hydration' in the context of React Query?",
+      "options": [
+        "Adding water to the server",
+        "Transferring a pre-fetched cache from the server to the client (for SSR)",
+        "Cleaning up old cache files",
+        "Connecting the store to the UI"
+      ],
+      "correct": [1],
+      "explanation": "Hydration allows you to pre-fetch data on the server (e.g., in Next.js) and 'dehydrate' it into a format the client-side React Query can understand.",
+      "interviewTip": "This is vital for SEO and fast First Contentful Paint."
+    },
+    {
+      "id": "sq-16",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What happens when a query fails in React Query by default?",
+      "options": [
+        "It immediately throws an error",
+        "It automatically retries the request 3 times with exponential backoff",
+        "It clears the cache and stops working",
+        "It tries to fetch from a different URL"
+      ],
+      "correct": [1],
+      "explanation": "React Query assumes networks are flaky and will try to refetch a failing query a few times before showing an error.",
+      "interviewTip": "This makes your app much more resilient to temporary network blips."
+    },
+    {
+      "id": "sq-17",
+      "stageId": "server_state",
+      "type": "single",
+      "prompt": "What is the role of the 'QueryClientProvider'?",
+      "options": [
+        "It provides the CSS for the DevTools",
+        "It makes the QueryClient instance available to all components in the tree",
+        "It connects the app to the Internet",
+        "It acts as a firewall for API requests"
+      ],
+      "correct": [1],
+      "explanation": "Just like Redux Provider or Context Provider, it wraps your app so hooks like useQuery can access the central cache.",
+      "interviewTip": "You usually create the QueryClient once outside the component tree."
+    }
+  ]
+}

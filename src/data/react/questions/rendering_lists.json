@@ -1,0 +1,229 @@
+{
+  "default": [
+    {
+      "id": "rl-01",
+      "stageId": "rendering_lists",
+      "type": "single",
+      "prompt": "What is the most common way to render a list in React?",
+      "options": [
+        "Using for loops in JSX",
+        "Using the map() method",
+        "Using while loops",
+        "Using JSON.stringify"
+      ],
+      "correct": [1],
+      "explanation": "Lists are typically rendered using Array.map().",
+      "interviewTip": "map() returns a new array of JSX elements."
+    },
+    {
+      "id": "rl-02",
+      "stageId": "rendering_lists",
+      "type": "single",
+      "prompt": "Why does React require a `key` prop when rendering lists?",
+      "options": [
+        "For styling purposes",
+        "To uniquely identify elements between renders",
+        "To sort the list",
+        "To improve accessibility"
+      ],
+      "correct": [1],
+      "explanation": "Keys help React track list item changes efficiently.",
+      "interviewTip": "Keys are used during reconciliation."
+    },
+    {
+      "id": "rl-03",
+      "stageId": "rendering_lists",
+      "type": "multiple",
+      "prompt": "Which values are valid choices for a `key` prop?",
+      "options": [
+        "A unique database ID",
+        "Array index",
+        "A randomly generated number on each render",
+        "A stable unique string"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Keys must be stable and unique among siblings.",
+      "interviewTip": "Indexes are discouraged if the list can change."
+    },
+    {
+      "id": "rl-04",
+      "stageId": "rendering_lists",
+      "type": "single",
+      "prompt": "What is the main problem with using array index as a key?",
+      "options": [
+        "It causes syntax errors",
+        "It breaks JSX",
+        "It can cause incorrect UI updates",
+        "It makes lists slower to render"
+      ],
+      "correct": [2],
+      "explanation": "Indexes can lead to mismatched components when items change order.",
+      "interviewTip": "This is especially problematic with dynamic lists."
+    },
+    {
+      "id": "rl-05",
+      "stageId": "rendering_lists",
+      "type": "single",
+      "prompt": "Where should the `key` prop be placed?",
+      "options": [
+        "Inside the child component",
+        "On the root element returned from map()",
+        "On the parent component",
+        "On a wrapping div outside the map"
+      ],
+      "correct": [1],
+      "explanation": "The key must be on the element directly created in the loop.",
+      "interviewTip": "React does not pass `key` as a prop."
+    },
+    {
+      "id": "rl-06",
+      "stageId": "rendering_lists",
+      "type": "single",
+      "prompt": "Will the `key` prop be available inside the component as `props.key`?",
+      "options": [
+        "Yes",
+        "No",
+        "Only in class components",
+        "Only in development mode"
+      ],
+      "correct": [1],
+      "explanation": "`key` is a special prop used internally by React.",
+      "interviewTip": "Pass another prop if the value is needed inside."
+    },
+    {
+      "id": "rl-07",
+      "stageId": "rendering_lists",
+      "type": "multiple",
+      "prompt": "Which changes in a list require stable keys to avoid bugs?",
+      "options": [
+        "Reordering items",
+        "Inserting items",
+        "Removing items",
+        "Rendering a static list once"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Any dynamic change benefits from stable keys.",
+      "interviewTip": "Static lists are less risky."
+    },
+    {
+      "id": "rl-08",
+      "stageId": "rendering_lists",
+      "type": "single",
+      "prompt": "What happens if two elements in the same list share the same key?",
+      "options": [
+        "React throws an error",
+        "React ignores one element",
+        "React may render incorrectly",
+        "Nothing happens"
+      ],
+      "correct": [2],
+      "explanation": "Duplicate keys break element identity.",
+      "interviewTip": "React may reuse the wrong component."
+    },
+    {
+      "id": "rl-09",
+      "stageId": "rendering_lists",
+      "type": "single",
+      "prompt": "How do you render a list of strings called `items`?",
+      "options": [
+        "{items.forEach(item => <li>{item}</li>)}",
+        "{items.map(item => <li key={item}>{item}</li>)}",
+        "{items.render(item)}",
+        "{items.loop(item)}"
+      ],
+      "correct": [1],
+      "explanation": "map() is required to return JSX elements.",
+      "interviewTip": "forEach does not return a new array."
+    },
+    {
+      "id": "rl-10",
+      "stageId": "rendering_lists",
+      "type": "multiple",
+      "prompt": "Which statements about rendering lists are true?",
+      "options": [
+        "Each list item must have a key",
+        "Keys must be globally unique",
+        "Keys must be unique among siblings",
+        "Keys help React optimize rendering"
+      ],
+      "correct": [0, 2, 3],
+      "explanation": "Keys are only required to be unique within the same list.",
+      "interviewTip": "Different lists can reuse the same keys."
+    },
+    {
+      "id": "rl-11",
+      "stageId": "rendering_lists",
+      "type": "single",
+      "prompt": "Can fragments be used when rendering lists?",
+      "options": [
+        "No",
+        "Yes, but only with divs",
+        "Yes, including keyed fragments",
+        "Only in class components"
+      ],
+      "correct": [2],
+      "explanation": "Fragments can have keys when used in lists.",
+      "interviewTip": "Use <React.Fragment key={...}> or <> is not enough."
+    },
+    {
+      "id": "rl-12",
+      "stageId": "rendering_lists",
+      "type": "single",
+      "prompt": "What is the correct way to render multiple elements per list item?",
+      "options": [
+        "Wrap them in an array",
+        "Wrap them in a Fragment with a key",
+        "Return multiple JSX elements without wrapping",
+        "Use document.createElement"
+      ],
+      "correct": [1],
+      "explanation": "Fragments group elements without extra DOM nodes.",
+      "interviewTip": "Keys are still required."
+    },
+    {
+      "id": "rl-13",
+      "stageId": "rendering_lists",
+      "type": "multiple",
+      "prompt": "Which scenarios make using index as key acceptable?",
+      "options": [
+        "The list never changes",
+        "The list is sorted dynamically",
+        "Items have no stable IDs",
+        "Items are added and removed"
+      ],
+      "correct": [0, 2],
+      "explanation": "Index is acceptable only for static lists.",
+      "interviewTip": "Dynamic lists should avoid index keys."
+    },
+    {
+      "id": "rl-14",
+      "stageId": "rendering_lists",
+      "type": "single",
+      "prompt": "What does React use keys for internally?",
+      "options": [
+        "Styling elements",
+        "Event delegation",
+        "Reconciliation and diffing",
+        "Memory management"
+      ],
+      "correct": [2],
+      "explanation": "Keys help React match elements between renders.",
+      "interviewTip": "This improves performance and correctness."
+    },
+    {
+      "id": "rl-15",
+      "stageId": "rendering_lists",
+      "type": "single",
+      "prompt": "If a list item component has local state, why are keys especially important?",
+      "options": [
+        "They improve CSS isolation",
+        "They prevent state from moving to the wrong item",
+        "They make components reusable",
+        "They reduce bundle size"
+      ],
+      "correct": [1],
+      "explanation": "Keys preserve component identity and state.",
+      "interviewTip": "Wrong keys can cause very subtle bugs."
+    }
+  ]
+}

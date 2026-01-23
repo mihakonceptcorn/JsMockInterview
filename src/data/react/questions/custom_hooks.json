@@ -1,0 +1,224 @@
+{
+  "default": [
+    {
+      "id": "ch-01",
+      "stageId": "custom_hooks",
+      "type": "single",
+      "prompt": "What is a custom hook in React?",
+      "options": [
+        "A built-in React hook",
+        "A function that uses other hooks",
+        "A component without JSX",
+        "A replacement for Redux"
+      ],
+      "correct": [1],
+      "explanation": "Custom hooks are functions that encapsulate reusable hook logic.",
+      "interviewTip": "They always start with the prefix `use`."
+    },
+    {
+      "id": "ch-02",
+      "stageId": "custom_hooks",
+      "type": "single",
+      "prompt": "Why must custom hooks start with the word `use`?",
+      "options": [
+        "For better readability only",
+        "React uses it to enable tree-shaking",
+        "React relies on it to enforce hook rules",
+        "It is optional but recommended"
+      ],
+      "correct": [2],
+      "explanation": "React uses naming conventions to validate hook usage.",
+      "interviewTip": "Lint rules depend on this convention."
+    },
+    {
+      "id": "ch-03",
+      "stageId": "custom_hooks",
+      "type": "multiple",
+      "prompt": "Which hooks can be used inside a custom hook?",
+      "options": ["useState", "useEffect", "useRef", "Any hook"],
+      "correct": [0, 1, 2, 3],
+      "explanation": "Custom hooks can compose any other hooks.",
+      "interviewTip": "Hooks are designed to be composable."
+    },
+    {
+      "id": "ch-04",
+      "stageId": "custom_hooks",
+      "type": "single",
+      "prompt": "Where can a custom hook be called?",
+      "options": [
+        "Inside loops",
+        "Inside conditions",
+        "Inside components or other hooks",
+        "Anywhere in the code"
+      ],
+      "correct": [2],
+      "explanation": "Custom hooks follow the same rules as built-in hooks.",
+      "interviewTip": "The Rules of Hooks still apply."
+    },
+    {
+      "id": "ch-05",
+      "stageId": "custom_hooks",
+      "type": "single",
+      "prompt": "What should a custom hook return?",
+      "options": [
+        "Only JSX",
+        "Only a single value",
+        "Anything useful for the caller",
+        "Nothing"
+      ],
+      "correct": [2],
+      "explanation": "Custom hooks can return values, objects, or functions.",
+      "interviewTip": "Returning an object improves clarity."
+    },
+    {
+      "id": "ch-06",
+      "stageId": "custom_hooks",
+      "type": "multiple",
+      "prompt": "Why are custom hooks useful?",
+      "options": [
+        "Logic reuse",
+        "Cleaner components",
+        "Better performance by default",
+        "Separation of concerns"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Custom hooks improve code organization and reuse.",
+      "interviewTip": "They don’t automatically optimize performance."
+    },
+    {
+      "id": "ch-07",
+      "stageId": "custom_hooks",
+      "type": "single",
+      "prompt": "Do multiple components using the same custom hook share state?",
+      "options": [
+        "Yes, always",
+        "Only if using context",
+        "No, each call has its own state",
+        "Only in strict mode"
+      ],
+      "correct": [2],
+      "explanation": "Each hook call creates isolated state.",
+      "interviewTip": "Custom hooks are not singletons."
+    },
+    {
+      "id": "ch-08",
+      "stageId": "custom_hooks",
+      "type": "single",
+      "prompt": "How can a custom hook accept dynamic behavior?",
+      "options": [
+        "Using props",
+        "Using parameters",
+        "Using context only",
+        "Using refs"
+      ],
+      "correct": [1],
+      "explanation": "Custom hooks receive arguments like normal functions.",
+      "interviewTip": "Parameters make hooks flexible."
+    },
+    {
+      "id": "ch-09",
+      "stageId": "custom_hooks",
+      "type": "multiple",
+      "prompt": "Which patterns are common in custom hooks?",
+      "options": [
+        "Returning state and handlers",
+        "Encapsulating side effects",
+        "Rendering JSX",
+        "Sharing logic between components"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Custom hooks focus on logic, not rendering.",
+      "interviewTip": "JSX belongs in components."
+    },
+    {
+      "id": "ch-10",
+      "stageId": "custom_hooks",
+      "type": "single",
+      "prompt": "What happens if a custom hook breaks the Rules of Hooks?",
+      "options": [
+        "Nothing",
+        "React fixes it automatically",
+        "Unexpected bugs or errors occur",
+        "Only lint warnings appear"
+      ],
+      "correct": [2],
+      "explanation": "Breaking hook rules leads to unstable behavior.",
+      "interviewTip": "Lint rules catch most mistakes."
+    },
+    {
+      "id": "ch-11",
+      "stageId": "custom_hooks",
+      "type": "single",
+      "prompt": "Can custom hooks use context?",
+      "options": [
+        "No",
+        "Only with class components",
+        "Yes, using useContext",
+        "Only one context per hook"
+      ],
+      "correct": [2],
+      "explanation": "Custom hooks can consume context like components.",
+      "interviewTip": "Great for shared app logic."
+    },
+    {
+      "id": "ch-12",
+      "stageId": "custom_hooks",
+      "type": "multiple",
+      "prompt": "Which values are safe to return from a custom hook?",
+      "options": [
+        "State values",
+        "Callback functions",
+        "Refs",
+        "DOM elements directly"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Returning DOM elements breaks encapsulation.",
+      "interviewTip": "Expose behavior, not implementation details."
+    },
+    {
+      "id": "ch-13",
+      "stageId": "custom_hooks",
+      "type": "single",
+      "prompt": "How should side effects be handled inside custom hooks?",
+      "options": [
+        "Using useEffect",
+        "Using componentDidMount",
+        "Using async render",
+        "Using refs only"
+      ],
+      "correct": [0],
+      "explanation": "Side effects belong inside `useEffect`.",
+      "interviewTip": "Custom hooks often wrap effects."
+    },
+    {
+      "id": "ch-14",
+      "stageId": "custom_hooks",
+      "type": "single",
+      "prompt": "Can a custom hook return JSX?",
+      "options": [
+        "Yes, always",
+        "Yes, but it’s discouraged",
+        "No, it will crash",
+        "Only in React 18"
+      ],
+      "correct": [1],
+      "explanation": "Hooks should focus on logic, not rendering.",
+      "interviewTip": "If it returns JSX, it’s probably a component."
+    },
+    {
+      "id": "ch-15",
+      "stageId": "custom_hooks",
+      "type": "multiple",
+      "prompt": "Which mistakes are common when writing custom hooks?",
+      "options": [
+        "Calling hooks conditionally",
+        "Forgetting dependency arrays",
+        "Using hooks inside loops",
+        "Using hooks inside other hooks"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Hooks must be called consistently.",
+      "interviewTip": "Rules apply everywhere."
+    }
+  ]
+}

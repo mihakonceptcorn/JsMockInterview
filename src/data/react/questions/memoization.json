@@ -1,0 +1,254 @@
+{
+  "default": [
+    {
+      "id": "memo-01",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "What is the core purpose of memoization in React?",
+      "options": [
+        "To store data in the browser's local storage",
+        "To avoid expensive recalculations and unnecessary re-renders",
+        "To make the code look cleaner and more modern",
+        "To handle asynchronous API calls"
+      ],
+      "correct": [1],
+      "explanation": "Memoization is an optimization technique that stores the results of expensive function calls and returns the cached result when the same inputs occur again.",
+      "interviewTip": "Always mention that memoization trades memory for speed."
+    },
+    {
+      "id": "memo-02",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "What does React.memo do for a functional component?",
+      "options": [
+        "It prevents the component from ever re-rendering",
+        "It memoizes the component's state",
+        "It skips re-rendering the component if its props haven't changed",
+        "It automatically optimizes all hooks inside the component"
+      ],
+      "correct": [2],
+      "explanation": "React.memo is a Higher Order Component that performs a shallow comparison of props to decide if a re-render is necessary.",
+      "interviewTip": "Remember that React.memo only checks props. If the component has internal state or context, it will still re-render when those change."
+    },
+    {
+      "id": "memo-03",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "When should you use the useMemo hook?",
+      "options": [
+        "To memoize a function reference",
+        "To memoize the result of a calculation",
+        "To replace the useEffect hook",
+        "To store a reference to a DOM element"
+      ],
+      "correct": [1],
+      "explanation": "useMemo is used to cache the return value of a function between re-renders.",
+      "interviewTip": "Use it when you have a 'computationally expensive' operation, like filtering a large array."
+    },
+    {
+      "id": "memo-04",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "What is the primary difference between useMemo and useCallback?",
+      "options": [
+        "useMemo is for variables, useCallback is for state",
+        "useMemo returns a memoized value, useCallback returns a memoized function",
+        "useMemo is faster than useCallback",
+        "useCallback is only for class components"
+      ],
+      "correct": [1],
+      "explanation": "useMemo(fn, deps) calls the function and returns the result. useCallback(fn, deps) returns the function itself without calling it.",
+      "interviewTip": "useCallback(fn, deps) is essentially the same as useMemo(() => fn, deps)."
+    },
+    {
+      "id": "memo-05",
+      "stageId": "memoization",
+      "type": "multiple",
+      "prompt": "Why might a component wrapped in React.memo still re-render even if the 'visible' props look the same?",
+      "options": [
+        "A prop is an object or array created newly on every parent render",
+        "The component uses an internal useState hook that updated",
+        "The component is consuming a Context that changed",
+        "React.memo is bugged in the current version"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "React.memo uses shallow comparison. New object references (`{}` !== `{}`) trigger re-renders. State and Context changes always bypass React.memo.",
+      "interviewTip": "This is why useCallback is critical when passing functions as props to memoized children."
+    },
+    {
+      "id": "memo-06",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "What happens if you omit the dependency array in useMemo?",
+      "options": [
+        "The value is memoized forever",
+        "The value is recalculated on every single render",
+        "React throws a compilation error",
+        "The hook does nothing"
+      ],
+      "correct": [1],
+      "explanation": "Without a dependency array, useMemo has nothing to compare against, so it executes the function every time the component renders.",
+      "interviewTip": "Always provide a dependency array, even if it's empty `[]` to run it only once."
+    },
+    {
+      "id": "memo-07",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "Is it a good idea to wrap every single component in React.memo?",
+      "options": [
+        "Yes, it makes the whole app faster",
+        "No, the overhead of prop comparison can sometimes cost more than the render itself",
+        "Yes, but only in production mode",
+        "No, because it disables the useEffect hook"
+      ],
+      "correct": [1],
+      "explanation": "Over-memoization adds memory overhead and comparison logic. Use it only for heavy components or those that re-render frequently with the same props.",
+      "interviewTip": "Premature optimization is the root of all evil. Measure first, then memoize."
+    },
+    {
+      "id": "memo-08",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "How does React.memo compare complex props by default?",
+      "options": [
+        "Deep equality check (recursively checks all levels)",
+        "Shallow equality check (checks top-level reference/values)",
+        "It doesn't compare them at all",
+        "Using JSON.stringify"
+      ],
+      "correct": [1],
+      "explanation": "React.memo uses shallow comparison. For nested objects, it only checks if the reference is the same, not the content inside.",
+      "interviewTip": "You can provide a custom comparison function as the second argument to React.memo for deep checks."
+    },
+    {
+      "id": "memo-09",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "Which hook should be used to prevent a useEffect from firing unnecessarily when a function is in its dependency array?",
+      "options": ["useMemo", "useRef", "useCallback", "useState"],
+      "correct": [2],
+      "explanation": "If a function is defined inside a component, its reference changes every render. useCallback keeps the reference stable so useEffect doesn't trigger unless actual dependencies change.",
+      "interviewTip": "This is the most common real-world use case for useCallback."
+    },
+    {
+      "id": "memo-10",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "What is the result of useMemo(() => [1, 2, 3], []) called twice?",
+      "options": [
+        "Two different array references",
+        "The exact same array reference",
+        "A syntax error",
+        "An object instead of an array"
+      ],
+      "correct": [1],
+      "explanation": "Because the dependency array is empty, React returns the memoized reference of the first execution on all subsequent renders.",
+      "interviewTip": "Empty dependency arrays are used for 'on-mount' memoization."
+    },
+    {
+      "id": "memo-11",
+      "stageId": "memoization",
+      "type": "multiple",
+      "prompt": "Which of the following are 'expensive' enough to justify useMemo?",
+      "options": [
+        "Adding two numbers",
+        "Sorting a list of 5,000 items",
+        "Mapping a small array of 5 strings",
+        "Complex data transformations from an API response"
+      ],
+      "correct": [1, 3],
+      "explanation": "Simple arithmetic or small loops are so fast that memoization overhead is actually slower. Save useMemo for heavy logic or large data sets.",
+      "interviewTip": "If you can't feel a lag, you probably don't need useMemo."
+    },
+    {
+      "id": "memo-12",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "What is 'Referential Integrity' in the context of React memoization?",
+      "options": [
+        "Ensuring the database is correct",
+        "Maintaining the same memory reference for objects/functions to prevent re-renders",
+        "Validating that all props are passed to a component",
+        "A feature of the React Profiler"
+      ],
+      "correct": [1],
+      "explanation": "Maintaining referential integrity means ensuring that an object or function doesn't get a new memory address unless its data actually changes.",
+      "interviewTip": "Stable references are what allow React.memo and dependency arrays to work correctly."
+    },
+    {
+      "id": "memo-13",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "Can useMemo be used for side effects (like data fetching)?",
+      "options": [
+        "Yes, it's a common pattern",
+        "No, useMemo should be a pure function without side effects",
+        "Only if the side effect is synchronous",
+        "Yes, if you return a Promise"
+      ],
+      "correct": [1],
+      "explanation": "The function passed to useMemo runs during rendering. Side effects belong in useEffect, not in the render phase.",
+      "interviewTip": "Rendering should be pure. Never trigger an API call or change the DOM inside useMemo."
+    },
+    {
+      "id": "memo-14",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "How can the React Profiler help with memoization?",
+      "options": [
+        "It automatically memoizes slow components",
+        "It identifies which components are re-rendering and why",
+        "It replaces the need for useCallback",
+        "It minifies the code"
+      ],
+      "correct": [1],
+      "explanation": "The Profiler shows which components 'Wasted' a render (rendered when nothing changed), helping you target where to apply memoization.",
+      "interviewTip": "Use the 'Record why each component rendered' option in DevTools."
+    },
+    {
+      "id": "memo-15",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "In React 18 and beyond, does React guarantee that a memoized value will always stay in memory?",
+      "options": [
+        "Yes, it is permanent",
+        "No, React may discard memoized values to free up resources",
+        "Only if it's stored in a Ref",
+        "Only in development mode"
+      ],
+      "correct": [1],
+      "explanation": "React documentation states that useMemo is a hint, not a guarantee. React may choose to clear memory and recalculate the value.",
+      "interviewTip": "Don't rely on useMemo for semantic correctness (e.g., ensuring a code block runs only once); use it only for performance."
+    },
+    {
+      "id": "memo-16",
+      "stageId": "memoization",
+      "type": "multiple",
+      "prompt": "Which of these are valid reasons to use useCallback?",
+      "options": [
+        "Preventing a child component from re-rendering when the function is a prop",
+        "Satisfying the dependency array of another hook like useEffect",
+        "Making a function run faster",
+        "Avoiding function recreation to save memory"
+      ],
+      "correct": [0, 1],
+      "explanation": "Recreating a function is actually very cheap; the benefit is strictly about keeping the *reference* stable for other React features.",
+      "interviewTip": "Most beginners think it's about the speed of creating the function. It's actually about the downstream re-renders."
+    },
+    {
+      "id": "memo-17",
+      "stageId": "memoization",
+      "type": "single",
+      "prompt": "What is the custom comparison function signature for React.memo?",
+      "options": [
+        "(props) => boolean",
+        "(prevProps, nextProps) => boolean",
+        "(oldValue, newValue) => void",
+        "It doesn't take a function"
+      ],
+      "correct": [1],
+      "explanation": "It takes two arguments (prevProps and nextProps) and should return true if the props are equal (meaning DO NOT re-render).",
+      "interviewTip": "Note that this is the opposite of `shouldComponentUpdate` logic in some ways, so be careful with the boolean return."
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "default": [
+    {
+      "id": "rd-01",
+      "stageId": "refs_dom",
+      "type": "single",
+      "prompt": "What is the primary purpose of refs in React?",
+      "options": [
+        "To manage component state",
+        "To access DOM elements directly",
+        "To replace props",
+        "To trigger re-renders"
+      ],
+      "correct": [1],
+      "explanation": "Refs provide direct access to DOM nodes or React elements.",
+      "interviewTip": "Refs are an escape hatch from React's declarative model."
+    },
+    {
+      "id": "rd-02",
+      "stageId": "refs_dom",
+      "type": "single",
+      "prompt": "Which hook is commonly used to create refs in function components?",
+      "options": ["useState", "useEffect", "useRef", "useMemo"],
+      "correct": [2],
+      "explanation": "`useRef` creates a mutable ref object.",
+      "interviewTip": "The ref object persists across renders."
+    },
+    {
+      "id": "rd-03",
+      "stageId": "refs_dom",
+      "type": "multiple",
+      "prompt": "Which values can be stored inside a ref created with `useRef`?",
+      "options": [
+        "DOM elements",
+        "Mutable values",
+        "Derived state",
+        "Component instances"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Refs can store any mutable value without causing re-renders.",
+      "interviewTip": "Refs are not limited to DOM usage."
+    },
+    {
+      "id": "rd-04",
+      "stageId": "refs_dom",
+      "type": "single",
+      "prompt": "What property holds the actual ref value?",
+      "options": ["value", "current", "ref", "node"],
+      "correct": [1],
+      "explanation": "The ref value is stored on the `current` property.",
+      "interviewTip": "`ref.current` is mutable."
+    },
+    {
+      "id": "rd-05",
+      "stageId": "refs_dom",
+      "type": "single",
+      "prompt": "What happens when a ref value changes?",
+      "options": [
+        "The component re-renders",
+        "React throws an error",
+        "Nothing automatically happens",
+        "Props are recalculated"
+      ],
+      "correct": [2],
+      "explanation": "Updating a ref does not trigger a re-render.",
+      "interviewTip": "This is a key difference from state."
+    },
+    {
+      "id": "rd-06",
+      "stageId": "refs_dom",
+      "type": "multiple",
+      "prompt": "Which use cases are appropriate for refs?",
+      "options": [
+        "Managing focus",
+        "Storing timers or intervals",
+        "Form input values for rendering",
+        "Imperative animations"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Refs are suited for imperative, non-render logic.",
+      "interviewTip": "Avoid using refs for render data."
+    },
+    {
+      "id": "rd-07",
+      "stageId": "refs_dom",
+      "type": "single",
+      "prompt": "How do you attach a ref to a DOM element?",
+      "options": [
+        "ref={myRef}",
+        "useRef(myRef)",
+        "domRef={myRef}",
+        "attachRef={myRef}"
+      ],
+      "correct": [0],
+      "explanation": "The `ref` attribute connects the ref to the element.",
+      "interviewTip": "Works only on DOM elements by default."
+    },
+    {
+      "id": "rd-08",
+      "stageId": "refs_dom",
+      "type": "single",
+      "prompt": "What is the initial value of `useRef(null)`?",
+      "options": ["undefined", "null", "false", "An empty object"],
+      "correct": [1],
+      "explanation": "Refs are commonly initialized with `null`.",
+      "interviewTip": "DOM node is assigned after mount."
+    },
+    {
+      "id": "rd-09",
+      "stageId": "refs_dom",
+      "type": "multiple",
+      "prompt": "Which statements about refs are true?",
+      "options": [
+        "Refs survive re-renders",
+        "Refs trigger updates when changed",
+        "Refs can be passed as props",
+        "Refs are mutable"
+      ],
+      "correct": [0, 2, 3],
+      "explanation": "Refs are mutable and persistent but do not cause re-renders.",
+      "interviewTip": "Passing refs requires special handling."
+    },
+    {
+      "id": "rd-10",
+      "stageId": "refs_dom",
+      "type": "single",
+      "prompt": "Why should refs be used sparingly?",
+      "options": [
+        "They are deprecated",
+        "They break the declarative model",
+        "They slow down rendering",
+        "They only work in class components"
+      ],
+      "correct": [1],
+      "explanation": "Refs introduce imperative logic.",
+      "interviewTip": "Prefer state and props when possible."
+    },
+    {
+      "id": "rd-11",
+      "stageId": "refs_dom",
+      "type": "single",
+      "prompt": "How can a parent access a child DOM node?",
+      "options": [
+        "Using props",
+        "Using context",
+        "Using forwardRef",
+        "Using useMemo"
+      ],
+      "correct": [2],
+      "explanation": "`forwardRef` allows refs to be passed to child components.",
+      "interviewTip": "Required for custom components."
+    },
+    {
+      "id": "rd-12",
+      "stageId": "refs_dom",
+      "type": "multiple",
+      "prompt": "Which APIs help control ref exposure?",
+      "options": ["forwardRef", "useImperativeHandle", "useCallback", "memo"],
+      "correct": [0, 1],
+      "explanation": "These APIs customize how refs behave.",
+      "interviewTip": "Useful for component libraries."
+    },
+    {
+      "id": "rd-13",
+      "stageId": "refs_dom",
+      "type": "single",
+      "prompt": "When is a DOM ref guaranteed to be available?",
+      "options": [
+        "During render",
+        "Before component mounts",
+        "After the component mounts",
+        "Before hooks run"
+      ],
+      "correct": [2],
+      "explanation": "Refs are set after the component mounts.",
+      "interviewTip": "Access refs inside effects."
+    },
+    {
+      "id": "rd-14",
+      "stageId": "refs_dom",
+      "type": "single",
+      "prompt": "What is a common mistake when using refs?",
+      "options": [
+        "Using them in effects",
+        "Using them instead of state",
+        "Initializing them with null",
+        "Passing them to DOM elements"
+      ],
+      "correct": [1],
+      "explanation": "State should control rendering logic.",
+      "interviewTip": "Refs should not drive UI."
+    },
+    {
+      "id": "rd-15",
+      "stageId": "refs_dom",
+      "type": "multiple",
+      "prompt": "Which operations are commonly done with DOM refs?",
+      "options": [
+        "Calling focus()",
+        "Measuring element size",
+        "Conditionally rendering JSX",
+        "Scrolling elements into view"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Refs are ideal for DOM measurements and actions.",
+      "interviewTip": "Great for UI effects."
+    }
+  ]
+}
