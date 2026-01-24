@@ -1,0 +1,259 @@
+{
+  "default": [
+    {
+      "id": "of-01",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "What is the core philosophy of 'Offline-First' design?",
+      "options": [
+        "The app only works when there is no internet",
+        "The app treats local storage as the primary data source and syncs with the server in the background",
+        "The app shows a full-screen 'No Internet' error until connection returns",
+        "The app disables all features except for local settings"
+      ],
+      "correct": [1],
+      "explanation": "Offline-first ensures the user can always interact with existing data and perform actions that will be synced later.",
+      "interviewTip": "Mention that this approach drastically improves perceived performance (Latency Compensation)."
+    },
+    {
+      "id": "of-02",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "Which library is commonly used to monitor the device's current network connection status?",
+      "options": [
+        "NetInfo (@react-native-community/netinfo)",
+        "NetworkManager",
+        "ConnectivityHook",
+        "WebsocketStatus"
+      ],
+      "correct": [0],
+      "explanation": "NetInfo provides a hook and a listener to detect if the user is on Wi-Fi, Cellular, or Offline.",
+      "interviewTip": "Use this to show a 'Back Online' toast or to pause heavy background syncs."
+    },
+    {
+      "id": "of-03",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "What is an 'Optimistic UI' update?",
+      "options": [
+        "Thinking positively that the server will never fail",
+        "Updating the UI immediately as if the server request succeeded, then rolling back if it fails",
+        "Showing a loading spinner for every action",
+        "Only updating the UI after the server returns a 200 OK"
+      ],
+      "correct": [1],
+      "explanation": "This makes the app feel instant. If a user 'Likes' a post, the heart turns red immediately while the network request happens in the background.",
+      "interviewTip": "TanStack Query (React Query) has built-in support for optimistic updates via the 'onMutate' callback."
+    },
+    {
+      "id": "of-04",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "How do you handle actions performed while offline (like sending a message)?",
+      "options": [
+        "Store the actions in a 'Sync Queue' in local storage and process them when the connection returns",
+        "Discard the actions and ask the user to try again later",
+        "Keep the app open until the internet returns",
+        "Reboot the app"
+      ],
+      "correct": [0],
+      "explanation": "A sync queue ensures that user intent is preserved and executed as soon as connectivity is restored.",
+      "interviewTip": "Redux Offline or custom logic with AsyncStorage/MMKV are common ways to implement this queue."
+    },
+    {
+      "id": "of-05",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "What is 'Conflict Resolution' in data syncing?",
+      "options": [
+        "Handling arguments between developers",
+        "Determining which version of data (local or server) is 'correct' when both have changed",
+        "Deleting all data to start fresh",
+        "Stopping the app from crashing"
+      ],
+      "correct": [1],
+      "explanation": "Standard strategies include 'Last Write Wins', 'Server Wins', or a custom merge of the two datasets.",
+      "interviewTip": "Mention 'CRDTs' (Conflict-free Replicated Data Types) for advanced real-time collaborative apps like Google Docs."
+    },
+    {
+      "id": "of-06",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "What is the role of a 'Service Worker' equivalent in React Native for offline support?",
+      "options": [
+        "Headless JS",
+        "Background Tasks (e.g., expo-task-manager)",
+        "There is no equivalent",
+        "Both A and B"
+      ],
+      "correct": [3],
+      "explanation": "While RN doesn't have Web Service Workers, it uses Headless JS (Android) and Task Manager (Expo/iOS) to run sync logic in the background.",
+      "interviewTip": "This allows the app to sync data even if the user isn't actively looking at the screen."
+    },
+    {
+      "id": "of-07",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "Why is 'WatermelonDB' specifically praised for offline-first apps?",
+      "options": [
+        "It is named after a fruit",
+        "It is highly optimized for synchronization and only loads data when needed (lazy loading)",
+        "It works only when offline",
+        "It automatically provides a backend server"
+      ],
+      "correct": [1],
+      "explanation": "It is built on top of SQLite but designed to handle massive amounts of data in a 'reactive' way, keeping the UI synced with the local DB.",
+      "interviewTip": "WatermelonDB is built for speed and scales to tens of thousands of records without slowing down the JS thread."
+    },
+    {
+      "id": "of-08",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "What does 'Rehydration' mean in the context of state management?",
+      "options": [
+        "Adding water to the phone",
+        "Loading saved state from local storage back into the app's memory (e.g., Redux store) on startup",
+        "Refreshing the API data",
+        "Cleaning the app cache"
+      ],
+      "correct": [1],
+      "explanation": "This allows the user to see their data immediately on app launch, even before the first network request finishes.",
+      "interviewTip": "Redux Persist is the most famous library for handling rehydration automatically."
+    },
+    {
+      "id": "of-09",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "What is an 'Exponential Backoff' strategy?",
+      "options": [
+        "Retrying a failed network request with increasing delays between attempts",
+        "Giving up on a request immediately",
+        "Retrying exactly every 5 seconds",
+        "A way to encrypt data"
+      ],
+      "correct": [0],
+      "explanation": "This prevents overwhelming the server or draining the battery when the network is flaky.",
+      "interviewTip": "Example: Retry after 1s, then 2s, 4s, 8s, etc."
+    },
+    {
+      "id": "of-10",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "How should images be handled in an offline-first app?",
+      "options": [
+        "Images cannot be viewed offline",
+        "By using an aggressive caching library like 'react-native-fast-image' or 'expo-image'",
+        "By converting all images to text",
+        "By asking the user to download them manually"
+      ],
+      "correct": [1],
+      "explanation": "These libraries store the image binary on the disk, so if the user views a profile while online, they can still see it while offline.",
+      "interviewTip": "For critical assets, you can pre-fetch them using `Image.prefetch()`."
+    },
+    {
+      "id": "of-11",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "What is the purpose of 'Idempotency Keys' in offline syncing?",
+      "options": [
+        "To unlock the database",
+        "To ensure that if a request is sent multiple times due to a retry, the server only processes it once",
+        "To identify the user's device",
+        "To encrypt the sync queue"
+      ],
+      "correct": [1],
+      "explanation": "If the app sends a 'Charge Card' request, loses connection, and retries, the server uses the key to avoid charging the user twice.",
+      "interviewTip": "This is a critical backend pattern for any app that handles payments or unique transactions."
+    },
+    {
+      "id": "of-12",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "What is 'Stale-While-Revalidate'?",
+      "options": [
+        "Showing old (stale) data from cache while fetching new data in the background",
+        "Deleting old data immediately",
+        "A way to speed up the server",
+        "A security protocol"
+      ],
+      "correct": [0],
+      "explanation": "This ensures the user isn't looking at a blank loading screen, even if the cached data is slightly out of date.",
+      "interviewTip": "This is the default strategy for TanStack Query (React Query)."
+    },
+    {
+      "id": "of-13",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "In an offline app, why use UUIDs (client-side) instead of server-generated IDs?",
+      "options": [
+        "UUIDs are shorter",
+        "To allow the creation of new records while offline that don't conflict when synced later",
+        "Servers cannot generate IDs anymore",
+        "For better SEO"
+      ],
+      "correct": [1],
+      "explanation": "If the user creates 5 'Notes' while offline, they need unique IDs immediately so they can be edited or deleted before they ever reach the server.",
+      "interviewTip": "Libraries like 'uuid' or 'nanoid' are perfect for this."
+    },
+    {
+      "id": "of-14",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "What is the danger of a 'Sync Loop'?",
+      "options": [
+        "The app becomes too fast",
+        "The app and server keep triggering each other to update, draining battery and data",
+        "The app gets stuck in a loading state",
+        "The user is logged out"
+      ],
+      "correct": [1],
+      "explanation": "This usually happens when a sync triggers a change that the app thinks is 'new', causing it to sync again.",
+      "interviewTip": "Always compare timestamps or hash values before triggering a sync to ensure data has actually changed."
+    },
+    {
+      "id": "of-15",
+      "stageId": "offline_first",
+      "type": "multiple",
+      "prompt": "Which of these are valid ways to trigger a data sync?",
+      "options": [
+        "When the app comes to the foreground",
+        "When the 'NetInfo' status changes to 'online'",
+        "At a fixed time interval (Background Fetch)",
+        "When the user shakes the phone"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "A robust sync strategy uses a combination of these triggers to keep data as fresh as possible.",
+      "interviewTip": "Avoid syncing too often on cellular data; respect the user's data plan."
+    },
+    {
+      "id": "of-16",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "What is 'Background Fetch'?",
+      "options": [
+        "Downloading images",
+        "An OS-level feature that gives your app a few seconds to run code and fetch data even while closed",
+        "A way to fetch data from a hidden API",
+        "A method to search through the background"
+      ],
+      "correct": [1],
+      "explanation": "iOS and Android periodically wake up apps they think the user will open soon to let them update their cache.",
+      "interviewTip": "You don't control the frequency; the OS decides based on user behavior (Machine Learning)."
+    },
+    {
+      "id": "of-17",
+      "stageId": "offline_first",
+      "type": "single",
+      "prompt": "What is the 'Delta Sync' pattern?",
+      "options": [
+        "Syncing only the changes (diff) since the last successful sync instead of the whole database",
+        "Syncing data only for users in the Delta region",
+        "A way to delete old records",
+        "Syncing data via Bluetooth"
+      ],
+      "correct": [0],
+      "explanation": "Delta sync is much faster and uses significantly less data than a full re-download of all resources.",
+      "interviewTip": "This usually requires the backend to support 'since' or 'version' parameters in the API."
+    }
+  ]
+}

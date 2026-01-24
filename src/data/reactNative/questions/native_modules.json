@@ -1,0 +1,259 @@
+{
+  "default": [
+    {
+      "id": "nm-01",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "What is the primary purpose of creating a Native Module?",
+      "options": [
+        "To make the JavaScript code run faster",
+        "To access platform-specific APIs or libraries that are not yet available in React Native",
+        "To replace the Redux store with a native database",
+        "To minify the app bundle"
+      ],
+      "correct": [1],
+      "explanation": "Native Modules allow you to 'bridge' custom native functionality (like a specialized SDK) so it can be called from JavaScript.",
+      "interviewTip": "Use this as the 'nuclear option' when no community library exists for your specific hardware or SDK requirement."
+    },
+    {
+      "id": "nm-02",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "In the 'Legacy' architecture, which macro is used in Objective-C to export a class to React Native?",
+      "options": [
+        "RCT_EXPORT_MODULE()",
+        "REACT_NATIVE_CLASS",
+        "BRIDGE_EXPORT",
+        "MODULE_NAME()"
+      ],
+      "correct": [0],
+      "explanation": "RCT_EXPORT_MODULE() tells the Bridge that this class should be accessible in the NativeModules object in JS.",
+      "interviewTip": "RCT stands for 'ReaCT'."
+    },
+    {
+      "id": "nm-03",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "How do you pass a value back to JavaScript from a Native Method asynchronously?",
+      "options": [
+        "Using return statements",
+        "Using Callbacks or Promises",
+        "By updating a global variable",
+        "Native modules cannot return values"
+      ],
+      "correct": [1],
+      "explanation": "Because the Bridge is asynchronous, native methods use Callbacks or Promises to send data back to the JS thread.",
+      "interviewTip": "Promises are generally preferred as they allow for cleaner 'async/await' syntax in JavaScript."
+    },
+    {
+      "id": "nm-04",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "What is 'JSI' (JavaScript Interface) in the New Architecture?",
+      "options": [
+        "A way to write CSS in Java",
+        "A C++ layer that allows JS to hold a direct reference to native objects, removing the need for JSON serialization",
+        "A new debugging tool",
+        "A replacement for NPM"
+      ],
+      "correct": [1],
+      "explanation": "JSI allows for synchronous communication and shared memory, making the interaction between JS and Native much faster.",
+      "interviewTip": "JSI is what enables the high performance of libraries like 'react-native-reanimated' and 'react-native-mmkv'."
+    },
+    {
+      "id": "nm-05",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "In Android, which Java/Kotlin class must you extend to create a Native Module?",
+      "options": [
+        "ReactContextBaseJavaModule",
+        "AndroidNativeModule",
+        "JSBridgeModule",
+        "ReactActivity"
+      ],
+      "correct": [0],
+      "explanation": "Every Android native module must extend ReactContextBaseJavaModule and implement the 'getName' method.",
+      "interviewTip": "The 'getName' method determines the name of the module in JavaScript (e.g., NativeModules.MyModule)."
+    },
+    {
+      "id": "nm-06",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "What is the purpose of the '@ReactMethod' annotation in Android?",
+      "options": [
+        "To style a component",
+        "To mark a native method so it can be called from JavaScript",
+        "To speed up the Java compiler",
+        "To debug the code"
+      ],
+      "correct": [1],
+      "explanation": "Without this annotation, the Bridge will not 'see' the method, and it won't be exposed to JS.",
+      "interviewTip": "Methods marked with @ReactMethod must have a 'void' return type in the legacy bridge."
+    },
+    {
+      "id": "nm-07",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "What are 'TurboModules'?",
+      "options": [
+        "Modules that make the internet faster",
+        "The New Architecture's evolution of Native Modules, allowing for lazy-loading and better performance via JSI",
+        "A tool for automatic code generation",
+        "A library for fast animations"
+      ],
+      "correct": [1],
+      "explanation": "TurboModules are loaded only when needed (lazy-loading) and provide better type-safety and performance than the old Bridge modules.",
+      "interviewTip": "TurboModules are part of the 'New Architecture' rollout alongside Fabric (the renderer)."
+    },
+    {
+      "id": "nm-08",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "How do you send an Event from Native to JavaScript (e.g., a sensor update) without JS calling a method?",
+      "options": [
+        "It's not possible",
+        "Using 'RCTDeviceEventEmitter' (iOS) or 'DeviceEventManagerModule' (Android)",
+        "By calling a JS function directly",
+        "Using a global variable"
+      ],
+      "correct": [1],
+      "explanation": "Native code can broadcast events that JS listeners can subscribe to, which is ideal for real-time data like battery level changes.",
+      "interviewTip": "In JS, you use the 'NativeEventEmitter' class to listen for these events."
+    },
+    {
+      "id": "nm-09",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "What is 'Codegen' in the New Architecture?",
+      "options": [
+        "A tool that generates icons",
+        "A tool that generates the native C++ 'glue code' based on TypeScript/Flow definitions",
+        "A method for compressing JavaScript",
+        "A code obfuscation tool"
+      ],
+      "correct": [1],
+      "explanation": "Codegen ensures that the data structures sent between JS and Native are perfectly synced, reducing errors and improving performance.",
+      "interviewTip": "Codegen forces you to define your Native Module interface in TypeScript first, ensuring type-safety across both platforms."
+    },
+    {
+      "id": "nm-10",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "What is the role of a 'ReactPackage' in Android?",
+      "options": [
+        "To zip the app files",
+        "To register your Native Modules and View Managers with the React Native runtime",
+        "To manage NPM dependencies",
+        "To handle the app's theme"
+      ],
+      "correct": [1],
+      "explanation": "You must add your module to a ReactPackage and then add that package to the 'getPackages' list in MainApplication.java.",
+      "interviewTip": "Autolinking now handles most of this, but you still need to know it for manual integrations."
+    },
+    {
+      "id": "nm-11",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "What is a 'Native UI Component' (or View Manager)?",
+      "options": [
+        "A standard <View>",
+        "A way to wrap a custom Native View (like a specialized Video player) for use as a React component",
+        "A button provided by the OS",
+        "A tool for designing UI in Xcode"
+      ],
+      "correct": [1],
+      "explanation": "Unlike Native Modules (which are for logic), View Managers allow you to use custom native UI elements in your JSX.",
+      "interviewTip": "This involves mapping native props and events (like 'onVideoEnd') to React props."
+    },
+    {
+      "id": "nm-12",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "Can Native Modules run on the Main (UI) Thread?",
+      "options": [
+        "No, they always run on a separate background thread",
+        "Yes, but you must explicitly dispatch the logic to the main thread (e.g., for UI updates)",
+        "They only run on the UI thread",
+        "They run on the JS thread"
+      ],
+      "correct": [1],
+      "explanation": "By default, native modules run on their own 'native' thread. If you need to touch the UI, you must use 'dispatch_async(dispatch_get_main_queue(), ...)' on iOS or 'runOnUiThread' on Android.",
+      "interviewTip": "Touching the UI from a background thread will cause the app to crash."
+    },
+    {
+      "id": "nm-13",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "What is 'Autolinking'?",
+      "options": [
+        "A feature that connects your phone to the computer",
+        "The process where the CLI finds and links native dependencies automatically during build time",
+        "Automatically writing native code for you",
+        "A way to link two apps together"
+      ],
+      "correct": [1],
+      "explanation": "Before Autolinking, you had to manually edit Java and Objective-C files for every library you installed.",
+      "interviewTip": "Autolinking relies on a library having a '.podspec' (iOS) and a specific Gradle setup (Android)."
+    },
+    {
+      "id": "nm-14",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "What happens if a Native Module method isn't exported correctly?",
+      "options": [
+        "The app crashes immediately",
+        "The method will be 'undefined' on the NativeModules object in JavaScript",
+        "The app will be slow",
+        "React Native will show a yellow warning"
+      ],
+      "correct": [1],
+      "explanation": "The most common sign of a failed bridge is that the function you are trying to call simply doesn't exist on the imported object.",
+      "interviewTip": "Always check for 'undefined' when debugging new native modules."
+    },
+    {
+      "id": "nm-15",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "What is the purpose of 'constantsToExport' in a Native Module?",
+      "options": [
+        "To define the app's name",
+        "To provide static values from Native to JS that don't change (e.g., file paths or system constants)",
+        "To store the user's settings",
+        "To define the version of React Native"
+      ],
+      "correct": [1],
+      "explanation": "Constants are sent to JS only once during the bridge initialization, making them available synchronously.",
+      "interviewTip": "Use this for 'setup' data that you need as soon as the app starts."
+    },
+    {
+      "id": "nm-16",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "In the New Architecture, what is 'Fabric'?",
+      "options": [
+        "A library for animations",
+        "The new UI rendering system that allows for synchronous layout and better integration with C++",
+        "A styling tool",
+        "A testing framework"
+      ],
+      "correct": [1],
+      "explanation": "Fabric is the counterpart to TurboModules, handling how UI components are rendered and laid out in the new system.",
+      "interviewTip": "Fabric makes React Native feel more like a truly native app by reducing the async 'flash' in complex layouts."
+    },
+    {
+      "id": "nm-17",
+      "stageId": "native_modules",
+      "type": "single",
+      "prompt": "How do you handle 'Native Bridge' errors in JavaScript?",
+      "options": [
+        "Using a try/catch block around the async native method call",
+        "By checking the console logs only",
+        "Using an Error Boundary",
+        "Bridge errors cannot be caught"
+      ],
+      "correct": [0],
+      "explanation": "If a native module Promise is rejected, it will trigger an error in JS that you can catch and handle gracefully.",
+      "interviewTip": "Good native modules always provide meaningful error codes and messages in their rejections."
+    }
+  ]
+}

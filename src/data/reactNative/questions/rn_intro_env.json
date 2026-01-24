@@ -1,0 +1,259 @@
+{
+  "default": [
+    {
+      "id": "rie-01",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What is the primary difference between React and React Native?",
+      "options": [
+        "React uses a Virtual DOM, while React Native uses the Real DOM",
+        "React is for web browsers; React Native invokes native platform APIs to render components",
+        "React Native is a framework for building web apps with native look",
+        "React Native does not use JavaScript"
+      ],
+      "correct": [1],
+      "explanation": "React Native uses the same React paradigm but maps components like <View> to native Android/iOS views instead of HTML elements.",
+      "interviewTip": "Highlight that RN doesn't use a browser or WebView for its standard UI."
+    },
+    {
+      "id": "rie-02",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "In the 'Bridge' architecture, how do the JavaScript and Native sides communicate?",
+      "options": [
+        "Through direct shared memory access",
+        "Via asynchronous JSON messages sent over a bridge",
+        "By compiling JavaScript directly into Java or Objective-C",
+        "Through synchronous binary streaming"
+      ],
+      "correct": [1],
+      "explanation": "The Bridge acts as a transport layer that serializes JSON messages to communicate between the JS thread and the Native threads.",
+      "interviewTip": "Mention that the Bridge is asynchronous, which prevents UI blocking but can be a bottleneck."
+    },
+    {
+      "id": "rie-03",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What is 'Hermes' in the context of React Native?",
+      "options": [
+        "A layout engine for Flexbox",
+        "An open-source JavaScript engine optimized for mobile apps",
+        "A tool for managing native dependencies",
+        "A debugging tool for network requests"
+      ],
+      "correct": [1],
+      "explanation": "Hermes is a JS engine developed by Meta to improve start-up time and reduce the app bundle size by pre-compiling bytecode.",
+      "interviewTip": "Hermes is now the default engine in modern React Native versions."
+    },
+    {
+      "id": "rie-04",
+      "stageId": "rn_intro_env",
+      "type": "multiple",
+      "prompt": "What are the main advantages of using Expo over React Native CLI?",
+      "options": [
+        "Managed workflow with automatic build tools (EAS)",
+        "No need for Android Studio or Xcode for initial development",
+        "Easier access to OTA (Over-The-Air) updates",
+        "Ability to add custom C++ native modules without config plugins"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Expo simplifies the development process by handling native complexity. However, adding custom native code traditionally required 'Ejecting' (now Expo Prebuild).",
+      "interviewTip": "Modern Expo (EAS) now allows almost anything the CLI does while keeping the managed benefits."
+    },
+    {
+      "id": "rie-05",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What is the 'Yoga' engine used for in React Native?",
+      "options": [
+        "Executing JavaScript code",
+        "Calculating the layout based on Flexbox styles",
+        "Handling touch gestures",
+        "Managing state updates"
+      ],
+      "correct": [1],
+      "explanation": "Yoga is a C++ library that implements Flexbox, allowing RN to calculate component positions across different platforms.",
+      "interviewTip": "Yoga ensures that Flexbox layouts look consistent on both iOS and Android."
+    },
+    {
+      "id": "rie-06",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What is 'JSI' (JavaScript Interface) in the New Architecture?",
+      "options": [
+        "A replacement for JSON.stringify",
+        "A layer that allows JS to hold a direct reference to Native Objects",
+        "A new way to write CSS in JS",
+        "A tool for server-side rendering"
+      ],
+      "correct": [1],
+      "explanation": "JSI removes the need for JSON serialization over the Bridge, allowing for synchronous and much faster communication.",
+      "interviewTip": "JSI is the foundation for Fabric and TurboModules."
+    },
+    {
+      "id": "rie-07",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "Which thread is responsible for handling layouts and UI rendering?",
+      "options": [
+        "JavaScript Thread",
+        "Main Thread (UI Thread)",
+        "Shadow Thread",
+        "Background Thread"
+      ],
+      "correct": [2],
+      "explanation": "The Main Thread (UI Thread) is responsible for rendering views and processing user touches on the device.",
+      "interviewTip": "If the JS thread hangs, animations on the UI thread (like a spinner) can still run if they aren't controlled by JS."
+    },
+    {
+      "id": "rie-08",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What is the purpose of the 'Shadow Thread'?",
+      "options": [
+        "To run background tasks",
+        "To calculate layout dimensions before sending them to the UI thread",
+        "To handle security and encryption",
+        "To manage the Redux store"
+      ],
+      "correct": [1],
+      "explanation": "The Shadow Thread uses the Yoga engine to transform the JS-based layout instructions into coordinates the native side understands.",
+      "interviewTip": "This thread offloads math calculations so the Main Thread stays free for rendering."
+    },
+    {
+      "id": "rie-09",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What does 'Metro' do in a React Native project?",
+      "options": [
+        "It manages the database",
+        "It is the JavaScript bundler for React Native",
+        "It handles navigation between screens",
+        "It pushes the app to the App Store"
+      ],
+      "correct": [1],
+      "explanation": "Metro takes all your JS code and assets and bundles them into a single file that the JS engine can execute.",
+      "interviewTip": "Metro is similar to Webpack or Vite but optimized for mobile."
+    },
+    {
+      "id": "rie-10",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What is a 'TurboModule' in the New Architecture?",
+      "options": [
+        "A faster version of an NPM package",
+        "A native module that is loaded lazily and uses JSI for communication",
+        "A module for high-speed animations",
+        "A cloud-based build system"
+      ],
+      "correct": [1],
+      "explanation": "TurboModules replace legacy Native Modules, allowing the app to load only the modules it needs, when it needs them.",
+      "interviewTip": "This significantly reduces app startup time by avoiding the loading of all modules upfront."
+    },
+    {
+      "id": "rie-11",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What happens during 'Expo Prebuild'?",
+      "options": [
+        "The app is uploaded to the store",
+        "Native Android and iOS project folders are generated based on your app config",
+        "The JS code is minified",
+        "The images are compressed"
+      ],
+      "correct": [1],
+      "explanation": "Prebuild generates the `android` and `ios` directories, applying changes from your app.json and config plugins.",
+      "interviewTip": "This allows you to use libraries that require native changes while still using the Expo Managed workflow."
+    },
+    {
+      "id": "rie-12",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What is the 'Fabric' renderer?",
+      "options": [
+        "A tool for styling components",
+        "The new UI rendering system that works with JSI",
+        "A library for canvas drawing",
+        "A system for managing app permissions"
+      ],
+      "correct": [1],
+      "explanation": "Fabric is the New Architecture's rendering system, providing better performance for complex UIs and synchronous layout updates.",
+      "interviewTip": "Fabric allows React Native to support features like 'Suspense' more effectively."
+    },
+    {
+      "id": "rie-13",
+      "stageId": "rn_intro_env",
+      "type": "multiple",
+      "prompt": "Which of these are limitations of the legacy Bridge architecture?",
+      "options": [
+        "Overhead of serializing/deserializing data into JSON",
+        "Asynchronous nature can cause UI 'jank' during rapid updates",
+        "JavaScript can't run on Android",
+        "Data must be copied across the bridge, not shared"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "The bridge is a bottleneck because every interaction must be turned into a string, sent over, and parsed back.",
+      "interviewTip": "This is specifically visible in high-frequency events like scrolling or gestures."
+    },
+    {
+      "id": "rie-14",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What is 'Hot Reloading' (or Fast Refresh) in React Native?",
+      "options": [
+        "Updating the app via the App Store",
+        "Injecting code changes into the running app without losing its state",
+        "A hardware feature to cool down the phone",
+        "A method to clear the cache"
+      ],
+      "correct": [1],
+      "explanation": "Fast Refresh combines hot reloading and live reloading to provide instant feedback while preserving the state of your components.",
+      "interviewTip": "Fast Refresh is highly resilient to syntax errors."
+    },
+    {
+      "id": "rie-15",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "Why is the 'Initial Render' often slower in React Native than in native apps?",
+      "options": [
+        "JS is slower than Java",
+        "The JS bundle needs to be loaded and the bridge initialized",
+        "React Native apps are always larger in size",
+        "The phone needs to download the UI from the internet"
+      ],
+      "correct": [1],
+      "explanation": "At startup, RN must start the JS engine, load the bundle, and initialize all native modules.",
+      "interviewTip": "Hermes helps mitigate this by pre-parsing the JavaScript."
+    },
+    {
+      "id": "rie-16",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What does the 'key' prop do in a list, in terms of performance?",
+      "options": [
+        "It acts as a unique ID for the database",
+        "It helps React identify which items changed, were added, or removed",
+        "It encrypts the list data",
+        "It is required by the Android operating system"
+      ],
+      "correct": [1],
+      "explanation": "The key helps the diffing algorithm reconcile the UI efficiently, especially in FlatLists.",
+      "interviewTip": "Never use the index as a key if the order of items can change."
+    },
+    {
+      "id": "rie-17",
+      "stageId": "rn_intro_env",
+      "type": "single",
+      "prompt": "What is 'Autolinking' in React Native?",
+      "options": [
+        "Connecting the app to Wi-Fi",
+        "Automatically linking native dependencies to your project when you install an NPM package",
+        "Creating links between different screens",
+        "A feature for automatic code completion"
+      ],
+      "correct": [1],
+      "explanation": "Previously, you had to run `react-native link`. Now, the CLI finds native code in your node_modules and includes it in the build automatically.",
+      "interviewTip": "This significantly reduced the 'link hell' developers faced in older versions."
+    }
+  ]
+}

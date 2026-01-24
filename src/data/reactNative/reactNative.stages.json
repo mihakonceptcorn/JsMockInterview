@@ -1,0 +1,124 @@
+{
+  "stages": [
+    {
+      "id": "rn_intro_env",
+      "title": "React Native Architecture & Environment",
+      "level": 1,
+      "description": "Bridge vs Fabric, Expo vs CLI, Yoga engine"
+    },
+    {
+      "id": "core_components",
+      "title": "Core Components",
+      "level": 2,
+      "description": "View, Text, Image, ScrollView, StyleSheet"
+    },
+    {
+      "id": "flexbox_layout",
+      "title": "Layout with Flexbox",
+      "level": 3,
+      "description": "Flex direction, alignment, responsive dimensions"
+    },
+    {
+      "id": "user_input_interaction",
+      "title": "Interactions & Inputs",
+      "level": 4,
+      "description": "TextInput, Pressable, TouchableOpacity, KeyboardAvoidingView"
+    },
+    {
+      "id": "lists_performance",
+      "title": "Optimized Lists",
+      "level": 5,
+      "description": "FlatList, SectionList, keyExtractor, getItemLayout"
+    },
+    {
+      "id": "navigation_native",
+      "title": "Mobile Navigation",
+      "level": 6,
+      "description": "React Navigation, Stack, Tabs, Drawers, Deep Linking"
+    },
+    {
+      "id": "images_assets",
+      "title": "Assets & Media",
+      "level": 7,
+      "description": "Remote vs Local images, FastImage, Caching, SVG handling"
+    },
+    {
+      "id": "platform_specific",
+      "title": "Platform-Specific Code",
+      "level": 8,
+      "description": "Platform module, file extensions (.ios.js, .android.js)"
+    },
+    {
+      "id": "native_animations_basics",
+      "title": "Animation Basics",
+      "level": 9,
+      "description": "Animated API, interpolation, LayoutAnimation"
+    },
+    {
+      "id": "gesture_handler",
+      "title": "Gestures & Touch",
+      "level": 10,
+      "description": "React Native Gesture Handler, PanResponder, Fling"
+    },
+    {
+      "id": "reanimated_advanced",
+      "title": "Advanced Animations",
+      "level": 11,
+      "description": "Reanimated 2/3, Shared Values, Worklets, Shared Element Transitions"
+    },
+    {
+      "id": "storage_persistence",
+      "title": "Data Persistence",
+      "level": 12,
+      "description": "AsyncStorage, MMKV, SQLite basics"
+    },
+    {
+      "id": "device_features",
+      "title": "Hardware Access",
+      "level": 13,
+      "description": "Camera, Permissions, Geolocation, Bio-metrics"
+    },
+    {
+      "id": "native_modules",
+      "title": "Native Bridges",
+      "level": 14,
+      "description": "Turbo Modules, JSI, writing Native Modules (Java/Swift)"
+    },
+    {
+      "id": "push_notifications",
+      "title": "Notifications",
+      "level": 15,
+      "description": "FCM, APNs, local notifications, background tasks"
+    },
+    {
+      "id": "rn_performance",
+      "title": "RN Performance Profiling",
+      "level": 16,
+      "description": "Hermes engine, FlashList, InteractionManager, Flipper"
+    },
+    {
+      "id": "offline_first",
+      "title": "Offline-First Architecture",
+      "level": 17,
+      "description": "NetInfo, Optimistic UI, Sync strategies"
+    },
+    {
+      "id": "testing_mobile",
+      "title": "Testing Mobile Apps",
+      "level": 18,
+      "description": "Jest, React Native Testing Library, Detox (E2E)"
+    },
+    {
+      "id": "deployment_ci_cd",
+      "title": "Deployment & OTA",
+      "level": 19,
+      "description": "Fastlane, App Center, Expo EAS, CodePush updates"
+    },
+    {
+      "id": "security_mobile",
+      "title": "Mobile Security",
+      "level": 20,
+      "description": "SSL Pinning, Keychain/Keystore, Proguard, Obfuscation"
+    }
+  ]
+}

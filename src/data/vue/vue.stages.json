@@ -1,0 +1,118 @@
+{
+  "stages": [
+    {
+      "id": "vue_intro_reactivity",
+      "title": "Vue Fundamentals & Reactivity",
+      "level": 1,
+      "description": "Vue instance, MVVM, Proxies (Vue 3) vs Object.defineProperty (Vue 2)"
+    },
+    {
+      "id": "template_syntax",
+      "title": "Template Syntax & Directives",
+      "level": 2,
+      "description": "Interpolation, v-bind, v-on, v-model, v-once, v-pre"
+    },
+    {
+      "id": "computed_watchers",
+      "title": "Computed & Watchers",
+      "level": 3,
+      "description": "Computed caching vs methods, deep watching, immediate execution"
+    },
+    {
+      "id": "class_style_binding",
+      "title": "Class & Style Bindings",
+      "level": 4,
+      "description": "Object and Array syntax, scoped CSS, CSS Modules"
+    },
+    {
+      "id": "conditional_list_rendering",
+      "title": "Conditional & List Rendering",
+      "level": 5,
+      "description": "v-if vs v-show, v-for with keys, v-if + v-for priority"
+    },
+    {
+      "id": "component_basics",
+      "title": "Component Communication",
+      "level": 6,
+      "description": "Props, Custom Events (emit), fallthrough attributes"
+    },
+    {
+      "id": "lifecycle_hooks",
+      "title": "Lifecycle Hooks",
+      "level": 7,
+      "description": "onMounted, onUpdated, onUnmounted, activated/deactivated"
+    },
+    {
+      "id": "composition_api",
+      "title": "Composition API",
+      "level": 8,
+      "description": "setup(), ref vs reactive, toRefs, script setup syntax"
+    },
+    {
+      "id": "slots_teleport",
+      "title": "Slots & Content Projection",
+      "level": 9,
+      "description": "Named slots, scoped slots, Teleport component"
+    },
+    {
+      "id": "template_refs",
+      "title": "Template Refs & DOM",
+      "level": 10,
+      "description": "Accessing elements, refs in v-for, defineExpose"
+    },
+    {
+      "id": "composables",
+      "title": "Reusability with Composables",
+      "level": 11,
+      "description": "Logic extraction pattern, naming conventions, state sharing"
+    },
+    {
+      "id": "vue_router",
+      "title": "Vue Router",
+      "level": 12,
+      "description": "Navigation guards, nested routes, lazy loading, scroll behavior"
+    },
+    {
+      "id": "state_management_pinia",
+      "title": "State Management (Pinia)",
+      "level": 13,
+      "description": "Stores, Actions, Getters, plugin system, Vuex comparison"
+    },
+    {
+      "id": "async_components_suspense",
+      "title": "Async Components & Suspense",
+      "level": 14,
+      "description": "defineAsyncComponent, Suspense experimental features, error handling"
+    },
+    {
+      "id": "performance_optimization_vue",
+      "title": "Vue Performance Optimization",
+      "level": 15,
+      "description": "v-once, v-memo, shallowRef, functional components, tree shaking"
+    },
+    {
+      "id": "transitions_animations",
+      "title": "Transitions & Animations",
+      "level": 16,
+      "description": "Transition/TransitionGroup, CSS animation hooks, JS hooks"
+    },
+    {
+      "id": "vue_internals",
+      "title": "Vue Internals & Rendering",
+      "level": 17,
+      "description": "Virtual DOM, Compiler-informed transformations, Patch flags"
+    },
+    {
+      "id": "testing_vue",
+      "title": "Testing Vue Applications",
+      "level": 18,
+      "description": "Vue Test Utils, Vitest, Cypress for E2E"
+    },
+    {
+      "id": "ssr_nuxt",
+      "title": "SSR & Nuxt.js Basics",
+      "level": 19,
+      "description": "Server-side rendering, Static Site Generation (SSG), Hydration"
+    }
+  ]
+}

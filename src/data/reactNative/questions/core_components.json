@@ -1,0 +1,239 @@
+{
+  "default": [
+    {
+      "id": "cc-01",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "Which component is the fundamental building block for UI, similar to a <div> in web development?",
+      "options": ["<Container>", "<View>", "<Section>", "<Box>"],
+      "correct": [1],
+      "explanation": "<View> is the most common component. It supports layout with flexbox, style, and touch handling.",
+      "interviewTip": "Remember that <View> maps directly to 'android.view' on Android and 'UIView' on iOS."
+    },
+    {
+      "id": "cc-02",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "How must you display text in React Native?",
+      "options": [
+        "Directly inside a <View>",
+        "Inside a <span> tag",
+        "Inside a <Text> component",
+        "Inside a <Label> component"
+      ],
+      "correct": [2],
+      "explanation": "Unlike the web, you cannot put raw text strings directly inside a container like <View>. All text must be wrapped in a <Text> component.",
+      "interviewTip": "Mention that <Text> components can be nested, and they inherit styles from each other in a limited way."
+    },
+    {
+      "id": "cc-03",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "What is the primary difference between <ScrollView> and <FlatList>?",
+      "options": [
+        "<ScrollView> is for horizontal lists only",
+        "<FlatList> renders all items at once; <ScrollView> is lazy",
+        "<ScrollView> renders all children at once; <FlatList> renders items lazily",
+        "There is no difference in performance"
+      ],
+      "correct": [2],
+      "explanation": "<ScrollView> is simple but slow for large lists because it renders every item immediately. <FlatList> is optimized for performance by only rendering items visible on screen.",
+      "interviewTip": "For long lists of data, always choose FlatList or SectionList to avoid memory issues."
+    },
+    {
+      "id": "cc-04",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "Which component should you use to make an image or view respond to a tap with a 'dimming' effect?",
+      "options": ["<Button>", "<TouchableOpacity>", "<Pressable>", "<TapView>"],
+      "correct": [1],
+      "explanation": "<TouchableOpacity> reduces the opacity of the wrapped view when pressed, providing visual feedback.",
+      "interviewTip": "While <TouchableOpacity> is common, <Pressable> is now the recommended, more flexible alternative for modern apps."
+    },
+    {
+      "id": "cc-05",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "How do you define styles in React Native?",
+      "options": [
+        "Using CSS files and classes",
+        "Using Inline HTML styles only",
+        "Using StyleSheet.create() with JavaScript objects",
+        "Using Tailwind CSS only"
+      ],
+      "correct": [2],
+      "explanation": "React Native uses a JavaScript-based styling system. StyleSheet.create() is used for performance as it sends the styles to the native side only once.",
+      "interviewTip": "React Native styles are not exactly CSS; for example, there is no cascading or 'hover' state."
+    },
+    {
+      "id": "cc-06",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "What is the purpose of the <SafeAreaView> component?",
+      "options": [
+        "To protect the app from hackers",
+        "To render content within the safe boundaries of a device (avoiding notches and home indicators)",
+        "To prevent the app from crashing",
+        "To create a secure login form"
+      ],
+      "correct": [1],
+      "explanation": "<SafeAreaView> automatically adds padding to ensure your content isn't covered by physical notches, status bars, or rounded corners (especially on iOS).",
+      "interviewTip": "Note that SafeAreaView is currently mostly effective on iOS; for Android, you often need manual status bar handling or 'react-native-safe-area-context'."
+    },
+    {
+      "id": "cc-07",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "Which prop is used to handle text changes in a <TextInput>?",
+      "options": ["onChange", "onValueChange", "onChangeText", "onInput"],
+      "correct": [2],
+      "explanation": "onChangeText is a convenience prop that provides only the changed string, whereas onChange provides a more complex event object.",
+      "interviewTip": "Always use onChangeText for simple form handling to write cleaner code."
+    },
+    {
+      "id": "cc-08",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "How do you display a local image asset in an <Image> component?",
+      "options": [
+        "source='../../assets/logo.png'",
+        "source={{ uri: './logo.png' }}",
+        "source={require('../../assets/logo.png')}",
+        "src='./logo.png'"
+      ],
+      "correct": [2],
+      "explanation": "Local images must be 'required' or 'imported' so the bundler can include them. Remote images use an object with a 'uri' key.",
+      "interviewTip": "Remote images MUST have a width and height specified, or they won't show up at all."
+    },
+    {
+      "id": "cc-09",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "What does the <ActivityIndicator> component do?",
+      "options": [
+        "Tracks user activity for analytics",
+        "Displays a circular loading spinner",
+        "Shows a progress bar",
+        "Monitors CPU usage"
+      ],
+      "correct": [1],
+      "explanation": "It's the standard way to show a loading state. It uses the native spinner for the respective platform (Android vs iOS).",
+      "interviewTip": "You can change its size and color using props, but the look is platform-specific."
+    },
+    {
+      "id": "cc-10",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "What is the main benefit of the <Pressable> component over <TouchableOpacity>?",
+      "options": [
+        "It is faster",
+        "It provides more granular control over touch events (like hitSlop and press state styles)",
+        "It is only available on Android",
+        "It includes built-in icons"
+      ],
+      "correct": [1],
+      "explanation": "Pressable is a 'future-proof' component that lets you style based on the press state (hovered, pressed, focused) using a function in the style prop.",
+      "interviewTip": "Mention 'hitSlop'—it allows you to make the touchable area larger than the actual component for better UX."
+    },
+    {
+      "id": "cc-11",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "Which component is used to show a list of items with section headers?",
+      "options": [
+        "<FlatList>",
+        "<SectionList>",
+        "<ScrollView>",
+        "<HeaderList>"
+      ],
+      "correct": [1],
+      "explanation": "<SectionList> is specifically designed for data grouped by headers, like an address book (A, B, C...).",
+      "interviewTip": "It works exactly like FlatList but requires a 'sections' prop instead of 'data'."
+    },
+    {
+      "id": "cc-12",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "What is the purpose of <KeyboardAvoidingView>?",
+      "options": [
+        "To disable the keyboard entirely",
+        "To prevent the keyboard from covering input fields by automatically moving the UI",
+        "To change the keyboard color",
+        "To hide the keyboard when the user scrolls"
+      ],
+      "correct": [1],
+      "explanation": "It adjusts its position or padding when the virtual keyboard appears, ensuring the user can see what they are typing.",
+      "interviewTip": "Different platforms require different 'behavior' props (e.g., 'padding' for iOS and 'height' or nothing for Android)."
+    },
+    {
+      "id": "cc-13",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "How do you add a background image to a screen?",
+      "options": [
+        "Use the 'backgroundImage' style on a <View>",
+        "Wrap your content in an <ImageBackground> component",
+        "Put an <Image> with absolute positioning behind everything",
+        "There is no way to do this"
+      ],
+      "correct": [1],
+      "explanation": "<ImageBackground> is a helper component that allows you to nest children inside an image.",
+      "interviewTip": "It's essentially just an <Image> with absolute positioning used as a container."
+    },
+    {
+      "id": "cc-14",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "What does the 'multiline' prop do in a <TextInput>?",
+      "options": [
+        "Allows the user to enter multiple types of characters",
+        "Allows the text input to expand to multiple lines",
+        "Limits the input to only one line",
+        "Splits the text into multiple components"
+      ],
+      "correct": [1],
+      "explanation": "When true, the text input can grow and handle 'Return' key presses for new lines.",
+      "interviewTip": "Combined with 'numberOfLines' on Android, it helps define the initial size."
+    },
+    {
+      "id": "cc-15",
+      "stageId": "core_components",
+      "type": "multiple",
+      "prompt": "Which props are used in <Image> for performance and optimization?",
+      "options": [
+        "resizeMode",
+        "defaultSource",
+        "loadingIndicatorSource",
+        "fadeDuration"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "resizeMode (cover, contain, stretch) is key for layout. defaultSource (iOS only) shows a placeholder while the main image loads. fadeDuration (Android only) smooths the entrance.",
+      "interviewTip": "Mention that 'resizeMode' is the equivalent of 'object-fit' in CSS."
+    },
+    {
+      "id": "cc-16",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "How do you handle a long press on a component?",
+      "options": ["onTapLong", "onLongPress", "onPressHold", "onDoubleClick"],
+      "correct": [1],
+      "explanation": "Most touchable components and the Pressable component support the onLongPress callback.",
+      "interviewTip": "You can control the duration required for a long press using the 'delayLongPress' prop."
+    },
+    {
+      "id": "cc-17",
+      "stageId": "core_components",
+      "type": "single",
+      "prompt": "What is the purpose of the <Modal> component?",
+      "options": [
+        "To play videos",
+        "To show content on top of the current screen (pop-up)",
+        "To create a sidebar menu",
+        "To manage app permissions"
+      ],
+      "correct": [1],
+      "explanation": "<Modal> is a basic way to present content above an enclosing view. It supports different animation types like 'slide' and 'fade'.",
+      "interviewTip": "Modern apps often use 'React Navigation' modals instead of the core <Modal> component for better control."
+    }
+  ]
+}

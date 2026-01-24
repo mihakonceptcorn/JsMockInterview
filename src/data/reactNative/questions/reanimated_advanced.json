@@ -1,0 +1,239 @@
+{
+  "default": [
+    {
+      "id": "ra-01",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "What is a 'Worklet' in Reanimated?",
+      "options": [
+        "A small UI component",
+        "A JavaScript function that is compiled and executed on the UI thread",
+        "A background task for data fetching",
+        "A styling method for CSS-in-JS"
+      ],
+      "correct": [1],
+      "explanation": "Worklets are the core of Reanimated. They allow JS logic to run synchronously on the UI thread to ensure 60/120 FPS animations.",
+      "interviewTip": "Worklets are identified by the 'use worklet'; directive at the top of the function (though the Babel plugin usually adds this automatically)."
+    },
+    {
+      "id": "ra-02",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "Which hook is used to create a piece of state that can be animated on the UI thread?",
+      "options": ["useState", "useRef", "useSharedValue", "useAnimatedStyle"],
+      "correct": [2],
+      "explanation": "useSharedValue creates a thread-safe value that can be accessed and modified by both the JS and UI threads.",
+      "interviewTip": "Changing a shared value (e.g., sv.value = 10) does not trigger a React re-render, making it extremely fast."
+    },
+    {
+      "id": "ra-03",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "What is the purpose of the 'useAnimatedStyle' hook?",
+      "options": [
+        "To create static styles",
+        "To create a link between Shared Values and component styles",
+        "To animate text content",
+        "To manage theme colors"
+      ],
+      "correct": [1],
+      "explanation": "It returns a dynamic style object that automatically updates on the UI thread whenever the dependent Shared Values change.",
+      "interviewTip": "This hook replaces the need for the old Animated API's interpolation syntax for many use cases."
+    },
+    {
+      "id": "ra-04",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "How do you start an animation in Reanimated (e.g., moving a value to 100)?",
+      "options": [
+        "sv.value = withTiming(100)",
+        "sv.animateTo(100)",
+        "Animated.timing(sv, { toValue: 100 }).start()",
+        "sv.setValue(100)"
+      ],
+      "correct": [0],
+      "explanation": "In Reanimated, animations are declarative. Assigning a 'with' function (like withTiming or withSpring) to a shared value starts the transition.",
+      "interviewTip": "This is a major syntax shift from the imperative .start() methods of the legacy API."
+    },
+    {
+      "id": "ra-05",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "What is the 'Shared Element Transition' feature in Reanimated 3?",
+      "options": [
+        "Sharing code between Android and iOS",
+        "Automatically animating a component as it moves from one screen to another",
+        "Using the same animation for two different buttons",
+        "Connecting React Native to a web app"
+      ],
+      "correct": [1],
+      "explanation": "It allows a component (like an image) to 'fly' from its position on Screen A to a new position on Screen B during navigation.",
+      "interviewTip": "This is a 'killer feature' for high-end mobile UX, similar to how the iOS Photos app works."
+    },
+    {
+      "id": "ra-06",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "Which hook allows you to run a function on the JS thread in response to a UI thread update?",
+      "options": [
+        "runOnUI",
+        "runOnJS",
+        "useDerivedValue",
+        "useAnimatedReaction"
+      ],
+      "correct": [1],
+      "explanation": "Since Worklets run on the UI thread, you must wrap any JS-only calls (like updating React state or an alert) in 'runOnJS'.",
+      "interviewTip": "This is essential for triggering side effects after an animation finishes."
+    },
+    {
+      "id": "ra-07",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "What does 'useDerivedValue' do?",
+      "options": [
+        "Calculates the derivative of a function",
+        "Creates a new Shared Value based on the calculation of other Shared Values",
+        "Stores the previous state of an animation",
+        "Returns the width of the screen"
+      ],
+      "correct": [1],
+      "explanation": "It is similar to a 'computed' property. If you have an 'X' shared value, you can create a derived 'Y' value that is always X * 2.",
+      "interviewTip": "Useful for keeping multiple animated elements in sync without manual updates."
+    },
+    {
+      "id": "ra-08",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "In Reanimated 3, what are 'Layout Animations'?",
+      "options": [
+        "Animations for the whole screen layout only",
+        "Automatically animating entering, exiting, and layout changes of components",
+        "A way to fix broken Flexbox layouts",
+        "A tool for responsive design"
+      ],
+      "correct": [1],
+      "explanation": "You can add props like entering={FadeIn} or exiting={FadeOut} to any Animated component to handle its mounting/unmounting animation.",
+      "interviewTip": "This replaces the old, global LayoutAnimation API with a much more powerful, per-component version."
+    },
+    {
+      "id": "ra-09",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "Which Reanimated function is used to chain animations together?",
+      "options": ["withSequence", "withParallel", "withChain", "withQueue"],
+      "correct": [0],
+      "explanation": "withSequence takes an array of animations and runs them one after another.",
+      "interviewTip": "Example: withSequence(withTiming(1.2), withSpring(1.0)) creates a 'pop' effect."
+    },
+    {
+      "id": "ra-10",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "What is the purpose of 'interpolate' inside useAnimatedStyle?",
+      "options": [
+        "To merge two styles",
+        "To map a Shared Value from one numeric range to another (e.g., scrolling to opacity)",
+        "To translate text to another language",
+        "To calculate the average value"
+      ],
+      "correct": [1],
+      "explanation": "It allows for complex mapping, such as changing an object's rotation or color as its scroll position changes.",
+      "interviewTip": "Reanimated's interpolate function is highly optimized for the UI thread."
+    },
+    {
+      "id": "ra-11",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "How do you apply an animation that repeats back and forth?",
+      "options": ["withRepeat", "withLoop", "withReverse", "withBounce"],
+      "correct": [0],
+      "explanation": "withRepeat allows you to specify the number of iterations and whether the animation should 'reverse' (yoyo effect).",
+      "interviewTip": "Setting the second argument to -1 makes the animation repeat forever."
+    },
+    {
+      "id": "ra-12",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "What is the 'Sensor' API in Reanimated used for?",
+      "options": [
+        "Measuring touch pressure",
+        "Accessing accelerometer, gyroscope, and gravity data for animations",
+        "Checking the internet connection",
+        "Detecting the device's battery level"
+      ],
+      "correct": [1],
+      "explanation": "You can create effects like 'parallax' where an image shifts slightly as the user tilts their phone.",
+      "interviewTip": "This uses the useAnimatedSensor hook."
+    },
+    {
+      "id": "ra-13",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "Why is it important to use 'Animated' components from the reanimated library (e.g., Animated.View)?",
+      "options": [
+        "Because standard views don't support flexbox",
+        "Standard views cannot receive styles generated on the UI thread",
+        "They are the only components that support colors",
+        "They are required for Redux integration"
+      ],
+      "correct": [1],
+      "explanation": "Only components created via Animated.createAnimatedComponent (or the built-in Animated.View, etc.) can interpret the instructions from useAnimatedStyle.",
+      "interviewTip": "If your animation isn't moving but the value is changing, check if you're using a standard <View> by mistake."
+    },
+    {
+      "id": "ra-14",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "What does 'useAnimatedScrollHandler' do?",
+      "options": [
+        "Enables faster scrolling in lists",
+        "Creates a scroll event listener that runs entirely on the UI thread",
+        "Prevents the user from scrolling",
+        "Automates scrolling to the bottom"
+      ],
+      "correct": [1],
+      "explanation": "It allows you to capture scroll offsets and update Shared Values without any bridge overhead.",
+      "interviewTip": "Use this for 'Sticky Headers' or 'Collapsible Headers' that need to be perfectly synchronized with the user's finger."
+    },
+    {
+      "id": "ra-15",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "What is the 'Babel plugin' for Reanimated required for?",
+      "options": [
+        "To minify the code",
+        "To automatically detect and transform functions into Worklets",
+        "To support older versions of Android",
+        "To compile TypeScript"
+      ],
+      "correct": [1],
+      "explanation": "The plugin analyzes your code for animation hooks and handles the complexity of moving that logic to the UI thread.",
+      "interviewTip": "Forgetting to add this plugin to your 'babel.config.js' is the most common cause of 'Worklet not found' errors."
+    },
+    {
+      "id": "ra-16",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "How do you delay an animation by a specific amount of time?",
+      "options": ["setTimeout()", "withDelay()", "delay()", "withWait()"],
+      "correct": [1],
+      "explanation": "withDelay is a wrapper function that waits for a specified duration (in ms) before starting the provided animation.",
+      "interviewTip": "Useful for staggering multiple animations in a sequence."
+    },
+    {
+      "id": "ra-17",
+      "stageId": "reanimated_advanced",
+      "type": "single",
+      "prompt": "What is the 'measure' function used for in Reanimated?",
+      "options": [
+        "Calculating the app's performance score",
+        "Synchronously getting the layout (width, height, position) of a component on the UI thread",
+        "Measuring the distance between two fingers",
+        "A way to resize images"
+      ],
+      "correct": [1],
+      "explanation": "Sometimes you need to know a component's position to start an animation. 'measure' gives you this info without going back to the JS thread.",
+      "interviewTip": "It requires a 'ref' to the component and is often used in gesture-based interactions."
+    }
+  ]
+}

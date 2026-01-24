@@ -1,0 +1,244 @@
+{
+  "default": [
+    {
+      "id": "ui-01",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What is the primary component used for capturing text input from a user?",
+      "options": ["<Input>", "<TextField>", "<TextInput>", "<TextEdit>"],
+      "correct": [2],
+      "explanation": "<TextInput> is the core component for text entry. It maps to 'EditText' on Android and 'UITextField' on iOS.",
+      "interviewTip": "Always mention that <TextInput> is uncontrolled by default, but usually managed as a controlled component in React."
+    },
+    {
+      "id": "ui-02",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "Which prop should be used to change the type of keyboard displayed (e.g., numeric, email)?",
+      "options": ["type", "keyboardType", "inputMode", "returnKeyType"],
+      "correct": [1],
+      "explanation": "keyboardType allows you to show specialized keyboards like 'numeric', 'email-address', or 'phone-pad'.",
+      "interviewTip": "Good UX involves always matching the keyboard type to the expected data to minimize user effort."
+    },
+    {
+      "id": "ui-03",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What does the 'secureTextEntry' prop do in a <TextInput>?",
+      "options": [
+        "It encrypts the text before sending it to the server",
+        "It hides the characters typed (password mode)",
+        "It disables copy-pasting",
+        "It prevents the keyboard from showing up"
+      ],
+      "correct": [1],
+      "explanation": "Setting secureTextEntry to true obscures the text, which is standard for password fields.",
+      "interviewTip": "On iOS, this also suggests to the system that it shouldn't auto-correct the input."
+    },
+    {
+      "id": "ui-04",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "How can you dismiss the keyboard programmatically in React Native?",
+      "options": [
+        "Keyboard.hide()",
+        "Keyboard.dismiss()",
+        "this.keyboard.close()",
+        "It happens automatically when you tap anywhere"
+      ],
+      "correct": [1],
+      "explanation": "The Keyboard module provides a dismiss() method to close the active keyboard.",
+      "interviewTip": "A common pattern is to wrap the screen in a <TouchableWithoutFeedback> that calls Keyboard.dismiss() when the user taps outside an input."
+    },
+    {
+      "id": "ui-05",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "Which component is most flexible for creating custom buttons with complex internal layouts?",
+      "options": [
+        "<Button>",
+        "<Pressable>",
+        "<TouchableOpacity>",
+        "<TouchableHighlight>"
+      ],
+      "correct": [1],
+      "explanation": "<Pressable> is the modern 'low-level' component that detects various stages of press interactions and supports a function for its style prop.",
+      "interviewTip": "Unlike <Button>, <Pressable> has no default styling, making it perfect for custom design systems."
+    },
+    {
+      "id": "ui-06",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What is the purpose of the 'hitSlop' prop?",
+      "options": [
+        "To add internal padding to a button",
+        "To increase the touchable area without changing the visual size of the component",
+        "To slow down the response time of a tap",
+        "To handle messy handwriting in text inputs"
+      ],
+      "correct": [1],
+      "explanation": "hitSlop defines how far a touch event can start away from the component and still be considered a press.",
+      "interviewTip": "This is essential for small icons or buttons to ensure they meet the 44x44dp accessibility standard for touch targets."
+    },
+    {
+      "id": "ui-07",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What does 'KeyboardAvoidingView' solve?",
+      "options": [
+        "It prevents the user from typing emojis",
+        "It prevents the software keyboard from overlapping your input fields",
+        "It hides the keyboard when the user scrolls a list",
+        "It disables the hardware keyboard on tablets"
+      ],
+      "correct": [1],
+      "explanation": "It automatically adjusts its height, position, or bottom padding based on the keyboard's height.",
+      "interviewTip": "On iOS, 'behavior=\"padding\"' is usually the best choice; on Android, it often works better without a behavior prop if the manifest is set to adjustResize."
+    },
+    {
+      "id": "ui-08",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "Which callback is triggered as soon as the user starts pressing a <Pressable>?",
+      "options": ["onPress", "onPressIn", "onPressOut", "onLongPress"],
+      "correct": [1],
+      "explanation": "onPressIn is called immediately when the touch begins, whereas onPress is called when the touch is released.",
+      "interviewTip": "Use onPressIn/Out for custom 'active state' animations that need to feel instantaneous."
+    },
+    {
+      "id": "ui-09",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What is the difference between 'onChange' and 'onChangeText' in <TextInput>?",
+      "options": [
+        "They are exactly the same",
+        "onChangeText provides just the string value; onChange provides the full event object",
+        "onChange is only for Android",
+        "onChangeText is deprecated"
+      ],
+      "correct": [1],
+      "explanation": "onChangeText is a convenience prop that directly passes the new text string to the handler.",
+      "interviewTip": "99% of the time, you'll use onChangeText for local state updates."
+    },
+    {
+      "id": "ui-10",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "Which prop allows a <TextInput> to focus on the next field automatically when the 'Next' button is pressed?",
+      "options": [
+        "autoFocus",
+        "returnKeyType",
+        "onSubmitEditing",
+        "blurOnSubmit"
+      ],
+      "correct": [2],
+      "explanation": "You can use onSubmitEditing to call .focus() on a Ref pointing to the next input field.",
+      "interviewTip": "This creates a smooth form-filling experience."
+    },
+    {
+      "id": "ui-11",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What does the 'pointerEvents' prop control?",
+      "options": [
+        "How many fingers can touch the screen",
+        "Whether a component can be the target of touch events",
+        "The shape of the mouse cursor",
+        "The speed of scrolling"
+      ],
+      "correct": [1],
+      "explanation": "Setting pointerEvents to 'none' makes a component (and its children) invisible to touches, allowing them to pass through to the layer behind.",
+      "interviewTip": "Use 'box-none' if you want the container to be touch-transparent but its children to remain interactive."
+    },
+    {
+      "id": "ui-12",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "In <Pressable>, how do you make a button react differently when hovered (on Desktop/Tablet)?",
+      "options": [
+        "Use a :hover CSS class",
+        "The style prop can take a function that receives a 'hovered' boolean",
+        "Use the onHover hook",
+        "React Native doesn't support hover"
+      ],
+      "correct": [1],
+      "explanation": "The style and children props of Pressable can accept a function: `({ pressed, hovered, focused }) => [...]`.",
+      "interviewTip": "This makes Pressable highly useful for cross-platform apps (Web/Desktop/Mobile)."
+    },
+    {
+      "id": "ui-13",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What is 'pressRetentionOffset'?",
+      "options": [
+        "How long to keep the data in an input",
+        "How far a user can move their finger away from a button before it cancels the press",
+        "The delay before a long press is triggered",
+        "The space between two different buttons"
+      ],
+      "correct": [1],
+      "explanation": "It allows the user to slide their finger slightly off the button without losing the 'active' state, making it feel more forgiving.",
+      "interviewTip": "This is part of the standard platform behavior that RN components implement for you."
+    },
+    {
+      "id": "ui-14",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "Which prop is used to show a specific button label like 'Search' or 'Done' on the keyboard?",
+      "options": [
+        "keyboardLabel",
+        "returnKeyType",
+        "submitButton",
+        "actionType"
+      ],
+      "correct": [1],
+      "explanation": "returnKeyType changes the label and look of the 'Enter' key on the soft keyboard.",
+      "interviewTip": "Common values include 'search', 'go', 'next', and 'done'."
+    },
+    {
+      "id": "ui-15",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "How do you auto-focus a <TextInput> as soon as the screen loads?",
+      "options": [
+        "Use the autoFocus prop",
+        "Call Keyboard.show()",
+        "Wrap it in a focus() function",
+        "It focuses by default"
+      ],
+      "correct": [0],
+      "explanation": "Setting autoFocus={true} will trigger the keyboard and focus the input immediately upon mounting.",
+      "interviewTip": "Use this sparingly as popping up the keyboard immediately can sometimes be jarring for users."
+    },
+    {
+      "id": "ui-16",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What is the purpose of 'selectionColor' in <TextInput>?",
+      "options": [
+        "The color of the text chosen from a dropdown",
+        "The color of the text cursor and the selection highlight",
+        "The background color of the input",
+        "The color of the placeholder text"
+      ],
+      "correct": [1],
+      "explanation": "It styles the cursor (caret) and the highlight box when the user selects text.",
+      "interviewTip": "This is a great way to align the input field with your brand's primary color."
+    },
+    {
+      "id": "ui-17",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "Which component allows you to catch taps without any visual feedback (no dimming or highlighting)?",
+      "options": [
+        "<TouchableOpacity>",
+        "<TouchableWithoutFeedback>",
+        "<View>",
+        "<Pressable> without styles"
+      ],
+      "correct": [1, 3],
+      "explanation": "<TouchableWithoutFeedback> is specifically for cases where you need interaction but no visual change. Note that it only supports one child.",
+      "interviewTip": "Use this for closing modals or dismissing the keyboard by clicking the background."
+    }
+  ]
+}

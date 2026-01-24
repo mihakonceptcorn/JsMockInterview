@@ -1,0 +1,259 @@
+{
+  "default": [
+    {
+      "id": "perf-01",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What are the two main threads you must monitor to ensure a smooth React Native app?",
+      "options": [
+        "Network Thread and Storage Thread",
+        "JavaScript (JS) Thread and UI (Main) Thread",
+        "Render Thread and Event Thread",
+        "Background Thread and Foreground Thread"
+      ],
+      "correct": [1],
+      "explanation": "The JS thread runs your logic, while the UI thread handles rendering and gestures. If either drops below 60 frames per second, the app feels 'janky'.",
+      "interviewTip": "Animations handled by the Native Driver run on the UI thread and stay smooth even if the JS thread is blocked."
+    },
+    {
+      "id": "perf-02",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "How does the 'Hermes' engine improve performance?",
+      "options": [
+        "It increases the internet speed",
+        "It uses bytecode pre-compilation to reduce app start-up time and memory usage",
+        "It automatically optimizes your CSS",
+        "It adds more CPU cores to the phone"
+      ],
+      "correct": [1],
+      "explanation": "Hermes compiles JS into bytecode during the build process, so the app doesn't have to parse the JS at runtime.",
+      "interviewTip": "Hermes is specifically optimized for mobile devices with limited resources."
+    },
+    {
+      "id": "perf-03",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is 'Flipper' in the context of React Native?",
+      "options": [
+        "An animation library",
+        "A comprehensive debugging platform for mobile apps (Logs, Network, Layout, etc.)",
+        "A tool for flipping images",
+        "A replacement for the Metro bundler"
+      ],
+      "correct": [1],
+      "explanation": "Flipper allows you to inspect network requests, databases, and the React component tree in real-time.",
+      "interviewTip": "While Flipper is being phased out in favor of better Chrome DevTools integration, it remains a common tool in existing projects."
+    },
+    {
+      "id": "perf-04",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is the common cause of the 'White Flash' during navigation or list scrolling?",
+      "options": [
+        "The battery is too low",
+        "The JS thread is busy and cannot send the layout to the Native thread fast enough",
+        "The images are too bright",
+        "A bug in the Android OS"
+      ],
+      "correct": [1],
+      "explanation": "When the bridge is overloaded, the UI thread has nothing to show while waiting for instructions from the JS thread, resulting in a blank area.",
+      "interviewTip": "This is often solved by optimizing FlatList props like 'windowSize' or 'initialNumToRender'."
+    },
+    {
+      "id": "perf-05",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What does 'InteractionManager.runAfterInteractions' do?",
+      "options": [
+        "Runs an animation immediately",
+        "Schedules a task (like data fetching) to run only after all active animations have finished",
+        "Counts how many times a user clicked a button",
+        "Logs the user out after a period of inactivity"
+      ],
+      "correct": [1],
+      "explanation": "This ensures that 'heavy' JS tasks don't interrupt smooth UI transitions or navigation animations.",
+      "interviewTip": "Use this to defer API calls until the screen transition animation is 100% complete."
+    },
+    {
+      "id": "perf-06",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "How can 'React.memo' help with list performance?",
+      "options": [
+        "It compresses the list data",
+        "It prevents individual list items from re-rendering if their props haven't changed",
+        "It makes the scroll bar move faster",
+        "It caches the whole list in the database"
+      ],
+      "correct": [1],
+      "explanation": "In a long list, a parent update can trigger all items to re-render. Memoization stops this 'waste' of CPU cycles.",
+      "interviewTip": "Always wrap your FlatList 'renderItem' component in React.memo."
+    },
+    {
+      "id": "perf-07",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is 'Over-rendering' (or Overdraw)?",
+      "options": [
+        "Rendering too many images",
+        "When the app draws pixels on the screen multiple times in a single frame (e.g., stacked backgrounds)",
+        "Rendering components that are invisible",
+        "Updating the state 100 times per second"
+      ],
+      "correct": [1],
+      "explanation": "If a View has a background, and its child has a background, and the grandchild has a background, the GPU does unnecessary work.",
+      "interviewTip": "On Android, you can enable 'Show GPU Overdraw' in Developer Options to visualize this."
+    },
+    {
+      "id": "perf-08",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is the benefit of 'FlashList' (by Shopify) over the standard 'FlatList'?",
+      "options": [
+        "It supports more types of data",
+        "It recycles views instead of unmounting them, leading to much faster scrolling",
+        "It is built-in to React Native",
+        "It uses less internet"
+      ],
+      "correct": [1],
+      "explanation": "FlashList maintains a pool of native views and just updates their data, which is far more efficient than the standard 'create-and-destroy' cycle.",
+      "interviewTip": "Shopify developed this because FlatList often struggles with complex UI at high speeds."
+    },
+    {
+      "id": "perf-09",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What does it mean to 'inline' a function in a prop, and why is it bad for performance?",
+      "options": [
+        "Writing styles inside the component; it makes the file size larger",
+        "Defining a function like 'onPress={() => doSomething()}' directly in the JSX; it creates a new reference on every render",
+        "Using a library from a CDN",
+        "Calling a function without an import"
+      ],
+      "correct": [1],
+      "explanation": "New function references break 'React.memo' because a shallow comparison will see the function as 'different' every time.",
+      "interviewTip": "Use 'useCallback' to keep function references stable."
+    },
+    {
+      "id": "perf-10",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is the impact of a 'Deep' component tree?",
+      "options": [
+        "It makes the app harder to read",
+        "It increases the time it takes for React to 'diff' and reconcile the Virtual DOM",
+        "It uses more battery power to store the code",
+        "It has no impact on performance"
+      ],
+      "correct": [1],
+      "explanation": "Flatter component trees are faster to process. Every level of nesting adds overhead to the reconciliation process.",
+      "interviewTip": "If your tree is too deep, consider 'flattening' it by merging unnecessary wrapper Views."
+    },
+    {
+      "id": "perf-11",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is 'RAM Bundling' (Inline Requires)?",
+      "options": [
+        "A way to add more RAM to the phone",
+        "Loading only the modules needed for the current screen rather than the whole app at once",
+        "A tool for cleaning the app cache",
+        "A high-speed internet connection"
+      ],
+      "correct": [1],
+      "explanation": "It helps with startup time by delaying the execution of JS files until they are actually required by a component.",
+      "interviewTip": "This is especially useful for massive apps with hundreds of screens."
+    },
+    {
+      "id": "perf-12",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "How can you identify which component is causing slow renders?",
+      "options": [
+        "By reading the code carefully",
+        "Using the React DevTools Profiler",
+        "By checking the file size",
+        "By asking the users"
+      ],
+      "correct": [1],
+      "explanation": "The Profiler records every render and tells you exactly how many milliseconds each component took.",
+      "interviewTip": "Look for components labeled 'Why did this render?' in the Profiler to catch unnecessary updates."
+    },
+    {
+      "id": "perf-13",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is 'Memory Leaking' in React Native?",
+      "options": [
+        "When the phone's memory is full of photos",
+        "When the app allocates memory but fails to release it (e.g., uncleared timers or listeners)",
+        "When data is stolen by a hacker",
+        "When the app uses too much mobile data"
+      ],
+      "correct": [1],
+      "explanation": "Leaks cause the app to slow down over time and eventually crash with an 'Out of Memory' error.",
+      "interviewTip": "Always clean up `setInterval` and `event listeners` in the return function of a `useEffect` hook."
+    },
+    {
+      "id": "perf-14",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "Why should you avoid using 'console.log' in production builds?",
+      "options": [
+        "It reveals your code to users",
+        "It is a synchronous call that can significantly slow down the JS thread",
+        "It takes up too much screen space",
+        "It only works in development mode"
+      ],
+      "correct": [1],
+      "explanation": "In production, logging can become a major bottleneck. Use a 'babel-plugin-transform-remove-console' to strip them during the build process.",
+      "interviewTip": "Even a few logs in a fast loop (like a scroll listener) can kill performance."
+    },
+    {
+      "id": "perf-15",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is the 'Perf Monitor' (the small overlay in the dev menu)?",
+      "options": [
+        "A tool to monitor the weather",
+        "A built-in overlay that shows current JS and UI frame rates (FPS)",
+        "A way to measure the app's size",
+        "A tool to check the battery"
+      ],
+      "correct": [1],
+      "explanation": "It provides a quick, real-time look at whether your app is maintaining the target 60 FPS on both threads.",
+      "interviewTip": "Use this during development to immediately spot jank as you build new features."
+    },
+    {
+      "id": "perf-16",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "How does 'Image resizing' impact performance?",
+      "options": [
+        "Loading a massive 4K image into a 50x50 icon wastes RAM and GPU memory",
+        "It doesn't impact performance at all",
+        "It makes the image look better",
+        "It reduces the app bundle size"
+      ],
+      "correct": [0],
+      "explanation": "Even if the image is small on screen, the phone has to decode the full resolution into memory. Always use correctly sized assets.",
+      "interviewTip": "Mention using an image proxy or CDN to serve different sizes based on device density."
+    },
+    {
+      "id": "perf-17",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is the 'Shadow Thread' responsible for?",
+      "options": [
+        "Handling dark mode",
+        "Calculating layout (Flexbox) using the Yoga engine",
+        "Running background logic",
+        "Managing security"
+      ],
+      "correct": [1],
+      "explanation": "It offloads the complex math of positioning elements so that the UI thread is only responsible for the actual drawing.",
+      "interviewTip": "Understanding the 3 threads (JS, Shadow, UI) shows a deep knowledge of RN architecture."
+    }
+  ]
+}

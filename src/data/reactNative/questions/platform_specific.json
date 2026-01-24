@@ -1,0 +1,254 @@
+{
+  "default": [
+    {
+      "id": "ps-01",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "Which built-in module is used to detect if the app is running on iOS or Android?",
+      "options": ["Device", "Platform", "Environment", "System"],
+      "correct": [1],
+      "explanation": "The Platform module provides a 'OS' property that returns either 'ios' or 'android'.",
+      "interviewTip": "You can also use it to check the version of the OS using Platform.Version."
+    },
+    {
+      "id": "ps-02",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "How can you use the Platform module to apply different styles in a single object?",
+      "options": [
+        "Using a ternary operator: Platform.OS === 'ios' ? 10 : 5",
+        "Using Platform.select({ ios: { ... }, android: { ... } })",
+        "Both of the above",
+        "You must use separate CSS files"
+      ],
+      "correct": [2],
+      "explanation": "Platform.select is the cleanest way to provide platform-specific values for styles, props, or logic.",
+      "interviewTip": "Platform.select is often preferred for readability when handling more than two platform variations (like 'native' vs 'web')."
+    },
+    {
+      "id": "ps-03",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "If you have two files, 'Button.ios.js' and 'Button.android.js', how do you import the button?",
+      "options": [
+        "import Button from './Button.ios'",
+        "import Button from './Button'",
+        "import { ButtonIOS, ButtonAndroid } from './Button'",
+        "You can't have two files with the same name"
+      ],
+      "correct": [1],
+      "explanation": "React Native's bundler (Metro) automatically detects the extension and picks the correct file for the platform you are building for.",
+      "interviewTip": "This is the most scalable way to handle large differences in component implementation between platforms."
+    },
+    {
+      "id": "ps-04",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "What is the purpose of 'Platform.isPad'?",
+      "options": [
+        "To check if the user is using a stylus",
+        "To detect if the iOS device is an iPad",
+        "To check if the app is running on any tablet",
+        "To check if the screen has a notch"
+      ],
+      "correct": [1],
+      "explanation": "isPad is an iOS-specific boolean to help you adjust layouts for tablet-sized screens.",
+      "interviewTip": "For a cross-platform tablet check, you usually look at the screen width via Dimensions."
+    },
+    {
+      "id": "ps-05",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "How do you handle shadows on Android, since 'shadowColor' only works for iOS?",
+      "options": [
+        "Shadows are not possible on Android",
+        "Use the 'elevation' property",
+        "Use a background image",
+        "Use the 'opacity' property"
+      ],
+      "correct": [1],
+      "explanation": "Android uses the native 'elevation' property to create shadows based on the Material Design spec.",
+      "interviewTip": "Because elevation and iOS shadow properties are so different, libraries like 'react-native-shadow-2' are often used for consistency."
+    },
+    {
+      "id": "ps-06",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "What does 'Platform.Version' return on Android?",
+      "options": [
+        "The version of React Native",
+        "The Android API level (e.g., 33)",
+        "The version of the app",
+        "The build number"
+      ],
+      "correct": [1],
+      "explanation": "On Android, it returns the integer API level. On iOS, it returns a string representing the OS version.",
+      "interviewTip": "This is useful for enabling/disabling features that are only available in newer OS versions."
+    },
+    {
+      "id": "ps-07",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "Which component is strictly for Android to show a date picker?",
+      "options": [
+        "DatePickerIOS",
+        "DatePickerAndroid (Legacy)",
+        "The standard <Input>",
+        "React Native does not have one"
+      ],
+      "correct": [1],
+      "explanation": "Legacy RN had platform-specific pickers. Modern apps use 'react-native-datetimepicker' which wraps the native pickers for both.",
+      "interviewTip": "Always prefer community-maintained libraries for pickers to ensure they stay up-to-date with OS changes."
+    },
+    {
+      "id": "ps-08",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "What is the 'Human Interface Guidelines' (HIG)?",
+      "options": [
+        "Android's design system",
+        "Apple's design philosophy for iOS",
+        "A coding standard for React",
+        "A database schema"
+      ],
+      "correct": [1],
+      "explanation": "HIG defines how iOS apps should look and feel (e.g., navigation on the left, centered titles).",
+      "interviewTip": "Mentioning HIG (iOS) and Material Design (Android) shows you care about native UX."
+    },
+    {
+      "id": "ps-09",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "How do you set the color of the status bar (clock/battery area) on Android?",
+      "options": [
+        "Via CSS background color",
+        "Using the <StatusBar> component with the 'backgroundColor' prop",
+        "It cannot be changed",
+        "By editing the AndroidManifest.xml only"
+      ],
+      "correct": [1],
+      "explanation": "The <StatusBar> component allows you to control the look of the device's status bar.",
+      "interviewTip": "Note that 'backgroundColor' is Android-only; on iOS, you can only change the 'barStyle' (light or dark)."
+    },
+    {
+      "id": "ps-10",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "What is the purpose of 'Platform.isTV'?",
+      "options": [
+        "To check if the app is playing a movie",
+        "To detect if the app is running on Apple TV or Android TV",
+        "To enable high-definition mode",
+        "To connect to a smart TV"
+      ],
+      "correct": [1],
+      "explanation": "React Native supports TV platforms, and this boolean helps adjust the UI for '10-foot' interfaces (remote control navigation).",
+      "interviewTip": "Focus management is the biggest challenge when building for TV."
+    },
+    {
+      "id": "ps-11",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "Which touchable component provides a 'native' ripple effect on Android?",
+      "options": [
+        "TouchableOpacity",
+        "TouchableNativeFeedback",
+        "TouchableHighlight",
+        "Pressable"
+      ],
+      "correct": [1],
+      "explanation": "TouchableNativeFeedback uses the native ripple effect found in Android Material Design.",
+      "interviewTip": "You can also achieve this in <Pressable> using the 'android_ripple' prop."
+    },
+    {
+      "id": "ps-12",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "How do you handle 'Back' navigation on Android vs iOS?",
+      "options": [
+        "Both use a hardware back button",
+        "Android has a hardware/system back button; iOS relies on on-screen buttons or a swipe gesture",
+        "Both use the same software button in the header",
+        "iOS doesn't have back navigation"
+      ],
+      "correct": [1],
+      "explanation": "React Native provides the BackHandler API specifically for Android's system back button.",
+      "interviewTip": "React Navigation handles most of this for you, but custom listeners are sometimes needed for exit-confirmation dialogs."
+    },
+    {
+      "id": "ps-13",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "In CSS/Styles, what is 'marginVertical' a shorthand for?",
+      "options": [
+        "marginTop and marginBottom",
+        "marginLeft and marginRight",
+        "All four margins",
+        "It's not a valid property"
+      ],
+      "correct": [0],
+      "explanation": "React Native provides several 'shorthand' style props like marginVertical and marginHorizontal that don't exist in standard web CSS.",
+      "interviewTip": "These shorthands make your StyleSheet objects smaller and easier to read."
+    },
+    {
+      "id": "ps-14",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "What is 'Material Design'?",
+      "options": [
+        "Apple's design language",
+        "Google's design language for Android and the web",
+        "A library for drawing icons",
+        "A performance monitoring tool"
+      ],
+      "correct": [1],
+      "explanation": "Material Design uses specific shadows (elevation), animations, and layouts that are standard for Android users.",
+      "interviewTip": "Good cross-platform apps often subtly change their components to match these specs (e.g., center-aligned headers on iOS vs left-aligned on Android)."
+    },
+    {
+      "id": "ps-15",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "How do you import a file specifically for the Web version of your RN app?",
+      "options": [
+        "filename.web.js",
+        "filename.browser.js",
+        "filename.html.js",
+        "filename.js (it is the default)"
+      ],
+      "correct": [0],
+      "explanation": "React Native for Web supports the .web.js extension, allowing you to use DOM-specific libraries only in the browser version.",
+      "interviewTip": "This is great for using 'window' or 'document' safely without breaking the mobile build."
+    },
+    {
+      "id": "ps-16",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "Which property is used on iOS to allow text to be scaled by system accessibility settings?",
+      "options": [
+        "allowFontScaling",
+        "dynamicType",
+        "fontSizeScale",
+        "accessibilityFont"
+      ],
+      "correct": [0],
+      "explanation": "allowFontScaling (true by default) ensures the app respects the user's preference for larger text in the system settings.",
+      "interviewTip": "Always test your layouts with 'Large Text' enabled to ensure your UI doesn't break for users with visual impairments."
+    },
+    {
+      "id": "ps-17",
+      "stageId": "platform_specific",
+      "type": "single",
+      "prompt": "What is the purpose of 'Appearance.getColorScheme()'?",
+      "options": [
+        "To pick a random color",
+        "To detect if the user has Dark Mode or Light Mode enabled at the system level",
+        "To change the primary color of the app",
+        "To check the screen brightness"
+      ],
+      "correct": [1],
+      "explanation": "The Appearance module (or useColorScheme hook) allows you to adapt your styles to the system-wide theme.",
+      "interviewTip": "Modern apps should support Dark Mode to provide a premium native feel."
+    }
+  ]
+}

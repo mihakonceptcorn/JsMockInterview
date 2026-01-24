@@ -1,0 +1,249 @@
+{
+  "default": [
+    {
+      "id": "sp-01",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What is the most basic, built-in way to store small amounts of string data in React Native?",
+      "options": ["LocalStorage", "AsyncStorage", "SQLite", "Redux Store"],
+      "correct": [1],
+      "explanation": "AsyncStorage is the standard unencrypted, asynchronous, persistent, key-value storage system for React Native.",
+      "interviewTip": "Note that AsyncStorage was moved out of the React Native core into the community packages (@react-native-async-storage/async-storage)."
+    },
+    {
+      "id": "sp-02",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What is the main limitation of AsyncStorage?",
+      "options": [
+        "It can only store numbers",
+        "It is slow for large datasets and is not designed for complex queries",
+        "It doesn't work on Android",
+        "It clears itself every time the app restarts"
+      ],
+      "correct": [1],
+      "explanation": "Since it stores data as strings and lacks indexing, searching through thousands of items is inefficient compared to a real database.",
+      "interviewTip": "For high-performance needs, libraries like MMKV or SQLite are preferred."
+    },
+    {
+      "id": "sp-03",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "How do you store an object or an array in AsyncStorage?",
+      "options": [
+        "Pass it directly: await AsyncStorage.setItem('key', myObj)",
+        "Convert it to a JSON string first using JSON.stringify()",
+        "AsyncStorage does not support objects",
+        "Using the .saveObject() method"
+      ],
+      "correct": [1],
+      "explanation": "AsyncStorage only accepts strings. You must serialize objects to JSON before saving and parse them back when reading.",
+      "interviewTip": "Forgetting to JSON.parse() when reading data is a very common source of bugs."
+    },
+    {
+      "id": "sp-04",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What is 'react-native-mmkv' and why is it currently popular?",
+      "options": [
+        "A tool for playing videos",
+        "A high-performance key-value storage that is much faster than AsyncStorage",
+        "A library for managing app permissions",
+        "A way to connect to MongoDB"
+      ],
+      "correct": [1],
+      "explanation": "MMKV uses the JSI (JavaScript Interface), allowing synchronous access to data without the overhead of the React Native bridge.",
+      "interviewTip": "MMKV is often cited as being up to 30x faster than AsyncStorage for both reads and writes."
+    },
+    {
+      "id": "sp-05",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "Which storage solution is best for a 'relational' database with complex queries and thousands of items?",
+      "options": ["AsyncStorage", "MMKV", "SQLite", "State objects"],
+      "correct": [2],
+      "explanation": "SQLite is a full-featured SQL database engine that allows for complex JOINs, indexing, and structured data storage.",
+      "interviewTip": "Use SQLite when you need to perform searches like 'Find all users who joined in 2023 and have over 100 points'."
+    },
+    {
+      "id": "sp-06",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What is 'Redux Persist'?",
+      "options": [
+        "A way to keep the app running in the background",
+        "A library that automatically saves your Redux store state to local storage",
+        "A debugging tool for Redux",
+        "A replacement for the Redux store"
+      ],
+      "correct": [1],
+      "explanation": "Redux Persist takes your global state and serializes it to a storage engine (like AsyncStorage) so that when the app reopens, the state is 'rehydrated'.",
+      "interviewTip": "You can use 'whitelists' or 'blacklists' to choose exactly which slices of state should be saved."
+    },
+    {
+      "id": "sp-07",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "Where should you store sensitive data like authentication tokens or passwords?",
+      "options": [
+        "AsyncStorage",
+        "A Secure Store (like Keychain on iOS or Keystore on Android)",
+        "In a standard text file",
+        "In the Redux store"
+      ],
+      "correct": [1],
+      "explanation": "AsyncStorage is unencrypted. Sensitive data should be stored in secure containers provided by the OS, which are encrypted at the hardware level.",
+      "interviewTip": "In Expo, use 'expo-secure-store'. In CLI, use 'react-native-keychain'."
+    },
+    {
+      "id": "sp-08",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What is the purpose of 'multiSet' and 'multiGet' in AsyncStorage?",
+      "options": [
+        "To save data to multiple devices at once",
+        "To perform batch operations on multiple keys in a single call",
+        "To allow multiple users to use the app",
+        "To encrypt multiple files"
+      ],
+      "correct": [1],
+      "explanation": "Batch operations are more efficient than calling setItem multiple times in a loop because they reduce the number of times data crosses the bridge.",
+      "interviewTip": "Whenever you have 5+ keys to save at once, always use multiSet."
+    },
+    {
+      "id": "sp-09",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What happens if the device runs out of storage space while your app is writing data?",
+      "options": [
+        "The app crashes immediately",
+        "The operation fails and throws an error (Promise rejection)",
+        "The app deletes old data automatically",
+        "React Native expands the phone's memory"
+      ],
+      "correct": [1],
+      "explanation": "Most storage APIs return a Promise. If writing fails due to lack of space, the promise will reject, and you should catch that error.",
+      "interviewTip": "Always wrap your storage logic in try/catch blocks."
+    },
+    {
+      "id": "sp-10",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What is 'Realm' (by MongoDB) in the context of React Native?",
+      "options": [
+        "A specialized UI component",
+        "An object-oriented mobile database that is an alternative to SQLite",
+        "A cloud-only storage solution",
+        "A library for animations"
+      ],
+      "correct": [1],
+      "explanation": "Realm is a high-performance database that allows you to work with data as objects rather than SQL rows, making it very developer-friendly.",
+      "interviewTip": "Realm is known for being extremely fast and supporting real-time data synchronization with the cloud."
+    },
+    {
+      "id": "sp-11",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "How do you clear all data stored in AsyncStorage for your app?",
+      "options": [
+        "AsyncStorage.delete()",
+        "AsyncStorage.clear()",
+        "AsyncStorage.reset()",
+        "This can only be done by the user in settings"
+      ],
+      "correct": [1],
+      "explanation": "The .clear() method wipes all key-value pairs associated with your app's AsyncStorage.",
+      "interviewTip": "Be careful: this clears EVERYTHING. Usually, you'd only do this for a 'factory reset' or logout."
+    },
+    {
+      "id": "sp-12",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What does it mean that AsyncStorage is 'asynchronous'?",
+      "options": [
+        "It doesn't work in real-time",
+        "Methods return Promises, allowing the JS thread to keep running while the disk is accessed",
+        "It only works when the app is in the background",
+        "The data is sent to a server"
+      ],
+      "correct": [1],
+      "explanation": "Disk I/O is slow. By being asynchronous, React Native ensures the UI doesn't freeze while data is being saved or loaded.",
+      "interviewTip": "Always use 'await' or '.then()' when interacting with AsyncStorage."
+    },
+    {
+      "id": "sp-13",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "Is there a size limit for AsyncStorage on Android?",
+      "options": [
+        "No, it's unlimited",
+        "Yes, by default it is usually limited to 6MB",
+        "It depends on the battery level",
+        "Yes, 1GB"
+      ],
+      "correct": [1],
+      "explanation": "While it varies, legacy Android implementations capped it at 6MB. You can increase this in the `gradle.properties` file if needed.",
+      "interviewTip": "If your app crashes when saving large strings, you've likely hit the storage limit."
+    },
+    {
+      "id": "sp-14",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What is 'WatermelonDB'?",
+      "options": [
+        "A tool for image compression",
+        "A high-performance reactive database for React Native designed for thousands of records",
+        "A library for handling watermarks on photos",
+        "A state management library like Redux"
+      ],
+      "correct": [1],
+      "explanation": "WatermelonDB is built on SQLite but optimized for React Native. It only loads data into memory when it's actually needed.",
+      "interviewTip": "It's highly 'observable,' meaning your UI updates automatically when the database changes."
+    },
+    {
+      "id": "sp-15",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What is the purpose of 'getItem' in storage APIs?",
+      "options": [
+        "To buy an item in the app",
+        "To retrieve a value associated with a specific key from the disk",
+        "To list all files in a folder",
+        "To check if the user is logged in"
+      ],
+      "correct": [1],
+      "explanation": "You pass the key name (string), and it returns the value (string) or null if it doesn't exist.",
+      "interviewTip": "Always check for 'null' before trying to use the retrieved data."
+    },
+    {
+      "id": "sp-16",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "Which storage type is cleared when the user uninstalls the app?",
+      "options": [
+        "Only AsyncStorage",
+        "Only SQLite",
+        "All local persistence (AsyncStorage, SQLite, MMKV, Secure Store)",
+        "None of them, they stay forever"
+      ],
+      "correct": [2],
+      "explanation": "When an app is deleted, the OS removes its local sandbox, which includes all internal storage files.",
+      "interviewTip": "If data needs to survive an uninstallation, it must be synced to a cloud database."
+    },
+    {
+      "id": "sp-17",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What is 'merging' in AsyncStorage?",
+      "options": [
+        "Combining two different databases",
+        "Updating an existing JSON object by merging new properties into it",
+        "Combining two users into one",
+        "A way to speed up the app"
+      ],
+      "correct": [1],
+      "explanation": "The mergeItem() method allows you to update a stored JSON string with new keys without manually reading and parsing it first (on some platforms).",
+      "interviewTip": "This is a convenience method that isn't supported by all storage engines, so check compatibility."
+    }
+  ]
+}

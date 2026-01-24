@@ -1,0 +1,259 @@
+{
+  "default": [
+    {
+      "id": "dep-01",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'Code Signing' in mobile development?",
+      "options": [
+        "A way to encrypt the source code",
+        "A security process that uses digital signatures to verify the app's author and ensure the code hasn't been altered",
+        "Writing code that only works on one device",
+        "Naming your variables with specific prefixes"
+      ],
+      "correct": [1],
+      "explanation": "Both Apple and Google require apps to be signed with a private key/certificate. Without it, the device will refuse to install the app for security reasons.",
+      "interviewTip": "On iOS, this involves 'Provisioning Profiles'; on Android, it involves an 'Upload Key' (Keystore)."
+    },
+    {
+      "id": "dep-02",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is an 'OTA Update' (Over-the-Air)?",
+      "options": [
+        "A hardware update for the phone",
+        "Updating the JavaScript bundle of the app directly without going through the App Store review process",
+        "An update that only works via Wi-Fi",
+        "A way to change the app's price remotely"
+      ],
+      "correct": [1],
+      "explanation": "Since React Native apps execute a JS bundle, you can push a new bundle to a cloud service (like EAS Update or CodePush), and the app will download it on the next launch.",
+      "interviewTip": "OTA updates are great for bug fixes but cannot be used to update native code (like adding a new library that requires `npx expo prebuild`)."
+    },
+    {
+      "id": "dep-03",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'Fastlane'?",
+      "options": [
+        "A high-speed internet connection",
+        "An open-source automation tool that handles tasks like generating screenshots and submitting apps to stores",
+        "A way to make the app run faster",
+        "A library for fast scrolling"
+      ],
+      "correct": [1],
+      "explanation": "Fastlane automates the tedious parts of the release process, such as incrementing build numbers, signing binaries, and uploading to TestFlight.",
+      "interviewTip": "Fastlane is the industry standard for mobile CI/CD pipelines."
+    },
+    {
+      "id": "dep-04",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'EAS' (Expo Application Services)?",
+      "options": [
+        "A new version of JavaScript",
+        "A cloud-based ecosystem for building, submitting, and updating Expo and React Native apps",
+        "An analytics tool for tracking user clicks",
+        "A database for storing app data"
+      ],
+      "correct": [1],
+      "explanation": "EAS Build allows you to compile your Android (AAB) and iOS (IPA) binaries on Expo's servers, removing the need for local Xcode/Android Studio setups.",
+      "interviewTip": "EAS works even for 'bare' React Native projects, not just managed Expo ones."
+    },
+    {
+      "id": "dep-05",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is the difference between an .APK and an .AAB file on Android?",
+      "options": [
+        ".APK is for testing; .AAB (Android App Bundle) is the modern format for store submission that optimizes download size",
+        ".AAB is only for older phones",
+        "There is no difference",
+        ".APK is an Apple file"
+      ],
+      "correct": [0],
+      "explanation": "Google Play uses the .AAB to generate optimized .APKs for each specific device configuration (e.g., only including the images for that screen's density).",
+      "interviewTip": "Google Play now mandates the use of .AAB for all new app submissions."
+    },
+    {
+      "id": "dep-06",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'TestFlight'?",
+      "options": [
+        "A game about flying planes",
+        "Apple's official platform for distributing beta versions of apps to testers",
+        "A tool for testing network speed",
+        "A performance monitoring tool"
+      ],
+      "correct": [1],
+      "explanation": "TestFlight allows you to invite up to 10,000 testers to try your app before it goes live on the App Store.",
+      "interviewTip": "Android's equivalent is called 'Google Play Internal/Closed Testing'."
+    },
+    {
+      "id": "dep-07",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What happens if you change a native library and then try to push an OTA update to old versions of the app?",
+      "options": [
+        "The app updates perfectly",
+        "The app will likely crash or malfunction because the JS code expects a native module that isn't there",
+        "The OS blocks the update",
+        "The app bundle becomes too large"
+      ],
+      "correct": [1],
+      "explanation": "OTA updates must be compatible with the 'native runtime' of the installed app. If the runtime changes, you must submit a full store update.",
+      "interviewTip": "Use 'Runtime Versions' in EAS to ensure updates only reach compatible app versions."
+    },
+    {
+      "id": "dep-08",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is a 'Keystore' file in Android development?",
+      "options": [
+        "A file that stores all the app's data",
+        "A binary file that contains the private keys used to sign your app",
+        "A list of all store names in the app",
+        "A configuration file for Gradle"
+      ],
+      "correct": [1],
+      "explanation": "If you lose your production Keystore, you will not be able to update your app on the Play Store ever again (unless you have Google Play App Signing enabled).",
+      "interviewTip": "Always back up your Keystore securely and never commit it to public version control."
+    },
+    {
+      "id": "dep-09",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "In CI/CD, what is the 'Build' phase?",
+      "options": [
+        "Writing the code",
+        "The process of compiling source code into an executable binary (IPA or APK/AAB)",
+        "Designing the UI",
+        "Reviewing the app by the store team"
+      ],
+      "correct": [1],
+      "explanation": "On a CI server (like GitHub Actions), this phase involves installing dependencies, running native build scripts (Gradle/xcodebuild), and signing the output.",
+      "interviewTip": "Mobile builds are 'heavy' and often take 10-30 minutes, so caching dependencies is crucial."
+    },
+    {
+      "id": "dep-10",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What are 'Environmental Variables' (.env) used for in deployment?",
+      "options": [
+        "To save memory",
+        "To store sensitive information like API keys or backend URLs that change between Staging and Production",
+        "To define the app's font",
+        "To track the device's location"
+      ],
+      "correct": [1],
+      "explanation": "You don't want to hardcode your 'Development' API URL into your 'Production' build. Environment variables allow you to swap these at build time.",
+      "interviewTip": "In React Native, libraries like 'react-native-config' or 'expo-constants' are used to access these."
+    },
+    {
+      "id": "dep-11",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'Semantic Versioning' (SemVer) in the context of mobile releases?",
+      "options": [
+        "A way to name components",
+        "A versioning system (Major.Minor.Patch) that helps communicate the significance of an update",
+        "A tool for translating code",
+        "The order of build steps"
+      ],
+      "correct": [1],
+      "explanation": "Major = Breaking changes, Minor = New features, Patch = Bug fixes.",
+      "interviewTip": "For mobile, remember that 'Build Number' (iOS) and 'Version Code' (Android) must also increment for every store submission."
+    },
+    {
+      "id": "dep-12",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'App Store Review'?",
+      "options": [
+        "Users giving your app a 5-star rating",
+        "The manual and automated process where Apple/Google check your app against their policies before letting it go live",
+        "Reviewing the code with your teammates",
+        "Checking the app's performance"
+      ],
+      "correct": [1],
+      "explanation": "Apple is famous for a strict review process that checks for design, security, and content. Google's process is faster but has become stricter recently.",
+      "interviewTip": "Always provide a demo account to the reviewers if your app requires a login."
+    },
+    {
+      "id": "dep-13",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is the purpose of 'App Center' (by Microsoft)?",
+      "options": [
+        "To build a website for the app",
+        "A CI/CD and crash reporting service specifically for mobile apps",
+        "A way to download apps on Windows",
+        "A tool for managing app icons"
+      ],
+      "correct": [1],
+      "explanation": "It provides cloud builds, distribution to testers, and analytics/crash reporting (though many features are being moved to Azure).",
+      "interviewTip": "Many teams use App Center for its simplicity in managing build pipelines."
+    },
+    {
+      "id": "dep-14",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is a 'Release Candidate' (RC)?",
+      "options": [
+        "A person who wants to release an app",
+        "A version of the app that is potentially ready for production unless serious bugs are found",
+        "The final version of the code",
+        "A tool for deleting old builds"
+      ],
+      "correct": [1],
+      "explanation": "An RC is typically shared with stakeholders or a internal QA team for one final 'smoke test' before going to the public.",
+      "interviewTip": "Testing the RC on real devices is the final safety net."
+    },
+    {
+      "id": "dep-15",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'Sentry' or 'Bugsnag' used for in production?",
+      "options": [
+        "To protect the app from viruses",
+        "To track and report JavaScript and Native crashes from real users",
+        "To speed up the app",
+        "To monitor the internet connection"
+      ],
+      "correct": [1],
+      "explanation": "When a user's app crashes, these tools capture the 'Stack Trace', helping you find and fix the exact line of code that failed.",
+      "interviewTip": "You must upload 'Source Maps' to these services so the cryptic, minified production code can be turned back into readable code for debugging."
+    },
+    {
+      "id": "dep-16",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'Staged Rollout' (or Phased Release)?",
+      "options": [
+        "Releasing the app on a stage",
+        "Releasing an update to a small percentage of users (e.g., 5%) and slowly increasing it if no bugs are reported",
+        "A way to release the app screen-by-screen",
+        "Releasing the app for free first"
+      ],
+      "correct": [1],
+      "explanation": "This mitigates risk. If a major bug exists, it only affects 5% of users instead of 100%, and you can pause the rollout to fix it.",
+      "interviewTip": "Both the Play Store and App Store support this natively."
+    },
+    {
+      "id": "dep-17",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "How do you handle 'Secrets' (like private keys) in a CI/CD environment?",
+      "options": [
+        "By committing them to the repository",
+        "By using 'Secret Variables' provided by the CI platform (e.g., GitHub Secrets)",
+        "By emailing them to the server",
+        "By typing them into the terminal manually every time"
+      ],
+      "correct": [1],
+      "explanation": "Secrets are injected into the build environment at runtime, so they never appear in the source code or logs.",
+      "interviewTip": "Never, under any circumstances, commit a .keystore or a .p8 file to a public git repo."
+    }
+  ]
+}

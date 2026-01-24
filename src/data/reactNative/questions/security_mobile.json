@@ -1,0 +1,259 @@
+{
+  "default": [
+    {
+      "id": "sec-01",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is 'SSL Pinning' and why is it used in mobile apps?",
+      "options": [
+        "A way to pin the app to the home screen",
+        "A technique to ensure the app only communicates with a specific server by verifying its unique certificate/public key",
+        "A method to speed up HTTPS requests",
+        "A way to remember the user's password"
+      ],
+      "correct": [1],
+      "explanation": "SSL Pinning prevents 'Man-in-the-Middle' (MITM) attacks where a hacker intercepts the traffic using a fake certificate.",
+      "interviewTip": "Mention that while it increases security, it can break the app if the server certificate expires and the app isn't updated."
+    },
+    {
+      "id": "sec-02",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "Where should you NEVER store sensitive API keys or secrets in a React Native app?",
+      "options": [
+        "In a .env file bundled with the app",
+        "Hardcoded inside a JavaScript component",
+        "In AsyncStorage",
+        "All of the above"
+      ],
+      "correct": [3],
+      "explanation": "Anything in your JS bundle can be read by extracting the index.bundle file from the APK/IPA. Secrets should be managed by the backend or a Secure Store.",
+      "interviewTip": "Remind the interviewer that 'Frontend code is public code'—even on mobile."
+    },
+    {
+      "id": "sec-03",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is 'Code Obfuscation'?",
+      "options": [
+        "Deleting old code",
+        "Transforming the code into a format that is technically functional but humanly unreadable to hinder reverse-engineering",
+        "A way to minify CSS",
+        "Writing code in a foreign language"
+      ],
+      "correct": [1],
+      "explanation": "On Android, ProGuard or R8 is used to rename classes and methods to nonsense characters (e.g., 'UserRepository' becomes 'a').",
+      "interviewTip": "Obfuscation doesn't make the app 'unhackable,' but it significantly raises the effort required for an attacker."
+    },
+    {
+      "id": "sec-04",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is the 'Keychain' (iOS) and 'Keystore' (Android)?",
+      "options": [
+        "Files that store app icons",
+        "Hardware-backed secure containers for storing small pieces of sensitive data like tokens and passwords",
+        "Libraries for handling animations",
+        "A list of blocked IP addresses"
+      ],
+      "correct": [1],
+      "explanation": "Data in these containers is encrypted at the OS level and is much harder to access than data in AsyncStorage.",
+      "interviewTip": "In the React Native ecosystem, use 'react-native-keychain' or 'expo-secure-store' to interact with these."
+    },
+    {
+      "id": "sec-05",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is 'Jailbreak' (iOS) or 'Root' (Android) detection?",
+      "options": [
+        "A way to see if the user is a developer",
+        "Checking if the device's security restrictions have been bypassed, which makes the app more vulnerable to data theft",
+        "Detecting if the phone is charging",
+        "A method to speed up the OS"
+      ],
+      "correct": [1],
+      "explanation": "Apps dealing with high security (like banking) often refuse to run on rooted/jailbroken devices to protect the user's data.",
+      "interviewTip": "Mention libraries like 'react-native-jailbreak-term' or 'expo-device' to perform these checks."
+    },
+    {
+      "id": "sec-06",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is the 'Deep Link Hijacking' vulnerability?",
+      "options": [
+        "When a link opens the wrong app",
+        "When a malicious app registers the same URL scheme as your app to steal sensitive data sent via the link",
+        "When the internet is too slow to open a link",
+        "A bug in the React Navigation library"
+      ],
+      "correct": [1],
+      "explanation": "If your app uses 'myapp://reset-password?token=...', another app could intercept that token.",
+      "interviewTip": "To prevent this, use 'Universal Links' (iOS) and 'App Links' (Android) which verify domain ownership."
+    },
+    {
+      "id": "sec-07",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "How can you prevent users from taking screenshots of sensitive screens (like a credit card page) on Android?",
+      "options": [
+        "By asking them nicely",
+        "By setting the 'FLAG_SECURE' window flag in the native Activity code",
+        "React Native does this automatically",
+        "By disabling the volume buttons"
+      ],
+      "correct": [1],
+      "explanation": "FLAG_SECURE prevents screenshots and screen recordings, and it shows a black screen in the 'Recent Apps' switcher.",
+      "interviewTip": "On iOS, you can't easily block screenshots, but you can listen for the 'screenshot taken' event and alert the user."
+    },
+    {
+      "id": "sec-08",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is 'Sensitive Data Exposure' in the Background App Switcher?",
+      "options": [
+        "When the app uses too much data in the background",
+        "When a screenshot of the app's current state is visible in the task manager, potentially revealing private info",
+        "When the app's name is visible",
+        "A bug in the phone's battery"
+      ],
+      "correct": [1],
+      "explanation": "To prevent this, many apps show a 'blur' or a splash screen as soon as the app moves to the background state.",
+      "interviewTip": "Use the 'AppState' API to detect when the app is inactive and cover the UI with a secure view."
+    },
+    {
+      "id": "sec-09",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is 'In-App Browser' security?",
+      "options": [
+        "Using a secure browser like Chrome",
+        "Using 'ASWebAuthenticationSession' (iOS) or 'Custom Tabs' (Android) for logins so the app never sees the user's password",
+        "A way to block pop-ups",
+        "A feature to save browser history"
+      ],
+      "correct": [1],
+      "explanation": "These native system browsers are sandboxed, meaning the React Native app cannot 'spy' on what the user types inside them.",
+      "interviewTip": "This is the most secure way to implement OAuth/Social logins."
+    },
+    {
+      "id": "sec-10",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is 'SQL Injection' in the context of mobile databases (SQLite)?",
+      "options": [
+        "A virus that deletes the database",
+        "A vulnerability where an attacker inserts malicious SQL code into an input field to manipulate the database",
+        "A way to make the database faster",
+        "A type of data backup"
+      ],
+      "correct": [1],
+      "explanation": "To prevent this, you should always use 'Parameterized Queries' (placeholders like ?) instead of concatenating strings.",
+      "interviewTip": "Modern libraries like WatermelonDB or TypeORM handle this for you automatically."
+    },
+    {
+      "id": "sec-11",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is the 'Least Privilege' principle for mobile permissions?",
+      "options": [
+        "Giving the app all permissions just in case",
+        "Requesting only the absolute minimum permissions the app needs to function",
+        "Charging users less if they don't use hardware features",
+        "A rule about the app's file size"
+      ],
+      "correct": [1],
+      "explanation": "If your app only needs to pick a photo, don't ask for full storage access. Users trust apps that ask for less.",
+      "interviewTip": "Excessive permission requests are a common reason for App Store rejections."
+    },
+    {
+      "id": "sec-12",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "How does 'Hermes' contribute to security?",
+      "options": [
+        "It encrypts all network traffic",
+        "It ships bytecode instead of plain-text JavaScript, making it slightly harder (but not impossible) to read the source code",
+        "It blocks malware",
+        "It uses a secure VPN"
+      ],
+      "correct": [1],
+      "explanation": "Since the JS is pre-compiled, an attacker can't just open the APK and read your original source code as easily as with the legacy engine.",
+      "interviewTip": "Bytecode can still be disassembled, so never put secrets in your code even with Hermes."
+    },
+    {
+      "id": "sec-13",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is 'Biometric Fallback'?",
+      "options": [
+        "When the phone falls and the camera breaks",
+        "Allowing the user to use their device PIN/Pattern if FaceID or Fingerprint fails or is unavailable",
+        "A way to reset the phone",
+        "A secondary camera for security"
+      ],
+      "correct": [1],
+      "explanation": "This ensures the user isn't 'locked out' of your app if their biometric sensor is dirty or disabled.",
+      "interviewTip": "The native OS prompts usually handle this fallback logic for you."
+    },
+    {
+      "id": "sec-14",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "Which of the following is a common security risk of using 3rd-party libraries?",
+      "options": [
+        "They take up too much space",
+        "They might contain 'Malicious Code' or 'Vulnerabilities' that give attackers access to your app's data",
+        "They make the app look different",
+        "They require too much documentation"
+      ],
+      "correct": [1],
+      "explanation": "Supply chain attacks are real. Always use well-known libraries and keep them updated.",
+      "interviewTip": "Use `npm audit` or tools like Snyk to check for known vulnerabilities in your dependencies."
+    },
+    {
+      "id": "sec-15",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is the purpose of 'Certificate Transparency'?",
+      "options": [
+        "Making certificates see-through",
+        "An open framework for monitoring and auditing digital certificates to detect 'rogue' or mistakenly issued ones",
+        "A way to see the server's location",
+        "A tool for designing certificates"
+      ],
+      "correct": [1],
+      "explanation": "It adds an extra layer of security beyond just checking the certificate; it checks if the certificate is publicly logged and valid.",
+      "interviewTip": "Advanced mobile security implementations combine SSL Pinning with Certificate Transparency."
+    },
+    {
+      "id": "sec-16",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What is 'Runtime Application Self-Protection' (RASP)?",
+      "options": [
+        "A way to speed up the app",
+        "Security technology that is built into an app to detect and block attacks in real-time (e.g., detecting an attached debugger)",
+        "A method for backing up data",
+        "A type of notification"
+      ],
+      "correct": [1],
+      "explanation": "RASP can detect if an attacker is trying to debug your app or modify its memory while it is running and shut down the app as a response.",
+      "interviewTip": "This is mostly used in high-security banking or healthcare applications."
+    },
+    {
+      "id": "sec-17",
+      "stageId": "security_mobile",
+      "type": "single",
+      "prompt": "What should you do with data stored in a 'Secure Store' when a user logs out?",
+      "options": [
+        "Leave it there for next time",
+        "Delete it to ensure that the next person using the device cannot access the previous user's session",
+        "Move it to AsyncStorage",
+        "Encrypt it one more time"
+      ],
+      "correct": [1],
+      "explanation": "Logout should always be a 'destructive' action for local tokens to prevent unauthorized account access.",
+      "interviewTip": "A common 'logout' bug is forgetting to clear the token from the Keychain/Keystore."
+    }
+  ]
+}

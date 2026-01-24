@@ -1,0 +1,239 @@
+{
+  "default": [
+    {
+      "id": "flex-01",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "What is the default 'flexDirection' in React Native?",
+      "options": ["row", "column", "stack", "row-reverse"],
+      "correct": [1],
+      "explanation": "Unlike the web (where it defaults to 'row'), React Native defaults to 'column' to match the vertical nature of mobile screens.",
+      "interviewTip": "This is the #1 mistake web developers make when starting with React Native."
+    },
+    {
+      "id": "flex-02",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "Which property aligns items along the 'main axis'?",
+      "options": ["alignItems", "justifyContent", "alignContent", "flexWrap"],
+      "correct": [1],
+      "explanation": "justifyContent aligns children along the main axis. If the direction is column, it aligns vertically; if row, it aligns horizontally.",
+      "interviewTip": "Remember: Justify = Main Axis, Align = Cross Axis."
+    },
+    {
+      "id": "flex-03",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "Which property aligns items along the 'cross axis'?",
+      "options": ["justifyContent", "alignItems", "alignSelf", "flexDirection"],
+      "correct": [1],
+      "explanation": "alignItems aligns children along the axis perpendicular to the main axis.",
+      "interviewTip": "By default, alignItems is set to 'stretch' in React Native."
+    },
+    {
+      "id": "flex-04",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "What does 'flex: 1' mean for a component?",
+      "options": [
+        "It sets the width to 1 pixel",
+        "It tells the component to fill all available space in its parent",
+        "It makes the component invisible",
+        "It limits the component to 10% of the screen"
+      ],
+      "correct": [1],
+      "explanation": "A component with 'flex: 1' will expand to fill all remaining space in its parent container.",
+      "interviewTip": "If multiple siblings have 'flex: 1', they will share the space equally."
+    },
+    {
+      "id": "flex-05",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "How does 'alignSelf' differ from 'alignItems'?",
+      "options": [
+        "It does the same thing",
+        "It allows an individual child to override the parent's 'alignItems' setting",
+        "It only works on the parent container",
+        "It is used for absolute positioning"
+      ],
+      "correct": [1],
+      "explanation": "While 'alignItems' is set on the parent, 'alignSelf' is set on a specific child to control its own alignment on the cross axis.",
+      "interviewTip": "This is useful when you want one item centered but others stretched."
+    },
+    {
+      "id": "flex-06",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "How do you handle elements that should go off-screen or wrap to the next line?",
+      "options": [
+        "overflow: scroll",
+        "flexWrap: 'wrap'",
+        "direction: ltr",
+        "display: block"
+      ],
+      "correct": [1],
+      "explanation": "flexWrap: 'wrap' allows items that don't fit on the main axis to move to the next 'line'.",
+      "interviewTip": "By default, React Native uses 'nowrap'."
+    },
+    {
+      "id": "flex-07",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "Which unit is used for dimensions (width/height) in React Native?",
+      "options": [
+        "Pixels (px)",
+        "Density-independent pixels (dp)",
+        "Percentages (%)",
+        "Points (pt)"
+      ],
+      "correct": [1],
+      "explanation": "Dimensions in RN are unitless and represent density-independent pixels, which scale across different screen resolutions.",
+      "interviewTip": "You can use percentages as strings (e.g., '50%'), but raw numbers are always dp."
+    },
+    {
+      "id": "flex-08",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "What is the effect of 'position: absolute' in React Native?",
+      "options": [
+        "It positions the element relative to the screen bounds",
+        "It positions the element relative to its nearest parent",
+        "It removes the element from the flexbox flow",
+        "It works exactly like in web CSS"
+      ],
+      "correct": [2],
+      "explanation": "Absolute positioning removes the element from the normal layout flow, allowing it to overlap other components.",
+      "interviewTip": "Unlike web, you don't need 'position: relative' on the parent for 'absolute' to work on the child in RN; children are always positioned relative to their parent."
+    },
+    {
+      "id": "flex-09",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "What does 'aspectRatio' do?",
+      "options": [
+        "It changes the screen resolution",
+        "It maintains a fixed ratio between width and height",
+        "It only works for images",
+        "It calculates the brightness of the screen"
+      ],
+      "correct": [1],
+      "explanation": "aspectRatio is a unique RN property that ensures a component maintains a specific shape (e.g., 16/9) regardless of screen size.",
+      "interviewTip": "This is incredibly helpful for responsive image containers."
+    },
+    {
+      "id": "flex-10",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "How do you add space between siblings without using margins?",
+      "options": [
+        "padding: 10",
+        "gap: 10",
+        "spacer: 10",
+        "justifyContent: 'between'"
+      ],
+      "correct": [1],
+      "explanation": "Modern React Native supports the 'gap' (and 'rowGap', 'columnGap') property, which adds space strictly between items.",
+      "interviewTip": "This is a newer feature that saves you from writing complex margin logic for the last item in a list."
+    },
+    {
+      "id": "flex-11",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "What is the difference between 'padding' and 'margin'?",
+      "options": [
+        "Padding is outside the border; margin is inside",
+        "Padding is inside the component's boundary; margin is space outside it",
+        "There is no difference in React Native",
+        "Margin only works for Text components"
+      ],
+      "correct": [1],
+      "explanation": "Padding creates space inside the component, affecting the placement of children. Margin creates space around the component, affecting its distance from siblings.",
+      "interviewTip": "The 'Box Model' in RN is slightly simpler than web as it doesn't have as many border-box/content-box complexities."
+    },
+    {
+      "id": "flex-12",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "How can you get the screen's width and height dynamically?",
+      "options": [
+        "window.innerWidth",
+        "Dimensions.get('window')",
+        "document.body.clientWidth",
+        "Screen.size()"
+      ],
+      "correct": [1],
+      "explanation": "The Dimensions API (or useWindowDimensions hook) provides the current screen size.",
+      "interviewTip": "Use the 'useWindowDimensions' hook for better responsiveness, as it updates automatically on screen rotation."
+    },
+    {
+      "id": "flex-13",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "Which justifyContent value spreads items evenly with equal space around them?",
+      "options": ["space-between", "space-around", "space-evenly", "center"],
+      "correct": [2],
+      "explanation": "'space-evenly' ensures the space between items and the space to the edges is exactly the same.",
+      "interviewTip": "Contrast this with 'space-around', where the edge space is half the size of the middle space."
+    },
+    {
+      "id": "flex-14",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "What is 'z-index' used for in React Native?",
+      "options": [
+        "Scaling an image",
+        "Controlling the stack order of overlapping elements",
+        "Zooming into a view",
+        "Setting the background transparency"
+      ],
+      "correct": [1],
+      "explanation": "z-index allows you to control which element appears 'on top' when they overlap due to absolute positioning.",
+      "interviewTip": "On Android, z-index sometimes requires the 'elevation' property to work correctly with shadows."
+    },
+    {
+      "id": "flex-15",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "Does React Native support percentage-based heights/widths?",
+      "options": [
+        "No, only DP",
+        "Yes, using strings like '50%'",
+        "Only for the root view",
+        "Only on iOS"
+      ],
+      "correct": [1],
+      "explanation": "React Native supports percentage strings for dimensions, which are calculated based on the parent's size.",
+      "interviewTip": "Note that Flex is usually preferred over percentages for fluid layouts."
+    },
+    {
+      "id": "flex-16",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "What happens if a parent has no 'height' but the child has 'flex: 1'?",
+      "options": [
+        "The child fills the whole screen",
+        "The child's height will be 0",
+        "The child will have its natural size",
+        "The app will crash"
+      ],
+      "correct": [1],
+      "explanation": "If a parent doesn't have a defined size (or isn't flexed itself), a child with 'flex: 1' has no space to expand into.",
+      "interviewTip": "This is a common reason why components 'disappear'."
+    },
+    {
+      "id": "flex-17",
+      "stageId": "flexbox_layout",
+      "type": "single",
+      "prompt": "Which property allows you to set space at the start/end of a layout, respecting LTR/RTL languages?",
+      "options": [
+        "marginLeft / marginRight",
+        "marginStart / marginEnd",
+        "marginLeftOnly",
+        "flexStart"
+      ],
+      "correct": [1],
+      "explanation": "Using 'Start' and 'End' instead of 'Left' and 'Right' makes your app automatically compatible with Right-to-Left (RTL) languages like Arabic or Hebrew.",
+      "interviewTip": "Modern mobile development favors Start/End for better internationalization (i18n)."
+    }
+  ]
+}
