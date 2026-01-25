@@ -74,6 +74,9 @@ const SelectStage = () => {
       flatListRef.current.scrollToOffset({ offset: 0, animated: false });
     }
 
+    setSelectedStageId('');
+    setSelectedStageTitle('');
+
     if (
       framework === 'react' ||
       framework === 'react-native' ||
