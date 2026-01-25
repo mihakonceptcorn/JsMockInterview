@@ -1,0 +1,207 @@
+{
+  "default": [
+    {
+      "id": "lp-01",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "Why is <FlatList> more performant than <ScrollView> for long lists of data?",
+      "options": [
+        "It uses a faster C++ implementation for the scroll bar.",
+        "It only renders the items currently visible on the screen and recycles views.",
+        "It compresses images inside the list automatically.",
+        "It runs on the Shadow Thread instead of the JS Thread."
+      ],
+      "correct": [1],
+      "explanation": "FlatList lazily renders items as they are about to appear and unmounts items that move far off-screen, saving significant memory.",
+      "interviewTip": "This concept is called 'Windowing' or 'Virtualization'."
+    },
+    {
+      "id": "lp-02",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "Which prop is required in <FlatList> to tell it what to render for each item in the data array?",
+      "options": ["renderItem", "component", "ItemTemplate", "rowRenderer"],
+      "correct": [0],
+      "explanation": "The renderItem prop takes a function that receives an object (usually destructured as { item, index }) and returns a JSX element.",
+      "interviewTip": "To keep performance high, define the renderItem function outside of your component or wrap it in useCallback."
+    },
+    {
+      "id": "lp-03",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "What is the purpose of the 'keyExtractor' prop?",
+      "code": "<FlatList \n  data={users} \n  keyExtractor={(item) => item.uuid} \n  renderItem={renderUser} \n/>",
+      "options": [
+        "To encrypt the data for security.",
+        "To provide a unique ID for each item so React can track changes and re-render efficiently.",
+        "To sort the list based on the key.",
+        "To link the list to a database."
+      ],
+      "correct": [1],
+      "explanation": "By default, FlatList looks for an 'id' or 'key' property. If your data uses different names (like 'uuid'), you must use keyExtractor.",
+      "interviewTip": "Always provide a unique string as a key. Avoid using the index if the data can be reordered or filtered."
+    },
+    {
+      "id": "lp-04",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "How do you render a header that scrolls along with the list items?",
+      "options": [
+        "Place the header inside a View above the FlatList.",
+        "Use the 'ListHeaderComponent' prop.",
+        "Wrap the FlatList in a ScrollView.",
+        "Put the header in the first item of the data array."
+      ],
+      "correct": [1],
+      "explanation": "Using ListHeaderComponent ensures the header stays part of the list's scrollable area without breaking the virtualization logic.",
+      "interviewTip": "Never wrap a FlatList inside a ScrollView of the same orientation; it breaks virtualization and causes performance warnings."
+    },
+    {
+      "id": "lp-05",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "Which component should you use to render grouped data (e.g., a contact list organized by the first letter of the name)?",
+      "options": [
+        "GroupedList",
+        "SectionList",
+        "FlatList with nested Maps",
+        "CategoryView"
+      ],
+      "correct": [1],
+      "explanation": "SectionList is designed specifically for data divided into logical sections, each with its own header.",
+      "interviewTip": "SectionList data must be an array of objects, where each object has a 'data' array (e.g., { title: 'A', data: ['Alice', 'Aaron'] })."
+    },
+    {
+      "id": "lp-06",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "What does the 'getItemLayout' prop optimize?",
+      "options": [
+        "It allows the list to skip measurement of items if they have a fixed height/width.",
+        "It defines the Flexbox layout of the row.",
+        "It automatically calculates the font size of the text.",
+        "It handles the spacing between items."
+      ],
+      "correct": [0],
+      "explanation": "By providing the exact dimensions of items ahead of time, FlatList doesn't have to calculate them on the fly as you scroll, making it much smoother.",
+      "interviewTip": "This is a 'pro' optimization for lists with hundreds of items where every item has a constant height."
+    },
+    {
+      "id": "lp-07",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "Analyze the code. What will happen if the user reaches the bottom of the list?",
+      "code": "<FlatList \n  data={data} \n  onEndReachedThreshold={0.5}\n  onEndReached={loadMoreData}\n  renderItem={renderItem} \n/>",
+      "options": [
+        "The list will stop scrolling.",
+        "loadMoreData will be called when the user is within 50% of the end of the list content.",
+        "loadMoreData will be called only when the user hits the exact pixel at the bottom.",
+        "The list will restart from the top."
+      ],
+      "correct": [1],
+      "explanation": "onEndReachedThreshold is a value from 0 to 1 representing how close to the bottom (as a fraction of the list length) the user must be to trigger the event.",
+      "interviewTip": "This is how 'Infinite Scroll' is implemented in mobile apps."
+    },
+    {
+      "id": "lp-08",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "How do you add a separator line between items without adding it to the top or bottom of the list?",
+      "options": [
+        "Add a border to every item.",
+        "Use the 'ItemSeparatorComponent' prop.",
+        "Add a line inside the renderItem function.",
+        "Use the 'gap' style on the FlatList."
+      ],
+      "correct": [1],
+      "explanation": "ItemSeparatorComponent renders a component between every item, but excludes the very top and very bottom of the list.",
+      "interviewTip": "This is cleaner than using margins or borders because it handles the 'edges' of the list automatically."
+    },
+    {
+      "id": "lp-09",
+      "stageId": "lists_performance",
+      "type": "multiple",
+      "prompt": "Which of these props can help improve performance on a very slow FlatList?",
+      "options": [
+        "initialNumToRender (how many items to load initially)",
+        "windowSize (how many pages of items to keep in memory)",
+        "removeClippedSubviews (unmounts views off-screen)",
+        "maxToRenderPerBatch (limits items rendered per scroll increment)"
+      ],
+      "correct": [0, 1, 2, 3],
+      "explanation": "All these props fine-tune the virtualization engine. For example, a smaller windowSize reduces memory but might show more 'blank' spaces during fast scrolling.",
+      "interviewTip": "Always start with defaults. Only tweak these if you notice visible lag or high memory usage."
+    },
+    {
+      "id": "lp-10",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "What is the 'extraData' prop used for in a FlatList?",
+      "options": [
+        "To pass metadata to the database.",
+        "To tell the FlatList to re-render when a piece of state *outside* the 'data' array changes.",
+        "To add more items to the end of the list.",
+        "To style the empty list state."
+      ],
+      "correct": [1],
+      "explanation": "FlatList is a PureComponent. It only re-renders if the 'data' prop reference changes. If your items depend on a global 'theme' or 'selectedID', you must pass that to extraData.",
+      "interviewTip": "If your list isn't updating when you change a single item's selected state, you probably forgot extraData."
+    },
+    {
+      "id": "lp-11",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "How do you implement 'Pull to Refresh' in a FlatList?",
+      "code": "<FlatList \n  data={data} \n  ________={refreshing} \n  ________={handleRefresh} \n  renderItem={renderItem} \n/>",
+      "options": [
+        "loading, onReload",
+        "isFetching, onFetch",
+        "refreshing, onRefresh",
+        "active, onPull"
+      ],
+      "correct": [2],
+      "explanation": "refreshing (boolean) shows the spinner; onRefresh (function) is the callback where you fetch new data.",
+      "interviewTip": "This provides the native 'bounce and spin' experience users expect on mobile."
+    },
+    {
+      "id": "lp-12",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "What happens if you don't provide a unique key to list items?",
+      "options": [
+        "The app will crash immediately.",
+        "React will show a warning and use the index as a key, which might lead to performance bugs.",
+        "The list will be empty.",
+        "The items will be rendered in random order."
+      ],
+      "correct": [1],
+      "explanation": "React uses keys to optimize DOM/Native UI updates. Using the index can cause 'state' to stick to the wrong items if the list changes.",
+      "interviewTip": "In an interview, explain that stable keys prevent expensive re-mounts."
+    },
+    {
+      "id": "lp-13",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "Which prop allows you to render the list in multiple columns (e.g., a grid)?",
+      "options": ["columnCount", "numColumns", "gridEnabled", "flexWrap"],
+      "correct": [1],
+      "explanation": "numColumns={2} will automatically arrange items in two columns. This requires your items to have a flexible width or matching fixed width.",
+      "interviewTip": "Note that you cannot change numColumns on the fly; the component must remount for this to change."
+    },
+    {
+      "id": "lp-14",
+      "stageId": "lists_performance",
+      "type": "single",
+      "prompt": "What is the 'ListEmptyComponent' used for?",
+      "options": [
+        "To delete all data from the list.",
+        "To render a specific UI (like a 'No results found' message) when the data array is empty.",
+        "To style the background of the list.",
+        "To hide the list entirely."
+      ],
+      "correct": [1],
+      "explanation": "It's a convenient prop to handle the empty state without using extra ternary operators in your JSX.",
+      "interviewTip": "It makes your component code much cleaner."
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "default": [
+    {
+      "id": "perf-01",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "Which JavaScript engine is now the default for React Native because it provides faster TTI (Time To Interactive) and smaller APK sizes?",
+      "options": ["V8", "JavaScriptCore (JSC)", "Hermes", "SpiderMonkey"],
+      "correct": [2],
+      "explanation": "Hermes is optimized specifically for mobile. It uses Ahead-of-Time (AOT) compilation to turn JS into bytecode during the build process, rather than at runtime.",
+      "interviewTip": "Mention that Hermes also helps reduce the 'Memory Footprint' of the app, which is vital for budget Android devices."
+    },
+    {
+      "id": "perf-02",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is 'FlashList' (by Shopify) and why is it often used instead of 'FlatList'?",
+      "options": [
+        "It is a version of FlatList that only works with images.",
+        "It is a highly optimized list component that recycles cells (Views) instead of unmounting them, resulting in significantly higher FPS.",
+        "It is a list that only renders once and never updates.",
+        "It is a paid plugin for React Native."
+      ],
+      "correct": [1],
+      "explanation": "FlatList unmounts off-screen items. FlashList recycles the underlying native views and simply swaps the data, which is much faster for the device to handle.",
+      "interviewTip": "FlashList claims to be '5x to 10x faster' than FlatList. It's a great mention for Senior-level performance discussions."
+    },
+    {
+      "id": "perf-03",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "Analyze the code. Why is this list likely to lag during fast scrolling?",
+      "code": "const renderItem = ({ item }) => (\n  <View>\n    <Image source={{ uri: item.url }} />\n    <Text>{expensiveFormat(item.date)}</Text>\n  </View>\n);\n\nreturn <FlatList data={data} renderItem={renderItem} />;",
+      "options": [
+        "Because the renderItem is defined inside the component and 'expensiveFormat' runs on every render.",
+        "Because FlatList doesn't support Text components.",
+        "Because the data prop is too large.",
+        "Because 'uri' images are always slow."
+      ],
+      "correct": [0],
+      "explanation": "Functions defined inside the component body are recreated every render. Additionally, heavy logic like 'expensiveFormat' inside renderItem blocks the JS thread during scroll.",
+      "interviewTip": "Solution: Move renderItem outside the component or wrap it in 'useCallback', and memoize the expensive formatting."
+    },
+    {
+      "id": "perf-04",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is the purpose of the 'InteractionManager.runAfterInteractions' method?",
+      "options": [
+        "To speed up the network requests.",
+        "To delay long-running tasks (like data processing) until after animations or navigation transitions have finished.",
+        "To check if the user is touching the screen.",
+        "To restart the JS thread."
+      ],
+      "correct": [1],
+      "explanation": "This ensures that a heavy task doesn't steal CPU cycles from an animation, preventing 'jank' or dropped frames.",
+      "interviewTip": "This is perfect for fetching data immediately after a screen transition without making the transition feel sluggish."
+    },
+    {
+      "id": "perf-05",
+      "stageId": "rn_performance",
+      "type": "multiple",
+      "prompt": "Which of these tools are commonly used to profile and debug performance in a React Native app?",
+      "options": [
+        "Flipper (with the LeakCanary and Profiler plugins).",
+        "React DevTools (Profiler tab).",
+        "Xcode Instruments (for iOS native performance).",
+        "Chrome Task Manager."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Flipper and React DevTools are standard for JS/Bridge profiling. Xcode Instruments (and Android Studio Profiler) are needed to inspect native memory and CPU usage.",
+      "interviewTip": "Flipper is a 'Senior' choice—it allows you to inspect the bridge traffic, layout, and database in one place."
+    },
+    {
+      "id": "perf-06",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "How can you detect if your JS thread is being overloaded in a real device?",
+      "options": [
+        "The app will automatically close.",
+        "By checking the 'Perf Monitor' in the Developer Menu to see the JS FPS and UI FPS.",
+        "The phone will start to get hot.",
+        "The internet speed will decrease."
+      ],
+      "correct": [1],
+      "explanation": "The 'Perf Monitor' overlay shows the frame rate of both threads. If UI is 60 FPS but JS is 10 FPS, your logic is blocking the app.",
+      "interviewTip": "JS FPS drops usually mean too many re-renders or heavy computations; UI FPS drops mean your View hierarchy is too deep or complex."
+    },
+    {
+      "id": "perf-07",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "What is 'Inline function' optimization in the context of RN performance?",
+      "code": "/* BAD */\n<TouchableOpacity onPress={() => doSomething(id)} />\n\n/* GOOD */\nconst handlePress = useCallback(() => doSomething(id), [id]);\n<TouchableOpacity onPress={handlePress} />",
+      "options": [
+        "Using useCallback prevents the child from re-rendering unnecessarily if it is memoized.",
+        "Inline functions are faster to write.",
+        "Inline functions are automatically optimized by Hermes.",
+        "There is no performance difference."
+      ],
+      "correct": [0],
+      "explanation": "An inline arrow function creates a new reference on every render. If the button is wrapped in 'React.memo', it will still re-render because the 'onPress' prop changed reference.",
+      "interviewTip": "This is the most common cause of 'Wasted Renders' in large lists."
+    },
+    {
+      "id": "perf-08",
+      "stageId": "rn_performance",
+      "type": "single",
+      "prompt": "Why should you avoid deep nesting of View components?",
+      "options": [
+        "It makes the code harder to read.",
+        "It increases the complexity of the Shadow Tree layout calculations (Yoga), slowing down the UI thread.",
+        "It limits the number of colors you can use.",
+        "It is not allowed in the App Store."
+      ],
+      "correct": [1],
+      "explanation": "Every layer of nesting adds work for the Yoga layout engine. Flattening your UI structure improves the speed of initial rendering and updates.",
+      "interviewTip": "If you have 10 nested Views just for margins/padding, try to combine them into fewer components."
+    }
+  ]
+}

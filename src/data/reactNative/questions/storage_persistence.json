@@ -1,0 +1,147 @@
+{
+  "default": [
+    {
+      "id": "sp-01",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "Which library is the standard, community-recommended replacement for the deprecated core 'AsyncStorage'?",
+      "options": [
+        "react-native-local-storage",
+        "@react-native-async-storage/async-storage",
+        "react-native-db",
+        "expo-persistence"
+      ],
+      "correct": [1],
+      "explanation": "AsyncStorage was moved out of the React Native core into the community repository to allow for faster updates and maintenance.",
+      "interviewTip": "Always specify that AsyncStorage is 'asynchronous' and 'unencrypted,' making it unsuitable for sensitive secrets."
+    },
+    {
+      "id": "sp-02",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What is the primary architectural advantage of 'react-native-mmkv' over 'AsyncStorage'?",
+      "options": [
+        "It uses a cloud-based backup system.",
+        "It provides synchronous access to data via JSI, making it significantly faster.",
+        "It only works on Android, making it more stable there.",
+        "It automatically compresses all data into ZIP files."
+      ],
+      "correct": [1],
+      "explanation": "MMKV uses the JavaScript Interface (JSI) to allow the JS thread to read/write data directly from C++ memory without the overhead of the JSON bridge.",
+      "interviewTip": "MMKV is currently considered the fastest key-value storage for React Native, often 10-30x faster than AsyncStorage."
+    },
+    {
+      "id": "sp-03",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "How do you correctly save an object (not a string) to AsyncStorage?",
+      "code": "const user = { id: 1, name: 'Alex' };\nawait AsyncStorage.setItem('user_data', ________);",
+      "options": [
+        "user",
+        "JSON.stringify(user)",
+        "user.toString()",
+        "serialize(user)"
+      ],
+      "correct": [1],
+      "explanation": "AsyncStorage can only store strings. To store objects or arrays, you must serialize them to a JSON string first.",
+      "interviewTip": "Don't forget that `getItem` will also require `JSON.parse` to turn it back into an object."
+    },
+    {
+      "id": "sp-04",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "Where is the most secure place to store a user's Authentication Token or Bio-metric data?",
+      "options": [
+        "AsyncStorage (it's hidden from other apps).",
+        "MMKV (it's in memory).",
+        "iOS Keychain / Android Keystore (via libraries like react-native-keychain).",
+        "In a local .txt file."
+      ],
+      "correct": [2],
+      "explanation": "Keychain and Keystore provide hardware-level encryption that persists even if the app is deleted or the device is backed up. Key-value stores like AsyncStorage are not secure.",
+      "interviewTip": "Mention 'Key-Value storage for preferences, Keychain for secrets' as a security best practice."
+    },
+    {
+      "id": "sp-05",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "Analyze the code. What will be the value of 'name' after these calls?",
+      "code": "AsyncStorage.setItem('name', 'John');\nconst name = await AsyncStorage.getItem('name');",
+      "options": ["\"John\"", "undefined", "null", "A Promise object"],
+      "correct": [0],
+      "explanation": "AsyncStorage is promise-based. Because 'await' is used, the code waits for the storage to return the string 'John'.",
+      "interviewTip": "If you forget 'await', the constant 'name' will be a Promise, which evaluates to 'true' in a conditional, causing bugs."
+    },
+    {
+      "id": "sp-06",
+      "stageId": "storage_persistence",
+      "type": "multiple",
+      "prompt": "Which of the following are valid reasons to use 'SQLite' instead of 'AsyncStorage'?",
+      "options": [
+        "The app needs to perform complex relational queries (SQL).",
+        "The app needs to store a very large amount of structured data (thousands of rows).",
+        "The app needs to store a simple boolean flag for 'Dark Mode'.",
+        "The app requires transactions to ensure data integrity."
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "SQLite is a full relational database. For simple key-value pairs like theme preferences, it is overkill compared to AsyncStorage or MMKV.",
+      "interviewTip": "WatermelonDB or Realm are popular high-level alternatives that use SQLite or their own engines under the hood."
+    },
+    {
+      "id": "sp-07",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What does 'multiSet' do in AsyncStorage?",
+      "code": "AsyncStorage.multiSet([['k1', 'v1'], ['k2', 'v2']]);",
+      "options": [
+        "It sets a single key with multiple values.",
+        "It allows you to save multiple key-value pairs in a single batch operation.",
+        "It synchronizes data across multiple devices.",
+        "It is used to set data in multiple databases."
+      ],
+      "correct": [1],
+      "explanation": "Batch operations are more efficient than calling setItem multiple times, as they reduce the number of trips across the bridge.",
+      "interviewTip": "Always use 'multiSet' or 'multiGet' when dealing with related groups of data to improve performance."
+    },
+    {
+      "id": "sp-08",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "In Expo, what is the default secure storage library?",
+      "options": [
+        "expo-async-storage",
+        "expo-secure-store",
+        "expo-keychain",
+        "expo-safe-data"
+      ],
+      "correct": [1],
+      "explanation": "expo-secure-store provides a way to encrypt and securely store key-value pairs locally on the device.",
+      "interviewTip": "Note that SecureStore has a 2048-byte limit per value, so it's strictly for small secrets."
+    },
+    {
+      "id": "sp-09",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "What is the typical storage limit for AsyncStorage on Android?",
+      "options": [
+        "Unlimited.",
+        "6MB (by default, can be increased).",
+        "1GB.",
+        "50MB."
+      ],
+      "correct": [1],
+      "explanation": "By default, Android caps AsyncStorage at 6MB. For larger data, you must increase this in your `MainApplication.java` or `gradle.properties`.",
+      "interviewTip": "If your app crashes when saving large JSONs on Android, this limit is likely the cause."
+    },
+    {
+      "id": "sp-10",
+      "stageId": "storage_persistence",
+      "type": "single",
+      "prompt": "Which library is an 'Offline-first' database that syncs with a server and is often used with React Native?",
+      "options": ["Redux-Persist", "Realm (MongoDB)", "Axios-Cache", "Fast-DB"],
+      "correct": [1],
+      "explanation": "Realm is an object-oriented database that is much faster than SQLite and provides native synchronization features.",
+      "interviewTip": "Mention Realm if the interview focuses on complex apps that must work perfectly without an internet connection."
+    }
+  ]
+}

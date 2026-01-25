@@ -1,0 +1,156 @@
+{
+  "default": [
+    {
+      "id": "dep-01",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'Fastlane' in the context of React Native deployment?",
+      "options": [
+        "A library that makes the JavaScript code run faster.",
+        "An open-source automation tool that handles tasks like generating screenshots and submitting builds to the stores.",
+        "A specialized hosting service for mobile assets.",
+        "A feature in Chrome DevTools for mobile debugging."
+      ],
+      "correct": [1],
+      "explanation": "Fastlane automates the tedious parts of iOS and Android deployment. You can define a 'Lane' that builds the app, signs it with certificates, and uploads it to TestFlight or Google Play.",
+      "interviewTip": "Fastlane is usually used within CI/CD pipelines (like GitHub Actions) to avoid manual uploads from a developer's laptop."
+    },
+    {
+      "id": "dep-02",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'CodePush' (App Center) primarily used for?",
+      "options": [
+        "To push new native code (Java/Swift) to devices instantly.",
+        "To update the JavaScript bundle and assets of an app without requiring a new store submission.",
+        "To push notifications to users.",
+        "To force-quit the app remotely."
+      ],
+      "correct": [1],
+      "explanation": "CodePush allows you to fix bugs or update UI instantly by 'pushing' a new JS bundle to users. It bypasses the 24-48 hour store review process.",
+      "interviewTip": "Remember: CodePush *cannot* be used for changes that involve new native modules or changes to the AppDelegate/MainApplication files."
+    },
+    {
+      "id": "dep-03",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "In the Expo ecosystem, what does 'EAS Build' provide?",
+      "options": [
+        "A way to build your app's binary (IPA/APK) in the cloud without needing a local macOS/Android environment.",
+        "A tool for writing CSS more efficiently.",
+        "A local debugger for Expo Go.",
+        "An AI assistant for fixing build errors."
+      ],
+      "correct": [0],
+      "explanation": "EAS (Expo Application Services) Build takes your project and compiles it on Expo's servers. This is huge for developers who don't have a Mac but need to build an iOS app.",
+      "interviewTip": "EAS works with both 'Managed' and 'Bare' React Native projects."
+    },
+    {
+      "id": "dep-04",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "Analyze the 'eas.json' snippet. What happens when you run 'eas build --profile preview'?",
+      "code": "{\n  \"build\": {\n    \"preview\": {\n      \"distribution\": \"internal\",\n      \"android\": { \"buildType\": \"apk\" }\n    }\n  }\n}",
+      "options": [
+        "It builds a production-ready app for the Play Store.",
+        "It builds an APK file that can be shared directly with testers (side-loading) instead of an AAB.",
+        "It only runs the app in the browser.",
+        "It deletes the previous build."
+      ],
+      "correct": [1],
+      "explanation": "The 'internal' distribution and 'apk' build type are perfect for sharing a testable file with your team via a link, avoiding the store entirely.",
+      "interviewTip": "Android uses .aab (Android App Bundle) for the Play Store, but .apk is needed for direct installation on devices."
+    },
+    {
+      "id": "dep-05",
+      "stageId": "deployment_ci_cd",
+      "type": "multiple",
+      "prompt": "Which of these are required to sign a production iOS app for the App Store?",
+      "options": [
+        "A Distribution Certificate.",
+        "An App ID (Bundle ID).",
+        "A Provisioning Profile.",
+        "A Google Service Account JSON."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "iOS code signing is a three-part system: the Certificate (Who you are), the App ID (What the app is), and the Provisioning Profile (The bridge between the two).",
+      "interviewTip": "Managing these is often the biggest pain point in mobile dev. Tools like 'fastlane match' help share these across a dev team."
+    },
+    {
+      "id": "dep-06",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'Over-the-Air' (OTA) updating?",
+      "options": [
+        "Updating the device's firmware.",
+        "The general term for updating an app's logic (JS/Assets) directly via the internet, bypassing the app store stores.",
+        "Charging the phone wirelessly while updating.",
+        "A way to fix hardware issues remotely."
+      ],
+      "correct": [1],
+      "explanation": "OTA updates (via Expo Updates or CodePush) are the mobile equivalent of 'refreshing the browser' on the web.",
+      "interviewTip": "Note: Apple's rules allow OTA updates as long as you aren't significantly changing the 'primary purpose' of the app."
+    },
+    {
+      "id": "dep-07",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "Which file in an Android project contains the 'versionCode' and 'versionName'?",
+      "code": "android {\n    defaultConfig {\n        versionCode 5\n        versionName \"1.0.4\"\n    }\n}",
+      "options": [
+        "AndroidManifest.xml",
+        "build.gradle (app level)",
+        "gradle.properties",
+        "package.json"
+      ],
+      "correct": [1],
+      "explanation": "In Android, the app-level build.gradle is the source of truth for versioning. versionCode is an integer (for the store), versionName is the string (for users).",
+      "interviewTip": "Every time you submit to the Play Store, the 'versionCode' MUST be higher than the last one."
+    },
+    {
+      "id": "dep-08",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is 'Semantic Versioning' (SemVer) as applied to mobile apps?",
+      "options": [
+        "Giving apps names based on colors.",
+        "A system of versioning using Major.Minor.Patch (e.g., 2.1.0).",
+        "A way to encrypt the build number.",
+        "Using only prime numbers for versions."
+      ],
+      "correct": [1],
+      "explanation": "Major: Breaking changes. Minor: New features. Patch: Bug fixes. This is the standard for almost all software, including React Native apps.",
+      "interviewTip": "For mobile, a Major change often indicates a required store update due to native changes."
+    },
+    {
+      "id": "dep-09",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "What is the role of a 'Keystore' in Android deployment?",
+      "options": [
+        "To store the app's local database.",
+        "A binary file that contains the private key used to digitally sign your APK/AAB for the Play Store.",
+        "A list of all users who bought the app.",
+        "To manage the app's internal styles."
+      ],
+      "correct": [1],
+      "explanation": "If you lose your production Keystore, you cannot update your app on the Play Store anymore. It is critical to keep it backed up and secure.",
+      "interviewTip": "Google Play App Signing now allows Google to manage the key for you, which is a safer modern alternative."
+    },
+    {
+      "id": "dep-10",
+      "stageId": "deployment_ci_cd",
+      "type": "single",
+      "prompt": "How do you handle different environments (Development, Staging, Production) in React Native?",
+      "options": [
+        "By manually changing the API URL before every build.",
+        "Using '.env' files with a library like 'react-native-config' or 'expo-constants'.",
+        "By creating three different GitHub accounts.",
+        "React Native handles this automatically based on the time of day."
+      ],
+      "correct": [1],
+      "explanation": "Environment variables allow you to switch between a local dev server and a production API without touching the source code.",
+      "interviewTip": "Never commit sensitive API keys or secrets directly into your .env files if they will be committed to a public repo."
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "default": [
+    {
+      "id": "ui-01",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "Which component is the modern, more flexible alternative to TouchableOpacity and TouchableHighlight for handling touch interactions?",
+      "options": ["<Button>", "<Clickable>", "<Pressable>", "<TouchView>"],
+      "correct": [2],
+      "explanation": "Pressable is a core component that provides more granular control over the various stages of press interactions (hover, press, focus).",
+      "interviewTip": "Use Pressable when you need a highly customized hit box or complex feedback states."
+    },
+    {
+      "id": "ui-02",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What is the primary visual difference between TouchableOpacity and TouchableHighlight?",
+      "options": [
+        "TouchableOpacity changes the background color; TouchableHighlight reduces opacity.",
+        "TouchableOpacity reduces the opacity of the child; TouchableHighlight darkens or highlights the background color.",
+        "There is no visual difference; they are identical.",
+        "TouchableOpacity only works on Android."
+      ],
+      "correct": [1],
+      "explanation": "TouchableOpacity provides feedback by reducing the opacity (transparency) of the wrapped component. TouchableHighlight requires an 'underlayColor' and adds a solid highlight effect.",
+      "interviewTip": "TouchableOpacity is the most commonly used for general buttons due to its simplicity."
+    },
+    {
+      "id": "ui-03",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "How do you mask the characters typed into a TextInput (e.g., for a password)?",
+      "code": "<TextInput ________={true} />",
+      "options": [
+        "passwordMode",
+        "hideText",
+        "secureTextEntry",
+        "maskCharacters"
+      ],
+      "correct": [2],
+      "explanation": "Setting 'secureTextEntry' to true replaces characters with dots/stars, following native OS password input behavior.",
+      "interviewTip": "Don't forget to pair this with 'autoCorrect={false}' and 'autoCapitalize=\"none\"' for login screens."
+    },
+    {
+      "id": "ui-04",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "Which prop is used in TextInput to define which type of keyboard should appear (e.g., numeric, email)?",
+      "options": ["inputMode", "keyboardType", "type", "keypadStyle"],
+      "correct": [1],
+      "explanation": "The 'keyboardType' prop allows you to set specialized keyboards like 'numeric', 'email-address', or 'phone-pad'.",
+      "interviewTip": "Remember that keyboard types can vary slightly between iOS and Android."
+    },
+    {
+      "id": "ui-05",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What is the purpose of the <KeyboardAvoidingView> component?",
+      "options": [
+        "To prevent the user from using the keyboard.",
+        "To automatically move components out of the way of the virtual keyboard so they aren't hidden.",
+        "To change the color of the keyboard.",
+        "To check if the keyboard is open for analytics."
+      ],
+      "correct": [1],
+      "explanation": "Virtual keyboards take up screen space. KeyboardAvoidingView adjusts its position or padding so that inputs remain visible to the user.",
+      "interviewTip": "The 'behavior' prop is key here; usually, 'padding' works best on iOS and 'height' or 'none' on Android."
+    },
+    {
+      "id": "ui-06",
+      "stageId": "user_input_interaction",
+      "type": "multiple",
+      "prompt": "Which of these are valid ways to detect that a user has finished typing in a TextInput?",
+      "options": ["onEndEditing", "onSubmitEditing", "onBlur", "onFinished"],
+      "correct": [0, 1, 2],
+      "explanation": "onEndEditing triggers when focus is lost; onSubmitEditing when the 'return' key is pressed; onBlur when the input loses focus.",
+      "interviewTip": "Use 'onSubmitEditing' for single-line inputs to trigger form submission."
+    },
+    {
+      "id": "ui-07",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "In React Native, what is the 'hitSlop' prop used for in touchable components?",
+      "code": "<Pressable hitSlop={{ top: 10, bottom: 10, left: 20, right: 20 }}>",
+      "options": [
+        "To increase the visible size of the button.",
+        "To increase the touchable area without changing the visible size of the component.",
+        "To add a shadow effect.",
+        "To slow down the response time of the click."
+      ],
+      "correct": [1],
+      "explanation": "Mobile screens can be hard to tap. 'hitSlop' makes it easier for users to hit small icons by extending the interactive area.",
+      "interviewTip": "This is a great 'Senior Dev' trick for improving UX on small UI elements like 'Close' buttons."
+    },
+    {
+      "id": "ui-08",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "Analyze the code. Why might the keyboard NOT close when clicking 'Submit'?",
+      "code": "const handleSubmit = () => {\n  console.log('Submitted');\n};\nreturn <Button title='Submit' onPress={handleSubmit} />;",
+      "options": [
+        "Buttons don't close the keyboard by default.",
+        "You must manually call Keyboard.dismiss() or use the blur() method on the input.",
+        "The input is broken.",
+        "You need a special prop on the View."
+      ],
+      "correct": [1],
+      "explanation": "React Native doesn't automatically close the keyboard on all actions. You typically import the 'Keyboard' module and call 'Keyboard.dismiss()'.",
+      "interviewTip": "Another way is to wrap the screen in a 'TouchableWithoutFeedback' that calls dismiss."
+    },
+    {
+      "id": "ui-09",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What is the result of using 'onChange' vs 'onChangeText' on a TextInput?",
+      "options": [
+        "onChangeText gives you the raw string; onChange gives you a complex event object.",
+        "onChange is faster than onChangeText.",
+        "onChange is only for Web; onChangeText is for Native.",
+        "There is no difference."
+      ],
+      "correct": [0],
+      "explanation": "onChangeText is a convenience prop that returns just the text. onChange returns a full SyntheticEvent object containing the text in 'event.nativeEvent.text'.",
+      "interviewTip": "In 99% of cases, you should use 'onChangeText' for cleaner state updates."
+    },
+    {
+      "id": "ui-10",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "How do you make a TextInput multi-line for a biography or comment section?",
+      "code": "<TextInput ________={true} numberOfLines={4} />",
+      "options": ["multiple", "textArea", "multiline", "expand"],
+      "correct": [2],
+      "explanation": "The 'multiline' prop allows the text to wrap and the input to grow or scroll vertically.",
+      "interviewTip": "Pair this with 'textAlignVertical=\"top\"' on Android to ensure the text starts at the top of the box."
+    },
+    {
+      "id": "ui-11",
+      "stageId": "user_input_interaction",
+      "type": "multiple",
+      "prompt": "Which of these are feedback states provided by the 'Pressable' component's style function?",
+      "code": "style={({ pressed }) => [\n  { backgroundColor: pressed ? 'red' : 'blue' }\n]}",
+      "options": [
+        "pressed",
+        "hovered (on web/desktop platforms)",
+        "focused",
+        "clicked"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Pressable allows you to pass a function to 'style' or 'children' that provides these boolean states to help you render dynamic UI.",
+      "interviewTip": "This is why Pressable is replacing Touchable components; it's much more descriptive."
+    },
+    {
+      "id": "ui-12",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What is the purpose of 'autoCapitalize=\"none\"' in an email input?",
+      "options": [
+        "To prevent the first letter of the email from being uppercase.",
+        "To encrypt the email.",
+        "To stop the keyboard from suggesting words.",
+        "To make the text smaller."
+      ],
+      "correct": [0],
+      "explanation": "Most mobile keyboards capitalize the first letter by default. This is annoying for email addresses which are usually lowercase.",
+      "interviewTip": "Valid values are 'none', 'sentences', 'words', and 'characters'."
+    },
+    {
+      "id": "ui-13",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "How do you ensure the 'Submit' button on the keyboard is actually visible and labeled correctly?",
+      "options": [
+        "use the 'returnKeyType' prop (e.g., 'done', 'go', 'send').",
+        "use the 'buttonLabel' prop.",
+        "It happens automatically.",
+        "You must build a custom keyboard."
+      ],
+      "correct": [0],
+      "explanation": "returnKeyType changes the text or icon of the 'Enter' key on the virtual keyboard to better match the user's action.",
+      "interviewTip": "Common values include 'search', 'next', 'done', and 'send'."
+    },
+    {
+      "id": "ui-14",
+      "stageId": "user_input_interaction",
+      "type": "single",
+      "prompt": "What is the difference between a <Button> and a <TouchableOpacity>?",
+      "options": [
+        "Button is a basic component with a native look that can't be styled much; TouchableOpacity is a wrapper that lets you build any UI into a button.",
+        "Button only works on iOS.",
+        "TouchableOpacity is only for images.",
+        "Button is faster."
+      ],
+      "correct": [0],
+      "explanation": "The core <Button> is very limited (only title and color). If you want a button with an icon, custom borders, or specific padding, you must use a Touchable or Pressable wrapper around a View.",
+      "interviewTip": "Most production apps avoid the <Button> component entirely in favor of custom-built button components."
+    }
+  ]
+}

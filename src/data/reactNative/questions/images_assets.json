@@ -1,0 +1,212 @@
+{
+  "default": [
+    {
+      "id": "ia-01",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "How do you provide different image resolutions for different screen densities in React Native (e.g., Retina displays)?",
+      "options": [
+        "React Native automatically resizes one large image.",
+        "By naming files with @2x and @3x suffixes (e.g., logo@2x.png).",
+        "By using a 'resolution' prop on the Image component.",
+        "It is only possible via the native Android/iOS folders."
+      ],
+      "correct": [1],
+      "explanation": "If you have 'logo.png', 'logo@2x.png', and 'logo@3x.png', React Native will automatically pick the best one for the device's screen density.",
+      "interviewTip": "This ensures images look crisp without downloading unnecessarily large files on lower-end devices."
+    },
+    {
+      "id": "ia-02",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "What happens if you omit the 'width' and 'height' styles for a remote (network) image?",
+      "code": "<Image source={{ uri: 'https://example.com/photo.jpg' }} />",
+      "options": [
+        "The image takes up the full screen.",
+        "The image will not render (it will have 0 width and 0 height).",
+        "It automatically calculates the size based on the aspect ratio.",
+        "It defaults to 100x100 pixels."
+      ],
+      "correct": [1],
+      "explanation": "Unlike local images (require), React Native does not know the dimensions of a network image until it is downloaded. You MUST specify size styles.",
+      "interviewTip": "Always provide dimensions or a flex value to remote images to avoid invisible components."
+    },
+    {
+      "id": "ia-03",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "Which library is considered the industry standard for advanced image caching and performance in React Native?",
+      "options": [
+        "react-native-image-cache",
+        "react-native-fast-image",
+        "react-native-optimized-media",
+        "expo-image-loader"
+      ],
+      "correct": [1],
+      "explanation": "FastImage replaces the standard Image component, offering better caching, priority loading, and GIF support using native SDWebImage (iOS) and Glide (Android).",
+      "interviewTip": "Mention FastImage when asked about 'image flickering' or performance issues in long lists like FlatList."
+    },
+    {
+      "id": "ia-04",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "How do you render an SVG file in a standard React Native project?",
+      "options": [
+        "Use the core <Svg> component.",
+        "React Native does not support SVGs out of the box; you need 'react-native-svg'.",
+        "Treat it like a normal image: <Image source={require('./icon.svg')} />.",
+        "Convert the SVG to a Base64 string."
+      ],
+      "correct": [1],
+      "explanation": "SVGs are not native UI elements in mobile OS. You need the 'react-native-svg' library (and often 'react-native-svg-transformer') to render them.",
+      "interviewTip": "Using SVGs is preferred for icons because they stay sharp at any size and reduce bundle weight."
+    },
+    {
+      "id": "ia-05",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "What is the purpose of the 'defaultSource' prop on the Image component?",
+      "options": [
+        "To set the primary image URL.",
+        "To show a placeholder image (static asset) while the main network image is loading.",
+        "To define the image's Alt text.",
+        "To set a background color."
+      ],
+      "correct": [1],
+      "explanation": "It improves UX by showing a local 'loading' or 'avatar-placeholder' image instead of a blank space while the network request finishes.",
+      "interviewTip": "Note that 'defaultSource' is only supported on iOS. For Android, you usually manage this with state."
+    },
+    {
+      "id": "ia-06",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "Which component should you use to display a background image that contains other components as children?",
+      "options": [
+        "<View background={image}>",
+        "<ImageBackground>",
+        "<BackgroundImage>",
+        "<ViewStyle image={...}>"
+      ],
+      "correct": [1],
+      "explanation": "ImageBackground is a wrapper that has the same props as Image but allows you to nest children inside it.",
+      "interviewTip": "It's effectively a <View> with an absolute-positioned <Image> behind it."
+    },
+    {
+      "id": "ia-07",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "What is 'Base64' image rendering?",
+      "code": "<Image source={{ uri: 'data:image/png;base64,iVBORw0KGgoAAAAN...' }} />",
+      "options": [
+        "An image format that only works on Android.",
+        "A way to embed image data directly into the string, avoiding an extra network request.",
+        "A high-compression format for 4K images.",
+        "A method to encrypt images."
+      ],
+      "correct": [1],
+      "explanation": "Base64 allows you to pass the actual binary data of the image as a string. It's useful for small icons or images fetched from a local database.",
+      "interviewTip": "Avoid using Base64 for large images, as it increases memory usage and slows down the JS thread."
+    },
+    {
+      "id": "ia-08",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "How do you handle images that need to be tinted (e.g., making a black icon blue)?",
+      "options": [
+        "Edit the image in Photoshop.",
+        "Use the 'tintColor' style property.",
+        "Use 'overlayColor'.",
+        "Change the 'opacity'."
+      ],
+      "correct": [1],
+      "explanation": "The 'tintColor' style property changes the color of all non-transparent pixels to the specified color.",
+      "interviewTip": "This is great for icons, allowing you to use one PNG asset for multiple themes (Light/Dark)."
+    },
+    {
+      "id": "ia-09",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "In Expo, which library is used for high-performance image handling that mimics the 'FastImage' functionality?",
+      "options": [
+        "expo-fast-image",
+        "expo-image",
+        "expo-media-library",
+        "expo-assets"
+      ],
+      "correct": [1],
+      "explanation": "'expo-image' is a high-performance component designed for speed, supporting blurhash (placeholders) and smooth transitions.",
+      "interviewTip": "It is currently the recommended way to handle images in the Expo ecosystem."
+    },
+    {
+      "id": "ia-10",
+      "stageId": "images_assets",
+      "type": "multiple",
+      "prompt": "Which of the following are valid image formats supported by React Native?",
+      "options": [
+        "PNG and JPG",
+        "GIF",
+        "WebP (supported natively on Android, needs setup on iOS)",
+        "SVG (natively)"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "While PNG, JPG, and GIF are universally supported, SVG requires a library. WebP is excellent for performance but requires extra care on older iOS versions.",
+      "interviewTip": "Mention WebP as a way to reduce app size while maintaining high quality."
+    },
+    {
+      "id": "ia-11",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "What is the result of using 'resizeMode: \"contain\"'?",
+      "options": [
+        "The image covers the entire container, potentially cropping the edges.",
+        "The image is scaled to fit inside the container while maintaining its aspect ratio, without cropping.",
+        "The image is stretched to fill the container, ignoring aspect ratio.",
+        "The image is repeated as a pattern."
+      ],
+      "correct": [1],
+      "explanation": "'contain' ensures the whole image is visible within the frame, which may leave empty space (letterboxing).",
+      "interviewTip": "Use 'contain' for logos and 'cover' for background photos."
+    },
+    {
+      "id": "ia-12",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "How can you pre-load a remote image before showing it to the user?",
+      "code": "Image.________('https://example.com/big-photo.jpg');",
+      "options": ["cache", "prefetch", "load", "download"],
+      "correct": [1],
+      "explanation": "Image.prefetch(url) downloads the image to the local disk cache so it displays instantly when the component later mounts.",
+      "interviewTip": "This is perfect for pre-loading the next image in a gallery or a user's profile picture during login."
+    },
+    {
+      "id": "ia-13",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "Why might an image disappear or 'flicker' when a FlatList scrolls?",
+      "options": [
+        "The JS thread is too fast.",
+        "The component is being unmounted and the default Image component isn't caching efficiently.",
+        "The image file size is too small.",
+        "You are using the wrong resizeMode."
+      ],
+      "correct": [1],
+      "explanation": "Standard Image components often re-fetch or re-decode images when they scroll back into view. Using a library with a better cache helps fix this.",
+      "interviewTip": "This is the 'smoking gun' for needing react-native-fast-image or expo-image."
+    },
+    {
+      "id": "ia-14",
+      "stageId": "images_assets",
+      "type": "single",
+      "prompt": "What is a 'BlurHash'?",
+      "options": [
+        "A way to encrypt an image.",
+        "A compact string representation of a placeholder that looks like a blurred version of the image.",
+        "A bug in the rendering engine.",
+        "A type of image compression."
+      ],
+      "correct": [1],
+      "explanation": "Blurhash allows you to show a beautiful, colorful blurred placeholder while the high-res image is still downloading.",
+      "interviewTip": "It significantly improves the 'Perceived Performance' of your app."
+    }
+  ]
+}
