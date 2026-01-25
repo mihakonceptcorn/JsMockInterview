@@ -68,7 +68,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const state = store.getState();
       const { uploadUserData } = await import('@/services/firestoreService');
       await uploadUserData(userCredential.user.uid, {
-        framework: state.framework.current,
         results: state.results.current,
         lastModified: Date.now(),
       });

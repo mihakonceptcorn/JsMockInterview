@@ -13,9 +13,7 @@ const firestoreSyncMiddleware: Middleware = (store) => (next) => (action) => {
     return result;
   }
 
-  const shouldSync =
-    (action as any).type === 'framework/setFramework' ||
-    (action as any).type === 'results/setResult';
+  const shouldSync = (action as any).type === 'results/setResult';
 
   if (!shouldSync) {
     return result;
@@ -30,7 +28,6 @@ const firestoreSyncMiddleware: Middleware = (store) => (next) => (action) => {
       const state = store.getState();
 
       const userData = {
-        framework: state.framework.current,
         results: state.results.current,
         lastModified: Date.now(),
       };

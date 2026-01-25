@@ -9,13 +9,11 @@ import {
 import { db } from '@/config/firebaseConfig';
 
 export interface UserData {
-  framework: string;
   results: Record<string, Record<string, any>>;
   lastModified: number;
 }
 
 interface FirestoreUserData {
-  framework: string;
   results: Record<string, Record<string, any>>;
   lastModified: Timestamp;
 }
@@ -28,7 +26,6 @@ export async function uploadUserData(
     const userDocRef = doc(db, 'users', userId, 'userData', 'data');
 
     await setDoc(userDocRef, {
-      framework: data.framework,
       results: data.results,
       lastModified: serverTimestamp(),
     });
@@ -51,7 +48,6 @@ export async function downloadUserData(
       const firestoreData = docSnap.data() as FirestoreUserData;
 
       const userData: UserData = {
-        framework: firestoreData.framework,
         results: firestoreData.results,
         lastModified: firestoreData.lastModified?.toMillis() || Date.now(),
       };

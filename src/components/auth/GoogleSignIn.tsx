@@ -49,7 +49,6 @@ const GoogleSignIn = () => {
           const { uploadUserData } =
             await import('@/services/firestoreService');
           await uploadUserData(userCredential.user.uid, {
-            framework: state.framework.current,
             results: state.results.current,
             lastModified: Date.now(),
           });

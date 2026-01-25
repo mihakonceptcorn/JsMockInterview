@@ -5,7 +5,6 @@ import {
   syncUserData,
   UserData,
 } from '@/services/firestoreService';
-import { setFramework } from './frameworkSlice';
 import { setResult } from './resultsSlice';
 import type { AppDispatch, RootState } from './index';
 
@@ -29,7 +28,6 @@ export const uploadDataToFirestore = createAsyncThunk<
   const state = getState();
 
   const userData: UserData = {
-    framework: state.framework.current,
     results: state.results.current,
     lastModified: Date.now(),
   };
@@ -45,8 +43,6 @@ export const downloadDataFromFirestore = createAsyncThunk<
   const userData = await downloadUserData(userId);
 
   if (userData) {
-    dispatch(setFramework(userData.framework as any));
-
     Object.entries(userData.results).forEach(([framework, stages]) => {
       Object.entries(stages).forEach(([stageId, data]) => {
         dispatch(
@@ -71,14 +67,11 @@ export const syncWithFirestore = createAsyncThunk<
   const state = getState();
 
   const localData: UserData = {
-    framework: state.framework.current,
     results: state.results.current,
     lastModified: Date.now(),
   };
 
   const mergedData = await syncUserData(userId, localData);
-
-  dispatch(setFramework(mergedData.framework as any));
 
   Object.entries(mergedData.results).forEach(([framework, stages]) => {
     Object.entries(stages).forEach(([stageId, data]) => {
