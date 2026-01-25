@@ -1,7 +1,9 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react';
+import { Alert, FlatList, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
 import jsStages from '@/data/js/js.stages.json';
 import reactStages from '@/data/react/react.stages.json';
+import reactNativeStages from '@/data/reactNative/reactNative.stages.json';
+import vueStages from '@/data/vue/vue.stages.json';
 import { s, vs } from 'react-native-size-matters';
 import SelectStageItem from './SelectStageItem';
 import { useRouter } from 'expo-router';
@@ -12,9 +14,12 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 
 const SelectStage = () => {
+  const flatListRef = useRef<FlatList>(null);
   const router = useRouter();
   const [selectedStageId, setSelectedStageId] = useState('');
   const [selectedStageTitle, setSelectedStageTitle] = useState('');
+
+  const [isLocked, setIsLocked] = useState(true);
 
   let stagesData = jsStages;
 
@@ -22,10 +27,18 @@ const SelectStage = () => {
 
   const framework = useSelector((state: RootState) => state.framework.current);
   if (framework === 'react') stagesData = reactStages;
+  if (framework === 'react-native') stagesData = reactNativeStages;
+  if (framework === 'vue') stagesData = vueStages;
 
-  const onSelectStage = (id: string, name: string) => {
-    setSelectedStageId(id);
-    setSelectedStageTitle(name);
+  const onSelectStage = (id: string, name: string, isLocked: boolean) => {
+    if (isLocked) {
+      Alert.alert('Premium', 'This framework is available in the Pro version', [
+        { text: 'OK' },
+      ]);
+    } else {
+      setSelectedStageId(id);
+      setSelectedStageTitle(name);
+    }
   };
 
   const onStartStage = (mode: 'practice' | 'interview') => {
@@ -56,6 +69,22 @@ const SelectStage = () => {
     return Math.round((correctAnswers / totalQuestions) * 100);
   };
 
+  useEffect(() => {
+    if (flatListRef.current) {
+      flatListRef.current.scrollToOffset({ offset: 0, animated: false });
+    }
+
+    if (
+      framework === 'react' ||
+      framework === 'react-native' ||
+      framework === 'vue'
+    ) {
+      setIsLocked(true);
+    } else {
+      setIsLocked(false);
+    }
+  }, [framework]);
+
   return (
     <>
       <View style={styles.container}>
@@ -68,16 +97,18 @@ const SelectStage = () => {
           <View style={[styles.gradientInner, styles.flex]}>
             <Text style={styles.title}>Select Stage</Text>
             <FlatList
+              ref={flatListRef}
               data={stagesData.stages}
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => (
                 <SelectStageItem
                   title={item.title}
                   description={item.description}
+                  isLocked={isLocked}
                   isSelected={item.id === selectedStageId}
                   isComplete={isStageCompleted(item.id)}
                   completePercentage={getCompletePercentage(item.id)}
-                  onPress={() => onSelectStage(item.id, item.title)}
+                  onPress={() => onSelectStage(item.id, item.title, isLocked)}
                 />
               )}
               showsVerticalScrollIndicator={false}

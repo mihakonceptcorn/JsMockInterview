@@ -10,6 +10,7 @@ interface SelectStageItemProps {
   title: string;
   description: string;
   isComplete?: boolean;
+  isLocked: boolean;
   onPress: () => void;
   isSelected?: boolean;
   completePercentage?: number;
@@ -19,6 +20,7 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
   title,
   description,
   isComplete = false,
+  isLocked,
   onPress,
   isSelected = false,
   completePercentage = 0,
@@ -40,7 +42,18 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
       </View>
 
       <View style={styles.statusContainer}>
-        {isComplete ? (
+        {isLocked ? (
+          <>
+            <FontAwesome name="lock" size={24} color={COLORS.textSecondary} />
+            <View>
+              <Text
+                style={[styles.statusTitle, { color: COLORS.textSecondary }]}
+              >
+                Locked
+              </Text>
+            </View>
+          </>
+        ) : isComplete ? (
           <>
             <FontAwesome name="check-circle" size={24} color={COLORS.success} />
             <View>

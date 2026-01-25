@@ -17,7 +17,7 @@ type Item = {
 
 const ITEMS: Item[] = [
   { key: 'js', label: 'JS' },
-  { key: 'react', label: 'React', locked: false },
+  { key: 'react', label: 'React', locked: true },
   { key: 'react-native', label: 'React Native', locked: true },
   { key: 'vue', label: 'Vue', locked: true },
 ];
@@ -27,13 +27,6 @@ export const FrameworkSwitcher = () => {
   const value = useSelector((state: RootState) => state.framework.current);
 
   const handlePress = (item: Item) => {
-    if (item.locked) {
-      // TODO: open paywall modal
-      Alert.alert('Premium', 'This framework is available in the Pro version', [
-        { text: 'OK' },
-      ]);
-      return;
-    }
     dispatch(setFramework(item.key));
   };
 
@@ -59,6 +52,14 @@ export const FrameworkSwitcher = () => {
                   <Text style={styles.activeText} numberOfLines={1}>
                     {item.label}
                   </Text>
+                  {item.locked && (
+                    <Entypo
+                      name="lock"
+                      size={14}
+                      color="#9CA3AF"
+                      style={{ marginLeft: 6 }}
+                    />
+                  )}
                 </LinearGradient>
               ) : (
                 <View style={styles.inactiveItem}>
@@ -102,7 +103,9 @@ const styles = StyleSheet.create({
   },
 
   activeItem: {
-    paddingHorizontal: s(14),
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: s(12),
     paddingVertical: s(10),
     borderRadius: s(12),
     shadowColor: '#3B82F6',
