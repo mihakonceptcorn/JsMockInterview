@@ -1,0 +1,121 @@
+{
+  "default": [
+    {
+      "id": "tv-01",
+      "stageId": "testing_vue",
+      "type": "single",
+      "prompt": "Which tool is currently recommended by the Vue team as the primary test runner, replacing Jest in most modern setups?",
+      "options": ["Mocha", "Vitest", "Cypress", "Jasmine"],
+      "correct": [1],
+      "explanation": "Vitest is built on top of Vite. It is extremely fast, shares the same configuration as your development environment, and has a Jest-compatible API.",
+      "interviewTip": "Highlight Vitest's 'Hot Module Replacement' (HMR) for tests, which makes the TDD (Test Driven Development) cycle feel much faster."
+    },
+    {
+      "id": "tv-02",
+      "stageId": "testing_vue",
+      "type": "single",
+      "prompt": "What is the difference between 'mount' and 'shallowMount' in Vue Test Utils?",
+      "options": [
+        "mount is for Vue 3, shallowMount is for Vue 2.",
+        "mount renders the component and all its children; shallowMount renders only the component, stubbing out all child components.",
+        "shallowMount is only for testing CSS.",
+        "mount is faster than shallowMount."
+      ],
+      "correct": [1],
+      "explanation": "shallowMount is ideal for unit testing because it isolates the component from its children, ensuring that a bug in a child component doesn't cause the parent's test to fail.",
+      "interviewTip": "Use 'mount' for integration tests and 'shallowMount' for pure unit tests of a single component's logic."
+    },
+    {
+      "id": "tv-03",
+      "stageId": "testing_vue",
+      "type": "single",
+      "prompt": "Analyze the code. How do you simulate a user clicking a button in a Vitest test?",
+      "code": "const wrapper = mount(MyButton);\nconst button = wrapper.find('button');\n\nawait ________;",
+      "options": [
+        "button.click()",
+        "button.trigger('click')",
+        "button.emit('click')",
+        "button.fire('click')"
+      ],
+      "correct": [1],
+      "explanation": "The 'trigger' method simulates a DOM event. Because Vue updates the DOM asynchronously, you should 'await' the trigger to ensure the DOM has updated before making assertions.",
+      "interviewTip": "Always await 'trigger' and 'setValue' to avoid flaky tests caused by Vue's async rendering."
+    },
+    {
+      "id": "tv-04",
+      "stageId": "testing_vue",
+      "type": "single",
+      "prompt": "Analyze the code. How do you verify that a component emitted a specific event?",
+      "code": "const wrapper = mount(MyComponent);\n// ... perform action ...\n\nexpect(wrapper.________).toBeTruthy();",
+      "options": [
+        "emitted().myEvent",
+        "events('myEvent')",
+        "fired('myEvent')",
+        "getEvent('myEvent')"
+      ],
+      "correct": [0],
+      "explanation": "wrapper.emitted() returns an object containing all events emitted by the component and the arguments passed with them.",
+      "interviewTip": "You can check the arguments like this: expect(wrapper.emitted().myEvent[0]).toEqual(['expectedData'])."
+    },
+    {
+      "id": "tv-05",
+      "stageId": "testing_vue",
+      "type": "single",
+      "prompt": "How do you test a component that depends on a global plugin like 'Pinia' or 'Vue Router'?",
+      "options": [
+        "You cannot test these components.",
+        "By passing a 'global.plugins' array in the mounting options.",
+        "By importing the real router into the test file.",
+        "By hardcoding the data inside the component."
+      ],
+      "correct": [1],
+      "explanation": "Vue Test Utils allows you to provide 'mocks' or 'stubs' for global features using the 'global' property in the second argument of mount().",
+      "interviewTip": "For Pinia, it is best to use 'createTestingPinia()', which automatically mocks all your actions."
+    },
+    {
+      "id": "tv-06",
+      "stageId": "testing_vue",
+      "type": "multiple",
+      "prompt": "Which of these are valid ways to find an element using Vue Test Utils 'find' or 'get'?",
+      "options": [
+        "wrapper.find('.my-class')",
+        "wrapper.findComponent(MyChildComponent)",
+        "wrapper.find({ ref: 'myRef' })",
+        "wrapper.find('[data-testid=\"submit\"]')"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "find() supports CSS selectors and component definitions. It is a best practice to use 'data-testid' for tests to decouple them from CSS classes or HTML structure.",
+      "interviewTip": "Explain that 'get' throws an error if the element is not found, while 'find' returns an empty wrapper, making 'get' safer for assertions."
+    },
+    {
+      "id": "tv-07",
+      "stageId": "testing_vue",
+      "type": "single",
+      "prompt": "What is 'Snapshot Testing' in Vitest?",
+      "options": [
+        "Taking a screenshot of the app's UI.",
+        "Comparing the rendered HTML output of a component against a previously saved 'master' version to detect unexpected changes.",
+        "Testing the app's speed.",
+        "A way to store user passwords."
+      ],
+      "correct": [1],
+      "explanation": "Snapshots catch regression in the HTML structure. If you change a class name, the snapshot will fail, forcing you to verify if the change was intentional.",
+      "interviewTip": "Warn that snapshots can be 'brittle' if your UI changes frequently; use them sparingly for stable components."
+    },
+    {
+      "id": "tv-08",
+      "stageId": "testing_vue",
+      "type": "single",
+      "prompt": "How do you test code that uses 'nextTick()'?",
+      "options": [
+        "Using a while loop.",
+        "By awaiting 'nextTick()' inside your test function.",
+        "Vitest handles nextTick automatically.",
+        "You must use a setTimeout of 1000ms."
+      ],
+      "correct": [1],
+      "explanation": "Since nextTick returns a promise, awaiting it in your test ensures that you are inspecting the DOM after Vue has completed its reactive update cycle.",
+      "interviewTip": "This is crucial for testing components that change their DOM structure based on a reactive state change."
+    }
+  ]
+}

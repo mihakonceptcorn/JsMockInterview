@@ -1,0 +1,119 @@
+{
+  "default": [
+    {
+      "id": "vr-01",
+      "stageId": "vue_router",
+      "type": "single",
+      "prompt": "How do you define a dynamic route segment that captures a specific value, like a user ID?",
+      "code": "const routes = [\n  { path: '/user/________', component: UserProfile }\n];",
+      "options": [":id", "{id}", "*id", "?id"],
+      "correct": [0],
+      "explanation": "Colons denote dynamic segments. The value passed in the URL (e.g., /user/123) will be accessible via 'route.params.id'.",
+      "interviewTip": "You can use Regex in paths for more strict matching, like /user/:id(\\\\d+)."
+    },
+    {
+      "id": "vr-02",
+      "stageId": "vue_router",
+      "type": "single",
+      "prompt": "Analyze the code. What is the difference between these two navigation methods?",
+      "code": "// Option A\nrouter.push('/about');\n\n// Option B\nrouter.replace('/about');",
+      "options": [
+        "Option A is for external links; Option B is for internal.",
+        "Option A adds a new entry to the history stack; Option B overwrites the current entry.",
+        "Option B is faster than Option A.",
+        "There is no difference."
+      ],
+      "correct": [1],
+      "explanation": "Replace is used when you don't want the user to be able to go 'back' to the previous screen (e.g., after a successful login).",
+      "interviewTip": "Use 'replace' for redirects or transient states to keep the history stack clean."
+    },
+    {
+      "id": "vr-03",
+      "stageId": "vue_router",
+      "type": "single",
+      "prompt": "Which hook should you use inside a component to perform logic *before* a user leaves the current page?",
+      "options": [
+        "onUnmounted",
+        "onBeforeRouteLeave",
+        "onBeforeRouteUpdate",
+        "watchEffect"
+      ],
+      "correct": [1],
+      "explanation": "onBeforeRouteLeave is a specialized router hook. It allows you to prevent navigation (e.g., if the user has unsaved changes in a form).",
+      "interviewTip": "You can return 'false' from this hook to cancel the navigation."
+    },
+    {
+      "id": "vr-04",
+      "stageId": "vue_router",
+      "type": "single",
+      "prompt": "What is the primary benefit of 'Lazy Loading' routes in the router configuration?",
+      "code": "const routes = [\n  { \n    path: '/admin', \n    component: () => import('./views/Admin.vue') \n  }\n];",
+      "options": [
+        "It makes the components load more slowly.",
+        "It splits the application into smaller chunks, only downloading the code for a page when the user actually visits it.",
+        "It automatically compresses the images on that page.",
+        "It allows the page to work offline."
+      ],
+      "correct": [1],
+      "explanation": "Dynamic imports () => import(...) create a separate bundle for that route, significantly improving the initial load time of the app.",
+      "interviewTip": "For large enterprise apps, lazy loading every non-critical route is a mandatory performance optimization."
+    },
+    {
+      "id": "vr-05",
+      "stageId": "vue_router",
+      "type": "single",
+      "prompt": "How do you access the current route's parameters inside a <script setup> block?",
+      "code": "import { ________ } from 'vue-router';\nconst route = ________();\nconsole.log(route.params.id);",
+      "options": ["useRouter", "useRoute", "getParams", "routeLink"],
+      "correct": [1],
+      "explanation": "useRoute gives you access to the current state (params, query, path). useRouter gives you the ability to navigate (push, back).",
+      "interviewTip": "Don't mix them up! UseRoute is for 'What is happening now'; UseRouter is for 'What should happen next'."
+    },
+    {
+      "id": "vr-06",
+      "stageId": "vue_router",
+      "type": "multiple",
+      "prompt": "Which of these are valid Global Navigation Guards?",
+      "options": [
+        "router.beforeEach (runs before every navigation)",
+        "router.afterEach (runs after navigation is complete)",
+        "router.beforeResolve (runs before navigation is confirmed, after in-component guards)",
+        "router.onMount (runs when the app starts)"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Navigation guards are used to protect routes (e.g., checking for auth tokens).",
+      "interviewTip": "Mention 'beforeEach' as the primary place for implementing authentication checks."
+    },
+    {
+      "id": "vr-07",
+      "stageId": "vue_router",
+      "type": "single",
+      "prompt": "What is the purpose of the <router-view> component?",
+      "options": [
+        "To show a list of all available routes.",
+        "As a placeholder that renders the component matched by the current URL.",
+        "To create a link to another page.",
+        "To debug the routing state."
+      ],
+      "correct": [1],
+      "explanation": "RouterView is where the magic happens. Without it, you might change the URL, but the UI won't update to show the new component.",
+      "interviewTip": "You can use multiple <router-view> components with names to create complex layouts."
+    },
+    {
+      "id": "vr-08",
+      "stageId": "vue_router",
+      "type": "single",
+      "prompt": "Analyze the code. What is the value of 'props' being set to true?",
+      "code": "{ \n  path: '/user/:id', \n  component: User, \n  props: true \n}",
+      "options": [
+        "It allows the component to use CSS props.",
+        "It passes the route parameters (like :id) directly as props to the component.",
+        "It makes the route public.",
+        "It automatically validates the data types."
+      ],
+      "correct": [1],
+      "explanation": "Setting 'props: true' decouples the component from the router. The User component can declare 'props: ['id']' and use it without knowing about 'this.$route'.",
+      "interviewTip": "This makes components much easier to unit test because they don't depend on the global router state."
+    }
+  ]
+}

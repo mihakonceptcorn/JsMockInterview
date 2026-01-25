@@ -1,0 +1,124 @@
+{
+  "default": [
+    {
+      "id": "tr-01",
+      "stageId": "template_refs",
+      "type": "single",
+      "prompt": "In the Composition API, how do you link a 'ref' variable to a specific DOM element in your template?",
+      "code": "<script setup>\nimport { ref } from 'vue';\nconst myElement = ref(null);\n</script>\n\n<template>\n  <div ________=\"myElement\"></div>\n</template>",
+      "options": ["v-ref", "ref", ":id", "bind-ref"],
+      "correct": [1],
+      "explanation": "To create a template ref, you declare a ref with the same name in your script and apply the 'ref' attribute to the element in the template.",
+      "interviewTip": "The variable name in your script must match the string value of the ref attribute in your template exactly."
+    },
+    {
+      "id": "tr-02",
+      "stageId": "template_refs",
+      "type": "single",
+      "prompt": "Analyze the code. Why will 'inputRef.value' be null when the console.log runs?",
+      "code": "<script setup>\nimport { ref } from 'vue';\nconst inputRef = ref(null);\n\nconsole.log(inputRef.value);\n</script>\n\n<template>\n  <input ref=\"inputRef\" />\n</template>",
+      "options": [
+        "Because the variable name is wrong.",
+        "Because the setup script runs before the component is mounted and the DOM is created.",
+        "Because 'ref' variables are private.",
+        "Because you must use reactive() for DOM elements."
+      ],
+      "correct": [1],
+      "explanation": "Template refs are only populated after the component is mounted. Any attempt to access them in the immediate body of the setup script will result in null.",
+      "interviewTip": "To access a ref safely, always use the 'onMounted' lifecycle hook."
+    },
+    {
+      "id": "tr-03",
+      "stageId": "template_refs",
+      "type": "single",
+      "prompt": "How can you focus an input automatically when a component mounts?",
+      "code": "onMounted(() => {\n  ________.value.focus();\n});",
+      "options": [
+        "inputRef",
+        "document.querySelector('input')",
+        "this.$refs.input",
+        "inputRef.current"
+      ],
+      "correct": [0],
+      "explanation": "Once mounted, the 'value' of the ref holds the actual HTMLInputElement, giving you access to native methods like .focus().",
+      "interviewTip": "Mention that this is the 'Vue way' rather than using querySelector, which breaks the component encapsulation."
+    },
+    {
+      "id": "tr-04",
+      "stageId": "template_refs",
+      "type": "single",
+      "prompt": "When using 'v-for', what will a template ref contain if it is applied to the repeated element?",
+      "code": "<li v-for=\"item in list\" ref=\"itemRefs\">{{ item }}</li>",
+      "options": [
+        "Only the first element in the list.",
+        "Only the last element in the list.",
+        "An array containing all the DOM elements in the list.",
+        "It will throw an error; you cannot use refs in v-for."
+      ],
+      "correct": [2],
+      "explanation": "Vue 3 automatically populates the ref with an array of elements when it is used inside a v-for loop.",
+      "interviewTip": "Note that the order of the array is not guaranteed to match the order of your data source if items are reordered."
+    },
+    {
+      "id": "tr-05",
+      "stageId": "template_refs",
+      "type": "single",
+      "prompt": "Analyze the code. By default, can a parent access the 'internalCount' of this child component via a template ref?",
+      "code": "\n<script setup>\nimport { ref } from 'vue';\nconst internalCount = ref(0);\n</script>",
+      "options": [
+        "Yes, all setup variables are public.",
+        "No, components using <script setup> are 'closed' by default and need 'defineExpose' to reveal properties.",
+        "Yes, but only if the parent uses $children.",
+        "Only if the child is not scoped."
+      ],
+      "correct": [1],
+      "explanation": "Components using <script setup> do not expose their internal state to the parent via refs unless you explicitly list them in defineExpose().",
+      "interviewTip": "This is a key security/encapsulation feature of Vue 3 compared to the Options API."
+    },
+    {
+      "id": "tr-06",
+      "stageId": "template_refs",
+      "type": "single",
+      "prompt": "What should you do with a template ref in 'onUnmounted'?",
+      "options": [
+        "Manually set it to null.",
+        "Nothing; Vue automatically cleans up the ref when the element is destroyed.",
+        "Delete the element from the DOM.",
+        "Call .destroy() on the ref."
+      ],
+      "correct": [1],
+      "explanation": "Vue's reactivity system handles the lifecycle of the ref. When the element is unmounted, the ref.value is automatically set back to null.",
+      "interviewTip": "However, you *should* use onUnmounted to destroy any third-party instances (like a map or chart) that were attached to that ref."
+    },
+    {
+      "id": "tr-07",
+      "stageId": "template_refs",
+      "type": "single",
+      "prompt": "How do you use a 'Function Ref' in Vue 3?",
+      "options": [
+        "By passing a function to the :ref attribute: :ref=\"(el) => { ... }\".",
+        "By using ref=\"myFunc()\".",
+        "By defining a ref that returns a function.",
+        "Function refs are not supported in Vue 3."
+      ],
+      "correct": [0],
+      "explanation": "If you pass a function to :ref, Vue will call it with the element when it's mounted and with null when it's unmounted. This is useful for complex logic like dynamic refs in a loop.",
+      "interviewTip": "This is the most flexible way to handle refs if a simple variable name isn't enough."
+    },
+    {
+      "id": "tr-08",
+      "stageId": "template_refs",
+      "type": "multiple",
+      "prompt": "In which scenarios is it appropriate to use Template Refs?",
+      "options": [
+        "Managing focus, text selection, or media playback.",
+        "Integrating third-party DOM libraries (e.g., D3, Google Maps).",
+        "Changing the component's state (e.g., incrementing a counter).",
+        "Triggering imperative animations not handled by Vue Transitions."
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Template refs are for imperative DOM tasks. You should never use a ref to bypass Vue's reactivity for things that can be handled with props/state.",
+      "interviewTip": "Always prefer the declarative approach (v-bind, v-if) unless you have no other choice."
+    }
+  ]
+}

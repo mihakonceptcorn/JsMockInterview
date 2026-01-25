@@ -1,0 +1,118 @@
+{
+  "default": [
+    {
+      "id": "cb-01",
+      "stageId": "component_basics",
+      "type": "single",
+      "prompt": "In Vue, what is the 'One-Way Data Flow' principle regarding props?",
+      "options": [
+        "Props can only be passed to parent components, never children.",
+        "A child component should not mutate a prop directly; it should instead emit an event to ask the parent to change the data.",
+        "Data can only flow through a central state manager like Pinia.",
+        "Props are automatically synchronized both ways between parent and child."
+      ],
+      "correct": [1],
+      "explanation": "This prevents child components from accidentally mutating the parent's state, which would make the data flow hard to understand and debug.",
+      "interviewTip": "If you try to mutate a prop in a child, Vue will throw a warning in the console. If you need to change it, use a local 'ref' or emit an event."
+    },
+    {
+      "id": "cb-02",
+      "stageId": "component_basics",
+      "type": "single",
+      "prompt": "Analyze the code. How does the child component notify the parent that a button was clicked?",
+      "code": "// Child.vue\n<button @click=\"$emit('custom-event', 'data')\">Click Me</button>\n\n// Parent.vue\n<Child ________=\"handleEvent\" />",
+      "options": [
+        ":custom-event",
+        "@custom-event",
+        "v-model:custom-event",
+        "on-custom-event"
+      ],
+      "correct": [1],
+      "explanation": "Custom events use the v-on (or @) syntax just like native DOM events. The parent listens for the event name defined in the child's $emit call.",
+      "interviewTip": "Vue 3 recommends declaring emitted events using the 'emits' option or 'defineEmits' for better documentation and validation."
+    },
+    {
+      "id": "cb-03",
+      "stageId": "component_basics",
+      "type": "single",
+      "prompt": "How do you define props with validation in a Vue 3 <script setup> component?",
+      "code": "const props = ________({\n  title: {\n    type: String,\n    required: true\n  }\n});",
+      "options": ["useProps", "defineProps", "setProps", "injectProps"],
+      "correct": [1],
+      "explanation": "defineProps is a compiler macro available inside <script setup>. It doesn't need to be imported and allows for runtime validation of the data being passed.",
+      "interviewTip": "Prop validation is your first line of defense against bugs in large teams. Always use object syntax for props instead of arrays."
+    },
+    {
+      "id": "cb-04",
+      "stageId": "component_basics",
+      "type": "single",
+      "prompt": "What are 'Fallthrough Attributes' in Vue 3?",
+      "options": [
+        "Attributes like 'class', 'style', and 'id' passed to a component that are automatically applied to the component's root element.",
+        "A bug where props accidentally leak into the global scope.",
+        "Variables that bypass the Virtual DOM.",
+        "A way to pass props to grandchildren directly."
+      ],
+      "correct": [0],
+      "explanation": "If a component has a single root element, attributes passed to it (that aren't declared as props) 'fall through' to that root element.",
+      "interviewTip": "You can disable this behavior by setting 'inheritAttrs: false' and manually binding attributes using '$attrs'."
+    },
+    {
+      "id": "cb-05",
+      "stageId": "component_basics",
+      "type": "single",
+      "prompt": "Analyze the code. What is the correct way for the parent to pass a dynamic numeric value to the child?",
+      "code": "// Parent.vue\n<Child ________=\"42\" />",
+      "options": ["count", ":count", "v-bind.count", "count.number"],
+      "correct": [1],
+      "explanation": "Without the colon (:), '42' is passed as a static string. With the colon (:), it is evaluated as a JavaScript expression, passing it as a number.",
+      "interviewTip": "This is a common beginner mistake. Use v-bind (:) for any value that isn't a literal string."
+    },
+    {
+      "id": "cb-06",
+      "stageId": "component_basics",
+      "type": "multiple",
+      "prompt": "Which of the following are valid ways to communicate between components that are NOT in a direct parent-child relationship?",
+      "options": [
+        "Provide / Inject (Dependency Injection)",
+        "Global State Management (Pinia)",
+        "An External Event Bus (using a library like mitt)",
+        "Mutating 'this.$parent' directly"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Provide/Inject is great for 'Prop Drilling' avoidance. Pinia is for global state. Direct mutation of $parent is highly discouraged as it creates tight coupling.",
+      "interviewTip": "Mention Provide/Inject as the Vue equivalent to React's Context API."
+    },
+    {
+      "id": "cb-07",
+      "stageId": "component_basics",
+      "type": "single",
+      "prompt": "What happens if a child emits an event but the parent is not listening for it?",
+      "options": [
+        "Vue will throw a runtime error.",
+        "The event is ignored, and nothing happens.",
+        "The event bubbles up to the 'window' object.",
+        "The app crashes."
+      ],
+      "correct": [1],
+      "explanation": "Unlike DOM events, Vue's custom events do not bubble by default. If no listener is present on the immediate parent, the event is simply lost.",
+      "interviewTip": "This is why debugging missing events usually starts with checking the event name spelling in the @listener."
+    },
+    {
+      "id": "cb-08",
+      "stageId": "component_basics",
+      "type": "single",
+      "prompt": "Analyze the code. Why is 'defineEmits' used here?",
+      "code": "<script setup>\nconst emit = defineEmits(['update:modelValue', 'close']);\n\nconst close = () => {\n  emit('close');\n};\n</script>",
+      "options": [
+        "To register the component in the global scope.",
+        "To provide type-safety and documentation for the events this component can fire.",
+        "To allow the component to receive data from the parent.",
+        "To style the component buttons."
+      ],
+      "correct": [1],
+      "explanation": "Using defineEmits makes your component's 'contract' explicit, helping developers (and IDEs) understand how to interact with it.",
+      "interviewTip": "In TypeScript, you can even define the types of the arguments passed with the event using defineEmits<{ (e: 'change', id: number): void }>."
+    }
+  ]
+}

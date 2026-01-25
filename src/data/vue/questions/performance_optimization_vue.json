@@ -1,0 +1,117 @@
+{
+  "default": [
+    {
+      "id": "perf-v-01",
+      "stageId": "performance_optimization_vue",
+      "type": "single",
+      "prompt": "Which directive should be used for content that never changes after the initial render to skip Virtual DOM tracking and patching?",
+      "options": ["v-memo", "v-once", "v-static", "v-pre"],
+      "correct": [1],
+      "explanation": "v-once treats the element and its children as static content. Once rendered, Vue skips it entirely during update cycles, reducing the work of the Virtual DOM.",
+      "interviewTip": "Use v-once for static help text or icons inside heavy components."
+    },
+    {
+      "id": "perf-v-02",
+      "stageId": "performance_optimization_vue",
+      "type": "single",
+      "prompt": "Analyze the code. What is the benefit of using 'v-memo' here?",
+      "code": "<div v-for=\"item in list\" :key=\"item.id\" v-memo=\"[item.id === selectedId]\">\n  {{ item.name }} - {{ item.description }}\n</div>",
+      "options": [
+        "It prevents the item from ever being deleted.",
+        "It only re-renders the specific item if its 'selected' state changes, even if other properties in the 'item' object change.",
+        "It automatically saves the list to LocalStorage.",
+        "It converts the div into a canvas element for faster drawing."
+      ],
+      "correct": [1],
+      "explanation": "v-memo (Vue 3.2+) memoizes a sub-tree of the template. It only updates if the dependencies in the array change. This is a massive optimization for large lists where only one item changes at a time.",
+      "interviewTip": "v-memo is essentially 'React.memo' but for a specific piece of a template."
+    },
+    {
+      "id": "perf-v-03",
+      "stageId": "performance_optimization_vue",
+      "type": "single",
+      "prompt": "How does 'shallowRef' help with performance when dealing with massive objects (e.g., a huge JSON response)?",
+      "options": [
+        "It compresses the object in memory.",
+        "It only makes the .value property reactive and does not recursively make all nested properties reactive.",
+        "It moves the object to a Web Worker.",
+        "It prevents the object from being garbage collected."
+      ],
+      "correct": [1],
+      "explanation": "Standard 'ref' is deep. For a list of 10,000 items, Vue has to set up thousands of Proxies. 'shallowRef' avoids this overhead, only triggering an update if you replace the entire object.",
+      "interviewTip": "This is the go-to solution for integrating large third-party instances (like OpenLayers or Three.js) into Vue."
+    },
+    {
+      "id": "perf-v-04",
+      "stageId": "performance_optimization_vue",
+      "type": "single",
+      "prompt": "Analyze the code. Why might this 'computed' property cause performance issues?",
+      "code": "const sortedItems = computed(() => {\n  return [...heavyData.value].sort((a, b) => expensiveCalculation(a, b));\n});",
+      "options": [
+        "Computed properties should not return arrays.",
+        "If 'heavyData' changes frequently, the expensive sort runs on every update, potentially blocking the main thread.",
+        "Computed properties cannot use spread syntax.",
+        "The code is perfectly optimized as is."
+      ],
+      "correct": [1],
+      "explanation": "Computed caching only works if the result is accessed again *without* the dependency changing. If the source data is a stream or updates rapidly, you are performing a heavy sort 60 times a second.",
+      "interviewTip": "Consider debouncing the input data or moving the sort to a Web Worker if the calculation is too heavy."
+    },
+    {
+      "id": "perf-v-05",
+      "stageId": "performance_optimization_vue",
+      "type": "multiple",
+      "prompt": "Which of the following are 'Tree Shaking' friendly practices in Vue 3?",
+      "options": [
+        "Using the Composition API (importing only what you need).",
+        "Using the Options API exclusively.",
+        "Avoiding the use of global 'Vue.prototype' (Vue 2 style).",
+        "Using 'defineAsyncComponent' for large modules."
+      ],
+      "correct": [0, 2, 3],
+      "explanation": "Tree shaking allows the bundler to remove unused Vue features from your final JS file. Vue 3 was rewritten to be modular specifically for this reason.",
+      "interviewTip": "Mention that Vue 3's core is 'tree-shakable,' meaning if you don't use `<Transition>`, it won't be in your final bundle."
+    },
+    {
+      "id": "perf-v-06",
+      "stageId": "performance_optimization_vue",
+      "type": "single",
+      "prompt": "What is the purpose of the 'markRaw' utility?",
+      "options": [
+        "To make a variable accessible in the console.",
+        "To explicitly prevent an object from ever being converted into a reactive proxy.",
+        "To color-code the object in DevTools.",
+        "To convert an object into a string."
+      ],
+      "correct": [1],
+      "explanation": "Some objects (like complex class instances or React components being used inside Vue) should not be reactive. markRaw tags them so Vue ignores them, saving performance.",
+      "interviewTip": "This is vital when wrapping external libraries that have their own internal state management."
+    },
+    {
+      "id": "perf-v-07",
+      "stageId": "performance_optimization_vue",
+      "type": "single",
+      "prompt": "Analyze the code. Which directive is better for a component that toggles visibility 100 times per minute?",
+      "code": "<MyExpensiveComponent ________=\"isVisible\" />",
+      "options": ["v-if", "v-show", "v-once", "v-cloak"],
+      "correct": [1],
+      "explanation": "v-show only toggles CSS 'display: none'. v-if would destroy and re-create the component 100 times, which is very CPU intensive.",
+      "interviewTip": "Always relate the choice to 'Initialization cost' vs 'Runtime cost'."
+    },
+    {
+      "id": "perf-v-08",
+      "stageId": "performance_optimization_vue",
+      "type": "single",
+      "prompt": "What is 'Virtual List Rendering' (or Windowing)?",
+      "options": [
+        "A list that only works on VR headsets.",
+        "A technique where only the visible items in a long list are rendered in the DOM to save memory and CPU.",
+        "Using v-for on a Virtual DOM node.",
+        "A way to hide lists from the user."
+      ],
+      "correct": [1],
+      "explanation": "If you have 10,000 items, rendering 10,000 DOM nodes will crash the browser. Virtual lists only render the ~10 items the user actually sees.",
+      "interviewTip": "Mention libraries like `vue-virtual-scroller` for high-performance lists."
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "default": [
+    {
+      "id": "ssr-01",
+      "stageId": "ssr_nuxt",
+      "type": "single",
+      "prompt": "What is 'Hydration' in the context of Vue SSR?",
+      "options": [
+        "The process of downloading the CSS files.",
+        "The process where the client-side Vue takes over the static HTML sent by the server and makes it interactive.",
+        "Cleaning up the server cache after every request.",
+        "A way to compress JavaScript files for faster delivery."
+      ],
+      "correct": [1],
+      "explanation": "The server sends 'dead' HTML for speed. Hydration is when Vue runs in the browser, matches the HTML to the Virtual DOM, and attaches event listeners to make the page 'live'.",
+      "interviewTip": "If the HTML from the server doesn't match what the client generates, you get a 'Hydration Mismatch' error—a common SSR headache."
+    },
+    {
+      "id": "ssr-02",
+      "stageId": "ssr_nuxt",
+      "type": "single",
+      "prompt": "Analyze the Nuxt 3 code. What is the purpose of this built-in function?",
+      "code": "const { data, pending } = await useFetch('/api/questions');",
+      "options": [
+        "It is a standard browser fetch wrapper.",
+        "It is an SSR-friendly composable that prevents double data fetching (once on server, once on client).",
+        "It only works in development mode.",
+        "It encrypts the API response for security."
+      ],
+      "correct": [1],
+      "explanation": "useFetch is smart: it fetches the data on the server, serializes it into the HTML payload, and the client picks it up from there without making a second network request.",
+      "interviewTip": "This 'Payload Extraction' is why Nuxt apps feel much faster and more integrated than custom SSR setups."
+    },
+    {
+      "id": "ssr-03",
+      "stageId": "ssr_nuxt",
+      "type": "single",
+      "prompt": "Which Nuxt.js directory is used to automatically generate routes based on file names?",
+      "options": ["routes/", "pages/", "views/", "screens/"],
+      "correct": [1],
+      "explanation": "Nuxt uses file-system routing. A file at `pages/about.vue` automatically becomes the `/about` route. No manual router configuration is needed.",
+      "interviewTip": "For dynamic routes in Nuxt 3, you use square brackets, like `pages/quiz/[id].vue`."
+    },
+    {
+      "id": "ssr-04",
+      "stageId": "ssr_nuxt",
+      "type": "single",
+      "prompt": "Analyze the code. Where will this log appear in a Nuxt SSR environment?",
+      "code": "<script setup>\nconsole.log('Hello Vue');\n</script>",
+      "options": [
+        "Only in the browser console.",
+        "Only in the server terminal.",
+        "In both the server terminal (during render) and the browser console (during hydration).",
+        "Only in the Nuxt DevTools."
+      ],
+      "correct": [2],
+      "explanation": "Script setup code in SSR runs on the server to generate the HTML and then again on the client to hydrate the app.",
+      "interviewTip": "Be careful! Code that uses browser-only globals like `window` or `localStorage` will crash on the server unless wrapped in a check or a hook like `onMounted`."
+    },
+    {
+      "id": "ssr-05",
+      "stageId": "ssr_nuxt",
+      "type": "single",
+      "prompt": "What is 'Static Site Generation' (SSG) in Nuxt?",
+      "options": [
+        "Rendering the page every time a user visits it.",
+        "Pre-rendering every page of the app into static HTML files at build time.",
+        "A way to disable JavaScript entirely.",
+        "Using only static CSS without any JS."
+      ],
+      "correct": [1],
+      "explanation": "SSG (via `nuxt generate`) creates a folder of HTML files that can be hosted on a CDN (like Vercel or Netlify). It is the fastest and most secure way to serve content.",
+      "interviewTip": "Nuxt 3 supports 'Hybrid Rendering,' allowing you to choose SSR for some routes and SSG for others."
+    },
+    {
+      "id": "ssr-06",
+      "stageId": "ssr_nuxt",
+      "type": "multiple",
+      "prompt": "Which of these are valid ways to handle SEO metadata in a Nuxt 3 component?",
+      "options": [
+        "useHead({ title: 'My Quiz' })",
+        "useSeoMeta({ description: 'Practice JS' })",
+        "<Title>My Quiz</Title> (built-in component)",
+        "Adding a <meta> tag manually in the index.html"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Nuxt 3 provides multiple ways to manage the `<head>`. `useSeoMeta` is the most performant and type-safe for social sharing tags.",
+      "interviewTip": "Since Nuxt renders HTML on the server, these tags are visible to search engine bots immediately."
+    },
+    {
+      "id": "ssr-07",
+      "stageId": "ssr_nuxt",
+      "type": "single",
+      "prompt": "Analyze the component code. What is the behavior of <ClientOnly>?",
+      "code": "<template>\n  <ClientOnly>\n    <ComplexChart />\n  </ClientOnly>\n</template>",
+      "options": [
+        "It hides the chart from users.",
+        "It tells Nuxt to skip rendering this component on the server and only render it in the browser.",
+        "It optimizes the chart for mobile devices.",
+        "It prevents the chart from using any network resources."
+      ],
+      "correct": [1],
+      "explanation": "Some components (like those using D3 or Canvas) simply cannot run on the server. <ClientOnly> prevents server-side errors and hydration mismatches.",
+      "interviewTip": "You can also provide a 'placeholder' slot to show a loading state on the server."
+    },
+    {
+      "id": "ssr-08",
+      "stageId": "ssr_nuxt",
+      "type": "single",
+      "prompt": "What is the role of 'Nitro' in the Nuxt 3 ecosystem?",
+      "options": [
+        "The CSS engine for Nuxt.",
+        "The server engine that allows Nuxt to run on any provider (Node.js, Serverless, Edge Workers).",
+        "The image optimization tool.",
+        "The unit testing framework for Nuxt."
+      ],
+      "correct": [1],
+      "explanation": "Nitro is the powerful server backend for Nuxt. It enables features like API routes and allows the app to be deployed anywhere from a traditional server to Cloudflare Workers.",
+      "interviewTip": "Mentioning Nitro shows you understand that Nuxt is a 'Full-Stack' framework, not just a frontend library."
+    }
+  ]
+}

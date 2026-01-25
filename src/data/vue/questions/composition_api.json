@@ -1,0 +1,122 @@
+{
+  "default": [
+    {
+      "id": "ca-01",
+      "stageId": "composition_api",
+      "type": "single",
+      "prompt": "What is the main technical difference between 'ref' and 'reactive' in Vue 3?",
+      "options": [
+        "ref is only for strings, while reactive is for numbers.",
+        "ref can take primitive values (like 0 or true) and objects, while reactive only accepts objects.",
+        "reactive is faster than ref.",
+        "ref works on the server side, reactive only on the client."
+      ],
+      "correct": [1],
+      "explanation": "ref wraps any value in an object with a .value property. reactive uses Proxies directly on an object and does not work with primitives like strings or booleans.",
+      "interviewTip": "When in doubt, use 'ref'. It is more consistent and makes it clear when you are dealing with reactive data versus plain variables."
+    },
+    {
+      "id": "ca-02",
+      "stageId": "composition_api",
+      "type": "single",
+      "prompt": "Analyze the code. What will happen to reactivity when 'user' is destructured?",
+      "code": "const user = reactive({ name: 'Alex', age: 25 });\nconst { name } = user;\n\n// Later...\nuser.name = 'John';",
+      "options": [
+        "The 'name' variable will update to 'John'.",
+        "The 'name' variable will remain 'Alex' because destructuring reactive objects breaks the reactivity link.",
+        "Vue will throw a warning about unsafe destructuring.",
+        "Reactivity is preserved if you use 'let' instead of 'const'."
+      ],
+      "correct": [1],
+      "explanation": "Destructuring a reactive object is like copying a property. To preserve reactivity while destructuring, you must use 'toRefs(user)'.",
+      "interviewTip": "This is a frequent interview question. Use 'toRefs' or 'toRef' to safely unpack reactive objects into individual refs."
+    },
+    {
+      "id": "ca-03",
+      "stageId": "composition_api",
+      "type": "single",
+      "prompt": "Which compiler macro is used in <script setup> to make components, props, and variables automatically available to the template?",
+      "options": [
+        "defineComponent",
+        "setup()",
+        "<script setup> (it is the feature itself)",
+        "export default"
+      ],
+      "correct": [2],
+      "explanation": "<script setup> is a compile-time transform that simplifies the Composition API by removing the need to manually return everything from a setup() function.",
+      "interviewTip": "Mention that <script setup> leads to better runtime performance and smaller code bundles."
+    },
+    {
+      "id": "ca-04",
+      "stageId": "composition_api",
+      "type": "single",
+      "prompt": "Analyze the code. How should you update the value of a 'ref' in the script block?",
+      "code": "const count = ref(0);\n\nfunction increment() {\n  ________++;\n}",
+      "options": ["count", "count.value", "count()", "this.count"],
+      "correct": [1],
+      "explanation": "In the script block, you must access the '.value' property to read or write to a ref. In the template, Vue automatically unwraps it for you.",
+      "interviewTip": "Losing the '.value' is the #1 bug for developers moving from Options API to Composition API."
+    },
+    {
+      "id": "ca-05",
+      "stageId": "composition_api",
+      "type": "single",
+      "prompt": "What is the purpose of the 'shallowRef()' function?",
+      "options": [
+        "To create a ref that only works for one render.",
+        "To create a ref where only the '.value' property is reactive, but internal properties of the object are not tracked.",
+        "To create a ref with a lower memory footprint for numbers.",
+        "To make a ref read-only."
+      ],
+      "correct": [1],
+      "explanation": "shallowRef is a performance optimization. It's useful when you have large objects or third-party library instances where you only care about replacing the entire object, not tracking every single nested key.",
+      "interviewTip": "Mention this when asked how to optimize performance for large datasets that don't need deep reactivity."
+    },
+    {
+      "id": "ca-06",
+      "stageId": "composition_api",
+      "type": "multiple",
+      "prompt": "Which of these are valid reasons to prefer the Composition API over the Options API for large projects?",
+      "options": [
+        "Easier to extract and reuse logic via 'Composables'.",
+        "Better TypeScript type inference and support.",
+        "Groups code by logical concern (e.g., 'Search logic' together) rather than by option type.",
+        "It completely removes the need for Virtual DOM."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Composition API is designed for scalability. Options API often leads to 'fragmented' code where logic for one feature is scattered across data, computed, and methods.",
+      "interviewTip": "A great keyword to use is 'Logical Concerns'—Composition API groups code by what it *does*, not what it *is*."
+    },
+    {
+      "id": "ca-07",
+      "stageId": "composition_api",
+      "type": "single",
+      "prompt": "How do you provide a default value to props when using 'defineProps' in <script setup> with TypeScript?",
+      "code": "interface Props {\n  msg?: string\n}\n\nconst props = ________<Props>();",
+      "options": [
+        "withDefaults(defineProps, { msg: 'hello' })",
+        "defineProps({ msg: { default: 'hello' } })",
+        "defineProps<Props>({ msg: 'hello' })",
+        "assignProps({ msg: 'hello' })"
+      ],
+      "correct": [0],
+      "explanation": "When using type-only declarations in defineProps, you use the 'withDefaults' compiler macro to set default values.",
+      "interviewTip": "This is the most 'professional' way to handle props in a TypeScript-based Vue 3 project."
+    },
+    {
+      "id": "ca-08",
+      "stageId": "composition_api",
+      "type": "single",
+      "prompt": "What does 'unref()' do?",
+      "options": [
+        "It deletes the reactivity from an object permanently.",
+        "It returns the inner value if the argument is a ref, otherwise it returns the argument itself.",
+        "It converts a reactive object into a ref.",
+        "It forces a component to re-render."
+      ],
+      "correct": [1],
+      "explanation": "unref is a utility for writing flexible functions. It's shorthand for: `isRef(val) ? val.value : val`.",
+      "interviewTip": "This is very useful inside 'Composables' where an input might be a ref or a plain value."
+    }
+  ]
+}

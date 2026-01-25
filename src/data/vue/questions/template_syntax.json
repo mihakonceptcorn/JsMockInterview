@@ -1,0 +1,112 @@
+{
+  "default": [
+    {
+      "id": "ts-01",
+      "stageId": "template_syntax",
+      "type": "single",
+      "prompt": "Which directive is used to reactively update an HTML attribute, such as 'src' or 'disabled'?",
+      "options": ["v-on", "v-model", "v-bind", "v-attr"],
+      "correct": [2],
+      "explanation": "v-bind (shorthand ':') is used to bind an attribute to an expression. For example, :disabled='isPending' will apply the disabled attribute if isPending is truthy.",
+      "interviewTip": "In Vue 3.4+, you can use the shorthand :id instead of :id='id' if the attribute name matches the variable name."
+    },
+    {
+      "id": "ts-02",
+      "stageId": "template_syntax",
+      "type": "single",
+      "prompt": "Analyze the code. What will be rendered in the browser?",
+      "code": "const rawHtml = '<span style=\"color: red\">Hello</span>';\n\n// Template:\n<div v-html=\"rawHtml\"></div>",
+      "options": [
+        "The literal string: <span style=\"color: red\">Hello</span>",
+        "A red span saying 'Hello'",
+        "An empty div (for security reasons)",
+        "The word 'Hello' in default black text"
+      ],
+      "correct": [1],
+      "explanation": "v-html updates the element's innerHTML with the provided string. Use this with caution as it can lead to XSS attacks.",
+      "interviewTip": "Always warn about XSS when discussing v-html; only use it on trusted content."
+    },
+    {
+      "id": "ts-03",
+      "stageId": "template_syntax",
+      "type": "single",
+      "prompt": "What is the difference between {{ message }} and v-text=\"message\"?",
+      "options": [
+        "v-text is faster than interpolation.",
+        "{{ }} allows for partial content replacement; v-text replaces the entire textContent of the element.",
+        "v-text supports HTML tags; {{ }} does not.",
+        "There is no difference; they are exactly the same."
+      ],
+      "correct": [1],
+      "explanation": "Interpolation (Mustaches) allows you to mix text and variables like 'Hello {{ name }}'. v-text will overwrite everything inside the tag with the variable's value.",
+      "interviewTip": "Mustaches are preferred for readability, while v-text is rarely used unless you want to avoid 'Flash of Uncompiled Template' (though v-cloak is better for that)."
+    },
+    {
+      "id": "ts-04",
+      "stageId": "template_syntax",
+      "type": "single",
+      "prompt": "How do you listen to DOM events (like a click) and run some JavaScript when they are triggered?",
+      "code": "<button ________=\"doSomething\">Click me</button>",
+      "options": [
+        "v-bind:click",
+        "v-on:click",
+        "v-model:click",
+        "v-trigger:click"
+      ],
+      "correct": [1],
+      "explanation": "v-on (shorthand '@') is the directive for event listeners. It can call a method or run an inline expression.",
+      "interviewTip": "Mention event modifiers like @click.prevent or @click.stop for handling common event logic declaratively."
+    },
+    {
+      "id": "ts-05",
+      "stageId": "template_syntax",
+      "type": "single",
+      "prompt": "Which directive creates a two-way data binding on form input, textarea, and select elements?",
+      "options": ["v-bind", "v-sync", "v-model", "v-on"],
+      "correct": [2],
+      "explanation": "v-model is 'syntactic sugar' that combines v-bind (to set the value) and v-on (to listen for input changes).",
+      "interviewTip": "In Vue 3, you can have multiple v-models on a single custom component (e.g., v-model:first-name and v-model:last-name)."
+    },
+    {
+      "id": "ts-06",
+      "stageId": "template_syntax",
+      "type": "multiple",
+      "prompt": "Which of the following directives are used to optimize performance by skipping re-renders or compilation?",
+      "options": [
+        "v-once (renders the element only once and skips future updates)",
+        "v-pre (skips compilation for this element and its children)",
+        "v-memo (memoizes a sub-tree of the template based on dependencies)",
+        "v-static (forces the component to never change)"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "v-once and v-memo are for runtime performance. v-pre is for compile-time performance, allowing you to show raw mustache tags without Vue processing them.",
+      "interviewTip": "v-memo is a powerful Vue 3.2+ feature specifically for optimizing large v-for lists."
+    },
+    {
+      "id": "ts-07",
+      "stageId": "template_syntax",
+      "type": "single",
+      "prompt": "Analyze the code. What will happen to the input value after the button is clicked?",
+      "code": "<template>\n  <input v-model.number=\"age\" />\n</template>\n\n// If the user types \"25\" and we check typeof age:",
+      "options": ["string", "number", "undefined", "NaN"],
+      "correct": [1],
+      "explanation": "The .number modifier automatically typecasts the input string to a number using parseFloat().",
+      "interviewTip": "Modifiers like .trim and .lazy are also vital for refining user input behavior without extra JS logic."
+    },
+    {
+      "id": "ts-08",
+      "stageId": "template_syntax",
+      "type": "single",
+      "prompt": "What is the result of using a JavaScript expression inside mustaches, like {{ number + 1 }}?",
+      "options": [
+        "It will throw an error; only variable names are allowed.",
+        "It will evaluate the expression and render the result.",
+        "It will render the expression as a string.",
+        "It only works inside v-bind."
+      ],
+      "correct": [1],
+      "explanation": "Vue supports full JavaScript expressions inside data bindings, but they must be single expressions (no statements or flow control).",
+      "interviewTip": "While expressions are powerful, keep them simple. If logic gets complex, move it to a 'computed' property."
+    }
+  ]
+}
