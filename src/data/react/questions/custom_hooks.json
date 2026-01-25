@@ -4,221 +4,202 @@
       "id": "ch-01",
       "stageId": "custom_hooks",
       "type": "single",
-      "prompt": "What is a custom hook in React?",
+      "prompt": "What is the mandatory naming convention for custom hooks in React?",
       "options": [
-        "A built-in React hook",
-        "A function that uses other hooks",
-        "A component without JSX",
-        "A replacement for Redux"
+        "They must end with 'Hook' (e.g., useDataHook).",
+        "They must start with the word 'use' (e.g., useFetch).",
+        "They must be written in ALL_CAPS.",
+        "There is no mandatory naming convention."
       ],
       "correct": [1],
-      "explanation": "Custom hooks are functions that encapsulate reusable hook logic.",
-      "interviewTip": "They always start with the prefix `use`."
+      "explanation": "The 'use' prefix is essential because it allows React's linter to automatically check for violations of the Rules of Hooks.",
+      "interviewTip": "If you don't start with 'use', React won't know it's a hook and won't be able to guarantee its call order stability."
     },
     {
       "id": "ch-02",
       "stageId": "custom_hooks",
       "type": "single",
-      "prompt": "Why must custom hooks start with the word `use`?",
+      "prompt": "What is the primary benefit of creating a custom hook?",
       "options": [
-        "For better readability only",
-        "React uses it to enable tree-shaking",
-        "React relies on it to enforce hook rules",
-        "It is optional but recommended"
+        "To speed up the rendering of the Virtual DOM.",
+        "To extract and reuse stateful logic between different components.",
+        "To replace the need for the useEffect hook.",
+        "To create a global variable that bypasses the props system."
       ],
-      "correct": [2],
-      "explanation": "React uses naming conventions to validate hook usage.",
-      "interviewTip": "Lint rules depend on this convention."
+      "correct": [1],
+      "explanation": "Custom hooks let you hide complex logic (like data fetching, form handling, or event listeners) behind a simple API that multiple components can share.",
+      "interviewTip": "Think of custom hooks as 'Logic Composition' rather than 'UI Composition'."
     },
     {
       "id": "ch-03",
       "stageId": "custom_hooks",
-      "type": "multiple",
-      "prompt": "Which hooks can be used inside a custom hook?",
-      "options": ["useState", "useEffect", "useRef", "Any hook"],
-      "correct": [0, 1, 2, 3],
-      "explanation": "Custom hooks can compose any other hooks.",
-      "interviewTip": "Hooks are designed to be composable."
+      "type": "single",
+      "prompt": "If two components use the same custom hook, do they share the same state?",
+      "code": "const { data } = useFetch('/api'); // Used in Component A\nconst { data } = useFetch('/api'); // Used in Component B",
+      "options": [
+        "Yes, custom hooks create a singleton state for that logic.",
+        "No, each call to a custom hook creates a completely independent state for that component instance.",
+        "Only if the hook is imported from a global file.",
+        "Only if the components are siblings."
+      ],
+      "correct": [1],
+      "explanation": "Hooks are a way to reuse *logic*, not *data*. Every time you call a hook, all state and effects inside it are isolated to that specific caller.",
+      "interviewTip": "If you need to share data, you still need Context or a state management library like Redux."
     },
     {
       "id": "ch-04",
       "stageId": "custom_hooks",
       "type": "single",
-      "prompt": "Where can a custom hook be called?",
+      "prompt": "What can you call inside a custom hook?",
       "options": [
-        "Inside loops",
-        "Inside conditions",
-        "Inside components or other hooks",
-        "Anywhere in the code"
+        "Only standard JavaScript functions.",
+        "Only other custom hooks.",
+        "Other built-in React hooks (useState, useEffect, etc.) and even other custom hooks.",
+        "Nothing; custom hooks must be pure functions without state."
       ],
       "correct": [2],
-      "explanation": "Custom hooks follow the same rules as built-in hooks.",
-      "interviewTip": "The Rules of Hooks still apply."
+      "explanation": "Custom hooks are essentially regular functions that have 'superpowers'—they can use any other React hooks inside them.",
+      "interviewTip": "This is why custom hooks are so powerful; they are the glue that combines multiple built-in hooks into a single feature."
     },
     {
       "id": "ch-05",
       "stageId": "custom_hooks",
       "type": "single",
-      "prompt": "What should a custom hook return?",
+      "prompt": "Analyze the custom hook below. What is its return type?",
+      "code": "function useToggle(initialValue = false) {\n  const [value, setValue] = useState(initialValue);\n  const toggle = () => setValue(v => !v);\n  return [value, toggle];\n}",
       "options": [
-        "Only JSX",
-        "Only a single value",
-        "Anything useful for the caller",
-        "Nothing"
+        "A single boolean value.",
+        "An object { value, toggle }.",
+        "An array [boolean, function].",
+        "undefined"
       ],
       "correct": [2],
-      "explanation": "Custom hooks can return values, objects, or functions.",
-      "interviewTip": "Returning an object improves clarity."
+      "explanation": "Custom hooks can return anything (arrays, objects, or even single values). Returning an array is a common pattern modeled after useState.",
+      "interviewTip": "Returning an array is great for renaming values during destructuring. Returning an object is better if there are many return values."
     },
     {
       "id": "ch-06",
       "stageId": "custom_hooks",
       "type": "multiple",
-      "prompt": "Why are custom hooks useful?",
+      "prompt": "Which of the following are valid Rules of Hooks that apply to custom hooks?",
       "options": [
-        "Logic reuse",
-        "Cleaner components",
-        "Better performance by default",
-        "Separation of concerns"
+        "Hooks must be called only at the top level of the function.",
+        "Hooks can be called inside event handlers within the custom hook.",
+        "Hooks cannot be called inside loops or conditions.",
+        "Custom hooks must return JSX."
       ],
-      "correct": [0, 1, 3],
-      "explanation": "Custom hooks improve code organization and reuse.",
-      "interviewTip": "They don’t automatically optimize performance."
+      "correct": [0, 2],
+      "explanation": "Custom hooks are bound by the same rules as built-in hooks: they must be called at the top level and must not be conditional.",
+      "interviewTip": "The call order must remain identical between every render for React to track state correctly."
     },
     {
       "id": "ch-07",
       "stageId": "custom_hooks",
       "type": "single",
-      "prompt": "Do multiple components using the same custom hook share state?",
+      "prompt": "Identify the potential issue in this custom hook:",
+      "code": "function useWindowSize() {\n  const [size, setSize] = useState(window.innerWidth);\n  window.addEventListener('resize', () => setSize(window.innerWidth));\n  return size;\n}",
       "options": [
-        "Yes, always",
-        "Only if using context",
-        "No, each call has its own state",
-        "Only in strict mode"
+        "The hook should return an object, not a number.",
+        "It causes a memory leak because it adds a new listener on every render without removing it.",
+        "window is not accessible in custom hooks.",
+        "setSize should be called inside a loop."
       ],
-      "correct": [2],
-      "explanation": "Each hook call creates isolated state.",
-      "interviewTip": "Custom hooks are not singletons."
+      "correct": [1],
+      "explanation": "Side effects like event listeners must be inside a useEffect with a cleanup function to avoid adding thousands of listeners as the component re-renders.",
+      "interviewTip": "Always pair 'add' with 'remove' in a cleanup function."
     },
     {
       "id": "ch-08",
       "stageId": "custom_hooks",
       "type": "single",
-      "prompt": "How can a custom hook accept dynamic behavior?",
+      "prompt": "How do you pass parameters to a custom hook?",
+      "code": "const { data } = useFetch('https://api.example.com/data');",
       "options": [
-        "Using props",
-        "Using parameters",
-        "Using context only",
-        "Using refs"
+        "You can't; custom hooks don't accept arguments.",
+        "Pass them as normal function parameters when calling the hook.",
+        "By setting a global variable before the hook is called.",
+        "Using a special 'useParams' prop."
       ],
       "correct": [1],
-      "explanation": "Custom hooks receive arguments like normal functions.",
-      "interviewTip": "Parameters make hooks flexible."
+      "explanation": "Since custom hooks are just functions, you can pass any data (strings, objects, or even other functions) as arguments.",
+      "interviewTip": "If the arguments change, make sure the hooks *inside* your custom hook (like useEffect) react to those changes by adding them to dependency arrays."
     },
     {
       "id": "ch-09",
       "stageId": "custom_hooks",
-      "type": "multiple",
-      "prompt": "Which patterns are common in custom hooks?",
+      "type": "single",
+      "prompt": "What is the main advantage of the following pattern?",
+      "code": "function useForm(initialValues) {\n  const [values, setValues] = useState(initialValues);\n  const handleChange = (e) => {\n    setValues({ ...values, [e.target.name]: e.target.value });\n  };\n  return [values, handleChange];\n}",
       "options": [
-        "Returning state and handlers",
-        "Encapsulating side effects",
-        "Rendering JSX",
-        "Sharing logic between components"
+        "It allows any component to use the same form logic without rewriting the state and handlers.",
+        "It automatically submits the data to a server.",
+        "It makes the form run in the background.",
+        "It validates the inputs using AI."
       ],
-      "correct": [0, 1, 3],
-      "explanation": "Custom hooks focus on logic, not rendering.",
-      "interviewTip": "JSX belongs in components."
+      "correct": [0],
+      "explanation": "This is a classic 'useForm' hook. Instead of every component writing its own handleChange logic, they just import this hook.",
+      "interviewTip": "Standardizing common UI logic like forms or modals into custom hooks is a sign of a senior-level codebase."
     },
     {
       "id": "ch-10",
       "stageId": "custom_hooks",
       "type": "single",
-      "prompt": "What happens if a custom hook breaks the Rules of Hooks?",
+      "prompt": "Can a custom hook be called from inside another custom hook?",
       "options": [
-        "Nothing",
-        "React fixes it automatically",
-        "Unexpected bugs or errors occur",
-        "Only lint warnings appear"
+        "No, that's nesting and is prohibited.",
+        "Yes, this is a common way to build complex logic out of simpler hooks.",
+        "Only if the parent hook is a class component.",
+        "Only if you use the 'useCompose' utility."
       ],
-      "correct": [2],
-      "explanation": "Breaking hook rules leads to unstable behavior.",
-      "interviewTip": "Lint rules catch most mistakes."
+      "correct": [1],
+      "explanation": "Hooks are composable. For example, a `useAuthenticatedFetch` hook might call a `useAuth` hook and a `useFetch` hook internally.",
+      "interviewTip": "Composition is the 'secret sauce' of React's flexibility."
     },
     {
       "id": "ch-11",
       "stageId": "custom_hooks",
       "type": "single",
-      "prompt": "Can custom hooks use context?",
+      "prompt": "Why should you use 'useCallback' or 'useMemo' inside a custom hook that returns functions or objects?",
       "options": [
-        "No",
-        "Only with class components",
-        "Yes, using useContext",
-        "Only one context per hook"
+        "To prevent the hook from ever re-running.",
+        "To provide stable references so that components using the hook don't re-render unnecessarily.",
+        "To encrypt the returned data.",
+        "To make the code harder to reverse engineer."
       ],
-      "correct": [2],
-      "explanation": "Custom hooks can consume context like components.",
-      "interviewTip": "Great for shared app logic."
+      "correct": [1],
+      "explanation": "If your hook returns a function like `() => {}`, that function is a new reference on every render. If that function is a dependency in a component's useEffect, the component will enter an infinite loop.",
+      "interviewTip": "Providing 'referential stability' is a key responsibility of a well-written custom hook."
     },
     {
       "id": "ch-12",
       "stageId": "custom_hooks",
       "type": "multiple",
-      "prompt": "Which values are safe to return from a custom hook?",
+      "prompt": "Which of these are good candidates for a custom hook?",
       "options": [
-        "State values",
-        "Callback functions",
-        "Refs",
-        "DOM elements directly"
+        "A logic that tracks if the user is currently online/offline.",
+        "A function that adds two numbers and returns the sum.",
+        "A logic that handles pagination and sorting for a data table.",
+        "A logic that checks if an element is currently visible in the viewport."
       ],
-      "correct": [0, 1, 2],
-      "explanation": "Returning DOM elements breaks encapsulation.",
-      "interviewTip": "Expose behavior, not implementation details."
+      "correct": [0, 2, 3],
+      "explanation": "Simple math is a regular function. Anything that requires 'State' or 'Lifecycle' (like online status, pagination, or IntersectionObserver) should be a custom hook.",
+      "interviewTip": "If it doesn't use any React hooks (useState, useEffect, etc.), it probably shouldn't be a hook—just a regular utility function."
     },
     {
       "id": "ch-13",
       "stageId": "custom_hooks",
       "type": "single",
-      "prompt": "How should side effects be handled inside custom hooks?",
+      "prompt": "What happens if you use a custom hook inside an 'if' statement?",
+      "code": "if (user) { const data = useFetch('/profile'); }",
       "options": [
-        "Using useEffect",
-        "Using componentDidMount",
-        "Using async render",
-        "Using refs only"
+        "The data is only fetched for logged-in users, saving bandwidth.",
+        "It will work fine in development but fail in production.",
+        "React will break because the order of hook calls changed, potentially causing a crash or state mismatch.",
+        "The hook will be called once and then cached."
       ],
-      "correct": [0],
-      "explanation": "Side effects belong inside `useEffect`.",
-      "interviewTip": "Custom hooks often wrap effects."
-    },
-    {
-      "id": "ch-14",
-      "stageId": "custom_hooks",
-      "type": "single",
-      "prompt": "Can a custom hook return JSX?",
-      "options": [
-        "Yes, always",
-        "Yes, but it’s discouraged",
-        "No, it will crash",
-        "Only in React 18"
-      ],
-      "correct": [1],
-      "explanation": "Hooks should focus on logic, not rendering.",
-      "interviewTip": "If it returns JSX, it’s probably a component."
-    },
-    {
-      "id": "ch-15",
-      "stageId": "custom_hooks",
-      "type": "multiple",
-      "prompt": "Which mistakes are common when writing custom hooks?",
-      "options": [
-        "Calling hooks conditionally",
-        "Forgetting dependency arrays",
-        "Using hooks inside loops",
-        "Using hooks inside other hooks"
-      ],
-      "correct": [0, 1, 2],
-      "explanation": "Hooks must be called consistently.",
-      "interviewTip": "Rules apply everywhere."
+      "correct": [2],
+      "explanation": "React maps state to hooks based on their *index* in the call order. If you skip a hook because of a condition, the internal indexes shift, and the wrong state is assigned to the wrong hooks.",
+      "interviewTip": "Remember: The order of hooks must be identical on every single render."
     }
   ]
 }

@@ -4,221 +4,254 @@
       "id": "pc-01",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "What is the correct way to pass a `name` prop with value \"John\" to a `User` component?",
-      "options": [
-        "<User name=\"John\" />",
-        "<User {name=\"John\"} />",
-        "<User name={\"John\"} />",
-        "<User props.name=\"John\" />"
-      ],
-      "correct": [0],
-      "explanation": "Props are passed as JSX attributes.",
-      "interviewTip": "Curly braces are only required for JavaScript expressions."
+      "prompt": "What is the result of the following code snippet?",
+      "code": "function Child({ age }) {\n  return <h1>{age + 1}</h1>;\n}\nfunction Parent() {\n  return <Child age='25' />;\n}",
+      "options": ["26", "Error: Props are read-only", "251", "undefined"],
+      "correct": [2],
+      "explanation": "Because '25' was passed as a string (with quotes), the '+' operator performs string concatenation instead of addition.",
+      "interviewTip": "Always pass numbers inside curly braces, e.g., age={25}, to ensure they stay as numeric types."
     },
     {
       "id": "pc-02",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "How do you access the `age` prop inside a functional component?",
+      "prompt": "Which statement best describes the nature of 'props' in React?",
       "options": [
-        "function User(props) { props.age }",
-        "function User(age) {}",
-        "function User({ age }) {}",
-        "function User() { this.props.age }"
+        "Props are immutable; a component should never modify its own props.",
+        "Props are mutable and can be used to store local component changes.",
+        "Props are only used to pass CSS classes to child elements.",
+        "Props can only be passed from a child to its parent."
       ],
-      "correct": [2],
-      "explanation": "Destructuring props is the common approach in functional components.",
-      "interviewTip": "`this.props` is only used in class components."
+      "correct": [0],
+      "explanation": "React enforces a strict rule of immutability for props to ensure the 'One-Way Data Flow' is predictable and easy to debug.",
+      "interviewTip": "Treat props as 'snapshots' of data provided by the parent."
     },
     {
       "id": "pc-03",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "What does `props.children` represent?",
+      "prompt": "What will be rendered by the following component structure?",
+      "code": "function Layout({ children }) {\n  return <div className='container'>{children}</div>;\n}\n// Usage:\n<Layout>\n  <p>Hello World</p>\n</Layout>",
       "options": [
-        "An array of child components",
-        "The JSX nested between component tags",
-        "A special React hook",
-        "A prop that must be passed manually"
+        "An empty div with the class 'container'.",
+        "A div containing a p tag with 'Hello World'.",
+        "The string 'children'.",
+        "Nothing, children is not a valid prop name."
       ],
       "correct": [1],
-      "explanation": "`props.children` contains the nested JSX passed to a component.",
-      "interviewTip": "Commonly used in layout and wrapper components."
+      "explanation": "The 'children' prop is a special prop in React that automatically contains whatever is placed between the opening and closing tags of a component.",
+      "interviewTip": "This pattern is known as 'Containment' or 'Composition'."
     },
     {
       "id": "pc-04",
       "stageId": "props_communication",
-      "type": "single",
-      "prompt": "What is the main purpose of PropTypes?",
+      "type": "multiple",
+      "prompt": "Which of the following are valid ways to provide default values for props in a functional component?",
       "options": [
-        "State management",
-        "Runtime props type checking",
-        "Render optimization",
-        "Context handling"
+        "Using ES6 destructuring defaults: function MyComponent({ name = 'Guest' }) { ... }",
+        "Using the .defaultProps property: MyComponent.defaultProps = { name: 'Guest' };",
+        "Defining a default inside the return statement: <h1>{props.name || 'Guest'}</h1>",
+        "Using the useState hook to set the prop value."
       ],
-      "correct": [1],
-      "explanation": "PropTypes validate prop types during runtime.",
-      "interviewTip": "Often replaced by TypeScript in modern projects."
+      "correct": [0, 1, 2],
+      "explanation": "ES6 defaults are the modern standard. .defaultProps is the legacy React way. Using the OR operator inside JSX is a quick inline fallback.",
+      "interviewTip": "For functional components, the ES6 destructuring approach is generally preferred by the React team today."
     },
     {
       "id": "pc-05",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "Can props be modified inside a component?",
+      "prompt": "How does a child component 'send data back' to its parent?",
       "options": [
-        "Yes, directly",
-        "Yes, using setState",
-        "No, props are read-only",
-        "Yes, if the prop is an object"
+        "By modifying the props object directly.",
+        "By using a callback function passed down from the parent as a prop.",
+        "By emitting a custom DOM event using document.dispatchEvent.",
+        "By updating a global window variable."
       ],
-      "correct": [2],
-      "explanation": "Props are immutable and controlled by the parent component.",
-      "interviewTip": "Use state or callback props to handle changes."
+      "correct": [1],
+      "explanation": "Parents pass functions. Children call those functions with data as arguments. This 'Events Up' pattern maintains the unidirectional flow.",
+      "interviewTip": "This is often called 'Lifting State Up' when the child triggers an update to the parent's state."
     },
     {
       "id": "pc-06",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "How do you pass a number as a prop?",
+      "prompt": "What is 'Prop Drilling'?",
       "options": [
-        "<User age=\"30\" />",
-        "<User age={30} />",
-        "<User age=(30) />",
-        "<User age={[30]} />"
+        "A technique to optimize the performance of props.",
+        "The process of passing props through several layers of components just to reach a deep child.",
+        "A way to automatically generate props using a loop.",
+        "The method used to validate prop types."
       ],
       "correct": [1],
-      "explanation": "Numbers must be passed using curly braces.",
-      "interviewTip": "Strings don’t require curly braces."
+      "explanation": "Prop drilling makes components harder to reuse because intermediate components are forced to handle data they don't actually need.",
+      "interviewTip": "Context API or State Management libraries (like Redux/Zustand) are common solutions for avoiding excessive drilling."
     },
     {
       "id": "pc-07",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "How do you pass a function as a prop?",
+      "prompt": "Analyze the code. What happens when the button is clicked?",
+      "code": "function Parent() {\n  const alertMsg = () => alert('Hello!');\n  return <Child onAction={alertMsg} />;\n}\nfunction Child({ onAction }) {\n  return <button onClick={onAction}>Click Me</button>;\n}",
       "options": [
-        "<Button onClick={handleClick} />",
-        "<Button onClick=\"handleClick\" />",
-        "<Button onClick={handleClick()} />",
-        "<Button onClick=[handleClick] />"
+        "Nothing happens because onAction is not a native event.",
+        "The alert 'Hello!' is triggered.",
+        "An error: 'onAction is not a function'.",
+        "The button disappears."
       ],
-      "correct": [0],
-      "explanation": "You pass a function reference, not a function call.",
-      "interviewTip": "Calling the function will execute it during render."
+      "correct": [1],
+      "explanation": "The reference to the alertMsg function is passed as a prop. When the child button is clicked, it executes that reference.",
+      "interviewTip": "This demonstrates how functional props bridge communication between components."
     },
     {
       "id": "pc-08",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "What is a callback prop?",
+      "prompt": "What does the spread operator (...) do in the following context?",
+      "code": "const userData = { name: 'Bob', age: 30 };\nreturn <UserProfile {...userData} />;",
       "options": [
-        "A boolean prop",
-        "A function passed from a parent component",
-        "A React hook",
-        "A DOM event"
+        "It passes a single prop named 'userData' containing the object.",
+        "It passes 'name' and 'age' as individual props to the UserProfile component.",
+        "It deletes the name and age properties after passing them.",
+        "It converts the object into a JSON string."
       ],
       "correct": [1],
-      "explanation": "Callback props allow child components to communicate with parents.",
-      "interviewTip": "Often used for lifting state up."
+      "explanation": "The spread operator spreads the keys of the object into individual attributes in JSX.",
+      "interviewTip": "While convenient, overusing the spread operator can make it hard to see what data a component actually depends on."
     },
     {
       "id": "pc-09",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "How can you define default values for props?",
+      "prompt": "What happens if you pass a prop called 'class' to a custom React component?",
       "options": [
-        "Component.defaultProps",
-        "useState",
-        "PropTypes.default",
-        "props = {}"
+        "React automatically converts it to 'className'.",
+        "It works like any other prop; you can access it via props.class.",
+        "The app crashes because 'class' is a reserved keyword in JS.",
+        "The prop is ignored and not passed."
       ],
-      "correct": [0],
-      "explanation": "`defaultProps` provides fallback values for props.",
-      "interviewTip": "Function parameters can also be used for defaults."
+      "correct": [1],
+      "explanation": "While 'class' is reserved for HTML elements in JSX (where you must use className), for a *custom* component, it's just a key in an object. However, it's confusing and usually avoided.",
+      "interviewTip": "Stay consistent and use 'className' even for your own components to avoid confusion with native DOM elements."
     },
     {
       "id": "pc-10",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "What happens if a required PropType is missing?",
-      "options": [
-        "Compile-time error",
-        "Application crash",
-        "Console warning",
-        "Nothing"
-      ],
+      "prompt": "In the following code, what is the initial value of 'isActive' in the Child?",
+      "code": "function Parent() {\n  return <Child isActive />;\n}\nfunction Child({ isActive }) {\n  return <div>{String(isActive)}</div>;\n}",
+      "options": ["\"isActive\"", "undefined", "true", "null"],
       "correct": [2],
-      "explanation": "PropTypes produce warnings, not runtime errors.",
-      "interviewTip": "They don’t prevent rendering."
+      "explanation": "In JSX, if a prop is passed without a value, it defaults to boolean 'true'.",
+      "interviewTip": "This is similar to HTML attributes like 'disabled' or 'required'."
     },
     {
       "id": "pc-11",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "How do you pass JSX as a prop?",
+      "prompt": "What is the best way to pass multiple related pieces of data (e.g., user name, email, avatar)?",
       "options": [
-        "<Box header={<h1>Title</h1>} />",
-        "<Box header=\"<h1>Title</h1>\" />",
-        "<Box header={h1} />",
-        "<Box header=[<h1 />] />"
+        "Pass them all as individual props.",
+        "Combine them into a single object prop (e.g., user={userObj}).",
+        "Both are valid, but an object prop is often cleaner for related data.",
+        "Global variables are better for this."
       ],
-      "correct": [0],
-      "explanation": "JSX can be passed as a JavaScript expression.",
-      "interviewTip": "This pattern is similar to slots."
+      "correct": [2],
+      "explanation": "Passing a single object makes the component API cleaner and easier to update, especially if the data structure comes directly from an API.",
+      "interviewTip": "If the component only needs one small field from the object, passing individual props might be better for performance and decoupling."
     },
     {
       "id": "pc-12",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "Can objects be passed as props?",
-      "options": ["No", "Yes", "Only arrays", "Only via Context"],
+      "prompt": "Can you pass another React component as a prop to a component?",
+      "code": "<Card header={<Header />} body={<MainContent />} />",
+      "options": [
+        "No, props can only be primitive data types.",
+        "Yes, elements are JavaScript objects and can be passed as props.",
+        "Only via the children prop.",
+        "Only if you use the 'render' prefix."
+      ],
       "correct": [1],
-      "explanation": "Objects can be passed using curly braces.",
-      "interviewTip": "Avoid mutating props objects."
+      "explanation": "This is a powerful pattern for 'Slots'. It allows you to inject UI components into specific parts of a layout.",
+      "interviewTip": "This is often preferred over deep nesting or complex conditional logic within the component."
     },
     {
       "id": "pc-13",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "What is prop drilling?",
+      "prompt": "What will log to the console?",
+      "code": "function Child(props) {\n  props.name = 'Alice';\n  return <h1>{props.name}</h1>;\n}",
       "options": [
-        "A performance optimization",
-        "Passing props through many component levels",
-        "Working with refs",
-        "Async prop handling"
+        "\"Alice\"",
+        "TypeError (in strict mode) because props are read-only.",
+        "undefined",
+        "The parent's state will update to 'Alice'."
       ],
       "correct": [1],
-      "explanation": "Prop drilling occurs when data is passed deeply through the tree.",
-      "interviewTip": "Context API helps reduce prop drilling."
+      "explanation": "React 'freezes' the props object. Attempting to mutate it will throw an error or fail silently, depending on the environment.",
+      "interviewTip": "If you need to change data, that data should be 'State', not 'Props'."
     },
     {
       "id": "pc-14",
       "stageId": "props_communication",
-      "type": "single",
-      "prompt": "Which PropTypes helper restricts a prop to specific values?",
+      "type": "multiple",
+      "prompt": "Which of the following data types can be passed as props in React?",
       "options": [
-        "PropTypes.array",
-        "PropTypes.oneOf",
-        "PropTypes.shape",
-        "PropTypes.any"
+        "Functions",
+        "Objects and Arrays",
+        "Numbers and Booleans",
+        "Other JSX Elements"
       ],
-      "correct": [1],
-      "explanation": "`oneOf` limits props to a predefined set of values.",
-      "interviewTip": "Useful for enums like sizes or variants."
+      "correct": [0, 1, 2, 3],
+      "explanation": "Props are just JavaScript. Anything that can be assigned to a variable in JS can be passed as a prop.",
+      "interviewTip": "This flexibility is why React is so composable."
     },
     {
       "id": "pc-15",
       "stageId": "props_communication",
       "type": "single",
-      "prompt": "How do you pass multiple props at once from an object?",
+      "prompt": "What is the result of the logical expression in this prop assignment?",
+      "code": "<button disabled={isLoading || isError} />",
       "options": [
-        "<User props={user} />",
-        "<User {...user} />",
-        "<User user />",
-        "<User spread(user) />"
+        "The button is disabled if either isLoading or isError is true.",
+        "The button is disabled only if both are true.",
+        "The prop is ignored because it contains logic.",
+        "A syntax error."
+      ],
+      "correct": [0],
+      "explanation": "Curly braces allow you to put any JS expression. The result of the expression (true/false) is what is passed as the prop value.",
+      "interviewTip": "This is a clean way to handle UI states directly in the template."
+    },
+    {
+      "id": "pc-16",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "How do you access the value of a prop in a functional component?",
+      "options": [
+        "this.props.name",
+        "From the first argument of the function.",
+        "Using the useProps() hook.",
+        "By importing it from React."
       ],
       "correct": [1],
-      "explanation": "The spread operator passes all object properties as props.",
-      "interviewTip": "Be careful not to pass unnecessary props."
+      "explanation": "Functional components receive 'props' as their first parameter. You can either use props.name or destructure it immediately.",
+      "interviewTip": "Destructuring is the standard: const MyComponent = ({ name }) => { ... }"
+    },
+    {
+      "id": "pc-17",
+      "stageId": "props_communication",
+      "type": "single",
+      "prompt": "What is the 'Prop-Types' library used for?",
+      "options": [
+        "To speed up prop delivery.",
+        "To perform runtime type checking on props to catch bugs during development.",
+        "To convert props into JSON strings.",
+        "To automatically generate documentation."
+      ],
+      "correct": [1],
+      "explanation": "Prop-Types lets you declare the expected type (string, number, etc.) for each prop. React will show a warning in the console if the wrong type is passed.",
+      "interviewTip": "While TypeScript has largely replaced Prop-Types in modern projects, it's still widely used in many existing codebases."
     }
   ]
 }

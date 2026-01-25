@@ -4,251 +4,187 @@
       "id": "dp-01",
       "stageId": "design_patterns",
       "type": "single",
-      "prompt": "What is the 'Compound Components' pattern?",
+      "prompt": "What is the primary goal of the 'Compound Components' pattern?",
       "options": [
-        "A way to merge two different React apps",
-        "A pattern where components work together to form a single unit, sharing implicit state",
-        "A component that uses more than 5 hooks",
-        "A method to combine CSS and JS in one file"
+        "To make components render 50% faster.",
+        "To allow a group of components to work together and share implicit state without prop drilling.",
+        "To combine React with other frameworks like Vue.",
+        "To hide all logic inside a single monolithic component."
       ],
       "correct": [1],
-      "explanation": "Compound components (like <Select> and <Option>) allow a parent to manage state for its children without the user having to pass props to every child manually.",
-      "interviewTip": "Think of the HTML <select> and <option> tags. They are the classic example of this pattern."
+      "explanation": "Compound components (like <Select> and <Option>) share state behind the scenes, giving the consumer more control over the rendered structure while keeping logic encapsulated.",
+      "interviewTip": "Think of the HTML <select> and <option> tags. They work together as a unit; that is a native compound component."
     },
     {
       "id": "dp-02",
       "stageId": "design_patterns",
       "type": "single",
-      "prompt": "What is a Higher-Order Component (HOC)?",
+      "prompt": "In the Compound Component pattern, how is the internal state usually shared among children?",
+      "code": "function Tabs({ children }) {\n  const [active, setActive] = useState(0);\n  return (\n    <TabsContext.Provider value={{ active, setActive }}>\n      {children}\n    </TabsContext.Provider>\n  );\n}",
       "options": [
-        "A component that is rendered at the top of the tree",
-        "A function that takes a component and returns a new component with added functionality",
-        "A component with a high performance score",
-        "A hook that replaces a component"
+        "By passing props manually to every child.",
+        "By using React Context to provide state to all nested children.",
+        "By using global window variables.",
+        "By cloning each child and injecting props using React.cloneElement."
       ],
       "correct": [1],
-      "explanation": "HOCs are a pattern derived from higher-order functions in JS. They are used for cross-cutting concerns like adding authentication logic or logging to any component.",
-      "interviewTip": "While hooks have replaced many HOCs, they are still useful for modifying component props or wrapping components in a specific environment."
+      "explanation": "While cloneElement was used in the past, React Context is now the preferred way to share state within a compound component group.",
+      "interviewTip": "Mention that Context is safer and more flexible than cloneElement because it works even if children are wrapped in other divs."
     },
     {
       "id": "dp-03",
       "stageId": "design_patterns",
       "type": "single",
-      "prompt": "What is the 'Render Props' pattern?",
+      "prompt": "What is a 'Higher-Order Component' (HOC)?",
       "options": [
-        "Passing a function as a prop to a component to tell it what to render",
-        "Using props to style a component",
-        "A way to render props directly into the DOM",
-        "A performance optimization for props"
+        "A component that is rendered at the top of the page.",
+        "A function that takes a component and returns a new component with added functionality.",
+        "A hook that replaces the need for state.",
+        "A component with more than 1000 lines of code."
       ],
-      "correct": [0],
-      "explanation": "A component with a render prop takes a function that returns a React element and calls it instead of implementing its own render logic.",
-      "interviewTip": "Libraries like Formik and early versions of React Router used this extensively."
+      "correct": [1],
+      "explanation": "HOCs are a pattern for reusing component logic. They act as wrappers that 'enhance' the original component with new props or behaviors.",
+      "interviewTip": "While HOCs are less common since Hooks were introduced, they are still used for Cross-Cutting Concerns like Authentication or Logging."
     },
     {
       "id": "dp-04",
       "stageId": "design_patterns",
       "type": "single",
-      "prompt": "Which tool is typically used inside Compound Components to share state without 'prop drilling'?",
-      "options": ["Redux", "React Context", "Local Storage", "Refs"],
+      "prompt": "Analyze the 'Render Prop' pattern. What is being passed to the Child?",
+      "code": "<MouseTracker render={mouse => (\n  <p>The mouse position is {mouse.x}, {mouse.y}</p>\n)} />",
+      "options": [
+        "A static object.",
+        "A function that tells the component what to render based on internal state.",
+        "A direct reference to the DOM.",
+        "A boolean flag."
+      ],
       "correct": [1],
-      "explanation": "Compound components usually create a small, internal Context to share state between the parent and children behind the scenes.",
-      "interviewTip": "This keeps the API clean for the user of the component."
+      "explanation": "A render prop is a prop that is a function which a component uses to know what to render. It 'shares' its internal state with the function.",
+      "interviewTip": "Render props are highly flexible but can sometimes lead to 'wrapper hell' if over-nested."
     },
     {
       "id": "dp-05",
       "stageId": "design_patterns",
-      "type": "single",
-      "prompt": "What is the 'Container/Presentational' (or Smart/Dumb) pattern?",
+      "type": "multiple",
+      "prompt": "Which of the following are characteristics of a 'Controlled Component'?",
       "options": [
-        "Separating logic/data fetching from the UI rendering",
-        "Using Docker containers for React",
-        "A way to style div containers",
-        "Making the app work on mobile devices"
+        "The component's data is stored in the React state.",
+        "The component manages its own internal state via the DOM.",
+        "Changes are handled by an onChange callback that updates the state.",
+        "The value prop is set by the parent."
       ],
-      "correct": [0],
-      "explanation": "Container components handle 'how things work' (data/logic), while Presentational components handle 'how things look' (UI).",
-      "interviewTip": "With the advent of Hooks, this pattern is used less often, as logic can now be extracted into Custom Hooks."
+      "correct": [0, 2, 3],
+      "explanation": "Controlled components allow React to be the 'Single Source of Truth'. Uncontrolled components rely on the DOM (and Refs) to hold the data.",
+      "interviewTip": "Use controlled components for almost everything unless you have a specific performance reason to use a Ref."
     },
     {
       "id": "dp-06",
       "stageId": "design_patterns",
       "type": "single",
-      "prompt": "What is 'Component Composition'?",
+      "prompt": "How do you implement the 'Controlled Props' pattern to allow a user to 'take over' a component's internal state?",
+      "code": "function Toggle({ value, onChange }) {\n  const [internalValue, setInternal] = useState(false);\n  const isControlled = value !== undefined;\n  const current = isControlled ? value : internalValue;\n  // ...\n}",
       "options": [
-        "Combining small, simple components to build complex ones via the 'children' prop",
-        "Writing a component inside another component file",
-        "Making sure components are composed of 100% pure functions",
-        "The process of compiling React code"
+        "The code above shows the logic for a component that can be both controlled or uncontrolled.",
+        "By always using a global Redux store.",
+        "By deleting the internal state entirely.",
+        "By forcing the user to pass all props."
       ],
       "correct": [0],
-      "explanation": "Composition is the preferred alternative to inheritance in React. It makes components more flexible and prevents deep prop drilling.",
-      "interviewTip": "Composition is often the first solution you should try before reaching for Context or Redux."
+      "explanation": "This pattern allows a component to manage its own state by default, but gives the parent the option to 'control' it if a prop is provided.",
+      "interviewTip": "This is a common pattern in advanced UI libraries like Downshift or Material UI."
     },
     {
       "id": "dp-07",
       "stageId": "design_patterns",
       "type": "single",
-      "prompt": "What is a 'Controlled Component'?",
+      "prompt": "What is the 'Container/Presentational' pattern?",
       "options": [
-        "A component that is hidden from the user",
-        "A component whose state is handled by React (via props and callbacks)",
-        "A component that doesn't re-render",
-        "A component that works without JavaScript"
+        "A pattern that separates data fetching (Container) from UI rendering (Presentational).",
+        "A way to put all CSS in a container file.",
+        "A method to group components by their size.",
+        "A way to render React components inside a Docker container."
       ],
-      "correct": [1],
-      "explanation": "In a controlled component, form data is handled by a React component. The 'value' comes from state and changes via 'onChange'.",
-      "interviewTip": "Controlled components are the 'React way' to handle forms."
+      "correct": [0],
+      "explanation": "Presentational components are 'dumb' and only care about how things look. Containers are 'smart' and care about how things work (API calls, state logic).",
+      "interviewTip": "Hooks have largely replaced this pattern because you can now put 'smart' logic in a custom hook instead of a wrapper component."
     },
     {
       "id": "dp-08",
       "stageId": "design_patterns",
       "type": "single",
-      "prompt": "What is an 'Uncontrolled Component'?",
+      "prompt": "Identify the issue when using HOCs:",
+      "code": "const EnhancedComponent = withAuth(withLogging(withTheme(MyComponent)));",
       "options": [
-        "A component that crashes frequently",
-        "A component that stores its own internal state in the DOM (via Refs)",
-        "A component that doesn't have a parent",
-        "A component that uses Redux"
+        "It makes the component render faster.",
+        "It leads to 'Wrapper Hell', making it difficult to track where props are coming from.",
+        "React doesn't allow more than two HOCs.",
+        "The component will lose its state."
       ],
       "correct": [1],
-      "explanation": "Uncontrolled components use a ref to get form values from the DOM when needed, rather than tracking every keystroke in React state.",
-      "interviewTip": "Use these when you need to integrate with non-React libraries or want to prioritize performance in very simple forms."
+      "explanation": "Heavily nested HOCs make debugging difficult because it's unclear which HOC is passing which prop. Hooks solve this by providing a flat structure.",
+      "interviewTip": "This is one of the main reasons the React community shifted from HOCs to Hooks."
     },
     {
       "id": "dp-09",
       "stageId": "design_patterns",
       "type": "single",
-      "prompt": "What is the 'Control Props' pattern?",
+      "prompt": "What does the 'Slot' pattern achieve in React?",
+      "code": "<Card header={<UserHeader />} footer={<SocialActions />} />",
       "options": [
-        "A way to disable props",
-        "Allowing the user of a component to 'take over' its internal state by passing props",
-        "Adding a controller to the UI",
-        "Using props to control the browser window"
+        "It allows you to pass JSX elements as props to be placed in specific locations.",
+        "It is used to save data in a slot on the server.",
+        "It generates random IDs for components.",
+        "It is a way to use 3D models in React."
       ],
-      "correct": [1],
-      "explanation": "If a user provides a prop (like 'value'), the component uses it; if not, it uses its own internal 'defaultValue'. It gives the user ultimate control.",
-      "interviewTip": "This is how sophisticated UI libraries (like Material UI or Headless UI) work."
+      "correct": [0],
+      "explanation": "Slots are a form of composition that allows a parent to define specific UI 'holes' that a child component fills.",
+      "interviewTip": "Slots are often easier to manage than complex boolean flags within a component."
     },
     {
       "id": "dp-10",
       "stageId": "design_patterns",
       "type": "single",
-      "prompt": "What is 'Inversion of Control' (IoC) in React?",
+      "prompt": "How do you avoid 'prop drilling' in a deeply nested component tree using patterns?",
       "options": [
-        "Reversing the order of components",
-        "Giving the user of a component the power to decide how a part of it renders",
-        "Allowing the server to control the client",
-        "Automating the build process"
+        "By using the Render Prop pattern at the top level.",
+        "By using the Compound Components pattern with React Context.",
+        "By copying the data to the clipboard.",
+        "By using a for-loop to inject props."
       ],
       "correct": [1],
-      "explanation": "Instead of a component having 20 props for every possible configuration, it 'inverts control' by accepting children or render props.",
-      "interviewTip": "IoC makes your components much more flexible and prevents 'Prop Apocalypse'."
+      "explanation": "Compound components use Context to broadcast state to all descendants, effectively ending the need for drilling.",
+      "interviewTip": "Mention that this keeps the component API 'clean' as users don't see the state being passed."
     },
     {
       "id": "dp-11",
       "stageId": "design_patterns",
-      "type": "single",
-      "prompt": "What is a 'Portal' in React?",
+      "type": "multiple",
+      "prompt": "Which patterns are considered 'Obsolete' or 'Legacy' due to the introduction of Hooks?",
       "options": [
-        "A way to render a component into a different part of the DOM tree (outside the parent)",
-        "A link to another website",
-        "A security feature for API calls",
-        "A way to fetch data from a server"
+        "Mixins.",
+        "Higher-Order Components (partially).",
+        "Compound Components.",
+        "Render Props (partially)."
       ],
-      "correct": [0],
-      "explanation": "Portals are commonly used for Modals, Tooltips, or Popovers that need to break out of a 'z-index' or 'overflow: hidden' container.",
-      "interviewTip": "Use `ReactDOM.createPortal(child, container)`."
+      "correct": [0, 1, 3],
+      "explanation": "Mixins are completely obsolete. HOCs and Render Props are still valid but are much less common as Hooks solve the same problems with less nesting.",
+      "interviewTip": "Compound Components are still very much alive and well because they solve a different problem (UI structure/API design)."
     },
     {
       "id": "dp-12",
       "stageId": "design_patterns",
       "type": "single",
-      "prompt": "What is the 'State Initializer' pattern?",
+      "prompt": "What is the 'Prop Collection' pattern?",
+      "code": "const { getButtonProps, getInputProps } = useForm();\nreturn <button {...getButtonProps()}>Submit</button>;",
       "options": [
-        "Allowing a user to set the initial state of a component but let the component manage it after that",
-        "Using a database to start the app",
-        "A hook that runs once",
-        "Setting all state to null"
-      ],
-      "correct": [0],
-      "explanation": "Commonly seen as 'initialCount' or 'defaultValue' props. It sets the starting point but keeps the logic internal.",
-      "interviewTip": "This is different from Controlled Props where the user manages state *continuously*."
-    },
-    {
-      "id": "dp-13",
-      "stageId": "design_patterns",
-      "type": "single",
-      "prompt": "What are 'Headless Components'?",
-      "options": [
-        "Components without a name",
-        "Components that provide logic and state but NO UI or styling",
-        "Components that are invisible",
-        "Components that run on the server only"
+        "A way to delete unused props.",
+        "A pattern where a hook returns a function that provides all necessary props for a specific element.",
+        "A collection of all CSS classes in the app.",
+        "A way to store props in a database."
       ],
       "correct": [1],
-      "explanation": "Headless UI libraries (like Downshift or Radix UI) handle the 'how it works' (keyboard navigation, accessibility) and let you provide the 'how it looks'.",
-      "interviewTip": "This is the current trend in UI development because it allows for 100% custom styling."
-    },
-    {
-      "id": "dp-14",
-      "stageId": "design_patterns",
-      "type": "multiple",
-      "prompt": "Which patterns help in logic reuse?",
-      "options": [
-        "Custom Hooks",
-        "Higher-Order Components",
-        "Render Props",
-        "Inline CSS"
-      ],
-      "correct": [0, 1, 2],
-      "explanation": "Hooks are the modern standard, but HOCs and Render Props were the original patterns for sharing logic before hooks existed.",
-      "interviewTip": "When asked how to share logic, always start with 'Custom Hooks'."
-    },
-    {
-      "id": "dp-15",
-      "stageId": "design_patterns",
-      "type": "single",
-      "prompt": "What is a 'Error Boundary' component?",
-      "options": [
-        "A component that prevents the app from crashing by catching JS errors in its child tree",
-        "A boundary between the client and server",
-        "A way to validate props",
-        "A performance monitoring tool"
-      ],
-      "correct": [0],
-      "explanation": "Error boundaries are class components that implement `getDerivedStateFromError` to show a fallback UI instead of a white screen when a component fails.",
-      "interviewTip": "They only catch errors in rendering, not in event handlers or async code."
-    },
-    {
-      "id": "dp-16",
-      "stageId": "design_patterns",
-      "type": "single",
-      "prompt": "What is the 'Props Getter' pattern?",
-      "options": [
-        "A way to download props from the internet",
-        "A function returned by a hook that provides all necessary props for an element (e.g., aria-tags, event handlers)",
-        "A component that fetches its own props",
-        "A way to hide props from the child"
-      ],
-      "correct": [1],
-      "explanation": "Often used in headless hooks. For example, a `useSelect` hook might return a `getToggleButtonProps()` function that returns the 'onClick' and 'aria-expanded' props for you.",
-      "interviewTip": "This ensures the user doesn't forget important accessibility attributes."
-    },
-    {
-      "id": "dp-17",
-      "stageId": "design_patterns",
-      "type": "single",
-      "prompt": "Why is 'Composition' usually better than 'Inheritance' in React?",
-      "options": [
-        "Because React doesn't support JavaScript classes",
-        "Because composition is more flexible and avoids deep, rigid hierarchies",
-        "Because inheritance is slower",
-        "Because composition is a newer technology"
-      ],
-      "correct": [1],
-      "explanation": "Composition allows you to mix and match behaviors easily, whereas inheritance forces you to commit to a 'is-a' relationship that is hard to change later.",
-      "interviewTip": "Facebook's own team has stated they haven't found a single use case where inheritance was better than composition in React."
+      "explanation": "This pattern simplifies the consumer's work by bundling accessibility, event handlers, and attributes into a single spreadable object.",
+      "interviewTip": "This is widely used in 'Headless UI' libraries like Radix UI or Reach UI."
     }
   ]
 }

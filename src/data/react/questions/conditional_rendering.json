@@ -4,211 +4,235 @@
       "id": "cr-01",
       "stageId": "conditional_rendering",
       "type": "single",
-      "prompt": "What is the most common way to conditionally render content in JSX?",
+      "prompt": "What will be rendered if 'isLoaded' is false?",
+      "code": "return (\n  <div>\n    {isLoaded ? <p>Success!</p> : <p>Loading...</p>}\n  </div>\n);",
       "options": [
-        "if statements inside JSX",
-        "Ternary operator",
-        "switch statements",
-        "try/catch blocks"
+        "Success!",
+        "Loading...",
+        "Nothing",
+        "Both 'Success!' and 'Loading...'"
       ],
       "correct": [1],
-      "explanation": "The ternary operator is commonly used directly in JSX.",
-      "interviewTip": "`if` statements must be outside JSX."
+      "explanation": "The ternary operator is the most common way to perform 'either-or' conditional rendering in JSX.",
+      "interviewTip": "Ternaries are preferred over 'if-else' statements inside JSX because they are expressions."
     },
     {
       "id": "cr-02",
       "stageId": "conditional_rendering",
-      "type": "multiple",
-      "prompt": "Which conditional rendering patterns are valid in JSX?",
+      "type": "single",
+      "prompt": "What is a potential 'gotcha' when using the && operator with a numeric 0?",
+      "code": "const count = 0;\nreturn <div>{count && <p>Items found</p>}</div>;",
       "options": [
-        "Ternary operator",
-        "Logical AND (&&)",
-        "if/else inside JSX",
-        "Conditional variables outside JSX"
+        "It renders nothing.",
+        "It renders the number 0 in the UI.",
+        "It crashes the app.",
+        "It renders '<p>Items found</p>'."
       ],
-      "correct": [0, 1, 3],
-      "explanation": "JSX supports expressions, not statements.",
-      "interviewTip": "Prepare logic before returning JSX."
+      "correct": [1],
+      "explanation": "In JS, '0 && anything' evaluates to 0. React does not render booleans, but it *does* render the number 0.",
+      "interviewTip": "To avoid this, use a boolean check: `{count > 0 && <p>Items found</p>}` or a ternary."
     },
     {
       "id": "cr-03",
       "stageId": "conditional_rendering",
       "type": "single",
-      "prompt": "What will `{isLoggedIn && <Profile />}` render when `isLoggedIn` is false?",
-      "options": ["<Profile />", "null", "false", "An empty div"],
-      "correct": [2],
-      "explanation": "React ignores `false`, `null`, and `undefined` in rendering.",
-      "interviewTip": "`false` renders nothing."
+      "prompt": "How do you render nothing at all based on a condition?",
+      "options": [
+        "Return an empty string \"\".",
+        "Return null.",
+        "Return undefined.",
+        "All of the above."
+      ],
+      "correct": [1],
+      "explanation": "Returning 'null' is the standard way to tell React to render no output for a component or part of the UI.",
+      "interviewTip": "Returning null still triggers the component's lifecycle hooks; it just doesn't produce DOM nodes."
     },
     {
       "id": "cr-04",
       "stageId": "conditional_rendering",
-      "type": "single",
-      "prompt": "When should you prefer a ternary operator over `&&`?",
+      "type": "multiple",
+      "prompt": "Which of these are valid ways to conditionally render JSX?",
       "options": [
-        "When rendering a list",
-        "When you need an else branch",
-        "When performance matters",
-        "When rendering fragments"
+        "Using a switch statement outside of the return.",
+        "Using a ternary operator inside curly braces.",
+        "Using a v-if attribute on a div.",
+        "Using logical && for 'if-this-then-that' logic."
       ],
-      "correct": [1],
-      "explanation": "`&&` does not support an else case.",
-      "interviewTip": "Ternary is clearer with two branches."
+      "correct": [0, 1, 3],
+      "explanation": "React doesn't have directives like v-if. It relies on standard JS logic.",
+      "interviewTip": "For complex conditions, using a helper function or a variable outside the return statement is often cleaner."
     },
     {
       "id": "cr-05",
       "stageId": "conditional_rendering",
-      "type": "multiple",
-      "prompt": "Which values will React render as nothing?",
-      "options": ["false", "null", "undefined", "0"],
-      "correct": [0, 1, 2],
-      "explanation": "React ignores falsey values except 0.",
-      "interviewTip": "0 will still be rendered."
+      "type": "single",
+      "prompt": "What is the result of the following component?",
+      "code": "function Auth({ user }) {\n  if (!user) return null;\n  return <h1>Welcome, {user.name}</h1>;\n}",
+      "options": [
+        "It renders 'Welcome, undefined' if there is no user.",
+        "It renders nothing if there is no user.",
+        "It crashes if there is no user.",
+        "It renders an empty h1."
+      ],
+      "correct": [1],
+      "explanation": "This is called an 'Early Return'. It prevents the rest of the component logic from executing if a condition isn't met.",
+      "interviewTip": "Early returns are excellent for handling loading states or missing data."
     },
     {
       "id": "cr-06",
       "stageId": "conditional_rendering",
       "type": "single",
-      "prompt": "What is a common pitfall when using `condition && <Component />`?",
+      "prompt": "What is the 'Logical OR' (||) operator used for in conditional rendering?",
+      "code": "return <div>{userName || 'Guest'}</div>;",
       "options": [
-        "It is slower than ternary",
-        "It breaks hooks rules",
-        "Numbers like 0 may render unexpectedly",
-        "It cannot be nested"
+        "To provide a fallback/default value if the first value is falsy.",
+        "To check if both values are true.",
+        "To hide the div if userName exists.",
+        "To loop through a list of names."
       ],
-      "correct": [2],
-      "explanation": "If the condition is 0, React will render 0.",
-      "interviewTip": "Ensure conditions are booleans."
+      "correct": [0],
+      "explanation": "The || operator is perfect for displaying default text or components when data is missing.",
+      "interviewTip": "Remember that if userName is an empty string \"\", it will also trigger the fallback."
     },
     {
       "id": "cr-07",
       "stageId": "conditional_rendering",
       "type": "single",
-      "prompt": "How can you conditionally render multiple elements without adding extra DOM nodes?",
+      "prompt": "Identify the output of this code:",
+      "code": "const isAdmin = true;\nreturn (\n  <div className={isAdmin ? 'admin-theme' : 'user-theme'}>\n    Content\n  </div>\n);",
       "options": [
-        "Wrap them in a div",
-        "Use React.Fragment",
-        "Use an array",
-        "Use document.createElement"
+        "A div with class 'admin-theme'.",
+        "A div with class 'user-theme'.",
+        "A syntax error.",
+        "A div with both classes."
       ],
-      "correct": [1],
-      "explanation": "Fragments group elements without extra DOM.",
-      "interviewTip": "Short syntax <>...</> is common."
+      "correct": [0],
+      "explanation": "Ternary operators can be used inside attribute values to conditionally apply CSS classes or other props.",
+      "interviewTip": "This is the primary way to handle dynamic styling in basic React."
     },
     {
       "id": "cr-08",
       "stageId": "conditional_rendering",
-      "type": "multiple",
-      "prompt": "Which approaches help keep conditional rendering readable?",
+      "type": "single",
+      "prompt": "Why can't you use a 'for' loop or 'if' statement directly inside the JSX return?",
       "options": [
-        "Extracting components",
-        "Using deeply nested ternaries",
-        "Early returns",
-        "Using helper functions"
+        "React doesn't support them.",
+        "JSX is just a group of function calls, and you can't put statements inside an argument list.",
+        "It would make the Virtual DOM too slow.",
+        "Browsers don't support loops in HTML."
       ],
-      "correct": [0, 2, 3],
-      "explanation": "Readable logic improves maintainability.",
-      "interviewTip": "Avoid deeply nested JSX conditions."
+      "correct": [1],
+      "explanation": "JSX is transformed into React.createElement() calls. Arguments to a function must be expressions (values), not statements.",
+      "interviewTip": "Expressions evaluate to a value (like 2+2); statements perform an action (like if/for)."
     },
     {
       "id": "cr-09",
       "stageId": "conditional_rendering",
       "type": "single",
-      "prompt": "What will a component return if it explicitly returns `null`?",
+      "prompt": "What will be rendered here?",
+      "code": "const items = [];\nreturn (\n  <ul>\n    {items.length > 0 && <li>Show items</li>}\n  </ul>\n);",
       "options": [
-        "An empty div",
-        "Nothing is rendered",
-        "An error",
-        "undefined behavior"
+        "<li>Show items</li>",
+        "An empty <ul>.",
+        "The number 0.",
+        "A list with a false value."
       ],
       "correct": [1],
-      "explanation": "Returning `null` means render nothing.",
-      "interviewTip": "Useful for guard conditions."
+      "explanation": "Since items.length is 0, the expression evaluates to 0. However, in this specific case, 0 && ... is false, and React renders nothing (unless it's just the number 0 directly).",
+      "interviewTip": "Always ensure the left side of your && is a true boolean if you want to be safe."
     },
     {
       "id": "cr-10",
       "stageId": "conditional_rendering",
-      "type": "multiple",
-      "prompt": "Which conditional rendering techniques are commonly used for loading states?",
+      "type": "single",
+      "prompt": "How do you handle 'Loading', 'Error', and 'Data' states in a single component return?",
       "options": [
-        "Early return",
-        "Ternary operator",
-        "Logical AND (&&)",
-        "Switch statement inside JSX"
+        "By using nested ternary operators.",
+        "By returning different JSX blocks early based on status variables.",
+        "By using the useEffect hook to hide elements.",
+        "By creating three separate apps."
       ],
-      "correct": [0, 1, 2],
-      "explanation": "Several patterns are valid for loading UI.",
-      "interviewTip": "Choose clarity over cleverness."
+      "correct": [1],
+      "explanation": "While nested ternaries work, they are hard to read. Early returns for error and loading states are much cleaner.",
+      "interviewTip": "Pattern: `if (loading) return <Spinner />; if (error) return <Error />; return <Data />;`"
     },
     {
       "id": "cr-11",
       "stageId": "conditional_rendering",
       "type": "single",
-      "prompt": "Why can deeply nested ternary expressions be problematic?",
+      "prompt": "What is the purpose of the 'Nullish Coalescing' operator (??) in React?",
+      "code": "return <div>{count ?? 'No data'}</div>;",
       "options": [
-        "They break React rendering",
-        "They reduce readability",
-        "They cause performance issues",
-        "They are not supported in JSX"
+        "It works like ||, but only triggers for null or undefined (not 0 or \"\").",
+        "It checks if two strings are equal.",
+        "It deletes the variable if it's null.",
+        "It is a shorthand for a ternary operator."
       ],
-      "correct": [1],
-      "explanation": "Nested ternaries are hard to read and maintain.",
-      "interviewTip": "Refactor complex logic."
+      "correct": [0],
+      "explanation": "This is safer than || when 0 is a valid value you want to display.",
+      "interviewTip": "Use ?? when you want to treat 0 and empty strings as 'data'."
     },
     {
       "id": "cr-12",
       "stageId": "conditional_rendering",
       "type": "single",
-      "prompt": "How do you conditionally render a component based on a prop value?",
+      "prompt": "Analyze the output:",
+      "code": "function App() {\n  const flag = false;\n  return <div>{String(flag)}</div>;\n}",
       "options": [
-        "{prop && <Component />}",
-        "if (prop) <Component />",
-        "<Component if={prop} />",
-        "{Component(prop)}"
+        "It renders nothing.",
+        "It renders 'false' as text.",
+        "It renders 'undefined'.",
+        "It crashes."
       ],
-      "correct": [0],
-      "explanation": "Logical AND is commonly used for simple conditions.",
-      "interviewTip": "Ensure prop is boolean."
+      "correct": [1],
+      "explanation": "While React ignores raw booleans, converting them to a string will force them to render.",
+      "interviewTip": "This is a useful debugging trick to see boolean states in the UI."
     },
     {
       "id": "cr-13",
       "stageId": "conditional_rendering",
-      "type": "multiple",
-      "prompt": "Which statements about conditional rendering are true?",
+      "type": "single",
+      "prompt": "How do you conditionally apply multiple props using the spread operator?",
+      "code": "const extraProps = isAdmin ? { color: 'red', size: 'large' } : {};\nreturn <Button {...extraProps} />;",
       "options": [
-        "JSX supports expressions but not statements",
-        "Conditions can be extracted outside JSX",
-        "All conditions must be inside JSX",
-        "Returning null is valid"
+        "The code above is correct.",
+        "You must pass props individually.",
+        "Spread cannot be used inside return.",
+        "isAdmin must be a string."
       ],
-      "correct": [0, 1, 3],
-      "explanation": "Conditional logic can live outside JSX.",
-      "interviewTip": "This often improves readability."
+      "correct": [0],
+      "explanation": "Spreading an empty object {} adds no props, while spreading an object with keys applies them dynamically.",
+      "interviewTip": "This is a clean way to handle 'Admin-only' or 'Special' props."
     },
     {
       "id": "cr-14",
       "stageId": "conditional_rendering",
-      "type": "single",
-      "prompt": "What is an early return pattern?",
+      "type": "multiple",
+      "prompt": "What happens when a component unmounts because it is no longer being rendered conditionally?",
       "options": [
-        "Returning JSX before hooks",
-        "Returning JSX conditionally at the top of a component",
-        "Using ternaries inside JSX",
-        "Returning multiple components"
+        "Its local state is destroyed.",
+        "Its useEffect cleanup function runs.",
+        "It stays in the Virtual DOM but is hidden in the real DOM.",
+        "Its state is preserved in the parent component."
       ],
-      "correct": [1],
-      "explanation": "Early returns simplify conditional rendering.",
-      "interviewTip": "Common for loading and error states."
+      "correct": [0, 1],
+      "explanation": "Unmounting is a full destruction of the component instance.",
+      "interviewTip": "If you need to keep state alive, 'lift' it to the parent or hide the component with CSS (display: none) instead."
     },
     {
       "id": "cr-15",
       "stageId": "conditional_rendering",
       "type": "single",
-      "prompt": "Which value can unexpectedly appear in the UI when using `&&`?",
-      "options": ["null", "false", "undefined", "0"],
-      "correct": [3],
-      "explanation": "0 is rendered, unlike other falsy values.",
-      "interviewTip": "Convert conditions to booleans if needed."
+      "prompt": "Which component is better for performance when toggling frequently?",
+      "options": [
+        "{isVisible && <LargeComponent />}",
+        "<div style={{ display: isVisible ? 'block' : 'none' }}><LargeComponent /></div>",
+        "They are the same.",
+        "Using a separate route."
+      ],
+      "correct": [1],
+      "explanation": "Conditional rendering (&&) destroys/re-creates the component. CSS 'display' keeps it in the DOM, making toggles faster at the cost of initial memory.",
+      "interviewTip": "Use CSS hiding for components with expensive 'mount' logic that flip often."
     }
   ]
 }

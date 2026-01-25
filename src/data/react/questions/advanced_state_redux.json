@@ -1,244 +1,179 @@
 {
   "default": [
     {
-      "id": "rdx-01",
+      "id": "rtk-01",
       "stageId": "advanced_state_redux",
       "type": "single",
-      "prompt": "What is the primary benefit of Redux Toolkit over 'plain' Redux?",
+      "prompt": "What is the primary purpose of a 'Slice' in Redux Toolkit?",
       "options": [
-        "It makes Redux faster",
-        "It significantly reduces boilerplate code and simplifies store setup",
-        "It replaces the need for React Context entirely",
-        "It is only for mobile applications"
+        "To divide the UI into smaller components.",
+        "To bundle the initial state, reducers, and actions for a specific feature in one place.",
+        "To split the database into multiple tables.",
+        "To handle API calls exclusively."
       ],
       "correct": [1],
-      "explanation": "RTK provides a set of tools (like createSlice and configureStore) that automate standard Redux tasks that used to require manual code.",
-      "interviewTip": "Mention that RTK is now the 'official, recommended way to write Redux logic'."
+      "explanation": "createSlice automatically generates action creators and action types based on the reducers you provide, drastically reducing boilerplate code.",
+      "interviewTip": "In legacy Redux, you had to write actions and reducers in separate files. Slices make it modular and concise."
     },
     {
-      "id": "rdx-02",
+      "id": "rtk-02",
       "stageId": "advanced_state_redux",
       "type": "single",
-      "prompt": "What does 'createSlice' combine into one single place?",
+      "prompt": "How does Redux Toolkit allow you to 'mutate' state safely inside a reducer?",
+      "code": "const counterSlice = createSlice({\n  name: 'counter',\n  initialState: { value: 0 },\n  reducers: {\n    increment: (state) => {\n      state.value += 1; // Is this allowed?\n    }\n  }\n});",
       "options": [
-        "Actions, Reducers, and the initial state",
-        "State, Effects, and Refs",
-        "The Store and the Provider",
-        "HTML, CSS, and JS"
-      ],
-      "correct": [0],
-      "explanation": "A slice allows you to define your state, your reducer logic, and it automatically generates the action creators for you.",
-      "interviewTip": "This pattern helps in 'feature-based' folder structures."
-    },
-    {
-      "id": "rdx-03",
-      "stageId": "advanced_state_redux",
-      "type": "single",
-      "prompt": "How does Redux Toolkit allow 'mutating' logic inside reducers (e.g., state.push())?",
-      "options": [
-        "It actually mutates the real state",
-        "It uses the Immer library to handle immutable updates automatically",
-        "It converts the code to class-based logic",
-        "Mutating logic is actually not allowed even in RTK"
+        "It uses a special compiler that changes the code to CSS.",
+        "It uses the Immer library under the hood to turn 'mutations' into immutable updates.",
+        "It actually mutates the global state, but React doesn't mind.",
+        "It only works if you use the 'mutable' keyword."
       ],
       "correct": [1],
-      "explanation": "RTK uses Immer, which tracks 'mutations' to a draft state and returns a brand new immutable state object based on those changes.",
-      "interviewTip": "Crucial: This only works inside createSlice and createReducer."
+      "explanation": "RTK uses Immer, which tracks changes to a 'draft' state and produces a brand new immutable state object for you.",
+      "interviewTip": "This is a key benefit: you get the simplicity of mutation syntax with the safety of immutability."
     },
     {
-      "id": "rdx-04",
+      "id": "rtk-03",
       "stageId": "advanced_state_redux",
       "type": "single",
-      "prompt": "Which hook is used to access data from the Redux store?",
-      "options": ["useDispatch", "useStore", "useSelector", "useContext"],
+      "prompt": "Which hook is used to extract data from the Redux store state?",
+      "options": ["useStore", "useDispatch", "useSelector", "useContext"],
       "correct": [2],
-      "explanation": "useSelector takes a selector function that extracts specifically what you need from the global state tree.",
-      "interviewTip": "Selectors should be fine-grained. Selecting the whole state causes the component to re-render on every tiny change."
+      "explanation": "useSelector takes a selector function that receives the entire store state and returns the specific part you need.",
+      "interviewTip": "useSelector also creates a subscription to the store and re-renders the component when the selected data changes."
     },
     {
-      "id": "rdx-05",
+      "id": "rtk-04",
       "stageId": "advanced_state_redux",
       "type": "single",
-      "prompt": "Which hook is used to send an action to the Redux store?",
-      "options": ["useDispatch", "useAction", "useSelector", "useReducer"],
-      "correct": [0],
-      "explanation": "useDispatch returns the dispatch function from the Redux store, which you use to trigger actions.",
-      "interviewTip": "Dispatching an action is the only way to trigger a state update in Redux."
-    },
-    {
-      "id": "rdx-06",
-      "stageId": "advanced_state_redux",
-      "type": "single",
-      "prompt": "What is the purpose of 'configureStore'?",
-      "options": [
-        "To create a new React component",
-        "To set up the store with sensible defaults like Redux DevTools and Middleware",
-        "To configure the API endpoints",
-        "To replace the <Provider>"
-      ],
+      "prompt": "What is the correct way to trigger a state change from a component?",
+      "code": "const ____ = useDispatch();\nreturn <button onClick={() => ____(increment())}>Add</button>;",
+      "options": ["trigger", "dispatch", "send", "action"],
       "correct": [1],
-      "explanation": "configureStore automatically adds the Thunk middleware and enables the Redux DevTools extension for you.",
-      "interviewTip": "In 'vanilla' Redux, you had to manually combineReducers and applyMiddleware; RTK does this in one step."
+      "explanation": "The useDispatch hook returns the dispatch function from the Redux store. You call it with an action object to trigger a reducer.",
+      "interviewTip": "Dispatching is the *only* way to trigger a state change in Redux, following the 'Single Source of Truth' principle."
     },
     {
-      "id": "rdx-07",
-      "stageId": "advanced_state_redux",
-      "type": "single",
-      "prompt": "What is an 'Async Thunk' used for?",
-      "options": [
-        "To style components dynamically",
-        "To handle asynchronous logic like API calls",
-        "To speed up the rendering of components",
-        "To synchronize the store with LocalStorage"
-      ],
-      "correct": [1],
-      "explanation": "createAsyncThunk handles the lifecycle of an async request (pending, fulfilled, rejected) and dispatches actions accordingly.",
-      "interviewTip": "Thunks are the standard way to perform side effects in Redux."
-    },
-    {
-      "id": "rdx-08",
+      "id": "rtk-05",
       "stageId": "advanced_state_redux",
       "type": "multiple",
-      "prompt": "What are the three action types automatically generated by createAsyncThunk?",
-      "options": ["pending", "fulfilled", "rejected", "started"],
-      "correct": [0, 1, 2],
-      "explanation": "When the thunk is dispatched, it immediately goes to 'pending'. Upon success, 'fulfilled' is fired; on error, 'rejected' is fired.",
-      "interviewTip": "You handle these in the 'extraReducers' section of your slice."
-    },
-    {
-      "id": "rdx-09",
-      "stageId": "advanced_state_redux",
-      "type": "single",
-      "prompt": "What is 'extraReducers' used for in createSlice?",
+      "prompt": "What are the core principles of Redux?",
       "options": [
-        "To handle actions that weren't defined in the slice (like Thunks)",
-        "To create extra state variables",
-        "To debug the reducer logic",
-        "To add CSS to the slice"
+        "Single source of truth (one store).",
+        "State is read-only (changes only via actions).",
+        "State can be modified by any component directly.",
+        "Changes are made with pure functions (reducers)."
       ],
-      "correct": [0],
-      "explanation": "extraReducers allows a slice to respond to actions generated by other slices or createAsyncThunk.",
-      "interviewTip": "This is how you keep slices independent while allowing them to react to global events."
+      "correct": [0, 1, 3],
+      "explanation": "Redux relies on predictability. The global state is stored in a single tree, and reducers must be pure functions that take (state, action) and return a new state.",
+      "interviewTip": "Predictability makes features like 'Time Travel Debugging' possible."
     },
     {
-      "id": "rdx-10",
+      "id": "rtk-06",
       "stageId": "advanced_state_redux",
       "type": "single",
-      "prompt": "What is a 'PayloadAction' type used for in TypeScript with RTK?",
+      "prompt": "What is 'createAsyncThunk' used for in Redux Toolkit?",
       "options": [
-        "To define the type of the state",
-        "To define the type of the data being sent with an action",
-        "To define the return type of a selector",
-        "To define the middleware types"
+        "To synchronize state with localStorage.",
+        "To handle asynchronous logic like API requests.",
+        "To create custom UI animations.",
+        "To combine multiple slices into one."
       ],
       "correct": [1],
-      "explanation": "In TS, PayloadAction<T> ensures that the 'action.payload' has the correct structure throughout your reducers.",
-      "interviewTip": "Typed Redux code prevents 'undefined is not an object' errors in production."
+      "explanation": "createAsyncThunk generates promise lifecycle action types (pending, fulfilled, rejected) and handles the dispatching logic for you.",
+      "interviewTip": "Handle the results of a thunk in the 'extraReducers' section of your slice."
     },
     {
-      "id": "rdx-11",
+      "id": "rtk-07",
       "stageId": "advanced_state_redux",
       "type": "single",
-      "prompt": "Where should business logic ideally live in a Redux app?",
+      "prompt": "Where do you combine all your slices to create the global store?",
+      "code": "export const store = configureStore({\n  reducer: {\n    counter: counterReducer,\n    user: userReducer\n  }\n});",
       "options": [
-        "Inside the React component",
-        "Inside the Reducers or Thunks",
-        "In the CSS files",
-        "Inside the useSelector hook"
+        "Inside the App.js file.",
+        "Using the configureStore function.",
+        "Inside a custom hook.",
+        "In the index.html file."
       ],
       "correct": [1],
-      "explanation": "Keeping logic in Redux (specifically Thunks/Reducers) makes it testable and independent of the UI layer.",
-      "interviewTip": "Components should be 'thin' (mostly UI), and Redux should be 'thick' (logic)."
+      "explanation": "configureStore simplifies store setup. It automatically adds the Redux DevTools extension and the 'thunk' middleware.",
+      "interviewTip": "configureStore is the RTK replacement for the legacy createStore function."
     },
     {
-      "id": "rdx-12",
+      "id": "rtk-08",
       "stageId": "advanced_state_redux",
       "type": "single",
-      "prompt": "What is the Redux DevTools 'Time Travel' feature?",
+      "prompt": "What happens if a reducer is not a 'pure function' (e.g., it uses Math.random() or calls an API)?",
       "options": [
-        "A way to see the history of state changes and jump back to any previous state",
-        "A way to predict future user clicks",
-        "A feature that tracks how long a user stays on a page",
-        "A method to speed up JavaScript execution"
-      ],
-      "correct": [0],
-      "explanation": "Because Redux state is immutable and actions are logged, you can 'replay' the state history to debug exactly where things went wrong.",
-      "interviewTip": "This is the most powerful debugging tool in the React ecosystem."
-    },
-    {
-      "id": "rdx-13",
-      "stageId": "advanced_state_redux",
-      "type": "single",
-      "prompt": "What is Redux Middleware?",
-      "options": [
-        "A way to style components",
-        "A function that intercepts actions before they reach the reducer",
-        "A database for Redux",
-        "The bridge between React and the Browser"
+        "The code will fail to compile.",
+        "State changes become unpredictable and debugging tools like DevTools will break.",
+        "React will automatically fix the function.",
+        "Redux will run the function in a separate thread."
       ],
       "correct": [1],
-      "explanation": "Middleware provides a third-party extension point between dispatching an action and the moment it reaches the reducer (e.g., logging, crash reporting, async logic).",
-      "interviewTip": "Thunk and Logger are two of the most popular middlewares."
+      "explanation": "Reducers must be deterministic. Given the same state and action, they must always return the same result. Side effects belong in thunks or middleware.",
+      "interviewTip": "Reducers = 'Logic/Calculation'; Thunks = 'Side Effects/Asynchronous work'."
     },
     {
-      "id": "rdx-14",
+      "id": "rtk-09",
+      "stageId": "advanced_state_redux",
+      "type": "single",
+      "prompt": "How do you access the 'payload' of an action inside a reducer?",
+      "code": "incrementByAmount: (state, action) => {\n  state.value += ________;\n}",
+      "options": [
+        "action.data",
+        "action.payload",
+        "action.value",
+        "action.params"
+      ],
+      "correct": [1],
+      "explanation": "In Redux Toolkit, the data sent with an action is automatically placed in the 'payload' property of the action object.",
+      "interviewTip": "Example call: dispatch(incrementByAmount(10)) results in action.payload being 10."
+    },
+    {
+      "id": "rtk-10",
+      "stageId": "advanced_state_redux",
+      "type": "single",
+      "prompt": "What is the purpose of the <Provider> component in Redux?",
+      "options": [
+        "To fetch data from the server.",
+        "To wrap the React app and make the Redux store available to all components.",
+        "To encrypt the state before it is saved.",
+        "To manage the component's local state."
+      ],
+      "correct": [1],
+      "explanation": "Just like Context API, the Redux Provider uses React's context mechanism to pass the store down to hooks like useSelector.",
+      "interviewTip": "Usually, you wrap the <Provider> around the <App /> in your main entry file (index.js)."
+    },
+    {
+      "id": "rtk-11",
       "stageId": "advanced_state_redux",
       "type": "multiple",
-      "prompt": "Which of these are core principles of Redux?",
+      "prompt": "Which of these are benefits of using Redux DevTools?",
       "options": [
-        "Single source of truth (one store)",
-        "State is read-only (immutable)",
-        "Changes are made with pure functions (reducers)",
-        "Every component must have its own store"
+        "Inspecting the history of every action dispatched.",
+        "Editing the state in real-time to test UI changes.",
+        "Automatically writing CSS for your components.",
+        "Time-traveling to previous states."
       ],
-      "correct": [0, 1, 2],
-      "explanation": "Redux relies on a single global object, strictly immutable updates, and pure reducers to ensure predictable state changes.",
-      "interviewTip": "Predictability is the 'keyword' for Redux."
+      "correct": [0, 1, 3],
+      "explanation": "DevTools provides a visual dashboard to see exactly how actions change the state, making debugging much easier.",
+      "interviewTip": "It’s one of the strongest reasons to choose Redux for complex apps."
     },
     {
-      "id": "rdx-15",
+      "id": "rtk-12",
       "stageId": "advanced_state_redux",
       "type": "single",
-      "prompt": "What is 'State Normalization' in Redux?",
+      "prompt": "Identify the error in this selector usage:",
+      "code": "const user = useSelector(state => state.users[0]);",
       "options": [
-        "Making sure the state is not too large",
-        "Organizing data as a 'database' with IDs as keys to avoid duplication",
-        "Converting state to a string",
-        "Using useState instead of Redux"
+        "Selectors must be defined in a separate file.",
+        "If state.users is undefined (e.g., during loading), the app will crash.",
+        "useSelector cannot access arrays.",
+        "The return value must be a string."
       ],
       "correct": [1],
-      "explanation": "Normalization involves storing items as an object of IDs (like a lookup table) instead of deeply nested arrays, making updates much easier.",
-      "interviewTip": "RTK provides `createEntityAdapter` to help with this automatically."
-    },
-    {
-      "id": "rdx-16",
-      "stageId": "advanced_state_redux",
-      "type": "single",
-      "prompt": "What does RTK Query (a part of Redux Toolkit) solve?",
-      "options": [
-        "It generates CSS based on Redux state",
-        "It simplifies data fetching and caching (server state management)",
-        "It replaces the need for React Router",
-        "It manages local storage automatically"
-      ],
-      "correct": [1],
-      "explanation": "RTK Query is an optional addon that handles fetching, caching, and synchronizing server data, similar to React Query.",
-      "interviewTip": "It's built on top of the RTK core, so it works perfectly with your existing store."
-    },
-    {
-      "id": "rdx-17",
-      "stageId": "advanced_state_redux",
-      "type": "single",
-      "prompt": "When should you NOT use Redux?",
-      "options": [
-        "When the app is very large",
-        "When data needs to be shared across many unrelated components",
-        "When the state is simple and only needed by a single component or its children",
-        "When you need to debug state changes"
-      ],
-      "correct": [2],
-      "explanation": "Local state (`useState`) is perfectly fine and often preferred for UI-specific data (like 'is modal open'). Don't put everything in Redux just because you can.",
-      "interviewTip": "Rule of thumb: 'Use Redux for global data; use local state for local data'."
+      "explanation": "Always consider the initial state. If the data hasn't loaded yet, accessing an index of an empty/undefined list will throw an error.",
+      "interviewTip": "Use optional chaining: state.users?.[0]."
     }
   ]
 }

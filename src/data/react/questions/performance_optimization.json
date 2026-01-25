@@ -1,254 +1,188 @@
 {
   "default": [
     {
-      "id": "perf-01",
+      "id": "po-01",
       "stageId": "performance_optimization",
       "type": "single",
-      "prompt": "What is 'Code Splitting' in a React application?",
+      "prompt": "What is the primary purpose of 'React.lazy' and 'Suspense'?",
       "options": [
-        "Dividing one component into multiple smaller files for readability",
-        "Breaking the bundle into smaller chunks that can be loaded on demand",
-        "Writing code in two different programming languages",
-        "Splitting the database into multiple tables"
+        "To make the Virtual DOM diffing algorithm faster.",
+        "To implement code-splitting by loading components only when they are needed.",
+        "To automatically minify the CSS files.",
+        "To cache API responses in the browser's memory."
       ],
       "correct": [1],
-      "explanation": "Code splitting allows you to load only the JavaScript needed for the current page, reducing the initial load time.",
-      "interviewTip": "Mention 'Webpack' or 'Vite' as the tools that perform the actual splitting during the build process."
+      "explanation": "React.lazy allows you to render a dynamic import as a regular component. Suspense provides a fallback UI (like a spinner) while that component is loading.",
+      "interviewTip": "This reduces the initial bundle size, which improves the 'Time to Interactive' metric."
     },
     {
-      "id": "perf-02",
+      "id": "po-02",
       "stageId": "performance_optimization",
       "type": "single",
-      "prompt": "Which React feature is used for lazy loading components?",
-      "options": ["React.memo", "React.lazy", "React.split", "React.suspense"],
-      "correct": [1],
-      "explanation": "React.lazy lets you render a dynamic import as a regular component, loading it only when it's rendered.",
-      "interviewTip": "It must be used in combination with <Suspense>."
-    },
-    {
-      "id": "perf-03",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "What is the role of the <Suspense> component?",
+      "prompt": "Analyze the code. What happens to 'HugeComponent' when the app first loads?",
+      "code": "const HugeComponent = React.lazy(() => import('./HugeComponent'));\n\nfunction App() {\n  return (\n    <Suspense fallback={<p>Loading...</p>}>\n      <HugeComponent />\n    </Suspense>\n  );\n}",
       "options": [
-        "To catch JavaScript errors in the component tree",
-        "To display a fallback UI (like a spinner) while waiting for a lazy component to load",
-        "To pause the execution of a function",
-        "To prevent a component from re-rendering"
+        "It is downloaded immediately as part of the main bundle.",
+        "It is only downloaded when the App component is rendered.",
+        "It is ignored by the browser.",
+        "It is pre-rendered on the server only."
       ],
       "correct": [1],
-      "explanation": "Suspense wraps lazy components and provides a 'fallback' prop to show while the network request for the code chunk is in progress.",
-      "interviewTip": "In React 18, Suspense is also used for data fetching with libraries like React Query."
+      "explanation": "By using dynamic import(), the build tool (like Webpack or Vite) creates a separate chunk for this component that is fetched over the network only when needed.",
+      "interviewTip": "Lazy loading is best used for components that aren't immediately visible, like Modals or separate Routes."
     },
     {
-      "id": "perf-04",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "What does the React Profiler tool measure?",
-      "options": [
-        "How much memory the browser is using",
-        "How often a component renders and the 'cost' of that render",
-        "The speed of the internet connection",
-        "Security vulnerabilities in the code"
-      ],
-      "correct": [1],
-      "explanation": "The Profiler collects timing information about each component to help identify parts of the app that are slow or re-rendering unnecessarily.",
-      "interviewTip": "Look for 'Commit' bars in the Flamechart; long yellow bars indicate expensive renders."
-    },
-    {
-      "id": "perf-05",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "What is 'Tree Shaking'?",
-      "options": [
-        "A way to organize components in a tree structure",
-        "Removing unused code from the final bundle during the build process",
-        "A performance bug where the UI shakes during loading",
-        "Refreshing the React component tree"
-      ],
-      "correct": [1],
-      "explanation": "Modern bundlers use tree shaking to exclude dead code (functions or components you imported but never used).",
-      "interviewTip": "To enable tree shaking, use ES Modules (import/export) instead of CommonJS (require)."
-    },
-    {
-      "id": "perf-06",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "How can you optimize a large list of 1,000+ items in React?",
-      "options": [
-        "By wrapping every list item in React.memo",
-        "By using 'Windowing' or 'Virtualization' to render only visible items",
-        "By using a for-loop instead of .map()",
-        "By disabling the 'key' prop"
-      ],
-      "correct": [1],
-      "explanation": "List virtualization (using libraries like react-window) only renders the items currently in the user's viewport, drastically reducing DOM nodes.",
-      "interviewTip": "This is a standard solution for infinite feeds or massive data tables."
-    },
-    {
-      "id": "perf-07",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "What is the 'Bundle Size' and why does it matter?",
-      "options": [
-        "The number of files in the project",
-        "The total size of the JavaScript files the user has to download",
-        "The size of the images on the website",
-        "The amount of RAM the app uses"
-      ],
-      "correct": [1],
-      "explanation": "Larger bundles take longer to download and parse, leading to a poor user experience, especially on mobile or slow networks.",
-      "interviewTip": "Use tools like 'Webpack Bundle Analyzer' to see what's making your bundle heavy."
-    },
-    {
-      "id": "perf-08",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "What is the purpose of the useTransition hook in React 18?",
-      "options": [
-        "To add CSS animations",
-        "To mark a state update as a non-urgent 'transition'",
-        "To move data from one component to another",
-        "To handle page navigation"
-      ],
-      "correct": [1],
-      "explanation": "useTransition allows the UI to stay responsive during heavy updates (like filtering a huge list) by allowing urgent tasks (like typing) to interrupt the render.",
-      "interviewTip": "It returns a 'startTransition' function and an 'isPending' boolean."
-    },
-    {
-      "id": "perf-09",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "What is the 'Waterfall' problem in network requests?",
-      "options": [
-        "When data flows down from parent to child",
-        "When requests are made sequentially instead of in parallel, causing delays",
-        "A type of CSS layout issue",
-        "When the server crashes due to too many requests"
-      ],
-      "correct": [1],
-      "explanation": "A waterfall happens if Request B starts only after Request A finishes. Fetching in parallel or using Loaders helps solve this.",
-      "interviewTip": "Loaders in React Router v6.4+ are designed specifically to kill waterfalls."
-    },
-    {
-      "id": "perf-10",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "What does 'Hydration' mismatch error usually mean?",
-      "options": [
-        "The server is down",
-        "The HTML generated by the server is different from what the client rendered",
-        "The user is offline",
-        "The JavaScript bundle is missing"
-      ],
-      "correct": [1],
-      "explanation": "This happens in SSR (Server-Side Rendering) when the server and client calculate different UI for the same component (e.g., using a random number).",
-      "interviewTip": "Always ensure your 'first render' is the same on server and client."
-    },
-    {
-      "id": "perf-11",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "Which of these is a 'Wasted Render'?",
-      "options": [
-        "A render that updates the DOM correctly",
-        "A render where the component's output remains exactly the same",
-        "A render that takes more than 1 second",
-        "A render that causes an error"
-      ],
-      "correct": [1],
-      "explanation": "If a component re-executes its logic but produces the same UI, it's a waste of CPU. This is what React.memo aims to fix.",
-      "interviewTip": "Use the DevTools option 'Highlight updates when components render' to spot these visually."
-    },
-    {
-      "id": "perf-12",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "What is the benefit of 'Debouncing' an input handler?",
-      "options": [
-        "It makes the input look better",
-        "It delays the execution of a function until the user stops typing",
-        "It allows the user to type faster",
-        "It encrypts the input data"
-      ],
-      "correct": [1],
-      "explanation": "Debouncing prevents firing an expensive operation (like an API search call) on every single keystroke.",
-      "interviewTip": "Contrast this with 'Throttling', which limits the function to run at most once every X milliseconds."
-    },
-    {
-      "id": "perf-13",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "How does 'Code Splitting' impact SEO?",
-      "options": [
-        "It hurts SEO because the content isn't there immediately",
-        "It improves SEO by making the page load faster (Core Web Vitals)",
-        "It has no impact on SEO",
-        "It makes the website invisible to search engines"
-      ],
-      "correct": [1],
-      "explanation": "Google ranks faster websites higher. Improving 'Largest Contentful Paint' (LCP) through splitting is great for SEO.",
-      "interviewTip": "Always balance splitting with Server-Side Rendering for the best SEO results."
-    },
-    {
-      "id": "perf-14",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "What is 'Pre-fetching' in React?",
-      "options": [
-        "Fetching data before the component even mounts",
-        "Loading a code chunk or data in the background because the user is likely to need it soon",
-        "Downloading the whole database locally",
-        "A feature only available in React Native"
-      ],
-      "correct": [1],
-      "explanation": "If a user hovers over a link, you can pre-fetch the code for that page so the transition feels instant when they click.",
-      "interviewTip": "React Query and React Router both have built-in APIs for pre-fetching."
-    },
-    {
-      "id": "perf-15",
-      "stageId": "performance_optimization",
-      "type": "single",
-      "prompt": "What is the 'Main Thread' and why should we keep it free?",
-      "options": [
-        "The main chat room in a Slack app",
-        "The single thread where the browser handles JS, layout, and paint",
-        "The power cable of the computer",
-        "The first line of the index.js file"
-      ],
-      "correct": [1],
-      "explanation": "If the main thread is busy with long JavaScript tasks, the browser cannot respond to user clicks or scrolling, causing 'jank'.",
-      "interviewTip": "Total Blocking Time (TBT) is the metric that tracks this."
-    },
-    {
-      "id": "perf-16",
+      "id": "po-03",
       "stageId": "performance_optimization",
       "type": "multiple",
-      "prompt": "Which of these help with image optimization in React?",
+      "prompt": "Which of these are effective ways to identify performance bottlenecks in a React app?",
       "options": [
-        "Using modern formats like WebP",
-        "Implementing 'Lazy Loading' for images",
-        "Always using the highest resolution possible",
-        "Specifying width and height to prevent Layout Shift"
+        "Using the 'Profiler' tab in React Developer Tools.",
+        "Turning on 'Highlight updates' in the React DevTools settings.",
+        "Checking the 'Network' tab to see bundle sizes.",
+        "Increasing the CPU speed of the development machine."
       ],
-      "correct": [0, 1, 3],
-      "explanation": "Optimized images load faster and prevent the page from 'jumping' around as they load (improving Cumulative Layout Shift).",
-      "interviewTip": "Use the <img loading='lazy'> attribute for a quick performance win."
+      "correct": [0, 1, 2],
+      "explanation": "The Profiler shows which components rendered and why. 'Highlight updates' gives visual feedback on re-renders, and the Network tab helps identify bloated code.",
+      "interviewTip": "The Profiler's 'Flamegraph' helps pinpoint exactly which component in a deep tree is causing a lag."
     },
     {
-      "id": "perf-17",
+      "id": "po-04",
       "stageId": "performance_optimization",
       "type": "single",
-      "prompt": "What is the useDeferredValue hook used for?",
+      "prompt": "What is 'Windowing' (or Virtualization) used for?",
       "options": [
-        "To delay the render of a component for 5 seconds",
-        "To get a 'lagged' version of a value that updates less urgently",
-        "To save values to the database",
-        "To handle form validation"
+        "To allow the app to run in multiple browser windows.",
+        "To render only the items in a long list that are currently visible on the screen.",
+        "To create a transparent background for the UI.",
+        "To handle pop-up windows in the browser."
       ],
       "correct": [1],
-      "explanation": "It's similar to debouncing but integrated into React's render cycle. It allows you to keep the UI snappy by deferring the update of a 'heavy' part of the UI.",
-      "interviewTip": "It's often used for search results that should wait for the user to finish typing."
+      "explanation": "If you have 10,000 items, rendering them all creates 10,000+ DOM nodes, which slows the browser. Windowing keeps the DOM small (e.g., only 20 nodes).",
+      "interviewTip": "Mention libraries like 'react-window' or 'react-virtualized' as the industry standard for this."
+    },
+    {
+      "id": "po-05",
+      "stageId": "performance_optimization",
+      "type": "single",
+      "prompt": "What happens to the performance if you define a component inside another component's body?",
+      "code": "function Parent() {\n  function Child() { return <div>I am slow</div>; }\n  return <Child />;\n}",
+      "options": [
+        "It is faster because the scope is smaller.",
+        "It is extremely inefficient because 'Child' is redefined as a brand-new component on every single render of 'Parent'.",
+        "React optimizes this automatically.",
+        "It is only allowed in React 19."
+      ],
+      "correct": [1],
+      "explanation": "Because the component function is recreated, React sees it as a completely new type every time. This destroys all state of the child and forces a full remount.",
+      "interviewTip": "Always define your components outside the main function or in separate files."
+    },
+    {
+      "id": "po-06",
+      "stageId": "performance_optimization",
+      "type": "single",
+      "prompt": "What is 'Throttling' and 'Debouncing' in the context of React events?",
+      "options": [
+        "Methods to encrypt user input.",
+        "Techniques to limit how often a function (like a search API call or window resize) is executed.",
+        "Ways to speed up CSS animations.",
+        "Tools to delete unused state variables."
+      ],
+      "correct": [1],
+      "explanation": "Debouncing waits for a pause in activity (e.g., typing), while Throttling limits calls to once every X milliseconds (e.g., scrolling).",
+      "interviewTip": "Use 'lodash.debounce' or similar utilities to prevent 100 API calls as a user types a single word."
+    },
+    {
+      "id": "po-07",
+      "stageId": "performance_optimization",
+      "type": "single",
+      "prompt": "How does 'Transition API' (useTransition) help with performance in React 18+?",
+      "options": [
+        "It adds CSS transitions between pages.",
+        "It allows you to mark certain state updates as 'non-urgent', keeping the UI responsive.",
+        "It automatically compresses images.",
+        "It forces the browser to use more RAM."
+      ],
+      "correct": [1],
+      "explanation": "startTransition tells React that an update (like filtering a massive list) can be interrupted by more urgent tasks like typing or clicking.",
+      "interviewTip": "Use 'useTransition' to prevent the UI from 'freezing' during heavy rendering tasks."
+    },
+    {
+      "id": "po-08",
+      "stageId": "performance_optimization",
+      "type": "single",
+      "prompt": "What is the benefit of moving state down to a child component?",
+      "code": "// Instead of putting 'isOpen' in App, put it in the Modal component itself.",
+      "options": [
+        "It increases the complexity of the app.",
+        "It limits re-renders to only that child component instead of the entire parent tree.",
+        "It makes the data accessible to all components.",
+        "There is no performance benefit."
+      ],
+      "correct": [1],
+      "explanation": "This is called 'Localizing State'. If only the Modal needs to know if it's open, keep that state there to avoid rendering the whole App whenever it toggles.",
+      "interviewTip": "Before using useMemo, always check if you can simply restructure your component tree to avoid re-renders."
+    },
+    {
+      "id": "po-09",
+      "stageId": "performance_optimization",
+      "type": "single",
+      "prompt": "Why is 'index' as a key bad for performance in a dynamic list?",
+      "options": [
+        "It takes too long for the browser to read the numbers.",
+        "It confuses React's diffing algorithm during reordering, leading to incorrect DOM updates and wasted renders.",
+        "Keys must be strings, not numbers.",
+        "Indices are not supported in React 18."
+      ],
+      "correct": [1],
+      "explanation": "If the list reorders, the item at index 0 changes, but the key '0' remains. React thinks the content changed rather than the item moving.",
+      "interviewTip": "Stable keys (like IDs) allow React to simply 'move' DOM nodes instead of re-creating them."
+    },
+    {
+      "id": "po-10",
+      "stageId": "performance_optimization",
+      "type": "single",
+      "prompt": "What does the 'useDeferredValue' hook do?",
+      "options": [
+        "It delays the rendering of a value until the next day.",
+        "It allows you to defer updating a part of the UI that takes a long time to render.",
+        "It caches the value in a cookie.",
+        "It prevents the value from ever changing."
+      ],
+      "correct": [1],
+      "explanation": "Similar to useTransition, but for values. It gives you a 'deferred' version of a value that 'lags behind' the urgent update, keeping the UI smooth.",
+      "interviewTip": "Perfect for a search input where the input updates instantly, but the results list updates slightly later."
+    },
+    {
+      "id": "po-11",
+      "stageId": "performance_optimization",
+      "type": "multiple",
+      "prompt": "Which of these patterns can lead to memory leaks in React?",
+      "options": [
+        "Starting a setInterval and not clearing it in the cleanup function.",
+        "Using a lot of console.log statements.",
+        "Adding a window event listener without removing it.",
+        "Declaring too many variables."
+      ],
+      "correct": [0, 2],
+      "explanation": "When a component unmounts, global things like timers and event listeners stay in memory unless you manually stop them.",
+      "interviewTip": "Always use the return function in useEffect to clean up your mess!"
+    },
+    {
+      "id": "po-12",
+      "stageId": "performance_optimization",
+      "type": "single",
+      "prompt": "What is the result of using 'inline functions' as props for a component wrapped in 'React.memo'?",
+      "code": "<MemoizedButton onClick={() => console.log('Hi')} />",
+      "options": [
+        "The button will never re-render.",
+        "The button will still re-render on every parent render because the function is a new reference every time.",
+        "React will ignore the function.",
+        "The function will be automatically memoized."
+      ],
+      "correct": [1],
+      "explanation": "React.memo uses shallow comparison. `() => {} !== () => {}`, so the memoization check fails.",
+      "interviewTip": "Pair 'React.memo' with 'useCallback' on the parent function to make the optimization work."
     }
   ]
 }
