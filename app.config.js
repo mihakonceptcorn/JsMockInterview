@@ -18,7 +18,7 @@ export default {
     icon: './assets/icon.png',
     backgroundColor: '#10203B',
     userInterfaceStyle: 'dark',
-    newArchEnabled: true,
+    newArchEnabled: false,
     splash: {
       image: './assets/splash-icon.png',
       resizeMode: 'contain',
@@ -37,7 +37,6 @@ export default {
       predictiveBackGestureEnabled: false,
       googleServicesFile: './google-services.json',
       package: 'com.mihakonceptcorn.jsmockinterview',
-      // permissions: ['android.permission.INTERNET'],
     },
     web: {
       favicon: './assets/favicon.png',
@@ -58,7 +57,14 @@ export default {
         'expo-build-properties',
         {
           android: {
-            kotlinVersion: '1.9.22',
+            kotlinVersion: '2.0.0',
+            compileSdkVersion: 35,
+            targetSdkVersion: 35,
+            minSdkVersion: 24,
+            buildToolsVersion: '35.0.0',
+            extraPropertiesGradle: {
+              'android.jetpack.compose.version': '1.7.5',
+            },
           },
         },
       ],
