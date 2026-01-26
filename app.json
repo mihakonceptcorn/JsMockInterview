@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "js-mock-interview",
+    "name": "JS Mock Interview",
     "slug": "js-mock-interview",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -27,9 +27,8 @@
       "googleServicesFile": "./google-services.json",
       "package": "com.mihakonceptcorn.jsmockinterview",
       "permissions": [
-        "android.permission.READ_EXTERNAL_STORAGE",
-        "android.permission.WRITE_EXTERNAL_STORAGE",
-        "android.permission.INTERNET"
+        "android.permission.INTERNET",
+        "com.android.vending.BILLING"
       ]
     },
     "web": {
