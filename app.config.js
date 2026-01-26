@@ -1,6 +1,9 @@
 import fs from 'fs';
 
-if (process.env.GOOGLE_SERVICES_JSON_BASE64) {
+if (
+  process.env.GOOGLE_SERVICES_JSON_BASE64 &&
+  process.env.GOOGLE_SERVICES_JSON_BASE64 !== '@GOOGLE_SERVICES_JSON_BASE64'
+) {
   fs.writeFileSync(
     './google-services.json',
     Buffer.from(process.env.GOOGLE_SERVICES_JSON_BASE64, 'base64').toString(
@@ -47,12 +50,6 @@ export default {
       'expo-font',
       'expo-file-system',
       '@react-native-google-signin/google-signin',
-      [
-        'react-native-iap',
-        {
-          paymentStore: 'google',
-        },
-      ],
       [
         'expo-build-properties',
         {
