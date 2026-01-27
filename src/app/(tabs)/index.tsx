@@ -12,7 +12,6 @@ import { setProStatus } from '@/store/userSlice';
 
 export default function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     const setup = async () => {
       try {
@@ -36,9 +35,7 @@ export default function App() {
         }
 
         const customerInfo = await Purchases.getCustomerInfo();
-        if (
-          customerInfo.entitlements.active['premium_full_unlock'] !== undefined
-        ) {
+        if (customerInfo.entitlements.active['premium'] !== undefined) {
           dispatch(setProStatus(true));
         } else {
           dispatch(setProStatus(false));

@@ -37,7 +37,6 @@ const PurchasePopup = ({ isVisible, onClose }: PurchasePopupProps) => {
           offerings.current !== null &&
           offerings.current.availablePackages.length > 0
         ) {
-          // Шукаємо lifetime пакет або беремо перший доступний
           const pkg =
             offerings.current.availablePackages.find(
               (p) => p.packageType === 'LIFETIME'
@@ -55,15 +54,12 @@ const PurchasePopup = ({ isVisible, onClose }: PurchasePopupProps) => {
   }, [isVisible]);
 
   const onPurchase = async () => {
-    console.log('onPurchase');
     if (!purchasePackage) return;
 
     setLoading(true);
     try {
       const { customerInfo } = await Purchases.purchasePackage(purchasePackage);
-      if (
-        customerInfo.entitlements.active['premium_full_unlock'] !== undefined
-      ) {
+      if (customerInfo.entitlements.active['premium'] !== undefined) {
         dispatch(setProStatus(true));
         onClose();
       }

@@ -15,16 +15,17 @@ type Item = {
   locked?: boolean;
 };
 
-const ITEMS: Item[] = [
-  { key: 'js', label: 'JS' },
-  { key: 'react', label: 'React', locked: true },
-  { key: 'react-native', label: 'React Native', locked: true },
-  { key: 'vue', label: 'Vue', locked: true },
-];
-
 export const FrameworkSwitcher = () => {
   const dispatch = useDispatch();
   const value = useSelector((state: RootState) => state.framework.current);
+  const isPro = useSelector((state: RootState) => state.user.isPro);
+
+  const ITEMS: Item[] = [
+    { key: 'js', label: 'JS' },
+    { key: 'react', label: 'React', locked: !isPro },
+    { key: 'react-native', label: 'React Native', locked: !isPro },
+    { key: 'vue', label: 'Vue', locked: !isPro },
+  ];
 
   const handlePress = (item: Item) => {
     dispatch(setFramework(item.key));
