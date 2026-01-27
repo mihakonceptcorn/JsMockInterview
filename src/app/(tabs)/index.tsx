@@ -6,9 +6,13 @@ import { BackgroundLayout } from '@/components/layout/BackgroundLayout';
 import { FrameworkSwitcher } from '@/components/topTabs/FrameworkSwitcher';
 
 import { useEffect } from 'react';
-import Purchases, { LOG_LEVEL } from 'react-native-purchases';
+import Purchases from 'react-native-purchases';
+import { useDispatch } from 'react-redux';
+import { setProStatus } from '@/store/userSlice';
 
 export default function App() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const setup = async () => {
       try {
@@ -18,19 +22,24 @@ export default function App() {
 
         const offerings = await Purchases.getOfferings();
         if (offerings.current !== null) {
-          console.log('Доступний пакет:', offerings.current.availablePackages);
-          console.log(
-            'Ціна:',
-            offerings.current.availablePackages[0].product.priceString
-          );
+          const pkg = offerings.current.lifetime;
+        }
+
+        const customerInfo = await Purchases.getCustomerInfo();
+        if (
+          customerInfo.entitlements.active['premium_full_unlock'] !== undefined
+        ) {
+          dispatch(setProStatus(true));
+        } else {
+          dispatch(setProStatus(false));
         }
       } catch (e) {
-        console.log('Помилка RevenueCat:', e);
+        console.log('RevenueCat error:', e);
       }
     };
 
     setup();
-  }, []);
+  }, [dispatch]);
 
   return (
     <BackgroundLayout>

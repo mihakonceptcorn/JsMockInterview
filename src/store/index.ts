@@ -5,12 +5,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import frameworkReducer from './frameworkSlice';
 import resultsReducer from './resultsSlice';
 import syncReducer from './syncSlice';
+import userReducer from './userSlice';
 import firestoreSyncMiddleware from './middleware/firestoreSyncMiddleware';
 
 const rootReducer = combineReducers({
   framework: frameworkReducer,
   results: resultsReducer,
   sync: syncReducer,
+  user: userReducer,
 });
 
 const persistConfig = {

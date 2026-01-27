@@ -1,4 +1,4 @@
-import { Alert, FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import jsStages from '@/data/js/js.stages.json';
 import reactStages from '@/data/react/react.stages.json';
@@ -12,14 +12,17 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '@/theme/colors';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import PurchasePopup from './PurchasePopup';
 
 const SelectStage = () => {
   const flatListRef = useRef<FlatList>(null);
   const router = useRouter();
   const [selectedStageId, setSelectedStageId] = useState('');
   const [selectedStageTitle, setSelectedStageTitle] = useState('');
+  const [isPurchasePopupVisible, setIsPurchasePopupVisible] = useState(false);
 
-  const [isLocked, setIsLocked] = useState(true);
+  const isPro = useSelector((state: RootState) => state.user.isPro);
+  const [isLocked, setIsLocked] = useState(!isPro);
 
   let stagesData = jsStages;
 
@@ -32,9 +35,7 @@ const SelectStage = () => {
 
   const onSelectStage = (id: string, name: string, isLocked: boolean) => {
     if (isLocked) {
-      Alert.alert('Premium', 'This framework is available in the Pro version', [
-        { text: 'OK' },
-      ]);
+      setIsPurchasePopupVisible(true);
     } else {
       setSelectedStageId(id);
       setSelectedStageTitle(name);
@@ -78,15 +79,16 @@ const SelectStage = () => {
     setSelectedStageTitle('');
 
     if (
-      framework === 'react' ||
-      framework === 'react-native' ||
-      framework === 'vue'
+      !isPro &&
+      (framework === 'react' ||
+        framework === 'react-native' ||
+        framework === 'vue')
     ) {
       setIsLocked(true);
     } else {
       setIsLocked(false);
     }
-  }, [framework]);
+  }, [framework, isPro]);
 
   return (
     <>
@@ -133,6 +135,11 @@ const SelectStage = () => {
           width={'50%'}
         />
       </View>
+
+      <PurchasePopup
+        isVisible={isPurchasePopupVisible}
+        onClose={() => setIsPurchasePopupVisible(false)}
+      />
     </>
   );
 };
