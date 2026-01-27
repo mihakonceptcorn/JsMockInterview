@@ -37,7 +37,7 @@ const FrameworkProgress = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>FrameworkProgress</Text>
+      <Text style={styles.title}>Framework Progress</Text>
       <FrameworkSwitcher />
       <OverallProgress
         stagesCount={stagesCount}

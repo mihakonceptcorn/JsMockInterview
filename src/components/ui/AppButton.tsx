@@ -11,6 +11,7 @@ import { s, vs } from 'react-native-size-matters';
 interface AppButtonProps {
   title: string;
   isSecondary?: boolean;
+  isBlocked?: boolean;
   onPress: () => void;
   width?: DimensionValue;
   height?: DimensionValue;
@@ -18,6 +19,7 @@ interface AppButtonProps {
 const AppButton: FC<AppButtonProps> = ({
   title,
   isSecondary = false,
+  isBlocked = false,
   onPress,
   width = '100%',
   height = vs(40),
@@ -27,6 +29,7 @@ const AppButton: FC<AppButtonProps> = ({
       style={[
         isSecondary ? styles.buttonSecondary : styles.button,
         { width: width, height: height },
+        isBlocked ? styles.buttonBlocked : {},
       ]}
       onPress={onPress}
     >
@@ -56,5 +59,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: s(16),
+  },
+  buttonBlocked: {
+    opacity: 0.5,
   },
 });

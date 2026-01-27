@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     borderRadius: s(12),
     overflow: 'hidden',
     borderColor: COLORS.borderColor,
-    marginTop: vs(20),
+    marginTop: vs(16),
   },
   gradientInner: {
     flexDirection: 'row',

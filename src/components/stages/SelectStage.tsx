@@ -128,11 +128,13 @@ const SelectStage = () => {
           onPress={() => onStartStage('practice')}
           isSecondary
           width={'50%'}
+          isBlocked={!selectedStageId}
         />
         <AppButton
           title={'Start Interview'}
           onPress={() => onStartStage('interview')}
           width={'50%'}
+          isBlocked={!selectedStageId}
         />
       </View>
 
@@ -149,7 +151,7 @@ export default SelectStage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: s(20),
+    marginTop: s(16),
     borderWidth: 1,
     borderRadius: s(12),
     overflow: 'hidden',
@@ -164,7 +166,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: s(16),
     fontWeight: 'bold',
-    marginVertical: vs(12),
+    marginBottom: vs(12),
     color: '#fff',
   },
   actions: {

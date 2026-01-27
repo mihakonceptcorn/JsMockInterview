@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { COLORS } from '@/theme/colors';
-import { View } from 'react-native';
+import { s, vs, ms } from 'react-native-size-matters';
 
 export default function TabsLayout() {
   return (
@@ -10,26 +10,29 @@ export default function TabsLayout() {
         headerShown: true,
         headerStyle: {
           backgroundColor: COLORS.bgBottom,
+          height: vs(64),
         },
         headerTintColor: COLORS.textPrimary,
         headerTitleStyle: {
+          fontSize: ms(18),
           fontWeight: 'bold',
         },
         headerTitleAlign: 'center',
         tabBarStyle: {
           backgroundColor: COLORS.bgBottom,
           borderTopWidth: 0,
-          height: 64,
+          height: s(60),
         },
         tabBarActiveTintColor: COLORS.accent,
         tabBarInactiveTintColor: COLORS.textSecondary,
-        tabBarShowLabel: false,
+        tabBarShowLabel: true,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'JS Mock Interview',
+          title: 'Home',
+          headerTitle: 'JS Mock Interview',
           tabBarIcon: ({ color, size, focused }) => (
             <Ionicons
               name={focused ? 'home' : 'home-outline'}

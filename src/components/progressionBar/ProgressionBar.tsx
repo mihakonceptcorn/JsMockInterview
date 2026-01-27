@@ -14,7 +14,12 @@ const ProgressionBar: FC<ProgressionBarProps> = ({ title, progress }) => {
     <View style={styles.barContainer}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.bar}>
-        <Bar progress={progress} width={null} color={COLORS.success} />
+        <Bar
+          progress={progress}
+          width={null}
+          height={vs(8)}
+          color={COLORS.success}
+        />
       </View>
     </View>
   );

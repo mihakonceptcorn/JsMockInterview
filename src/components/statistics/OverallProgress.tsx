@@ -24,7 +24,7 @@ const OverallProgress = ({
         end={{ x: 1, y: 1 }}
       >
         <View style={styles.innerContainer}>
-          <Text style={styles.progressTitle}>Overall Progress</Text>
+          <Text style={styles.progressTitle}>Progress</Text>
           <View style={styles.bar}>
             <Bar
               progress={stagesCount > 0 ? completedStages / stagesCount : 0}
