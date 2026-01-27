@@ -5,7 +5,33 @@ import SelectStage from '@/components/stages/SelectStage';
 import { BackgroundLayout } from '@/components/layout/BackgroundLayout';
 import { FrameworkSwitcher } from '@/components/topTabs/FrameworkSwitcher';
 
+import { useEffect } from 'react';
+import Purchases, { LOG_LEVEL } from 'react-native-purchases';
+
 export default function App() {
+  useEffect(() => {
+    const setup = async () => {
+      try {
+        Purchases.configure({
+          apiKey: process.env.EXPO_PUBLIC_REVENUECAT_API_KEY!,
+        });
+
+        const offerings = await Purchases.getOfferings();
+        if (offerings.current !== null) {
+          console.log('Доступний пакет:', offerings.current.availablePackages);
+          console.log(
+            'Ціна:',
+            offerings.current.availablePackages[0].product.priceString
+          );
+        }
+      } catch (e) {
+        console.log('Помилка RevenueCat:', e);
+      }
+    };
+
+    setup();
+  }, []);
+
   return (
     <BackgroundLayout>
       <SafeAreaProvider>
