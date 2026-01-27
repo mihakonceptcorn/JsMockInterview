@@ -62,6 +62,8 @@ export default {
             extraPropertiesGradle: {
               'android.jetpack.compose.version': '1.7.5',
             },
+            extraProguardRules:
+              '-keep class com.revenuecat.purchases.** { *; }\n-keep class com.revenuecat.purchases.hybridcommon.** { *; }\n-keep class com.google.android.gms.auth.api.** { *; }\n-keep class com.google.android.gms.common.api.** { *; }',
           },
         },
       ],

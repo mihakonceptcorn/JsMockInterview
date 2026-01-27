@@ -43,5 +43,6 @@ yarn-error.*
 .prettierrc
 .env
 google-services.json
+eas.json
 .idea
 .vscode

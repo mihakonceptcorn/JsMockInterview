@@ -16,8 +16,18 @@ export default function App() {
   useEffect(() => {
     const setup = async () => {
       try {
+        const apiKey = process.env.EXPO_PUBLIC_REVENUECAT_API_KEY;
+
+        if (!apiKey) {
+          console.warn(
+            'RevenueCat API Key is missing. Check your environment variables.'
+          );
+          return;
+        }
+
         Purchases.configure({
-          apiKey: process.env.EXPO_PUBLIC_REVENUECAT_API_KEY!,
+          apiKey: apiKey,
+          useAmazon: false,
         });
 
         const offerings = await Purchases.getOfferings();

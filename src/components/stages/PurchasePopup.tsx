@@ -28,6 +28,10 @@ const PurchasePopup = ({ isVisible, onClose }: PurchasePopupProps) => {
   useEffect(() => {
     const fetchOfferings = async () => {
       try {
+        if (!Purchases.isConfigured()) {
+          console.log('Purchases not configured yet');
+          return;
+        }
         const offerings = await Purchases.getOfferings();
         if (
           offerings.current !== null &&
