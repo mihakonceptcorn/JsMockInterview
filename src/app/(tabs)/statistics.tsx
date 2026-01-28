@@ -16,6 +16,8 @@ import StageStatItem from '@/components/statistics/StageStatItem';
 
 import jsStages from '@/data/js/js.stages.json';
 import reactStages from '@/data/react/react.stages.json';
+import reactNativeStages from '@/data/reactNative/reactNative.stages.json';
+import vueStages from '@/data/vue/vue.stages.json';
 
 interface StageResult {
   score: number;
@@ -36,8 +38,19 @@ const Statistics = () => {
   const [stages, setStages] = useState<StageResult[]>([]);
 
   useEffect(() => {
-    const currentStages =
-      framework === 'js' ? jsStages.stages : reactStages.stages;
+    let currentStages = jsStages.stages;
+    switch (framework) {
+      case 'react':
+        currentStages = reactStages.stages;
+        break;
+      case 'react-native':
+        currentStages = reactNativeStages.stages;
+        break;
+      case 'vue':
+        currentStages = vueStages.stages;
+        break;
+    }
+
     const stageIds = currentStages.map((stage) => stage.id);
     setStagesCount(currentStages.length);
 

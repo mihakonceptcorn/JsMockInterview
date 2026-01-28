@@ -52,7 +52,7 @@ const Account = () => {
               </>
             ) : (
               <>
-                <View style={{ width: '56%' }}>
+                <View style={{ width: '54%' }}>
                   <Text style={styles.blockTitle}>
                     {t('account.create_account')}
                   </Text>
@@ -64,7 +64,7 @@ const Account = () => {
 
                 <View
                   style={{
-                    width: '44%',
+                    width: '46%',
                     flex: 1,
                     gap: s(10),
                   }}
