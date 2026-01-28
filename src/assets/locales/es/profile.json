@@ -22,5 +22,7 @@
   },
   "framework_progress": "Progreso por framework",
   "view_statistics": "Ver estadísticas",
-  "version": "Versión"
+  "version": "Versión",
+  "app_info": "Información de la aplicación",
+  "how_it_works": "Cómo funciona"
 }

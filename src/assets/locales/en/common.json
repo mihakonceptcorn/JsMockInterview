@@ -15,6 +15,7 @@
         "log_in": "Log In"
     },
     "progress": {
+        "title": "Progress",
         "stages_completed": "Stages Completed",
         "correct_answers": "Correct Answers"
     },

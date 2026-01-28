@@ -22,5 +22,7 @@
   },
   "framework_progress": "Прогрес фреймворків",
   "view_statistics": "Переглянути статистику",
-  "version": "Версія"
+  "version": "Версія",
+  "app_info": "Інформація про додаток",
+  "how_it_works": "Як це працює"
 }

@@ -11,11 +11,15 @@ interface OverallProgressProps {
   marginTop?: DimensionValue;
 }
 
+import { useTranslation } from 'react-i18next';
+
 const OverallProgress = ({
   stagesCount,
   completedStages,
   marginTop = vs(20),
 }: OverallProgressProps) => {
+  const { t } = useTranslation('common');
+
   return (
     <View style={[styles.blockContainer, { marginTop: marginTop }]}>
       <LinearGradient
@@ -24,7 +28,7 @@ const OverallProgress = ({
         end={{ x: 1, y: 1 }}
       >
         <View style={styles.innerContainer}>
-          <Text style={styles.progressTitle}>Progress</Text>
+          <Text style={styles.progressTitle}>{t('progress.title')}</Text>
           <View style={styles.bar}>
             <Bar
               progress={stagesCount > 0 ? completedStages / stagesCount : 0}
@@ -33,9 +37,9 @@ const OverallProgress = ({
               color={COLORS.accent}
             />
           </View>
-          <Text
-            style={styles.progressText}
-          >{`${completedStages}/${stagesCount} stages completed`}</Text>
+          <Text style={styles.progressText}>
+            {completedStages}/{stagesCount} {t('progress.stages_completed')}
+          </Text>
         </View>
       </LinearGradient>
     </View>

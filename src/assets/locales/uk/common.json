@@ -15,6 +15,7 @@
     "log_in": "Увійти"
   },
   "progress": {
+    "title": "Прогрес",
     "stages_completed": "Пройдено етапів",
     "correct_answers": "Правильні відповіді"
   },

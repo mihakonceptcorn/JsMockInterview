@@ -22,5 +22,7 @@
     },
     "framework_progress": "Framework Progress",
     "view_statistics": "View Statistics",
-    "version": "Version"
+    "version": "Version",
+    "app_info": "App Info",
+    "how_it_works": "How it works"
 }

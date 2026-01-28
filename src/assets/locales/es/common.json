@@ -15,6 +15,7 @@
     "log_in": "Iniciar sesión"
   },
   "progress": {
+    "title": "Progreso",
     "stages_completed": "Niveles completados",
     "correct_answers": "Respuestas correctas"
   },
