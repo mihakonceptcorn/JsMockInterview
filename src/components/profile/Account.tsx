@@ -14,18 +14,22 @@ const Account = () => {
   const { user, logout } = useAuth();
 
   const showConfirmDialog = () => {
-    Alert.alert(t('account.logout_confirm_title'), t('account.logout_confirm_desc'), [
-      {
-        text: t('account.cancel'),
-        onPress: () => { },
-        style: 'cancel',
-      },
-      {
-        text: t('account.logout'),
-        onPress: () => logout(),
-        style: 'destructive',
-      },
-    ]);
+    Alert.alert(
+      t('account.logout_confirm_title'),
+      t('account.logout_confirm_desc'),
+      [
+        {
+          text: t('account.cancel'),
+          onPress: () => {},
+          style: 'cancel',
+        },
+        {
+          text: t('account.logout'),
+          onPress: () => logout(),
+          style: 'destructive',
+        },
+      ]
+    );
   };
 
   return (
@@ -48,11 +52,11 @@ const Account = () => {
               </>
             ) : (
               <>
-                <View style={{ width: '65%' }}>
-                  <Text style={styles.blockTitle}>{t('account.create_account')}</Text>
-                  <Text style={styles.blockText}>
-                    {t('account.sync_desc')}
+                <View style={{ width: '56%' }}>
+                  <Text style={styles.blockTitle}>
+                    {t('account.create_account')}
                   </Text>
+                  <Text style={styles.blockText}>{t('account.sync_desc')}</Text>
                   <Text style={styles.blockText}>
                     {t('account.works_without_account')}
                   </Text>
@@ -60,7 +64,7 @@ const Account = () => {
 
                 <View
                   style={{
-                    width: '35%',
+                    width: '44%',
                     flex: 1,
                     gap: s(10),
                   }}
@@ -114,6 +118,7 @@ const styles = StyleSheet.create({
     padding: s(10),
     flexDirection: 'row',
     gap: s(10),
+    alignItems: 'center',
   },
   blockTitle: {
     fontSize: s(12),

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
@@ -14,14 +14,16 @@ const Profile = () => {
     <AnimatedBackground>
       <SafeAreaProvider>
         <View style={styles.container}>
-          <UserData />
-          <Account />
-          <View style={styles.separator} />
-          <LanguageSwitcher />
-          <View style={styles.separator} />
-          <FrameworkProgress />
-          <View style={styles.separator} />
-          <VersionBlock />
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <UserData />
+            <Account />
+            <View style={styles.separator} />
+            <LanguageSwitcher />
+            <View style={styles.separator} />
+            <FrameworkProgress />
+            <View style={styles.separator} />
+            <VersionBlock />
+          </ScrollView>
         </View>
       </SafeAreaProvider>
     </AnimatedBackground>

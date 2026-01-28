@@ -41,7 +41,6 @@ export default AppButton;
 const styles = StyleSheet.create({
   button: {
     backgroundColor: COLORS.accent,
-    fontSize: s(16),
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
@@ -49,7 +48,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: COLORS.textPrimary,
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: s(14),
+    lineHeight: vs(14),
   },
   buttonSecondary: {
     backgroundColor: COLORS.bgMiddle,
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     borderColor: COLORS.borderColor,
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: s(16),
   },
   buttonBlocked: {
     opacity: 0.5,
