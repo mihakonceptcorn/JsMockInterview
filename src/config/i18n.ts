@@ -19,6 +19,14 @@ import commonUk from '../assets/locales/uk/common.json';
 import authUk from '../assets/locales/uk/auth.json';
 import stageUk from '../assets/locales/uk/stage.json';
 
+import homeEs from '../assets/locales/es/home.json';
+import howItWorksEs from '../assets/locales/es/how_it_works.json';
+import statisticsEs from '../assets/locales/es/statistics.json';
+import profileEs from '../assets/locales/es/profile.json';
+import commonEs from '../assets/locales/es/common.json';
+import authEs from '../assets/locales/es/auth.json';
+import stageEs from '../assets/locales/es/stage.json';
+
 const STORAGE_KEY = 'user-language';
 
 const resources = {
@@ -39,6 +47,15 @@ const resources = {
     common: commonUk,
     auth: authUk,
     stage: stageUk,
+  },
+  es: {
+    home: homeEs,
+    how_it_works: howItWorksEs,
+    statistics: statisticsEs,
+    profile: profileEs,
+    common: commonEs,
+    auth: authEs,
+    stage: stageEs,
   },
 };
 

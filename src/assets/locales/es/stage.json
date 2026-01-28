@@ -1,0 +1,14 @@
+{
+  "ends_in": "Termina en",
+  "time": "Tiempo",
+  "questions": "Preguntas",
+  "results": {
+    "title": "Nivel completado",
+    "score": "Puntuación",
+    "time": "Tiempo empleado",
+    "back_to_home": "Ir a los niveles",
+    "recap_title": "¡Buen trabajo! Aquí tienes tus resultados",
+    "recap_header": "Resumen",
+    "recap_message": "¡Has completado el nivel con éxito! Sigue perfeccionando tus habilidades. ¡La constancia te llevará a la maestría!"
+  }
+}

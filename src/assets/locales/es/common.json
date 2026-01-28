@@ -1,0 +1,31 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "how_it_works": "Cómo funciona",
+    "statistics": "Estadísticas",
+    "profile": "Perfil"
+  },
+  "headers": {
+    "home": "JS Mock Interview",
+    "how_it_works": "Cómo funciona",
+    "statistics": "Estadísticas",
+    "profile": "Perfil",
+    "stage": "Nivel",
+    "sign_up": "Registrarse",
+    "log_in": "Iniciar sesión"
+  },
+  "progress": {
+    "stages_completed": "Niveles completados",
+    "correct_answers": "Respuestas correctas"
+  },
+  "stage_status": {
+    "locked": "Bloqueado",
+    "completed": "Completado",
+    "incomplete": "Incompleto",
+    "correct": "Correcto"
+  },
+  "cancel": "Cancelar",
+  "send": "Enviar",
+  "success": "Éxito",
+  "error": "Error"
+}
