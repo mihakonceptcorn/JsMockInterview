@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   View,
   TextInput,
@@ -15,6 +16,7 @@ import { useRouter } from 'expo-router';
 import GoogleSignIn from '@/components/auth/GoogleSignIn';
 
 const SignUp = () => {
+  const { t } = useTranslation('auth');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
@@ -29,37 +31,37 @@ const SignUp = () => {
   const handleSignUp = async () => {
     // Basic validation
     if (!email || !password || !confirmPassword) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert(t('signup.errors.signup_failed_title'), t('signup.errors.fill_fields'));
       return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match');
+      Alert.alert(t('signup.errors.signup_failed_title'), t('signup.errors.passwords_mismatch'));
       return;
     }
 
     if (password.length < 6) {
-      Alert.alert('Error', 'Password must be at least 6 characters');
+      Alert.alert(t('signup.errors.signup_failed_title'), t('signup.errors.password_too_short'));
       return;
     }
 
     setLoading(true);
     try {
       await signup(email.trim(), password);
-      Alert.alert('Success', 'Account created successfully!');
+      Alert.alert(t('signup.success_title'), t('signup.success_message'));
       router.replace('/profile');
     } catch (error: any) {
-      let errorMessage = 'An error occurred during registration';
+      let errorMessage = t('signup.errors.general_error');
 
       if (error.code === 'auth/email-already-in-use') {
-        errorMessage = 'This email is already in use';
+        errorMessage = t('signup.errors.email_in_use');
       } else if (error.code === 'auth/invalid-email') {
-        errorMessage = 'Invalid email format';
+        errorMessage = t('signup.errors.invalid_email');
       } else if (error.code === 'auth/weak-password') {
-        errorMessage = 'The password is too weak';
+        errorMessage = t('signup.errors.weak_password');
       }
 
-      Alert.alert('Registration Failed', errorMessage);
+      Alert.alert(t('signup.errors.signup_failed_title'), errorMessage);
     } finally {
       setLoading(false);
     }
@@ -71,13 +73,13 @@ const SignUp = () => {
       style={styles.container}
     >
       <View style={styles.formContainer}>
-        <Text style={styles.title}>Create Account</Text>
+        <Text style={styles.title}>{t('signup.title')}</Text>
 
         <GoogleSignIn />
 
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder={t('signup.email_placeholder')}
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
@@ -89,7 +91,7 @@ const SignUp = () => {
         <TextInput
           ref={passwordRef}
           style={styles.input}
-          placeholder="Password"
+          placeholder={t('signup.password_placeholder')}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -100,7 +102,7 @@ const SignUp = () => {
         <TextInput
           ref={confirmPasswordRef}
           style={styles.input}
-          placeholder="Confirm Password"
+          placeholder={t('signup.confirm_password_placeholder')}
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           secureTextEntry
@@ -116,14 +118,14 @@ const SignUp = () => {
           {loading ? (
             <ActivityIndicator color="#fff" />
           ) : (
-            <Text style={styles.buttonText}>Sign Up</Text>
+            <Text style={styles.buttonText}>{t('signup.button')}</Text>
           )}
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.linkButton}
           onPress={() => router.navigate('logIn')}
         >
-          <Text style={styles.linkText}>Already have an account? Log In</Text>
+          <Text style={styles.linkText}>{t('signup.have_account')}</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>

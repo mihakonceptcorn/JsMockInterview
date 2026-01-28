@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { FC, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { s, vs } from 'react-native-size-matters';
 import AppButton from '@/components/ui/AppButton';
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
@@ -31,6 +32,7 @@ const StageResult: FC<StageResultProps> = ({
   mode,
   onPress,
 }) => {
+  const { t } = useTranslation('stage');
   const dispatch = useDispatch();
 
   const framework = useSelector((state: RootState) => state.framework.current);
@@ -65,12 +67,12 @@ const StageResult: FC<StageResultProps> = ({
           <Feather name="check-circle" size={s(60)} color={COLORS.success} />
         </View>
 
-        <Text style={styles.title}>Stage Complete!</Text>
+        <Text style={styles.title}>{t('results.title')}!</Text>
         <Text style={styles.titleSecondary}>{title}</Text>
 
         <View style={styles.statsContainer}>
           <Text style={styles.statsTitle}>
-            Great job! Here are your results:
+            {t('results.recap_title')}:
           </Text>
 
           <View style={styles.statsContainer}>
@@ -88,25 +90,24 @@ const StageResult: FC<StageResultProps> = ({
               />
               <View>
                 <Text style={styles.score}>
-                  Score: <Text style={styles.scoreValue}>{getScore}</Text>
+                  {t('results.score')}: <Text style={styles.scoreValue}>{getScore}</Text>
                 </Text>
-                <Text style={styles.time}>Time Taken: {formatTime(time)}</Text>
+                <Text style={styles.time}>{t('results.time')}: {formatTime(time)}</Text>
               </View>
             </View>
           </View>
 
-          <Text style={styles.recapTitle}>Recap</Text>
+          <Text style={styles.recapTitle}>{t('results.recap_header')}</Text>
           <View style={styles.recapInner}>
             <Ionicons name="sunny" size={40} color="yellow" />
             <Text style={styles.recapText}>
-              You completed the stage successfully! Keep honing your JavaScript
-              skills. Consistency will lead to mastery!
+              {t('results.recap_message')}
             </Text>
           </View>
         </View>
 
         <View style={styles.actions}>
-          <AppButton title={'Go To Stages'} onPress={onPress} />
+          <AppButton title={t('results.back_to_home')} onPress={onPress} />
         </View>
       </View>
     </AnimatedBackground>

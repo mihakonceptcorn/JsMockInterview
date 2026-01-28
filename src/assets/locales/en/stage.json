@@ -1,0 +1,11 @@
+{
+    "ends_in": "Ends in",
+    "time": "Time",
+    "questions": "Questions",
+    "results": {
+        "title": "Result",
+        "score": "Score",
+        "time": "Time spent",
+        "back_to_home": "Back to Home"
+    }
+}

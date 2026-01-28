@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   View,
   TextInput,
@@ -14,6 +15,7 @@ import { useRouter } from 'expo-router';
 import GoogleSignIn from '@/components/auth/GoogleSignIn';
 
 const LoginScreen = () => {
+  const { t } = useTranslation('auth');
   const router = useRouter();
 
   const [email, setEmail] = useState<string>('');
@@ -23,7 +25,7 @@ const LoginScreen = () => {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert(t('login.errors.login_failed_title'), t('login.errors.fill_fields'));
       return;
     }
 
@@ -32,19 +34,19 @@ const LoginScreen = () => {
       await login(email.trim(), password);
       router.replace('/profile');
     } catch (error: any) {
-      let errorMessage = 'An error occurred during login';
+      let errorMessage = t('login.errors.general_error');
 
       if (error.code === 'auth/user-not-found') {
-        errorMessage = 'User not found';
+        errorMessage = t('login.errors.user_not_found');
       } else if (error.code === 'auth/wrong-password') {
-        errorMessage = 'Incorrect password';
+        errorMessage = t('login.errors.wrong_password');
       } else if (error.code === 'auth/invalid-email') {
-        errorMessage = 'Invalid email format';
+        errorMessage = t('login.errors.invalid_email');
       } else if (error.code === 'auth/invalid-credential') {
-        errorMessage = 'Invalid email or password';
+        errorMessage = t('login.errors.invalid_credential');
       }
 
-      Alert.alert('Login Failed', errorMessage);
+      Alert.alert(t('login.errors.login_failed_title'), errorMessage);
     } finally {
       setLoading(false);
     }
@@ -52,20 +54,20 @@ const LoginScreen = () => {
 
   const handleResetPassword = () => {
     if (!email) {
-      Alert.alert('Error', 'Please enter your email to reset password');
+      Alert.alert(t('login.errors.login_failed_title'), t('login.errors.reset_email_missing'));
       return;
     }
 
-    Alert.alert('Reset Password', `Send a password reset link to ${email}?`, [
-      { text: 'Cancel', style: 'cancel' },
+    Alert.alert(t('login.reset_password_title'), t('login.reset_password_confirm', { email }), [
+      { text: t('common:cancel'), style: 'cancel' },
       {
-        text: 'Send',
+        text: t('common:send'),
         onPress: async () => {
           try {
             await resetPassword(email.trim());
-            Alert.alert('Success', 'Password reset email sent');
+            Alert.alert(t('common:success'), t('login.reset_password_success'));
           } catch (error: any) {
-            Alert.alert('Error', 'Failed to send reset email');
+            Alert.alert(t('common:error'), t('login.reset_password_error'));
           }
         },
       },
@@ -78,13 +80,13 @@ const LoginScreen = () => {
       style={styles.container}
     >
       <View style={styles.formContainer}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>{t('login.title')}</Text>
 
         <GoogleSignIn />
 
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder={t('login.email_placeholder')}
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
@@ -94,7 +96,7 @@ const LoginScreen = () => {
 
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder={t('login.password_placeholder')}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -107,7 +109,7 @@ const LoginScreen = () => {
           disabled={loading}
         >
           <Text style={styles.buttonText}>
-            {loading ? 'Loading...' : 'Log In'}
+            {loading ? t('login.loading') : t('login.button')}
           </Text>
         </TouchableOpacity>
 
@@ -115,14 +117,14 @@ const LoginScreen = () => {
           style={styles.linkButton}
           onPress={handleResetPassword}
         >
-          <Text style={styles.linkTextSmall}>Forgot password?</Text>
+          <Text style={styles.linkTextSmall}>{t('login.forgot_password')}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.linkButton}
           onPress={() => router.navigate('signUp')}
         >
-          <Text style={styles.linkText}>Don't have an account? Sign Up</Text>
+          <Text style={styles.linkText}>{t('login.no_account')}</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
