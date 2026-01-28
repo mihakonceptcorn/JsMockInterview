@@ -1,0 +1,28 @@
+{
+  "title": "Perfil",
+  "language": "Idioma",
+  "account": {
+    "title": "Cuenta",
+    "logout": "Cerrar sesión",
+    "logout_confirm_title": "¿Estás seguro?",
+    "logout_confirm_desc": "¿Realmente quieres cerrar sesión?",
+    "cancel": "Cancelar",
+    "create_account": "Crear una cuenta",
+    "sync_desc": "Sincroniza tu progreso en todos tus dispositivos. No pierdas tus estadísticas si cambias de teléfono.",
+    "works_without_account": "La aplicación funciona plenamente sin una cuenta.",
+    "sign_up": "Registrarse",
+    "sign_in": "Iniciar sesión",
+    "cloud_progress": "Progreso en la nube",
+    "local_progress": "Solo progreso local",
+    "cloud_sync_desc": "El progreso se guarda en este dispositivo y se sincroniza con la nube.",
+    "local_desc": "El progreso se guarda en este dispositivo.",
+    "stages_completed": "Niveles completados",
+    "accuracy": "Precisión",
+    "total_time": "Tiempo total"
+  },
+  "framework_progress": "Progreso por framework",
+  "view_statistics": "Ver estadísticas",
+  "version": "Versión",
+  "app_info": "Información de la aplicación",
+  "how_it_works": "Cómo funciona"
+}

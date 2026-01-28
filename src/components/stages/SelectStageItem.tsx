@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { FC } from 'react';
 import { s, vs } from 'react-native-size-matters';
+import { useTranslation } from 'react-i18next';
 import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import RadioButton from '../ui/RadioButton';
@@ -25,6 +26,7 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
   isSelected = false,
   completePercentage = 0,
 }) => {
+  const { t } = useTranslation('common');
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.titleContainer}>
@@ -49,7 +51,7 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
               <Text
                 style={[styles.statusTitle, { color: COLORS.textSecondary }]}
               >
-                Locked
+                {t('stage_status.locked')}
               </Text>
             </View>
           </>
@@ -57,10 +59,10 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
           <>
             <FontAwesome name="check-circle" size={24} color={COLORS.success} />
             <View>
-              <Text style={styles.statusTitle}>Completed</Text>
+              <Text style={styles.statusTitle}>{t('stage_status.completed')}</Text>
               {completePercentage > 0 && (
                 <Text style={styles.statusSubTitle}>
-                  Correct: {completePercentage}%
+                  {t('stage_status.correct')}: {completePercentage}%
                 </Text>
               )}
             </View>
@@ -68,7 +70,7 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
         ) : (
           <>
             <Entypo name="circle-with-cross" size={24} color={COLORS.danger} />
-            <Text style={styles.statusTitle}>Incomplete</Text>
+            <Text style={styles.statusTitle}>{t('stage_status.incomplete')}</Text>
           </>
         )}
       </View>

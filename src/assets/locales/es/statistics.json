@@ -1,0 +1,10 @@
+{
+  "title": "Estadísticas",
+  "overall_progress": "Progreso general",
+  "metrics": {
+    "completed": "Completado",
+    "time": "Tiempo",
+    "avg_score": "Puntaje promedio"
+  },
+  "stages": "Niveles"
+}

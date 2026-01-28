@@ -1,0 +1,65 @@
+{
+    "title": "How it works",
+    "intro": {
+        "title": "Learn by Doing, Test Like an Interview",
+        "description": "This app is designed to help you prepare for real technical interviews. You can practice without pressure, or challenge yourself in interview mode with real constraints."
+    },
+    "practice_mode": {
+        "title": "Practice Mode",
+        "subtitle": "Learn, Understand, Improve",
+        "description": "Practice Mode is designed for learning and deep understanding.",
+        "list": [
+            "You answer questions without time limits",
+            "Your answer is checked immediately",
+            "You instantly receive:",
+            "the correct answer",
+            "a clear explanation",
+            "an interview-oriented tip",
+            "You can take your time, rethink, and learn at your own pace"
+        ],
+        "important": "Completed stages in Practice Mode do NOT affect your statistics. This mode is purely for learning and preparation."
+    },
+    "interview_mode": {
+        "title": "Interview Mode",
+        "subtitle": "Simulate a Real Interview Experience",
+        "description": "Interview Mode recreates the pressure of a real technical interview.",
+        "list": [
+            "Each question has a strict time limit",
+            "If time runs out, the answer is counted as incorrect",
+            "You do not see whether your answers are correct until the entire stage is completed",
+            "Once the session starts, you must finish it to see your results"
+        ],
+        "tests": "This mode tests not only knowledge, but also:",
+        "tests_list": [
+            "speed of thinking",
+            "focus under pressure",
+            "decision-making"
+        ]
+    },
+    "randomization": {
+        "title": "Question Pool & Randomization",
+        "subtitle": "Always a New Challenge",
+        "description": "Each stage contains more than 10 questions.",
+        "list": [
+            "questions may be different",
+            "order may change"
+        ],
+        "footer": "This prevents memorization and encourages real understanding. Every attempt is a new challenge."
+    },
+    "statistics": {
+        "title": "Statistics & Progress",
+        "subtitle": "Track What Matters",
+        "description": "Your statistics are calculated only from Interview Mode.",
+        "list": [
+            "Completed stages",
+            "Correct answer rate",
+            "Performance over time"
+        ],
+        "helps": "This helps you:",
+        "helps_list": [
+            "identify weak areas",
+            "measure real interview readiness",
+            "track long-term progress"
+        ]
+    }
+}

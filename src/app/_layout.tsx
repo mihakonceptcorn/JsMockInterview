@@ -9,8 +9,11 @@ import { AuthProvider } from '@/context/AuthContext';
 import { FontAwesome, Ionicons, Feather, Entypo } from '@expo/vector-icons';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { StatusBar } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import '@/config/i18n';
 
 export default function RootLayout() {
+  const { t } = useTranslation('common');
   useEffect(() => {
     GoogleSignin.configure({
       webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
@@ -54,6 +57,7 @@ export default function RootLayout() {
               name="stage"
               options={{
                 headerShown: true,
+                headerTitle: t('headers.stage'),
                 headerStyle: {
                   backgroundColor: COLORS.bgBottom,
                 },
@@ -68,7 +72,7 @@ export default function RootLayout() {
               name="signUp"
               options={{
                 headerShown: true,
-                headerTitle: '',
+                headerTitle: t('headers.sign_up'),
                 headerStyle: {
                   backgroundColor: COLORS.bgBottom,
                 },
@@ -79,7 +83,7 @@ export default function RootLayout() {
               name="logIn"
               options={{
                 headerShown: true,
-                headerTitle: '',
+                headerTitle: t('headers.log_in'),
                 headerStyle: {
                   backgroundColor: COLORS.bgBottom,
                 },

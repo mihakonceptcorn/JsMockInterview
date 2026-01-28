@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { s, vs } from 'react-native-size-matters';
 import { COLORS } from '@/theme/colors';
 import { FrameworkSwitcher } from '@/components/topTabs/FrameworkSwitcher';
@@ -12,6 +13,7 @@ import jsStages from '@/data/js/js.stages.json';
 import reactStages from '@/data/react/react.stages.json';
 
 const FrameworkProgress = () => {
+  const { t } = useTranslation('profile');
   const router = useRouter();
   const framework = useSelector((state: RootState) => state.framework.current);
   const results = useSelector((state: RootState) => state.results.current);
@@ -37,7 +39,7 @@ const FrameworkProgress = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Framework Progress</Text>
+      <Text style={styles.title}>{t('framework_progress')}</Text>
       <FrameworkSwitcher />
       <OverallProgress
         stagesCount={stagesCount}
@@ -49,7 +51,7 @@ const FrameworkProgress = () => {
         style={styles.statsBtn}
       >
         <Text style={styles.statsBtnText}>
-          View Statistics{' '}
+          {t('view_statistics')}{' '}
           <Feather name="arrow-right" size={12} color={COLORS.accent} />
         </Text>
       </TouchableOpacity>

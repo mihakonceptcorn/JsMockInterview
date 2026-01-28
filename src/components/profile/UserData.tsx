@@ -1,5 +1,6 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { COLORS } from '@/theme/colors';
 import { s, vs } from 'react-native-size-matters';
@@ -11,6 +12,7 @@ import jsStages from '@/data/js/js.stages.json';
 import reactStages from '@/data/react/react.stages.json';
 
 const UserData = () => {
+  const { t } = useTranslation('profile');
   const results = useSelector((state: RootState) => state.results.current);
   const { user } = useAuth();
 
@@ -73,27 +75,27 @@ const UserData = () => {
             {user ? (user.displayName ?? user.email) : 'Guest'}
           </Text>
           <Text style={styles.localProgress}>
-            {user ? 'Cloud progress' : 'Local progress only'}
+            {user ? t('account.cloud_progress') : t('account.local_progress')}
           </Text>
           <Text style={styles.userDescription}>
             {user
-              ? 'Progress is stored on this device and synced with the cloud.'
-              : 'Progress is stored on this device.'}
+              ? t('account.cloud_sync_desc')
+              : t('account.local_desc')}
           </Text>
         </View>
       </View>
       <View style={styles.statsContainer}>
         <View style={styles.statsItem}>
           <Text style={styles.statsItemValue}>{stagesCompleted}</Text>
-          <Text style={styles.statsItemTitle}>Stages Completed</Text>
+          <Text style={styles.statsItemTitle}>{t('account.stages_completed')}</Text>
         </View>
         <View style={styles.statsItem}>
           <Text style={styles.statsItemValue}>{accuracy}%</Text>
-          <Text style={styles.statsItemTitle}>Accuracy</Text>
+          <Text style={styles.statsItemTitle}>{t('account.accuracy')}</Text>
         </View>
         <View style={styles.statsItem}>
           <Text style={styles.statsItemValue}>{formatTime(totalTime)}</Text>
-          <Text style={styles.statsItemTitle}>Total Time</Text>
+          <Text style={styles.statsItemTitle}>{t('account.total_time')}</Text>
         </View>
       </View>
     </View>

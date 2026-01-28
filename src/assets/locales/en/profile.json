@@ -1,0 +1,28 @@
+{
+    "title": "Profile",
+    "language": "Language",
+    "account": {
+        "title": "Account",
+        "logout": "LogOut",
+        "logout_confirm_title": "Are you sure?",
+        "logout_confirm_desc": "Do you really want to logOut?",
+        "cancel": "Cancel",
+        "create_account": "Create an account",
+        "sync_desc": "Sync your progress across all your devices. Don't lose your stats if you change your phone.",
+        "works_without_account": "The app works fully without an account.",
+        "sign_up": "Sign Up",
+        "sign_in": "Sign In",
+        "cloud_progress": "Cloud progress",
+        "local_progress": "Local progress only",
+        "cloud_sync_desc": "Progress is stored on this device and synced with the cloud.",
+        "local_desc": "Progress is stored on this device.",
+        "stages_completed": "Stages Completed",
+        "accuracy": "Accuracy",
+        "total_time": "Total Time"
+    },
+    "framework_progress": "Framework Progress",
+    "view_statistics": "View Statistics",
+    "version": "Version",
+    "app_info": "App Info",
+    "how_it_works": "How it works"
+}

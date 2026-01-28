@@ -1,0 +1,32 @@
+{
+  "navigation": {
+    "home": "Головна",
+    "how_it_works": "Як це працює",
+    "statistics": "Статистика",
+    "profile": "Профіль"
+  },
+  "headers": {
+    "home": "JS Mock Interview",
+    "how_it_works": "Як це працює",
+    "statistics": "Статистика",
+    "profile": "Профіль",
+    "stage": "Етап",
+    "sign_up": "Реєстрація",
+    "log_in": "Увійти"
+  },
+  "progress": {
+    "title": "Прогрес",
+    "stages_completed": "Пройдено етапів",
+    "correct_answers": "Правильні відповіді"
+  },
+  "stage_status": {
+    "locked": "Заблоковано",
+    "completed": "Завершено",
+    "incomplete": "Не завершено",
+    "correct": "Правильно"
+  },
+  "cancel": "Скасувати",
+  "send": "Надіслати",
+  "success": "Успіх",
+  "error": "Помилка"
+}

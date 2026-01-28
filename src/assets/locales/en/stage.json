@@ -1,0 +1,14 @@
+{
+    "ends_in": "Ends in",
+    "time": "Time",
+    "questions": "Questions",
+    "results": {
+        "title": "Stage Complete",
+        "score": "Score",
+        "time": "Time Taken",
+        "back_to_home": "Go To Stages",
+        "recap_title": "Great job! Here are your results",
+        "recap_header": "Recap",
+        "recap_message": "You completed the stage successfully! Keep honing your skills. Consistency will lead to mastery!"
+    }
+}

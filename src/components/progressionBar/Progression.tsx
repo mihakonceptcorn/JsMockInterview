@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { s, vs } from 'react-native-size-matters';
+import { useTranslation } from 'react-i18next';
 import ProgressionBar from './ProgressionBar';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '@/theme/colors';
@@ -12,6 +13,7 @@ import reactNativeStages from '@/data/reactNative/reactNative.stages.json';
 import vueStages from '@/data/vue/vue.stages.json';
 
 const Progression = () => {
+  const { t } = useTranslation('common');
   const framework = useSelector((state: RootState) => state.framework.current);
   const results = useSelector((state: RootState) => state.results.current);
 
@@ -74,11 +76,11 @@ const Progression = () => {
       >
         <View style={styles.gradientInner}>
           <ProgressionBar
-            title={`Stages Completed: ${completedStages}/${stagesCount}`}
+            title={`${t('progress.stages_completed')}: ${completedStages}/${stagesCount}`}
             progress={stagesCount > 0 ? completedStages / stagesCount : 0}
           />
           <ProgressionBar
-            title={`Correct Answers: ${correctAnswersPercentage.toFixed(0)}%`}
+            title={`${t('progress.correct_answers')}: ${correctAnswersPercentage.toFixed(0)}%`}
             progress={correctAnswersPercentage / 100}
           />
         </View>

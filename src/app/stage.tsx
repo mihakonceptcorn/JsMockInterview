@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { dataMap } from '@/data/dataMap';
 import PlayStageItem from '@/components/stages/PlayStageItem';
@@ -25,6 +26,7 @@ interface Question {
 }
 
 const Stage = () => {
+  const { t } = useTranslation(['stage', 'common']);
   const { id, mode, section, title } = useLocalSearchParams();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -116,16 +118,16 @@ const Stage = () => {
                           { color: getCountdownColor() },
                         ]}
                       >
-                        Ends in: {countdown}
+                        {t('stage:ends_in')}: {countdown}
                       </Text>
                     ) : (
                       <Text style={styles.timerText}>
-                        Time: {formatTime(time)}
+                        {t('stage:time')}: {formatTime(time)}
                       </Text>
                     )}
                   </View>
                   <ProgressionBar
-                    title={`Questions: ${questionIndex + 1}/${questions.length}`}
+                    title={`${t('stage:questions')}: ${questionIndex + 1}/${questions.length}`}
                     progress={(questionIndex + 1) / questions.length}
                   />
                 </View>

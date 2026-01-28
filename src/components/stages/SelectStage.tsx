@@ -1,5 +1,6 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import jsStages from '@/data/js/js.stages.json';
 import reactStages from '@/data/react/react.stages.json';
 import reactNativeStages from '@/data/reactNative/reactNative.stages.json';
@@ -15,6 +16,7 @@ import { RootState } from '@/store';
 import PurchasePopup from './PurchasePopup';
 
 const SelectStage = () => {
+  const { t } = useTranslation('home');
   const flatListRef = useRef<FlatList>(null);
   const router = useRouter();
   const [selectedStageId, setSelectedStageId] = useState('');
@@ -100,7 +102,7 @@ const SelectStage = () => {
           style={styles.flex}
         >
           <View style={[styles.gradientInner, styles.flex]}>
-            <Text style={styles.title}>Select Stage</Text>
+            <Text style={styles.title}>{t('select_stage')}</Text>
             <FlatList
               ref={flatListRef}
               data={stagesData.stages}
@@ -124,14 +126,14 @@ const SelectStage = () => {
 
       <View style={styles.actions}>
         <AppButton
-          title={'Practice Mode'}
+          title={t('start_practice')}
           onPress={() => onStartStage('practice')}
           isSecondary
           width={'50%'}
           isBlocked={!selectedStageId}
         />
         <AppButton
-          title={'Start Interview'}
+          title={t('start_interview')}
           onPress={() => onStartStage('interview')}
           width={'50%'}
           isBlocked={!selectedStageId}

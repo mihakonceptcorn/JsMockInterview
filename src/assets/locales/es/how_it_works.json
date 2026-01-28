@@ -1,0 +1,62 @@
+{
+  "title": "Cómo funciona",
+  "intro": {
+    "title": "Aprende haciendo, prepárate como en una entrevista",
+    "description": "Esta aplicación está diseñada para ayudarte a prepararte para entrevistas técnicas reales. Puedes practicar sin presión o desafiarte en el modo entrevista con restricciones reales."
+  },
+  "practice_mode": {
+    "title": "Modo Práctica",
+    "subtitle": "Aprende, comprende, mejora",
+    "description": "el Modo Práctica está diseñado para el aprendizaje y la comprensión profunda.",
+    "list": [
+      "Respondes preguntas tanpa límites de tiempo",
+      "Tu respuesta se verifica inmediatamente",
+      "Recibes al instante:",
+      "la respuesta correcta",
+      "una explicación clara",
+      "un consejo enfocado en la entrevista",
+      "Puedes tomarte tu tiempo, repensar y aprender a tu propio ritmo"
+    ],
+    "important": "Los niveles completados en el Modo Práctica NO afectan tus estadísticas. Este modo es puramente para el aprendizaje y la preparación."
+  },
+  "interview_mode": {
+    "title": "Modo Entrevista",
+    "subtitle": "Simula una experiencia de entrevista real",
+    "description": "El Modo Entrevista recrea la presión de una entrevista técnica real.",
+    "list": [
+      "Cada pregunta tiene un límite de tiempo estricto",
+      "Si el tiempo se agota, la respuesta se cuenta como incorrecta",
+      "No verás si tus respuestas son correctas hasta que se complete todo el nivel",
+      "Una vez que comienza la sesión, debes terminarla para ver tus resultados"
+    ],
+    "tests": "Este modo no solo pone a prueba tus conocimientos, sino también:",
+    "tests_list": [
+      "velocidad de pensamiento",
+      "enfoque bajo presión",
+      "toma de decisiones"
+    ]
+  },
+  "randomization": {
+    "title": "Banco de preguntas y aleatoriedad",
+    "subtitle": "Siempre un nuevo desafío",
+    "description": "Cada nivel contiene más de 10 preguntas.",
+    "list": ["las preguntas pueden ser diferentes", "el orden puede cambiar"],
+    "footer": "Esto evita la memorización y fomenta la comprensión real. Cada intento es un nuevo desafío."
+  },
+  "statistics": {
+    "title": "Estadísticas y progreso",
+    "subtitle": "Rastrea lo que importa",
+    "description": "Tus estadísticas se calculan solo a partir del Modo Entrevista.",
+    "list": [
+      "Niveles completados",
+      "Tasa de respuestas correctas",
+      "Rendimiento a lo largo del tiempo"
+    ],
+    "helps": "Esto te ayuda a:",
+    "helps_list": [
+      "identificar áreas débiles",
+      "medir la preparación real para la entrevista",
+      "seguir el progreso a largo plazo"
+    ]
+  }
+}

@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
 import { s, vs } from 'react-native-size-matters';
@@ -8,6 +9,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Entypo from '@expo/vector-icons/Entypo';
 
 const Info = () => {
+  const { t } = useTranslation('how_it_works');
   return (
     <AnimatedBackground>
       <SafeAreaProvider>
@@ -21,18 +23,16 @@ const Info = () => {
               >
                 <View style={styles.innerContainer}>
                   <Text style={styles.subTitle}>
-                    Learn by Doing, Test Like an Interview
+                    {t('intro.title')}
                   </Text>
                   <Text style={styles.text}>
-                    This app is designed to help you prepare for real technical
-                    interviews. You can practice without pressure, or challenge
-                    yourself in interview mode with real constraints.
+                    {t('intro.description')}
                   </Text>
                 </View>
               </LinearGradient>
             </View>
 
-            <Text style={styles.title}>Practice Mode</Text>
+            <Text style={styles.title}>{t('practice_mode.title')}</Text>
             <View style={styles.infoBlockContainer}>
               <LinearGradient
                 colors={['#0B1F36', '#102C4C']}
@@ -41,57 +41,28 @@ const Info = () => {
               >
                 <View style={styles.innerContainer}>
                   <Text style={styles.subTitle}>
-                    Learn, Understand, Improve
+                    {t('practice_mode.subtitle')}
                   </Text>
                   <Text style={styles.text}>
-                    Practice Mode is designed for learning and deep
-                    understanding.
+                    {t('practice_mode.description')}
                   </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    You answer questions without time limits
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    Your answer is checked immediately
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    You instantly receive:
-                  </Text>
-                  <View style={styles.subList}>
-                    <Text style={styles.text}>
-                      <Entypo name="dot-single" size={14} color="#fff" />
-                      the correct answer
-                    </Text>
-                  </View>
-                  <View style={styles.subList}>
-                    <Text style={styles.text}>
-                      <Entypo name="dot-single" size={14} color="#fff" />a clear
-                      explanation
-                    </Text>
-                  </View>
-                  <View style={styles.subList}>
-                    <Text style={styles.text}>
-                      <Entypo name="dot-single" size={14} color="#fff" />
-                      an interview-oriented tip
-                    </Text>
-                  </View>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    You can take your time, rethink, and learn at your own pace
-                  </Text>
+                  {(t('practice_mode.list', { returnObjects: true }) as string[]).map(
+                    (item: string, index: number) => (
+                      <Text key={index} style={styles.text}>
+                        <Entypo name="dot-single" size={14} color="#fff" />
+                        {item}
+                      </Text>
+                    )
+                  )}
                   <Text style={styles.textBold}>Important:</Text>
                   <Text style={styles.text}>
-                    Completed stages in Practice Mode do NOT affect your
-                    statistics. This mode is purely for learning and
-                    preparation.
+                    {t('practice_mode.important')}
                   </Text>
                 </View>
               </LinearGradient>
             </View>
 
-            <Text style={styles.title}>Interview Mode</Text>
+            <Text style={styles.title}>{t('interview_mode.title')}</Text>
             <View style={styles.infoBlockContainer}>
               <LinearGradient
                 colors={['#0B1F36', '#102C4C']}
@@ -100,50 +71,35 @@ const Info = () => {
               >
                 <View style={styles.innerContainer}>
                   <Text style={styles.subTitle}>
-                    Simulate a Real Interview Experience
+                    {t('interview_mode.subtitle')}
                   </Text>
                   <Text style={styles.text}>
-                    Interview Mode recreates the pressure of a real technical
-                    interview.
+                    {t('interview_mode.description')}
                   </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    Each question has a strict time limit
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    If time runs out, the answer is counted as incorrect
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    You do not see whether your answers are correct until the
-                    entire stage is completed
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    Once the session starts, you must finish it to see your
-                    results
-                  </Text>
-                  <Text style={styles.text}>
-                    This mode tests not only knowledge, but also:
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    speed of thinking
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    focus under pressure
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    decision-making
-                  </Text>
+                  {(t('interview_mode.list', { returnObjects: true }) as string[]).map(
+                    (item: string, index: number) => (
+                      <Text key={index} style={styles.text}>
+                        <Entypo name="dot-single" size={14} color="#fff" />
+                        {item}
+                      </Text>
+                    )
+                  )}
+                  <Text style={styles.text}>{t('interview_mode.tests')}</Text>
+                  {(
+                    t('interview_mode.tests_list', {
+                      returnObjects: true,
+                    }) as string[]
+                  ).map((item: string, index: number) => (
+                    <Text key={index} style={styles.text}>
+                      <Entypo name="dot-single" size={14} color="#fff" />
+                      {item}
+                    </Text>
+                  ))}
                 </View>
               </LinearGradient>
             </View>
 
-            <Text style={styles.title}>Question Pool & Randomization</Text>
+            <Text style={styles.title}>{t('randomization.title')}</Text>
             <View style={styles.infoBlockContainer}>
               <LinearGradient
                 colors={['#0B1F36', '#102C4C']}
@@ -151,38 +107,28 @@ const Info = () => {
                 end={{ x: 1, y: 1 }}
               >
                 <View style={styles.innerContainer}>
-                  <Text style={styles.subTitle}>Always a New Challenge</Text>
-                  <Text style={styles.text}>
-                    Each stage contains more than 10 questions.
+                  <Text style={styles.subTitle}>
+                    {t('randomization.subtitle')}
                   </Text>
                   <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    When you start the same stage again:
+                    {t('randomization.description')}
                   </Text>
-                  <Text style={styles.subList}>
-                    <Text style={styles.text}>
-                      <Entypo name="dot-single" size={14} color="#fff" />
-                      questions may be different
-                    </Text>
-                  </Text>
-                  <Text style={styles.subList}>
-                    <Text style={styles.text}>
-                      <Entypo name="dot-single" size={14} color="#fff" />
-                      order may change
-                    </Text>
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    This prevents memorization and encourages real understanding
-                  </Text>
-                  <Text style={styles.text}>
-                    Every attempt is a new challenge.
-                  </Text>
+                  {(t('randomization.list', { returnObjects: true }) as string[]).map(
+                    (item: string, index: number) => (
+                      <Text key={index} style={styles.subList}>
+                        <Text style={styles.text}>
+                          <Entypo name="dot-single" size={14} color="#fff" />
+                          {item}
+                        </Text>
+                      </Text>
+                    )
+                  )}
+                  <Text style={styles.text}>{t('randomization.footer')}</Text>
                 </View>
               </LinearGradient>
             </View>
 
-            <Text style={styles.title}>Statistics & Progress</Text>
+            <Text style={styles.title}>{t('statistics.title')}</Text>
             <View style={[styles.infoBlockContainer, styles.infoBlockPadding]}>
               <LinearGradient
                 colors={['#0B1F36', '#102C4C']}
@@ -190,35 +136,31 @@ const Info = () => {
                 end={{ x: 1, y: 1 }}
               >
                 <View style={styles.innerContainer}>
-                  <Text style={styles.subTitle}>Track What Matters</Text>
-                  <Text style={styles.text}>
-                    Your statistics are calculated only from Interview Mode.
+                  <Text style={styles.subTitle}>
+                    {t('statistics.subtitle')}
                   </Text>
                   <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    Completed stages
+                    {t('statistics.description')}
                   </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    Correct answer rate
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    Performance over time
-                  </Text>
-                  <Text style={styles.text}>This helps you:</Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    identify weak areas
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    measure real interview readiness
-                  </Text>
-                  <Text style={styles.text}>
-                    <Entypo name="dot-single" size={14} color="#fff" />
-                    track long-term progress
-                  </Text>
+                  {(t('statistics.list', { returnObjects: true }) as string[]).map(
+                    (item: string, index: number) => (
+                      <Text key={index} style={styles.text}>
+                        <Entypo name="dot-single" size={14} color="#fff" />
+                        {item}
+                      </Text>
+                    )
+                  )}
+                  <Text style={styles.text}>{t('statistics.helps')}</Text>
+                  {(
+                    t('statistics.helps_list', {
+                      returnObjects: true,
+                    }) as string[]
+                  ).map((item: string, index: number) => (
+                    <Text key={index} style={styles.text}>
+                      <Entypo name="dot-single" size={14} color="#fff" />
+                      {item}
+                    </Text>
+                  ))}
                 </View>
               </LinearGradient>
             </View>
