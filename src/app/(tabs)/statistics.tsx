@@ -1,5 +1,6 @@
 import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
 import { FrameworkSwitcher } from '@/components/topTabs/FrameworkSwitcher';
@@ -24,6 +25,7 @@ interface StageResult {
 }
 
 const Statistics = () => {
+  const { t } = useTranslation('statistics');
   const framework = useSelector((state: RootState) => state.framework.current);
   const results = useSelector((state: RootState) => state.results.current);
 
@@ -93,7 +95,7 @@ const Statistics = () => {
             <View style={styles.metrics}>
               <MetricsItem
                 data={`${completedStages}/${stagesCount}`}
-                title={'Completed'}
+                title={t('metrics.completed')}
                 icon={
                   <Feather
                     name="check-circle"
@@ -104,20 +106,20 @@ const Statistics = () => {
               />
 
               <MetricsItem
-                data={'Time'}
+                data={t('metrics.time')}
                 title={formatTime(totalTimeSeconds)}
                 icon={<Feather name="clock" size={20} color={COLORS.accent} />}
               />
 
               <MetricsItem
                 data={`${correctAnswersPercentage}%`}
-                title={'Avg Score'}
+                title={t('metrics.avg_score')}
                 icon={<Feather name="star" size={20} color={COLORS.accent} />}
               />
             </View>
 
             <View style={styles.listContainer}>
-              <Text style={styles.title}>Stages</Text>
+              <Text style={styles.title}>{t('stages')}</Text>
 
               {stages.map((item) => (
                 <StageStatItem {...item} key={item.title} />

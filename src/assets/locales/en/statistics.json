@@ -1,0 +1,10 @@
+{
+    "title": "Statistics",
+    "overall_progress": "Overall Progress",
+    "metrics": {
+        "completed": "Completed",
+        "time": "Time",
+        "avg_score": "Avg Score"
+    },
+    "stages": "Stages"
+}

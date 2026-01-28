@@ -9,6 +9,7 @@ import { AuthProvider } from '@/context/AuthContext';
 import { FontAwesome, Ionicons, Feather, Entypo } from '@expo/vector-icons';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { StatusBar } from 'react-native';
+import '@/config/i18n';
 
 export default function RootLayout() {
   useEffect(() => {

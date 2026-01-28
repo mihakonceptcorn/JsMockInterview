@@ -1,0 +1,10 @@
+{
+  "title": "Статистика",
+  "overall_progress": "Загальний прогрес",
+  "metrics": {
+    "completed": "Завершено",
+    "time": "Час",
+    "avg_score": "Середній бал"
+  },
+  "stages": "Етапи"
+}
