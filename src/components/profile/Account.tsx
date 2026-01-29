@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { s, vs } from 'react-native-size-matters';
 import { COLORS } from '@/theme/colors';
@@ -15,9 +15,10 @@ import AppButton from '@/components/ui/AppButton';
 import { useRouter } from 'expo-router';
 import { useAuth } from '@/context/AuthContext';
 import Purchases from 'react-native-purchases';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setProStatus } from '@/store/userSlice';
 import PurchasePopup from '@/components/stages/PurchasePopup';
+import { RootState } from '@/store';
 
 const Account = () => {
   const { t } = useTranslation('profile');
@@ -26,6 +27,35 @@ const Account = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [isPurchasePopupVisible, setIsPurchasePopupVisible] = useState(false);
+  const [price, setPrice] = useState<string | null>(null);
+  const isPro = useSelector((state: RootState) => state.user.isPro);
+
+  useEffect(() => {
+    if (!isPro) {
+      const fetchOfferings = async () => {
+        try {
+          if (!Purchases.isConfigured()) {
+            return;
+          }
+          const offerings = await Purchases.getOfferings();
+          if (
+            offerings.current !== null &&
+            offerings.current.availablePackages.length > 0
+          ) {
+            const pkg =
+              offerings.current.availablePackages.find(
+                (p) => p.packageType === 'LIFETIME'
+              ) || offerings.current.availablePackages[0];
+            setPrice(pkg.product.priceString);
+          }
+        } catch (e) {
+          console.log('Error fetching offerings for Account:', e);
+        }
+      };
+
+      fetchOfferings();
+    }
+  }, []);
 
   const showConfirmDialog = () => {
     Alert.alert(
@@ -136,34 +166,36 @@ const Account = () => {
           </LinearGradient>
         </View>
 
-        <View style={styles.blockContainer}>
-          <LinearGradient
-            colors={['#0B1F36', '#102C4C']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-          >
-            <View style={styles.innerContainer}>
-              <View>
-                <Text style={styles.blockTitle}>Go beyond JavaScript!</Text>
+        {!isPro && (
+          <View style={styles.blockContainer}>
+            <LinearGradient
+              colors={['#0B1F36', '#102C4C']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+            >
+              <View style={styles.innerContainer}>
+                <View>
+                  <Text style={styles.blockTitle}>Go beyond JavaScript!</Text>
 
-                <Text style={styles.blockText}>
-                  Upgrade to Premium to unlock React, React Native, and Vue —
-                  and prepare across the entire frontend stack.
-                </Text>
+                  <Text style={styles.blockText}>
+                    Upgrade to Premium to unlock React, React Native, and Vue —
+                    and prepare across the entire frontend stack.
+                  </Text>
 
-                <Text style={[styles.blockText, { marginBottom: vs(10) }]}>
-                  One upgrade. All frameworks. No limits.
-                </Text>
+                  <Text style={[styles.blockText, { marginBottom: vs(10) }]}>
+                    One upgrade. All frameworks. No limits.
+                  </Text>
 
-                <AppButton
-                  title="Go Premium"
-                  onPress={() => setIsPurchasePopupVisible(true)}
-                  height={vs(30)}
-                />
+                  <AppButton
+                    title={`Go Premium${price ? ` — ${price}` : ''}`}
+                    onPress={() => setIsPurchasePopupVisible(true)}
+                    height={vs(30)}
+                  />
+                </View>
               </View>
-            </View>
-          </LinearGradient>
-        </View>
+            </LinearGradient>
+          </View>
+        )}
 
         {loading && (
           <ActivityIndicator
