@@ -7,8 +7,12 @@
     "score": "Puntuación",
     "time": "Tiempo empleado",
     "back_to_home": "Ir a los niveles",
-    "recap_title": "¡Buen trabajo! Aquí tienes tus resultados",
     "recap_header": "Resumen",
-    "recap_message": "¡Has completado el nivel con éxito! Sigue perfeccionando tus habilidades. ¡La constancia te llevará a la maestría!"
+    "recap_title_low": "¡No te desanimes!",
+    "recap_title_mid": "¡Buen progreso!",
+    "recap_title_high": "¡Excelente trabajo! Aquí tienes tus resultados",
+    "recap_message_low": "Todo experto fue alguna vez un principiante. No dejes que los números te desanimen; sigue practicando y verás la mejora.",
+    "recap_message_mid": "¡Vas por buen camino! Has construido una base sólida, y con un poco más de práctica, alcanzarás la maestría.",
+    "recap_message_high": "¡Has completado esta etapa con éxito! Tu esfuerzo está dando sus frutos. Sigue perfeccionando tus habilidades, ¡la constancia es la clave!"
   }
 }

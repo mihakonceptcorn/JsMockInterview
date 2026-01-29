@@ -20,8 +20,8 @@ const Profile = () => {
             <View style={styles.separator} />
             <LanguageSwitcher />
             <View style={styles.separator} />
-            <FrameworkProgress />
-            <View style={styles.separator} />
+            {/*<FrameworkProgress />*/}
+            {/*<View style={styles.separator} />*/}
             <VersionBlock />
           </ScrollView>
         </View>

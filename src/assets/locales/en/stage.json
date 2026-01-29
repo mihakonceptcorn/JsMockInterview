@@ -1,14 +1,18 @@
 {
-    "ends_in": "Ends in",
-    "time": "Time",
-    "questions": "Questions",
-    "results": {
-        "title": "Stage Complete",
-        "score": "Score",
-        "time": "Time Taken",
-        "back_to_home": "Go To Stages",
-        "recap_title": "Great job! Here are your results",
-        "recap_header": "Recap",
-        "recap_message": "You completed the stage successfully! Keep honing your skills. Consistency will lead to mastery!"
-    }
+  "ends_in": "Ends in",
+  "time": "Time",
+  "questions": "Questions",
+  "results": {
+    "title": "Stage Complete",
+    "score": "Score",
+    "time": "Time Taken",
+    "back_to_home": "Go To Stages",
+    "recap_header": "Recap",
+    "recap_title_low": "Keep your head up!",
+    "recap_title_mid": "Good progress!",
+    "recap_title_high": "Great job! Here are your results",
+    "recap_message_low": "Every expert was once a beginner. Don’t let the numbers discourage you...",
+    "recap_message_mid": "You're on the right track! You’ve built a solid foundation...",
+    "recap_message_high": "You completed the stage successfully! Your hard work is clearly paying off..."
+  }
 }

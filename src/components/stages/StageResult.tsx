@@ -52,7 +52,27 @@ const StageResult: FC<StageResultProps> = ({
     }
   }, [dispatch, framework, stageId, score, total, title, time]);
 
-  const getScore = Math.round((score / total) * 100) + '%';
+  const getScore = Math.round((score / total) * 100);
+  const getColor =
+    getScore <= 40
+      ? COLORS.danger
+      : getScore <= 70
+        ? COLORS.middleBar
+        : COLORS.success;
+
+  const getTitle =
+    getScore <= 40
+      ? t('results.recap_title_low')
+      : getScore <= 70
+        ? t('results.recap_title_mid')
+        : t('results.recap_title_high');
+
+  const getMessage =
+    getScore <= 40
+      ? t('results.recap_message_low')
+      : getScore <= 70
+        ? t('results.recap_message_mid')
+        : t('results.recap_message_high');
 
   return (
     <AnimatedBackground>
@@ -61,19 +81,17 @@ const StageResult: FC<StageResultProps> = ({
           <Feather
             name="check-circle"
             size={s(60)}
-            color={COLORS.success}
+            color={getColor}
             style={styles.glow}
           />
-          <Feather name="check-circle" size={s(60)} color={COLORS.success} />
+          <Feather name="check-circle" size={s(60)} color={getColor} />
         </View>
 
         <Text style={styles.title}>{t('results.title')}!</Text>
         <Text style={styles.titleSecondary}>{title}</Text>
 
         <View style={styles.statsContainer}>
-          <Text style={styles.statsTitle}>
-            {t('results.recap_title')}:
-          </Text>
+          <Text style={styles.statsTitle}>{getTitle}</Text>
 
           <View style={styles.statsContainer}>
             <View style={styles.row}>
@@ -81,7 +99,13 @@ const StageResult: FC<StageResultProps> = ({
                 size={60}
                 indeterminate={false}
                 progress={score / total}
-                color={COLORS.success}
+                color={
+                  score / total <= 0.4
+                    ? COLORS.danger
+                    : score / total <= 0.7
+                      ? COLORS.middleBar
+                      : COLORS.success
+                }
                 unfilledColor={COLORS.successTransparent}
                 showsText={true}
                 formatText={() => `${score}/${total}`}
@@ -90,19 +114,26 @@ const StageResult: FC<StageResultProps> = ({
               />
               <View>
                 <Text style={styles.score}>
-                  {t('results.score')}: <Text style={styles.scoreValue}>{getScore}</Text>
+                  {t('results.score')}:{' '}
+                  <Text
+                    style={{
+                      color: getColor,
+                    }}
+                  >
+                    {getScore}%
+                  </Text>
                 </Text>
-                <Text style={styles.time}>{t('results.time')}: {formatTime(time)}</Text>
+                <Text style={styles.time}>
+                  {t('results.time')}: {formatTime(time)}
+                </Text>
               </View>
             </View>
           </View>
 
           <Text style={styles.recapTitle}>{t('results.recap_header')}</Text>
           <View style={styles.recapInner}>
-            <Ionicons name="sunny" size={40} color="yellow" />
-            <Text style={styles.recapText}>
-              {t('results.recap_message')}
-            </Text>
+            <Ionicons name="sunny" size={40} color={getColor} />
+            <Text style={styles.recapText}>{getMessage}</Text>
           </View>
         </View>
 
@@ -169,9 +200,6 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     fontWeight: 'bold',
     fontSize: s(16),
-  },
-  scoreValue: {
-    color: COLORS.success,
   },
   time: {
     color: COLORS.textPrimary,

@@ -78,16 +78,16 @@ const UserData = () => {
             {user ? t('account.cloud_progress') : t('account.local_progress')}
           </Text>
           <Text style={styles.userDescription}>
-            {user
-              ? t('account.cloud_sync_desc')
-              : t('account.local_desc')}
+            {user ? t('account.cloud_sync_desc') : t('account.local_desc')}
           </Text>
         </View>
       </View>
       <View style={styles.statsContainer}>
         <View style={styles.statsItem}>
           <Text style={styles.statsItemValue}>{stagesCompleted}</Text>
-          <Text style={styles.statsItemTitle}>{t('account.stages_completed')}</Text>
+          <Text style={styles.statsItemTitle}>
+            {t('account.stages_completed')}
+          </Text>
         </View>
         <View style={styles.statsItem}>
           <Text style={styles.statsItemValue}>{accuracy}%</Text>
@@ -168,5 +168,6 @@ const styles = StyleSheet.create({
   statsItemTitle: {
     fontSize: s(12),
     color: COLORS.textSecondary,
+    textAlign: 'center',
   },
 });
