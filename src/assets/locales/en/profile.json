@@ -18,11 +18,25 @@
         "local_desc": "Progress is stored on this device.",
         "stages_completed": "Stages Completed",
         "accuracy": "Accuracy",
-        "total_time": "Total Time"
+        "total_time": "Total Time",
+        "restore_purchase": "Restore purchase",
+        "premium_banner": {
+            "title": "Go beyond JavaScript!",
+            "desc": "Upgrade to Premium to unlock React, React Native, and Vue — and prepare across the entire frontend stack.",
+            "footer": "One upgrade. All frameworks. No limits.",
+            "button": "Go Premium"
+        },
+        "alerts": {
+            "success_premium": "Success! Premium features unlocked.",
+            "no_purchases": "No active purchases found for this account.",
+            "payment_pending": "Your payment is pending. Please check back later once Google confirms the transaction.",
+            "error_purchase": "An error occurred during purchase. Please try again."
+        }
     },
     "framework_progress": "Framework Progress",
     "view_statistics": "View Statistics",
     "version": "Version",
     "app_info": "App Info",
-    "how_it_works": "How it works"
+    "how_it_works": "How it works",
+    "skill_proficiency": "Skill Proficiency"
 }

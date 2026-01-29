@@ -15,6 +15,7 @@ const UserData = () => {
   const { t } = useTranslation('profile');
   const results = useSelector((state: RootState) => state.results.current);
   const { user } = useAuth();
+  const isPro = useSelector((state: RootState) => state.user.isPro);
 
   const [stagesCompleted, setStagesCompleted] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
@@ -71,9 +72,16 @@ const UserData = () => {
         </View>
 
         <View style={styles.userData}>
-          <Text style={styles.userName}>
-            {user ? (user.displayName ?? user.email) : 'Guest'}
-          </Text>
+          <View style={styles.nameRow}>
+            <Text style={styles.userName}>
+              {user ? (user.displayName ?? user.email) : 'Guest'}
+            </Text>
+            {isPro && (
+              <View style={styles.premiumBadge}>
+                <Text style={styles.premiumText}>Premium</Text>
+              </View>
+            )}
+          </View>
           <Text style={styles.localProgress}>
             {user ? t('account.cloud_progress') : t('account.local_progress')}
           </Text>
@@ -169,5 +177,21 @@ const styles = StyleSheet.create({
     fontSize: s(12),
     color: COLORS.textSecondary,
     textAlign: 'center',
+  },
+  nameRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: s(6),
+  },
+  premiumBadge: {
+    backgroundColor: COLORS.middleBar,
+    paddingHorizontal: s(6),
+    paddingVertical: vs(2),
+    borderRadius: s(4),
+  },
+  premiumText: {
+    fontSize: s(10),
+    fontWeight: 'bold',
+    color: '#000',
   },
 });

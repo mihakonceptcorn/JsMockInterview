@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Dimensions, StyleSheet, Text } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { ProgressChart } from 'react-native-chart-kit';
 import { COLORS } from '@/theme/colors';
 import { s, vs } from 'react-native-size-matters';
@@ -13,6 +14,7 @@ import { RootState } from '@/store';
 const screenWidth = Dimensions.get('window').width;
 
 const SkillChart = () => {
+  const { t } = useTranslation('profile');
   const results = useSelector((state: RootState) => state.results.current);
 
   const calculateProgress = (
@@ -79,7 +81,7 @@ const SkillChart = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Skill Proficiency</Text>
+      <Text style={styles.title}>{t('skill_proficiency')}</Text>
       <ProgressChart
         data={data}
         width={s(screenWidth - 120)}

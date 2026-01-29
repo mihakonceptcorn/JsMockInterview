@@ -18,11 +18,25 @@
     "local_desc": "El progreso se guarda en este dispositivo.",
     "stages_completed": "Niveles completados",
     "accuracy": "Precisión",
-    "total_time": "Tiempo total"
+    "total_time": "Tiempo total",
+    "restore_purchase": "Restaurar compra",
+    "premium_banner": {
+      "title": "¡Ve más allá de JavaScript!",
+      "desc": "Actualiza a Premium para desbloquear React, React Native y Vue, y prepárate para todo el stack frontend.",
+      "footer": "Una actualización. Todos los frameworks. Sin límites.",
+      "button": "Hacerse Premium"
+    },
+    "alerts": {
+      "success_premium": "¡Éxito! Funciones Premium desbloqueadas.",
+      "no_purchases": "No se encontraron compras activas para esta cuenta.",
+      "payment_pending": "Tu pago está pendiente. Vuelve a consultar más tarde una vez que Google confirme la transacción.",
+      "error_purchase": "Ocurrió un error durante la compra. Por favor, inténtalo de nuevo."
+    }
   },
   "framework_progress": "Progreso por framework",
   "view_statistics": "Ver estadísticas",
   "version": "Versión",
   "app_info": "Información de la aplicación",
-  "how_it_works": "Cómo funciona"
+  "how_it_works": "Cómo funciona",
+  "skill_proficiency": "Competencia en habilidades"
 }

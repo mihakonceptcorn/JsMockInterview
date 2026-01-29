@@ -83,18 +83,16 @@ const Account = () => {
 
       if (customerInfo.entitlements.active['premium'] !== undefined) {
         dispatch(setProStatus(true));
-        alert('Success! Premium features unlocked.');
+        alert(t('account.alerts.success_premium'));
       } else {
-        alert('No active purchases found for this account.');
+        alert(t('account.alerts.no_purchases'));
       }
     } catch (e: any) {
       console.error('Restore error:', e);
       if (e.code === Purchases.PURCHASES_ERROR_CODE.PAYMENT_PENDING_ERROR) {
-        alert(
-          'Your payment is pending. Please check back later once Google confirms the transaction.'
-        );
+        alert(t('account.alerts.payment_pending'));
       } else {
-        alert('An error occurred during purchase. Please try again.');
+        alert(t('account.alerts.error_purchase'));
       }
     }
     setLoading(false);
@@ -175,19 +173,21 @@ const Account = () => {
             >
               <View style={styles.innerContainer}>
                 <View>
-                  <Text style={styles.blockTitle}>Go beyond JavaScript!</Text>
+                  <Text style={styles.blockTitle}>
+                    {t('account.premium_banner.title')}
+                  </Text>
 
                   <Text style={styles.blockText}>
-                    Upgrade to Premium to unlock React, React Native, and Vue —
-                    and prepare across the entire frontend stack.
+                    {t('account.premium_banner.desc')}
                   </Text>
 
                   <Text style={[styles.blockText, { marginBottom: vs(10) }]}>
-                    One upgrade. All frameworks. No limits.
+                    {t('account.premium_banner.footer')}
                   </Text>
 
                   <AppButton
-                    title={`Go Premium${price ? ` — ${price}` : ''}`}
+                    title={`${t('account.premium_banner.button')}${price ? ` — ${price}` : ''
+                      }`}
                     onPress={() => setIsPurchasePopupVisible(true)}
                     height={vs(30)}
                   />
@@ -207,7 +207,7 @@ const Account = () => {
 
         {!loading && (
           <TouchableOpacity onPress={handleRestore} style={styles.btn}>
-            <Text style={styles.btnText}>Restore purchase</Text>
+            <Text style={styles.btnText}>{t('account.restore_purchase')}</Text>
           </TouchableOpacity>
         )}
       </View>
