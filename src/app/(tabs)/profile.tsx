@@ -7,6 +7,7 @@ import Account from '@/components/profile/Account';
 import { COLORS } from '@/theme/colors';
 import VersionBlock from '@/components/profile/VersionBlock';
 import LanguageSwitcher from '@/components/profile/LanguageSwitcher';
+import SkillChart from '@/components/profile/SkillChart';
 
 const Profile = () => {
   return (
@@ -18,6 +19,8 @@ const Profile = () => {
             <Account />
             <View style={styles.separator} />
             <LanguageSwitcher />
+            <View style={styles.separator} />
+            <SkillChart />
             <View style={styles.separator} />
             <VersionBlock />
           </ScrollView>

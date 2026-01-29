@@ -64,7 +64,7 @@ const Account = () => {
       [
         {
           text: t('account.cancel'),
-          onPress: () => {},
+          onPress: () => { },
           style: 'cancel',
         },
         {
