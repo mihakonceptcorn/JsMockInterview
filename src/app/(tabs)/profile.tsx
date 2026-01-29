@@ -5,7 +5,6 @@ import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
 import UserData from '@/components/profile/UserData';
 import Account from '@/components/profile/Account';
 import { COLORS } from '@/theme/colors';
-import FrameworkProgress from '@/components/profile/FrameworkProgress';
 import VersionBlock from '@/components/profile/VersionBlock';
 import LanguageSwitcher from '@/components/profile/LanguageSwitcher';
 
@@ -20,8 +19,6 @@ const Profile = () => {
             <View style={styles.separator} />
             <LanguageSwitcher />
             <View style={styles.separator} />
-            {/*<FrameworkProgress />*/}
-            {/*<View style={styles.separator} />*/}
             <VersionBlock />
           </ScrollView>
         </View>

@@ -1,5 +1,12 @@
-import { Alert, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import {
+  ActivityIndicator,
+  Alert,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { s, vs } from 'react-native-size-matters';
 import { COLORS } from '@/theme/colors';
@@ -7,11 +14,18 @@ import { LinearGradient } from 'expo-linear-gradient';
 import AppButton from '@/components/ui/AppButton';
 import { useRouter } from 'expo-router';
 import { useAuth } from '@/context/AuthContext';
+import Purchases from 'react-native-purchases';
+import { useDispatch } from 'react-redux';
+import { setProStatus } from '@/store/userSlice';
+import PurchasePopup from '@/components/stages/PurchasePopup';
 
 const Account = () => {
   const { t } = useTranslation('profile');
   const router = useRouter();
   const { user, logout } = useAuth();
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const [isPurchasePopupVisible, setIsPurchasePopupVisible] = useState(false);
 
   const showConfirmDialog = () => {
     Alert.alert(
@@ -32,69 +46,144 @@ const Account = () => {
     );
   };
 
+  const handleRestore = async () => {
+    setLoading(true);
+    try {
+      const customerInfo = await Purchases.restorePurchases();
+
+      if (customerInfo.entitlements.active['premium'] !== undefined) {
+        dispatch(setProStatus(true));
+        alert('Success! Premium features unlocked.');
+      } else {
+        alert('No active purchases found for this account.');
+      }
+    } catch (e: any) {
+      console.error('Restore error:', e);
+      if (e.code === Purchases.PURCHASES_ERROR_CODE.PAYMENT_PENDING_ERROR) {
+        alert(
+          'Your payment is pending. Please check back later once Google confirms the transaction.'
+        );
+      } else {
+        alert('An error occurred during purchase. Please try again.');
+      }
+    }
+    setLoading(false);
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{t('account.title')}</Text>
-      <View style={styles.blockContainer}>
-        <LinearGradient
-          colors={['#0B1F36', '#102C4C']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-        >
-          <View style={styles.innerContainer}>
-            {user ? (
-              <>
+    <>
+      <View style={styles.container}>
+        <Text style={styles.title}>{t('account.title')}</Text>
+        <View style={styles.blockContainer}>
+          <LinearGradient
+            colors={['#0B1F36', '#102C4C']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+          >
+            <View style={styles.innerContainer}>
+              {user ? (
+                <>
+                  <AppButton
+                    title={t('account.logout')}
+                    onPress={showConfirmDialog}
+                    height={vs(30)}
+                  />
+                </>
+              ) : (
+                <>
+                  <View style={{ width: '54%' }}>
+                    <Text style={styles.blockTitle}>
+                      {t('account.create_account')}
+                    </Text>
+                    <Text style={styles.blockText}>
+                      {t('account.sync_desc')}
+                    </Text>
+                    <Text style={styles.blockText}>
+                      {t('account.works_without_account')}
+                    </Text>
+                  </View>
+
+                  <View
+                    style={{
+                      width: '46%',
+                      flex: 1,
+                      gap: s(10),
+                    }}
+                  >
+                    <AppButton
+                      title={t('account.sign_up')}
+                      onPress={() => {
+                        router.navigate({
+                          pathname: '/signUp',
+                        });
+                      }}
+                      height={vs(30)}
+                    />
+                    <AppButton
+                      title={t('account.sign_in')}
+                      onPress={() => {
+                        router.navigate({
+                          pathname: '/logIn',
+                        });
+                      }}
+                      height={vs(30)}
+                      isSecondary
+                    />
+                  </View>
+                </>
+              )}
+            </View>
+          </LinearGradient>
+        </View>
+
+        <View style={styles.blockContainer}>
+          <LinearGradient
+            colors={['#0B1F36', '#102C4C']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+          >
+            <View style={styles.innerContainer}>
+              <View>
+                <Text style={styles.blockTitle}>Go beyond JavaScript!</Text>
+
+                <Text style={styles.blockText}>
+                  Upgrade to Premium to unlock React, React Native, and Vue —
+                  and prepare across the entire frontend stack.
+                </Text>
+
+                <Text style={[styles.blockText, { marginBottom: vs(10) }]}>
+                  One upgrade. All frameworks. No limits.
+                </Text>
+
                 <AppButton
-                  title={t('account.logout')}
-                  onPress={showConfirmDialog}
+                  title="Go Premium"
+                  onPress={() => setIsPurchasePopupVisible(true)}
                   height={vs(30)}
                 />
-              </>
-            ) : (
-              <>
-                <View style={{ width: '54%' }}>
-                  <Text style={styles.blockTitle}>
-                    {t('account.create_account')}
-                  </Text>
-                  <Text style={styles.blockText}>{t('account.sync_desc')}</Text>
-                  <Text style={styles.blockText}>
-                    {t('account.works_without_account')}
-                  </Text>
-                </View>
+              </View>
+            </View>
+          </LinearGradient>
+        </View>
 
-                <View
-                  style={{
-                    width: '46%',
-                    flex: 1,
-                    gap: s(10),
-                  }}
-                >
-                  <AppButton
-                    title={t('account.sign_up')}
-                    onPress={() => {
-                      router.navigate({
-                        pathname: '/signUp',
-                      });
-                    }}
-                    height={vs(30)}
-                  />
-                  <AppButton
-                    title={t('account.sign_in')}
-                    onPress={() => {
-                      router.navigate({
-                        pathname: '/logIn',
-                      });
-                    }}
-                    height={vs(30)}
-                    isSecondary
-                  />
-                </View>
-              </>
-            )}
-          </View>
-        </LinearGradient>
+        {loading && (
+          <ActivityIndicator
+            size="small"
+            color={COLORS.accent}
+            style={styles.btn}
+          />
+        )}
+
+        {!loading && (
+          <TouchableOpacity onPress={handleRestore} style={styles.btn}>
+            <Text style={styles.btnText}>Restore purchase</Text>
+          </TouchableOpacity>
+        )}
       </View>
-    </View>
+      <PurchasePopup
+        isVisible={isPurchasePopupVisible}
+        onClose={() => setIsPurchasePopupVisible(false)}
+      />
+    </>
   );
 };
 export default Account;
@@ -129,5 +218,13 @@ const styles = StyleSheet.create({
     fontSize: s(10),
     color: COLORS.textPrimary,
     paddingTop: s(6),
+  },
+  btn: {
+    alignItems: 'center',
+    marginTop: vs(10),
+  },
+  btnText: {
+    fontSize: s(12),
+    color: COLORS.accent,
   },
 });
