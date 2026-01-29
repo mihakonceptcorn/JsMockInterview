@@ -112,14 +112,24 @@ const Stage = () => {
                 <View style={styles.progressContainer}>
                   <View style={styles.timerContainer}>
                     {mode === 'interview' ? (
-                      <Text
-                        style={[
-                          styles.countdownText,
-                          { color: getCountdownColor() },
-                        ]}
-                      >
-                        {t('stage:ends_in')}: {countdown}
-                      </Text>
+                      <>
+                        <Text
+                          style={[
+                            styles.countdownText,
+                            { color: getCountdownColor() },
+                          ]}
+                        >
+                          {t('stage:ends_in')}:
+                        </Text>
+                        <Text
+                          style={[
+                            styles.countdownText,
+                            { color: getCountdownColor() },
+                          ]}
+                        >
+                          {countdown}
+                        </Text>
+                      </>
                     ) : (
                       <Text style={styles.timerText}>
                         {t('stage:time')}: {formatTime(time)}
@@ -166,11 +176,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: s(20),
     marginTop: vs(10),
     flexDirection: 'row',
+    gap: s(10),
   },
   timerContainer: {
     width: '50%',
     alignItems: 'center',
-    justifyContent: 'center',
   },
   timerText: {
     fontSize: 16,
