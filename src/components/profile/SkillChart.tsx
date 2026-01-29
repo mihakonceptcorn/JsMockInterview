@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Dimensions, StyleSheet, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { ProgressChart } from 'react-native-chart-kit';
+import { PieChart } from 'react-native-gifted-charts';
 import { COLORS } from '@/theme/colors';
 import { s, vs } from 'react-native-size-matters';
 import jsStages from '@/data/js/js.stages.json';
@@ -10,8 +10,6 @@ import reactNativeStages from '@/data/reactNative/reactNative.stages.json';
 import vueStages from '@/data/vue/vue.stages.json';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-
-const screenWidth = Dimensions.get('window').width;
 
 const SkillChart = () => {
   const { t } = useTranslation('profile');
@@ -22,16 +20,13 @@ const SkillChart = () => {
     stages: { id: string }[]
   ): number => {
     if (!results[framework]) return 0;
-
     const stageIds = stages.map((s) => s.id);
     const resultsArray = Object.entries(results[framework]).filter(([id]) =>
       stageIds.includes(id)
     );
-
     const completedCount = resultsArray.filter(
       ([_, result]) => result.score > 0
     ).length;
-
     const totals = resultsArray.reduce(
       (acc, [_, result]) => {
         if (result.score > 0) {
@@ -45,63 +40,87 @@ const SkillChart = () => {
 
     const precision = totals.total > 0 ? totals.score / totals.total : 0;
     const coverage = stages.length > 0 ? completedCount / stages.length : 0;
-
     return precision * coverage;
   };
 
-  const data = {
-    labels: ['JS', 'React', 'RN', 'Vue'],
-    data: [
-      calculateProgress('js', jsStages.stages),
-      calculateProgress('react', reactStages.stages),
-      calculateProgress('react-native', reactNativeStages.stages),
-      calculateProgress('vue', vueStages.stages),
-    ],
-  };
-
-  const chartConfig = {
-    backgroundGradientFromOpacity: 0,
-    backgroundGradientToOpacity: 0,
-    color: (opacity = 1, index: any) => {
-      const shades = [
-        `rgba(46, 125, 50, ${opacity})`, // JS
-        `rgba(76, 175, 80, ${opacity})`, // React
-        `rgba(129, 199, 132, ${opacity})`, // React Native
-        `rgba(185, 230, 185, ${opacity})`, // Vue
-      ];
-
-      return index !== undefined
-        ? shades[index]
-        : `rgba(76, 175, 80, ${opacity})`;
+  const skills = [
+    { id: 'js', label: 'JS', stages: jsStages.stages, color: '#2E7D32' },
+    {
+      id: 'react',
+      label: 'React',
+      stages: reactStages.stages,
+      color: '#4CAF50',
     },
-    labelColor: () => COLORS.textSecondary,
-    strokeWidth: 2,
-    barPercentage: 0.5,
+    {
+      id: 'react-native',
+      label: 'RN',
+      stages: reactNativeStages.stages,
+      color: '#81C784',
+    },
+    { id: 'vue', label: 'Vue', stages: vueStages.stages, color: '#B9E6B9' },
+  ];
+
+  const renderDonut = (skill: (typeof skills)[0]) => {
+    const progress = calculateProgress(skill.id, skill.stages);
+    const percentage = Math.round(progress * 100);
+
+    const data = [
+      { value: percentage, color: skill.color },
+      { value: 100 - percentage, color: '#1E293B' },
+    ];
+
+    return (
+      <View key={skill.id} style={styles.chartItem}>
+        <PieChart
+          donut
+          radius={s(35)}
+          innerRadius={s(25)}
+          data={data}
+          innerCircleColor={COLORS.bgTop}
+        />
+        <Text style={styles.skillLabel}>{skill.label}</Text>
+        <Text style={styles.skillPercent}>{percentage}%</Text>
+      </View>
+    );
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t('skill_proficiency')}</Text>
-      <ProgressChart
-        data={data}
-        width={s(screenWidth - 120)}
-        height={vs(160)}
-        strokeWidth={s(12)}
-        radius={s(28)}
-        chartConfig={chartConfig}
-        hideLegend={false}
-      />
+      <View style={styles.chartsRow}>{skills.map(renderDonut)}</View>
     </View>
   );
 };
-export default SkillChart;
+
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: s(20),
+    paddingHorizontal: s(16),
     paddingVertical: vs(10),
   },
   title: {
     fontSize: s(16),
     color: COLORS.textPrimary,
+    marginBottom: vs(15),
+  },
+  chartsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  chartItem: {
+    alignItems: 'center',
+  },
+  skillLabel: {
+    color: COLORS.textSecondary,
+    fontSize: s(11),
+    marginTop: vs(8),
+    fontWeight: '600',
+  },
+  skillPercent: {
+    color: COLORS.textPrimary,
+    fontSize: s(10),
+    marginTop: vs(2),
   },
 });
+
+export default SkillChart;
