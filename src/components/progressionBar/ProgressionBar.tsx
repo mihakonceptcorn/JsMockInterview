@@ -7,19 +7,31 @@ import { COLORS } from '@/theme/colors';
 interface ProgressionBarProps {
   title: string;
   progress: number;
+  isColor?: boolean;
 }
 
-const ProgressionBar: FC<ProgressionBarProps> = ({ title, progress }) => {
+const ProgressionBar: FC<ProgressionBarProps> = ({
+  title,
+  progress,
+  isColor = false,
+}) => {
+  let color = COLORS.success;
+
+  if (isColor) {
+    console.log(progress);
+    color =
+      progress <= 0.4
+        ? COLORS.danger
+        : progress <= 0.7
+          ? COLORS.middleBar
+          : COLORS.success;
+  }
+
   return (
     <View style={styles.barContainer}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.bar}>
-        <Bar
-          progress={progress}
-          width={null}
-          height={vs(8)}
-          color={COLORS.success}
-        />
+        <Bar progress={progress} width={null} height={vs(8)} color={color} />
       </View>
     </View>
   );

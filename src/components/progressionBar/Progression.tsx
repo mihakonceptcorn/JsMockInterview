@@ -82,6 +82,7 @@ const Progression = () => {
           <ProgressionBar
             title={`${t('progress.correct_answers')}: ${correctAnswersPercentage.toFixed(0)}%`}
             progress={correctAnswersPercentage / 100}
+            isColor
           />
         </View>
       </LinearGradient>

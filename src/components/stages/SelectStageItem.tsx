@@ -27,6 +27,14 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
   completePercentage = 0,
 }) => {
   const { t } = useTranslation('common');
+
+  const getColor =
+    completePercentage <= 40
+      ? COLORS.danger
+      : completePercentage <= 70
+        ? COLORS.middleBar
+        : COLORS.success;
+
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.titleContainer}>
@@ -57,11 +65,13 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
           </>
         ) : isComplete ? (
           <>
-            <FontAwesome name="check-circle" size={24} color={COLORS.success} />
+            <FontAwesome name="check-circle" size={24} color={getColor} />
             <View>
-              <Text style={styles.statusTitle}>{t('stage_status.completed')}</Text>
+              <Text style={styles.statusTitle}>
+                {t('stage_status.completed')}
+              </Text>
               {completePercentage > 0 && (
-                <Text style={styles.statusSubTitle}>
+                <Text style={[styles.statusSubTitle, { color: getColor }]}>
                   {t('stage_status.correct')}: {completePercentage}%
                 </Text>
               )}
@@ -69,8 +79,14 @@ const SelectStageItem: FC<SelectStageItemProps> = ({
           </>
         ) : (
           <>
-            <Entypo name="circle-with-cross" size={24} color={COLORS.danger} />
-            <Text style={styles.statusTitle}>{t('stage_status.incomplete')}</Text>
+            <Entypo
+              name="circle-with-cross"
+              size={24}
+              color={COLORS.textSecondary}
+            />
+            <Text style={styles.statusTitle}>
+              {t('stage_status.incomplete')}
+            </Text>
           </>
         )}
       </View>
@@ -114,6 +130,5 @@ const styles = StyleSheet.create({
   statusSubTitle: {
     fontSize: s(10),
     marginLeft: s(6),
-    color: COLORS.accent,
   },
 });
