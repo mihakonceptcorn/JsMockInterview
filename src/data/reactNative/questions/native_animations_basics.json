@@ -4,170 +4,177 @@
       "id": "ab-01",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "Which component type must you use to make a standard View animatable with the Animated API?",
       "options": [
         "<View>",
         "<Animated.View>",
         "<Motion.View>",
         "<View.Animated>"
       ],
-      "correct": [1],
-      "explanation": "Standard components cannot handle Animated values directly. You must use the 'Animated' versions: View, Text, Image, and ScrollView.",
-      "interviewTip": "If you have a custom component, you can wrap it using 'Animated.createAnimatedComponent(MyComponent)'."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ab-02",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "What is the primary benefit of setting 'useNativeDriver: true' in an animation config?",
       "options": [
         "It makes the JavaScript code shorter.",
         "It offloads the animation execution to the native UI thread, preventing lag even if the JS thread is busy.",
         "It allows the animation to work on the web.",
         "It automatically calculates the interpolation values."
       ],
-      "correct": [1],
-      "explanation": "By sending the animation definition to the native side once, the native thread can update the UI independently of the JavaScript event loop.",
-      "interviewTip": "Remember that 'useNativeDriver' only works with non-layout properties like 'opacity' and 'transform'."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ab-03",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "How do you map a value that goes from 0 to 1 to a property that goes from 0 to 360 degrees?",
       "code": "const spin = animValue.________({\n  inputRange: [0, 1],\n  outputRange: ['0deg', '360deg']\n});",
-      "options": ["transform", "map", "interpolate", "extrapolate"],
-      "correct": [2],
-      "explanation": "Interpolation allows you to map an input range to an output range, including strings like colors or degrees.",
-      "interviewTip": "Interpolation is a core concept in the Animated API for creating complex, multi-property animations from a single value."
+      "options": [
+        "transform",
+        "map",
+        "interpolate",
+        "extrapolate"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "ab-04",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "Which method is used to create a spring-based animation that mimics physical movement?",
       "options": [
         "Animated.timing()",
         "Animated.decay()",
         "Animated.spring()",
         "Animated.physics()"
       ],
-      "correct": [2],
-      "explanation": "Animated.spring() provides a more natural feel by using physics parameters like 'friction', 'tension', 'bounciness', or 'stiffness' instead of a fixed duration.",
-      "interviewTip": "Springs are generally preferred for UI interactions (like button presses or modas) because they feel more 'organic' to users."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "ab-05",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "What is the correct way to initialize an animated value in a functional component to ensure it persists across renders?",
       "code": "const anim = ________(new Animated.Value(0)).current;",
-      "options": ["useState", "useMemo", "useRef", "useEffect"],
-      "correct": [2],
-      "explanation": "useRef ensures that the Animated.Value instance is created once and doesn't get reset when the component re-renders.",
-      "interviewTip": "Initializing in 'useRef' is the standard pattern for functional components to avoid memory leaks and state resets."
+      "options": [
+        "useState",
+        "useMemo",
+        "useRef",
+        "useEffect"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "ab-06",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "How do you run multiple animations at the exact same time?",
       "options": [
         "Animated.sequence([])",
         "Animated.parallel([])",
         "Animated.stagger(0, [])",
         "Animated.group([])"
       ],
-      "correct": [1],
-      "explanation": "Animated.parallel starts an array of animations simultaneously.",
-      "interviewTip": "Use this when you want an element to fade in and scale up at once."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ab-07",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "What does 'Animated.sequence([])' do?",
       "options": [
         "Starts animations one after another, waiting for each to finish.",
         "Starts all animations at once.",
         "Repeats the animation in a loop.",
         "Randomizes the order of animations."
       ],
-      "correct": [0],
-      "explanation": "Sequence ensures that the next animation in the array doesn't start until the previous one completes successfully.",
-      "interviewTip": "This is great for multi-step 'onboarding' animations or complex UI transitions."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "ab-08",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "How do you start an animation once it is defined?",
       "code": "Animated.timing(animValue, { toValue: 1, useNativeDriver: true }).________();",
-      "options": ["play", "begin", "start", "run"],
-      "correct": [2],
-      "explanation": "Animations in React Native are declarative. They don't run until you explicitly call the '.start()' method.",
-      "interviewTip": "You can pass a callback to .start(({ finished }) => { ... }) to handle logic after the animation ends."
+      "options": [
+        "play",
+        "begin",
+        "start",
+        "run"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "ab-09",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "Which of these style properties CANNOT be used with 'useNativeDriver: true'?",
-      "options": ["opacity", "scale", "backgroundColor", "translateX"],
-      "correct": [2],
-      "explanation": "As of current stable versions, the native driver primarily supports 'transform' and 'opacity'. Layout properties (width, height, flex) and some color properties typically require the JS thread.",
-      "interviewTip": "If you need to animate layout properties smoothly, look into the 'LayoutAnimation' API or 'Reanimated'."
+      "options": [
+        "opacity",
+        "scale",
+        "backgroundColor",
+        "translateX"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "ab-10",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "What is 'Animated.event' primarily used for?",
       "options": [
         "To trigger a function when an animation finishes.",
         "To map native events (like scroll or pan) directly to an Animated Value without going through the JS thread.",
         "To listen for device orientation changes.",
         "To create custom touch events."
       ],
-      "correct": [1],
-      "explanation": "Animated.event allows for ultra-smooth interactions, like a header that shrinks as you scroll, by binding the 'contentOffset' of a ScrollView to an Animated value.",
-      "interviewTip": "This is the most efficient way to link user gestures to UI changes."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ab-11",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "How do you create an animation that loops indefinitely?",
       "options": [
         "Animated.repeat()",
         "Animated.loop()",
         "Animated.forever()",
         "Calling .start() inside the completion callback."
       ],
-      "correct": [1],
-      "explanation": "Animated.loop() takes an animation and restarts it every time it reaches the end.",
-      "interviewTip": "You can use this for 'pulse' effects on buttons or loading indicators."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ab-12",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "What is the 'LayoutAnimation' API used for?",
       "options": [
         "To animate individual components like a fade-in.",
         "To automatically animate any change to the layout (flex, width, height) in the next render cycle.",
         "To handle complex 3D transforms.",
         "To manage the z-index transitions."
       ],
-      "correct": [1],
-      "explanation": "LayoutAnimation is a 'fire-and-forget' API. You call it before updating state, and the native side handles the transition of all layout changes smoothly.",
-      "interviewTip": "It’s very powerful but offers less granular control than the Animated API."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ab-13",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "Analyze the code. What will happen to the box after 2 seconds?",
       "code": "Animated.timing(fadeAnim, {\n  toValue: 0,\n  duration: 2000,\n  useNativeDriver: true,\n}).start();",
       "options": [
         "It will become fully opaque.",
@@ -175,24 +182,23 @@
         "It will move 2000 pixels to the left.",
         "The box will change its color to black."
       ],
-      "correct": [1],
-      "explanation": "toValue: 0 for an opacity property results in the element becoming completely transparent.",
-      "interviewTip": "Always ensure your initial value matches the intended starting point (e.g., new Animated.Value(1) for a fade-out)."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ab-14",
       "stageId": "native_animations_basics",
       "type": "single",
-      "prompt": "What happens to an animation if the component unmounts while the animation is running?",
       "options": [
         "It continues in the background.",
         "React Native handles the cleanup automatically, but it's good practice to call .stop() manually.",
         "The app will crash.",
         "The phone will vibrate."
       ],
-      "correct": [1],
-      "explanation": "While RN is generally stable, not stopping animations on unmount can occasionally lead to 'updating state on unmounted component' warnings or memory issues.",
-      "interviewTip": "In 'useEffect' cleanups, you should stop active animations if they are tied to local state."
+      "correct": [
+        1
+      ]
     }
   ]
 }

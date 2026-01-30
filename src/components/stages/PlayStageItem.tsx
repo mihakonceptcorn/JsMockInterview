@@ -1,5 +1,6 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import CodeHighlighter from 'react-native-code-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { s, vs } from 'react-native-size-matters';
@@ -33,6 +34,7 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
   mode,
   onNextPressed,
 }) => {
+  const { t } = useTranslation('questions');
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const [isAnswerShown, setIsAnswerShown] = useState(false);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
@@ -95,7 +97,9 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
               end={{ x: 1, y: 1 }}
             >
               <View style={styles.gradientInner}>
-                <Text style={styles.sectionTitle}>{item.prompt}</Text>
+                <Text style={styles.sectionTitle}>
+                  {t(`${item.id}.prompt`)}
+                </Text>
                 <View style={styles.codeContainerWrapper}>
                   {item.code && (
                     <CodeHighlighter
@@ -173,12 +177,14 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                     </View>
                     <View style={styles.explanationContainer}>
                       <Text style={styles.sectionTitle}>Explanation:</Text>
-                      <Text style={styles.explanation}>{item.explanation}</Text>
+                      <Text style={styles.explanation}>
+                        {t(`${item.id}.explanation`)}
+                      </Text>
                     </View>
                     <View style={styles.explanationContainer}>
                       <Text style={styles.sectionTitle}>Interview Tip:</Text>
                       <Text style={styles.explanation}>
-                        {item.interviewTip}
+                        {t(`${item.id}.interviewTip`)}
                       </Text>
                     </View>
                   </View>

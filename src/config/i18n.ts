@@ -27,6 +27,10 @@ import commonEs from '../assets/locales/es/common.json';
 import authEs from '../assets/locales/es/auth.json';
 import stageEs from '../assets/locales/es/stage.json';
 
+import questionsEn from '../assets/locales/en/questions.json';
+import questionsUk from '../assets/locales/uk/questions.json';
+import questionsEs from '../assets/locales/es/questions.json';
+
 const STORAGE_KEY = 'user-language';
 
 const resources = {
@@ -38,6 +42,7 @@ const resources = {
     common: commonEn,
     auth: authEn,
     stage: stageEn,
+    questions: questionsEn,
   },
   uk: {
     home: homeUk,
@@ -47,6 +52,7 @@ const resources = {
     common: commonUk,
     auth: authUk,
     stage: stageUk,
+    questions: questionsUk,
   },
   es: {
     home: homeEs,
@@ -56,6 +62,7 @@ const resources = {
     common: commonEs,
     auth: authEs,
     stage: stageEs,
+    questions: questionsEs,
   },
 };
 
@@ -66,7 +73,7 @@ const initI18n = async () => {
     const locales = Localization.getLocales();
     const systemLanguage = locales[0]?.languageCode || 'en';
 
-    savedLanguage = ['en', 'uk'].includes(systemLanguage)
+    savedLanguage = ['en', 'uk', 'es'].includes(systemLanguage)
       ? systemLanguage
       : 'en';
   }
@@ -83,6 +90,7 @@ const initI18n = async () => {
       'common',
       'auth',
       'stage',
+      'questions',
     ],
     defaultNS: 'home',
     interpolation: {

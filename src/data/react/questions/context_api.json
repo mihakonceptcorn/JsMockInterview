@@ -4,37 +4,34 @@
       "id": "ca-01",
       "stageId": "context_api",
       "type": "single",
-      "prompt": "What are the three main steps to implement React Context?",
       "options": [
         "Create Context, Define State, Export Component.",
         "Create Context, Provide Context, Consume Context.",
         "Initialize Ref, Pass Prop, Trigger Effect.",
         "Import Redux, Setup Store, Map Dispatch."
       ],
-      "correct": [1],
-      "explanation": "You first create the context object, wrap the parent tree with a Provider, and then use a hook or consumer in the child to access the data.",
-      "interviewTip": "The most common way to 'consume' today is via the 'useContext' hook."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ca-02",
       "stageId": "context_api",
       "type": "single",
-      "prompt": "What happens to components consuming a Context when the Provider's 'value' prop updates?",
       "options": [
         "Only the parent component re-renders.",
         "All components in the app re-render.",
         "All components that call 'useContext' for that specific context will re-render.",
         "Nothing happens until the page is refreshed."
       ],
-      "correct": [2],
-      "explanation": "Context triggers a re-render for all consumers whenever the value changes. This is why you should keep context values stable or split large contexts.",
-      "interviewTip": "To optimize, consider memoizing the context value object using 'useMemo'."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "ca-03",
       "stageId": "context_api",
       "type": "single",
-      "prompt": "What is the result of the following code if 'UserContext' has no Provider above the Header?",
       "code": "const UserContext = createContext('Guest');\nfunction Header() {\n  const user = useContext(UserContext);\n  return <h1>{user}</h1>;\n}",
       "options": [
         "The app crashes with a 'ProviderNotFound' error.",
@@ -42,30 +39,29 @@
         "It renders nothing (null).",
         "It renders 'undefined'."
       ],
-      "correct": [1],
-      "explanation": "If no Provider is found in the tree, 'useContext' returns the default value passed to 'createContext(defaultValue)'.",
-      "interviewTip": "Default values are useful for testing components in isolation without wrapping them in providers."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ca-04",
       "stageId": "context_api",
       "type": "multiple",
-      "prompt": "Which of the following are good use cases for React Context?",
       "options": [
         "Managing the current theme (Dark/Light mode).",
         "Storing the text of a single search input field.",
         "Handling user authentication/current user profile.",
         "Managing complex, high-frequency data like real-time game coordinates."
       ],
-      "correct": [0, 2],
-      "explanation": "Context is great for 'global' data that doesn't change extremely often. For high-frequency updates, Context can cause performance bottlenecks.",
-      "interviewTip": "For high-frequency state, libraries like Redux, Zustand, or Recoil are often better choices."
+      "correct": [
+        0,
+        2
+      ]
     },
     {
       "id": "ca-05",
       "stageId": "context_api",
       "type": "single",
-      "prompt": "Analyze the code. How should 'App' be structured to share 'theme'?",
       "code": "const ThemeContext = createContext();\n\nfunction App() {\n  const [theme, setTheme] = useState('light');\n  return (\n    <ThemeContext.Provider value={theme}>\n      <Layout />\n    </ThemeContext.Provider>\n  );\n}",
       "options": [
         "The code is correct as is.",
@@ -73,60 +69,56 @@
         "The ThemeContext.Provider should be outside the App function.",
         "You must wrap the Provider in another div."
       ],
-      "correct": [0],
-      "explanation": "The 'value' prop is the standard way to pass data into the Context tree. Any component inside <Layout /> can now access 'theme'.",
-      "interviewTip": "If you also want to allow children to change the theme, pass `{ theme, setTheme }` as the value."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "ca-06",
       "stageId": "context_api",
       "type": "single",
-      "prompt": "Why is 'useContext' preferred over the older 'Context.Consumer' component?",
       "options": [
         "It makes the code more performant.",
         "It avoids 'wrapper hell' and nested render props, leading to flatter and more readable code.",
         "It allows Context to be used in Class components.",
         "It automatically memoizes the data."
       ],
-      "correct": [1],
-      "explanation": "Before hooks, you had to use a render prop pattern which made the JSX tree very deep and hard to follow.",
-      "interviewTip": "Flattening the component tree is one of the primary aesthetic wins of the Hooks API."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ca-07",
       "stageId": "context_api",
       "type": "single",
-      "prompt": "Can you use multiple Providers in a single application?",
       "options": [
         "No, React only allows one Context per app.",
         "Yes, and you can nest them to provide different types of data (e.g., Auth, Theme, Settings).",
         "Yes, but only if they are for the same Context object.",
         "Only if you use the 'useMultiContext' hook."
       ],
-      "correct": [1],
-      "explanation": "Nesting providers is standard practice. A component will always consume the value from the *closest* provider of that specific context above it in the tree.",
-      "interviewTip": "This is often referred to as 'Context Composition'."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ca-08",
       "stageId": "context_api",
       "type": "single",
-      "prompt": "What is the primary risk of putting too much data into a single Context object?",
       "options": [
         "The data will become corrupted.",
         "Unnecessary re-renders: if any part of the context object changes, all components consuming that context will re-render.",
         "The file size of the app will double.",
         "It prevents the use of custom hooks."
       ],
-      "correct": [1],
-      "explanation": "Because Context updates trigger a re-render for all consumers, large 'monolithic' contexts can lead to performance lag.",
-      "interviewTip": "The fix is 'Context Splitting'—create separate contexts for logically different data (e.g., UserContext and ThemeContext)."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ca-09",
       "stageId": "context_api",
       "type": "single",
-      "prompt": "How do you provide a function through Context to allow children to update the state?",
       "code": "<AuthContext.Provider value={{ user, login: () => setUser(data) }}>",
       "options": [
         "You can't pass functions through Context.",
@@ -134,15 +126,14 @@
         "Use a separate 'FunctionProvider'.",
         "Call the function directly in the Provider tags."
       ],
-      "correct": [1],
-      "explanation": "Context values can be any JS type. Passing an object containing both the state and its setter is the most common pattern for global state management.",
-      "interviewTip": "Always ensure the object passed to 'value' is memoized if it's defined inside a component, otherwise it creates a new reference on every render."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ca-10",
       "stageId": "context_api",
       "type": "single",
-      "prompt": "Identify the error in this Consumer logic:",
       "code": "function Display() {\n  const theme = ThemeContext;\n  return <div style={{ background: theme }}>Text</div>;\n}",
       "options": [
         "theme must be a string.",
@@ -150,39 +141,39 @@
         "The style prop is missing a semicolon.",
         "Display must be capitalized."
       ],
-      "correct": [1],
-      "explanation": "The context object itself is just a descriptor. You must use the 'useContext' hook to 'pull' the value out of that context.",
-      "interviewTip": "Think of the Context object as a 'Key' and 'useContext' as the 'Lock' that opens it."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "ca-11",
       "stageId": "context_api",
       "type": "multiple",
-      "prompt": "Which of these are valid ways to avoid performance issues with Context?",
       "options": [
         "Splitting a large context into multiple smaller contexts.",
         "Using 'React.memo' on the consumer components.",
         "Moving the Provider higher up in the tree.",
         "Memoizing the 'value' prop of the Provider using 'useMemo'."
       ],
-      "correct": [0, 1, 3],
-      "explanation": "Splitting and memoization are the two most effective strategies. Moving a provider higher actually increases the number of potential components affected by a render.",
-      "interviewTip": "If 'React.memo' doesn't help, the bottleneck is likely the context value itself changing too often."
+      "correct": [
+        0,
+        1,
+        3
+      ]
     },
     {
       "id": "ca-12",
       "stageId": "context_api",
       "type": "single",
-      "prompt": "What happens if a component calls 'useContext' but its parent Provider is later unmounted?",
       "options": [
         "The component will crash.",
         "The component will revert to the default value defined in 'createContext'.",
         "The component will maintain the last known value forever.",
         "The component will automatically unmount as well."
       ],
-      "correct": [1],
-      "explanation": "When the Provider is gone, the hook searches up the tree and, finding nothing, falls back to the original default value.",
-      "interviewTip": "This ensures the component stays 'safe' even during dynamic layout changes."
+      "correct": [
+        1
+      ]
     }
   ]
 }

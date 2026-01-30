@@ -4,37 +4,34 @@
       "id": "gh-01",
       "stageId": "gesture_handler",
       "type": "single",
-      "prompt": "Why is 'React Native Gesture Handler' preferred over the built-in 'PanResponder'?",
       "options": [
         "It uses less battery.",
         "It runs on the native thread, avoiding the 'bridge' bottleneck for smooth 60fps gestures.",
         "It is written in pure JavaScript and easier to debug.",
         "It only works with Expo."
       ],
-      "correct": [1],
-      "explanation": "RNGH interacts directly with the native platform's gesture recognition system, meaning touch events don't have to travel to the JS thread to be processed.",
-      "interviewTip": "Always mention 'determinism' and 'responsiveness' when comparing RNGH to PanResponder."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "gh-02",
       "stageId": "gesture_handler",
       "type": "single",
-      "prompt": "Which component must wrap your entire app to enable Gesture Handler functionality?",
       "options": [
         "<GestureContainer>",
         "<GestureHandlerRootView>",
         "<TouchProvider>",
         "<NativeGestureWrapper>"
       ],
-      "correct": [1],
-      "explanation": "To ensure gestures are captured correctly, especially on Android, you must wrap your entry point (usually App.js) in a <GestureHandlerRootView>.",
-      "interviewTip": "Missing this wrapper is the most common reason gestures 'silently fail' to trigger."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "gh-03",
       "stageId": "gesture_handler",
       "type": "single",
-      "prompt": "What will this code do when the user drags their finger across the screen?",
       "code": "const gesture = Gesture.Pan().onUpdate((event) => {\n  console.log(event.translationX);\n});",
       "options": [
         "It tracks the horizontal distance moved from the starting point.",
@@ -42,30 +39,28 @@
         "It logs the absolute X coordinate relative to the screen.",
         "It only works if the user double-taps."
       ],
-      "correct": [0],
-      "explanation": "In a Pan gesture, 'translationX' and 'translationY' represent the distance the finger has moved since the gesture started.",
-      "interviewTip": "Contrast 'translation' (movement relative to start) with 'absolutePosition' (coordinate relative to parent)."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "gh-04",
       "stageId": "gesture_handler",
       "type": "single",
-      "prompt": "Which gesture handler is specifically designed for a single quick press?",
       "options": [
         "Gesture.LongPress()",
         "Gesture.Tap()",
         "Gesture.Fling()",
         "Gesture.Click()"
       ],
-      "correct": [1],
-      "explanation": "Gesture.Tap() is used for discrete touch events. You can configure it to require multiple taps (e.g., double-tap to like).",
-      "interviewTip": "Tap is preferred over Pressable when you need to coordinate it with other gestures like Pinch or Pan."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "gh-05",
       "stageId": "gesture_handler",
       "type": "single",
-      "prompt": "How do you allow two gestures to work at the same time (e.g., pinching and rotating simultaneously)?",
       "code": "const composed = Gesture.Simultaneous(pinch, rotate);",
       "options": [
         "The code above is correct.",
@@ -73,70 +68,72 @@
         "Use Gesture.Exclusive(pinch, rotate).",
         "Gestures cannot run simultaneously."
       ],
-      "correct": [0],
-      "explanation": "Gesture.Simultaneous() allows all provided gestures to remain active together.",
-      "interviewTip": "This is essential for complex 'Image Editor' interfaces where users expect multi-touch freedom."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "gh-06",
       "stageId": "gesture_handler",
       "type": "single",
-      "prompt": "What is the purpose of 'Gesture.Exclusive'?",
       "options": [
         "To make a gesture work only on iOS.",
         "To set a priority where only one gesture can 'win' (e.g., favoring a double-tap over a single-tap).",
         "To prevent the parent ScrollView from scrolling.",
         "To disable all other buttons on the screen."
       ],
-      "correct": [1],
-      "explanation": "Exclusive gives priority to the first gesture. If a double-tap is detected, it prevents the single-tap from firing.",
-      "interviewTip": "This is how you solve conflicts between overlapping touch areas."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "gh-07",
       "stageId": "gesture_handler",
       "type": "single",
-      "prompt": "Which event callback runs when the user lifts their finger from the screen?",
-      "options": ["onBegin", "onStart", "onEnd", "onFinalize"],
-      "correct": [3],
-      "explanation": "onFinalize runs regardless of whether the gesture finished successfully or was cancelled. onEnd only runs if the gesture was successful.",
-      "interviewTip": "Use onFinalize to 'reset' your UI state to ensure it doesn't get stuck if the gesture is interrupted."
+      "options": [
+        "onBegin",
+        "onStart",
+        "onEnd",
+        "onFinalize"
+      ],
+      "correct": [
+        3
+      ]
     },
     {
       "id": "gh-08",
       "stageId": "gesture_handler",
       "type": "multiple",
-      "prompt": "Which of these are valid built-in gesture types in RNGH?",
       "options": [
         "Pinch (two-finger zoom)",
         "Rotation (two-finger rotate)",
         "Fling (quick swipe in a specific direction)",
         "Shake (physical device movement)"
       ],
-      "correct": [0, 1, 2],
-      "explanation": "Pinch, Rotation, and Fling are all touch gestures. 'Shake' is a device motion event, not handled by Gesture Handler.",
-      "interviewTip": "Mention 'Fling' as an optimized way to handle 'Swipe to delete' interactions."
+      "correct": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "id": "gh-09",
       "stageId": "gesture_handler",
       "type": "single",
-      "prompt": "What does 'simultaneousHandlers' prop do in the legacy API?",
       "options": [
         "It speeds up the JS thread.",
         "It allows a component to recognize a gesture while a specific parent (like a ScrollView) is also active.",
         "It allows two different users to touch the screen.",
         "It converts touches into mouse clicks."
       ],
-      "correct": [1],
-      "explanation": "Without this, a ScrollView would 'steal' the touch event as soon as it detects movement. simultaneousHandlers allows both to cooperate.",
-      "interviewTip": "This is crucial for drawers or bottom sheets that contain scrollable content."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "gh-10",
       "stageId": "gesture_handler",
       "type": "single",
-      "prompt": "In the new 'Gesture' API (v2), how do you attach the gesture to a View?",
       "code": "<GestureDetector gesture={panGesture}>\n  <Animated.View style={styles.box} />\n</GestureDetector>",
       "options": [
         "The code above is correct.",
@@ -144,9 +141,9 @@
         "Using the 'useGesture' hook.",
         "By wrapping the View in a <PanHandler>."
       ],
-      "correct": [0],
-      "explanation": "The GestureDetector is the wrapper that bridges the gesture definition with a specific UI component.",
-      "interviewTip": "Remember that GestureDetector can only have ONE child."
+      "correct": [
+        0
+      ]
     }
   ]
 }

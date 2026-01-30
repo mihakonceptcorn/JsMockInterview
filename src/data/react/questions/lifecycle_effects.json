@@ -4,7 +4,6 @@
       "id": "le-01",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "When does the code inside a useEffect block run by default if no dependency array is provided?",
       "code": "useEffect(() => {\n  console.log('Running...');\n});",
       "options": [
         "Only when the component unmounts.",
@@ -12,15 +11,14 @@
         "Only after the first render (mount).",
         "Only when the state changes."
       ],
-      "correct": [1],
-      "explanation": "Without a dependency array, useEffect runs after every render cycle. This is usually avoided to prevent performance issues.",
-      "interviewTip": "Always be intentional with your dependency array to avoid infinite loops."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "le-02",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "How do you ensure a useEffect only runs once, similar to 'componentDidMount'?",
       "code": "useEffect(() => {\n  // Logic here\n}, ____);",
       "options": [
         "Passing undefined.",
@@ -28,15 +26,14 @@
         "Passing an empty array [].",
         "Omitting the second argument."
       ],
-      "correct": [2],
-      "explanation": "An empty dependency array [] tells React that the effect doesn't depend on any values from props or state, so it never needs to re-run.",
-      "interviewTip": "Even with an empty array, in React 18 'Strict Mode' development, effects might run twice to help you find cleanup bugs."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "le-03",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "What is the purpose of the function returned from a useEffect hook?",
       "code": "useEffect(() => {\n  const timer = setInterval(() => {}, 1000);\n  return () => clearInterval(timer);\n}, []);",
       "options": [
         "To initialize the next render.",
@@ -44,30 +41,30 @@
         "To trigger a re-render of the parent component.",
         "To handle errors within the effect."
       ],
-      "correct": [1],
-      "explanation": "The cleanup function is essential for preventing memory leaks (like intervals, event listeners, or active API subscriptions).",
-      "interviewTip": "Always clean up side effects that persist beyond the component's lifecycle."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "le-04",
       "stageId": "lifecycle_effects",
       "type": "multiple",
-      "prompt": "Which of the following are valid reasons to use the useEffect hook?",
       "options": [
         "Updating the document title based on state.",
         "Calculating a value from two props (e.g., fullName = firstName + lastName).",
         "Fetching data from an external API.",
         "Starting or stopping a timer/interval."
       ],
-      "correct": [0, 2, 3],
-      "explanation": "Calculating values from props should be done during render (or via useMemo). Effects are specifically for 'side effects' that touch things outside the React ecosystem.",
-      "interviewTip": "If you can calculate it during render, you don't need useEffect."
+      "correct": [
+        0,
+        2,
+        3
+      ]
     },
     {
       "id": "le-05",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "What will happen if you update a state variable inside a useEffect without a dependency array?",
       "code": "useEffect(() => {\n  setCount(count + 1);\n});",
       "options": [
         "The count will increment once and stop.",
@@ -75,15 +72,14 @@
         "React will throw an 'AutoLoopError'.",
         "The UI will update smoothly at 60fps."
       ],
-      "correct": [1],
-      "explanation": "The render triggers the effect, the effect updates state, the state update triggers a render, and the cycle repeats infinitely.",
-      "interviewTip": "If you see your CPU fans spinning up during dev, check for a missing dependency array in a useEffect that calls a setter."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "le-06",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "Analyze the dependency array below. When will this effect re-run?",
       "code": "useEffect(() => {\n  fetchData(userId);\n}, [userId]);",
       "options": [
         "On every render.",
@@ -91,71 +87,71 @@
         "Only when 'fetchData' is called manually.",
         "On every click event."
       ],
-      "correct": [1],
-      "explanation": "React performs a shallow comparison (Object.is) on each item in the array. If any item changes between renders, the effect re-runs.",
-      "interviewTip": "Be careful when passing objects or arrays in the dependency array, as new references will trigger the effect every time."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "le-07",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "What is the console output when the component unmounts?",
       "code": "useEffect(() => {\n  console.log('A');\n  return () => console.log('B');\n}, []);",
-      "options": ["A", "B", "A then B", "None (console is cleared)"],
-      "correct": [1],
-      "explanation": "The cleanup function (B) runs only when the component is being removed from the DOM if the dependency array is empty.",
-      "interviewTip": "If the array had dependencies, 'B' would run before every re-run of 'A' AND at unmount."
+      "options": [
+        "A",
+        "B",
+        "A then B",
+        "None (console is cleared)"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "le-08",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "How does React handle multiple useEffect hooks in a single component?",
       "options": [
         "It only executes the first one.",
         "It executes them in the order they are defined.",
         "It executes them in parallel (random order).",
         "It merges them into a single effect."
       ],
-      "correct": [1],
-      "explanation": "React relies on the order of Hook calls to maintain state. They are executed sequentially after the render is committed to the screen.",
-      "interviewTip": "Use multiple effects to separate unrelated logic (e.g., one for data fetching, one for an event listener)."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "le-09",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "Why is it important to include all reactive values (props, state) used inside the effect in the dependency array?",
       "options": [
         "To avoid stale closures where the effect uses old values from a previous render.",
         "To prevent the component from unmounting.",
         "To speed up the Virtual DOM diffing process.",
         "It's just a linting suggestion, not strictly necessary."
       ],
-      "correct": [0],
-      "explanation": "If a value is used inside but not listed in the dependencies, the effect function 'remembers' the version of that value from when it was last created, leading to bugs.",
-      "interviewTip": "The 'eslint-plugin-react-hooks' is your best friend for catching missing dependencies automatically."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "le-10",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "What is the 'Effect Lifecycle' order when dependencies change?",
       "options": [
         "New Effect runs -> Old Cleanup runs.",
         "Old Cleanup runs -> New Effect runs.",
         "They run at the same time.",
         "The Cleanup only runs at unmount."
       ],
-      "correct": [1],
-      "explanation": "React cleans up the previous render's effect before applying the new one to ensure no stale side effects overlap.",
-      "interviewTip": "This is why cleaning up a subscription before starting a new one prevents 'duplicate listener' bugs."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "le-11",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "What happens if you return a string instead of a function from useEffect?",
       "code": "useEffect(() => {\n  return 'Cleanup';\n}, []);",
       "options": [
         "React logs 'Cleanup' to the console.",
@@ -163,30 +159,28 @@
         "React will warn/error because it expects a function or undefined.",
         "It becomes the new state."
       ],
-      "correct": [2],
-      "explanation": "useEffect expects the return value to be either a function (for cleanup) or nothing (undefined). Returning anything else is a mistake.",
-      "interviewTip": "Returning an async function is a common mistake because async functions return a Promise, not a cleanup function."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "le-12",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "Which hook is used for side effects that need to happen synchronously *before* the browser paints the screen?",
       "options": [
         "useEffect",
         "useLayoutEffect",
         "useSyncEffect",
         "useBeforeRender"
       ],
-      "correct": [1],
-      "explanation": "useLayoutEffect runs at the same time as the old 'componentDidMount'—after DOM mutations but before the user sees them. Useful for measuring DOM elements.",
-      "interviewTip": "Prefer useEffect for 99% of cases to avoid blocking visual updates."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "le-13",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "How should you handle an async function inside useEffect?",
       "code": "useEffect(() => {\n  const fetchData = async () => {\n    const data = await api.get();\n    setData(data);\n  };\n  fetchData();\n}, []);",
       "options": [
         "The code above is the correct way.",
@@ -194,30 +188,28 @@
         "Use .then() only, async/await is forbidden.",
         "Call the async function outside the component."
       ],
-      "correct": [0],
-      "explanation": "You cannot make the effect callback itself async because it would return a Promise instead of a cleanup function. You must define the async function inside the effect.",
-      "interviewTip": "Defining it inside the effect also makes it easier to handle cleanup (like AbortController)."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "le-14",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "What is the 'Mounting' phase in React?",
       "options": [
         "When a component is being updated with new props.",
         "When a component is being created and inserted into the DOM.",
         "When a component is removed from the screen.",
         "When the user clicks on the component."
       ],
-      "correct": [1],
-      "explanation": "Mounting is the start of a component's life in the DOM.",
-      "interviewTip": "useEffect with [] is the most common way to handle 'onMount' logic."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "le-15",
       "stageId": "lifecycle_effects",
       "type": "multiple",
-      "prompt": "Which of these will trigger a re-run of an effect with [data] as a dependency?",
       "code": "const [data, setData] = useState({ count: 0 });",
       "options": [
         "setData({ count: 0 }) // New object reference.",
@@ -225,15 +217,15 @@
         "setData(prev => ({ ...prev, count: 1 })) // New object reference.",
         "Calling setData with the same string value 'hello' if data was 'hello'."
       ],
-      "correct": [0, 2],
-      "explanation": "React uses shallow equality. A new object literal `{}` is always a different reference, even if the properties look the same.",
-      "interviewTip": "This is why we spread: `setData({...data})`."
+      "correct": [
+        0,
+        2
+      ]
     },
     {
       "id": "le-16",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "What is the console output when the dependency 'count' changes from 1 to 2?",
       "code": "useEffect(() => {\n  console.log('Effect');\n  return () => console.log('Cleanup');\n}, [count]);",
       "options": [
         "Effect",
@@ -241,24 +233,23 @@
         "Effect then Cleanup",
         "Cleanup"
       ],
-      "correct": [1],
-      "explanation": "When dependencies change, React first runs the cleanup of the previous effect, then the new effect.",
-      "interviewTip": "This ensures the 'old' world is cleaned up before the 'new' world starts."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "le-17",
       "stageId": "lifecycle_effects",
       "type": "single",
-      "prompt": "Is it safe to omit a function from the dependency array if it's defined inside the component?",
       "options": [
         "Yes, functions never change.",
         "No, functions are recreated on every render and will trigger the effect every time unless memoized.",
         "Only if the function doesn't use state.",
         "Yes, React ignores functions in dependencies."
       ],
-      "correct": [1],
-      "explanation": "In JS, `function a(){}` !== `function a(){}` if they are created in different render cycles. Use `useCallback` to keep function references stable.",
-      "interviewTip": "Moving the function *inside* the useEffect is often the simplest fix."
+      "correct": [
+        1
+      ]
     }
   ]
 }

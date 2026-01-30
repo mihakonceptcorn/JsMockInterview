@@ -4,32 +4,34 @@
       "id": "tm-01",
       "stageId": "testing_mobile",
       "type": "single",
-      "prompt": "Which testing framework is the default for React Native and handles the execution of unit tests?",
-      "options": ["Mocha", "Jest", "Detox", "Cypress"],
-      "correct": [1],
-      "explanation": "Jest is the standard test runner for React Native. It comes pre-configured with a 'react-native' preset that mocks the mobile environment.",
-      "interviewTip": "Mention that Jest's 'Snapshot Testing' is a popular but controversial way to catch unintended UI changes."
+      "options": [
+        "Mocha",
+        "Jest",
+        "Detox",
+        "Cypress"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "tm-02",
       "stageId": "testing_mobile",
       "type": "single",
-      "prompt": "What is the main philosophy of 'React Native Testing Library' (RNTL)?",
       "options": [
         "To test the internal state and private methods of a component.",
         "To test components from the user's perspective (e.g., finding elements by text or accessibility labels).",
         "To automatically fix bugs in the code.",
         "To test the app's performance on a real device."
       ],
-      "correct": [1],
-      "explanation": "RNTL encourages testing *behavior* rather than *implementation*. If you refactor your code but the user still sees 'Submit', your tests should still pass.",
-      "interviewTip": "Avoid using 'enzyme' in modern React Native; RNTL is the community-standard replacement."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "tm-03",
       "stageId": "testing_mobile",
       "type": "single",
-      "prompt": "Analyze the code. How do you simulate a user typing into the 'Question' input in a test?",
       "code": "const { getByPlaceholderText } = render(<QuestionForm />);\nconst input = getByPlaceholderText('Type here...');\n\n________(input, 'What is a Closure?');",
       "options": [
         "fireEvent.changeText",
@@ -37,70 +39,72 @@
         "fireEvent.input",
         "userEvent.type"
       ],
-      "correct": [0],
-      "explanation": "In RNTL, 'fireEvent.changeText' is the specialized event for TextInput components that directly mimics the 'onChangeText' prop.",
-      "interviewTip": "Always use 'fireEvent.press' for buttons and 'fireEvent.changeText' for inputs."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "tm-04",
       "stageId": "testing_mobile",
       "type": "single",
-      "prompt": "What is 'Detox' used for in the React Native ecosystem?",
       "options": [
         "To clean up the node_modules folder.",
         "For gray-box End-to-End (E2E) testing on real simulators/emulators.",
         "To unit test individual utility functions.",
         "To check the app's security vulnerabilities."
       ],
-      "correct": [1],
-      "explanation": "Detox runs your app in a real simulator and interacts with it like a user. It is called 'gray-box' because it synchronizes with the app's internal state to prevent flaky tests.",
-      "interviewTip": "Compare Detox to Cypress; it’s the closest mobile equivalent for full-flow automation."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "tm-05",
       "stageId": "testing_mobile",
       "type": "single",
-      "prompt": "Why do you need to mock native modules (like 'react-native-reanimated' or 'AsyncStorage') in Jest?",
       "options": [
         "To make the tests run faster.",
         "Because native code cannot run in the Node.js environment where Jest executes.",
         "To reduce the size of the test files.",
         "Jest only supports pure JavaScript."
       ],
-      "correct": [1],
-      "explanation": "Jest runs in a Node environment, not a mobile OS. Native modules (C++/Java/Swift) don't exist there, so you must provide a JS 'mock' implementation.",
-      "interviewTip": "Most popular libraries (like React Navigation) provide their own Jest mocks that you can simply import in your 'jest.setup.js'."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "tm-06",
       "stageId": "testing_mobile",
       "type": "multiple",
-      "prompt": "Which of these are valid RNTL 'queries' for finding elements in your UI?",
-      "options": ["getByText", "getByTestId", "queryByRole", "findElementById"],
-      "correct": [0, 1, 2],
-      "explanation": "getByText and getByTestId are the most common. queryBy... is used when you want to assert that an element *doesn't* exist (it returns null instead of throwing).",
-      "interviewTip": "Favor 'getByText' or 'getByLabelText' (accessibility) over 'getByTestId' whenever possible to ensure your app is accessible."
+      "options": [
+        "getByText",
+        "getByTestId",
+        "queryByRole",
+        "findElementById"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "id": "tm-07",
       "stageId": "testing_mobile",
       "type": "single",
-      "prompt": "What is the purpose of 'jest.useFakeTimers()'?",
       "options": [
         "To speed up the computer's clock.",
         "To control and fast-forward time in tests that use setTimeout or setInterval (like a splash screen timer).",
         "To record how long a test takes to run.",
         "To schedule tests for a later date."
       ],
-      "correct": [1],
-      "explanation": "If your Mock Interview app has a '3-second countdown' before a question, fake timers let you skip those 3 seconds instantly during a test.",
-      "interviewTip": "Don't forget to call 'jest.runAllTimers()' or 'jest.advanceTimersByTime()' after using this."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "tm-08",
       "stageId": "testing_mobile",
       "type": "single",
-      "prompt": "Analyze the Detox test snippet. What is it verifying?",
       "code": "await expect(element(by.id('Welcome_Screen'))).toBeVisible();\nawait element(by.id('Start_Button')).tap();\nawait expect(element(by.text('Question 1'))).toExist();",
       "options": [
         "A unit test for the Start button.",
@@ -108,39 +112,37 @@
         "The performance of the screen transition.",
         "If the server is responding to requests."
       ],
-      "correct": [1],
-      "explanation": "This is a typical E2E test. It checks the visibility of elements and performs actions (tap) to verify a multi-screen navigation flow.",
-      "interviewTip": "In Detox, 'by.id' refers to the 'testID' prop you add to your React Native components."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "tm-09",
       "stageId": "testing_mobile",
       "type": "single",
-      "prompt": "How do you test a component that uses a hook from a library (like 'useNavigation') without crashing?",
       "options": [
         "Wrap the component in the library's Provider (e.g., NavigationContainer) inside the test.",
         "You cannot test components with hooks.",
         "Delete the hook before running the test.",
         "Move the hook to a different file."
       ],
-      "correct": [0],
-      "explanation": "Just like in your app, hooks often need their context. Wrapping your test component in a 'Wrapper' (like a NavigationContainer or Redux Provider) is the standard fix.",
-      "interviewTip": "You can create a custom 'render' function that automatically wraps every component in all necessary providers."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "tm-10",
       "stageId": "testing_mobile",
       "type": "single",
-      "prompt": "What does 'coverage' represent in a Jest report?",
       "options": [
         "The number of users who have downloaded the app.",
         "The percentage of your source code (lines, branches, functions) that was executed during the tests.",
         "The amount of memory the app uses.",
         "The physical area where the app works."
       ],
-      "correct": [1],
-      "explanation": "Coverage helps you identify 'dark spots' in your code that haven't been tested yet.",
-      "interviewTip": "Warning: 100% coverage doesn't mean your app is bug-free; it just means every line was executed once."
+      "correct": [
+        1
+      ]
     }
   ]
 }

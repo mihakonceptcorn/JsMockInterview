@@ -4,48 +4,49 @@
       "id": "rl-01",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "What is the primary purpose of the 'key' prop when rendering a list in React?",
       "options": [
         "To provide a CSS class name for the list item.",
         "To help React identify which items have changed, been added, or removed.",
         "To determine the order of elements in the DOM.",
         "To automatically sort the array of data."
       ],
-      "correct": [1],
-      "explanation": "Keys act as stable identities for elements across renders. Without them, React might unnecessarily re-render the entire list or misidentify which element is which during updates.",
-      "interviewTip": "Keys should be unique among siblings and stable (not changing on every render)."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rl-02",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "Which JavaScript method is most commonly used to transform an array of data into a list of React components?",
       "code": "const items = ['Apple', 'Banana'];\nconst list = items.____(item => <li key={item}>{item}</li>);",
-      "options": ["forEach", "filter", "map", "reduce"],
-      "correct": [2],
-      "explanation": "The .map() method is ideal because it returns a new array of the same length, allowing you to wrap each data item in JSX.",
-      "interviewTip": "Remember that .forEach() returns undefined and won't render anything in JSX."
+      "options": [
+        "forEach",
+        "filter",
+        "map",
+        "reduce"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "rl-03",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "What is a potential downside of using the array 'index' as a key?",
       "options": [
         "It causes a syntax error in the browser console.",
         "It can lead to UI bugs and performance issues if the list is reordered or filtered.",
         "It prevents the component from receiving any props.",
         "It makes the application incompatible with mobile browsers."
       ],
-      "correct": [1],
-      "explanation": "If the list changes order, the index stays the same for a position even if the content moves. This confuses React's state management for those components.",
-      "interviewTip": "Only use the index as a key if the list is static (never changes, filters, or sorts)."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rl-04",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "Analyze the code below. What will happen if two items have the same ID?",
       "code": "const data = [{ id: 1, text: 'A' }, { id: 1, text: 'B' }];\nreturn data.map(item => <li key={item.id}>{item.text}</li>);",
       "options": [
         "React will only render the first item.",
@@ -53,15 +54,14 @@
         "React will show a warning in the console about duplicate keys.",
         "The items will be merged into a single <li>."
       ],
-      "correct": [2],
-      "explanation": "React requires keys to be unique among siblings. Duplicate keys cause unpredictable behavior during updates, and React will warn you in development.",
-      "interviewTip": "If your data lacks unique IDs, you can combine fields (like item.type + item.id) to create a unique string."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "rl-05",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "Where exactly should the 'key' prop be placed when rendering a list of custom components?",
       "code": "const List = ({ users }) => (\n  <ul>\n    {users.map(user => (\n      <UserCard key={user.id} name={user.name} />\n    ))}\n  </ul>\n);",
       "options": [
         "Inside the <ul> tag.",
@@ -69,30 +69,29 @@
         "Inside the <h1> tag within the UserCard component.",
         "Keys are only needed for standard HTML tags like <li>."
       ],
-      "correct": [1],
-      "explanation": "The key must always be applied to the outermost element returned by the map function so React can track the item in the collection.",
-      "interviewTip": "If you wrap your component in a <div> or a Fragment inside the map, the key goes on that wrapper."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rl-06",
       "stageId": "rendering_lists",
       "type": "multiple",
-      "prompt": "Which of the following are recommended sources for a 'key' prop?",
       "options": [
         "IDs from a database (e.g., UUID or primary key).",
         "The result of Math.random().",
         "A unique property like a 'slug' or 'username'.",
         "The current timestamp (Date.now())."
       ],
-      "correct": [0, 2],
-      "explanation": "Keys must be stable. Random numbers or timestamps change every render, causing the entire list to unmount and remount, which destroys state and performance.",
-      "interviewTip": "Stable, unique IDs are the gold standard for React keys."
+      "correct": [
+        0,
+        2
+      ]
     },
     {
       "id": "rl-07",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "How do you render a list if you don't want an extra wrapper tag like <div> or <li>?",
       "code": "data.map(item => (\n  <React.Fragment key={item.id}>\n    <dt>{item.term}</dt>\n    <dd>{item.desc}</dd>\n  </React.Fragment>\n));",
       "options": [
         "Use the shorthand Fragment syntax <>...</>.",
@@ -100,15 +99,14 @@
         "You must use a <div>; there is no other way.",
         "Return an array of elements directly."
       ],
-      "correct": [1],
-      "explanation": "The shorthand <> syntax does not support the 'key' prop. When mapping multiple elements without a wrapper, you must use <React.Fragment key={...}>.",
-      "interviewTip": "This is one of the few cases where the long-form Fragment syntax is mandatory."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rl-08",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "What is the output of the following rendering logic?",
       "code": "const items = ['A', 'B'];\nreturn (\n  <ul>\n    {items.map(i => <li key={i}>{i}</li>)}\n    <li>Extra</li>\n  </ul>\n);",
       "options": [
         "A list with A, B, and then 'Extra'.",
@@ -116,30 +114,28 @@
         "Only 'Extra' will be rendered.",
         "A list with 'Extra' and then A, B."
       ],
-      "correct": [0],
-      "explanation": "React allows you to mix dynamic content (arrays) with static JSX. It will simply render them in the order they appear.",
-      "interviewTip": "This is useful for adding a 'Create New' or 'Load More' item at the end of a dynamic list."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "rl-09",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "What does React do when it detects a key change for a component (e.g., key 1 becomes key 2)?",
       "options": [
         "It updates the props of the existing component.",
         "It unmounts the old component and mounts a completely new one.",
         "It ignores the change to save performance.",
         "It re-renders only the children of that component."
       ],
-      "correct": [1],
-      "explanation": "Changing a key tells React the identity of the component has changed. It destroys the old instance (including its local state) and creates a fresh one.",
-      "interviewTip": "You can intentionally change a key to 'reset' a component (like a form) to its initial state."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rl-10",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "Is it possible to use an object as a key?",
       "code": "items.map(item => <li key={item}>...</li>)",
       "options": [
         "Yes, React will stringify the object automatically.",
@@ -147,45 +143,43 @@
         "Only if the object has a toString() method.",
         "Yes, but only in React 18+."
       ],
-      "correct": [1],
-      "explanation": "React converts keys to strings internally. Using an object will result in the string '[object Object]' for all items, making them non-unique.",
-      "interviewTip": "Always pick a primitive value (string/number) for your key."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rl-11",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "What will happen if you provide no key at all while mapping?",
       "options": [
         "The app crashes with a 'KeyMissingError'.",
         "React renders correctly but shows a warning in the console.",
         "React uses a random number as a key automatically.",
         "The browser will hide the list items."
       ],
-      "correct": [1],
-      "explanation": "React will default to using the array index as a key if none is provided, but it will log a warning to alert you of potential performance and bug issues.",
-      "interviewTip": "Warnings in the console are often missed—always check your logs during development."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rl-12",
       "stageId": "rendering_lists",
       "type": "multiple",
-      "prompt": "Which of the following scenarios absolutely require a unique key?",
       "options": [
         "A list of news articles that can be sorted by date.",
         "A list of input fields where users can add or remove rows.",
         "A static navigation menu with 3 links that never change.",
         "A list of chat messages where new ones are added to the bottom."
       ],
-      "correct": [0, 1],
-      "explanation": "Sorting and removing items are operations where React's diffing algorithm relies heavily on keys to avoid state bugs (like text staying in an input while the label changes).",
-      "interviewTip": "If the list can be manipulated by the user, a stable key is mandatory."
+      "correct": [
+        0,
+        1
+      ]
     },
     {
       "id": "rl-13",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "How do you render a list in reverse order using .map()?",
       "code": "const list = [...data].reverse().map(item => <li key={item.id}>{item.text}</li>);",
       "options": [
         "The logic above is correct.",
@@ -193,30 +187,28 @@
         "You must use a for loop instead.",
         "Reverse the DOM elements using CSS."
       ],
-      "correct": [0],
-      "explanation": "Since .reverse() mutates the original array, we spread the data into a new array `[...data]` first, then reverse and map.",
-      "interviewTip": "Always keep your data transformations 'immutable' to avoid side effects."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "rl-14",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "What is the most efficient way to render a very long list (e.g., 10,000 items)?",
       "options": [
         "Standard .map() function.",
         "A technique called 'Windowing' or 'Virtualization'.",
         "Using a while loop for speed.",
         "React's useList() hook."
       ],
-      "correct": [1],
-      "explanation": "Windowing only renders the items currently visible in the viewport, significantly reducing the number of DOM nodes.",
-      "interviewTip": "Mention libraries like 'react-window' or 'react-virtualized' for this purpose."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rl-15",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "In the following snippet, why is 'Math.random()' a bad choice for a key?",
       "code": "items.map(i => <li key={Math.random()}>{i}</li>)",
       "options": [
         "It's too slow to calculate.",
@@ -224,15 +216,14 @@
         "It causes the component to recreate on every render, losing focus and state.",
         "React only allows integers for keys."
       ],
-      "correct": [2],
-      "explanation": "Every time the component re-renders, a new random key is generated. React thinks it's a new element and recreates it from scratch.",
-      "interviewTip": "A key must stay the same for the same item between renders to be useful."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "rl-16",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "How do you filter a list before rendering it?",
       "code": "data.filter(i => i.active).map(i => <li key={i.id}>{i.name}</li>)",
       "options": [
         "The logic above is correct.",
@@ -240,24 +231,23 @@
         "You cannot filter data inside the return statement.",
         "Use a separate useEffect to filter."
       ],
-      "correct": [0],
-      "explanation": "Method chaining (filter then map) is the standard and most readable way to handle conditional list rendering.",
-      "interviewTip": "For large lists, you might wrap this logic in useMemo to avoid re-calculating on every render."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "rl-17",
       "stageId": "rendering_lists",
       "type": "single",
-      "prompt": "If a list item has a state (like a toggle), what happens to that state if the item is removed from the array?",
       "options": [
         "The state is moved to the next item in the list.",
         "The state is permanently destroyed when the component unmounts.",
         "The state is saved in the parent component.",
         "React throws a 'StateOrphanWarning'."
       ],
-      "correct": [1],
-      "explanation": "State is tied to the component instance in the DOM tree. When an item is removed from the array, its component is unmounted and its state is wiped.",
-      "interviewTip": "If data must survive a list removal, it should be stored in the parent's state or a global store."
+      "correct": [
+        1
+      ]
     }
   ]
 }

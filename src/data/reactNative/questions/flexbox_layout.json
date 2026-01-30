@@ -4,27 +4,34 @@
       "id": "rn-flex-01",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "What is the default 'flexDirection' for a View in React Native?",
-      "options": ["row", "row-reverse", "column", "column-reverse"],
-      "correct": [2],
-      "explanation": "On the web, the default is 'row'. In React Native, it is 'column' to better align with the vertical nature of mobile devices.",
-      "interviewTip": "Always verify the direction before debugging alignment, as 'justifyContent' and 'alignItems' swap roles depending on this property."
+      "options": [
+        "row",
+        "row-reverse",
+        "column",
+        "column-reverse"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "rn-flex-02",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "Which property aligns children along the 'Main Axis'?",
-      "options": ["alignContent", "justifyContent", "alignItems", "selfAlign"],
-      "correct": [1],
-      "explanation": "justifyContent defines how children are distributed along the primary axis (defined by flexDirection).",
-      "interviewTip": "Common values include 'center', 'space-between', and 'space-around'."
+      "options": [
+        "alignContent",
+        "justifyContent",
+        "alignItems",
+        "selfAlign"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rn-flex-03",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "What will be the size of these two boxes?",
       "code": "<View style={{ flex: 1 }}>\n  <View style={{ flex: 1, backgroundColor: 'red' }} />\n  <View style={{ flex: 3, backgroundColor: 'blue' }} />\n</View>",
       "options": [
         "Red takes 25% height, Blue takes 75% height.",
@@ -32,35 +39,42 @@
         "Red takes 1/3 height, Blue takes 2/3 height.",
         "Both will have 0 height because no width was specified."
       ],
-      "correct": [0],
-      "explanation": "Flex values are proportional. Total flex is 1 + 3 = 4. Red is 1/4 (25%) and Blue is 3/4 (75%).",
-      "interviewTip": "In React Native, 'flex: 1' on a single child tells it to fill all available space in its parent."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "rn-flex-04",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "Which property allows an individual child to deviate from the 'alignItems' set by its parent?",
-      "options": ["alignItem", "justifySelf", "alignSelf", "flexSelf"],
-      "correct": [2],
-      "explanation": "alignSelf allows you to override the parent's alignment for a specific element.",
-      "interviewTip": "This is very useful for centering one specific item in a list that is otherwise stretched."
+      "options": [
+        "alignItem",
+        "justifySelf",
+        "alignSelf",
+        "flexSelf"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "rn-flex-05",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "In React Native, what is the default value for 'alignItems'?",
-      "options": ["center", "flex-start", "stretch", "baseline"],
-      "correct": [2],
-      "explanation": "By default, children are 'stretched' to fill the secondary axis of their parent unless a specific width/height is provided.",
-      "interviewTip": "If your child component is 'disappearing', it might be because you set flexDirection: 'row' and the default 'stretch' is trying to find a height it doesn't have."
+      "options": [
+        "center",
+        "flex-start",
+        "stretch",
+        "baseline"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "rn-flex-06",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "How do you center a child both horizontally and vertically inside a standard View?",
       "code": "<View style={{\n  flex: 1,\n  ________: 'center',\n  ________: 'center'\n}}>\n  <Text>Centered</Text>\n</View>",
       "options": [
         "flexDirection, alignContent",
@@ -68,40 +82,42 @@
         "alignSelf, justifyContent",
         "textAlign, verticalAlign"
       ],
-      "correct": [1],
-      "explanation": "Using 'center' for both justifyContent (main axis) and alignItems (cross axis) centers the content perfectly.",
-      "interviewTip": "Ensure the parent has 'flex: 1' or a specific size, or there will be no space to center within."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rn-flex-07",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "What is the result of using 'flex: -1' in React Native?",
       "options": [
         "The component is hidden.",
         "The component shrinks to its minimum size if there is an overflow, but doesn't grow.",
         "It works the same as 'flex: 1'.",
         "It causes an error."
       ],
-      "correct": [1],
-      "explanation": "A negative flex value allows a component to shrink when the content overflows the parent, but it won't take up extra space otherwise.",
-      "interviewTip": "This is rarely used but helpful for handling dynamic text in tight headers."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rn-flex-08",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "Which property should you use to add space between items in a Flex container without using margins?",
-      "options": ["spacing", "item-padding", "gap", "grid-gap"],
-      "correct": [2],
-      "explanation": "Modern React Native versions support the 'gap' property (as well as rowGap and columnGap), which adds space specifically between items.",
-      "interviewTip": "Using 'gap' is much cleaner than applying margin to every child and then removing it from the last one."
+      "options": [
+        "spacing",
+        "item-padding",
+        "gap",
+        "grid-gap"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "rn-flex-09",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "Analyze this code. Where will the 'Box' be located?",
       "code": "<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end' }}>\n  <View style={{ width: 50, height: 50, backgroundColor: 'black' }} />\n</View>",
       "options": [
         "Top-right corner",
@@ -109,116 +125,114 @@
         "Bottom-right corner",
         "Bottom-left corner"
       ],
-      "correct": [2],
-      "explanation": "flex-end for row direction puts it at the right; flex-end for cross-axis puts it at the bottom.",
-      "interviewTip": "Always visualize the 'L' shape of the axis: Main axis (X) and Cross axis (Y) for row direction."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "rn-flex-10",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "Does React Native support 'z-index' for overlapping elements?",
       "options": [
         "No, you must change the order of components in the JSX.",
         "Yes, it works exactly like the web.",
         "Only on Android.",
         "Only on iOS."
       ],
-      "correct": [1],
-      "explanation": "React Native supports zIndex. However, if multiple elements have the same zIndex, the one defined later in the JSX appears on top.",
-      "interviewTip": "On Android, sometimes 'elevation' is needed alongside zIndex for shadow-related overlapping issues."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rn-flex-11",
       "stageId": "flexbox_layout",
       "type": "multiple",
-      "prompt": "Which of the following are valid units for 'width' and 'height' in React Native styles?",
       "options": [
         "Numbers (representing logical pixels)",
         "Percentages (e.g., '50%')",
         "rem or em units",
         "vh or vw units"
       ],
-      "correct": [0, 1],
-      "explanation": "React Native primarily uses unitless numbers (logical pixels) and percentage strings. rem/em/vh/vw are not natively supported.",
-      "interviewTip": "To get screen-based units (like vw/vh), use the 'Dimensions' or 'useWindowDimensions' API."
+      "correct": [
+        0,
+        1
+      ]
     },
     {
       "id": "rn-flex-12",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "What is 'flexBasis' used for?",
       "options": [
         "To set the final size of the component after all growth is done.",
         "To set the initial size of the component before any extra space is distributed.",
         "To define the background color of the flex container.",
         "To set the minimum width."
       ],
-      "correct": [1],
-      "explanation": "flexBasis determines the default size of an item before the remaining space is distributed via flexGrow or flexShrink.",
-      "interviewTip": "If flexDirection is 'column', flexBasis acts like 'height'. If 'row', it acts like 'width'."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rn-flex-13",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "How do you make a View wrap its children into multiple lines if they exceed the container width?",
       "options": [
         "flexDirection: 'multiline'",
         "flexWrap: 'wrap'",
         "overflow: 'scroll'",
         "display: 'grid'"
       ],
-      "correct": [1],
-      "explanation": "By default, flex containers are 'nowrap'. Setting 'flexWrap: wrap' allows items to move to the next line.",
-      "interviewTip": "This is essential for creating 'tag cloud' layouts or photo grids."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rn-flex-14",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "What is the 'Shadow Thread' responsible for?",
       "options": [
         "Calculating shadows and borders.",
         "Running the Yoga engine to calculate the layout of the UI.",
         "Protecting the app from hacking.",
         "Handling background API calls."
       ],
-      "correct": [1],
-      "explanation": "The Shadow Thread is where React Native calculates the mathematical layout of your components using Yoga before sending it to the UI Thread.",
-      "interviewTip": "Knowing this helps you understand that style changes in JS have a specific path through threads before appearing on screen."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rn-flex-15",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "How do you get the width of the physical screen in React Native?",
       "code": "import { ________ } from 'react-native';\nconst screenWidth = ________.get('window').width;",
-      "options": ["Screen", "Dimensions", "Device", "Layout"],
-      "correct": [1],
-      "explanation": "The Dimensions API (or the useWindowDimensions hook) provides the width and height of the current window/screen.",
-      "interviewTip": "Prefer 'useWindowDimensions' because it automatically updates if the screen rotates or the window size changes (on tablets/web)."
+      "options": [
+        "Screen",
+        "Dimensions",
+        "Device",
+        "Layout"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rn-flex-16",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "What does 'aspectRatio' do in a Style object?",
       "options": [
         "It sets the opacity of the image.",
         "It forces the component to maintain a specific width-to-height ratio.",
         "It is used only for video playback.",
         "It rounds the corners of the View."
       ],
-      "correct": [1],
-      "explanation": "If you set 'aspectRatio: 1', the component will always be a square, even if only the width is defined.",
-      "interviewTip": "This is incredibly useful for images and video containers where you want them to be responsive but maintain a 16:9 or 4:3 look."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "rn-flex-17",
       "stageId": "flexbox_layout",
       "type": "single",
-      "prompt": "Identify the error in this Style object:",
       "code": "const styles = StyleSheet.create({\n  box: {\n    flex: 1,\n    float: 'left',\n    display: 'block'\n  }\n});",
       "options": [
         "flex cannot be 1.",
@@ -226,9 +240,9 @@
         "StyleSheet.create is deprecated.",
         "There is no error."
       ],
-      "correct": [1],
-      "explanation": "React Native does not implement the full CSS spec. Properties like float, clear, and block/inline display do not exist.",
-      "interviewTip": "If you need a side-by-side layout, always use 'flexDirection: row'."
+      "correct": [
+        1
+      ]
     }
   ]
 }
