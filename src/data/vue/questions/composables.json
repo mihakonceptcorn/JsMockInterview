@@ -11,7 +11,9 @@
         "Composables only work inside the template.",
         "Utilities can only be used once per app."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "A utility function like 'sum(a, b)' just returns a value. A Composable like 'useMouse()' returns reactive refs that update automatically as the user moves their mouse.",
       "interviewTip": "Keywords to use: 'Stateful Logic', 'Reusability', and 'Composition API'."
     },
@@ -26,7 +28,9 @@
         "They should be written in ALL_CAPS.",
         "There is no specific convention."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Starting with 'use' is the community standard. It immediately signals to other developers that the function returns reactive state.",
       "interviewTip": "This mirrors the 'use' convention from React Hooks, making the transition easier for cross-framework developers."
     },
@@ -42,7 +46,9 @@
         "count, increment",
         "new Counter(count)"
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Returning an object is preferred in Vue. It allows the component to destructure only the parts it needs and rename them if necessary, without being forced into a specific array order.",
       "interviewTip": "Mention that returning an object is more flexible for future-proofing your API."
     },
@@ -58,7 +64,9 @@
         "To convert the string to an integer.",
         "To hide the data from the template."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "toValue() (introduced in Vue 3.3) normalizes the input. This makes your Composable much more flexible for the consumer.",
       "interviewTip": "Using toValue/unref is the hallmark of a 'well-designed' library-level Composable."
     },
@@ -74,7 +82,9 @@
         "The memory usage will double.",
         "The name will become read-only."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Destructuring reactive objects kills the reactivity link. To fix this, the Composable should return 'toRefs(state)'.",
       "interviewTip": "Always recommend 'toRefs' when returning a reactive object from a Composable."
     },
@@ -89,7 +99,9 @@
         "Inside a setInterval timer.",
         "Inside an async function after an 'await' statement."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Lifecycle hooks must be registered during the synchronous execution of 'setup'. If you call a Composable after an 'await', Vue loses track of which component instance the hook belongs to.",
       "interviewTip": "This is a strict 'Rule of Composables'. Always call them at the top level of your script."
     },
@@ -104,7 +116,11 @@
         "Better TypeScript support.",
         "Composables are the only way to use CSS."
       ],
-      "correct": [0, 1, 2],
+      "correct": [
+        0,
+        1,
+        2
+      ],
       "explanation": "Mixins are 'invisible' injections that make code hard to trace. Composables make it clear where every piece of data originates.",
       "interviewTip": "If asked about Mixins, call them 'opaque' and describe Composables as 'transparent and explicit'."
     },
@@ -119,9 +135,45 @@
         "Only if they are in the same folder.",
         "Yes, but only if they don't use refs."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Nesting Composables is a standard practice (e.g., 'useAuth' might use 'useFetch' and 'useStorage' internally).",
       "interviewTip": "This is known as 'Composable Composition'."
+    },
+    {
+      "id": "comp-09",
+      "stageId": "composables",
+      "type": "single",
+      "prompt": "What is a composable in Vue 3?",
+      "options": [
+        "A component that can be composed with other components.",
+        "A function that leverages Vue Composition API to encapsulate and reuse stateful logic.",
+        "A CSS class that can be reused.",
+        "A type of Vue directive."
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Composables are the Vue 3 equivalent of mixins or higher-order components, but with better composition and no naming conflicts.",
+      "interviewTip": "Composables should be named with the \"use\" prefix (e.g., useMouse, useFetch) following React hooks convention."
+    },
+    {
+      "id": "comp-10",
+      "stageId": "composables",
+      "type": "single",
+      "prompt": "What should a composable return?",
+      "options": [
+        "Nothing, composables are side-effect only.",
+        "Reactive state and functions that the component can use.",
+        "Only primitive values.",
+        "A new Vue instance."
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Composables typically return an object containing refs, reactive objects, computed properties, and methods that components can destructure and use.",
+      "interviewTip": "Return only what the consumer needs to keep the API clean and focused."
     }
   ]
 }

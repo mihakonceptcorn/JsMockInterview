@@ -11,7 +11,9 @@
         "v-if is faster for frequent toggling.",
         "v-show is only available in Vue 2."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "v-if is 'real' conditional rendering because it ensures that event listeners and child components inside the conditional block are properly destroyed and re-created. v-show is much simpler—the element always remains in the DOM.",
       "interviewTip": "Use v-if for conditions that rarely change at runtime; use v-show if you need to toggle something very frequently (like a tab or a tooltip)."
     },
@@ -27,7 +29,9 @@
         "It will cause a template compilation error.",
         "It will render an empty <li>."
       ],
-      "correct": [2],
+      "correct": [
+        2
+      ],
       "explanation": "v-else must follow a v-if or v-else-if. It cannot be used with v-for. To handle empty lists, you should use v-if=\"items.length === 0\" on a separate element.",
       "interviewTip": "This is a common mistake. v-for does not have a built-in 'else' block."
     },
@@ -42,7 +46,9 @@
         "To sort the list automatically.",
         "Keys are required by the browser to render lists."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Without keys, Vue uses an algorithm that minimizes element movement and tries to patch/reuse elements in-place. This can lead to bugs with form state or animations.",
       "interviewTip": "Never use 'index' as a key if the list can be reordered, filtered, or if items can be deleted. Use unique IDs from your data."
     },
@@ -58,7 +64,9 @@
         "They have equal priority.",
         "The order in which they are written determines priority."
       ],
-      "correct": [0],
+      "correct": [
+        0
+      ],
       "explanation": "In Vue 3, v-if has a higher priority than v-for. This means the v-if doesn't have access to variables from the v-for scope, and the code above will likely throw an error because 'item' is not defined when v-if runs.",
       "interviewTip": "In Vue 2, the priority was reversed. Regardless of the version, you should avoid using both on the same element. Wrap the list in a <template v-for> or use a computed property to filter the list beforehand."
     },
@@ -68,8 +76,15 @@
       "type": "single",
       "prompt": "How do you render a block of multiple elements without adding an extra wrapper div to the DOM?",
       "code": "<________ v-if=\"isLoggedIn\">\n  <h1>Welcome</h1>\n  <button>Logout</button>\n</________>",
-      "options": ["div", "template", "block", "fragment"],
-      "correct": [1],
+      "options": [
+        "div",
+        "template",
+        "block",
+        "fragment"
+      ],
+      "correct": [
+        1
+      ],
       "explanation": "The <template> tag acts as an invisible wrapper. It allows you to use directives like v-if or v-for on a group of elements without affecting the final HTML structure.",
       "interviewTip": "This is perfect for keeping your DOM tree flat and clean."
     },
@@ -84,7 +99,11 @@
         "v-for=\"item in items\" (Iterating over an array)",
         "v-for=\"char in 'Hello'\" (Iterating over a string)"
       ],
-      "correct": [0, 1, 2],
+      "correct": [
+        0,
+        1,
+        2
+      ],
       "explanation": "Vue is quite flexible. You can iterate over arrays, objects (value, key, index), and even integer ranges (1 to N). String iteration is technically possible but rarely used in practice.",
       "interviewTip": "When iterating over an object, the order is based on Object.keys() enumeration order, which may vary across browsers."
     },
@@ -100,7 +119,9 @@
         "Use a method called inside the template to filter.",
         "Filter the list in the mounted hook and save it to a new ref."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Filtering with a computed property is the best approach. It's more readable, and because of caching, the filter only runs when the 'users' list actually changes.",
       "interviewTip": "Computed properties for filtered lists also make your component logic easier to unit test."
     },
@@ -115,9 +136,45 @@
         "The app will crash immediately.",
         "Only the first item will be rendered."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Duplicate keys confuse the Virtual DOM's reconciliation process. Vue will warn you in the console, and you may see elements 'flickering' or showing the wrong state when the list changes.",
       "interviewTip": "Always ensure keys are truly unique within the list."
+    },
+    {
+      "id": "clr-09",
+      "stageId": "conditional_list_rendering",
+      "type": "single",
+      "prompt": "What is the difference between v-if and v-show?",
+      "options": [
+        "v-if removes the element from the DOM; v-show toggles CSS display property.",
+        "v-show is faster than v-if.",
+        "v-if works only with components.",
+        "There is no difference."
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "v-if has higher toggle cost (destroys/recreates elements), while v-show has higher initial render cost (renders everything but hides with CSS).",
+      "interviewTip": "Use v-if for infrequent toggles, v-show for frequent toggles."
+    },
+    {
+      "id": "clr-10",
+      "stageId": "conditional_list_rendering",
+      "type": "single",
+      "prompt": "Why should you avoid using v-if and v-for on the same element?",
+      "options": [
+        "It causes a syntax error.",
+        "v-for has higher priority than v-if in Vue 3, which can lead to unexpected behavior and performance issues.",
+        "It makes the code harder to read.",
+        "Vue automatically optimizes this pattern."
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "In Vue 3, v-for has higher priority, so v-if will run on each iteration. This is inefficient. Use a computed property or wrap with a template tag instead.",
+      "interviewTip": "This is a common interview question about Vue best practices and performance."
     }
   ]
 }

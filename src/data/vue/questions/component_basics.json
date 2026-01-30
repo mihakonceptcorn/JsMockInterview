@@ -11,7 +11,9 @@
         "Data can only flow through a central state manager like Pinia.",
         "Props are automatically synchronized both ways between parent and child."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "This prevents child components from accidentally mutating the parent's state, which would make the data flow hard to understand and debug.",
       "interviewTip": "If you try to mutate a prop in a child, Vue will throw a warning in the console. If you need to change it, use a local 'ref' or emit an event."
     },
@@ -27,7 +29,9 @@
         "v-model:custom-event",
         "on-custom-event"
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Custom events use the v-on (or @) syntax just like native DOM events. The parent listens for the event name defined in the child's $emit call.",
       "interviewTip": "Vue 3 recommends declaring emitted events using the 'emits' option or 'defineEmits' for better documentation and validation."
     },
@@ -37,8 +41,15 @@
       "type": "single",
       "prompt": "How do you define props with validation in a Vue 3 <script setup> component?",
       "code": "const props = ________({\n  title: {\n    type: String,\n    required: true\n  }\n});",
-      "options": ["useProps", "defineProps", "setProps", "injectProps"],
-      "correct": [1],
+      "options": [
+        "useProps",
+        "defineProps",
+        "setProps",
+        "injectProps"
+      ],
+      "correct": [
+        1
+      ],
       "explanation": "defineProps is a compiler macro available inside <script setup>. It doesn't need to be imported and allows for runtime validation of the data being passed.",
       "interviewTip": "Prop validation is your first line of defense against bugs in large teams. Always use object syntax for props instead of arrays."
     },
@@ -53,7 +64,9 @@
         "Variables that bypass the Virtual DOM.",
         "A way to pass props to grandchildren directly."
       ],
-      "correct": [0],
+      "correct": [
+        0
+      ],
       "explanation": "If a component has a single root element, attributes passed to it (that aren't declared as props) 'fall through' to that root element.",
       "interviewTip": "You can disable this behavior by setting 'inheritAttrs: false' and manually binding attributes using '$attrs'."
     },
@@ -63,8 +76,15 @@
       "type": "single",
       "prompt": "Analyze the code. What is the correct way for the parent to pass a dynamic numeric value to the child?",
       "code": "// Parent.vue\n<Child ________=\"42\" />",
-      "options": ["count", ":count", "v-bind.count", "count.number"],
-      "correct": [1],
+      "options": [
+        "count",
+        ":count",
+        "v-bind.count",
+        "count.number"
+      ],
+      "correct": [
+        1
+      ],
       "explanation": "Without the colon (:), '42' is passed as a static string. With the colon (:), it is evaluated as a JavaScript expression, passing it as a number.",
       "interviewTip": "This is a common beginner mistake. Use v-bind (:) for any value that isn't a literal string."
     },
@@ -79,7 +99,11 @@
         "An External Event Bus (using a library like mitt)",
         "Mutating 'this.$parent' directly"
       ],
-      "correct": [0, 1, 2],
+      "correct": [
+        0,
+        1,
+        2
+      ],
       "explanation": "Provide/Inject is great for 'Prop Drilling' avoidance. Pinia is for global state. Direct mutation of $parent is highly discouraged as it creates tight coupling.",
       "interviewTip": "Mention Provide/Inject as the Vue equivalent to React's Context API."
     },
@@ -94,7 +118,9 @@
         "The event bubbles up to the 'window' object.",
         "The app crashes."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Unlike DOM events, Vue's custom events do not bubble by default. If no listener is present on the immediate parent, the event is simply lost.",
       "interviewTip": "This is why debugging missing events usually starts with checking the event name spelling in the @listener."
     },
@@ -110,9 +136,46 @@
         "To allow the component to receive data from the parent.",
         "To style the component buttons."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Using defineEmits makes your component's 'contract' explicit, helping developers (and IDEs) understand how to interact with it.",
       "interviewTip": "In TypeScript, you can even define the types of the arguments passed with the event using defineEmits<{ (e: 'change', id: number): void }>."
+    },
+    {
+      "id": "cb-09",
+      "stageId": "component_basics",
+      "type": "single",
+      "prompt": "What is the purpose of the `key` attribute when rendering lists in Vue?",
+      "options": [
+        "To encrypt the component data.",
+        "To help Vue identify which items have changed, been added, or removed for efficient DOM updates.",
+        "To set the component ID.",
+        "To improve CSS styling."
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Keys give Vue a hint about the identity of each node. Without keys, Vue uses an algorithm that minimizes element movement but can cause issues with stateful components or transitions.",
+      "interviewTip": "Always use unique, stable keys (like IDs) rather than array indexes for dynamic lists."
+    },
+    {
+      "id": "cb-10",
+      "stageId": "component_basics",
+      "type": "single",
+      "prompt": "How do you emit a custom event from a child component to its parent in Vue 3?",
+      "code": "// Child component\\nconst emit = defineEmits(['update']);\\nemit(________, newValue);",
+      "options": [
+        "'update'",
+        "\"update\", newValue",
+        "update",
+        "$emit(\"update\")"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "In <script setup>, you use defineEmits to declare events, then call emit with the event name and optional payload.",
+      "interviewTip": "Vue 3 encourages explicit event declarations for better type safety and documentation."
     }
   ]
 }

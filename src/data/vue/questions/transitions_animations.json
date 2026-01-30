@@ -11,7 +11,9 @@
         "To convert CSS into JavaScript code.",
         "To prevent the user from clicking buttons during an update."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "<Transition> doesn't animate things itself; it detects when an element is added/removed and adds classes like '-enter-from' and '-enter-active' so your CSS can do the work.",
       "interviewTip": "Mention that <Transition> only works on a single element or component. For lists, you must use <TransitionGroup>."
     },
@@ -21,8 +23,15 @@
       "type": "single",
       "prompt": "Analyze the CSS classes below. Which class defines the 'target' state (the end result) of an entering element?",
       "code": "/* CSS */\n.fade-enter-from { opacity: 0; }\n.fade-enter-active { transition: opacity 0.5s; }\n.fade-________ { opacity: 1; }",
-      "options": ["enter-to", "enter-final", "enter-end", "enter-done"],
-      "correct": [0],
+      "options": [
+        "enter-to",
+        "enter-final",
+        "enter-end",
+        "enter-done"
+      ],
+      "correct": [
+        0
+      ],
       "explanation": "The six transition classes are: enter-from, enter-active, enter-to, leave-from, leave-active, and leave-to.",
       "interviewTip": "If you don't provide a 'name' attribute to the transition, the classes default to 'v-enter-from', etc."
     },
@@ -37,7 +46,9 @@
         "Animations are not supported for lists.",
         "Use v-animate on every item."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "<TransitionGroup> renders a real element (default is no element in Vue 3, but can be specified) and handles the movement of items as the list is reordered.",
       "interviewTip": "Items inside a <TransitionGroup> MUST have a unique :key for the animations to work."
     },
@@ -53,7 +64,9 @@
         "It forces the animation to run in the background thread.",
         "It randomizes the transition effect."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Without 'out-in', both components would be in the DOM at the same time during the transition, often causing layout 'jumping'.",
       "interviewTip": "The 'out-in' mode is almost always preferred for smooth page or component transitions."
     },
@@ -68,7 +81,9 @@
         "Transitions only work on updates, not initial mount.",
         "Call transition.start() in onMounted."
       ],
-      "correct": [0],
+      "correct": [
+        0
+      ],
       "explanation": "The 'appear' attribute tells Vue to apply the enter transition classes as soon as the element is first rendered.",
       "interviewTip": "This is great for 'hero' sections or entrance animations for a landing page."
     },
@@ -77,8 +92,17 @@
       "stageId": "transitions_animations",
       "type": "multiple",
       "prompt": "Which of these are valid 'JavaScript Hooks' provided by the <Transition> component for complex animations (e.g., using GSAP)?",
-      "options": ["@before-enter", "@enter", "@after-leave", "@on-animating"],
-      "correct": [0, 1, 2],
+      "options": [
+        "@before-enter",
+        "@enter",
+        "@after-leave",
+        "@on-animating"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
       "explanation": "Vue provides JS hooks like @before-enter, @enter, and @leave so you can use libraries like GreenSock (GSAP) or Anime.js instead of CSS.",
       "interviewTip": "When using JS hooks, it's best to add :css='false' to tell Vue to skip CSS detection for a performance boost."
     },
@@ -93,7 +117,9 @@
         "To move the component to a different DOM node.",
         "To delete the item from the list."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "While enter/leave classes handle appearing/disappearing, 'v-move' (or '[name]-move') uses the FLIP technique to smoothly slide items to their new positions.",
       "interviewTip": "This is how you get those smooth 'shuffling' effects in lists."
     },
@@ -109,9 +135,45 @@
         "Both of the above.",
         "Nothing is wrong."
       ],
-      "correct": [2],
+      "correct": [
+        2
+      ],
       "explanation": "A <Transition> only animates a single child. If you have multiple elements toggling, they need unique keys so Vue can track which is which, or you should use a single component with :is.",
       "interviewTip": "Always use unique keys when transitioning between two different elements of the same tag type."
+    },
+    {
+      "id": "ta-09",
+      "stageId": "transitions_animations",
+      "type": "single",
+      "prompt": "What CSS classes does Vue apply during a transition?",
+      "options": [
+        "Only .fade-in and .fade-out",
+        "v-enter-from, v-enter-active, v-enter-to, v-leave-from, v-leave-active, v-leave-to",
+        "Only .transition-start and .transition-end",
+        "Vue does not apply any classes."
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Vue applies these 6 classes at different stages of the transition, allowing you to define CSS transitions or animations.",
+      "interviewTip": "You can customize the prefix by setting the name attribute on <Transition>."
+    },
+    {
+      "id": "ta-10",
+      "stageId": "transitions_animations",
+      "type": "single",
+      "prompt": "How do you animate a list of items in Vue?",
+      "options": [
+        "Use <Transition> for each item.",
+        "Use <TransitionGroup> component.",
+        "Use v-for with :key.",
+        "Animations are not supported for lists."
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "<TransitionGroup> applies transitions to multiple elements rendered with v-for, including enter, leave, and move transitions.",
+      "interviewTip": "Always provide unique keys for TransitionGroup children for proper animation tracking."
     }
   ]
 }

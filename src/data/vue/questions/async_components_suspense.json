@@ -11,7 +11,9 @@
         "importAsync",
         "createAsyncComponent"
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "defineAsyncComponent accepts a loader function that returns a Promise (usually a dynamic import). Vue handles the loading logic automatically.",
       "interviewTip": "Mention that this is a key technique for reducing the 'Initial Bundle Size' of your application."
     },
@@ -27,7 +29,9 @@
         "Nothing will be rendered unless a loading component is configured or Suspense is used.",
         "The entire app pauses execution."
       ],
-      "correct": [2],
+      "correct": [
+        2
+      ],
       "explanation": "By default, an async component won't show anything during loading. You can provide a 'loadingComponent' option in defineAsyncComponent or wrap the usage in a <Suspense> tag.",
       "interviewTip": "Using a skeleton loader as the 'loadingComponent' provides a much better UX than a blank space."
     },
@@ -42,7 +46,9 @@
         "loading and complete",
         "async and sync"
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "The #default slot contains the content that might take time to load, and the #fallback slot contains what to show in the meantime (e.g., a spinner).",
       "interviewTip": "Note that as of Vue 3.x, <Suspense> is still technically an 'experimental' feature, though it is widely used."
     },
@@ -58,7 +64,9 @@
         "The script tag doesn't have an 'async' attribute.",
         "It isn't async; it will block the thread."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "In Vue 3, if a <script setup> contains top-level 'await', the component automatically becomes an 'async dependency' and must be wrapped in <Suspense> by its parent.",
       "interviewTip": "This is a very elegant way to handle data fetching, as you don't need a separate 'loading' state ref inside the component."
     },
@@ -73,7 +81,9 @@
         "Using the 'onErrorCaptured' lifecycle hook in a parent component.",
         "Vue handles all network errors automatically by retrying."
       ],
-      "correct": [2],
+      "correct": [
+        2
+      ],
       "explanation": "While defineAsyncComponent has an 'errorComponent' option, the standard way to catch errors from async dependencies in a tree is the onErrorCaptured hook.",
       "interviewTip": "You can also use the 'error' slot if your project uses a specialized wrapper, but onErrorCaptured is the official global/parent solution."
     },
@@ -88,7 +98,11 @@
         "suspensible (whether it should communicate with a parent Suspense)",
         "retry (number of times to attempt loading)"
       ],
-      "correct": [0, 1, 2],
+      "correct": [
+        0,
+        1,
+        2
+      ],
       "explanation": "delay prevents 'flickering' for fast connections. timeout prevents users from waiting forever. suspensible (default: true) allows the component to control the parent Suspense state.",
       "interviewTip": "Set 'delay: 0' if you want the loading spinner to appear immediately, even for fast loads."
     },
@@ -103,7 +117,9 @@
         "Yes, but it shows them one by one.",
         "Only if they are inside the same file."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Suspense is designed to coordinate multiple async dependencies. The fallback stays visible until the entire tree of async components underneath is ready.",
       "interviewTip": "This prevents 'pop-in' effects where different parts of a page load at different times."
     },
@@ -113,10 +129,51 @@
       "type": "single",
       "prompt": "What is the purpose of the 'onError' retry function in defineAsyncComponent?",
       "code": "defineAsyncComponent({\n  loader: () => import('./Foo.vue'),\n  onError(error, retry, fail, attempts) {\n    if (attempts <= 3) ________();\n    else fail();\n  }\n})",
-      "options": ["retry", "reload", "fetch", "restart"],
-      "correct": [0],
+      "options": [
+        "retry",
+        "reload",
+        "fetch",
+        "restart"
+      ],
+      "correct": [
+        0
+      ],
       "explanation": "The 'retry' callback allows you to attempt to reload the component, which is useful for handling temporary network issues.",
       "interviewTip": "This is a great 'Senior' level feature to mention for building resilient applications."
+    },
+    {
+      "id": "acs-09",
+      "stageId": "async_components_suspense",
+      "type": "single",
+      "prompt": "How do you define an async component in Vue 3?",
+      "options": [
+        "Use the async keyword in the component definition.",
+        "Use defineAsyncComponent() with a loader function.",
+        "Use import() directly in the template.",
+        "Async components are not supported in Vue 3."
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "defineAsyncComponent accepts a loader function that returns a Promise resolving to the component definition, enabling code splitting.",
+      "interviewTip": "You can provide loading, error, delay, and timeout options for better UX."
+    },
+    {
+      "id": "acs-10",
+      "stageId": "async_components_suspense",
+      "type": "single",
+      "prompt": "What is the purpose of the <Suspense> component?",
+      "options": [
+        "To suspend user interactions.",
+        "To handle async dependencies in the component tree and show fallback content while waiting.",
+        "To lazy-load CSS files.",
+        "To pause component rendering permanently."
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Suspense allows you to show a loading state while async components or async setup() are resolving, providing a better user experience.",
+      "interviewTip": "Suspense is still experimental in Vue 3 but is a core feature for async data fetching patterns."
     }
   ]
 }

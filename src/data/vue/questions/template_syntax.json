@@ -5,8 +5,15 @@
       "stageId": "template_syntax",
       "type": "single",
       "prompt": "Which directive is used to reactively update an HTML attribute, such as 'src' or 'disabled'?",
-      "options": ["v-on", "v-model", "v-bind", "v-attr"],
-      "correct": [2],
+      "options": [
+        "v-on",
+        "v-model",
+        "v-bind",
+        "v-attr"
+      ],
+      "correct": [
+        2
+      ],
       "explanation": "v-bind (shorthand ':') is used to bind an attribute to an expression. For example, :disabled='isPending' will apply the disabled attribute if isPending is truthy.",
       "interviewTip": "In Vue 3.4+, you can use the shorthand :id instead of :id='id' if the attribute name matches the variable name."
     },
@@ -22,7 +29,9 @@
         "An empty div (for security reasons)",
         "The word 'Hello' in default black text"
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "v-html updates the element's innerHTML with the provided string. Use this with caution as it can lead to XSS attacks.",
       "interviewTip": "Always warn about XSS when discussing v-html; only use it on trusted content."
     },
@@ -37,7 +46,9 @@
         "v-text supports HTML tags; {{ }} does not.",
         "There is no difference; they are exactly the same."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Interpolation (Mustaches) allows you to mix text and variables like 'Hello {{ name }}'. v-text will overwrite everything inside the tag with the variable's value.",
       "interviewTip": "Mustaches are preferred for readability, while v-text is rarely used unless you want to avoid 'Flash of Uncompiled Template' (though v-cloak is better for that)."
     },
@@ -53,7 +64,9 @@
         "v-model:click",
         "v-trigger:click"
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "v-on (shorthand '@') is the directive for event listeners. It can call a method or run an inline expression.",
       "interviewTip": "Mention event modifiers like @click.prevent or @click.stop for handling common event logic declaratively."
     },
@@ -62,8 +75,15 @@
       "stageId": "template_syntax",
       "type": "single",
       "prompt": "Which directive creates a two-way data binding on form input, textarea, and select elements?",
-      "options": ["v-bind", "v-sync", "v-model", "v-on"],
-      "correct": [2],
+      "options": [
+        "v-bind",
+        "v-sync",
+        "v-model",
+        "v-on"
+      ],
+      "correct": [
+        2
+      ],
       "explanation": "v-model is 'syntactic sugar' that combines v-bind (to set the value) and v-on (to listen for input changes).",
       "interviewTip": "In Vue 3, you can have multiple v-models on a single custom component (e.g., v-model:first-name and v-model:last-name)."
     },
@@ -78,7 +98,11 @@
         "v-memo (memoizes a sub-tree of the template based on dependencies)",
         "v-static (forces the component to never change)"
       ],
-      "correct": [0, 1, 2],
+      "correct": [
+        0,
+        1,
+        2
+      ],
       "explanation": "v-once and v-memo are for runtime performance. v-pre is for compile-time performance, allowing you to show raw mustache tags without Vue processing them.",
       "interviewTip": "v-memo is a powerful Vue 3.2+ feature specifically for optimizing large v-for lists."
     },
@@ -88,8 +112,15 @@
       "type": "single",
       "prompt": "Analyze the code. What will happen to the input value after the button is clicked?",
       "code": "<template>\n  <input v-model.number=\"age\" />\n</template>\n\n// If the user types \"25\" and we check typeof age:",
-      "options": ["string", "number", "undefined", "NaN"],
-      "correct": [1],
+      "options": [
+        "string",
+        "number",
+        "undefined",
+        "NaN"
+      ],
+      "correct": [
+        1
+      ],
       "explanation": "The .number modifier automatically typecasts the input string to a number using parseFloat().",
       "interviewTip": "Modifiers like .trim and .lazy are also vital for refining user input behavior without extra JS logic."
     },
@@ -104,9 +135,46 @@
         "It will render the expression as a string.",
         "It only works inside v-bind."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Vue supports full JavaScript expressions inside data bindings, but they must be single expressions (no statements or flow control).",
       "interviewTip": "While expressions are powerful, keep them simple. If logic gets complex, move it to a 'computed' property."
+    },
+    {
+      "id": "ts-09",
+      "stageId": "template_syntax",
+      "type": "single",
+      "prompt": "What is the purpose of the 'v-cloak' directive?",
+      "options": [
+        "To hide elements until Vue has finished compiling, preventing the flash of uncompiled template (FOUC).",
+        "To encrypt the template content.",
+        "To make the element invisible permanently.",
+        "To improve rendering performance."
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "v-cloak stays on the element until the Vue instance finishes compiling. You typically pair it with CSS like [v-cloak] { display: none } to hide mustache tags during page load.",
+      "interviewTip": "This is mainly useful for server-rendered HTML where the template is visible before Vue hydrates."
+    },
+    {
+      "id": "ts-10",
+      "stageId": "template_syntax",
+      "type": "single",
+      "prompt": "How do you dynamically bind a directive argument in Vue 3?",
+      "code": "<button v-on:[eventName]=\"handler\">Click</button>",
+      "options": [
+        "This syntax is invalid.",
+        "Use square brackets around the argument name to make it dynamic.",
+        "Use curly braces: v-on:{eventName}",
+        "Use parentheses: v-on:(eventName)"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Dynamic directive arguments (introduced in Vue 2.6+) allow you to use a JavaScript expression as the directive argument by wrapping it in square brackets.",
+      "interviewTip": "This is useful for creating generic components that can bind to different events or attributes based on props."
     }
   ]
 }

@@ -11,7 +11,9 @@
         "A way to skip the component lifecycle hooks.",
         "Errors that appear when a template is malformed."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "During the compilation phase, Vue marks elements with flags. For example, if only the text is dynamic, Vue marks it with a TEXT flag, so the diffing algorithm doesn't waste time checking attributes or classes.",
       "interviewTip": "This is why Vue 3 is often called 'Compiler-Informed'. It moves the work from runtime to compile-time."
     },
@@ -26,7 +28,9 @@
         "Lifting the state to the parent component.",
         "A method to increase the priority of an API call."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "If a piece of your template is purely static (no variables), Vue hoists it. Instead of creating a new Virtual Node on every render, it simply points to the same pre-created node, saving memory and CPU.",
       "interviewTip": "Static Hoisting is one of the main reasons Vue 3 templates have near-zero overhead for static content."
     },
@@ -42,7 +46,9 @@
         "The version of the Vue compiler used.",
         "The number of children the div has."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "This is a Patch Flag. When the Virtual DOM 'patches' this node, it sees the '1' and knows it only needs to check the text content, completely ignoring the attributes (null).",
       "interviewTip": "You can see these flags yourself by using the Vue Template Explorer online."
     },
@@ -57,7 +63,9 @@
         "A tool for visual debugging.",
         "The tree structure used by CSS Modules."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Vue 3 divides the template into 'Blocks'. Each Block knows which of its children are dynamic. When updating, Vue iterates over the 'dynamic children' array rather than traversing the whole tree.",
       "interviewTip": "This turns the Virtual DOM complexity from 'O(total number of nodes)' to 'O(number of dynamic nodes)'."
     },
@@ -72,7 +80,9 @@
         "It speeds up the browser's clock.",
         "It forces the browser to refresh the page."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Vue updates the DOM asynchronously. If you change a value and immediately try to measure the DOM, you'll get the old state. nextTick() ensures you are working with the updated DOM.",
       "interviewTip": "Common use case: Focusing an element after it was just shown with v-if."
     },
@@ -87,7 +97,11 @@
         "Generate (creating the final Render Function string).",
         "Hydrate (connecting the DOM to the server state)."
       ],
-      "correct": [0, 1, 2],
+      "correct": [
+        0,
+        1,
+        2
+      ],
       "explanation": "Hydration is a runtime process during SSR. Parse, Transform, and Generate are the three classic stages of the Vue compiler.",
       "interviewTip": "Understanding AST (Abstract Syntax Tree) is a 'Senior' level concept in frontend engineering."
     },
@@ -102,7 +116,9 @@
         "A specialized server for Vue apps.",
         "A variable stored in LocalStorage."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "VNodes are lightweight. Creating and comparing thousands of VNodes is much faster than manipulating thousands of actual DOM nodes.",
       "interviewTip": "The collection of these VNodes is what we call the 'Virtual DOM'."
     },
@@ -117,9 +133,45 @@
         "The component is deleted from memory.",
         "The CSS is re-compiled."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Patching is the 'reconciliation' phase. Vue uses an efficient algorithm to find the minimum number of steps to transform the old DOM into the new one.",
       "interviewTip": "In Vue 3, patching is 'bit-wise' thanks to the Patch Flags we discussed earlier."
+    },
+    {
+      "id": "vi-09",
+      "stageId": "vue_internals",
+      "type": "single",
+      "prompt": "What is the Virtual DOM and why does Vue use it?",
+      "options": [
+        "A backup copy of the real DOM.",
+        "A lightweight JavaScript representation of the DOM that allows Vue to efficiently calculate minimal updates.",
+        "A security feature.",
+        "A debugging tool."
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The Virtual DOM allows Vue to batch updates and minimize expensive DOM operations by diffing the old and new virtual trees.",
+      "interviewTip": "Vue 3's Virtual DOM implementation is significantly faster than Vue 2 due to optimizations like static hoisting and patch flags."
+    },
+    {
+      "id": "vi-10",
+      "stageId": "vue_internals",
+      "type": "single",
+      "prompt": "What are patch flags in Vue 3?",
+      "options": [
+        "Flags for debugging.",
+        "Compiler hints that tell the runtime which parts of a template are dynamic, enabling faster updates.",
+        "Security patches.",
+        "Feature flags for experimental features."
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "Patch flags are integers that encode information about dynamic bindings, allowing Vue to skip static content during updates.",
+      "interviewTip": "This is one of the key optimizations that makes Vue 3 faster than Vue 2."
     }
   ]
 }

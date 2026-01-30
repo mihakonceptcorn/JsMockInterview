@@ -6,8 +6,15 @@
       "type": "single",
       "prompt": "How do you define a dynamic route segment that captures a specific value, like a user ID?",
       "code": "const routes = [\n  { path: '/user/________', component: UserProfile }\n];",
-      "options": [":id", "{id}", "*id", "?id"],
-      "correct": [0],
+      "options": [
+        ":id",
+        "{id}",
+        "*id",
+        "?id"
+      ],
+      "correct": [
+        0
+      ],
       "explanation": "Colons denote dynamic segments. The value passed in the URL (e.g., /user/123) will be accessible via 'route.params.id'.",
       "interviewTip": "You can use Regex in paths for more strict matching, like /user/:id(\\\\d+)."
     },
@@ -23,7 +30,9 @@
         "Option B is faster than Option A.",
         "There is no difference."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Replace is used when you don't want the user to be able to go 'back' to the previous screen (e.g., after a successful login).",
       "interviewTip": "Use 'replace' for redirects or transient states to keep the history stack clean."
     },
@@ -38,7 +47,9 @@
         "onBeforeRouteUpdate",
         "watchEffect"
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "onBeforeRouteLeave is a specialized router hook. It allows you to prevent navigation (e.g., if the user has unsaved changes in a form).",
       "interviewTip": "You can return 'false' from this hook to cancel the navigation."
     },
@@ -54,7 +65,9 @@
         "It automatically compresses the images on that page.",
         "It allows the page to work offline."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Dynamic imports () => import(...) create a separate bundle for that route, significantly improving the initial load time of the app.",
       "interviewTip": "For large enterprise apps, lazy loading every non-critical route is a mandatory performance optimization."
     },
@@ -64,8 +77,15 @@
       "type": "single",
       "prompt": "How do you access the current route's parameters inside a <script setup> block?",
       "code": "import { ________ } from 'vue-router';\nconst route = ________();\nconsole.log(route.params.id);",
-      "options": ["useRouter", "useRoute", "getParams", "routeLink"],
-      "correct": [1],
+      "options": [
+        "useRouter",
+        "useRoute",
+        "getParams",
+        "routeLink"
+      ],
+      "correct": [
+        1
+      ],
       "explanation": "useRoute gives you access to the current state (params, query, path). useRouter gives you the ability to navigate (push, back).",
       "interviewTip": "Don't mix them up! UseRoute is for 'What is happening now'; UseRouter is for 'What should happen next'."
     },
@@ -80,7 +100,11 @@
         "router.beforeResolve (runs before navigation is confirmed, after in-component guards)",
         "router.onMount (runs when the app starts)"
       ],
-      "correct": [0, 1, 2],
+      "correct": [
+        0,
+        1,
+        2
+      ],
       "explanation": "Navigation guards are used to protect routes (e.g., checking for auth tokens).",
       "interviewTip": "Mention 'beforeEach' as the primary place for implementing authentication checks."
     },
@@ -95,7 +119,9 @@
         "To create a link to another page.",
         "To debug the routing state."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "RouterView is where the magic happens. Without it, you might change the URL, but the UI won't update to show the new component.",
       "interviewTip": "You can use multiple <router-view> components with names to create complex layouts."
     },
@@ -111,9 +137,45 @@
         "It makes the route public.",
         "It automatically validates the data types."
       ],
-      "correct": [1],
+      "correct": [
+        1
+      ],
       "explanation": "Setting 'props: true' decouples the component from the router. The User component can declare 'props: ['id']' and use it without knowing about 'this.$route'.",
       "interviewTip": "This makes components much easier to unit test because they don't depend on the global router state."
+    },
+    {
+      "id": "vr-09",
+      "stageId": "vue_router",
+      "type": "single",
+      "prompt": "How do you programmatically navigate to a different route in Vue Router?",
+      "options": [
+        "this.$router.push('/path')",
+        "this.$route.push('/path')",
+        "router.navigate('/path')",
+        "window.location = '/path'"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "$router is the router instance with navigation methods. $route is the current route information object.",
+      "interviewTip": "In Composition API, use useRouter() to access the router instance."
+    },
+    {
+      "id": "vr-10",
+      "stageId": "vue_router",
+      "type": "single",
+      "prompt": "What is the purpose of route guards in Vue Router?",
+      "options": [
+        "To protect routes from unauthorized access and control navigation flow.",
+        "To guard against XSS attacks.",
+        "To prevent route changes.",
+        "To encrypt route parameters."
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Navigation guards (beforeEach, beforeEnter, beforeRouteEnter, etc.) allow you to implement authentication, authorization, and other navigation logic.",
+      "interviewTip": "Global guards run for all routes, per-route guards run for specific routes, and in-component guards run within components."
     }
   ]
 }
