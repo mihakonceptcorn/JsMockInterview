@@ -1,7 +1,7 @@
 {
   "default": [
     {
-      "id": "ca-01",
+      "id": "vca-01",
       "stageId": "composition_api",
       "type": "single",
       "options": [
@@ -10,12 +10,10 @@
         "reactive is faster than ref.",
         "ref works on the server side, reactive only on the client."
       ],
-      "correct": [
-        1
-      ]
+      "correct": [1]
     },
     {
-      "id": "ca-02",
+      "id": "vca-02",
       "stageId": "composition_api",
       "type": "single",
       "code": "const user = reactive({ name: 'Alex', age: 25 });\nconst { name } = user;\n\n// Later...\nuser.name = 'John';",
@@ -25,12 +23,10 @@
         "Vue will throw a warning about unsafe destructuring.",
         "Reactivity is preserved if you use 'let' instead of 'const'."
       ],
-      "correct": [
-        1
-      ]
+      "correct": [1]
     },
     {
-      "id": "ca-03",
+      "id": "vca-03",
       "stageId": "composition_api",
       "type": "single",
       "options": [
@@ -39,27 +35,18 @@
         "<script setup> (it is the feature itself)",
         "export default"
       ],
-      "correct": [
-        2
-      ]
+      "correct": [2]
     },
     {
-      "id": "ca-04",
+      "id": "vca-04",
       "stageId": "composition_api",
       "type": "single",
       "code": "const count = ref(0);\n\nfunction increment() {\n  ________++;\n}",
-      "options": [
-        "count",
-        "count.value",
-        "count()",
-        "this.count"
-      ],
-      "correct": [
-        1
-      ]
+      "options": ["count", "count.value", "count()", "this.count"],
+      "correct": [1]
     },
     {
-      "id": "ca-05",
+      "id": "vca-05",
       "stageId": "composition_api",
       "type": "single",
       "options": [
@@ -68,12 +55,10 @@
         "To create a ref with a lower memory footprint for numbers.",
         "To make a ref read-only."
       ],
-      "correct": [
-        1
-      ]
+      "correct": [1]
     },
     {
-      "id": "ca-06",
+      "id": "vca-06",
       "stageId": "composition_api",
       "type": "multiple",
       "options": [
@@ -82,14 +67,10 @@
         "Groups code by logical concern (e.g., 'Search logic' together) rather than by option type.",
         "It completely removes the need for Virtual DOM."
       ],
-      "correct": [
-        0,
-        1,
-        2
-      ]
+      "correct": [0, 1, 2]
     },
     {
-      "id": "ca-07",
+      "id": "vca-07",
       "stageId": "composition_api",
       "type": "single",
       "code": "interface Props {\n  msg?: string\n}\n\nconst props = ________<Props>();",
@@ -99,12 +80,10 @@
         "defineProps<Props>({ msg: 'hello' })",
         "assignProps({ msg: 'hello' })"
       ],
-      "correct": [
-        0
-      ]
+      "correct": [0]
     },
     {
-      "id": "ca-08",
+      "id": "vca-08",
       "stageId": "composition_api",
       "type": "single",
       "options": [
@@ -113,24 +92,15 @@
         "It converts a reactive object into a ref.",
         "It forces a component to re-render."
       ],
-      "correct": [
-        1
-      ]
+      "correct": [1]
     },
     {
       "id": "vca-09",
       "stageId": "composition_api",
       "type": "single",
       "code": "// Parent\\nprovide('user', reactive({ name: 'Alice' }));\\n\\n// Child\\nconst user = ________('user');",
-      "options": [
-        "useInject",
-        "inject",
-        "getProvided",
-        "consume"
-      ],
-      "correct": [
-        1
-      ]
+      "options": ["useInject", "inject", "getProvided", "consume"],
+      "correct": [1]
     },
     {
       "id": "vca-10",
@@ -142,9 +112,7 @@
         "To improve the performance of computed properties.",
         "To define the scope of template variables."
       ],
-      "correct": [
-        1
-      ]
+      "correct": [1]
     }
   ]
 }

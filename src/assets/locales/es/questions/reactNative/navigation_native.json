@@ -1,0 +1,72 @@
+{
+  "nav-01": {
+    "prompt": "Which navigator should you use for a standard 'push/pop' transition where a new screen slides over the previous one?",
+    "explanation": "Stack Navigator provides a way for your app to transition between screens where each new screen is placed on top of a stack.",
+    "interviewTip": "In modern React Navigation, use '@react-navigation/native-stack' for better performance as it uses native OS primitives."
+  },
+  "nav-02": {
+    "prompt": "How do you navigate to a specific screen named 'Details' and pass a parameter 'itemId'?",
+    "explanation": "The 'navigate' function is the most common way to move between screens. The second argument is an object containing 'params'.",
+    "interviewTip": "Note the difference: 'navigate' will go back to an existing screen in the stack, while 'push' will always add a new instance even if it's the same screen."
+  },
+  "nav-03": {
+    "prompt": "How do you retrieve the 'itemId' parameter in the 'Details' screen component?",
+    "explanation": "Every screen component in a navigator receives a 'route' prop containing information about the current route, including 'params'.",
+    "interviewTip": "You can also use the 'useRoute' hook to access this information anywhere in the component tree."
+  },
+  "nav-04": {
+    "prompt": "What is the purpose of the <NavigationContainer> component?",
+    "explanation": "NavigationContainer must wrap your entire application structure. It manages the app state and handles deep linking.",
+    "interviewTip": "You should only have one NavigationContainer in your entire app."
+  },
+  "nav-05": {
+    "prompt": "Which hook is used to perform a 'go back' action programmatically?",
+    "explanation": "useNavigation provides access to the navigation object within any nested component, allowing actions like 'goBack' or 'navigate'.",
+    "interviewTip": "This is much cleaner than passing the navigation prop manually through several layers of components."
+  },
+  "nav-06": {
+    "prompt": "Which of the following are common types of navigators in the React Navigation ecosystem?",
+    "explanation": "React Navigation provides specific packages for Stack, Tabs, and Drawers. Modals are typically handled as a 'presentation' mode within a Stack.",
+    "interviewTip": "Mention 'createNativeStackNavigator' specifically for its performance benefits on iOS and Android."
+  },
+  "nav-07": {
+    "prompt": "What does 'navigation.replace('Home')' do?",
+    "explanation": "Replace is useful for login flows; once a user logs in, you replace the Login screen with Home so they can't 'go back' to the login form.",
+    "interviewTip": "Use this to prevent 'infinite' back loops in your app's history."
+  },
+  "nav-08": {
+    "prompt": "How do you change the title of a screen in the navigation header?",
+    "explanation": "The 'options' prop (specifically the 'title' field) controls how the screen appears in the UI of the navigator (header text, tab label).",
+    "interviewTip": "You can also set these dynamically from within the component using 'navigation.setOptions'."
+  },
+  "nav-09": {
+    "prompt": "What is 'Deep Linking' in the context of mobile navigation?",
+    "explanation": "Deep linking allows external sources (websites, emails, notifications) to trigger navigation to a specific nested screen within your app.",
+    "interviewTip": "Implementing deep linking requires configuring a 'linking' object and passing it to the <NavigationContainer>."
+  },
+  "nav-10": {
+    "prompt": "How do you detect when a screen has come into focus (becomes visible to the user)?",
+    "explanation": "Since screens in a stack stay 'mounted' even when hidden, standard useEffect doesn't trigger when you return to a screen. 'useFocusEffect' is the React Navigation solution.",
+    "interviewTip": "This is essential for refreshing data when a user navigates back to a screen."
+  },
+  "nav-11": {
+    "prompt": "What happens if you call 'navigation.popToTop()'?",
+    "explanation": "This is a convenience method in Stack navigators to instantly 'reset' the navigation history and return to the starting screen.",
+    "interviewTip": "This is commonly used for 'Home' buttons or finishing a multi-step checkout process."
+  },
+  "nav-12": {
+    "prompt": "How do you hide the header for a specific screen?",
+    "explanation": "headerShown: false is the standard option to remove the default navigation bar for that specific screen.",
+    "interviewTip": "You might do this if you are building a custom header or for a splash screen."
+  },
+  "nav-13": {
+    "prompt": "What is 'Tab Nesting'?",
+    "explanation": "Nesting allows you to have a Bottom Tab bar globally, but each tab can have its own independent history stack (e.g., Home -> Product Details).",
+    "interviewTip": "Be careful with deep nesting; it can make the navigation state complex and harder to debug."
+  },
+  "nav-14": {
+    "prompt": "Which prop allows you to customize the icon in a Bottom Tab Navigator?",
+    "explanation": "tabBarIcon is a function that returns a component (usually an icon) to be displayed in the tab bar.",
+    "interviewTip": "The function receives { focused, color, size } as arguments to help you style the active vs inactive state."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "ps-01": {
+    "prompt": "Which built-in module is used to detect the operating system at runtime within your JavaScript code?",
+    "explanation": "The 'Platform' module provides a 'Platform.OS' property which returns either 'ios' or 'android'.",
+    "interviewTip": "You can also use 'Platform.Version' to check the specific API level of the device."
+  },
+  "ps-02": {
+    "prompt": "How do you apply different styles for iOS and Android using the Platform.select method?",
+    "explanation": "Platform.select takes an object where keys are platforms and returns the value for the platform the app is currently running on.",
+    "interviewTip": "This is much cleaner than using multiple ternary operators (Platform.OS === 'ios' ? ... : ...)."
+  },
+  "ps-03": {
+    "prompt": "What is the naming convention for creating separate files for iOS and Android that React Native will automatically pick up?",
+    "explanation": "React Native's packager (Metro) detects the platform-specific extension and imports the correct file automatically when you 'import Header from \"./Header\"'.",
+    "interviewTip": "This is the best pattern for complex components that require completely different native implementations."
+  },
+  "ps-04": {
+    "prompt": "Which of these are valid ways to handle platform-specific differences in React Native?",
+    "explanation": "React Native provides OS detection, the select utility, and file-level splitting. There is no built-in <NativeTarget> component.",
+    "interviewTip": "Mention that file extensions are best for large logic differences, while Platform.select is best for minor style tweaks."
+  },
+  "ps-05": {
+    "prompt": "How do you check if the current Android device has a specific API level (e.g., API 30)?",
+    "explanation": "For Android, Platform.Version returns the integer API level (e.g., 30, 31). For iOS, it returns a string of the system version (e.g., '17.2').",
+    "interviewTip": "Always remember to check the OS first, because '30' (number) and '17.2' (string) are compared differently in JS."
+  },
+  "ps-06": {
+    "prompt": "What does the 'Platform.isPad' property return?",
+    "explanation": "Platform.isPad is a boolean specifically for iOS to distinguish between iPhone and iPad layouts.",
+    "interviewTip": "For a cross-platform tablet check, you usually need to check the screen width using Dimensions."
+  },
+  "ps-07": {
+    "prompt": "Which property in the Platform module is used to check if the app is running in a TV environment (like Apple TV or Android TV)?",
+    "explanation": "Platform.isTV is a boolean that helps you adjust navigation logic for focus-based (remote control) interfaces.",
+    "interviewTip": "TV apps require 'focusable' components, which is a different paradigm than touch."
+  },
+  "ps-08": {
+    "prompt": "Analyze the code. What will the 'elevation' property do on an iOS device?",
+    "explanation": "Android uses 'elevation' for shadows (Material Design), while iOS uses 'shadowColor', 'shadowOffset', 'shadowOpacity', and 'shadowRadius'.",
+    "interviewTip": "To get consistent shadows on both, you must define both sets of properties or use a library like 'react-native-shadow-2'."
+  },
+  "ps-09": {
+    "prompt": "How do you define a component that only renders on the web when using 'React Native for Web'?",
+    "explanation": "Metro and Webpack can be configured to recognize '.web.js' extensions for web-specific implementations.",
+    "interviewTip": "This allows you to use standard <div> and <a> tags for the web version while using View/Text for mobile."
+  },
+  "ps-10": {
+    "prompt": "What is the purpose of 'Platform.select' for default values?",
+    "explanation": "The 'default' key acts as a fallback for any platform not explicitly listed in the object.",
+    "interviewTip": "This is great for maintaining future compatibility with platforms like 'macos' or 'windows'."
+  }
+}

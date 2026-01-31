@@ -1,0 +1,127 @@
+{
+  "js-hc-01": {
+    "prompt": "What will be logged?",
+    "explanation": "![] is false, [] == false → '' == 0 → true.",
+    "interviewTip": "Classic coercion trap."
+  },
+  "js-hc-02": {
+    "prompt": "What will this output?",
+    "explanation": "NaN is a numeric value.",
+    "interviewTip": "Use Number.isNaN."
+  },
+  "js-hc-03": {
+    "prompt": "What happens?",
+    "explanation": "Floating point precision issue.",
+    "interviewTip": "IEEE 754."
+  },
+  "js-hc-04": {
+    "prompt": "What will be logged?",
+    "explanation": "Objects are reference-based.",
+    "interviewTip": "Mutation awareness."
+  },
+  "js-hc-05": {
+    "prompt": "What is logged?",
+    "explanation": "Loose equality special case.",
+    "interviewTip": "One of few == exceptions."
+  },
+  "js-hc-06": {
+    "prompt": "What happens?",
+    "explanation": "typeof always returns a string.",
+    "interviewTip": "Very common trick."
+  },
+  "js-hc-07": {
+    "prompt": "What will this print?",
+    "explanation": "Arrays convert to strings.",
+    "interviewTip": "Implicit toString."
+  },
+  "js-hc-08": {
+    "prompt": "What is the result?",
+    "explanation": "Non-empty strings are truthy.",
+    "interviewTip": "Truthy vs semantic value."
+  },
+  "js-hc-09": {
+    "prompt": "What will happen?",
+    "explanation": "Prototype chain removed.",
+    "interviewTip": "Used for pure dictionaries."
+  },
+  "js-hc-10": {
+    "prompt": "What is logged?",
+    "explanation": "Strings are iterable.",
+    "interviewTip": "Iterator protocol."
+  },
+  "js-hc-11": {
+    "prompt": "What happens?",
+    "explanation": "Classes are functions.",
+    "interviewTip": "Syntactic sugar."
+  },
+  "js-hc-12": {
+    "prompt": "What is logged?",
+    "explanation": "Max of empty set is -Infinity.",
+    "interviewTip": "Edge case math."
+  },
+  "js-hc-13": {
+    "prompt": "What is logged?",
+    "explanation": "Different references.",
+    "interviewTip": "Reference equality."
+  },
+  "js-hc-14": {
+    "prompt": "What is the output?",
+    "explanation": "'12' - 1 = 11.",
+    "interviewTip": "Order matters."
+  },
+  "js-hc-15": {
+    "prompt": "What does this return?",
+    "explanation": "Object.is handles NaN correctly.",
+    "interviewTip": "Difference vs ===."
+  },
+  "js-hc-16": {
+    "prompt": "What happens?",
+    "explanation": "Arrow returns undefined by default.",
+    "interviewTip": "Implicit returns."
+  },
+  "js-hc-17": {
+    "prompt": "What is logged?",
+    "explanation": "Unary plus converts to number.",
+    "interviewTip": "Coercion operator."
+  },
+  "js-hc-18": {
+    "prompt": "What happens?",
+    "explanation": "Both coerce to 0.",
+    "interviewTip": "== pitfalls."
+  },
+  "js-hc-19": {
+    "prompt": "What will be logged?",
+    "explanation": "Primitive passed by value.",
+    "interviewTip": "Contrast with objects."
+  },
+  "js-hc-20": {
+    "prompt": "What happens?",
+    "explanation": "Wrapper object.",
+    "interviewTip": "Avoid constructors."
+  },
+  "js-hc-21": {
+    "prompt": "What is logged?",
+    "explanation": "Arrays are truthy.",
+    "interviewTip": "Even empty arrays."
+  },
+  "js-hc-22": {
+    "prompt": "What happens?",
+    "explanation": "true < 3 → 1 < 3.",
+    "interviewTip": "Comparison chaining trap."
+  },
+  "js-hc-23": {
+    "prompt": "What is logged?",
+    "explanation": "undefined vs object.",
+    "interviewTip": "Historical bug again."
+  },
+  "js-hc-24": {
+    "prompt": "What happens?",
+    "explanation": "Unary plus converts string.",
+    "interviewTip": "Operator precedence."
+  },
+  "js-hc-25": {
+    "prompt": "Hard rule for interviews?",
+    "explanation": "Reasoning > speed.",
+    "interviewTip": "Senior mindset."
+  }
+}

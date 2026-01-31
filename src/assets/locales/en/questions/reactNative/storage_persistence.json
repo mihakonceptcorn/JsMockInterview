@@ -1,0 +1,52 @@
+{
+  "sp-01": {
+    "prompt": "Which library is the standard, community-recommended replacement for the deprecated core 'AsyncStorage'?",
+    "explanation": "AsyncStorage was moved out of the React Native core into the community repository to allow for faster updates and maintenance.",
+    "interviewTip": "Always specify that AsyncStorage is 'asynchronous' and 'unencrypted,' making it unsuitable for sensitive secrets."
+  },
+  "sp-02": {
+    "prompt": "What is the primary architectural advantage of 'react-native-mmkv' over 'AsyncStorage'?",
+    "explanation": "MMKV uses the JavaScript Interface (JSI) to allow the JS thread to read/write data directly from C++ memory without the overhead of the JSON bridge.",
+    "interviewTip": "MMKV is currently considered the fastest key-value storage for React Native, often 10-30x faster than AsyncStorage."
+  },
+  "sp-03": {
+    "prompt": "How do you correctly save an object (not a string) to AsyncStorage?",
+    "explanation": "AsyncStorage can only store strings. To store objects or arrays, you must serialize them to a JSON string first.",
+    "interviewTip": "Don't forget that `getItem` will also require `JSON.parse` to turn it back into an object."
+  },
+  "sp-04": {
+    "prompt": "Where is the most secure place to store a user's Authentication Token or Bio-metric data?",
+    "explanation": "Keychain and Keystore provide hardware-level encryption that persists even if the app is deleted or the device is backed up. Key-value stores like AsyncStorage are not secure.",
+    "interviewTip": "Mention 'Key-Value storage for preferences, Keychain for secrets' as a security best practice."
+  },
+  "sp-05": {
+    "prompt": "Analyze the code. What will be the value of 'name' after these calls?",
+    "explanation": "AsyncStorage is promise-based. Because 'await' is used, the code waits for the storage to return the string 'John'.",
+    "interviewTip": "If you forget 'await', the constant 'name' will be a Promise, which evaluates to 'true' in a conditional, causing bugs."
+  },
+  "sp-06": {
+    "prompt": "Which of the following are valid reasons to use 'SQLite' instead of 'AsyncStorage'?",
+    "explanation": "SQLite is a full relational database. For simple key-value pairs like theme preferences, it is overkill compared to AsyncStorage or MMKV.",
+    "interviewTip": "WatermelonDB or Realm are popular high-level alternatives that use SQLite or their own engines under the hood."
+  },
+  "sp-07": {
+    "prompt": "What does 'multiSet' do in AsyncStorage?",
+    "explanation": "Batch operations are more efficient than calling setItem multiple times, as they reduce the number of trips across the bridge.",
+    "interviewTip": "Always use 'multiSet' or 'multiGet' when dealing with related groups of data to improve performance."
+  },
+  "sp-08": {
+    "prompt": "In Expo, what is the default secure storage library?",
+    "explanation": "expo-secure-store provides a way to encrypt and securely store key-value pairs locally on the device.",
+    "interviewTip": "Note that SecureStore has a 2048-byte limit per value, so it's strictly for small secrets."
+  },
+  "sp-09": {
+    "prompt": "What is the typical storage limit for AsyncStorage on Android?",
+    "explanation": "By default, Android caps AsyncStorage at 6MB. For larger data, you must increase this in your `MainApplication.java` or `gradle.properties`.",
+    "interviewTip": "If your app crashes when saving large JSONs on Android, this limit is likely the cause."
+  },
+  "sp-10": {
+    "prompt": "Which library is an 'Offline-first' database that syncs with a server and is often used with React Native?",
+    "explanation": "Realm is an object-oriented database that is much faster than SQLite and provides native synchronization features.",
+    "interviewTip": "Mention Realm if the interview focuses on complex apps that must work perfectly without an internet connection."
+  }
+}

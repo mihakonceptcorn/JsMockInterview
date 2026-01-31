@@ -1,0 +1,52 @@
+{
+  "vue-re-01": {
+    "prompt": "What technology serves as the foundation for the Vue 3 reactivity system, allowing it to track changes in objects more effectively?",
+    "explanation": "Vue 3 uses ES6 Proxies to intercept operations on objects. This solved Vue 2 limitations, such as the inability to automatically detect newly added properties or changes in arrays by index.",
+    "interviewTip": "Expect to be asked about the difference: Vue 2 used getters/setters via defineProperty, whereas Vue 3 uses Proxies, which are more performant and flexible."
+  },
+  "vue-re-02": {
+    "prompt": "Analyze the code below. Will the change to property 'b' be reactive in Vue 2?",
+    "explanation": "In Vue 2, reactivity is injected during instance initialization. Properties added afterward (like vm.b) do not become reactive unless Vue.set() is used.",
+    "interviewTip": "This is a classic Vue 2 'gotcha.' In Vue 3, this code would work perfectly due to Proxies."
+  },
+  "vue-re-03": {
+    "prompt": "What does the MVVM acronym stand for in the context of Vue.js architecture?",
+    "explanation": "Vue is inspired by the MVVM pattern. The View is the DOM, the Model is the plain JavaScript data, and the ViewModel is the Vue instance that syncs the two.",
+    "interviewTip": "If asked how Vue relates to MVVM, explain that the 'ViewModel' handles the data binding, so you don't have to manipulate the DOM manually."
+  },
+  "vue-re-04": {
+    "prompt": "What is the primary role of the 'Effect' (Watcher) in Vue's reactivity system?",
+    "explanation": "When a reactive property is accessed, the current 'effect' is recorded as a subscriber. When the property is mutated, all its subscribers are notified to re-run.",
+    "interviewTip": "This is the 'Observer' pattern. Understanding that 'Dependency Tracking' happens during 'Getter' access is a sign of a senior developer."
+  },
+  "vue-re-05": {
+    "prompt": "Which of the following limitations of Vue 2 reactivity were eliminated in Vue 3?",
+    "explanation": "Proxies allow Vue to track additions/deletions and array indices. Vue 3 also uses 'lazy' observation, only making nested objects reactive when they are actually accessed.",
+    "interviewTip": "Vue 3 is significantly more memory-efficient for large, nested data structures because of this lazy observation."
+  },
+  "vue-re-06": {
+    "prompt": "Analyze the Vue 3 Composition API code. What will happen to the UI when 'increment' is called?",
+    "explanation": "In Vue 3, variables must be explicitly made reactive using 'ref()' or 'reactive()'. A plain 'let' variable is not tracked by the reactivity system.",
+    "interviewTip": "Remember that 'ref' creates an object with a '.value' property. Accessing 'count.value' is how you mutate the data in JS."
+  },
+  "vue-re-07": {
+    "prompt": "What happens when you pass a reactive object to 'console.log' in Vue 3?",
+    "explanation": "Because Vue 3 uses Proxies, the console will show the Proxy wrapper. To see the raw data, you can use the 'toRaw()' utility or log 'JSON.parse(JSON.stringify(obj))'.",
+    "interviewTip": "Mentioning 'toRaw' shows you've worked with debugging complex reactive states in production."
+  },
+  "vue-re-08": {
+    "prompt": "How does Vue's reactivity system avoid infinite loops when an effect updates the same data it depends on?",
+    "explanation": "Vue's internal scheduler checks if the effect being triggered is the same as the one currently running, preventing immediate recursive loops.",
+    "interviewTip": "Understanding the 'Scheduler' demonstrates a deep knowledge of Vue internals beyond just surface-level syntax."
+  },
+  "vue-re-09": {
+    "prompt": "What is the difference between 'reactive()' and 'readonly()' in Vue 3?",
+    "explanation": "readonly() is useful when you want to pass data to child components but prevent them from modifying it. The original object can still be mutated, but the readonly proxy will throw warnings in development.",
+    "interviewTip": "Mention readonly() when discussing prop immutability patterns or state management best practices."
+  },
+  "vue-re-10": {
+    "prompt": "How does Vue 3 handle reactivity for deeply nested objects?",
+    "explanation": "Vue 3 uses lazy reactive conversion. When you access a nested object for the first time, Vue wraps it in a Proxy. This avoids the upfront cost of converting large data structures.",
+    "interviewTip": "This lazy approach is one of the key performance improvements over Vue 2's eager recursive observation."
+  }
+}

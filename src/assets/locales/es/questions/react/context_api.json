@@ -1,0 +1,22 @@
+{
+  "ca-09": {
+    "prompt": "How do you provide a function through Context to allow children to update the state?",
+    "explanation": "Context values can be any JS type. Passing an object containing both the state and its setter is the most common pattern for global state management.",
+    "interviewTip": "Always ensure the object passed to 'value' is memoized if it's defined inside a component, otherwise it creates a new reference on every render."
+  },
+  "ca-10": {
+    "prompt": "Identify the error in this Consumer logic:",
+    "explanation": "The context object itself is just a descriptor. You must use the 'useContext' hook to 'pull' the value out of that context.",
+    "interviewTip": "Think of the Context object as a 'Key' and 'useContext' as the 'Lock' that opens it."
+  },
+  "ca-11": {
+    "prompt": "Which of these are valid ways to avoid performance issues with Context?",
+    "explanation": "Splitting and memoization are the two most effective strategies. Moving a provider higher actually increases the number of potential components affected by a render.",
+    "interviewTip": "If 'React.memo' doesn't help, the bottleneck is likely the context value itself changing too often."
+  },
+  "ca-12": {
+    "prompt": "What happens if a component calls 'useContext' but its parent Provider is later unmounted?",
+    "explanation": "When the Provider is gone, the hook searches up the tree and, finding nothing, falls back to the original default value.",
+    "interviewTip": "This ensures the component stays 'safe' even during dynamic layout changes."
+  }
+}

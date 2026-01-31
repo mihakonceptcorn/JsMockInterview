@@ -18,7 +18,6 @@ const ProgressionBar: FC<ProgressionBarProps> = ({
   let color = COLORS.success;
 
   if (isColor) {
-    console.log(progress);
     color =
       progress <= 0.4
         ? COLORS.danger

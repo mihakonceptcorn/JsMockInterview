@@ -1,0 +1,87 @@
+{
+  "pc-01": {
+    "prompt": "What is the result of the following code snippet?",
+    "explanation": "Because '25' was passed as a string (with quotes), the '+' operator performs string concatenation instead of addition.",
+    "interviewTip": "Always pass numbers inside curly braces, e.g., age={25}, to ensure they stay as numeric types."
+  },
+  "pc-02": {
+    "prompt": "Which statement best describes the nature of 'props' in React?",
+    "explanation": "React enforces a strict rule of immutability for props to ensure the 'One-Way Data Flow' is predictable and easy to debug.",
+    "interviewTip": "Treat props as 'snapshots' of data provided by the parent."
+  },
+  "pc-03": {
+    "prompt": "What will be rendered by the following component structure?",
+    "explanation": "The 'children' prop is a special prop in React that automatically contains whatever is placed between the opening and closing tags of a component.",
+    "interviewTip": "This pattern is known as 'Containment' or 'Composition'."
+  },
+  "pc-04": {
+    "prompt": "Which of the following are valid ways to provide default values for props in a functional component?",
+    "explanation": "ES6 defaults are the modern standard. .defaultProps is the legacy React way. Using the OR operator inside JSX is a quick inline fallback.",
+    "interviewTip": "For functional components, the ES6 destructuring approach is generally preferred by the React team today."
+  },
+  "pc-05": {
+    "prompt": "How does a child component 'send data back' to its parent?",
+    "explanation": "Parents pass functions. Children call those functions with data as arguments. This 'Events Up' pattern maintains the unidirectional flow.",
+    "interviewTip": "This is often called 'Lifting State Up' when the child triggers an update to the parent's state."
+  },
+  "pc-06": {
+    "prompt": "What is 'Prop Drilling'?",
+    "explanation": "Prop drilling makes components harder to reuse because intermediate components are forced to handle data they don't actually need.",
+    "interviewTip": "Context API or State Management libraries (like Redux/Zustand) are common solutions for avoiding excessive drilling."
+  },
+  "pc-07": {
+    "prompt": "Analyze the code. What happens when the button is clicked?",
+    "explanation": "The reference to the alertMsg function is passed as a prop. When the child button is clicked, it executes that reference.",
+    "interviewTip": "This demonstrates how functional props bridge communication between components."
+  },
+  "pc-08": {
+    "prompt": "What does the spread operator (...) do in the following context?",
+    "explanation": "The spread operator spreads the keys of the object into individual attributes in JSX.",
+    "interviewTip": "While convenient, overusing the spread operator can make it hard to see what data a component actually depends on."
+  },
+  "pc-09": {
+    "prompt": "What happens if you pass a prop called 'class' to a custom React component?",
+    "explanation": "While 'class' is reserved for HTML elements in JSX (where you must use className), for a *custom* component, it's just a key in an object. However, it's confusing and usually avoided.",
+    "interviewTip": "Stay consistent and use 'className' even for your own components to avoid confusion with native DOM elements."
+  },
+  "pc-10": {
+    "prompt": "In the following code, what is the initial value of 'isActive' in the Child?",
+    "explanation": "In JSX, if a prop is passed without a value, it defaults to boolean 'true'.",
+    "interviewTip": "This is similar to HTML attributes like 'disabled' or 'required'."
+  },
+  "pc-11": {
+    "prompt": "What is the best way to pass multiple related pieces of data (e.g., user name, email, avatar)?",
+    "explanation": "Passing a single object makes the component API cleaner and easier to update, especially if the data structure comes directly from an API.",
+    "interviewTip": "If the component only needs one small field from the object, passing individual props might be better for performance and decoupling."
+  },
+  "pc-12": {
+    "prompt": "Can you pass another React component as a prop to a component?",
+    "explanation": "This is a powerful pattern for 'Slots'. It allows you to inject UI components into specific parts of a layout.",
+    "interviewTip": "This is often preferred over deep nesting or complex conditional logic within the component."
+  },
+  "pc-13": {
+    "prompt": "What will log to the console?",
+    "explanation": "React 'freezes' the props object. Attempting to mutate it will throw an error or fail silently, depending on the environment.",
+    "interviewTip": "If you need to change data, that data should be 'State', not 'Props'."
+  },
+  "pc-14": {
+    "prompt": "Which of the following data types can be passed as props in React?",
+    "explanation": "Props are just JavaScript. Anything that can be assigned to a variable in JS can be passed as a prop.",
+    "interviewTip": "This flexibility is why React is so composable."
+  },
+  "pc-15": {
+    "prompt": "What is the result of the logical expression in this prop assignment?",
+    "explanation": "Curly braces allow you to put any JS expression. The result of the expression (true/false) is what is passed as the prop value.",
+    "interviewTip": "This is a clean way to handle UI states directly in the template."
+  },
+  "pc-16": {
+    "prompt": "How do you access the value of a prop in a functional component?",
+    "explanation": "Functional components receive 'props' as their first parameter. You can either use props.name or destructure it immediately.",
+    "interviewTip": "Destructuring is the standard: const MyComponent = ({ name }) => { ... }"
+  },
+  "pc-17": {
+    "prompt": "What is the 'Prop-Types' library used for?",
+    "explanation": "Prop-Types lets you declare the expected type (string, number, etc.) for each prop. React will show a warning in the console if the wrong type is passed.",
+    "interviewTip": "While TypeScript has largely replaced Prop-Types in modern projects, it's still widely used in many existing codebases."
+  }
+}

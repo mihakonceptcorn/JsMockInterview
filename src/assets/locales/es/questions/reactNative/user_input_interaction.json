@@ -1,0 +1,72 @@
+{
+  "ui-01": {
+    "prompt": "Which component is the modern, more flexible alternative to TouchableOpacity and TouchableHighlight for handling touch interactions?",
+    "explanation": "Pressable is a core component that provides more granular control over the various stages of press interactions (hover, press, focus).",
+    "interviewTip": "Use Pressable when you need a highly customized hit box or complex feedback states."
+  },
+  "ui-02": {
+    "prompt": "What is the primary visual difference between TouchableOpacity and TouchableHighlight?",
+    "explanation": "TouchableOpacity provides feedback by reducing the opacity (transparency) of the wrapped component. TouchableHighlight requires an 'underlayColor' and adds a solid highlight effect.",
+    "interviewTip": "TouchableOpacity is the most commonly used for general buttons due to its simplicity."
+  },
+  "ui-03": {
+    "prompt": "How do you mask the characters typed into a TextInput (e.g., for a password)?",
+    "explanation": "Setting 'secureTextEntry' to true replaces characters with dots/stars, following native OS password input behavior.",
+    "interviewTip": "Don't forget to pair this with 'autoCorrect={false}' and 'autoCapitalize=\"none\"' for login screens."
+  },
+  "ui-04": {
+    "prompt": "Which prop is used in TextInput to define which type of keyboard should appear (e.g., numeric, email)?",
+    "explanation": "The 'keyboardType' prop allows you to set specialized keyboards like 'numeric', 'email-address', or 'phone-pad'.",
+    "interviewTip": "Remember that keyboard types can vary slightly between iOS and Android."
+  },
+  "ui-05": {
+    "prompt": "What is the purpose of the <KeyboardAvoidingView> component?",
+    "explanation": "Virtual keyboards take up screen space. KeyboardAvoidingView adjusts its position or padding so that inputs remain visible to the user.",
+    "interviewTip": "The 'behavior' prop is key here; usually, 'padding' works best on iOS and 'height' or 'none' on Android."
+  },
+  "ui-06": {
+    "prompt": "Which of these are valid ways to detect that a user has finished typing in a TextInput?",
+    "explanation": "onEndEditing triggers when focus is lost; onSubmitEditing when the 'return' key is pressed; onBlur when the input loses focus.",
+    "interviewTip": "Use 'onSubmitEditing' for single-line inputs to trigger form submission."
+  },
+  "ui-07": {
+    "prompt": "In React Native, what is the 'hitSlop' prop used for in touchable components?",
+    "explanation": "Mobile screens can be hard to tap. 'hitSlop' makes it easier for users to hit small icons by extending the interactive area.",
+    "interviewTip": "This is a great 'Senior Dev' trick for improving UX on small UI elements like 'Close' buttons."
+  },
+  "ui-08": {
+    "prompt": "Analyze the code. Why might the keyboard NOT close when clicking 'Submit'?",
+    "explanation": "React Native doesn't automatically close the keyboard on all actions. You typically import the 'Keyboard' module and call 'Keyboard.dismiss()'.",
+    "interviewTip": "Another way is to wrap the screen in a 'TouchableWithoutFeedback' that calls dismiss."
+  },
+  "ui-09": {
+    "prompt": "What is the result of using 'onChange' vs 'onChangeText' on a TextInput?",
+    "explanation": "onChangeText is a convenience prop that returns just the text. onChange returns a full SyntheticEvent object containing the text in 'event.nativeEvent.text'.",
+    "interviewTip": "In 99% of cases, you should use 'onChangeText' for cleaner state updates."
+  },
+  "ui-10": {
+    "prompt": "How do you make a TextInput multi-line for a biography or comment section?",
+    "explanation": "The 'multiline' prop allows the text to wrap and the input to grow or scroll vertically.",
+    "interviewTip": "Pair this with 'textAlignVertical=\"top\"' on Android to ensure the text starts at the top of the box."
+  },
+  "ui-11": {
+    "prompt": "Which of these are feedback states provided by the 'Pressable' component's style function?",
+    "explanation": "Pressable allows you to pass a function to 'style' or 'children' that provides these boolean states to help you render dynamic UI.",
+    "interviewTip": "This is why Pressable is replacing Touchable components; it's much more descriptive."
+  },
+  "ui-12": {
+    "prompt": "What is the purpose of 'autoCapitalize=\"none\"' in an email input?",
+    "explanation": "Most mobile keyboards capitalize the first letter by default. This is annoying for email addresses which are usually lowercase.",
+    "interviewTip": "Valid values are 'none', 'sentences', 'words', and 'characters'."
+  },
+  "ui-13": {
+    "prompt": "How do you ensure the 'Submit' button on the keyboard is actually visible and labeled correctly?",
+    "explanation": "returnKeyType changes the text or icon of the 'Enter' key on the virtual keyboard to better match the user's action.",
+    "interviewTip": "Common values include 'search', 'next', 'done', and 'send'."
+  },
+  "ui-14": {
+    "prompt": "What is the difference between a <Button> and a <TouchableOpacity>?",
+    "explanation": "The core <Button> is very limited (only title and color). If you want a button with an icon, custom borders, or specific padding, you must use a Touchable or Pressable wrapper around a View.",
+    "interviewTip": "Most production apps avoid the <Button> component entirely in favor of custom-built button components."
+  }
+}

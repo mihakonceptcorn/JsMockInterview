@@ -1,0 +1,127 @@
+{
+  "js-fn-01": {
+    "prompt": "What will be logged?",
+    "explanation": "In JavaScript, functions are first-class objects but `typeof` returns `function`.",
+    "interviewTip": "Mention that functions are callable objects with internal [[Call]]."
+  },
+  "js-fn-02": {
+    "prompt": "What is the output?",
+    "explanation": "Function declarations are hoisted with their body.",
+    "interviewTip": "Contrast with function expressions."
+  },
+  "js-fn-03": {
+    "prompt": "What happens?",
+    "explanation": "`bar` exists but is undefined at call time.",
+    "interviewTip": "Function expressions are not hoisted like declarations."
+  },
+  "js-fn-04": {
+    "prompt": "What will be logged?",
+    "explanation": "Parentheses allow implicit return of an object.",
+    "interviewTip": "Common arrow function pitfall."
+  },
+  "js-fn-05": {
+    "prompt": "Arrow functions differ from regular functions because they…",
+    "explanation": "Arrow functions capture `this` from lexical scope.",
+    "interviewTip": "Great question to test understanding of `this`."
+  },
+  "js-fn-06": {
+    "prompt": "What is logged?",
+    "explanation": "`arguments` contains passed arguments only.",
+    "interviewTip": "Mention that arrow functions don’t have `arguments`."
+  },
+  "js-fn-07": {
+    "prompt": "What will this output?",
+    "explanation": "Default parameters apply when argument is `undefined`.",
+    "interviewTip": "Different from passing `null`."
+  },
+  "js-fn-08": {
+    "prompt": "What does this return?",
+    "explanation": "Automatic semicolon insertion ends the return.",
+    "interviewTip": "Classic JS gotcha."
+  },
+  "js-fn-09": {
+    "prompt": "What is a higher-order function?",
+    "explanation": "Higher-order functions operate on other functions.",
+    "interviewTip": "Examples: map, filter, reduce."
+  },
+  "js-fn-10": {
+    "prompt": "What will be logged?",
+    "explanation": "In strict mode, `this` is undefined.",
+    "interviewTip": "Always ask about strict mode."
+  },
+  "js-fn-11": {
+    "prompt": "What does bind do?",
+    "explanation": "`bind` returns a new function.",
+    "interviewTip": "bind ≠ call ≠ apply."
+  },
+  "js-fn-12": {
+    "prompt": "What is logged?",
+    "explanation": "`rest` collects remaining arguments.",
+    "interviewTip": "Rest vs arguments."
+  },
+  "js-fn-13": {
+    "prompt": "What will happen?",
+    "explanation": "Arrow functions cannot be used as constructors.",
+    "interviewTip": "No [[Construct]] method."
+  },
+  "js-fn-14": {
+    "prompt": "What is recursion?",
+    "explanation": "Recursion is self-invocation.",
+    "interviewTip": "Always mention base case."
+  },
+  "js-fn-15": {
+    "prompt": "What will be logged?",
+    "explanation": "Closure preserves x.",
+    "interviewTip": "Closures are core JS concept."
+  },
+  "js-fn-16": {
+    "prompt": "Which is true about closures?",
+    "explanation": "Closures reference outer scope variables.",
+    "interviewTip": "Explain memory implications."
+  },
+  "js-fn-17": {
+    "prompt": "What does IIFE stand for?",
+    "explanation": "IIFE executes immediately after definition.",
+    "interviewTip": "Used for scope isolation."
+  },
+  "js-fn-18": {
+    "prompt": "What is logged?",
+    "explanation": "`arguments` is array-like object.",
+    "interviewTip": "Not a real array."
+  },
+  "js-fn-19": {
+    "prompt": "What is tail recursion?",
+    "explanation": "Tail call optimization can reuse stack.",
+    "interviewTip": "Not widely optimized in JS engines."
+  },
+  "js-fn-20": {
+    "prompt": "What does this log?",
+    "explanation": "Default params can reference previous params.",
+    "interviewTip": "Order matters."
+  },
+  "js-fn-21": {
+    "prompt": "What happens if a function has no return?",
+    "explanation": "Implicit return is undefined.",
+    "interviewTip": "Common beginner mistake."
+  },
+  "js-fn-22": {
+    "prompt": "What does call do?",
+    "explanation": "`call` invokes immediately.",
+    "interviewTip": "Difference between call/apply/bind."
+  },
+  "js-fn-23": {
+    "prompt": "What is function arity?",
+    "explanation": "`fn.length` shows arity.",
+    "interviewTip": "Useful for functional patterns."
+  },
+  "js-fn-24": {
+    "prompt": "What will be logged?",
+    "explanation": "Functions have a prototype property.",
+    "interviewTip": "Arrow functions don’t."
+  },
+  "js-fn-25": {
+    "prompt": "Why are functions called first-class citizens?",
+    "explanation": "Functions behave like regular values.",
+    "interviewTip": "This enables functional programming."
+  }
+}

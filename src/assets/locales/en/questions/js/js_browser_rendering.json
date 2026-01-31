@@ -1,0 +1,127 @@
+{
+  "js-br-01": {
+    "prompt": "What is the first step in the rendering pipeline?",
+    "explanation": "HTML is parsed into the DOM first.",
+    "interviewTip": "Start of critical render path."
+  },
+  "js-br-02": {
+    "prompt": "What is created from parsing CSS?",
+    "explanation": "CSSOM represents parsed CSS.",
+    "interviewTip": "DOM + CSSOM = Render Tree."
+  },
+  "js-br-03": {
+    "prompt": "What does the render tree contain?",
+    "explanation": "Hidden nodes are excluded.",
+    "interviewTip": "display:none nodes skipped."
+  },
+  "js-br-04": {
+    "prompt": "What is layout (reflow)?",
+    "explanation": "Layout computes geometry.",
+    "interviewTip": "Very expensive step."
+  },
+  "js-br-05": {
+    "prompt": "What triggers a reflow?",
+    "explanation": "Geometry changes require reflow.",
+    "interviewTip": "Avoid layout thrashing."
+  },
+  "js-br-06": {
+    "prompt": "What is repaint?",
+    "explanation": "Visual-only updates.",
+    "interviewTip": "Cheaper than reflow."
+  },
+  "js-br-07": {
+    "prompt": "Which CSS property avoids reflow and repaint?",
+    "explanation": "Transforms are compositor-only.",
+    "interviewTip": "Key animation trick."
+  },
+  "js-br-08": {
+    "prompt": "What is compositing?",
+    "explanation": "Final step before display.",
+    "interviewTip": "GPU-accelerated."
+  },
+  "js-br-09": {
+    "prompt": "Which properties are typically GPU-accelerated?",
+    "explanation": "They skip layout.",
+    "interviewTip": "Smooth animations."
+  },
+  "js-br-10": {
+    "prompt": "What causes layout thrashing?",
+    "explanation": "Forces sync layout.",
+    "interviewTip": "Classic performance bug."
+  },
+  "js-br-11": {
+    "prompt": "What is forced synchronous layout?",
+    "explanation": "Triggered by layout reads.",
+    "interviewTip": "Avoid offsetHeight after writes."
+  },
+  "js-br-12": {
+    "prompt": "When does requestAnimationFrame run?",
+    "explanation": "Frame-synced callback.",
+    "interviewTip": "Use for animations."
+  },
+  "js-br-13": {
+    "prompt": "What is a render layer?",
+    "explanation": "Used in compositing.",
+    "interviewTip": "Too many layers hurt memory."
+  },
+  "js-br-14": {
+    "prompt": "What promotes an element to its own layer?",
+    "explanation": "Hints browser optimization.",
+    "interviewTip": "Use will-change sparingly."
+  },
+  "js-br-15": {
+    "prompt": "What is the critical render path?",
+    "explanation": "From HTML to pixels.",
+    "interviewTip": "Optimize for FCP."
+  },
+  "js-br-16": {
+    "prompt": "Why inline critical CSS?",
+    "explanation": "CSS blocks rendering.",
+    "interviewTip": "Common optimization."
+  },
+  "js-br-17": {
+    "prompt": "Which metric measures layout stability?",
+    "explanation": "Cumulative Layout Shift.",
+    "interviewTip": "Web Vitals."
+  },
+  "js-br-18": {
+    "prompt": "Which metric reflects render performance best?",
+    "explanation": "Largest Contentful Paint.",
+    "interviewTip": "User-centric."
+  },
+  "js-br-19": {
+    "prompt": "What blocks first paint?",
+    "explanation": "CSS must be parsed first.",
+    "interviewTip": "Critical CSS again."
+  },
+  "js-br-20": {
+    "prompt": "What is paint flashing used for?",
+    "explanation": "DevTools feature.",
+    "interviewTip": "Helps optimize UI."
+  },
+  "js-br-21": {
+    "prompt": "What happens if JS blocks main thread?",
+    "explanation": "Single-threaded rendering.",
+    "interviewTip": "Chunk JS work."
+  },
+  "js-br-22": {
+    "prompt": "Why avoid large DOM trees?",
+    "explanation": "Layout cost grows.",
+    "interviewTip": "Virtualization helps."
+  },
+  "js-br-23": {
+    "prompt": "Which tool profiles rendering?",
+    "explanation": "Shows frames and paint.",
+    "interviewTip": "Know how to read flame charts."
+  },
+  "js-br-24": {
+    "prompt": "What is frame budget at 60fps?",
+    "explanation": "1000ms / 60 ≈ 16ms.",
+    "interviewTip": "Includes JS + render."
+  },
+  "js-br-25": {
+    "prompt": "Golden rule of rendering optimization?",
+    "explanation": "Data-driven optimization.",
+    "interviewTip": "Senior-level answer."
+  }
+}

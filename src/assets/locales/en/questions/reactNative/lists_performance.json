@@ -1,0 +1,72 @@
+{
+  "lp-01": {
+    "prompt": "Why is <FlatList> more performant than <ScrollView> for long lists of data?",
+    "explanation": "FlatList lazily renders items as they are about to appear and unmounts items that move far off-screen, saving significant memory.",
+    "interviewTip": "This concept is called 'Windowing' or 'Virtualization'."
+  },
+  "lp-02": {
+    "prompt": "Which prop is required in <FlatList> to tell it what to render for each item in the data array?",
+    "explanation": "The renderItem prop takes a function that receives an object (usually destructured as { item, index }) and returns a JSX element.",
+    "interviewTip": "To keep performance high, define the renderItem function outside of your component or wrap it in useCallback."
+  },
+  "lp-03": {
+    "prompt": "What is the purpose of the 'keyExtractor' prop?",
+    "explanation": "By default, FlatList looks for an 'id' or 'key' property. If your data uses different names (like 'uuid'), you must use keyExtractor.",
+    "interviewTip": "Always provide a unique string as a key. Avoid using the index if the data can be reordered or filtered."
+  },
+  "lp-04": {
+    "prompt": "How do you render a header that scrolls along with the list items?",
+    "explanation": "Using ListHeaderComponent ensures the header stays part of the list's scrollable area without breaking the virtualization logic.",
+    "interviewTip": "Never wrap a FlatList inside a ScrollView of the same orientation; it breaks virtualization and causes performance warnings."
+  },
+  "lp-05": {
+    "prompt": "Which component should you use to render grouped data (e.g., a contact list organized by the first letter of the name)?",
+    "explanation": "SectionList is designed specifically for data divided into logical sections, each with its own header.",
+    "interviewTip": "SectionList data must be an array of objects, where each object has a 'data' array (e.g., { title: 'A', data: ['Alice', 'Aaron'] })."
+  },
+  "lp-06": {
+    "prompt": "What does the 'getItemLayout' prop optimize?",
+    "explanation": "By providing the exact dimensions of items ahead of time, FlatList doesn't have to calculate them on the fly as you scroll, making it much smoother.",
+    "interviewTip": "This is a 'pro' optimization for lists with hundreds of items where every item has a constant height."
+  },
+  "lp-07": {
+    "prompt": "Analyze the code. What will happen if the user reaches the bottom of the list?",
+    "explanation": "onEndReachedThreshold is a value from 0 to 1 representing how close to the bottom (as a fraction of the list length) the user must be to trigger the event.",
+    "interviewTip": "This is how 'Infinite Scroll' is implemented in mobile apps."
+  },
+  "lp-08": {
+    "prompt": "How do you add a separator line between items without adding it to the top or bottom of the list?",
+    "explanation": "ItemSeparatorComponent renders a component between every item, but excludes the very top and very bottom of the list.",
+    "interviewTip": "This is cleaner than using margins or borders because it handles the 'edges' of the list automatically."
+  },
+  "lp-09": {
+    "prompt": "Which of these props can help improve performance on a very slow FlatList?",
+    "explanation": "All these props fine-tune the virtualization engine. For example, a smaller windowSize reduces memory but might show more 'blank' spaces during fast scrolling.",
+    "interviewTip": "Always start with defaults. Only tweak these if you notice visible lag or high memory usage."
+  },
+  "lp-10": {
+    "prompt": "What is the 'extraData' prop used for in a FlatList?",
+    "explanation": "FlatList is a PureComponent. It only re-renders if the 'data' prop reference changes. If your items depend on a global 'theme' or 'selectedID', you must pass that to extraData.",
+    "interviewTip": "If your list isn't updating when you change a single item's selected state, you probably forgot extraData."
+  },
+  "lp-11": {
+    "prompt": "How do you implement 'Pull to Refresh' in a FlatList?",
+    "explanation": "refreshing (boolean) shows the spinner; onRefresh (function) is the callback where you fetch new data.",
+    "interviewTip": "This provides the native 'bounce and spin' experience users expect on mobile."
+  },
+  "lp-12": {
+    "prompt": "What happens if you don't provide a unique key to list items?",
+    "explanation": "React uses keys to optimize DOM/Native UI updates. Using the index can cause 'state' to stick to the wrong items if the list changes.",
+    "interviewTip": "In an interview, explain that stable keys prevent expensive re-mounts."
+  },
+  "lp-13": {
+    "prompt": "Which prop allows you to render the list in multiple columns (e.g., a grid)?",
+    "explanation": "numColumns={2} will automatically arrange items in two columns. This requires your items to have a flexible width or matching fixed width.",
+    "interviewTip": "Note that you cannot change numColumns on the fly; the component must remount for this to change."
+  },
+  "lp-14": {
+    "prompt": "What is the 'ListEmptyComponent' used for?",
+    "explanation": "It's a convenient prop to handle the empty state without using extra ternary operators in your JSX.",
+    "interviewTip": "It makes your component code much cleaner."
+  }
+}

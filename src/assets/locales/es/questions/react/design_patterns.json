@@ -1,0 +1,62 @@
+{
+  "dp-01": {
+    "prompt": "What is the primary goal of the 'Compound Components' pattern?",
+    "explanation": "Compound components (like <Select> and <Option>) share state behind the scenes, giving the consumer more control over the rendered structure while keeping logic encapsulated.",
+    "interviewTip": "Think of the HTML <select> and <option> tags. They work together as a unit; that is a native compound component."
+  },
+  "dp-02": {
+    "prompt": "In the Compound Component pattern, how is the internal state usually shared among children?",
+    "explanation": "While cloneElement was used in the past, React Context is now the preferred way to share state within a compound component group.",
+    "interviewTip": "Mention that Context is safer and more flexible than cloneElement because it works even if children are wrapped in other divs."
+  },
+  "dp-03": {
+    "prompt": "What is a 'Higher-Order Component' (HOC)?",
+    "explanation": "HOCs are a pattern for reusing component logic. They act as wrappers that 'enhance' the original component with new props or behaviors.",
+    "interviewTip": "While HOCs are less common since Hooks were introduced, they are still used for Cross-Cutting Concerns like Authentication or Logging."
+  },
+  "dp-04": {
+    "prompt": "Analyze the 'Render Prop' pattern. What is being passed to the Child?",
+    "explanation": "A render prop is a prop that is a function which a component uses to know what to render. It 'shares' its internal state with the function.",
+    "interviewTip": "Render props are highly flexible but can sometimes lead to 'wrapper hell' if over-nested."
+  },
+  "dp-05": {
+    "prompt": "Which of the following are characteristics of a 'Controlled Component'?",
+    "explanation": "Controlled components allow React to be the 'Single Source of Truth'. Uncontrolled components rely on the DOM (and Refs) to hold the data.",
+    "interviewTip": "Use controlled components for almost everything unless you have a specific performance reason to use a Ref."
+  },
+  "dp-06": {
+    "prompt": "How do you implement the 'Controlled Props' pattern to allow a user to 'take over' a component's internal state?",
+    "explanation": "This pattern allows a component to manage its own state by default, but gives the parent the option to 'control' it if a prop is provided.",
+    "interviewTip": "This is a common pattern in advanced UI libraries like Downshift or Material UI."
+  },
+  "dp-07": {
+    "prompt": "What is the 'Container/Presentational' pattern?",
+    "explanation": "Presentational components are 'dumb' and only care about how things look. Containers are 'smart' and care about how things work (API calls, state logic).",
+    "interviewTip": "Hooks have largely replaced this pattern because you can now put 'smart' logic in a custom hook instead of a wrapper component."
+  },
+  "dp-08": {
+    "prompt": "Identify the issue when using HOCs:",
+    "explanation": "Heavily nested HOCs make debugging difficult because it's unclear which HOC is passing which prop. Hooks solve this by providing a flat structure.",
+    "interviewTip": "This is one of the main reasons the React community shifted from HOCs to Hooks."
+  },
+  "dp-09": {
+    "prompt": "What does the 'Slot' pattern achieve in React?",
+    "explanation": "Slots are a form of composition that allows a parent to define specific UI 'holes' that a child component fills.",
+    "interviewTip": "Slots are often easier to manage than complex boolean flags within a component."
+  },
+  "dp-10": {
+    "prompt": "How do you avoid 'prop drilling' in a deeply nested component tree using patterns?",
+    "explanation": "Compound components use Context to broadcast state to all descendants, effectively ending the need for drilling.",
+    "interviewTip": "Mention that this keeps the component API 'clean' as users don't see the state being passed."
+  },
+  "dp-11": {
+    "prompt": "Which patterns are considered 'Obsolete' or 'Legacy' due to the introduction of Hooks?",
+    "explanation": "Mixins are completely obsolete. HOCs and Render Props are still valid but are much less common as Hooks solve the same problems with less nesting.",
+    "interviewTip": "Compound Components are still very much alive and well because they solve a different problem (UI structure/API design)."
+  },
+  "dp-12": {
+    "prompt": "What is the 'Prop Collection' pattern?",
+    "explanation": "This pattern simplifies the consumer's work by bundling accessibility, event handlers, and attributes into a single spreadable object.",
+    "interviewTip": "This is widely used in 'Headless UI' libraries like Radix UI or Reach UI."
+  }
+}

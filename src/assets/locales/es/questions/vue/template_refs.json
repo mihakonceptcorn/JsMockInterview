@@ -1,0 +1,52 @@
+{
+  "tr-01": {
+    "prompt": "In the Composition API, how do you link a 'ref' variable to a specific DOM element in your template?",
+    "explanation": "To create a template ref, you declare a ref with the same name in your script and apply the 'ref' attribute to the element in the template.",
+    "interviewTip": "The variable name in your script must match the string value of the ref attribute in your template exactly."
+  },
+  "tr-02": {
+    "prompt": "Analyze the code. Why will 'inputRef.value' be null when the console.log runs?",
+    "explanation": "Template refs are only populated after the component is mounted. Any attempt to access them in the immediate body of the setup script will result in null.",
+    "interviewTip": "To access a ref safely, always use the 'onMounted' lifecycle hook."
+  },
+  "tr-03": {
+    "prompt": "How can you focus an input automatically when a component mounts?",
+    "explanation": "Once mounted, the 'value' of the ref holds the actual HTMLInputElement, giving you access to native methods like .focus().",
+    "interviewTip": "Mention that this is the 'Vue way' rather than using querySelector, which breaks the component encapsulation."
+  },
+  "tr-04": {
+    "prompt": "When using 'v-for', what will a template ref contain if it is applied to the repeated element?",
+    "explanation": "Vue 3 automatically populates the ref with an array of elements when it is used inside a v-for loop.",
+    "interviewTip": "Note that the order of the array is not guaranteed to match the order of your data source if items are reordered."
+  },
+  "tr-05": {
+    "prompt": "Analyze the code. By default, can a parent access the 'internalCount' of this child component via a template ref?",
+    "explanation": "Components using <script setup> do not expose their internal state to the parent via refs unless you explicitly list them in defineExpose().",
+    "interviewTip": "This is a key security/encapsulation feature of Vue 3 compared to the Options API."
+  },
+  "tr-06": {
+    "prompt": "What should you do with a template ref in 'onUnmounted'?",
+    "explanation": "Vue's reactivity system handles the lifecycle of the ref. When the element is unmounted, the ref.value is automatically set back to null.",
+    "interviewTip": "However, you *should* use onUnmounted to destroy any third-party instances (like a map or chart) that were attached to that ref."
+  },
+  "tr-07": {
+    "prompt": "How do you use a 'Function Ref' in Vue 3?",
+    "explanation": "If you pass a function to :ref, Vue will call it with the element when it's mounted and with null when it's unmounted. This is useful for complex logic like dynamic refs in a loop.",
+    "interviewTip": "This is the most flexible way to handle refs if a simple variable name isn't enough."
+  },
+  "tr-08": {
+    "prompt": "In which scenarios is it appropriate to use Template Refs?",
+    "explanation": "Template refs are for imperative DOM tasks. You should never use a ref to bypass Vue's reactivity for things that can be handled with props/state.",
+    "interviewTip": "Always prefer the declarative approach (v-bind, v-if) unless you have no other choice."
+  },
+  "tr-09": {
+    "prompt": "How do you create a template ref in the Composition API?",
+    "explanation": "In Composition API, you create a ref with the same name as the template ref attribute. Vue automatically assigns the DOM element to it after mount.",
+    "interviewTip": "The ref must be returned from setup() or used in <script setup> to be accessible in the template."
+  },
+  "tr-10": {
+    "prompt": "When is a template ref populated with the actual DOM element?",
+    "explanation": "Template refs are null during setup() and only get assigned after the component is mounted to the DOM.",
+    "interviewTip": "Always check if the ref is not null before using it, or access it inside onMounted."
+  }
+}

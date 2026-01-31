@@ -1,0 +1,52 @@
+{
+  "clr-01": {
+    "prompt": "What is the primary architectural difference between 'v-if' and 'v-show'?",
+    "explanation": "v-if is 'real' conditional rendering because it ensures that event listeners and child components inside the conditional block are properly destroyed and re-created. v-show is much simpler—the element always remains in the DOM.",
+    "interviewTip": "Use v-if for conditions that rarely change at runtime; use v-show if you need to toggle something very frequently (like a tab or a tooltip)."
+  },
+  "clr-02": {
+    "prompt": "Analyze the code. What will happen if 'items' is an empty array []?",
+    "explanation": "v-else must follow a v-if or v-else-if. It cannot be used with v-for. To handle empty lists, you should use v-if=\"items.length === 0\" on a separate element.",
+    "interviewTip": "This is a common mistake. v-for does not have a built-in 'else' block."
+  },
+  "clr-03": {
+    "prompt": "Why is it strongly recommended to always provide a unique ':key' when using 'v-for'?",
+    "explanation": "Without keys, Vue uses an algorithm that minimizes element movement and tries to patch/reuse elements in-place. This can lead to bugs with form state or animations.",
+    "interviewTip": "Never use 'index' as a key if the list can be reordered, filtered, or if items can be deleted. Use unique IDs from your data."
+  },
+  "clr-04": {
+    "prompt": "Analyze the code. In Vue 3, which directive has higher priority when used on the same element?",
+    "explanation": "In Vue 3, v-if has a higher priority than v-for. This means the v-if doesn't have access to variables from the v-for scope, and the code above will likely throw an error because 'item' is not defined when v-if runs.",
+    "interviewTip": "In Vue 2, the priority was reversed. Regardless of the version, you should avoid using both on the same element. Wrap the list in a <template v-for> or use a computed property to filter the list beforehand."
+  },
+  "clr-05": {
+    "prompt": "How do you render a block of multiple elements without adding an extra wrapper div to the DOM?",
+    "explanation": "The <template> tag acts as an invisible wrapper. It allows you to use directives like v-if or v-for on a group of elements without affecting the final HTML structure.",
+    "interviewTip": "This is perfect for keeping your DOM tree flat and clean."
+  },
+  "clr-06": {
+    "prompt": "Which of these are valid ways to iterate using v-for?",
+    "explanation": "Vue is quite flexible. You can iterate over arrays, objects (value, key, index), and even integer ranges (1 to N). String iteration is technically possible but rarely used in practice.",
+    "interviewTip": "When iterating over an object, the order is based on Object.keys() enumeration order, which may vary across browsers."
+  },
+  "clr-07": {
+    "prompt": "Analyze the code. What is the most performant way to filter this list in a production app?",
+    "explanation": "Filtering with a computed property is the best approach. It's more readable, and because of caching, the filter only runs when the 'users' list actually changes.",
+    "interviewTip": "Computed properties for filtered lists also make your component logic easier to unit test."
+  },
+  "clr-08": {
+    "prompt": "What happens if two items in a v-for list have the same ':key'?",
+    "explanation": "Duplicate keys confuse the Virtual DOM's reconciliation process. Vue will warn you in the console, and you may see elements 'flickering' or showing the wrong state when the list changes.",
+    "interviewTip": "Always ensure keys are truly unique within the list."
+  },
+  "clr-09": {
+    "prompt": "What is the difference between v-if and v-show?",
+    "explanation": "v-if has higher toggle cost (destroys/recreates elements), while v-show has higher initial render cost (renders everything but hides with CSS).",
+    "interviewTip": "Use v-if for infrequent toggles, v-show for frequent toggles."
+  },
+  "clr-10": {
+    "prompt": "Why should you avoid using v-if and v-for on the same element?",
+    "explanation": "In Vue 3, v-for has higher priority, so v-if will run on each iteration. This is inefficient. Use a computed property or wrap with a template tag instead.",
+    "interviewTip": "This is a common interview question about Vue best practices and performance."
+  }
+}

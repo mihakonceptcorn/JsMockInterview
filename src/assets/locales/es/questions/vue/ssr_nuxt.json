@@ -1,0 +1,52 @@
+{
+  "ssr-01": {
+    "prompt": "What is 'Hydration' in the context of Vue SSR?",
+    "explanation": "The server sends 'dead' HTML for speed. Hydration is when Vue runs in the browser, matches the HTML to the Virtual DOM, and attaches event listeners to make the page 'live'.",
+    "interviewTip": "If the HTML from the server doesn't match what the client generates, you get a 'Hydration Mismatch' error—a common SSR headache."
+  },
+  "ssr-02": {
+    "prompt": "Analyze the Nuxt 3 code. What is the purpose of this built-in function?",
+    "explanation": "useFetch is smart: it fetches the data on the server, serializes it into the HTML payload, and the client picks it up from there without making a second network request.",
+    "interviewTip": "This 'Payload Extraction' is why Nuxt apps feel much faster and more integrated than custom SSR setups."
+  },
+  "ssr-03": {
+    "prompt": "Which Nuxt.js directory is used to automatically generate routes based on file names?",
+    "explanation": "Nuxt uses file-system routing. A file at `pages/about.vue` automatically becomes the `/about` route. No manual router configuration is needed.",
+    "interviewTip": "For dynamic routes in Nuxt 3, you use square brackets, like `pages/quiz/[id].vue`."
+  },
+  "ssr-04": {
+    "prompt": "Analyze the code. Where will this log appear in a Nuxt SSR environment?",
+    "explanation": "Script setup code in SSR runs on the server to generate the HTML and then again on the client to hydrate the app.",
+    "interviewTip": "Be careful! Code that uses browser-only globals like `window` or `localStorage` will crash on the server unless wrapped in a check or a hook like `onMounted`."
+  },
+  "ssr-05": {
+    "prompt": "What is 'Static Site Generation' (SSG) in Nuxt?",
+    "explanation": "SSG (via `nuxt generate`) creates a folder of HTML files that can be hosted on a CDN (like Vercel or Netlify). It is the fastest and most secure way to serve content.",
+    "interviewTip": "Nuxt 3 supports 'Hybrid Rendering,' allowing you to choose SSR for some routes and SSG for others."
+  },
+  "ssr-06": {
+    "prompt": "Which of these are valid ways to handle SEO metadata in a Nuxt 3 component?",
+    "explanation": "Nuxt 3 provides multiple ways to manage the `<head>`. `useSeoMeta` is the most performant and type-safe for social sharing tags.",
+    "interviewTip": "Since Nuxt renders HTML on the server, these tags are visible to search engine bots immediately."
+  },
+  "ssr-07": {
+    "prompt": "Analyze the component code. What is the behavior of <ClientOnly>?",
+    "explanation": "Some components (like those using D3 or Canvas) simply cannot run on the server. <ClientOnly> prevents server-side errors and hydration mismatches.",
+    "interviewTip": "You can also provide a 'placeholder' slot to show a loading state on the server."
+  },
+  "ssr-08": {
+    "prompt": "What is the role of 'Nitro' in the Nuxt 3 ecosystem?",
+    "explanation": "Nitro is the powerful server backend for Nuxt. It enables features like API routes and allows the app to be deployed anywhere from a traditional server to Cloudflare Workers.",
+    "interviewTip": "Mentioning Nitro shows you understand that Nuxt is a 'Full-Stack' framework, not just a frontend library."
+  },
+  "ssrn-09": {
+    "prompt": "What is the main benefit of Server-Side Rendering (SSR) in Vue?",
+    "explanation": "SSR renders the Vue application on the server, sending fully-formed HTML to the client, which improves perceived performance and SEO.",
+    "interviewTip": "SSR comes with tradeoffs like increased server load and complexity. Consider Static Site Generation (SSG) for content-heavy sites."
+  },
+  "ssrn-10": {
+    "prompt": "What is Nuxt.js?",
+    "explanation": "Nuxt simplifies Vue development by providing conventions, automatic routing, SSR/SSG support, and a rich module ecosystem.",
+    "interviewTip": "Nuxt 3 is built on Vue 3 and Vite, offering significantly better performance than Nuxt 2."
+  }
+}

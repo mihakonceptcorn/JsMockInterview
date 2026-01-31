@@ -1,0 +1,72 @@
+{
+  "ab-01": {
+    "prompt": "Which component type must you use to make a standard View animatable with the Animated API?",
+    "explanation": "Standard components cannot handle Animated values directly. You must use the 'Animated' versions: View, Text, Image, and ScrollView.",
+    "interviewTip": "If you have a custom component, you can wrap it using 'Animated.createAnimatedComponent(MyComponent)'."
+  },
+  "ab-02": {
+    "prompt": "What is the primary benefit of setting 'useNativeDriver: true' in an animation config?",
+    "explanation": "By sending the animation definition to the native side once, the native thread can update the UI independently of the JavaScript event loop.",
+    "interviewTip": "Remember that 'useNativeDriver' only works with non-layout properties like 'opacity' and 'transform'."
+  },
+  "ab-03": {
+    "prompt": "How do you map a value that goes from 0 to 1 to a property that goes from 0 to 360 degrees?",
+    "explanation": "Interpolation allows you to map an input range to an output range, including strings like colors or degrees.",
+    "interviewTip": "Interpolation is a core concept in the Animated API for creating complex, multi-property animations from a single value."
+  },
+  "ab-04": {
+    "prompt": "Which method is used to create a spring-based animation that mimics physical movement?",
+    "explanation": "Animated.spring() provides a more natural feel by using physics parameters like 'friction', 'tension', 'bounciness', or 'stiffness' instead of a fixed duration.",
+    "interviewTip": "Springs are generally preferred for UI interactions (like button presses or modas) because they feel more 'organic' to users."
+  },
+  "ab-05": {
+    "prompt": "What is the correct way to initialize an animated value in a functional component to ensure it persists across renders?",
+    "explanation": "useRef ensures that the Animated.Value instance is created once and doesn't get reset when the component re-renders.",
+    "interviewTip": "Initializing in 'useRef' is the standard pattern for functional components to avoid memory leaks and state resets."
+  },
+  "ab-06": {
+    "prompt": "How do you run multiple animations at the exact same time?",
+    "explanation": "Animated.parallel starts an array of animations simultaneously.",
+    "interviewTip": "Use this when you want an element to fade in and scale up at once."
+  },
+  "ab-07": {
+    "prompt": "What does 'Animated.sequence([])' do?",
+    "explanation": "Sequence ensures that the next animation in the array doesn't start until the previous one completes successfully.",
+    "interviewTip": "This is great for multi-step 'onboarding' animations or complex UI transitions."
+  },
+  "ab-08": {
+    "prompt": "How do you start an animation once it is defined?",
+    "explanation": "Animations in React Native are declarative. They don't run until you explicitly call the '.start()' method.",
+    "interviewTip": "You can pass a callback to .start(({ finished }) => { ... }) to handle logic after the animation ends."
+  },
+  "ab-09": {
+    "prompt": "Which of these style properties CANNOT be used with 'useNativeDriver: true'?",
+    "explanation": "As of current stable versions, the native driver primarily supports 'transform' and 'opacity'. Layout properties (width, height, flex) and some color properties typically require the JS thread.",
+    "interviewTip": "If you need to animate layout properties smoothly, look into the 'LayoutAnimation' API or 'Reanimated'."
+  },
+  "ab-10": {
+    "prompt": "What is 'Animated.event' primarily used for?",
+    "explanation": "Animated.event allows for ultra-smooth interactions, like a header that shrinks as you scroll, by binding the 'contentOffset' of a ScrollView to an Animated value.",
+    "interviewTip": "This is the most efficient way to link user gestures to UI changes."
+  },
+  "ab-11": {
+    "prompt": "How do you create an animation that loops indefinitely?",
+    "explanation": "Animated.loop() takes an animation and restarts it every time it reaches the end.",
+    "interviewTip": "You can use this for 'pulse' effects on buttons or loading indicators."
+  },
+  "ab-12": {
+    "prompt": "What is the 'LayoutAnimation' API used for?",
+    "explanation": "LayoutAnimation is a 'fire-and-forget' API. You call it before updating state, and the native side handles the transition of all layout changes smoothly.",
+    "interviewTip": "It’s very powerful but offers less granular control than the Animated API."
+  },
+  "ab-13": {
+    "prompt": "Analyze the code. What will happen to the box after 2 seconds?",
+    "explanation": "toValue: 0 for an opacity property results in the element becoming completely transparent.",
+    "interviewTip": "Always ensure your initial value matches the intended starting point (e.g., new Animated.Value(1) for a fade-out)."
+  },
+  "ab-14": {
+    "prompt": "What happens to an animation if the component unmounts while the animation is running?",
+    "explanation": "While RN is generally stable, not stopping animations on unmount can occasionally lead to 'updating state on unmounted component' warnings or memory issues.",
+    "interviewTip": "In 'useEffect' cleanups, you should stop active animations if they are tied to local state."
+  }
+}

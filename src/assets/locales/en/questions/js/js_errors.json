@@ -1,0 +1,127 @@
+{
+  "js-err-01": {
+    "prompt": "What is an Error object in JavaScript?",
+    "explanation": "Error objects carry message and stack trace.",
+    "interviewTip": "Used for exception handling."
+  },
+  "js-err-02": {
+    "prompt": "Which error occurs at parse time?",
+    "explanation": "SyntaxError happens before execution.",
+    "interviewTip": "Code won't run at all."
+  },
+  "js-err-03": {
+    "prompt": "What will be thrown?",
+    "explanation": "Accessing undeclared variable.",
+    "interviewTip": "Different from undefined variable."
+  },
+  "js-err-04": {
+    "prompt": "When does TypeError occur?",
+    "explanation": "Calling non-function, accessing invalid property.",
+    "interviewTip": "Very common runtime error."
+  },
+  "js-err-05": {
+    "prompt": "What will be logged?",
+    "explanation": "Invalid JSON throws SyntaxError.",
+    "interviewTip": "Always validate JSON."
+  },
+  "js-err-06": {
+    "prompt": "What does try/catch catch?",
+    "explanation": "Only synchronous runtime errors.",
+    "interviewTip": "Async needs await or .catch."
+  },
+  "js-err-07": {
+    "prompt": "What will be logged?",
+    "explanation": "Async errors are not caught.",
+    "interviewTip": "Classic async pitfall."
+  },
+  "js-err-08": {
+    "prompt": "How to catch async errors with async/await?",
+    "explanation": "Await throws inside try/catch.",
+    "interviewTip": "Preferred pattern."
+  },
+  "js-err-09": {
+    "prompt": "What is finally used for?",
+    "explanation": "Runs regardless of outcome.",
+    "interviewTip": "Close resources."
+  },
+  "js-err-10": {
+    "prompt": "What does `throw` do?",
+    "explanation": "Interrupts normal execution.",
+    "interviewTip": "Can throw any value."
+  },
+  "js-err-11": {
+    "prompt": "What should you throw?",
+    "explanation": "Errors include stack trace.",
+    "interviewTip": "Best practice."
+  },
+  "js-err-12": {
+    "prompt": "What will be logged?",
+    "explanation": "message property holds text.",
+    "interviewTip": "Access useful fields."
+  },
+  "js-err-13": {
+    "prompt": "What is ReferenceError?",
+    "explanation": "Variable not found in scope.",
+    "interviewTip": "Common bug source."
+  },
+  "js-err-14": {
+    "prompt": "What will be logged?",
+    "explanation": "Calling method on null.",
+    "interviewTip": "TypeError is common."
+  },
+  "js-err-15": {
+    "prompt": "How to create custom error?",
+    "explanation": "Extend Error class.",
+    "interviewTip": "Preserve name & stack."
+  },
+  "js-err-16": {
+    "prompt": "What does Error.stack contain?",
+    "explanation": "Useful for debugging.",
+    "interviewTip": "Not standardized but common."
+  },
+  "js-err-17": {
+    "prompt": "What is an unhandled promise rejection?",
+    "explanation": "Leads to warnings or crashes.",
+    "interviewTip": "Always handle rejections."
+  },
+  "js-err-18": {
+    "prompt": "What will be logged?",
+    "explanation": "Rejected value is passed.",
+    "interviewTip": "Can reject any value."
+  },
+  "js-err-19": {
+    "prompt": "What does `catch` return?",
+    "explanation": "Allows chaining.",
+    "interviewTip": "Promise chain continues."
+  },
+  "js-err-20": {
+    "prompt": "What happens if you throw inside catch?",
+    "explanation": "Error propagates.",
+    "interviewTip": "Re-throw pattern."
+  },
+  "js-err-21": {
+    "prompt": "What is RangeError?",
+    "explanation": "E.g. invalid array length.",
+    "interviewTip": "Less common."
+  },
+  "js-err-22": {
+    "prompt": "Can try/catch catch JSON.parse errors?",
+    "explanation": "JSON.parse throws synchronously.",
+    "interviewTip": "Wrap parsing logic."
+  },
+  "js-err-23": {
+    "prompt": "What is best practice for errors?",
+    "explanation": "Errors should be explicit.",
+    "interviewTip": "Production mindset."
+  },
+  "js-err-24": {
+    "prompt": "What will be logged?",
+    "explanation": "Any value can be thrown.",
+    "interviewTip": "But don't do this."
+  },
+  "js-err-25": {
+    "prompt": "Why prefer Error over strings?",
+    "explanation": "Errors carry more context.",
+    "interviewTip": "Interview gold answer."
+  }
+}

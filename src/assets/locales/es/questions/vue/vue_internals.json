@@ -1,0 +1,52 @@
+{
+  "int-01": {
+    "prompt": "What are 'Patch Flags' in the Vue 3 rendering engine?",
+    "explanation": "During the compilation phase, Vue marks elements with flags. For example, if only the text is dynamic, Vue marks it with a TEXT flag, so the diffing algorithm doesn't waste time checking attributes or classes.",
+    "interviewTip": "This is why Vue 3 is often called 'Compiler-Informed'. It moves the work from runtime to compile-time."
+  },
+  "int-02": {
+    "prompt": "What is 'Static Hoisting' in Vue 3?",
+    "explanation": "If a piece of your template is purely static (no variables), Vue hoists it. Instead of creating a new Virtual Node on every render, it simply points to the same pre-created node, saving memory and CPU.",
+    "interviewTip": "Static Hoisting is one of the main reasons Vue 3 templates have near-zero overhead for static content."
+  },
+  "int-03": {
+    "prompt": "Analyze the code snippet from a compiled Vue render function. What does the '1 /* TEXT */' represent?",
+    "explanation": "This is a Patch Flag. When the Virtual DOM 'patches' this node, it sees the '1' and knows it only needs to check the text content, completely ignoring the attributes (null).",
+    "interviewTip": "You can see these flags yourself by using the Vue Template Explorer online."
+  },
+  "int-04": {
+    "prompt": "What is the 'Block Tree' optimization?",
+    "explanation": "Vue 3 divides the template into 'Blocks'. Each Block knows which of its children are dynamic. When updating, Vue iterates over the 'dynamic children' array rather than traversing the whole tree.",
+    "interviewTip": "This turns the Virtual DOM complexity from 'O(total number of nodes)' to 'O(number of dynamic nodes)'."
+  },
+  "int-05": {
+    "prompt": "What does the 'nextTick()' function do in the rendering cycle?",
+    "explanation": "Vue updates the DOM asynchronously. If you change a value and immediately try to measure the DOM, you'll get the old state. nextTick() ensures you are working with the updated DOM.",
+    "interviewTip": "Common use case: Focusing an element after it was just shown with v-if."
+  },
+  "int-06": {
+    "prompt": "Which of these are steps in the Vue 'Compiler' pipeline?",
+    "explanation": "Hydration is a runtime process during SSR. Parse, Transform, and Generate are the three classic stages of the Vue compiler.",
+    "interviewTip": "Understanding AST (Abstract Syntax Tree) is a 'Senior' level concept in frontend engineering."
+  },
+  "int-07": {
+    "prompt": "In the Virtual DOM, what is a 'VNode'?",
+    "explanation": "VNodes are lightweight. Creating and comparing thousands of VNodes is much faster than manipulating thousands of actual DOM nodes.",
+    "interviewTip": "The collection of these VNodes is what we call the 'Virtual DOM'."
+  },
+  "int-08": {
+    "prompt": "What happens during the 'Patch' process?",
+    "explanation": "Patching is the 'reconciliation' phase. Vue uses an efficient algorithm to find the minimum number of steps to transform the old DOM into the new one.",
+    "interviewTip": "In Vue 3, patching is 'bit-wise' thanks to the Patch Flags we discussed earlier."
+  },
+  "vi-09": {
+    "prompt": "What is the Virtual DOM and why does Vue use it?",
+    "explanation": "The Virtual DOM allows Vue to batch updates and minimize expensive DOM operations by diffing the old and new virtual trees.",
+    "interviewTip": "Vue 3's Virtual DOM implementation is significantly faster than Vue 2 due to optimizations like static hoisting and patch flags."
+  },
+  "vi-10": {
+    "prompt": "What are patch flags in Vue 3?",
+    "explanation": "Patch flags are integers that encode information about dynamic bindings, allowing Vue to skip static content during updates.",
+    "interviewTip": "This is one of the key optimizations that makes Vue 3 faster than Vue 2."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "of-01": {
+    "prompt": "Which library is the industry standard for detecting network connectivity status in React Native?",
+    "explanation": "NetInfo provides information about the connection type (wifi, cellular) and whether the device is actually connected to the internet.",
+    "interviewTip": "Always subscribe to the listener rather than just checking a one-time value, so your UI can react instantly when the user goes offline."
+  },
+  "of-02": {
+    "prompt": "What is 'Optimistic UI' in the context of an offline-first app?",
+    "explanation": "Optimistic UI makes the app feel 'instant.' If the network request fails later, the app 'rolls back' the change and informs the user.",
+    "interviewTip": "This is a core feature of libraries like TanStack (React) Query."
+  },
+  "of-03": {
+    "prompt": "Analyze the code. How does this React Query configuration handle being offline?",
+    "explanation": "In 'offlineFirst' mode, queries will run the queryFn but will also successfully return data from the cache if available, even without a connection.",
+    "interviewTip": "Pair this with a 'Persister' to save the cache to MMKV or AsyncStorage for true offline persistence across restarts."
+  },
+  "of-04": {
+    "prompt": "What is the role of a 'Sync Queue' in an offline-first architecture?",
+    "explanation": "A sync queue ensures that user progress isn't lost. When the app detects 'isConnected: true', it processes the pending actions in the order they were created.",
+    "interviewTip": "Libraries like 'redux-persist' combined with 'redux-offline' were early pioneers of this pattern."
+  },
+  "of-05": {
+    "prompt": "Which of these are common challenges when implementing Offline-First?",
+    "explanation": "Conflict resolution is the hardest part—deciding 'who wins' if a user edits the same data on two devices while one was offline.",
+    "interviewTip": "Mention 'Last Write Wins' or 'CRDTs' (Conflict-free Replicated Data Types) as advanced strategies for resolution."
+  },
+  "of-06": {
+    "prompt": "How do you detect if a specific network request failed specifically because of a lack of internet?",
+    "explanation": "state.isConnected returns a boolean indicating if the device has a network connection (though it doesn't always guarantee internet access).",
+    "interviewTip": "Use `state.isInternetReachable` for a more accurate check that the Google/Apple servers can actually be reached."
+  },
+  "of-07": {
+    "prompt": "What is 'Rehydration' in the context of state management?",
+    "explanation": "When the app opens, it reads the saved JSON from AsyncStorage/MMKV and 'fills' the state, so the user sees their data before any network calls happen.",
+    "interviewTip": "Always show a loading splash screen until the rehydration is complete to avoid 'layout shift'."
+  },
+  "of-08": {
+    "prompt": "Why is 'MMKV' often preferred over 'AsyncStorage' for offline-first apps?",
+    "explanation": "Because MMKV is synchronous, you can read the state instantly during the initial render, making the 'offline' experience feel much smoother.",
+    "interviewTip": "AsyncStorage requires 'await', which always forces at least one 'empty' render cycle."
+  },
+  "of-09": {
+    "prompt": "What is the best strategy for handling image caching in an offline-first app?",
+    "explanation": "Libraries like 'react-native-fast-image' provide automatic disk caching with cache invalidation strategies, making offline image loading seamless.",
+    "interviewTip": "Mention that you should set cache priorities (low/normal/high) based on image importance to manage disk space efficiently."
+  },
+  "of-10": {
+    "prompt": "How do you implement a retry mechanism for failed network requests in an offline-first architecture?",
+    "explanation": "Setting 'retry: 3' means the mutation will automatically retry up to 3 times with exponential backoff before giving up. This is perfect for transient network errors.",
+    "interviewTip": "For critical operations like payments, you might want to persist failed mutations to a queue and retry them when the app restarts."
+  }
+}

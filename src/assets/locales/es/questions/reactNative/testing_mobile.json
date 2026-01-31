@@ -1,0 +1,52 @@
+{
+  "tm-01": {
+    "prompt": "Which testing framework is the default for React Native and handles the execution of unit tests?",
+    "explanation": "Jest is the standard test runner for React Native. It comes pre-configured with a 'react-native' preset that mocks the mobile environment.",
+    "interviewTip": "Mention that Jest's 'Snapshot Testing' is a popular but controversial way to catch unintended UI changes."
+  },
+  "tm-02": {
+    "prompt": "What is the main philosophy of 'React Native Testing Library' (RNTL)?",
+    "explanation": "RNTL encourages testing *behavior* rather than *implementation*. If you refactor your code but the user still sees 'Submit', your tests should still pass.",
+    "interviewTip": "Avoid using 'enzyme' in modern React Native; RNTL is the community-standard replacement."
+  },
+  "tm-03": {
+    "prompt": "Analyze the code. How do you simulate a user typing into the 'Question' input in a test?",
+    "explanation": "In RNTL, 'fireEvent.changeText' is the specialized event for TextInput components that directly mimics the 'onChangeText' prop.",
+    "interviewTip": "Always use 'fireEvent.press' for buttons and 'fireEvent.changeText' for inputs."
+  },
+  "tm-04": {
+    "prompt": "What is 'Detox' used for in the React Native ecosystem?",
+    "explanation": "Detox runs your app in a real simulator and interacts with it like a user. It is called 'gray-box' because it synchronizes with the app's internal state to prevent flaky tests.",
+    "interviewTip": "Compare Detox to Cypress; it’s the closest mobile equivalent for full-flow automation."
+  },
+  "tm-05": {
+    "prompt": "Why do you need to mock native modules (like 'react-native-reanimated' or 'AsyncStorage') in Jest?",
+    "explanation": "Jest runs in a Node environment, not a mobile OS. Native modules (C++/Java/Swift) don't exist there, so you must provide a JS 'mock' implementation.",
+    "interviewTip": "Most popular libraries (like React Navigation) provide their own Jest mocks that you can simply import in your 'jest.setup.js'."
+  },
+  "tm-06": {
+    "prompt": "Which of these are valid RNTL 'queries' for finding elements in your UI?",
+    "explanation": "getByText and getByTestId are the most common. queryBy... is used when you want to assert that an element *doesn't* exist (it returns null instead of throwing).",
+    "interviewTip": "Favor 'getByText' or 'getByLabelText' (accessibility) over 'getByTestId' whenever possible to ensure your app is accessible."
+  },
+  "tm-07": {
+    "prompt": "What is the purpose of 'jest.useFakeTimers()'?",
+    "explanation": "If your Mock Interview app has a '3-second countdown' before a question, fake timers let you skip those 3 seconds instantly during a test.",
+    "interviewTip": "Don't forget to call 'jest.runAllTimers()' or 'jest.advanceTimersByTime()' after using this."
+  },
+  "tm-08": {
+    "prompt": "Analyze the Detox test snippet. What is it verifying?",
+    "explanation": "This is a typical E2E test. It checks the visibility of elements and performs actions (tap) to verify a multi-screen navigation flow.",
+    "interviewTip": "In Detox, 'by.id' refers to the 'testID' prop you add to your React Native components."
+  },
+  "tm-09": {
+    "prompt": "How do you test a component that uses a hook from a library (like 'useNavigation') without crashing?",
+    "explanation": "Just like in your app, hooks often need their context. Wrapping your test component in a 'Wrapper' (like a NavigationContainer or Redux Provider) is the standard fix.",
+    "interviewTip": "You can create a custom 'render' function that automatically wraps every component in all necessary providers."
+  },
+  "tm-10": {
+    "prompt": "What does 'coverage' represent in a Jest report?",
+    "explanation": "Coverage helps you identify 'dark spots' in your code that haven't been tested yet.",
+    "interviewTip": "Warning: 100% coverage doesn't mean your app is bug-free; it just means every line was executed once."
+  }
+}

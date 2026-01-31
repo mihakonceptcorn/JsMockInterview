@@ -1,0 +1,127 @@
+{
+  "js-arr-01": {
+    "prompt": "What is an array in JavaScript?",
+    "explanation": "Arrays are ordered, zero-indexed objects.",
+    "interviewTip": "Arrays are objects internally."
+  },
+  "js-arr-02": {
+    "prompt": "What will be logged?",
+    "explanation": "Arrays are a type of object.",
+    "interviewTip": "Use Array.isArray()."
+  },
+  "js-arr-03": {
+    "prompt": "How to correctly check if value is an array?",
+    "explanation": "Array.isArray is the safest method.",
+    "interviewTip": "Works across realms."
+  },
+  "js-arr-04": {
+    "prompt": "Which method mutates the array?",
+    "explanation": "push mutates the original array.",
+    "interviewTip": "Mutation vs immutability."
+  },
+  "js-arr-05": {
+    "prompt": "What will be logged?",
+    "explanation": "Reducing length truncates the array.",
+    "interviewTip": "Length is writable."
+  },
+  "js-arr-06": {
+    "prompt": "What does `slice` do?",
+    "explanation": "slice is non-mutating.",
+    "interviewTip": "Common interview distinction."
+  },
+  "js-arr-07": {
+    "prompt": "Which method removes the last element?",
+    "explanation": "pop removes last element.",
+    "interviewTip": "Mutates array."
+  },
+  "js-arr-08": {
+    "prompt": "What will be logged?",
+    "explanation": "map returns a new array.",
+    "interviewTip": "Reference comparison."
+  },
+  "js-arr-09": {
+    "prompt": "What does `splice` do?",
+    "explanation": "splice mutates the array.",
+    "interviewTip": "Often confused with slice."
+  },
+  "js-arr-10": {
+    "prompt": "What will be logged?",
+    "explanation": "Array length becomes highest index + 1.",
+    "interviewTip": "Sparse arrays."
+  },
+  "js-arr-11": {
+    "prompt": "Which creates a shallow copy?",
+    "explanation": "slice returns a new array.",
+    "interviewTip": "Still shallow."
+  },
+  "js-arr-12": {
+    "prompt": "What does `forEach` return?",
+    "explanation": "forEach always returns undefined.",
+    "interviewTip": "Not chainable."
+  },
+  "js-arr-13": {
+    "prompt": "What will be logged?",
+    "explanation": "includes checks value existence.",
+    "interviewTip": "Uses SameValueZero."
+  },
+  "js-arr-14": {
+    "prompt": "Which method flattens arrays?",
+    "explanation": "flat flattens nested arrays.",
+    "interviewTip": "Depth can be specified."
+  },
+  "js-arr-15": {
+    "prompt": "What will be logged?",
+    "explanation": "Arrays are coerced to strings.",
+    "interviewTip": "Implicit coercion."
+  },
+  "js-arr-16": {
+    "prompt": "Which method does NOT mutate?",
+    "explanation": "filter returns a new array.",
+    "interviewTip": "sort mutates!"
+  },
+  "js-arr-17": {
+    "prompt": "What does `reduce` do?",
+    "explanation": "reduce accumulates to a single value.",
+    "interviewTip": "Very powerful method."
+  },
+  "js-arr-18": {
+    "prompt": "What will be logged?",
+    "explanation": "Both references point to same array.",
+    "interviewTip": "Reference vs copy."
+  },
+  "js-arr-19": {
+    "prompt": "What does `Array.from` do?",
+    "explanation": "Converts array-like objects.",
+    "interviewTip": "Useful for NodeList."
+  },
+  "js-arr-20": {
+    "prompt": "What will be logged?",
+    "explanation": "Empty array length is 0.",
+    "interviewTip": "Basic but common."
+  },
+  "js-arr-21": {
+    "prompt": "What does `every` return?",
+    "explanation": "Checks all elements against condition.",
+    "interviewTip": "Stops early."
+  },
+  "js-arr-22": {
+    "prompt": "What does `some` do?",
+    "explanation": "Returns true if any element matches.",
+    "interviewTip": "Short-circuit."
+  },
+  "js-arr-23": {
+    "prompt": "What will be logged?",
+    "explanation": "Sparse arrays count empty slots.",
+    "interviewTip": "Empty slots exist."
+  },
+  "js-arr-24": {
+    "prompt": "What does `concat` do?",
+    "explanation": "concat does not mutate.",
+    "interviewTip": "Immutable pattern."
+  },
+  "js-arr-25": {
+    "prompt": "Why avoid mutating arrays in React?",
+    "explanation": "Immutability helps change detection.",
+    "interviewTip": "Key React concept."
+  }
+}

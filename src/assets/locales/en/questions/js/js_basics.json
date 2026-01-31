@@ -1,0 +1,127 @@
+{
+  "js-basics-01": {
+    "prompt": "What will be logged?",
+    "explanation": "`typeof null` returns `object` due to a historical bug.",
+    "interviewTip": "Mention backward compatibility and proper null checks."
+  },
+  "js-basics-02": {
+    "prompt": "What will be logged?",
+    "explanation": "Uninitialized variables have value `undefined`.",
+    "interviewTip": "Explain `undefined` vs `not defined`."
+  },
+  "js-basics-03": {
+    "prompt": "What will be the result?",
+    "explanation": "Once a string is involved, `+` becomes concatenation.",
+    "interviewTip": "Explain left-to-right evaluation."
+  },
+  "js-basics-04": {
+    "prompt": "What will be logged?",
+    "explanation": "`-` triggers numeric coercion.",
+    "interviewTip": "Contrast `+` vs other operators."
+  },
+  "js-basics-05": {
+    "prompt": "Which value is falsy?",
+    "explanation": "`0` is falsy; objects and non-empty strings are truthy.",
+    "interviewTip": "List all falsy values."
+  },
+  "js-basics-06": {
+    "prompt": "What will be logged?",
+    "explanation": "All objects are truthy.",
+    "interviewTip": "Arrays are objects in JS."
+  },
+  "js-basics-07": {
+    "prompt": "Which statements are correct?",
+    "explanation": "`const` prevents reassignment, not mutation.",
+    "interviewTip": "Clarify reassignment vs mutation."
+  },
+  "js-basics-08": {
+    "prompt": "What will be logged?",
+    "explanation": "Loose equality triggers complex coercion.",
+    "interviewTip": "Recommend avoiding `==`."
+  },
+  "js-basics-09": {
+    "prompt": "What will be logged?",
+    "explanation": "Empty string converts to 0.",
+    "interviewTip": "Explain numeric coercion rules."
+  },
+  "js-basics-10": {
+    "prompt": "What will be logged?",
+    "explanation": "`NaN` is of type `number`.",
+    "interviewTip": "Mention `Number.isNaN`."
+  },
+  "js-basics-11": {
+    "prompt": "What will be logged?",
+    "explanation": "`null` and `undefined` are equal only to each other.",
+    "interviewTip": "Explain special case in `==`."
+  },
+  "js-basics-12": {
+    "prompt": "What will be logged?",
+    "explanation": "Objects are compared by reference.",
+    "interviewTip": "Stress reference equality."
+  },
+  "js-basics-13": {
+    "prompt": "What will be logged?",
+    "explanation": "Non-empty strings are truthy.",
+    "interviewTip": "Explain double negation."
+  },
+  "js-basics-14": {
+    "prompt": "What will be logged?",
+    "explanation": "`undefined` has its own type.",
+    "interviewTip": "Contrast with `null`."
+  },
+  "js-basics-15": {
+    "prompt": "What will be logged?",
+    "explanation": "`0` and `-0` are equal in JS.",
+    "interviewTip": "Mention `Object.is` difference."
+  },
+  "js-basics-16": {
+    "prompt": "What will be logged?",
+    "explanation": "`Object.is` treats `0` and `-0` as different.",
+    "interviewTip": "Compare `===` vs `Object.is`."
+  },
+  "js-basics-17": {
+    "prompt": "What will be logged?",
+    "explanation": "Arrow functions are still functions.",
+    "interviewTip": "Arrow is syntax, not type."
+  },
+  "js-basics-18": {
+    "prompt": "What will be logged?",
+    "explanation": "`isNaN` coerces values before checking.",
+    "interviewTip": "Recommend `Number.isNaN`."
+  },
+  "js-basics-19": {
+    "prompt": "What will be logged?",
+    "explanation": "`Number.isNaN` does not coerce.",
+    "interviewTip": "Explain strict NaN check."
+  },
+  "js-basics-20": {
+    "prompt": "What will be logged?",
+    "explanation": "Classes are functions under the hood.",
+    "interviewTip": "Explain syntactic sugar."
+  },
+  "js-basics-21": {
+    "prompt": "What will be logged?",
+    "explanation": "Unary plus converts to number.",
+    "interviewTip": "Mention unary operators."
+  },
+  "js-basics-22": {
+    "prompt": "What will be logged?",
+    "explanation": "Arrays convert to empty strings.",
+    "interviewTip": "Explain `toString` coercion."
+  },
+  "js-basics-23": {
+    "prompt": "What will be logged?",
+    "explanation": "Object converts to string, then concatenates.",
+    "interviewTip": "Context matters (`{}` as block vs object)."
+  },
+  "js-basics-24": {
+    "prompt": "What will be logged?",
+    "explanation": "Infinity is a number.",
+    "interviewTip": "Mention IEEE 754."
+  },
+  "js-basics-25": {
+    "prompt": "What will be logged?",
+    "explanation": "Invalid numeric conversion results in NaN.",
+    "interviewTip": "Explain arithmetic coercion."
+  }
+}

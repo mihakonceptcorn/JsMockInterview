@@ -1,0 +1,77 @@
+{
+  "cr-01": {
+    "prompt": "What will be rendered if 'isLoaded' is false?",
+    "explanation": "The ternary operator is the most common way to perform 'either-or' conditional rendering in JSX.",
+    "interviewTip": "Ternaries are preferred over 'if-else' statements inside JSX because they are expressions."
+  },
+  "cr-02": {
+    "prompt": "What is a potential 'gotcha' when using the && operator with a numeric 0?",
+    "explanation": "In JS, '0 && anything' evaluates to 0. React does not render booleans, but it *does* render the number 0.",
+    "interviewTip": "To avoid this, use a boolean check: `{count > 0 && <p>Items found</p>}` or a ternary."
+  },
+  "cr-03": {
+    "prompt": "How do you render nothing at all based on a condition?",
+    "explanation": "Returning 'null' is the standard way to tell React to render no output for a component or part of the UI.",
+    "interviewTip": "Returning null still triggers the component's lifecycle hooks; it just doesn't produce DOM nodes."
+  },
+  "cr-04": {
+    "prompt": "Which of these are valid ways to conditionally render JSX?",
+    "explanation": "React doesn't have directives like v-if. It relies on standard JS logic.",
+    "interviewTip": "For complex conditions, using a helper function or a variable outside the return statement is often cleaner."
+  },
+  "cr-05": {
+    "prompt": "What is the result of the following component?",
+    "explanation": "This is called an 'Early Return'. It prevents the rest of the component logic from executing if a condition isn't met.",
+    "interviewTip": "Early returns are excellent for handling loading states or missing data."
+  },
+  "cr-06": {
+    "prompt": "What is the 'Logical OR' (||) operator used for in conditional rendering?",
+    "explanation": "The || operator is perfect for displaying default text or components when data is missing.",
+    "interviewTip": "Remember that if userName is an empty string \"\", it will also trigger the fallback."
+  },
+  "cr-07": {
+    "prompt": "Identify the output of this code:",
+    "explanation": "Ternary operators can be used inside attribute values to conditionally apply CSS classes or other props.",
+    "interviewTip": "This is the primary way to handle dynamic styling in basic React."
+  },
+  "cr-08": {
+    "prompt": "Why can't you use a 'for' loop or 'if' statement directly inside the JSX return?",
+    "explanation": "JSX is transformed into React.createElement() calls. Arguments to a function must be expressions (values), not statements.",
+    "interviewTip": "Expressions evaluate to a value (like 2+2); statements perform an action (like if/for)."
+  },
+  "cr-09": {
+    "prompt": "What will be rendered here?",
+    "explanation": "Since items.length is 0, the expression evaluates to 0. However, in this specific case, 0 && ... is false, and React renders nothing (unless it's just the number 0 directly).",
+    "interviewTip": "Always ensure the left side of your && is a true boolean if you want to be safe."
+  },
+  "cr-10": {
+    "prompt": "How do you handle 'Loading', 'Error', and 'Data' states in a single component return?",
+    "explanation": "While nested ternaries work, they are hard to read. Early returns for error and loading states are much cleaner.",
+    "interviewTip": "Pattern: `if (loading) return <Spinner />; if (error) return <Error />; return <Data />;`"
+  },
+  "cr-11": {
+    "prompt": "What is the purpose of the 'Nullish Coalescing' operator (??) in React?",
+    "explanation": "This is safer than || when 0 is a valid value you want to display.",
+    "interviewTip": "Use ?? when you want to treat 0 and empty strings as 'data'."
+  },
+  "cr-12": {
+    "prompt": "Analyze the output:",
+    "explanation": "While React ignores raw booleans, converting them to a string will force them to render.",
+    "interviewTip": "This is a useful debugging trick to see boolean states in the UI."
+  },
+  "cr-13": {
+    "prompt": "How do you conditionally apply multiple props using the spread operator?",
+    "explanation": "Spreading an empty object {} adds no props, while spreading an object with keys applies them dynamically.",
+    "interviewTip": "This is a clean way to handle 'Admin-only' or 'Special' props."
+  },
+  "cr-14": {
+    "prompt": "What happens when a component unmounts because it is no longer being rendered conditionally?",
+    "explanation": "Unmounting is a full destruction of the component instance.",
+    "interviewTip": "If you need to keep state alive, 'lift' it to the parent or hide the component with CSS (display: none) instead."
+  },
+  "cr-15": {
+    "prompt": "Which component is better for performance when toggling frequently?",
+    "explanation": "Conditional rendering (&&) destroys/re-creates the component. CSS 'display' keeps it in the DOM, making toggles faster at the cost of initial memory.",
+    "interviewTip": "Use CSS hiding for components with expensive 'mount' logic that flip often."
+  }
+}

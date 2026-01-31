@@ -1,0 +1,87 @@
+{
+  "rl-01": {
+    "prompt": "What is the primary purpose of the 'key' prop when rendering a list in React?",
+    "explanation": "Keys act as stable identities for elements across renders. Without them, React might unnecessarily re-render the entire list or misidentify which element is which during updates.",
+    "interviewTip": "Keys should be unique among siblings and stable (not changing on every render)."
+  },
+  "rl-02": {
+    "prompt": "Which JavaScript method is most commonly used to transform an array of data into a list of React components?",
+    "explanation": "The .map() method is ideal because it returns a new array of the same length, allowing you to wrap each data item in JSX.",
+    "interviewTip": "Remember that .forEach() returns undefined and won't render anything in JSX."
+  },
+  "rl-03": {
+    "prompt": "What is a potential downside of using the array 'index' as a key?",
+    "explanation": "If the list changes order, the index stays the same for a position even if the content moves. This confuses React's state management for those components.",
+    "interviewTip": "Only use the index as a key if the list is static (never changes, filters, or sorts)."
+  },
+  "rl-04": {
+    "prompt": "Analyze the code below. What will happen if two items have the same ID?",
+    "explanation": "React requires keys to be unique among siblings. Duplicate keys cause unpredictable behavior during updates, and React will warn you in development.",
+    "interviewTip": "If your data lacks unique IDs, you can combine fields (like item.type + item.id) to create a unique string."
+  },
+  "rl-05": {
+    "prompt": "Where exactly should the 'key' prop be placed when rendering a list of custom components?",
+    "explanation": "The key must always be applied to the outermost element returned by the map function so React can track the item in the collection.",
+    "interviewTip": "If you wrap your component in a <div> or a Fragment inside the map, the key goes on that wrapper."
+  },
+  "rl-06": {
+    "prompt": "Which of the following are recommended sources for a 'key' prop?",
+    "explanation": "Keys must be stable. Random numbers or timestamps change every render, causing the entire list to unmount and remount, which destroys state and performance.",
+    "interviewTip": "Stable, unique IDs are the gold standard for React keys."
+  },
+  "rl-07": {
+    "prompt": "How do you render a list if you don't want an extra wrapper tag like <div> or <li>?",
+    "explanation": "The shorthand <> syntax does not support the 'key' prop. When mapping multiple elements without a wrapper, you must use <React.Fragment key={...}>.",
+    "interviewTip": "This is one of the few cases where the long-form Fragment syntax is mandatory."
+  },
+  "rl-08": {
+    "prompt": "What is the output of the following rendering logic?",
+    "explanation": "React allows you to mix dynamic content (arrays) with static JSX. It will simply render them in the order they appear.",
+    "interviewTip": "This is useful for adding a 'Create New' or 'Load More' item at the end of a dynamic list."
+  },
+  "rl-09": {
+    "prompt": "What does React do when it detects a key change for a component (e.g., key 1 becomes key 2)?",
+    "explanation": "Changing a key tells React the identity of the component has changed. It destroys the old instance (including its local state) and creates a fresh one.",
+    "interviewTip": "You can intentionally change a key to 'reset' a component (like a form) to its initial state."
+  },
+  "rl-10": {
+    "prompt": "Is it possible to use an object as a key?",
+    "explanation": "React converts keys to strings internally. Using an object will result in the string '[object Object]' for all items, making them non-unique.",
+    "interviewTip": "Always pick a primitive value (string/number) for your key."
+  },
+  "rl-11": {
+    "prompt": "What will happen if you provide no key at all while mapping?",
+    "explanation": "React will default to using the array index as a key if none is provided, but it will log a warning to alert you of potential performance and bug issues.",
+    "interviewTip": "Warnings in the console are often missed—always check your logs during development."
+  },
+  "rl-12": {
+    "prompt": "Which of the following scenarios absolutely require a unique key?",
+    "explanation": "Sorting and removing items are operations where React's diffing algorithm relies heavily on keys to avoid state bugs (like text staying in an input while the label changes).",
+    "interviewTip": "If the list can be manipulated by the user, a stable key is mandatory."
+  },
+  "rl-13": {
+    "prompt": "How do you render a list in reverse order using .map()?",
+    "explanation": "Since .reverse() mutates the original array, we spread the data into a new array `[...data]` first, then reverse and map.",
+    "interviewTip": "Always keep your data transformations 'immutable' to avoid side effects."
+  },
+  "rl-14": {
+    "prompt": "What is the most efficient way to render a very long list (e.g., 10,000 items)?",
+    "explanation": "Windowing only renders the items currently visible in the viewport, significantly reducing the number of DOM nodes.",
+    "interviewTip": "Mention libraries like 'react-window' or 'react-virtualized' for this purpose."
+  },
+  "rl-15": {
+    "prompt": "In the following snippet, why is 'Math.random()' a bad choice for a key?",
+    "explanation": "Every time the component re-renders, a new random key is generated. React thinks it's a new element and recreates it from scratch.",
+    "interviewTip": "A key must stay the same for the same item between renders to be useful."
+  },
+  "rl-16": {
+    "prompt": "How do you filter a list before rendering it?",
+    "explanation": "Method chaining (filter then map) is the standard and most readable way to handle conditional list rendering.",
+    "interviewTip": "For large lists, you might wrap this logic in useMemo to avoid re-calculating on every render."
+  },
+  "rl-17": {
+    "prompt": "If a list item has a state (like a toggle), what happens to that state if the item is removed from the array?",
+    "explanation": "State is tied to the component instance in the DOM tree. When an item is removed from the array, its component is unmounted and its state is wiped.",
+    "interviewTip": "If data must survive a list removal, it should be stored in the parent's state or a global store."
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "rn-flex-01": {
+    "prompt": "What is the default 'flexDirection' for a View in React Native?",
+    "explanation": "On the web, the default is 'row'. In React Native, it is 'column' to better align with the vertical nature of mobile devices.",
+    "interviewTip": "Always verify the direction before debugging alignment, as 'justifyContent' and 'alignItems' swap roles depending on this property."
+  },
+  "rn-flex-02": {
+    "prompt": "Which property aligns children along the 'Main Axis'?",
+    "explanation": "justifyContent defines how children are distributed along the primary axis (defined by flexDirection).",
+    "interviewTip": "Common values include 'center', 'space-between', and 'space-around'."
+  },
+  "rn-flex-03": {
+    "prompt": "What will be the size of these two boxes?",
+    "explanation": "Flex values are proportional. Total flex is 1 + 3 = 4. Red is 1/4 (25%) and Blue is 3/4 (75%).",
+    "interviewTip": "In React Native, 'flex: 1' on a single child tells it to fill all available space in its parent."
+  },
+  "rn-flex-04": {
+    "prompt": "Which property allows an individual child to deviate from the 'alignItems' set by its parent?",
+    "explanation": "alignSelf allows you to override the parent's alignment for a specific element.",
+    "interviewTip": "This is very useful for centering one specific item in a list that is otherwise stretched."
+  },
+  "rn-flex-05": {
+    "prompt": "In React Native, what is the default value for 'alignItems'?",
+    "explanation": "By default, children are 'stretched' to fill the secondary axis of their parent unless a specific width/height is provided.",
+    "interviewTip": "If your child component is 'disappearing', it might be because you set flexDirection: 'row' and the default 'stretch' is trying to find a height it doesn't have."
+  },
+  "rn-flex-06": {
+    "prompt": "How do you center a child both horizontally and vertically inside a standard View?",
+    "explanation": "Using 'center' for both justifyContent (main axis) and alignItems (cross axis) centers the content perfectly.",
+    "interviewTip": "Ensure the parent has 'flex: 1' or a specific size, or there will be no space to center within."
+  },
+  "rn-flex-07": {
+    "prompt": "What is the result of using 'flex: -1' in React Native?",
+    "explanation": "A negative flex value allows a component to shrink when the content overflows the parent, but it won't take up extra space otherwise.",
+    "interviewTip": "This is rarely used but helpful for handling dynamic text in tight headers."
+  },
+  "rn-flex-08": {
+    "prompt": "Which property should you use to add space between items in a Flex container without using margins?",
+    "explanation": "Modern React Native versions support the 'gap' property (as well as rowGap and columnGap), which adds space specifically between items.",
+    "interviewTip": "Using 'gap' is much cleaner than applying margin to every child and then removing it from the last one."
+  },
+  "rn-flex-09": {
+    "prompt": "Analyze this code. Where will the 'Box' be located?",
+    "explanation": "flex-end for row direction puts it at the right; flex-end for cross-axis puts it at the bottom.",
+    "interviewTip": "Always visualize the 'L' shape of the axis: Main axis (X) and Cross axis (Y) for row direction."
+  },
+  "rn-flex-10": {
+    "prompt": "Does React Native support 'z-index' for overlapping elements?",
+    "explanation": "React Native supports zIndex. However, if multiple elements have the same zIndex, the one defined later in the JSX appears on top.",
+    "interviewTip": "On Android, sometimes 'elevation' is needed alongside zIndex for shadow-related overlapping issues."
+  },
+  "rn-flex-11": {
+    "prompt": "Which of the following are valid units for 'width' and 'height' in React Native styles?",
+    "explanation": "React Native primarily uses unitless numbers (logical pixels) and percentage strings. rem/em/vh/vw are not natively supported.",
+    "interviewTip": "To get screen-based units (like vw/vh), use the 'Dimensions' or 'useWindowDimensions' API."
+  },
+  "rn-flex-12": {
+    "prompt": "What is 'flexBasis' used for?",
+    "explanation": "flexBasis determines the default size of an item before the remaining space is distributed via flexGrow or flexShrink.",
+    "interviewTip": "If flexDirection is 'column', flexBasis acts like 'height'. If 'row', it acts like 'width'."
+  },
+  "rn-flex-13": {
+    "prompt": "How do you make a View wrap its children into multiple lines if they exceed the container width?",
+    "explanation": "By default, flex containers are 'nowrap'. Setting 'flexWrap: wrap' allows items to move to the next line.",
+    "interviewTip": "This is essential for creating 'tag cloud' layouts or photo grids."
+  },
+  "rn-flex-14": {
+    "prompt": "What is the 'Shadow Thread' responsible for?",
+    "explanation": "The Shadow Thread is where React Native calculates the mathematical layout of your components using Yoga before sending it to the UI Thread.",
+    "interviewTip": "Knowing this helps you understand that style changes in JS have a specific path through threads before appearing on screen."
+  },
+  "rn-flex-15": {
+    "prompt": "How do you get the width of the physical screen in React Native?",
+    "explanation": "The Dimensions API (or the useWindowDimensions hook) provides the width and height of the current window/screen.",
+    "interviewTip": "Prefer 'useWindowDimensions' because it automatically updates if the screen rotates or the window size changes (on tablets/web)."
+  },
+  "rn-flex-16": {
+    "prompt": "What does 'aspectRatio' do in a Style object?",
+    "explanation": "If you set 'aspectRatio: 1', the component will always be a square, even if only the width is defined.",
+    "interviewTip": "This is incredibly useful for images and video containers where you want them to be responsive but maintain a 16:9 or 4:3 look."
+  },
+  "rn-flex-17": {
+    "prompt": "Identify the error in this Style object:",
+    "explanation": "React Native does not implement the full CSS spec. Properties like float, clear, and block/inline display do not exist.",
+    "interviewTip": "If you need a side-by-side layout, always use 'flexDirection: row'."
+  }
+}

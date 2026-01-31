@@ -1,0 +1,127 @@
+{
+  "js-browser-01": {
+    "prompt": "What is the main responsibility of the browser?",
+    "explanation": "Browser renders UI and runs JS engine.",
+    "interviewTip": "Rendering pipeline matters."
+  },
+  "js-browser-02": {
+    "prompt": "What happens first when loading a webpage?",
+    "explanation": "HTML is parsed into DOM.",
+    "interviewTip": "Critical render path."
+  },
+  "js-browser-03": {
+    "prompt": "What is the DOM?",
+    "explanation": "DOM is a node tree.",
+    "interviewTip": "JS manipulates DOM."
+  },
+  "js-browser-04": {
+    "prompt": "What is the CSSOM?",
+    "explanation": "CSSOM is created from CSS.",
+    "interviewTip": "DOM + CSSOM = Render Tree."
+  },
+  "js-browser-05": {
+    "prompt": "What blocks HTML parsing?",
+    "explanation": "Blocking scripts stop parsing.",
+    "interviewTip": "Use defer/async."
+  },
+  "js-browser-06": {
+    "prompt": "Difference between async and defer?",
+    "explanation": "Defer preserves order.",
+    "interviewTip": "Classic interview question."
+  },
+  "js-browser-07": {
+    "prompt": "What is reflow?",
+    "explanation": "Reflow recalculates layout.",
+    "interviewTip": "Expensive operation."
+  },
+  "js-browser-08": {
+    "prompt": "What triggers repaint?",
+    "explanation": "Color/visibility changes.",
+    "interviewTip": "Cheaper than reflow."
+  },
+  "js-browser-09": {
+    "prompt": "What is the render tree?",
+    "explanation": "Used for layout and paint.",
+    "interviewTip": "Invisible nodes excluded."
+  },
+  "js-browser-10": {
+    "prompt": "What does the event loop handle?",
+    "explanation": "Manages task execution order.",
+    "interviewTip": "Macro vs micro tasks."
+  },
+  "js-browser-11": {
+    "prompt": "Which task has higher priority?",
+    "explanation": "Promises resolve first.",
+    "interviewTip": "Critical for async bugs."
+  },
+  "js-browser-12": {
+    "prompt": "What is same-origin policy?",
+    "explanation": "Prevents cross-origin access.",
+    "interviewTip": "CORS exists because of it."
+  },
+  "js-browser-13": {
+    "prompt": "What is CORS?",
+    "explanation": "Controls cross-origin requests.",
+    "interviewTip": "Server-controlled."
+  },
+  "js-browser-14": {
+    "prompt": "Which storage is synchronous?",
+    "explanation": "Blocks main thread.",
+    "interviewTip": "Avoid heavy usage."
+  },
+  "js-browser-15": {
+    "prompt": "Best storage for large data?",
+    "explanation": "Async and large capacity.",
+    "interviewTip": "Used by PWAs."
+  },
+  "js-browser-16": {
+    "prompt": "What is a Service Worker?",
+    "explanation": "Intercepts network requests.",
+    "interviewTip": "Offline support."
+  },
+  "js-browser-17": {
+    "prompt": "What enables offline support?",
+    "explanation": "Core PWA feature.",
+    "interviewTip": "Ask about caching strategies."
+  },
+  "js-browser-18": {
+    "prompt": "What is HTTP/2 advantage?",
+    "explanation": "Multiple streams over one connection.",
+    "interviewTip": "Improves performance."
+  },
+  "js-browser-19": {
+    "prompt": "Why minimize critical CSS?",
+    "explanation": "Speeds up rendering.",
+    "interviewTip": "Inline critical CSS."
+  },
+  "js-browser-20": {
+    "prompt": "What is First Contentful Paint?",
+    "explanation": "User-perceived performance.",
+    "interviewTip": "Web Vitals."
+  },
+  "js-browser-21": {
+    "prompt": "What is layout shift?",
+    "explanation": "Measured by CLS.",
+    "interviewTip": "Avoid dynamic content jumps."
+  },
+  "js-browser-22": {
+    "prompt": "Which API runs off main thread?",
+    "explanation": "True multithreading.",
+    "interviewTip": "Cannot access DOM."
+  },
+  "js-browser-23": {
+    "prompt": "What is the JS heap?",
+    "explanation": "Used for dynamic allocations.",
+    "interviewTip": "Leaks live here."
+  },
+  "js-browser-24": {
+    "prompt": "What causes forced synchronous layout?",
+    "explanation": "Triggers immediate reflow.",
+    "interviewTip": "Avoid layout thrashing."
+  },
+  "js-browser-25": {
+    "prompt": "Best way to optimize rendering?",
+    "explanation": "Profiling first.",
+    "interviewTip": "Never guess."
+  }
+}

@@ -27,9 +27,9 @@ import commonEs from '../assets/locales/es/common.json';
 import authEs from '../assets/locales/es/auth.json';
 import stageEs from '../assets/locales/es/stage.json';
 
-import questionsEn from '../assets/locales/en/questions.json';
-import questionsUk from '../assets/locales/uk/questions.json';
-import questionsEs from '../assets/locales/es/questions.json';
+import questionsEn from '../assets/locales/en/questions-merged';
+import questionsUk from '../assets/locales/uk/questions-merged';
+import questionsEs from '../assets/locales/es/questions-merged';
 
 const STORAGE_KEY = 'user-language';
 

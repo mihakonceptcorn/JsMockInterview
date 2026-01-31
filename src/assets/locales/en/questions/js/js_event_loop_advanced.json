@@ -1,0 +1,127 @@
+{
+  "js-el-adv-01": {
+    "prompt": "Which queue has higher priority in the event loop?",
+    "explanation": "Microtasks run before the next macrotask.",
+    "interviewTip": "Promises can starve rendering."
+  },
+  "js-el-adv-02": {
+    "prompt": "Which API schedules a microtask?",
+    "explanation": "Promise callbacks go to microtask queue.",
+    "interviewTip": "queueMicrotask exists."
+  },
+  "js-el-adv-03": {
+    "prompt": "What happens if microtasks keep scheduling new microtasks?",
+    "explanation": "This causes starvation.",
+    "interviewTip": "Common performance pitfall."
+  },
+  "js-el-adv-04": {
+    "prompt": "When does rendering occur?",
+    "explanation": "Rendering happens after microtasks drain.",
+    "interviewTip": "Why promises can block paint."
+  },
+  "js-el-adv-05": {
+    "prompt": "Where does requestAnimationFrame run?",
+    "explanation": "Runs before the next paint.",
+    "interviewTip": "Use for animations."
+  },
+  "js-el-adv-06": {
+    "prompt": "Which callback may never run under heavy load?",
+    "explanation": "Idle time may never occur.",
+    "interviewTip": "Not guaranteed."
+  },
+  "js-el-adv-07": {
+    "prompt": "What queue does MutationObserver use?",
+    "explanation": "Runs as microtask.",
+    "interviewTip": "Often forgotten."
+  },
+  "js-el-adv-08": {
+    "prompt": "Which task blocks rendering the most?",
+    "explanation": "Main thread is blocked.",
+    "interviewTip": "Chunk long tasks."
+  },
+  "js-el-adv-09": {
+    "prompt": "What is a long task?",
+    "explanation": "Used in performance metrics.",
+    "interviewTip": "Related to TBT."
+  },
+  "js-el-adv-10": {
+    "prompt": "Which API helps split long tasks?",
+    "explanation": "Runs work in idle periods.",
+    "interviewTip": "Not supported everywhere."
+  },
+  "js-el-adv-11": {
+    "prompt": "What happens after a macrotask finishes?",
+    "explanation": "Microtasks drain first.",
+    "interviewTip": "Key interview flow."
+  },
+  "js-el-adv-12": {
+    "prompt": "Which is a macrotask?",
+    "explanation": "Timers create macrotasks.",
+    "interviewTip": "Know examples."
+  },
+  "js-el-adv-13": {
+    "prompt": "Why is setTimeout(fn, 0) not immediate?",
+    "explanation": "Subject to clamping.",
+    "interviewTip": "4ms rule."
+  },
+  "js-el-adv-14": {
+    "prompt": "Which can delay input handling?",
+    "explanation": "Main thread contention.",
+    "interviewTip": "INP metric."
+  },
+  "js-el-adv-15": {
+    "prompt": "Best way to avoid starvation?",
+    "explanation": "Break work into chunks.",
+    "interviewTip": "Cooperative scheduling."
+  },
+  "js-el-adv-16": {
+    "prompt": "Which runs outside the event loop?",
+    "explanation": "Separate thread.",
+    "interviewTip": "No DOM access."
+  },
+  "js-el-adv-17": {
+    "prompt": "What is cooperative scheduling?",
+    "explanation": "JS must yield explicitly.",
+    "interviewTip": "Contrast with threads."
+  },
+  "js-el-adv-18": {
+    "prompt": "What does await do internally?",
+    "explanation": "Continuation via promise.",
+    "interviewTip": "Syntactic sugar."
+  },
+  "js-el-adv-19": {
+    "prompt": "Which affects paint timing?",
+    "explanation": "Microtasks delay paint.",
+    "interviewTip": "Subtle bug source."
+  },
+  "js-el-adv-20": {
+    "prompt": "What metric measures JS blocking?",
+    "explanation": "Part of Core Web Vitals.",
+    "interviewTip": "Performance interviews."
+  },
+  "js-el-adv-21": {
+    "prompt": "What happens if JS never yields?",
+    "explanation": "Single-threaded limitation.",
+    "interviewTip": "Classic explanation."
+  },
+  "js-el-adv-22": {
+    "prompt": "Which callback runs first?",
+    "explanation": "Microtasks first.",
+    "interviewTip": "Order questions common."
+  },
+  "js-el-adv-23": {
+    "prompt": "What is task batching?",
+    "explanation": "Improves responsiveness.",
+    "interviewTip": "React uses it."
+  },
+  "js-el-adv-24": {
+    "prompt": "Which API is frame-aligned?",
+    "explanation": "Synced with refresh rate.",
+    "interviewTip": "Avoid jank."
+  },
+  "js-el-adv-25": {
+    "prompt": "Best rule for event loop optimization?",
+    "explanation": "Always profile.",
+    "interviewTip": "Senior-level answer."
+  }
+}

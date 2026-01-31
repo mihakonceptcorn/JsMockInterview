@@ -1,0 +1,52 @@
+{
+  "csb-01": {
+    "prompt": "Analyze the code. Which class will be applied to the div if 'isActive' is true and 'hasError' is false?",
+    "explanation": "In the object syntax, the key is the class name and the value is a boolean. Since isActive is true, 'active' is applied. Since hasError is false, 'text-danger' is omitted.",
+    "interviewTip": "Keys with dashes, like 'text-danger', must be wrapped in quotes in the object syntax."
+  },
+  "csb-02": {
+    "prompt": "How can you apply multiple classes by combining them in a list?",
+    "explanation": "The array syntax allows you to apply a list of classes. You can even nest the object syntax inside the array syntax for complex logic.",
+    "interviewTip": "Using `[isActive ? activeClass : '', errorClass]` is a common pattern for conditional classes within an array."
+  },
+  "csb-03": {
+    "prompt": "When binding to the 'style' attribute, how should multi-word CSS properties (like 'font-size') be written?",
+    "explanation": "Vue is flexible. You can use camelCase (`fontSize`) which is closer to JS DOM property names, or kebab-case strings (`'font-size'`).",
+    "interviewTip": "CamelCase is generally preferred in the Vue community for cleaner code without extra quotes."
+  },
+  "csb-04": {
+    "prompt": "What happens if you have both a standard 'class' and a bound ':class' on the same element?",
+    "explanation": "Vue intelligently merges static and dynamic classes. If isActive is true, the result will be class=\"base active\".",
+    "interviewTip": "This merging behavior also applies to 'style' and ':style' bindings."
+  },
+  "csb-05": {
+    "prompt": "Analyze the code. What is the benefit of this pattern?",
+    "explanation": "Binding to a computed object is a best practice for complex class logic. It keeps your templates readable and utilizes computed caching.",
+    "interviewTip": "In a Senior dev interview, always suggest moving complex ternary operators from templates into computed properties."
+  },
+  "csb-06": {
+    "prompt": "Which of these are valid ways to scoped CSS to a single component in Vue?",
+    "explanation": "The 'scoped' attribute uses data-attributes to isolate styles. CSS Modules (module) injects a $style object into the component.",
+    "interviewTip": "Be careful with 'scoped'—it doesn't affect child components' internals, only their root element."
+  },
+  "csb-07": {
+    "prompt": "How does Vue handle CSS properties that require vendor prefixes (e.g., 'user-select')?",
+    "explanation": "When you use a CSS property that requires a vendor prefix in :style, Vue will automatically detect and add the appropriate prefixes.",
+    "interviewTip": "This 'Auto-prefixing' is built into Vue's runtime style binding logic."
+  },
+  "csb-08": {
+    "prompt": "What is the result of passing an array of objects to :style?",
+    "explanation": "The array syntax for :style allows you to apply multiple style objects to the same element, with later objects overriding properties in previous ones.",
+    "interviewTip": "This is very useful for composing base styles with conditional modifiers."
+  },
+  "csb-09": {
+    "prompt": "How do you bind multiple CSS classes conditionally in Vue?",
+    "explanation": "Object syntax allows you to toggle classes based on reactive data. You can also combine object and array syntax.",
+    "interviewTip": "For class names with hyphens, use quotes around the key."
+  },
+  "csb-10": {
+    "prompt": "What is the benefit of using :style binding with an object?",
+    "explanation": "Style binding accepts an object where keys are CSS property names (camelCase or kebab-case) and values are reactive data.",
+    "interviewTip": "Vue automatically adds vendor prefixes for properties that require them."
+  }
+}

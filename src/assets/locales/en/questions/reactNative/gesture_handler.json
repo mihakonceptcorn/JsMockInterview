@@ -1,0 +1,52 @@
+{
+  "gh-01": {
+    "prompt": "Why is 'React Native Gesture Handler' preferred over the built-in 'PanResponder'?",
+    "explanation": "RNGH interacts directly with the native platform's gesture recognition system, meaning touch events don't have to travel to the JS thread to be processed.",
+    "interviewTip": "Always mention 'determinism' and 'responsiveness' when comparing RNGH to PanResponder."
+  },
+  "gh-02": {
+    "prompt": "Which component must wrap your entire app to enable Gesture Handler functionality?",
+    "explanation": "To ensure gestures are captured correctly, especially on Android, you must wrap your entry point (usually App.js) in a <GestureHandlerRootView>.",
+    "interviewTip": "Missing this wrapper is the most common reason gestures 'silently fail' to trigger."
+  },
+  "gh-03": {
+    "prompt": "What will this code do when the user drags their finger across the screen?",
+    "explanation": "In a Pan gesture, 'translationX' and 'translationY' represent the distance the finger has moved since the gesture started.",
+    "interviewTip": "Contrast 'translation' (movement relative to start) with 'absolutePosition' (coordinate relative to parent)."
+  },
+  "gh-04": {
+    "prompt": "Which gesture handler is specifically designed for a single quick press?",
+    "explanation": "Gesture.Tap() is used for discrete touch events. You can configure it to require multiple taps (e.g., double-tap to like).",
+    "interviewTip": "Tap is preferred over Pressable when you need to coordinate it with other gestures like Pinch or Pan."
+  },
+  "gh-05": {
+    "prompt": "How do you allow two gestures to work at the same time (e.g., pinching and rotating simultaneously)?",
+    "explanation": "Gesture.Simultaneous() allows all provided gestures to remain active together.",
+    "interviewTip": "This is essential for complex 'Image Editor' interfaces where users expect multi-touch freedom."
+  },
+  "gh-06": {
+    "prompt": "What is the purpose of 'Gesture.Exclusive'?",
+    "explanation": "Exclusive gives priority to the first gesture. If a double-tap is detected, it prevents the single-tap from firing.",
+    "interviewTip": "This is how you solve conflicts between overlapping touch areas."
+  },
+  "gh-07": {
+    "prompt": "Which event callback runs when the user lifts their finger from the screen?",
+    "explanation": "onFinalize runs regardless of whether the gesture finished successfully or was cancelled. onEnd only runs if the gesture was successful.",
+    "interviewTip": "Use onFinalize to 'reset' your UI state to ensure it doesn't get stuck if the gesture is interrupted."
+  },
+  "gh-08": {
+    "prompt": "Which of these are valid built-in gesture types in RNGH?",
+    "explanation": "Pinch, Rotation, and Fling are all touch gestures. 'Shake' is a device motion event, not handled by Gesture Handler.",
+    "interviewTip": "Mention 'Fling' as an optimized way to handle 'Swipe to delete' interactions."
+  },
+  "gh-09": {
+    "prompt": "What does 'simultaneousHandlers' prop do in the legacy API?",
+    "explanation": "Without this, a ScrollView would 'steal' the touch event as soon as it detects movement. simultaneousHandlers allows both to cooperate.",
+    "interviewTip": "This is crucial for drawers or bottom sheets that contain scrollable content."
+  },
+  "gh-10": {
+    "prompt": "In the new 'Gesture' API (v2), how do you attach the gesture to a View?",
+    "explanation": "The GestureDetector is the wrapper that bridges the gesture definition with a specific UI component.",
+    "interviewTip": "Remember that GestureDetector can only have ONE child."
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "js-async-01": {
+    "prompt": "What is asynchronous programming in JavaScript?",
+    "explanation": "Async code allows non-blocking operations.",
+    "interviewTip": "JS is single-threaded but async."
+  },
+  "js-async-02": {
+    "prompt": "Which API is used to handle async tasks?",
+    "explanation": "Event Loop coordinates async execution.",
+    "interviewTip": "Critical interview topic."
+  },
+  "js-async-03": {
+    "prompt": "What will be logged?",
+    "explanation": "setTimeout is async.",
+    "interviewTip": "Macro-task behavior."
+  },
+  "js-async-04": {
+    "prompt": "What is a Promise?",
+    "explanation": "Promise represents future value.",
+    "interviewTip": "Pending / fulfilled / rejected."
+  },
+  "js-async-05": {
+    "prompt": "Which state does a Promise NOT have?",
+    "explanation": "`resolved` is informal term.",
+    "interviewTip": "Precise terminology matters."
+  },
+  "js-async-06": {
+    "prompt": "What will be logged?",
+    "explanation": "Microtasks run after sync code.",
+    "interviewTip": "Microtask queue."
+  },
+  "js-async-07": {
+    "prompt": "What is async/await?",
+    "explanation": "Built on top of Promises.",
+    "interviewTip": "Still async."
+  },
+  "js-async-08": {
+    "prompt": "What does `await` do?",
+    "explanation": "Pauses only current async function.",
+    "interviewTip": "Does not block event loop."
+  },
+  "js-async-09": {
+    "prompt": "What will be logged?",
+    "explanation": "Async functions return Promises.",
+    "interviewTip": "Return is wrapped."
+  },
+  "js-async-10": {
+    "prompt": "Which runs first?",
+    "explanation": "Microtasks have higher priority.",
+    "interviewTip": "Promise.then vs setTimeout."
+  },
+  "js-async-11": {
+    "prompt": "What does `Promise.all` do?",
+    "explanation": "Rejects if any promise rejects.",
+    "interviewTip": "Fail-fast."
+  },
+  "js-async-12": {
+    "prompt": "What does `Promise.race` do?",
+    "explanation": "First settled wins.",
+    "interviewTip": "Useful for timeouts."
+  },
+  "js-async-13": {
+    "prompt": "What will be logged?",
+    "explanation": "Await throws on rejection.",
+    "interviewTip": "Use try/catch."
+  },
+  "js-async-14": {
+    "prompt": "How to handle errors in async/await?",
+    "explanation": "try/catch catches rejected promises.",
+    "interviewTip": "Local error handling."
+  },
+  "js-async-15": {
+    "prompt": "What will be logged?",
+    "explanation": "Microtasks before macrotasks.",
+    "interviewTip": "Classic interview question."
+  },
+  "js-async-16": {
+    "prompt": "What does `finally` do?",
+    "explanation": "Runs after resolve or reject.",
+    "interviewTip": "No access to result."
+  },
+  "js-async-17": {
+    "prompt": "What is callback hell?",
+    "explanation": "Hard to read and maintain.",
+    "interviewTip": "Promises solve it."
+  },
+  "js-async-18": {
+    "prompt": "What does `await Promise.all([...])` do?",
+    "explanation": "Promises start immediately.",
+    "interviewTip": "Performance optimization."
+  },
+  "js-async-19": {
+    "prompt": "Why avoid `await` inside loops?",
+    "explanation": "Use Promise.all instead.",
+    "interviewTip": "Common performance issue."
+  },
+  "js-async-20": {
+    "prompt": "What will be logged?",
+    "explanation": "Promise is flattened.",
+    "interviewTip": "Promise resolution."
+  },
+  "js-async-21": {
+    "prompt": "What is a macrotask?",
+    "explanation": "Scheduled via task queue.",
+    "interviewTip": "Lower priority than microtasks."
+  },
+  "js-async-22": {
+    "prompt": "What happens if Promise rejects and no catch?",
+    "explanation": "Leads to warnings/errors.",
+    "interviewTip": "Always handle rejections."
+  },
+  "js-async-23": {
+    "prompt": "What does `queueMicrotask` do?",
+    "explanation": "Runs before next macrotask.",
+    "interviewTip": "Advanced topic."
+  },
+  "js-async-24": {
+    "prompt": "Why is async code hard to debug?",
+    "explanation": "Async flow is harder to trace.",
+    "interviewTip": "Use async stack traces."
+  },
+  "js-async-25": {
+    "prompt": "Best practice for async code?",
+    "explanation": "Readable and maintainable.",
+    "interviewTip": "Production-ready approach."
+  }
+}

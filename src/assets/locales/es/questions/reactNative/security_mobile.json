@@ -1,0 +1,52 @@
+{
+  "sec-01": {
+    "prompt": "What is 'SSL Pinning' and why is it used in React Native apps?",
+    "explanation": "Even with HTTPS, an attacker can sometimes force a device to trust a fake certificate. SSL Pinning ensures the app rejects any certificate that doesn't match the 'pinned' one from your server.",
+    "interviewTip": "Mention libraries like 'react-native-ssl-pinning' or 'TrustKit'. Warning: If your server certificate expires and you haven't updated the app, it will stop working!"
+  },
+  "sec-02": {
+    "prompt": "How should sensitive keys (like API secrets) be stored in a React Native app?",
+    "explanation": "Standard storage (AsyncStorage/MMKV) is unencrypted. The Keychain/Keystore provides hardware-level encryption designed specifically for secrets.",
+    "interviewTip": "A great answer includes: 'I use .env files for build-time configuration, but device-specific secrets go into the Secure Keychain'."
+  },
+  "sec-03": {
+    "prompt": "What is the purpose of 'Jailbreak' or 'Root' detection in mobile apps?",
+    "explanation": "On a rooted/jailbroken device, attackers can bypass sandbox restrictions and read your app's private data or intercept memory. Banks and high-security apps often block access on these devices.",
+    "interviewTip": "Use 'react-native-jail-monkey' or 'expo-device' to check if the device environment is untrusted."
+  },
+  "sec-04": {
+    "prompt": "Analyze the Android config. What does 'minifyEnabled true' and 'proguardFiles' do?",
+    "explanation": "Proguard/R8 shrinks the code and renames classes/methods to nonsense names (e.g., 'a', 'b', 'c'), making the native binary difficult to read.",
+    "interviewTip": "Always enable this for release builds. It's the first line of defense against decompilers."
+  },
+  "sec-05": {
+    "prompt": "Why is it dangerous to use 'console.log' in a production React Native build?",
+    "explanation": "Logging doesn't just show in your terminal; it's broadcasted to the device's system log. Production builds should have logs stripped out.",
+    "interviewTip": "Use 'babel-plugin-transform-remove-console' to automatically strip all logs during the production build process."
+  },
+  "sec-06": {
+    "prompt": "Which of these are valid methods to secure the JavaScript bundle itself?",
+    "explanation": "Hermes provides 'security through compilation.' Obfuscators add an extra layer of complexity to the logic itself.",
+    "interviewTip": "Explain that no JS code is 100% 'hidden,' but these steps make it significantly more expensive for an attacker to decode."
+  },
+  "sec-07": {
+    "prompt": "What is 'Deep Link Hijacking'?",
+    "explanation": "URL schemes (myapp://) are not exclusive. To prevent hijacking, you should use 'Universal Links' (iOS) or 'App Links' (Android), which use a verified website domain to prove ownership.",
+    "interviewTip": "Always prefer HTTPS-based 'Universal Links' over custom URI schemes for authentication flows."
+  },
+  "sec-08": {
+    "prompt": "What is the security risk of using 'allowFileAccess' or 'javaScriptEnabled' in a WebView?",
+    "explanation": "WebViews are essentially mini-browsers. If you load untrusted URLs with full permissions enabled, you risk giving that site access to the app's internal sandbox.",
+    "interviewTip": "Only enable the specific features you need, and always use 'originWhitelist' to restrict which domains the WebView can visit."
+  },
+  "sec-09": {
+    "prompt": "How do you implement biometric authentication (Face ID / Touch ID) in React Native?",
+    "explanation": "These libraries provide a cross-platform API to check if biometrics are available and to prompt the user for authentication.",
+    "interviewTip": "Always have a fallback to PIN/password authentication in case biometrics fail or aren't available on the device."
+  },
+  "sec-10": {
+    "prompt": "What is the recommended way to encrypt sensitive data before storing it locally?",
+    "explanation": "Base64 is encoding, not encryption—it can be easily reversed. AES-256 is a strong encryption standard that requires a key to decrypt the data.",
+    "interviewTip": "Store the encryption key in the Keychain/Keystore, never hardcode it in your JavaScript bundle."
+  }
+}

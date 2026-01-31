@@ -1,0 +1,52 @@
+{
+  "sl-01": {
+    "prompt": "What is the purpose of the <slot> element in a child component?",
+    "explanation": "Slots act as placeholders. Whatever content the parent places between the child component's tags will replace the <slot> tag in the final render.",
+    "interviewTip": "Content inside slots has access to the parent's data scope, not the child's (unless using Scoped Slots)."
+  },
+  "sl-02": {
+    "prompt": "Analyze the code. How do you pass content to the 'header' slot specifically?",
+    "explanation": "v-slot:header is the full syntax, and #header is the shorthand. Both are used on a <template> tag within the parent to target a named slot.",
+    "interviewTip": "Named slots are essential for building layout components (like Cards or Page Shells)."
+  },
+  "sl-03": {
+    "prompt": "What are 'Scoped Slots' used for?",
+    "explanation": "Scoped slots allow a child to provide data to the content injected by the parent. For example, a List component providing individual 'item' data to a custom row template provided by the parent.",
+    "interviewTip": "This is a high-level pattern for creating flexible, reusable components like Data Tables."
+  },
+  "sl-04": {
+    "prompt": "Analyze the code. What will happen to the 'Modal' component in the DOM?",
+    "explanation": "Teleport allows you to maintain the component's logical position (props/state) in the Vue tree while rendering it elsewhere in the HTML DOM.",
+    "interviewTip": "This is the 'correct' way to handle Modals/Dialogs to avoid `z-index` and `overflow: hidden` issues from parent containers."
+  },
+  "sl-05": {
+    "prompt": "How do you provide 'fallback' content that only shows if the parent doesn't provide any slot content?",
+    "explanation": "Any content placed between <slot> and </slot> in the child component serves as the default content if the parent leaves the tags empty.",
+    "interviewTip": "This is great for buttons where you want a default 'Submit' label but allow customization."
+  },
+  "sl-06": {
+    "prompt": "Which of the following statements about <Teleport> are true?",
+    "explanation": "Teleport targets can be CSS selectors (like '#app', '.container', or 'body'). Even though the DOM moves, the Vue logical tree remains intact.",
+    "interviewTip": "Confirm that Teleport doesn't break the 'one-way data flow' or event bubbling in the Vue tree."
+  },
+  "sl-07": {
+    "prompt": "Analyze the Scoped Slot syntax. How does the parent access the child's data?",
+    "explanation": "The value of v-slot (here 'slotProps') is an object containing all the props passed to the slot from the child. You can also destructure it: v-slot=\"{ user }\".",
+    "interviewTip": "Destructuring scoped slot props is standard practice for cleaner templates."
+  },
+  "sl-08": {
+    "prompt": "What happens to the state of a component inside <Teleport> if it is disabled?",
+    "explanation": "Teleport has a 'disabled' prop. This is useful for things like a 'PIP' (Picture-in-Picture) window that might toggle between being in the layout or floating.",
+    "interviewTip": "Mentioning the 'disabled' prop shows you've read the advanced documentation for Teleport."
+  },
+  "st-09": {
+    "prompt": "What is the purpose of the <Teleport> component in Vue 3?",
+    "explanation": "Teleport is useful for modals, toasts, or tooltips that need to be rendered at the document body level to avoid z-index or overflow issues.",
+    "interviewTip": "Teleport was called Portal in the RFC but was renamed before Vue 3 release."
+  },
+  "st-10": {
+    "prompt": "How do you access slot content in the parent component?",
+    "explanation": "Scoped slots allow child components to pass data back to the parent's slot content, enabling powerful patterns like renderless components.",
+    "interviewTip": "Scoped slots are the foundation of many Vue UI libraries for maximum flexibility."
+  }
+}

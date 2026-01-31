@@ -7,7 +7,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "generate:data": "node scripts/generate-data-map.js"
+    "generate:data": "node scripts/generate-data-map.js",
+    "split:questions": "node scripts/split-questions-translations.js en uk es",
+    "generate:questions": "node scripts/generate-questions-merged.js"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",

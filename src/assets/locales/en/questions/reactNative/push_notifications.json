@@ -1,0 +1,52 @@
+{
+  "pn-01": {
+    "prompt": "What is the primary difference between a 'Local Notification' and a 'Remote Push Notification'?",
+    "explanation": "Local notifications (like an alarm or a timer) stay on the device. Remote notifications are triggered by an external server to re-engage the user.",
+    "interviewTip": "For your JS Mock Interview app, a 'Local' notification would be perfect for a reminder to practice tomorrow."
+  },
+  "pn-02": {
+    "prompt": "Which service does React Native use to deliver notifications to iOS devices, even when using Firebase?",
+    "explanation": "Even if you use Firebase, Google eventually has to hand the message over to Apple's APNs to reach an iPhone.",
+    "interviewTip": "This is why you still need an Apple Developer Account and .p8 certificates even when using Firebase."
+  },
+  "pn-03": {
+    "prompt": "What is a 'FCM Token'?",
+    "explanation": "Your server sends messages to this token. If the user uninstalls and reinstalls the app, the token usually changes.",
+    "interviewTip": "Always send the token to your backend database during the app launch or login."
+  },
+  "pn-04": {
+    "prompt": "How do you handle a notification click when the app is completely closed (Quit state)?",
+    "explanation": "getInitialNotification is a 'one-time' check that returns the notification data if the app was launched by tapping that notification.",
+    "interviewTip": "This is the most common place where 'Deep Linking' logic starts after a user taps a push."
+  },
+  "pn-05": {
+    "prompt": "What is the purpose of 'Notification Channels' on Android?",
+    "explanation": "Android 8.0+ requires channels. Without a valid channel ID, notifications will not show up on modern Android devices.",
+    "interviewTip": "On iOS, this concept doesn't exist; users can only toggle notifications on or off for the whole app."
+  },
+  "pn-06": {
+    "prompt": "What happens when a 'Silent' (Data-only) notification is received?",
+    "explanation": "Silent notifications carry a data payload without a 'title' or 'body'. They are used to wake up the app to download new content quietly.",
+    "interviewTip": "Be careful: iOS and Android both limit how many silent pushes you can send to prevent battery drain."
+  },
+  "pn-07": {
+    "prompt": "Which of these are required to enable Push Notifications on iOS?",
+    "explanation": "iOS is very strict. You need all these settings and a real device to test the full flow from server to handset.",
+    "interviewTip": "Newer Xcode versions/Simulators have added limited support, but a physical device is still the industry standard for testing."
+  },
+  "pn-08": {
+    "prompt": "What is the role of the 'setBackgroundMessageHandler' in React Native Firebase?",
+    "explanation": "This handler runs in its own specialized task outside of your main React component tree.",
+    "interviewTip": "Keep this function 'pure' and avoid using hooks or complex UI logic inside it."
+  },
+  "pn-09": {
+    "prompt": "What is 'Notification Overloading'?",
+    "explanation": "This is a UX term. High-frequency, irrelevant notifications are the #1 reason for app churn.",
+    "interviewTip": "Mention 'Notification Personalization' and 'Frequency Capping' as solutions to this problem."
+  },
+  "pn-10": {
+    "prompt": "How do you request notification permissions from the user in React Native?",
+    "explanation": "requestPermission() returns the authorization status (authorized, denied, provisional). On iOS, this triggers the system permission dialog.",
+    "interviewTip": "Always check the current permission status before requesting to avoid annoying users with repeated prompts. On Android 13+, you also need to request the POST_NOTIFICATIONS runtime permission."
+  }
+}

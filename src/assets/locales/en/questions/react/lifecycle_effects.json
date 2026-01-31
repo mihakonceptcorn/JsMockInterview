@@ -1,0 +1,87 @@
+{
+  "le-01": {
+    "prompt": "When does the code inside a useEffect block run by default if no dependency array is provided?",
+    "explanation": "Without a dependency array, useEffect runs after every render cycle. This is usually avoided to prevent performance issues.",
+    "interviewTip": "Always be intentional with your dependency array to avoid infinite loops."
+  },
+  "le-02": {
+    "prompt": "How do you ensure a useEffect only runs once, similar to 'componentDidMount'?",
+    "explanation": "An empty dependency array [] tells React that the effect doesn't depend on any values from props or state, so it never needs to re-run.",
+    "interviewTip": "Even with an empty array, in React 18 'Strict Mode' development, effects might run twice to help you find cleanup bugs."
+  },
+  "le-03": {
+    "prompt": "What is the purpose of the function returned from a useEffect hook?",
+    "explanation": "The cleanup function is essential for preventing memory leaks (like intervals, event listeners, or active API subscriptions).",
+    "interviewTip": "Always clean up side effects that persist beyond the component's lifecycle."
+  },
+  "le-04": {
+    "prompt": "Which of the following are valid reasons to use the useEffect hook?",
+    "explanation": "Calculating values from props should be done during render (or via useMemo). Effects are specifically for 'side effects' that touch things outside the React ecosystem.",
+    "interviewTip": "If you can calculate it during render, you don't need useEffect."
+  },
+  "le-05": {
+    "prompt": "What will happen if you update a state variable inside a useEffect without a dependency array?",
+    "explanation": "The render triggers the effect, the effect updates state, the state update triggers a render, and the cycle repeats infinitely.",
+    "interviewTip": "If you see your CPU fans spinning up during dev, check for a missing dependency array in a useEffect that calls a setter."
+  },
+  "le-06": {
+    "prompt": "Analyze the dependency array below. When will this effect re-run?",
+    "explanation": "React performs a shallow comparison (Object.is) on each item in the array. If any item changes between renders, the effect re-runs.",
+    "interviewTip": "Be careful when passing objects or arrays in the dependency array, as new references will trigger the effect every time."
+  },
+  "le-07": {
+    "prompt": "What is the console output when the component unmounts?",
+    "explanation": "The cleanup function (B) runs only when the component is being removed from the DOM if the dependency array is empty.",
+    "interviewTip": "If the array had dependencies, 'B' would run before every re-run of 'A' AND at unmount."
+  },
+  "le-08": {
+    "prompt": "How does React handle multiple useEffect hooks in a single component?",
+    "explanation": "React relies on the order of Hook calls to maintain state. They are executed sequentially after the render is committed to the screen.",
+    "interviewTip": "Use multiple effects to separate unrelated logic (e.g., one for data fetching, one for an event listener)."
+  },
+  "le-09": {
+    "prompt": "Why is it important to include all reactive values (props, state) used inside the effect in the dependency array?",
+    "explanation": "If a value is used inside but not listed in the dependencies, the effect function 'remembers' the version of that value from when it was last created, leading to bugs.",
+    "interviewTip": "The 'eslint-plugin-react-hooks' is your best friend for catching missing dependencies automatically."
+  },
+  "le-10": {
+    "prompt": "What is the 'Effect Lifecycle' order when dependencies change?",
+    "explanation": "React cleans up the previous render's effect before applying the new one to ensure no stale side effects overlap.",
+    "interviewTip": "This is why cleaning up a subscription before starting a new one prevents 'duplicate listener' bugs."
+  },
+  "le-11": {
+    "prompt": "What happens if you return a string instead of a function from useEffect?",
+    "explanation": "useEffect expects the return value to be either a function (for cleanup) or nothing (undefined). Returning anything else is a mistake.",
+    "interviewTip": "Returning an async function is a common mistake because async functions return a Promise, not a cleanup function."
+  },
+  "le-12": {
+    "prompt": "Which hook is used for side effects that need to happen synchronously *before* the browser paints the screen?",
+    "explanation": "useLayoutEffect runs at the same time as the old 'componentDidMount'—after DOM mutations but before the user sees them. Useful for measuring DOM elements.",
+    "interviewTip": "Prefer useEffect for 99% of cases to avoid blocking visual updates."
+  },
+  "le-13": {
+    "prompt": "How should you handle an async function inside useEffect?",
+    "explanation": "You cannot make the effect callback itself async because it would return a Promise instead of a cleanup function. You must define the async function inside the effect.",
+    "interviewTip": "Defining it inside the effect also makes it easier to handle cleanup (like AbortController)."
+  },
+  "le-14": {
+    "prompt": "What is the 'Mounting' phase in React?",
+    "explanation": "Mounting is the start of a component's life in the DOM.",
+    "interviewTip": "useEffect with [] is the most common way to handle 'onMount' logic."
+  },
+  "le-15": {
+    "prompt": "Which of these will trigger a re-run of an effect with [data] as a dependency?",
+    "explanation": "React uses shallow equality. A new object literal `{}` is always a different reference, even if the properties look the same.",
+    "interviewTip": "This is why we spread: `setData({...data})`."
+  },
+  "le-16": {
+    "prompt": "What is the console output when the dependency 'count' changes from 1 to 2?",
+    "explanation": "When dependencies change, React first runs the cleanup of the previous effect, then the new effect.",
+    "interviewTip": "This ensures the 'old' world is cleaned up before the 'new' world starts."
+  },
+  "le-17": {
+    "prompt": "Is it safe to omit a function from the dependency array if it's defined inside the component?",
+    "explanation": "In JS, `function a(){}` !== `function a(){}` if they are created in different render cycles. Use `useCallback` to keep function references stable.",
+    "interviewTip": "Moving the function *inside* the useEffect is often the simplest fix."
+  }
+}

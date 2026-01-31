@@ -1,0 +1,127 @@
+{
+  "js-adv-01": {
+    "prompt": "Що буде виведено в консоль?",
+    "explanation": "Змінна піднімається (hoisting), але не ініціалізується.",
+    "interviewTip": "Підняття var проти let/const."
+  },
+  "js-adv-02": {
+    "prompt": "Що станеться?",
+    "explanation": "Оголошення функцій (function declarations) піднімаються.",
+    "interviewTip": "Різниця з функціональними виразами (function expressions)."
+  },
+  "js-adv-03": {
+    "prompt": "Що буде виведено?",
+    "explanation": "Тимчасова мертва зона (Temporal Dead Zone).",
+    "interviewTip": "Поведінка let/const."
+  },
+  "js-adv-04": {
+    "prompt": "Яким буде результат?",
+    "explanation": "Замикання (closure) зберігає лексичну область видимості.",
+    "interviewTip": "Замикання та пам'ять."
+  },
+  "js-adv-05": {
+    "prompt": "Що таке карування (currying)?",
+    "explanation": "Карування = f(a,b) → f(a)(b).",
+    "interviewTip": "Функціональні патерни."
+  },
+  "js-adv-06": {
+    "prompt": "Що буде виведено в консоль?",
+    "explanation": "Карована функція.",
+    "interviewTip": "Часткове застосування (partial application)."
+  },
+  "js-adv-07": {
+    "prompt": "Головна різниця між debounce та throttle?",
+    "explanation": "Debounce чекає, throttle обмежує частоту викликів.",
+    "interviewTip": "Обробники scroll / resize."
+  },
+  "js-adv-08": {
+    "prompt": "Що станеться?",
+    "explanation": "Контекст `this` втрачено.",
+    "interviewTip": "Прив'язка контексту (bind)."
+  },
+  "js-adv-09": {
+    "prompt": "Як виправити попередню проблему?",
+    "explanation": "bind фіксує контекст.",
+    "interviewTip": "Методи call/apply/bind."
+  },
+  "js-adv-10": {
+    "prompt": "На що посилається this у стрілковій функції?",
+    "explanation": "Стрілкова функція не має власного this.",
+    "interviewTip": "Обробники подій."
+  },
+  "js-adv-11": {
+    "prompt": "Що буде виведено в консоль?",
+    "explanation": "NaN має тип number.",
+    "interviewTip": "Використовуйте Number.isNaN."
+  },
+  "js-adv-12": {
+    "prompt": "Що поверне цей вираз?",
+    "explanation": "Object.is розрізняє -0 та 0.",
+    "interviewTip": "Різниця з оператором ===."
+  },
+  "js-adv-13": {
+    "prompt": "Що таке мемоїзація?",
+    "explanation": "Оптимізація продуктивності.",
+    "interviewTip": "Чисті функції."
+  },
+  "js-adv-14": {
+    "prompt": "Що станеться?",
+    "explanation": "true перетворюється на 1, тому 1 < 3.",
+    "interviewTip": "Приведення типів при порівнянні."
+  },
+  "js-adv-15": {
+    "prompt": "Що таке чиста функція?",
+    "explanation": "Детермінована поведінка (однаковий результат для тих самих вхідних даних).",
+    "interviewTip": "Функціональне програмування."
+  },
+  "js-adv-16": {
+    "prompt": "Що означає TDZ?",
+    "explanation": "Тимчасова мертва зона (Temporal Dead Zone).",
+    "interviewTip": "Поведінка let/const."
+  },
+  "js-adv-17": {
+    "prompt": "Що з цього НЕ піднімається (not hoisted)?",
+    "explanation": "Функціональні вирази (function expressions) не піднімаються.",
+    "interviewTip": "Порядок виконання коду."
+  },
+  "js-adv-18": {
+    "prompt": "Для чого найкраще підходить throttling?",
+    "explanation": "Обмеження частоти виконання.",
+    "interviewTip": "Оптимізація UX."
+  },
+  "js-adv-19": {
+    "prompt": "Що повертає метод bind?",
+    "explanation": "bind повертає нову функцію.",
+    "interviewTip": "Не викликає функцію миттєво."
+  },
+  "js-adv-20": {
+    "prompt": "Що станеться?",
+    "explanation": "Стрілкова функція повертає undefined (якщо не вказано явне повернення).",
+    "interviewTip": "Неявне повернення (implicit return)."
+  },
+  "js-adv-21": {
+    "prompt": "Чому debounce корисний?",
+    "explanation": "Зменшує кількість непотрібних запусків коду.",
+    "interviewTip": "Поля пошуку (inputs)."
+  },
+  "js-adv-22": {
+    "prompt": "Що таке часткове застосування?",
+    "explanation": "Попереднє заповнення аргументів функції.",
+    "interviewTip": "Різниця з каруванням."
+  },
+  "js-adv-23": {
+    "prompt": "Що порушує референційну прозорість?",
+    "explanation": "Мутація даних викликає побічні ефекти.",
+    "interviewTip": "Функціональний дизайн."
+  },
+  "js-adv-24": {
+    "prompt": "Що робить метод call?",
+    "explanation": "call викликає функцію негайно з заданим контекстом.",
+    "interviewTip": "apply проти bind."
+  },
+  "js-adv-25": {
+    "prompt": "Порада рівня Senior?",
+    "explanation": "Спосіб мислення важливіший за швидкість написання коду.",
+    "interviewTip": "Настрій на співбесіді."
+  }
+}

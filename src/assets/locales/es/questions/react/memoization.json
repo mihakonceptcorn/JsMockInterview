@@ -1,0 +1,62 @@
+{
+  "mem-01": {
+    "prompt": "What is the primary difference between useMemo and useCallback?",
+    "explanation": "useMemo executes a function and remembers the returned value. useCallback returns the function itself so its reference remains stable between renders.",
+    "interviewTip": "Remember: useCallback(fn, deps) is essentially the same as useMemo(() => fn, deps)."
+  },
+  "mem-02": {
+    "prompt": "Analyze the code. How many times will 'Calculating...' be logged if the component re-renders but 'count' stays the same?",
+    "explanation": "Because 'count' hasn't changed, useMemo returns the cached value and skips executing the function again.",
+    "interviewTip": "This is perfect for avoiding 'heavy' logic (like sorting large arrays) on every render."
+  },
+  "mem-03": {
+    "prompt": "What does React.memo do when wrapped around a component?",
+    "explanation": "React.memo is a Higher Order Component that performs a shallow comparison of props. If they are the same as last time, React skips rendering that component.",
+    "interviewTip": "By default, React re-renders all children when a parent renders. React.memo 'opts-out' of this behavior."
+  },
+  "mem-04": {
+    "prompt": "Which of these scenarios can break memoization (causing an unexpected re-render)?",
+    "explanation": "In JS, `{} !== {}` and `()=>{} !== ()=>{} `. These create new references on every render, which makes React.memo think the props have changed.",
+    "interviewTip": "To fix this, use useMemo for the object and useCallback for the function."
+  },
+  "mem-05": {
+    "prompt": "What is 'Referential Equality' in the context of React optimization?",
+    "explanation": "React uses shallow equality (Object.is) for props and dependency arrays. If the reference changes, the optimization fails.",
+    "interviewTip": "This is why stable references (via hooks) are the foundation of React performance."
+  },
+  "mem-06": {
+    "prompt": "Why is the following 'useCallback' problematic?",
+    "explanation": "The empty dependency array tells React to never update the function reference. It 'remembers' the version of 'text' from render #1 forever.",
+    "interviewTip": "Always include every reactive value used inside the hook in the dependency array."
+  },
+  "mem-07": {
+    "prompt": "When should you NOT use useMemo or useCallback?",
+    "explanation": "Memoization has its own cost (memory and comparison time). If the logic is cheap, the overhead of the hook might be greater than the benefit.",
+    "interviewTip": "Don't optimize prematurely. Profile your app first to see where the actual bottlenecks are."
+  },
+  "mem-08": {
+    "prompt": "Identify the output of this component after a re-render:",
+    "explanation": "Even though the values are the same, `[1,2,3] !== [1,2,3]` in JS. A new reference triggers the re-render.",
+    "interviewTip": "Move static data outside the component or wrap it in useMemo."
+  },
+  "mem-09": {
+    "prompt": "What does the second argument of React.memo(Component, arePropsEqual) allow you to do?",
+    "explanation": "By default, React.memo does a shallow check. You can provide a custom function to do a deep check or ignore specific props.",
+    "interviewTip": "Be careful: deep comparisons can be slower than the actual re-render!"
+  },
+  "mem-10": {
+    "prompt": "Which of these hooks depend on referential stability to work effectively?",
+    "explanation": "useEffect re-runs if a reference changes. Context consumers re-render if the provider value (often an object) is a new reference.",
+    "interviewTip": "Referential stability is the 'bridge' that makes other hooks efficient."
+  },
+  "mem-11": {
+    "prompt": "How do you memoize an expensive calculation that depends on 'a' and 'b'?",
+    "explanation": "useMemo takes a 'create' function that returns the value you want to cache.",
+    "interviewTip": "The function inside useMemo should be 'pure'—it shouldn't have side effects."
+  },
+  "mem-12": {
+    "prompt": "What is the result of using a hook inside useMemo?",
+    "explanation": "Hooks must be called at the top level of your component. You cannot nest hooks inside useMemo, useEffect, or any other function.",
+    "interviewTip": "This follows the 'Rules of Hooks' call order requirements."
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "js-mm-01": {
+    "prompt": "Where are primitive values stored?",
+    "explanation": "Primitives are stored on the stack.",
+    "interviewTip": "Objects live on the heap."
+  },
+  "js-mm-02": {
+    "prompt": "Where are objects stored?",
+    "explanation": "Objects are allocated on the heap.",
+    "interviewTip": "References are stored on the stack."
+  },
+  "js-mm-03": {
+    "prompt": "What is garbage collection?",
+    "explanation": "GC frees unreachable memory.",
+    "interviewTip": "JS is GC-based."
+  },
+  "js-mm-04": {
+    "prompt": "Which algorithm is commonly used by JS engines?",
+    "explanation": "Modern engines use mark-and-sweep variants.",
+    "interviewTip": "V8 uses generational GC."
+  },
+  "js-mm-05": {
+    "prompt": "What makes an object eligible for GC?",
+    "explanation": "Reachability determines GC.",
+    "interviewTip": "Scope alone is not enough."
+  },
+  "js-mm-06": {
+    "prompt": "What is a memory leak?",
+    "explanation": "Leaked memory stays reachable.",
+    "interviewTip": "Common in closures."
+  },
+  "js-mm-07": {
+    "prompt": "Which is a common source of memory leaks?",
+    "explanation": "Detached DOM nodes keep references.",
+    "interviewTip": "Check event listeners."
+  },
+  "js-mm-08": {
+    "prompt": "Why are global variables dangerous?",
+    "explanation": "Globals are always reachable.",
+    "interviewTip": "Avoid accidental globals."
+  },
+  "js-mm-09": {
+    "prompt": "What happens during mark phase?",
+    "explanation": "GC traverses object graph.",
+    "interviewTip": "Starts from roots."
+  },
+  "js-mm-10": {
+    "prompt": "What are GC roots?",
+    "explanation": "GC starts from roots.",
+    "interviewTip": "window, stack, closures."
+  },
+  "js-mm-11": {
+    "prompt": "What is generational GC?",
+    "explanation": "Young objects collected more often.",
+    "interviewTip": "Most objects die young."
+  },
+  "js-mm-12": {
+    "prompt": "What is a closure-related leak?",
+    "explanation": "Closures may retain memory.",
+    "interviewTip": "Clear references."
+  },
+  "js-mm-13": {
+    "prompt": "Which structure prevents GC?",
+    "explanation": "Strong references keep objects alive.",
+    "interviewTip": "WeakMap doesn't."
+  },
+  "js-mm-14": {
+    "prompt": "Why use WeakMap?",
+    "explanation": "Keys are weakly held.",
+    "interviewTip": "Great for caching."
+  },
+  "js-mm-15": {
+    "prompt": "Can WeakMap keys be primitives?",
+    "explanation": "Keys must be objects.",
+    "interviewTip": "WeakSet too."
+  },
+  "js-mm-16": {
+    "prompt": "What is heap fragmentation?",
+    "explanation": "Impacts allocation performance.",
+    "interviewTip": "Compaction fixes it."
+  },
+  "js-mm-17": {
+    "prompt": "What is stop-the-world GC?",
+    "explanation": "JS execution pauses.",
+    "interviewTip": "Causes jank."
+  },
+  "js-mm-18": {
+    "prompt": "Which tool helps detect memory leaks?",
+    "explanation": "Heap snapshots reveal leaks.",
+    "interviewTip": "Compare snapshots."
+  },
+  "js-mm-19": {
+    "prompt": "What causes excessive GC?",
+    "explanation": "Short-lived objects increase GC pressure.",
+    "interviewTip": "Reuse objects."
+  },
+  "js-mm-20": {
+    "prompt": "What is object pooling?",
+    "explanation": "Reduces allocations.",
+    "interviewTip": "Use carefully."
+  },
+  "js-mm-21": {
+    "prompt": "Why avoid large arrays kept globally?",
+    "explanation": "GC cannot free them.",
+    "interviewTip": "Release references."
+  },
+  "js-mm-22": {
+    "prompt": "What does nulling a reference do?",
+    "explanation": "GC still decides.",
+    "interviewTip": "Common misconception."
+  },
+  "js-mm-23": {
+    "prompt": "Which API allows weak references?",
+    "explanation": "Introduced for advanced cases.",
+    "interviewTip": "Use with caution."
+  },
+  "js-mm-24": {
+    "prompt": "Why is WeakRef dangerous?",
+    "explanation": "Non-deterministic lifecycle.",
+    "interviewTip": "Expert-level topic."
+  },
+  "js-mm-25": {
+    "prompt": "Best rule for memory optimization?",
+    "explanation": "Profiling is key.",
+    "interviewTip": "Senior answer."
+  }
+}
