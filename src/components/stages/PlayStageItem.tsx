@@ -34,7 +34,7 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
   mode,
   onNextPressed,
 }) => {
-  const { t } = useTranslation('questions');
+  const { t } = useTranslation(['questions', 'stage']);
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const [isAnswerShown, setIsAnswerShown] = useState(false);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
@@ -113,8 +113,8 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                 </View>
                 <Text style={styles.questionType}>
                   {item.type === 'single'
-                    ? 'Choose the correct answer'
-                    : 'Choose all correct answers'}
+                    ? t('stage:play.choose_single')
+                    : t('stage:play.choose_multiple')}
                 </Text>
                 <View style={styles.optionsContainer}>
                   {item.options.map((option, index) => (
@@ -138,7 +138,9 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                 <>
                   <View style={styles.resultContainer}>
                     <FontAwesome name="check-circle" size={24} color="green" />
-                    <Text style={styles.resultText}>Correct</Text>
+                    <Text style={styles.resultText}>
+                      {t('stage:play.correct')}
+                    </Text>
                   </View>
                 </>
               )}
@@ -154,7 +156,7 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                     <Text
                       style={[styles.resultText, styles.resultTextIncorrect]}
                     >
-                      Incorrect
+                      {t('stage:play.incorrect')}
                     </Text>
                   </View>
                 </>
@@ -168,7 +170,9 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                 >
                   <View style={styles.gradientInner}>
                     <View style={styles.correctAnswerContainer}>
-                      <Text style={styles.sectionTitle}>Correct:</Text>
+                      <Text style={styles.sectionTitle}>
+                        {t('stage:play.correct_label')}
+                      </Text>
                       <Text style={styles.correctAnswerText}>
                         {item.correct
                           .map((index) => item.options[index])
@@ -176,13 +180,17 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                       </Text>
                     </View>
                     <View style={styles.explanationContainer}>
-                      <Text style={styles.sectionTitle}>Explanation:</Text>
+                      <Text style={styles.sectionTitle}>
+                        {t('stage:play.explanation_label')}
+                      </Text>
                       <Text style={styles.explanation}>
                         {t(`${item.id}.explanation`)}
                       </Text>
                     </View>
                     <View style={styles.explanationContainer}>
-                      <Text style={styles.sectionTitle}>Interview Tip:</Text>
+                      <Text style={styles.sectionTitle}>
+                        {t('stage:play.interview_tip_label')}
+                      </Text>
                       <Text style={styles.explanation}>
                         {t(`${item.id}.interviewTip`)}
                       </Text>
@@ -199,8 +207,8 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
         <AppButton
           title={
             isAnswerShown || mode === 'interview'
-              ? 'Next Question'
-              : 'Check Answer'
+              ? t('stage:play.next_question')
+              : t('stage:play.check_answer')
           }
           onPress={
             isAnswerShown || mode === 'interview'

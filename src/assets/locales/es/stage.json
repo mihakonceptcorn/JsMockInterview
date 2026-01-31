@@ -2,6 +2,17 @@
   "ends_in": "Termina en",
   "time": "Tiempo",
   "questions": "Preguntas",
+  "play": {
+    "choose_single": "Elige la respuesta correcta",
+    "choose_multiple": "Elige todas las respuestas correctas",
+    "correct": "Correcto",
+    "incorrect": "Incorrecto",
+    "correct_label": "Correcto:",
+    "explanation_label": "Explicación:",
+    "interview_tip_label": "Consejo de entrevista:",
+    "check_answer": "Verificar respuesta",
+    "next_question": "Siguiente pregunta"
+  },
   "results": {
     "title": "Nivel completado",
     "score": "Puntuación",

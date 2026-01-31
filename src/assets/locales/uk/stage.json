@@ -2,6 +2,17 @@
   "ends_in": "Закінчується через",
   "time": "Час",
   "questions": "Питання",
+  "play": {
+    "choose_single": "Оберіть одну правильну відповідь",
+    "choose_multiple": "Оберіть всі правильні відповіді",
+    "correct": "Правильно",
+    "incorrect": "Неправильно",
+    "correct_label": "Правильно:",
+    "explanation_label": "Пояснення:",
+    "interview_tip_label": "Порада для співбесіди:",
+    "check_answer": "Перевірити відповідь",
+    "next_question": "Наступне питання"
+  },
   "results": {
     "title": "Етап завершено",
     "score": "Рахунок",
