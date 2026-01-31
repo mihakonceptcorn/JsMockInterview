@@ -170,9 +170,9 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                     <View style={styles.correctAnswerContainer}>
                       <Text style={styles.sectionTitle}>Correct:</Text>
                       <Text style={styles.correctAnswerText}>
-                        {item.correct.map(
-                          (index) => item.options[index] + '; '
-                        )}
+                        {item.correct
+                          .map((index) => item.options[index])
+                          .join('; ')}
                       </Text>
                     </View>
                     <View style={styles.explanationContainer}>
@@ -235,6 +235,7 @@ const styles = StyleSheet.create({
     padding: s(16),
     minWidth: '100%',
     backgroundColor: COLORS.bgTop,
+    flexShrink: 1,
   },
   prompt: {
     fontSize: s(20),
@@ -289,6 +290,7 @@ const styles = StyleSheet.create({
   correctAnswerText: {
     fontSize: s(12),
     color: COLORS.textPrimary,
+    flexShrink: 1,
   },
   explanationContainer: {
     marginTop: vs(10),
@@ -296,6 +298,7 @@ const styles = StyleSheet.create({
   explanation: {
     fontSize: s(12),
     color: COLORS.textPrimary,
+    flexShrink: 1,
   },
   actions: {
     alignItems: 'center',

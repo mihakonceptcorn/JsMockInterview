@@ -33,9 +33,11 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    flex: 1,
   },
   title: {
     color: '#fff',
+    flex: 1,
   },
   index: {
     fontWeight: 'bold',
