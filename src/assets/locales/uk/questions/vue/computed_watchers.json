@@ -4,10 +4,10 @@
     "explanation": "Кешування — це головна фішка. Якщо у вас є важке обчислення в computed, воно виконається лише один раз і буде повертати готовий результат, поки не зміняться вхідні дані. Методи ж виконуються при кожному рендерингу компонента.",
     "interviewTip": "Використовуйте computed для трансформації даних (гетери), а методи — для обробки подій або дій.",
     "options": [
-      "Computed properties can accept arguments.",
-      "Computed properties are cached based on their reactive dependencies and only re-evaluate when those dependencies change.",
-      "Computed properties run asynchronously.",
-      "Computed properties are the only way to use math in templates."
+      "Computed властивості можуть приймати аргументи.",
+      "Computed властивості кешуються на основі їхніх реактивних залежностей і перераховуються лише тоді, коли ці залежності змінюються.",
+      "Computed властивості виконуються асинхронно.",
+      "Computed властивості — це єдиний спосіб використовувати математику в шаблонах."
     ]
   },
   "cw-02": {
@@ -15,10 +15,10 @@
     "explanation": "Завдяки кешуванню функція computed виконається лише один раз. Поки 'count' залишається тим самим, Vue миттєво повертає збережене значення.",
     "interviewTip": "Обчислювані властивості є «лінивими». Якщо вони не використовуються в шаблоні або іншому ефекті, вони не виконаються навіть жодного разу!",
     "options": [
-      "5 times",
-      "1 time (on initial access)",
-      "0 times",
-      "Every time the template is accessed"
+      "5 разів",
+      "1 раз (при першому зверненні)",
+      "0 разів",
+      "Кожного разу, коли відбувається звернення до шаблону"
     ]
   },
   "cw-03": {
@@ -26,32 +26,27 @@
     "explanation": "Обчислювані властивості мають бути «чистими» (без побічних ефектів) і повертати значення. Спостерігачі ж створені для виконання логіки (наприклад, збереження в localStorage або запиту до API) у відповідь на зміну даних.",
     "interviewTip": "Золоте правило: Computed = Гетери; Watchers = Побічні ефекти.",
     "options": [
-      "When you need to change the CSS class of an element.",
-      "When you need to perform 'side effects' like an API call or manual DOM manipulation in response to a data change.",
-      "When you want to join two strings together.",
-      "When you need to return a value to the template."
+      "Коли вам потрібно змінити CSS-клас елемента.",
+      "Коли вам потрібно виконати «побічні ефекти» (side effects), такі як виклик API або ручне маніпулювання DOM у відповідь на зміну даних.",
+      "Коли ви хочете об'єднати два рядки.",
+      "Коли вам потрібно повернути значення в шаблон."
     ]
   },
   "cw-04": {
     "prompt": "Як змусити спостерігач спрацювати одразу після створення компонента, не чекаючи першої зміни даних?",
     "explanation": "Опція 'immediate: true' змушує колбек спостерігача виконатися один раз із початковим значенням одразу під час ініціалізації.",
     "interviewTip": "Це дуже корисно для завантаження даних на основі пропса одразу після монтування компонента.",
-    "options": [
-      "lazy",
-      "deep",
-      "immediate",
-      "flush"
-    ]
+    "options": ["lazy", "deep", "immediate", "flush"]
   },
   "cw-05": {
     "prompt": "Що робить опція 'deep: true' у спостерігачі?",
     "explanation": "За замовчуванням спостерігачі відстежують лише «поверхневі» зміни (посилання на об'єкт). 'deep' рекурсивно проходить по всьому об'єкту, щоб вловити зміни у вкладених властивостях.",
     "interviewTip": "Попередження: глибоке спостереження (deep watching) великих об'єктів може сильно вдарити по продуктивності.",
     "options": [
-      "It makes the watcher run in a separate thread.",
-      "It allows the watcher to track changes inside nested objects or arrays.",
-      "It ensures the watcher is the last thing to run in the lifecycle.",
-      "It prevents the component from being destroyed."
+      "Вона змушує спостерігач працювати в окремому потоці.",
+      "Вона дозволяє спостерігачу відстежувати зміни всередині вкладених об'єктів або масивів.",
+      "Вона гарантує, що спостерігач запуститься останнім у життєвому циклі.",
+      "Вона запобігає знищенню компонента."
     ]
   },
   "cw-06": {
@@ -59,10 +54,10 @@
     "explanation": "При спостереженні за 'ref', що містить об'єкт, watcher спрацює лише якщо замінити весь об'єкт цілком. Зміни всередині ігноруються, якщо не використати 'deep' або не передати функцію-гетер: `() => user.value.name`.",
     "interviewTip": "У Vue 3 спостереження за об'єктом 'reactive' автоматично створює глибокий watcher, але спостереження за 'ref' — ні.",
     "options": [
-      "Watchers cannot watch objects.",
-      "The watcher is only watching the object reference, not its internal properties (needs 'deep: true').",
-      "The watcher must watch 'user.value.name' directly.",
-      "The console.log is missing quotes."
+      "Спостерігачі не можуть стежити за об'єктами.",
+      "Спостерігач стежить лише за посиланням на об'єкт, а не за його внутрішніми властивостями (потрібно 'deep: true').",
+      "Спостерігач має стежити безпосередньо за 'user.value.name'.",
+      "У console.log відсутні лапки."
     ]
   },
   "cw-07": {
@@ -70,10 +65,10 @@
     "explanation": "Хоча більшість computed-властивостей працюють лише на читання, ви можете надати сеттер (setter) для обробки оновлень (наприклад, розбиття рядка 'fullName' на 'firstName' та 'lastName').",
     "interviewTip": "Writable computed властивості чудово підходять для оновлення стану (наприклад, у Pinia) через чистий v-model.",
     "options": [
-      "Passing an object with 'get' and 'set' functions to computed().",
-      "Defining two separate computed properties with the same name.",
-      "Using v-model directly on a regular computed property.",
-      "Computed properties are strictly read-only and cannot be writable."
+      "Передача об'єкта з функціями 'get' та 'set' у computed().",
+      "Визначення двох окремих computed властивостей з однаковою назвою.",
+      "Використання v-model безпосередньо на звичайній computed властивості.",
+      "Computed властивості призначені суворо лише для читання і не можуть бути доступними для запису."
     ]
   },
   "cw-08": {
@@ -81,10 +76,10 @@
     "explanation": "watchEffect лаконічніший, бо вам не потрібно перелічувати залежності — він сам «знаходить» їх під час виконання. Проте 'watch' точніший і дає доступ до попереднього значення ('oldValue').",
     "interviewTip": "Використовуйте 'watch', якщо вам потрібне старе значення; використовуйте 'watchEffect' для простішого відстеження залежностей.",
     "options": [
-      "watchEffect is for Vue 2 only.",
-      "watchEffect automatically tracks all reactive properties used inside its function, whereas 'watch' requires you to explicitly state the source.",
-      "watch is faster than watchEffect.",
-      "watchEffect cannot be stopped."
+      "watchEffect призначений лише для Vue 2.",
+      "watchEffect автоматично відстежує всі реактивні властивості, використані всередині його функції, тоді як 'watch' вимагає явного вказання джерела.",
+      "watch працює швидше за watchEffect.",
+      "watchEffect неможливо зупинити."
     ]
   },
   "cw-09": {
@@ -92,10 +87,10 @@
     "explanation": "Обчислювані властивості перераховуються лише при зміні їхніх залежностей. Методи запускаються при кожному рендерингу, що робить їх менш ефективними для важких операцій.",
     "interviewTip": "Використовуйте computed для похідного стану, а методи — для дій або коли потрібно передати аргументи.",
     "options": [
-      "There is no difference.",
-      "Computed properties are cached based on their reactive dependencies; methods are called every time.",
-      "Methods are faster than computed properties.",
-      "Computed properties can only return strings."
+      "Різниці немає.",
+      "Computed властивості кешуються на основі їхніх реактивних залежностей; методи викликаються щоразу.",
+      "Методи працюють швидше за computed властивості.",
+      "Computed властивості можуть повертати лише рядки."
     ]
   },
   "cw-10": {
@@ -103,10 +98,10 @@
     "explanation": "За замовчуванням спостерігачі спрацьовують лише при зміні значення. `immediate: true` змушує колбек виконатися миттєво з поточним значенням.",
     "interviewTip": "Це корисно для ініціалізації даних на основі пропсів або виконання початкових API-запитів.",
     "options": [
-      "When you want the watcher to run immediately on component creation, before the first data change.",
-      "When you want the watcher to run faster.",
-      "When you want to watch multiple properties.",
-      "When you want to prevent the watcher from running."
+      "Коли ви хочете, щоб спостерігач запустився миттєво при створенні компонента, до першої зміни даних.",
+      "Коли ви хочете, щоб спостерігач працював швидше.",
+      "Коли ви хочете стежити за кількома властивостями одночасно.",
+      "Коли ви хочете запобігти запуску спостерігача."
     ]
   }
 }

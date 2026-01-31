@@ -3,56 +3,31 @@
     "prompt": "Який хук життєвого циклу є найкращим місцем для виконання API-запиту з метою отримання початкових даних для компонента?",
     "explanation": "Хоча ви можете ініціювати виклики безпосередньо в setup(), onMounted гарантує, що компонент уже перебуває в DOM. У Composition API логіку зазвичай розміщують у setup або onMounted.",
     "interviewTip": "У SSR (серверному рендерингу) onMounted не запускається на сервері. Це важливо пам'ятати, щоб уникнути помилок при зверненні до API, доступних лише в браузері.",
-    "options": [
-      "onBeforeMount",
-      "onMounted",
-      "onCreated",
-      "onBeforeUpdate"
-    ]
+    "options": ["onBeforeMount", "onMounted", "onCreated", "onBeforeUpdate"]
   },
   "lh-02": {
     "prompt": "Проаналізуйте код. Яким буде вивід у консолі під час першого завантаження компонента?",
     "explanation": "Код у setup (script setup) виконується миттєво. onMounted — це колбек, який чекає монтування компонента в DOM, тому він виконується асинхронно відносно основного скрипта.",
     "interviewTip": "Розуміння порядку виконання 'setup' порівняно з 'hooks' — це стандартна перевірка знань для розробників рівня Junior/Mid.",
-    "options": [
-      "A, B, C",
-      "B, A, C",
-      "A, C, B",
-      "C, B, A"
-    ]
+    "options": ["A, B, C", "B, A, C", "A, C, B", "C, B, A"]
   },
   "lh-03": {
     "prompt": "Який хук спрацьовує саме після того, як зміна реактивних даних спричинила повторний рендеринг Virtual DOM та оновлення фізичного DOM?",
     "explanation": "onUpdated викликається після того, як DOM було патчено (оновлено). Він корисний для логіки, яка залежить від реального стану DOM після змін.",
     "interviewTip": "Попередження: уникайте зміни стану всередині onUpdated, оскільки це може призвести до нескінченного циклу повторних рендерингів.",
-    "options": [
-      "onUpdated",
-      "onBeforeUpdate",
-      "onRenderTracked",
-      "onMounted"
-    ]
+    "options": ["onUpdated", "onBeforeUpdate", "onRenderTracked", "onMounted"]
   },
   "lh-04": {
     "prompt": "Проаналізуйте код. Який правильний спосіб очищення таймера для запобігання витоку пам'яті?",
     "explanation": "onUnmounted — ідеальне місце для очищення побічних ефектів, таких як інтервали (intervals), слухачі подій або ручні спостерігачі за DOM, коли компонент видаляється.",
     "interviewTip": "Завжди згадуйте про «очищення глобальних слухачів подій» (наприклад, window.addEventListener), коли вас запитують про onUnmounted.",
-    "options": [
-      "onBeforeUnmount",
-      "onUnmounted",
-      "onDestroy",
-      "onClose"
-    ]
+    "options": ["onBeforeUnmount", "onUnmounted", "onDestroy", "onClose"]
   },
   "lh-05": {
     "prompt": "Для компонента, огорнутого в <KeepAlive>, який хук спрацьовує щоразу, коли компонент знову з'являється на екрані?",
     "explanation": "Компоненти в KeepAlive кешуються і не демонтуються. Тому onMounted запускається лише один раз. onActivated спрацьовує щоразу, коли кешований компонент вставляється в DOM.",
     "interviewTip": "KeepAlive часто використовується для інтерфейсів із вкладками, щоб зберегти введені дані користувача або позицію прокрутки.",
-    "options": [
-      "onMounted",
-      "onActivated",
-      "onDeactivated",
-      "onReMounted"
-    ]
+    "options": ["onMounted", "onActivated", "onDeactivated", "onReMounted"]
   },
   "lh-06": {
     "prompt": "Які з цих хуків використовуються виключно для відлагодження та відстеження продуктивності в режимі розробки?",
@@ -70,10 +45,10 @@
     "explanation": "Setup виконується до монтування компонента. Елементів DOM ще не існує, тому ref буде null. Потрібно дочекатися onMounted, щоб отримати доступ до них.",
     "interviewTip": "Ось чому onMounted є обов'язковим для ініціалізації бібліотек (як Chart.js або D3.js), яким потрібен вузол DOM.",
     "options": [
-      "Because setup() runs before the DOM is even created.",
-      "Because template refs are only for Vue 2.",
-      "Because you must use document.getElementById instead.",
-      "Because refs are private by default."
+      "Оскільки setup() запускається до того, як DOM взагалі створено.",
+      "Оскільки template refs існують лише у Vue 2.",
+      "Оскільки замість цього потрібно використовувати document.getElementById.",
+      "Оскільки refs є приватними за замовчуванням."
     ]
   },
   "lh-08": {
@@ -81,32 +56,22 @@
     "explanation": "Оскільки setup() виконується одночасно з фазою створення компонента, у Composition API немає потреби в явних хуках beforeCreate/created.",
     "interviewTip": "Це значно спрощує логіку компонентів порівняно зі старим Options API.",
     "options": [
-      "Inside onBeforeMount",
-      "Directly in the setup() function or <script setup>",
-      "Inside onMounted",
-      "Composition API doesn't support these stages"
+      "Всередину onBeforeMount",
+      "Безпосередньо у функцію setup() або <script setup>",
+      "Всередину onMounted",
+      "Composition API не підтримує ці етапи"
     ]
   },
   "lh-09": {
     "prompt": "Який хук життєвого циклу викликається після того, як компонент був змонтований у DOM?",
     "explanation": "onMounted викликається після того, як шаблон компонента був відрендерений і вставлений у DOM. Тут ви можете безпечно працювати з елементами.",
     "interviewTip": "Використовуйте onMounted для маніпуляцій з DOM, ініціалізації сторонніх бібліотек або API-викликів, яким потрібна видимість компонента.",
-    "options": [
-      "onBeforeMount",
-      "onMounted",
-      "onCreated",
-      "onUpdated"
-    ]
+    "options": ["onBeforeMount", "onMounted", "onCreated", "onUpdated"]
   },
   "lh-10": {
     "prompt": "Який аналог хука 'beforeDestroy' з Options API існує в Composition API?",
     "explanation": "У Vue 3 beforeDestroy було перейменовано на beforeUnmount, а destroyed — на unmounted, щоб краще відображати те, що насправді відбувається.",
     "interviewTip": "Використовуйте onBeforeUnmount або onUnmounted для очищення таймерів, слухачів подій або підписок (subscriptions).",
-    "options": [
-      "onBeforeDestroy",
-      "onBeforeUnmount",
-      "onDestroy",
-      "onCleanup"
-    ]
+    "options": ["onBeforeDestroy", "onBeforeUnmount", "onDestroy", "onCleanup"]
   }
 }

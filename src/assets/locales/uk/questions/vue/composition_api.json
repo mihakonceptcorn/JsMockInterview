@@ -4,10 +4,10 @@
     "explanation": "ref огортає будь-яке значення в об'єкт із властивістю .value. reactive використовує Proxy безпосередньо на об'єкті та не працює з примітивами, як-от рядки чи булеві значення.",
     "interviewTip": "Якщо сумніваєтеся — використовуйте 'ref'. Він більш послідовний і дозволяє чітко розрізняти реактивні дані та звичайні змінні.",
     "options": [
-      "ref is only for strings, while reactive is for numbers.",
-      "ref can take primitive values (like 0 or true) and objects, while reactive only accepts objects.",
-      "reactive is faster than ref.",
-      "ref works on the server side, reactive only on the client."
+      "ref призначений лише для рядків, тоді як reactive — для чисел.",
+      "ref може приймати примітивні значення (як-от 0 або true) та об'єкти, тоді як reactive приймає лише об'єкти.",
+      "reactive працює швидше за ref.",
+      "ref працює на стороні сервера, а reactive — лише на клієнті."
     ]
   },
   "vca-02": {
@@ -15,10 +15,10 @@
     "explanation": "Деструктуризація реактивного об'єкта — це те саме, що копіювання властивості. Щоб зберегти реактивність при деструктуризації, потрібно використовувати 'toRefs(user)'.",
     "interviewTip": "Це поширене питання на співбесідах. Використовуйте 'toRefs' або 'toRef', щоб безпечно розпакувати реактивні об'єкти на окремі refs.",
     "options": [
-      "The 'name' variable will update to 'John'.",
-      "The 'name' variable will remain 'Alex' because destructuring reactive objects breaks the reactivity link.",
-      "Vue will throw a warning about unsafe destructuring.",
-      "Reactivity is preserved if you use 'let' instead of 'const'."
+      "Змінна 'name' оновиться до 'John'.",
+      "Змінна 'name' залишиться 'Alex', оскільки деструктуризація реактивних об'єктів руйнує зв'язок реактивності.",
+      "Vue видасть попередження про небезпечну деструктуризацію.",
+      "Реактивність зберігається, якщо використовувати 'let' замість 'const'."
     ]
   },
   "vca-03": {
@@ -28,7 +28,7 @@
     "options": [
       "defineComponent",
       "setup()",
-      "<script setup> (it is the feature itself)",
+      "<script setup> (це сама функція/можливість)",
       "export default"
     ]
   },
@@ -36,22 +36,17 @@
     "prompt": "Проаналізуйте код. Як слід оновлювати значення 'ref' у блоці скрипта?",
     "explanation": "У блоці скрипта ви повинні звертатися до властивості '.value' для читання або запису в ref. У шаблоні Vue автоматично «розпаковує» його за вас.",
     "interviewTip": "Втрата '.value' — це помилка №1 для розробників, які переходять з Options API на Composition API.",
-    "options": [
-      "count",
-      "count.value",
-      "count()",
-      "this.count"
-    ]
+    "options": ["count", "count.value", "count()", "this.count"]
   },
   "vca-05": {
     "prompt": "Яке призначення функції 'shallowRef()'?",
     "explanation": "shallowRef — це оптимізація продуктивності. Він корисний для великих об'єктів або екземплярів сторонніх бібліотек, де вам потрібно відстежувати лише заміну всього об'єкта, а не кожну вкладену властивість.",
     "interviewTip": "Згадуйте про це, коли вас запитують, як оптимізувати роботу з великими наборами даних, що не потребують глибокої реактивності.",
     "options": [
-      "To create a ref that only works for one render.",
-      "To create a ref where only the '.value' property is reactive, but internal properties of the object are not tracked.",
-      "To create a ref with a lower memory footprint for numbers.",
-      "To make a ref read-only."
+      "Для створення ref, який працює лише для одного рендеру.",
+      "Для створення ref, де реактивною є лише властивість '.value', а внутрішні властивості об'єкта не відстежуються.",
+      "Для створення ref з меншим обсягом пам'яті для чисел.",
+      "Щоб зробити ref доступним лише для читання."
     ]
   },
   "vca-06": {
@@ -59,10 +54,10 @@
     "explanation": "Composition API розроблений для масштабованості. Options API часто призводить до «фрагментації» коду, де логіка однієї функції розпорошена між data, computed та methods.",
     "interviewTip": "Чудове ключове слово для відповіді — «Логічні завдання» (Logical Concerns). Composition API групує код за тим, що він *робить*, а не за тим, чим він *є*.",
     "options": [
-      "Easier to extract and reuse logic via 'Composables'.",
-      "Better TypeScript type inference and support.",
-      "Groups code by logical concern (e.g., 'Search logic' together) rather than by option type.",
-      "It completely removes the need for Virtual DOM."
+      "Легше витягувати та повторно використовувати логіку через 'Composables'.",
+      "Краще виведення типів та підтримка TypeScript.",
+      "Групування коду за логічним призначенням (наприклад, 'логіка пошуку' разом), а не за типом опції.",
+      "Це повністю усуває потребу у Virtual DOM."
     ]
   },
   "vca-07": {
@@ -81,32 +76,27 @@
     "explanation": "unref — це утиліта для написання гнучких функцій. Це скорочення для: `isRef(val) ? val.value : val`.",
     "interviewTip": "Це дуже корисно всередині композиційних функцій (Composables), де аргумент може бути як посиланням (ref), так і звичайним значенням.",
     "options": [
-      "It deletes the reactivity from an object permanently.",
-      "It returns the inner value if the argument is a ref, otherwise it returns the argument itself.",
-      "It converts a reactive object into a ref.",
-      "It forces a component to re-render."
+      "Вона назавжди видаляє реактивність з об'єкта.",
+      "Вона повертає внутрішнє значення, якщо аргумент є ref, інакше повертає сам аргумент.",
+      "Вона перетворює реактивний об'єкт на ref.",
+      "Вона змушує компонент повторно відрендеритись."
     ]
   },
   "vca-09": {
     "prompt": "Як реалізувати надання та впровадження залежностей (dependency injection) у Composition API?",
     "explanation": "provide() та inject() дозволяють передавати дані вниз по дереву компонентів без пропсів. Це вбудована система впровадження залежностей у Vue.",
     "interviewTip": "Згадайте, що inject() може приймати значення за замовчуванням, а надані значення стають реактивними лише якщо ви явно зробите їх такими (через ref або reactive).",
-    "options": [
-      "useInject",
-      "inject",
-      "getProvided",
-      "consume"
-    ]
+    "options": ["useInject", "inject", "getProvided", "consume"]
   },
   "vca-10": {
     "prompt": "Для чого використовується 'effectScope()' у Vue 3?",
     "explanation": "effectScope() — це просунутий API для ручного контролю моменту створення та знищення ефектів (watcher, computed тощо). Це корисно для авторів складних плагінів.",
     "interviewTip": "Згадка про effectScope демонструє глибокі знання системи реактивності Vue і майже не зустрічається на інтерв'ю початкового рівня.",
     "options": [
-      "To limit the scope of CSS styles.",
-      "To create a scope that can collect and dispose of reactive effects together, useful for cleanup in composables.",
-      "To improve the performance of computed properties.",
-      "To define the scope of template variables."
+      "Для обмеження області дії стилів CSS.",
+      "Для створення області, яка може збирати та утилізувати реактивні ефекти разом; корисно для очищення (cleanup) у composables.",
+      "Для покращення продуктивності обчислюваних властивостей.",
+      "Для визначення області видимості змінних шаблону."
     ]
   }
 }

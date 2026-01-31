@@ -3,22 +3,17 @@
     "prompt": "Який інструмент наразі рекомендується командою Vue як основний засіб запуску тестів, замінюючи Jest у більшості сучасних проектів?",
     "explanation": "Vitest побудований на базі Vite. Він надзвичайно швидкий, використовує ту саму конфігурацію, що і ваше середовище розробки, і має API, сумісний із Jest.",
     "interviewTip": "Підкресліть підтримку «Гарячої заміни модулів» (HMR) у Vitest для тестів, що робить цикл розробки через тестування (TDD) набагато швидшим.",
-    "options": [
-      "Mocha",
-      "Vitest",
-      "Cypress",
-      "Jasmine"
-    ]
+    "options": ["Mocha", "Vitest", "Cypress", "Jasmine"]
   },
   "tv-02": {
     "prompt": "Яка різниця між 'mount' та 'shallowMount' у бібліотеці Vue Test Utils?",
     "explanation": "shallowMount ідеально підходить для модульного тестування (unit testing), оскільки він ізолює компонент від його дітей. Це гарантує, що баг у дочірньому компоненті не призведе до провалу тесту батьківського.",
     "interviewTip": "Використовуйте 'mount' для інтеграційних тестів, а 'shallowMount' — для чистих модульних тестів логіки окремого компонента.",
     "options": [
-      "mount is for Vue 3, shallowMount is for Vue 2.",
-      "mount renders the component and all its children; shallowMount renders only the component, stubbing out all child components.",
-      "shallowMount is only for testing CSS.",
-      "mount is faster than shallowMount."
+      "mount для Vue 3, shallowMount для Vue 2.",
+      "mount рендерить компонент та всіх його дітей; shallowMount рендерит лише компонент, замінюючи всі дочірні компоненти заглушками (stubs).",
+      "shallowMount призначений лише для тестування CSS.",
+      "mount працює швидше за shallowMount."
     ]
   },
   "tv-03": {
@@ -48,10 +43,10 @@
     "explanation": "Vue Test Utils дозволяє надавати «моки» (mocks) або «заглушки» (stubs) для глобальних функцій через властивість 'global' у другому аргументі функції mount().",
     "interviewTip": "Для Pinia найкраще використовувати 'createTestingPinia()', який автоматично створює моки для всіх ваших дій (actions).",
     "options": [
-      "You cannot test these components.",
-      "By passing a 'global.plugins' array in the mounting options.",
-      "By importing the real router into the test file.",
-      "By hardcoding the data inside the component."
+      "Такі компоненти неможливо протестувати.",
+      "Шляхом передачі масиву 'global.plugins' в опціях монтування.",
+      "Шляхом імпорту справжнього роутера у файл тесту.",
+      "Шляхом жорсткого прописування (hardcoding) даних всередині компонента."
     ]
   },
   "tv-06": {
@@ -70,10 +65,10 @@
     "explanation": "Знімки фіксують регресію в структурі HTML. Якщо ви зміните назву класу, знімок не збігатиметься, що змусить вас перевірити, чи була ця зміна навмисною.",
     "interviewTip": "Попередьте, що знімки можуть бути «крихкими», якщо ваш UI часто змінюється; використовуйте їх помірно для стабільних компонентів.",
     "options": [
-      "Taking a screenshot of the app's UI.",
-      "Comparing the rendered HTML output of a component against a previously saved 'master' version to detect unexpected changes.",
-      "Testing the app's speed.",
-      "A way to store user passwords."
+      "Зробити скріншот інтерфейсу додатка.",
+      "Порівняння відрендереного HTML-виводу компонента з попередньо збереженою «еталонною» версією для виявлення неочікуваних змін.",
+      "Тестування швидкості додатка.",
+      "Спосіб зберігання паролів користувачів."
     ]
   },
   "tv-08": {
@@ -81,32 +76,27 @@
     "explanation": "Оскільки nextTick повертає проміс, очікування його ('await') у вашому тесті гарантує, що ви інспектуєте DOM після того, як Vue завершив свій цикл реактивного оновлення.",
     "interviewTip": "Це критично важливо для тестування компонентів, які змінюють структуру DOM у відповідь на зміну реактивного стану.",
     "options": [
-      "Using a while loop.",
-      "By awaiting 'nextTick()' inside your test function.",
-      "Vitest handles nextTick automatically.",
-      "You must use a setTimeout of 1000ms."
+      "Використовуючи цикл while.",
+      "Шляхом очікування 'await nextTick()' всередині вашої тестової функції.",
+      "Vitest обробляє nextTick автоматично.",
+      "Потрібно використати setTimeout на 1000 мс."
     ]
   },
   "tv-09": {
     "prompt": "Яка бібліотека є рекомендованою для тестування компонентів Vue 3?",
     "explanation": "Vue Test Utils — це офіційна бібліотека утиліт для тестування Vue, яка надає методи для монтування компонентів та взаємодії з ними.",
     "interviewTip": "Поєднуйте Vue Test Utils із Vitest для отримання повного та сучасного рішення для тестування.",
-    "options": [
-      "Enzyme",
-      "Vue Test Utils",
-      "React Testing Library",
-      "Jasmine"
-    ]
+    "options": ["Enzyme", "Vue Test Utils", "React Testing Library", "Jasmine"]
   },
   "tv-10": {
     "prompt": "Яка різниця між поверхневим (shallow) та повним монтуванням у Vue Test Utils?",
     "explanation": "Поверхневе монтування (shallowMount) корисне для модульного тестування компонента в ізоляції, тоді як повне монтування (mount) краще підходить для інтеграційних тестів.",
     "interviewTip": "Vue Test Utils v2 (для Vue 3) рекомендує частіше використовувати 'mount', оскільки поверхневе монтування може приховувати проблеми інтеграції компонентів.",
     "options": [
-      "Shallow mounting renders only the component, stubbing child components; full mounting renders the entire component tree.",
-      "Shallow mounting is faster but less accurate.",
-      "Full mounting is deprecated.",
-      "There is no difference."
+      "Shallow mounting рендерить лише компонент, замінюючи дочірні компоненти заглушками; full mounting рендерить усе дерево компонентів.",
+      "Shallow mounting швидше, але менш точне.",
+      "Full mounting застаріло.",
+      "Різниці немає."
     ]
   }
 }

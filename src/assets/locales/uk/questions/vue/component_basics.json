@@ -4,10 +4,10 @@
     "explanation": "Цей принцип забороняє дочірнім компонентам безпосередньо змінювати стан батька. Це робить потік даних зрозумілим, а відстеження багів — простішим.",
     "interviewTip": "Якщо ви спробуєте змінити пропс у дочірньому компоненті, Vue видасть попередження в консоль. Якщо зміна необхідна, використовуйте локальний 'ref' або емітьте подію батьку.",
     "options": [
-      "Props can only be passed to parent components, never children.",
-      "A child component should not mutate a prop directly; it should instead emit an event to ask the parent to change the data.",
-      "Data can only flow through a central state manager like Pinia.",
-      "Props are automatically synchronized both ways between parent and child."
+      "Props можна передавати лише батьківським компонентам, ніколи дочірнім.",
+      "Дочірній компонент не повинен мутувати пропс безпосередньо; замість цього він має емітити подію, щоб попросити батька змінити дані.",
+      "Дані можуть проходити лише через центральний менеджер стану, такий як Pinia.",
+      "Props автоматично синхронізуються в обох напрямках між батьком і дитиною."
     ]
   },
   "cb-02": {
@@ -25,34 +25,24 @@
     "prompt": "Як визначити пропси з валідацією в компоненті Vue 3 з <script setup>?",
     "explanation": "defineProps — це макрос компілятора, доступний всередині <script setup>. Його не потрібно імпортувати, і він дозволяє перевіряти типи та обов'язковість даних під час виконання.",
     "interviewTip": "Валідація пропсів — це ваша перша лінія захисту від багів у великих командах. Завжди використовуйте об'єктний синтаксис для пропсів замість масивів.",
-    "options": [
-      "useProps",
-      "defineProps",
-      "setProps",
-      "injectProps"
-    ]
+    "options": ["useProps", "defineProps", "setProps", "injectProps"]
   },
   "cb-04": {
     "prompt": "Що таке «Атрибути, що провалюються» (Fallthrough Attributes) у Vue 3?",
     "explanation": "Якщо компонент має лише один кореневий елемент, атрибути, передані йому (які не оголошені як пропси), автоматично застосовуються до цього кореневого елемента.",
     "interviewTip": "Ви можете вимкнути цю поведінку, встановивши 'inheritAttrs: false' і вручну прив'язавши атрибути за допомогою об'єкта '$attrs'.",
     "options": [
-      "Attributes like 'class', 'style', and 'id' passed to a component that are automatically applied to the component's root element.",
-      "A bug where props accidentally leak into the global scope.",
-      "Variables that bypass the Virtual DOM.",
-      "A way to pass props to grandchildren directly."
+      "Атрибути типу 'class', 'style' та 'id', передані компоненту, які автоматично застосовуються до його кореневого елемента.",
+      "Баг, при якому пропси випадково потрапляють у глобальну область видимості.",
+      "Змінні, що обходять Virtual DOM.",
+      "Спосіб передачі пропсів безпосередньо «внукам»."
     ]
   },
   "cb-05": {
     "prompt": "Проаналізуйте код. Який правильний спосіб для батька передати динамічне числове значення дочірньому компоненту?",
     "explanation": "Без двокрапки (:) значення '42' передається як статичний рядок. З двокрапкою (:) воно обчислюється як JavaScript-вираз, передаючи саме число.",
     "interviewTip": "Це поширена помилка початківців. Використовуйте v-bind (:) для будь-якого значення, яке не є простим літеральним рядком.",
-    "options": [
-      "count",
-      ":count",
-      "v-bind.count",
-      "count.number"
-    ]
+    "options": ["count", ":count", "v-bind.count", "count.number"]
   },
   "cb-06": {
     "prompt": "Які з наведених варіантів є валідними способами зв'язку між компонентами, що НЕ перебувають у прямих відносинах батько-дитина?",
@@ -60,9 +50,9 @@
     "interviewTip": "Згадуйте Provide/Inject як еквівалент React Context API у світі Vue.",
     "options": [
       "Provide / Inject (Dependency Injection)",
-      "Global State Management (Pinia)",
-      "An External Event Bus (using a library like mitt)",
-      "Mutating 'this.$parent' directly"
+      "Глобальне керування станом (Pinia)",
+      "Зовнішня шина подій (Event Bus, наприклад, бібліотека mitt)",
+      "Пряма мутація 'this.$parent'"
     ]
   },
   "cb-07": {
@@ -70,10 +60,10 @@
     "explanation": "На відміну від подій DOM, кастомні події Vue не «спливають» (bubble) за замовчуванням. Якщо слухача на безпосередньому батькові немає, подія просто ігнорується.",
     "interviewTip": "Ось чому відлагодження відсутніх подій зазвичай починається з перевірки написання назви події в обробнику @event.",
     "options": [
-      "Vue will throw a runtime error.",
-      "The event is ignored, and nothing happens.",
-      "The event bubbles up to the 'window' object.",
-      "The app crashes."
+      "Vue видасть помилку під час виконання.",
+      "Подія ігнорується, і нічого не відбувається.",
+      "Подія спливає до об'єкта 'window'.",
+      "Додаток виходить із ладу."
     ]
   },
   "cb-08": {
@@ -81,10 +71,10 @@
     "explanation": "Використання defineEmits робить «контракт» вашого компонента чітким, допомагаючи іншим розробникам та IDE розуміти, які події очікувати.",
     "interviewTip": "У TypeScript ви навіть можете типізувати аргументи подій: defineEmits<{ (e: 'change', id: number): void }>.",
     "options": [
-      "To register the component in the global scope.",
-      "To provide type-safety and documentation for the events this component can fire.",
-      "To allow the component to receive data from the parent.",
-      "To style the component buttons."
+      "Для реєстрації компонента в глобальній області видимості.",
+      "Для забезпечення типізації та документації подій, які може генерувати цей компонент.",
+      "Щоб дозволити компоненту отримувати дані від батька.",
+      "Для стилізації кнопок компонента."
     ]
   },
   "cb-09": {
@@ -92,10 +82,10 @@
     "explanation": "Ключі підказують Vue ідентичність кожного вузла. Без них Vue використовує алгоритм, що мінімізує переміщення елементів, що може спричинити проблеми зі станом компонентів.",
     "interviewTip": "Завжди використовуйте унікальні та стабільні ключі (наприклад, ID), а не індекси масиву для динамічних списків.",
     "options": [
-      "To encrypt the component data.",
-      "To help Vue identify which items have changed, been added, or removed for efficient DOM updates.",
-      "To set the component ID.",
-      "To improve CSS styling."
+      "Для шифрування даних компонента.",
+      "Щоб допомогти Vue ідентифікувати, які елементи змінилися, були додані або видалені для ефективного оновлення DOM.",
+      "Для встановлення ID компонента.",
+      "Для покращення стилізації CSS."
     ]
   },
   "cb-10": {

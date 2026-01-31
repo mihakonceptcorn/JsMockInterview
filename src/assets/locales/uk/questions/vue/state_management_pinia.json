@@ -4,10 +4,10 @@
     "explanation": "Pinia спрощує керування станом, видаляючи мутації (mutations). Ви просто оновлюєте стан напряму або через дії (actions). Також вона пропонує чудову автодоповнюваність TypeScript за замовчуванням.",
     "interviewTip": "Зауважте, що Pinia є модульною за своєю природою; на відміну від одного гігантського сховища у Vuex, Pinia заохочує створення багатьох малих, спеціалізованих сховищ.",
     "options": [
-      "It is the only way to use CSS in Vue.",
-      "It is lighter, has better TypeScript support, and removes the need for 'mutations' (making code less verbose).",
-      "It allows for direct DOM manipulation.",
-      "It is built into the browser natively."
+      "Це єдиний спосіб використовувати CSS у Vue.",
+      "Вона легша, має кращу підтримку TypeScript та усуває потребу в 'mutations' (роблячи код менш розлогим).",
+      "Вона дозволяє напряму маніпулювати DOM.",
+      "Вона вбудована в браузер нативно."
     ]
   },
   "pi-02": {
@@ -15,22 +15,17 @@
     "explanation": "Як і у випадку з реактивними об'єктами, деструктуризація сховища Pinia руйнує реактивність. Щоб зберегти зв'язок, ви повинні використовувати функцію 'storeToRefs(store)'.",
     "interviewTip": "Це поширена пастка. Використовуйте 'storeToRefs' для стану (state) та гетерів (getters), але дії (actions/функції) можна деструктурувати звичайно.",
     "options": [
-      "The 'score' variable will update automatically in the template.",
-      "The 'score' variable will lose reactivity and stay at the initial value.",
-      "Vue will throw a 'ReferenceError'.",
-      "The store will be reset to zero."
+      "Змінна 'score' оновлюватиметься автоматично в шаблоні.",
+      "Змінна 'score' втратить реактивність і залишиться з початковим значенням.",
+      "Vue видасть помилку 'ReferenceError'.",
+      "Сховище буде скинуто до нуля."
     ]
   },
   "pi-03": {
     "prompt": "Який еквівалент «обчислюваної властивості» (Computed property) існує для сховища в Pinia?",
     "explanation": "Гетери (Getters) — це саме те, чим є computed-властивості для стану сховища. Вони кешуються і перераховуються лише тоді, коли змінюються їхні залежності.",
     "interviewTip": "Гетери також можуть повертати функцію, яка приймає аргументи (хоча такі гетери не кешуються).",
-    "options": [
-      "State",
-      "Actions",
-      "Getters",
-      "Plugins"
-    ]
+    "options": ["State", "Actions", "Getters", "Plugins"]
   },
   "pi-04": {
     "prompt": "Як скинути сховище до початкового стану в Pinia?",
@@ -47,22 +42,17 @@
     "prompt": "Проаналізуйте код. Де саме в сховищі Pinia слід розміщувати API-запит (наприклад, для отримання питань вікторини)?",
     "explanation": "Дії (Actions) — це місце, де живуть логіка та побічні ефекти (як-от API-запити). На відміну від Vuex, дії в Pinia можуть бути асинхронними та оновлювати стан безпосередньо.",
     "interviewTip": "На співбесіді підкресліть, що дії замінюють одночасно і 'actions', і 'mutations' із Vuex, що спрощує архітектуру.",
-    "options": [
-      "getters",
-      "actions",
-      "mutations",
-      "effects"
-    ]
+    "options": ["getters", "actions", "mutations", "effects"]
   },
   "pi-06": {
     "prompt": "Які з наведених варіантів є валідними способами оновлення кількох властивостей стану одночасно в Pinia?",
     "explanation": "Pinia гнучка. Індивідуальні оновлення — це нормально, але метод $patch ефективніший для пакетних змін і дозволяє виконувати складну логіку всередині функціональної версії $patch.",
     "interviewTip": "$patch корисний, коли ви хочете згрупувати кілька змін в один запис для часової шкали DevTools.",
     "options": [
-      "Updating them one by one: store.a = 1; store.b = 2;",
-      "Using store.$patch({ a: 1, b: 2 })",
-      "Using store.$patch((state) => { state.a = 1; state.b = 2; })",
-      "Calling a mutation function"
+      "Оновлення по одному: store.a = 1; store.b = 2;",
+      "Використання store.$patch({ a: 1, b: 2 })",
+      "Використання store.$patch((state) => { state.a = 1; state.b = 2; })",
+      "Виклик функції mutation"
     ]
   },
   "pi-07": {
@@ -70,10 +60,10 @@
     "explanation": "defineStore створює хук (наприклад, useUserStore), який компоненти можуть викликати для отримання доступу до екземпляра сховища.",
     "interviewTip": "Завжди згадуйте, що першим аргументом є унікальний 'id', який використовується для DevTools та ідентифікації сховища.",
     "options": [
-      "To connect the app to a database.",
-      "To define a new store and its logical structure (state, getters, actions).",
-      "To compile the CSS for the component.",
-      "To register the app in the browser."
+      "Для підключення додатка до бази даних.",
+      "Для визначення нового сховища та його логічної структури (state, getters, actions).",
+      "Для компіляції CSS для компонента.",
+      "Для реєстрації додатка в браузері."
     ]
   },
   "pi-08": {
@@ -81,21 +71,21 @@
     "explanation": "Метод $subscribe() спрацьовує щоразу, коли стан змінюється. Його часто використовують для синхронізації стану сховища з LocalStorage.",
     "interviewTip": "Багато розробників використовують плагін 'pinia-plugin-persistedstate' замість того, щоб писати підписки на сховище вручну.",
     "options": [
-      "Using a watch on the whole store.",
-      "Using the store.$subscribe() method.",
-      "Using a regular setInterval.",
-      "Pinia does not support global subscriptions."
+      "Використання watch на всьому сховищі.",
+      "Використання методу store.$subscribe().",
+      "Використання звичайного setInterval.",
+      "Pinia не підтримує глобальні підписки."
     ]
   },
   "smp-09": {
     "prompt": "Що таке Pinia і чим вона відрізняється від Vuex?",
-    "explanation": "Pinia видаляє такі поняття, як мутації та модулі, забезпечує кращу роботу з TypeScript і має більш інтуїтивно зрозумілий API для роботи зі сховищами.",
+    "explanation": "Pinia видаляє такі поняття, як мутації та модулі, забезпевує кращу роботу з TypeScript і має більш інтуїтивно зрозумілий API для роботи зі сховищами.",
     "interviewTip": "Pinia зараз є рекомендованим рішенням для керування станом у додатках на Vue 3.",
     "options": [
-      "Pinia is a CSS framework.",
-      "Pinia is the official Vue 3 state management library, offering better TypeScript support and a simpler API than Vuex.",
-      "Pinia is slower than Vuex.",
-      "Pinia only works with Vue 2."
+      "Pinia — це CSS-фреймворк.",
+      "Pinia — це офіційна бібліотека керування станом для Vue 3, що пропонує кращу підтримку TypeScript та простіший API, ніж Vuex.",
+      "Pinia повільніша за Vuex.",
+      "Pinia працює лише з Vue 2."
     ]
   },
   "smp-10": {
@@ -103,10 +93,10 @@
     "explanation": "defineStore приймає ID та або об'єкт опцій (як в Options API), або функцію налаштування (як у Composition API).",
     "interviewTip": "Синтаксис 'setup store' є більш гнучким і краще відповідає патернам Composition API.",
     "options": [
-      "Use createStore()",
-      "Use defineStore() with a unique ID and state/getters/actions.",
-      "Use new Store()",
-      "Use useState()"
+      "Використовувати createStore()",
+      "Використовувати defineStore() з унікальним ID та state/getters/actions.",
+      "Використовувати new Store()",
+      "Використовувати useState()"
     ]
   }
 }

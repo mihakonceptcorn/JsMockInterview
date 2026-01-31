@@ -4,10 +4,10 @@
     "explanation": "Слоти (Slots) діють як заповнювачі. Будь-який контент, який батьківський компонент поміщає між тегами дочірнього, замінить тег <slot> при фінальному рендерингу.",
     "interviewTip": "Контент у слотах має доступ до області даних батька, а не дитини (якщо не використовуються Scoped Slots).",
     "options": [
-      "To define a place where the parent can inject its own HTML or components.",
-      "To create a new reactive state.",
-      "To teleport the component to the footer.",
-      "To link the component to an external CSS file."
+      "Визначити місце, куди батько може впорскнути власний HTML або компоненти.",
+      "Створити новий реактивний стан.",
+      "Телепортувати компонент у футер.",
+      "Прив'язати компонент до зовнішнього CSS-файлу."
     ]
   },
   "sl-02": {
@@ -17,7 +17,7 @@
     "options": [
       "<template #header>",
       "<template v-slot:header>",
-      "Both of the above are correct.",
+      "Обидва вищевказані варіанти правильні.",
       "<header-slot>"
     ]
   },
@@ -26,10 +26,10 @@
     "explanation": "Scoped slots дозволяють дочірньому компоненту передавати дані назад у контент, який впорскує батько. Наприклад, компонент списку може передати дані кожного 'item' у кастомний шаблон рядка, наданий батьком.",
     "interviewTip": "Це високорівневий патерн для створення гнучких багаторазових компонентів, таких як таблиці даних (Data Tables).",
     "options": [
-      "To prevent CSS from leaking out of the slot.",
-      "To allow the child component to pass data 'up' to the parent's slot content.",
-      "To make the slot content private to the component.",
-      "To automatically translate the text in the slot."
+      "Запобігти витоку CSS зі слота.",
+      "Дозволити дочірньому компоненту передавати дані «вгору» до контенту слота батька.",
+      "Зробити контент слота приватним для компонента.",
+      "Автоматично перекладати текст у слоті."
     ]
   },
   "sl-04": {
@@ -37,10 +37,10 @@
     "explanation": "Teleport дозволяє зберігати логічне положення компонента (пропси/стан) у дереві Vue, одночасно рендеривши його в іншому місці HTML DOM (наприклад, у body).",
     "interviewTip": "Це «правильний» спосіб обробки модальних вікон та діалогів, щоб уникнути проблем із `z-index` та `overflow: hidden` від батьківських контейнерів.",
     "options": [
-      "It will be rendered inside the current component's div.",
-      "It will be physically moved in the DOM and rendered as a direct child of the <body> tag.",
-      "It will be hidden until the user clicks 'body'.",
-      "Vue will throw an error if 'body' is not a Vue component."
+      "Він буде відрендерений всередині поточного div компонента.",
+      "Він буде фізично переміщений у DOM і відрендерений як прямий нащадок тегу <body>.",
+      "Він буде прихований, доки користувач не натисне 'body'.",
+      "Vue видасть помилку, якщо 'body' не є компонентом Vue."
     ]
   },
   "sl-05": {
@@ -49,9 +49,9 @@
     "interviewTip": "Це чудово підходить для кнопок, де ви хочете мати стандартний напис 'Submit', але залишаєте можливість кастомізації.",
     "options": [
       "v-else=\"default\"",
-      "Simply place text/tags inside the <slot> tags.",
-      "Using the 'fallback' prop.",
-      "Vue doesn't support fallback content."
+      "Просто розмістити текст/теги всередині тегів <slot>.",
+      "Використання пропса 'fallback'.",
+      "Vue не підтримує контент за замовчуванням."
     ]
   },
   "sl-06": {
@@ -59,32 +59,27 @@
     "explanation": "Цілями для Teleport можуть бути CSS-селектори ('#app', 'body'). Навіть якщо DOM-вузол переміщується, логічне дерево Vue залишається цілісним.",
     "interviewTip": "Підтвердіть, що Teleport не порушує «односторонній потік даних» або спливання подій (event bubbling) у дереві Vue.",
     "options": [
-      "The 'to' target must exist in the DOM before the component is mounted.",
-      "Props and events still work normally through the Vue component hierarchy.",
-      "It can only teleport to IDs, not tag names.",
-      "Multiple Teleports can move content to the same target."
+      "Цільовий об'єкт 'to' має існувати в DOM до монтування компонента.",
+      "Пропси та події все одно працюють нормально через ієрархію компонентів Vue.",
+      "Він може телепортувати лише за ID, а не за назвами тегів.",
+      "Кілька Teleport можуть переміщувати контент до однієї і тієї ж цілі."
     ]
   },
   "sl-07": {
     "prompt": "Проаналізуйте синтаксис Scoped Slot. Як батько отримує доступ до даних дитини?",
     "explanation": "Значення v-slot (тут 'slotProps') — це об'єкт, що містить усі пропси, передані в слот із дитини. Ви також можете використовувати деструктуризацію: v-slot=\"{ user }\".",
     "interviewTip": "Деструктуризація пропсів слота є стандартною практикою для створення чистіших шаблонів.",
-    "options": [
-      "v-data",
-      "slotProps",
-      "props",
-      "defineProps"
-    ]
+    "options": ["v-data", "slotProps", "props", "defineProps"]
   },
   "sl-08": {
     "prompt": "Що станеться зі станом компонента всередині <Teleport>, якщо він вимкнений (disabled)?",
     "explanation": "Teleport має пропс 'disabled'. Це корисно для таких речей, як вікно «картинка в картинці» (PIP), яке може перемикатися між фіксованим місцем у макеті та плаваючим станом.",
     "interviewTip": "Згадка про пропс 'disabled' свідчить про те, що ви читали поглиблену документацію щодо Teleport.",
     "options": [
-      "The state is lost.",
-      "The component is unmounted.",
-      "Teleport doesn't have a 'disabled' prop; it always teleports.",
-      "If :disabled=\"true\", the content renders in its original location instead of the target."
+      "Стан буде втрачено.",
+      "Компонент буде демонтовано.",
+      "У Teleport немає пропса 'disabled'; він завжди телепортує.",
+      "Якщо :disabled=\"true\", контент рендериться у своєму початковому місці замість цільового."
     ]
   },
   "st-09": {
@@ -92,10 +87,10 @@
     "explanation": "Teleport корисний для модальних вікон, сповіщень (toasts) або підказок, які мають бути відрендерені на рівні body, щоб уникнути конфліктів стилів.",
     "interviewTip": "У процесі розробки (RFC) Teleport називався Portal, але був перейменований перед релізом Vue 3.",
     "options": [
-      "To move data between components.",
-      "To render a component's template in a different part of the DOM tree, outside its parent hierarchy.",
-      "To lazy-load components.",
-      "To create portals to other pages."
+      "Переміщувати дані між компонентами.",
+      "Рендерити шаблон компонента в іншій частині дерева DOM, поза межами його батьківської ієрархії.",
+      "Завантажувати компоненти «ліниво» (lazy-load).",
+      "Створювати портали на інші сторінки."
     ]
   },
   "st-10": {
@@ -103,10 +98,10 @@
     "explanation": "Scoped slots дозволяють дочірнім компонентам передавати дані назад у слот батька, що дозволяє створювати потужні патерни, такі як «безрендерингові компоненти» (renderless components).",
     "interviewTip": "Scoped slots — це фундамент багатьох бібліотек UI для Vue для забезпечення максимальної гнучкості.",
     "options": [
-      "Slots are one-way only; you cannot access them from the parent.",
-      "Use scoped slots to pass data from child to parent.",
-      "Use the $slots property.",
-      "Use v-model."
+      "Слоти односторонні; ви не можете отримати до них доступ із батька.",
+      "Використовувати scoped slots для передачі даних від дитини до батька.",
+      "Використовувати властивість $slots.",
+      "Використовувати v-model."
     ]
   }
 }

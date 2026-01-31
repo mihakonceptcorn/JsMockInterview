@@ -7,7 +7,7 @@
       "Object.defineProperty",
       "Virtual DOM Listeners",
       "ES6 Proxies",
-      "Dirty Checking (as seen in Angular JS)"
+      "Dirty Checking (як в Angular JS)"
     ]
   },
   "vue-re-02": {
@@ -15,10 +15,10 @@
     "explanation": "У Vue 2 реактивність впроваджується під час ініціалізації екземпляра. Властивості, додані пізніше (як vm.b), не стають реактивними, якщо не використати Vue.set().",
     "interviewTip": "Це класична пастка Vue 2. У Vue 3 цей код працював би ідеально завдяки використанню Proxy.",
     "options": [
-      "Yes, Vue automatically adds all new properties to the reactivity system.",
-      "No, the property must be pre-declared in the data object for tracking in Vue 2.",
-      "Yes, but only if you call vm.$forceUpdate() immediately after.",
-      "No, in Vue 2 only arrays are reactive."
+      "Так, Vue автоматично додає всі нові властивості до системи реактивності.",
+      "Ні, для відстеження у Vue 2 властивість має бути попередньо оголошена в об'єкті data.",
+      "Так, але лише якщо ви відразу після цього викличете vm.$forceUpdate().",
+      "Ні, у Vue 2 реактивними є лише масиви."
     ]
   },
   "vue-re-03": {
@@ -37,10 +37,10 @@
     "explanation": "Коли відбувається доступ до реактивної властивості, поточний «ефект» реєструється як передплатник. При зміні властивості всі її передплатники отримують сповіщення про необхідність повторного виконання.",
     "interviewTip": "Це патерн «Спостерігач» (Observer). Розуміння того, що «відстеження залежностей» відбувається під час виклику гетера (Getter), є ознакою досвідченого розробника.",
     "options": [
-      "To compile templates into render functions.",
-      "To collect dependencies and re-run functions (like rendering) when reactive data changes.",
-      "To encrypt data before it is sent to a server.",
-      "To handle user click events exclusively."
+      "Компілювати шаблони у функції рендерингу.",
+      "Збирати залежності та повторно запускати функції (наприклад, рендеринг), коли реактивні дані змінюються.",
+      "Шифрувати дані перед їх відправкою на сервер.",
+      "Обробляти виключно події кліків користувача."
     ]
   },
   "vue-re-05": {
@@ -48,10 +48,10 @@
     "explanation": "Proxy дозволяють Vue відстежувати додавання/видалення властивостей та індекси масивів. Vue 3 також використовує «ліниве» спостереження, роблячи вкладені об'єкти реактивними лише тоді, коли до них реально звертаються.",
     "interviewTip": "Vue 3 значно економніший щодо пам'яті для великих вкладених структур даних саме завдяки цьому «лінивому» підходу.",
     "options": [
-      "Detecting property addition/deletion.",
-      "Detecting array index modification (arr[0] = value).",
-      "The need for an initial data object.",
-      "Performance overhead of recursive observation for large datasets."
+      "Виявлення додавання/видалення властивостей.",
+      "Виявлення зміни індексу масиву (arr[0] = value).",
+      "Потреба в початковому об'єкті data.",
+      "Проблеми продуктивності рекурсивного спостереження для великих наборів даних."
     ]
   },
   "vue-re-06": {
@@ -59,10 +59,10 @@
     "explanation": "У Vue 3 змінні повинні бути явно зроблені реактивними за допомогою 'ref()' або 'reactive()'. Звичайна змінна, оголошена через 'let', не відстежується системою реактивності.",
     "interviewTip": "Пам'ятайте, що 'ref' створює об'єкт із властивістю '.value'. Зміна 'count.value' — це спосіб оновити дані в JavaScript-коді.",
     "options": [
-      "The UI will update correctly because 'count' is inside setup.",
-      "The UI will not update because 'count' is a plain variable, not a 'ref' or 'reactive' object.",
-      "Vue will throw a compilation error.",
-      "The count will increment in memory but 'setup' will re-run automatically."
+      "Інтерфейс оновиться коректно, оскільки 'count' знаходиться всередині setup.",
+      "Інтерфейс не оновиться, оскільки 'count' — це звичайна змінна, а не об'єкт 'ref' чи 'reactive'.",
+      "Vue видасть помилку компіляції.",
+      "Значення count збільшиться в пам'яті, а 'setup' перезапуститься автоматично."
     ]
   },
   "vue-re-07": {
@@ -70,10 +70,10 @@
     "explanation": "Оскільки Vue 3 використовує Proxy, консоль покаже обгортку Proxy. Щоб побачити чисті дані, можна використати утиліту 'toRaw()' або вивести 'JSON.parse(JSON.stringify(obj))'.",
     "interviewTip": "Згадка про 'toRaw' свідчить про те, що ви мали справу з відлагодожуванням складних реактивних станів у реальних проектах.",
     "options": [
-      "You see a standard JS object.",
-      "You see a Proxy object containing the target and handlers.",
-      "The browser console crashes.",
-      "The object is automatically converted to a string."
+      "Ви побачите стандартний об'єкт JS.",
+      "Ви побачите об'єкт Proxy, що містить target та handlers.",
+      "Браузерна консоль вийде з ладу.",
+      "Об'єкт автоматично перетвориться на рядок."
     ]
   },
   "vue-re-08": {
@@ -81,10 +81,10 @@
     "explanation": "Внутрішній планувальник (Scheduler) Vue перевіряє, чи є ефект, що запускається, тим самим, який виконується зараз, запобігаючи миттєвим рекурсивним циклам.",
     "interviewTip": "Розуміння роботи планувальника (Scheduler) демонструє глибокі знання внутрішнього устрою Vue, що виходять за межі простого знання синтаксису.",
     "options": [
-      "It limits the number of updates to 10 per second.",
-      "It uses a 'scheduler' and tracking flags to prevent an effect from triggering itself recursively.",
-      "It strictly forbids updating data inside watchers.",
-      "It doesn't; it's the developer's responsibility to avoid loops."
+      "Він обмежує кількість оновлень до 10 на секунду.",
+      "Він використовує 'планувальник' та прапорці відстеження, щоб запобігти рекурсивному виклику ефекту самим собою.",
+      "Він суворо забороняє оновлювати дані всередині watchers.",
+      "Ніяк; уникати циклів — обов'язок розробника."
     ]
   },
   "vue-re-09": {
@@ -92,10 +92,10 @@
     "explanation": "readonly() корисний, коли ви хочете передати дані дочірнім компонентам, але заборонити їм їх змінювати. Оригінальний об'єкт все ще можна змінити, але проксі readonly видаватиме попередження в консолі розробника.",
     "interviewTip": "Згадуйте readonly() при обговоренні патернів незмінності пропсів або кращих практик керування станом.",
     "options": [
-      "reactive() is for objects, readonly() is for primitives.",
-      "readonly() creates a read-only proxy of an object, preventing any mutations while still tracking access for reactivity.",
-      "readonly() is faster than reactive().",
-      "There is no difference; they are aliases."
+      "reactive() для об'єктів, readonly() для примітивів.",
+      "readonly() створює проксі об'єкта тільки для читання, запобігаючи будь-яким мутаціям, але зберігаючи відстеження доступу для реактивності.",
+      "readonly() працює швидше за reactive().",
+      "Різниці немає; це аліаси."
     ]
   },
   "vue-re-10": {
@@ -103,10 +103,10 @@
     "explanation": "Vue 3 використовує «ліниве» реактивне перетворення. Коли ви вперше звертаєтеся до вкладеного об'єкта, Vue огортає його в Proxy. Це дозволяє уникнути великих витрат ресурсів при початковій обробці великих структур даних.",
     "interviewTip": "Цей «лінивий» підхід є одним із ключових покращень продуктивності порівняно з Vue 2, де рекурсивне спостереження було примусовим і миттєвим.",
     "options": [
-      "It only tracks the top-level properties.",
-      "It recursively converts all nested objects into Proxies, but does so lazily (on-access) for better performance.",
-      "You must manually call reactive() on each nested object.",
-      "Deep reactivity is not supported in Vue 3."
+      "Він відстежує лише властивості верхнього рівня.",
+      "Він рекурсивно перетворює всі вкладені об'єкти на Proxy, але робить це «ліниво» (при зверненні) для кращої продуктивності.",
+      "Ви повинні вручну викликати reactive() для кожного вкладеного об'єкта.",
+      "Глибока реактивність не підтримується у Vue 3."
     ]
   }
 }

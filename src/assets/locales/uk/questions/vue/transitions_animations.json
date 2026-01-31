@@ -4,32 +4,27 @@
     "explanation": "<Transition> не анімує речі сам по собі; він виявляє, коли елемент додається або видаляється, і автоматично додає класи на кшталт '-enter-from' та '-enter-active', щоб ваш CSS міг виконати роботу.",
     "interviewTip": "Зауважте, що <Transition> працює лише для одного елемента або компонента. Для списків потрібно використовувати <TransitionGroup>.",
     "options": [
-      "To speed up the frame rate of the entire app.",
-      "To automatically apply CSS classes to an element at specific stages of its entering or leaving the DOM.",
-      "To convert CSS into JavaScript code.",
-      "To prevent the user from clicking buttons during an update."
+      "Прискорити частоту кадрів (FPS) у всьому додатку.",
+      "Автоматично застосовувати класи CSS до елемента на певних етапах його входу або виходу з DOM.",
+      "Конвертувати CSS у JavaScript-код.",
+      "Заборонити користувачеві натискати кнопки під час оновлення."
     ]
   },
   "ta-02": {
     "prompt": "Проаналізуйте класи CSS нижче. Який клас визначає «цільовий» стан (кінцевий результат) елемента, що з'являється?",
     "explanation": "Існує шість класів переходу: enter-from, enter-active, enter-to, leave-from, leave-active та leave-to.",
     "interviewTip": "Якщо ви не вкажете атрибут 'name' для transition, назви класів за замовчуванням будуть починатися з 'v-' (наприклад, 'v-enter-from').",
-    "options": [
-      "enter-to",
-      "enter-final",
-      "enter-end",
-      "enter-done"
-    ]
+    "options": ["enter-to", "enter-final", "enter-end", "enter-done"]
   },
   "ta-03": {
     "prompt": "Як обробляти анімацію для списку елементів, згенерованих через 'v-for'?",
     "explanation": "<TransitionGroup> рендерить реальний елемент (у Vue 3 за замовчуванням елемент не створюється, але його можна вказати) і обробляє переміщення елементів при зміні їх порядку.",
     "interviewTip": "Елементи всередині <TransitionGroup> ОБОВ'ЯЗКОВО повинні мати унікальний :key для коректної роботи анімації.",
     "options": [
-      "Wrap the v-for in a regular <Transition>.",
-      "Wrap the v-for in a <TransitionGroup> component.",
-      "Animations are not supported for lists.",
-      "Use v-animate on every item."
+      "Огорнути v-for у звичайний компонент <Transition>.",
+      "Огорнути v-for у компонент <TransitionGroup>.",
+      "Анімації не підтримуються для списків.",
+      "Використовувати v-animate на кожному елементі."
     ]
   },
   "ta-04": {
@@ -37,10 +32,10 @@
     "explanation": "Без режиму 'out-in' обидва компоненти перебували б у DOM одночасно під час переходу, що часто спричиняє «стрибки» макета.",
     "interviewTip": "Режим 'out-in' майже завжди є кращим для плавних переходів між сторінками або компонентами.",
     "options": [
-      "It makes the animation run twice.",
-      "It ensures the current component finishes its 'leave' animation before the new component starts its 'enter' animation.",
-      "It forces the animation to run in the background thread.",
-      "It randomizes the transition effect."
+      "Він змушує анімацію запускатися двічі.",
+      "Він гарантує, що поточний компонент завершить свою анімацію виходу (leave) до того, як новий компонент почне анімацію входу (enter).",
+      "Він змушує анімацію працювати у фоновому потоці.",
+      "Він рандомізує ефект переходу."
     ]
   },
   "ta-05": {
@@ -48,32 +43,27 @@
     "explanation": "Атрибут 'appear' дає вказівку Vue застосувати класи переходу (enter) одразу під час першого рендерингу елемента.",
     "interviewTip": "Це чудово підходить для вступних анімацій на цільових сторінках (landing pages) або головних розділів (hero sections).",
     "options": [
-      "Use the 'appear' attribute on the <Transition> component.",
-      "Use v-if=\"true\".",
-      "Transitions only work on updates, not initial mount.",
-      "Call transition.start() in onMounted."
+      "Використовувати атрибут 'appear' у компоненті <Transition>.",
+      "Використовувати v-if=\"true\".",
+      "Переходи працюють лише при оновленнях, а не при першому монтуванні.",
+      "Викликати transition.start() у хуку onMounted."
     ]
   },
   "ta-06": {
     "prompt": "Які з наведених варіантів є валідними «JavaScript Hooks», що надає <Transition> для складних анімацій (наприклад, з GSAP)?",
     "explanation": "Vue надає JS-хуки, такі як @before-enter, @enter та @leave, щоб ви могли використовувати бібліотеки на кшталт GreenSock (GSAP) або Anime.js замість CSS.",
     "interviewTip": "При використанні JS-хуків краще додати :css='false', щоб Vue пропустив виявлення CSS-анімацій для підвищення продуктивності.",
-    "options": [
-      "@before-enter",
-      "@enter",
-      "@after-leave",
-      "@on-animating"
-    ]
+    "options": ["@before-enter", "@enter", "@after-leave", "@on-animating"]
   },
   "ta-07": {
     "prompt": "Яке призначення класу 'v-move' у TransitionGroup?",
     "explanation": "У той час як класи enter/leave відповідають за появу/зникнення, 'v-move' (або '[name]-move') використовує техніку FLIP для плавного переміщення елементів на їхні нові позиції.",
     "interviewTip": "Саме так створюються ефекти плавного «перемішування» елементів у списках.",
     "options": [
-      "To allow the user to drag and drop items.",
-      "To animate the position change of items when the list is reordered (e.g., via sorting).",
-      "To move the component to a different DOM node.",
-      "To delete the item from the list."
+      "Дозволити користувачеві перетягувати елементи (drag and drop).",
+      "Анімувати зміну позиції елементів, коли порядок списку змінюється (наприклад, через сортування).",
+      "Перемістити компонент до іншого вузла DOM.",
+      "Видалити елемент зі списку."
     ]
   },
   "ta-08": {
@@ -81,10 +71,10 @@
     "explanation": "Компонент <Transition> анімує лише одного нащадка. Якщо ви перемикаєте кілька елементів, вони повинні мати унікальні ключі (keys), щоб Vue міг їх відрізнити, або використовуйте динамічний компонент із :is.",
     "interviewTip": "Завжди використовуйте унікальні ключі при переході між двома різними елементами з однаковим тегом.",
     "options": [
-      "A Transition can only have one child element at a time.",
-      "The divs are missing keys.",
-      "Both of the above.",
-      "Nothing is wrong."
+      "Transition може мати лише один дочірній елемент одночасно.",
+      "У тегів div відсутні ключі (keys).",
+      "Обидва варіанти вище.",
+      "Все правильно."
     ]
   },
   "ta-09": {
@@ -92,10 +82,10 @@
     "explanation": "Vue застосовує 6 класів на різних етапах переходу, дозволяючи вам описувати CSS-переходи або анімації.",
     "interviewTip": "Ви можете налаштувати префікс, встановивши атрибут name у компоненті <Transition>.",
     "options": [
-      "Only .fade-in and .fade-out",
-      "v-enter-from, v-enter-active, v-enter-to, v-leave-from, v-leave-active, v-leave-to",
-      "Only .transition-start and .transition-end",
-      "Vue does not apply any classes."
+      "Тільки .fade-in та .fade-out.",
+      "v-enter-from, v-enter-active, v-enter-to, v-leave-from, v-leave-active, v-leave-to.",
+      "Тільки .transition-start та .transition-end.",
+      "Vue не застосовує жодних класів."
     ]
   },
   "ta-10": {
@@ -103,10 +93,10 @@
     "explanation": "<TransitionGroup> застосовує переходи до кількох елементів, відрендерених через v-for, включаючи анімації появи, зникнення та переміщення.",
     "interviewTip": "Завжди надавайте унікальні ключі для нащадків TransitionGroup для правильного відстеження анімацій.",
     "options": [
-      "Use <Transition> for each item.",
-      "Use <TransitionGroup> component.",
-      "Use v-for with :key.",
-      "Animations are not supported for lists."
+      "Використовувати <Transition> для кожного елемента.",
+      "Використовувати компонент <TransitionGroup>.",
+      "Використовувати v-for з атрибутом :key.",
+      "Анімації не підтримуються для списків."
     ]
   }
 }

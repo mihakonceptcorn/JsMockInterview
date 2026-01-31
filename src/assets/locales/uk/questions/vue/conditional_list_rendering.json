@@ -4,10 +4,10 @@
     "explanation": "v-if — це «справжній» умовний рендеринг, оскільки він гарантує, що слухачі подій та дочірні компоненти всередині блоку повністю знищуються та створюються заново. v-show набагато простіший — елемент завжди залишається в DOM, а змінюється лише його видимість через CSS.",
     "interviewTip": "Використовуйте v-if для умов, які рідко змінюються; використовуйте v-show, якщо вам потрібно дуже часто перемикати видимість (наприклад, вкладки або підказки).",
     "options": [
-      "v-if is for components, v-show is for HTML tags.",
-      "v-if conditionally renders/destroys the element in the DOM; v-show only toggles the CSS 'display' property.",
-      "v-if is faster for frequent toggling.",
-      "v-show is only available in Vue 2."
+      "v-if для компонентів, v-show для HTML-тегів.",
+      "v-if умовно рендерить/знищує елемент у DOM; v-show лише перемикає CSS-властивість 'display'.",
+      "v-if швидший для частого перемикання.",
+      "v-show доступний лише у Vue 2."
     ]
   },
   "clr-02": {
@@ -15,10 +15,10 @@
     "explanation": "v-else має слідувати одразу за v-if або v-else-if. Його не можна використовувати безпосередньо з v-for. Для обробки порожніх списків слід використовувати v-if=\"items.length === 0\" на окремому елементі.",
     "interviewTip": "Це поширена помилка. У v-for немає вбудованого блоку 'else'.",
     "options": [
-      "It will render 'No items found'.",
-      "It will render nothing.",
-      "It will cause a template compilation error.",
-      "It will render an empty <li>."
+      "Відрендериться 'No items found'.",
+      "Нічого не відрендериться.",
+      "Це призведе до помилки компіляції шаблону.",
+      "Відрендериться порожній <li>."
     ]
   },
   "clr-03": {
@@ -26,10 +26,10 @@
     "explanation": "Без ключів Vue використовує алгоритм, який мінімізує переміщення елементів і намагається оновити їх «на місці». Це може призвести до багів зі станом форм або анімаціями.",
     "interviewTip": "Ніколи не використовуйте індекс масиву як ключ, якщо список може сортуватися, фільтруватися або якщо елементи можуть бути видалені. Використовуйте унікальні ID з ваших даних.",
     "options": [
-      "To tell Vue which CSS styles to apply.",
-      "To help Vue's Virtual DOM track which elements have changed, been added, or removed for efficient patching.",
-      "To sort the list automatically.",
-      "Keys are required by the browser to render lists."
+      "Щоб вказати Vue, які CSS-стилі застосовувати.",
+      "Щоб допомогти Virtual DOM відстежувати, які елементи змінилися, були додані або видалені для ефективного оновлення.",
+      "Для автоматичного сортування списку.",
+      "Ключі потрібні браузеру для рендерингу списків."
     ]
   },
   "clr-04": {
@@ -39,30 +39,25 @@
     "options": [
       "v-if",
       "v-for",
-      "They have equal priority.",
-      "The order in which they are written determines priority."
+      "Вони мають однаковий пріоритет.",
+      "Пріоритет визначається порядком написання."
     ]
   },
   "clr-05": {
     "prompt": "Як відрендерити блок із кількох елементів, не додаючи зайвий обгортковий div у DOM?",
     "explanation": "Тег <template> діє як невидима обгортка. Він дозволяє використовувати директиви v-if або v-for на групі елементів, не впливаючи на фінальну структуру HTML.",
     "interviewTip": "Це ідеальне рішення для збереження «пласкої» та чистої структури DOM.",
-    "options": [
-      "div",
-      "template",
-      "block",
-      "fragment"
-    ]
+    "options": ["div", "template", "block", "fragment"]
   },
   "clr-06": {
     "prompt": "Які з цих варіантів є валідними способами ітерації за допомогою v-for?",
     "explanation": "Vue досить гнучкий: ви можете ітерувати масиви, об'єкти (отримуючи значення, ключ та індекс) і навіть діапазони чисел (від 1 до N).",
     "interviewTip": "При ітерації об'єкта порядок базується на результаті Object.keys(), який може відрізнятися в різних браузерах.",
     "options": [
-      "v-for=\"n in 10\" (Iterating over a range)",
-      "v-for=\"(value, key) in myObject\" (Iterating over object properties)",
-      "v-for=\"item in items\" (Iterating over an array)",
-      "v-for=\"char in 'Hello'\" (Iterating over a string)"
+      "v-for=\"n in 10\" (Ітерація по діапазону)",
+      "v-for=\"(value, key) in myObject\" (Ітерація по властивостях об'єкта)",
+      "v-for=\"item in items\" (Ітерація по масиву)",
+      "v-for=\"char in 'Hello'\" (Ітерація по рядку)"
     ]
   },
   "clr-07": {
@@ -70,10 +65,10 @@
     "explanation": "Фільтрація через обчислювану властивість (computed property) — найкращий підхід. Це робить код читабельним, а завдяки кешуванню фільтр спрацьовує лише тоді, коли список 'users' дійсно змінюється.",
     "interviewTip": "Використання computed для фільтрації також полегшує модульне тестування логіки вашого компонента.",
     "options": [
-      "Keep it as is; Vue handles it efficiently.",
-      "Use a computed property to pre-filter the 'users' array.",
-      "Use a method called inside the template to filter.",
-      "Filter the list in the mounted hook and save it to a new ref."
+      "Залишити як є; Vue обробляє це ефективно.",
+      "Використовувати computed властивість для попередньої фільтрації масиву 'users'.",
+      "Використовувати метод, викликаний всередині шаблону, для фільтрації.",
+      "Відфільтрувати список у хуку mounted і зберегти його в новий ref."
     ]
   },
   "clr-08": {
@@ -81,10 +76,10 @@
     "explanation": "Дубльовані ключі плутають процес узгодження Virtual DOM. Vue видасть попередження в консолі, а ви можете побачити «мерехтіння» елементів або некоректний стан при зміні списку.",
     "interviewTip": "Завжди перевіряйте, щоб ключі були дійсно унікальними в межах одного списку.",
     "options": [
-      "Vue will automatically generate a new key for one of them.",
-      "It will cause a runtime warning and likely lead to unpredictable DOM update bugs.",
-      "The app will crash immediately.",
-      "Only the first item will be rendered."
+      "Vue автоматично згенерує новий ключ для одного з них.",
+      "Це викличе попередження під час виконання і, ймовірно, призведе до непередбачуваних багів оновлення DOM.",
+      "Додаток негайно вийде з ладу.",
+      "Буде відрендерено лише перший елемент."
     ]
   },
   "clr-09": {
@@ -92,10 +87,10 @@
     "explanation": "v-if має вищу вартість перемикання (знищує/створює елементи), тоді як v-show має вищу вартість початкового рендерингу (рендерить усе, але приховує через CSS).",
     "interviewTip": "Використовуйте v-if для рідкісних перемикань, v-show — для частих.",
     "options": [
-      "v-if removes the element from the DOM; v-show toggles CSS display property.",
-      "v-show is faster than v-if.",
-      "v-if works only with components.",
-      "There is no difference."
+      "v-if видаляє елемент із DOM; v-show перемикає CSS-властивість display.",
+      "v-show швидший за v-if.",
+      "v-if працює лише з компонентами.",
+      "Різниці немає."
     ]
   },
   "clr-10": {
@@ -103,10 +98,10 @@
     "explanation": "У Vue 3 v-if має пріоритет, тому він не бачить даних ітерації. Це неефективно та призводить до помилок. Використовуйте обчислювану властивість або огорніть список тегом template.",
     "interviewTip": "Це класичне питання на співбесіді про кращі практики та продуктивність Vue.",
     "options": [
-      "It causes a syntax error.",
-      "v-for has higher priority than v-if in Vue 3, which can lead to unexpected behavior and performance issues.",
-      "It makes the code harder to read.",
-      "Vue automatically optimizes this pattern."
+      "Це викликає синтаксичну помилку.",
+      "У Vue 3 v-if має вищий пріоритет, ніж v-for, що може призвести до неочікуваної поведінки та проблем із продуктивністю.",
+      "Це робить код важчим для читання.",
+      "Vue автоматично оптимізує цей патерн."
     ]
   }
 }
