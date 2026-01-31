@@ -1,129 +1,124 @@
 {
   "le-01": {
-    "prompt": "When does the code inside a useEffect block run by default if no dependency array is provided?",
-    "explanation": "Without a dependency array, useEffect runs after every render cycle. This is usually avoided to prevent performance issues.",
-    "interviewTip": "Always be intentional with your dependency array to avoid infinite loops.",
+    "prompt": "¿Cuándo se ejecuta por defecto el código dentro de un bloque useEffect si no se proporciona un array de dependencias?",
+    "explanation": "Sin un array de dependencias, useEffect se ejecuta después de cada ciclo de renderizado. Esto suele evitarse para prevenir problemas de rendimiento.",
+    "interviewTip": "Sé siempre intencional con tu array de dependencias para evitar bucles infinitos.",
     "options": [
-      "Only when the component unmounts.",
-      "After every single render of the component.",
-      "Only after the first render (mount).",
-      "Only when the state changes."
+      "Solo cuando el componente se desmonta.",
+      "Después de cada renderizado del componente.",
+      "Solo después del primer renderizado (mount).",
+      "Solo cuando cambia el estado."
     ]
   },
   "le-02": {
-    "prompt": "How do you ensure a useEffect only runs once, similar to 'componentDidMount'?",
-    "explanation": "An empty dependency array [] tells React that the effect doesn't depend on any values from props or state, so it never needs to re-run.",
-    "interviewTip": "Even with an empty array, in React 18 'Strict Mode' development, effects might run twice to help you find cleanup bugs.",
+    "prompt": "¿Cómo te aseguras de que un useEffect solo se ejecute una vez, similar a 'componentDidMount'?",
+    "explanation": "Un array de dependencias vacío [] le indica a React que el efecto no depende de ningún valor de props o state, por lo que nunca necesita volver a ejecutarse.",
+    "interviewTip": "Incluso con un array vacío, en el 'Strict Mode' de desarrollo de React 18, los efectos podrían ejecutarse dos veces para ayudarte a encontrar errores de limpieza (cleanup).",
     "options": [
-      "Passing undefined.",
-      "Passing a null value.",
-      "Passing an empty array [].",
-      "Omitting the second argument."
+      "Pasando undefined.",
+      "Pasando un valor null.",
+      "Pasando un array vacío [].",
+      "Omitiendo el segundo argumento."
     ]
   },
   "le-03": {
-    "prompt": "What is the purpose of the function returned from a useEffect hook?",
-    "explanation": "The cleanup function is essential for preventing memory leaks (like intervals, event listeners, or active API subscriptions).",
-    "interviewTip": "Always clean up side effects that persist beyond the component's lifecycle.",
+    "prompt": "¿Cuál es el propósito de la función retornada desde un hook useEffect?",
+    "explanation": "La función de limpieza (cleanup) es esencial para prevenir fugas de memoria (como intervalos, listeners de eventos o suscripciones activas a APIs).",
+    "interviewTip": "Limpia siempre los efectos secundarios que persistan más allá del ciclo de vida del componente.",
     "options": [
-      "To initialize the next render.",
-      "To perform cleanup before the component unmounts or before the effect re-runs.",
-      "To trigger a re-render of the parent component.",
-      "To handle errors within the effect."
+      "Inicializar el siguiente renderizado.",
+      "Realizar la limpieza antes de que el componente se desmonte o antes de que el efecto se vuelva a ejecutar.",
+      "Disparar un re-render del componente padre.",
+      "Manejar errores dentro del efecto."
     ]
   },
   "le-04": {
-    "prompt": "Which of the following are valid reasons to use the useEffect hook?",
-    "explanation": "Calculating values from props should be done during render (or via useMemo). Effects are specifically for 'side effects' that touch things outside the React ecosystem.",
-    "interviewTip": "If you can calculate it during render, you don't need useEffect.",
+    "prompt": "¿Cuáles de las siguientes son razones válidas para usar el hook useEffect?",
+    "explanation": "El cálculo de valores a partir de props debe hacerse durante el renderizado (o vía useMemo). Los efectos son específicamente para 'efectos secundarios' que tocan cosas fuera del ecosistema de React.",
+    "interviewTip": "Si puedes calcularlo durante el renderizado, no necesitas useEffect.",
     "options": [
-      "Updating the document title based on state.",
-      "Calculating a value from two props (e.g., fullName = firstName + lastName).",
-      "Fetching data from an external API.",
-      "Starting or stopping a timer/interval."
+      "Actualizar el título del documento basado en el estado.",
+      "Calcular un valor a partir de dos props (ej., fullName = firstName + lastName).",
+      "Obtener datos de una API externa.",
+      "Iniciar o detener un temporizador/intervalo."
     ]
   },
   "le-05": {
-    "prompt": "What will happen if you update a state variable inside a useEffect without a dependency array?",
-    "explanation": "The render triggers the effect, the effect updates state, the state update triggers a render, and the cycle repeats infinitely.",
-    "interviewTip": "If you see your CPU fans spinning up during dev, check for a missing dependency array in a useEffect that calls a setter.",
+    "prompt": "¿Qué sucederá si actualizas una variable de estado dentro de un useEffect sin un array de dependencias?",
+    "explanation": "El renderizado dispara el efecto, el efecto actualiza el estado, la actualización del estado dispara un renderizado, y el ciclo se repite infinitamente.",
+    "interviewTip": "Si ves que los ventiladores de tu CPU se aceleran durante el desarrollo, revisa si falta un array de dependencias en un useEffect que llama a un setter.",
     "options": [
-      "The count will increment once and stop.",
-      "It will cause an infinite loop of re-renders.",
-      "React will throw an 'AutoLoopError'.",
-      "The UI will update smoothly at 60fps."
+      "El contador se incrementará una vez y se detendrá.",
+      "Causará un bucle infinito de re-renderizados.",
+      "React lanzará un 'AutoLoopError'.",
+      "La UI se actualizará suavemente a 60fps."
     ]
   },
   "le-06": {
-    "prompt": "Analyze the dependency array below. When will this effect re-run?",
-    "explanation": "React performs a shallow comparison (Object.is) on each item in the array. If any item changes between renders, the effect re-runs.",
-    "interviewTip": "Be careful when passing objects or arrays in the dependency array, as new references will trigger the effect every time.",
+    "prompt": "Analiza el array de dependencias a continuación. ¿Cuándo volverá a ejecutarse este efecto?",
+    "explanation": "React realiza una comparación superficial (Object.is) en cada elemento del array. Si algún elemento cambia entre renderizados, el efecto se vuelve a ejecutar.",
+    "interviewTip": "Ten cuidado al pasar objetos o arrays en el array de dependencias, ya que las nuevas referencias dispararán el efecto cada vez.",
     "options": [
-      "On every render.",
-      "Only when 'userId' changes (referential equality check).",
-      "Only when 'fetchData' is called manually.",
-      "On every click event."
+      "En cada renderizado.",
+      "Solo cuando 'userId' cambie (verificación de igualdad referencial).",
+      "Solo cuando se llame a 'fetchData' manualmente.",
+      "En cada evento de clic."
     ]
   },
   "le-07": {
-    "prompt": "What is the console output when the component unmounts?",
-    "explanation": "The cleanup function (B) runs only when the component is being removed from the DOM if the dependency array is empty.",
-    "interviewTip": "If the array had dependencies, 'B' would run before every re-run of 'A' AND at unmount.",
-    "options": [
-      "A",
-      "B",
-      "A then B",
-      "None (console is cleared)"
-    ]
+    "prompt": "¿Cuál es la salida de la consola cuando el componente se desmonta?",
+    "explanation": "La función de limpieza (B) se ejecuta solo cuando el componente se elimina del DOM si el array de dependencias está vacío.",
+    "interviewTip": "Si el array tuviera dependencias, 'B' se ejecutaría antes de cada nueva ejecución de 'A' Y al desmontarse.",
+    "options": ["A", "B", "A luego B", "Ninguna (la consola se limpia)"]
   },
   "le-08": {
-    "prompt": "How does React handle multiple useEffect hooks in a single component?",
-    "explanation": "React relies on the order of Hook calls to maintain state. They are executed sequentially after the render is committed to the screen.",
-    "interviewTip": "Use multiple effects to separate unrelated logic (e.g., one for data fetching, one for an event listener).",
+    "prompt": "¿Cómo maneja React múltiples hooks useEffect en un solo componente?",
+    "explanation": "React depende del orden de las llamadas a los Hooks para mantener el estado. Se ejecutan secuencialmente después de que el renderizado se confirma en la pantalla.",
+    "interviewTip": "Usa múltiples efectos para separar lógicas no relacionadas (ej., uno para obtención de datos y otro para un listener de eventos).",
     "options": [
-      "It only executes the first one.",
-      "It executes them in the order they are defined.",
-      "It executes them in parallel (random order).",
-      "It merges them into a single effect."
+      "Solo ejecuta el primero.",
+      "Los ejecuta en el orden en que están definidos.",
+      "Los ejecuta en paralelo (orden aleatorio).",
+      "Los combina en un solo efecto."
     ]
   },
   "le-09": {
-    "prompt": "Why is it important to include all reactive values (props, state) used inside the effect in the dependency array?",
-    "explanation": "If a value is used inside but not listed in the dependencies, the effect function 'remembers' the version of that value from when it was last created, leading to bugs.",
-    "interviewTip": "The 'eslint-plugin-react-hooks' is your best friend for catching missing dependencies automatically.",
+    "prompt": "¿Por qué es importante incluir todos los valores reactivos (props, state) usados dentro del efecto en el array de dependencias?",
+    "explanation": "Si un valor se usa dentro pero no se lista en las dependencias, la función del efecto 'recuerda' la versión de ese valor de cuando se creó por última vez, lo que provoca errores (stale closures).",
+    "interviewTip": "El plugin 'eslint-plugin-react-hooks' es tu mejor amigo para detectar dependencias faltantes automáticamente.",
     "options": [
-      "To avoid stale closures where the effect uses old values from a previous render.",
-      "To prevent the component from unmounting.",
-      "To speed up the Virtual DOM diffing process.",
-      "It's just a linting suggestion, not strictly necessary."
+      "Para evitar cierres obsoletos (stale closures) donde el efecto usa valores viejos de un renderizado anterior.",
+      "Para evitar que el componente se desmonte.",
+      "Para acelerar el proceso de diffing del Virtual DOM.",
+      "Es solo una sugerencia de linting, no es estrictamente necesario."
     ]
   },
   "le-10": {
-    "prompt": "What is the 'Effect Lifecycle' order when dependencies change?",
-    "explanation": "React cleans up the previous render's effect before applying the new one to ensure no stale side effects overlap.",
-    "interviewTip": "This is why cleaning up a subscription before starting a new one prevents 'duplicate listener' bugs.",
+    "prompt": "¿Cuál es el orden del 'Ciclo de Vida del Efecto' cuando las dependencias cambian?",
+    "explanation": "React limpia el efecto del renderizado anterior antes de aplicar el nuevo para asegurar que no se solapen efectos secundarios obsoletos.",
+    "interviewTip": "Por esto, limpiar una suscripción antes de empezar una nueva previene errores de 'listeners duplicados'.",
     "options": [
-      "New Effect runs -> Old Cleanup runs.",
-      "Old Cleanup runs -> New Effect runs.",
-      "They run at the same time.",
-      "The Cleanup only runs at unmount."
+      "Se ejecuta el Nuevo Efecto -> Se ejecuta la Vieja Limpieza.",
+      "Se ejecuta la Vieja Limpieza -> Se ejecuta el Nuevo Efecto.",
+      "Se ejecutan al mismo tiempo.",
+      "La limpieza solo se ejecuta al desmontar."
     ]
   },
   "le-11": {
-    "prompt": "What happens if you return a string instead of a function from useEffect?",
-    "explanation": "useEffect expects the return value to be either a function (for cleanup) or nothing (undefined). Returning anything else is a mistake.",
-    "interviewTip": "Returning an async function is a common mistake because async functions return a Promise, not a cleanup function.",
+    "prompt": "¿Qué sucede si retornas un string en lugar de una función desde useEffect?",
+    "explanation": "useEffect espera que el valor de retorno sea una función (para la limpieza) o nada (undefined). Retornar cualquier otra cosa es un error.",
+    "interviewTip": "Retornar una función async es un error común porque las funciones async devuelven una Promesa, no una función de limpieza.",
     "options": [
-      "React logs 'Cleanup' to the console.",
-      "React ignores it.",
-      "React will warn/error because it expects a function or undefined.",
-      "It becomes the new state."
+      "React registra 'Cleanup' en la consola.",
+      "React lo ignora.",
+      "React advertirá/lanzará un error porque espera una función o undefined.",
+      "Se convierte en el nuevo estado."
     ]
   },
   "le-12": {
-    "prompt": "Which hook is used for side effects that need to happen synchronously *before* the browser paints the screen?",
-    "explanation": "useLayoutEffect runs at the same time as the old 'componentDidMount'—after DOM mutations but before the user sees them. Useful for measuring DOM elements.",
-    "interviewTip": "Prefer useEffect for 99% of cases to avoid blocking visual updates.",
+    "prompt": "¿Qué hook se utiliza para efectos secundarios que deben ocurrir de forma síncrona *antes* de que el navegador pinte la pantalla?",
+    "explanation": "useLayoutEffect se ejecuta al mismo tiempo que el viejo 'componentDidMount': después de las mutaciones del DOM pero antes de que el usuario las vea. Es útil para medir elementos del DOM.",
+    "interviewTip": "Prefiere useEffect en el 99% de los casos para evitar bloquear las actualizaciones visuales.",
     "options": [
       "useEffect",
       "useLayoutEffect",
@@ -132,58 +127,58 @@
     ]
   },
   "le-13": {
-    "prompt": "How should you handle an async function inside useEffect?",
-    "explanation": "You cannot make the effect callback itself async because it would return a Promise instead of a cleanup function. You must define the async function inside the effect.",
-    "interviewTip": "Defining it inside the effect also makes it easier to handle cleanup (like AbortController).",
+    "prompt": "¿Cómo deberías manejar una función async dentro de useEffect?",
+    "explanation": "No puedes hacer que el callback del efecto sea async porque devolvería una Promesa en lugar de una función de limpieza. Debes definir la función async dentro del efecto.",
+    "interviewTip": "Definirla dentro del efecto también facilita el manejo de la limpieza (como usar AbortController).",
     "options": [
-      "The code above is the correct way.",
-      "Make the whole effect async: useEffect(async () => ...).",
-      "Use .then() only, async/await is forbidden.",
-      "Call the async function outside the component."
+      "El código anterior es la forma correcta.",
+      "Hacer todo el efecto async: useEffect(async () => ...).",
+      "Usar solo .then(), async/await está prohibido.",
+      "Llamar a la función async fuera del componente."
     ]
   },
   "le-14": {
-    "prompt": "What is the 'Mounting' phase in React?",
-    "explanation": "Mounting is the start of a component's life in the DOM.",
-    "interviewTip": "useEffect with [] is the most common way to handle 'onMount' logic.",
+    "prompt": "¿Qué es la fase de 'Mounting' en React?",
+    "explanation": "Mounting es el inicio de la vida de un componente en el DOM.",
+    "interviewTip": "useEffect con [] es la forma más común de manejar la lógica 'onMount'.",
     "options": [
-      "When a component is being updated with new props.",
-      "When a component is being created and inserted into the DOM.",
-      "When a component is removed from the screen.",
-      "When the user clicks on the component."
+      "Cuando un componente se está actualizando con nuevas props.",
+      "Cuando un componente se está creando e insertando en el DOM.",
+      "Cuando un componente se elimina de la pantalla.",
+      "Cuando el usuario hace clic en el componente."
     ]
   },
   "le-15": {
-    "prompt": "Which of these will trigger a re-run of an effect with [data] as a dependency?",
-    "explanation": "React uses shallow equality. A new object literal `{}` is always a different reference, even if the properties look the same.",
-    "interviewTip": "This is why we spread: `setData({...data})`.",
+    "prompt": "¿Cuál de estos disparará una nueva ejecución de un efecto con [data] como dependencia?",
+    "explanation": "React usa igualdad superficial. Un nuevo objeto literal `{}` es siempre una referencia diferente, incluso si las propiedades parecen iguales.",
+    "interviewTip": "Por esto usamos el spread: `setData({...data})`.",
     "options": [
-      "setData({ count: 0 }) // New object reference.",
-      "data.count = 1; setData(data); // Same object reference.",
-      "setData(prev => ({ ...prev, count: 1 })) // New object reference.",
-      "Calling setData with the same string value 'hello' if data was 'hello'."
+      "setData({ count: 0 }) // Nueva referencia de objeto.",
+      "data.count = 1; setData(data); // Misma referencia de objeto.",
+      "setData(prev => ({ ...prev, count: 1 })) // Nueva referencia de objeto.",
+      "Llamar a setData con el mismo valor de string 'hello' si data era 'hello'."
     ]
   },
   "le-16": {
-    "prompt": "What is the console output when the dependency 'count' changes from 1 to 2?",
-    "explanation": "When dependencies change, React first runs the cleanup of the previous effect, then the new effect.",
-    "interviewTip": "This ensures the 'old' world is cleaned up before the 'new' world starts.",
+    "prompt": "¿Cuál es la salida de la consola cuando la dependencia 'count' cambia de 1 a 2?",
+    "explanation": "Cuando las dependencias cambian, React primero ejecuta la limpieza del efecto anterior y luego el nuevo efecto.",
+    "interviewTip": "Esto asegura que el mundo 'viejo' se limpie antes de que comience el mundo 'nuevo'.",
     "options": [
       "Effect",
-      "Cleanup then Effect",
-      "Effect then Cleanup",
+      "Cleanup luego Effect",
+      "Effect luego Cleanup",
       "Cleanup"
     ]
   },
   "le-17": {
-    "prompt": "Is it safe to omit a function from the dependency array if it's defined inside the component?",
-    "explanation": "In JS, `function a(){}` !== `function a(){}` if they are created in different render cycles. Use `useCallback` to keep function references stable.",
-    "interviewTip": "Moving the function *inside* the useEffect is often the simplest fix.",
+    "prompt": "¿Es seguro omitir una función del array de dependencias si está definida dentro del componente?",
+    "explanation": "En JS, `function a(){}` !== `function a(){}` si se crean en diferentes ciclos de renderizado. Usa `useCallback` para mantener estables las referencias de las funciones.",
+    "interviewTip": "Mover la función *dentro* del useEffect es a menudo la solución más simple.",
     "options": [
-      "Yes, functions never change.",
-      "No, functions are recreated on every render and will trigger the effect every time unless memoized.",
-      "Only if the function doesn't use state.",
-      "Yes, React ignores functions in dependencies."
+      "Sí, las funciones nunca cambian.",
+      "No, las funciones se recrean en cada renderizado y dispararán el efecto cada vez a menos que estén memorizadas.",
+      "Solo si la función no usa el estado.",
+      "Sí, React ignora las funciones en las dependencias."
     ]
   }
 }

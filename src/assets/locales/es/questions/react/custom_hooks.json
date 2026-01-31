@@ -1,145 +1,145 @@
 {
   "ch-01": {
-    "prompt": "What is the mandatory naming convention for custom hooks in React?",
-    "explanation": "The 'use' prefix is essential because it allows React's linter to automatically check for violations of the Rules of Hooks.",
-    "interviewTip": "If you don't start with 'use', React won't know it's a hook and won't be able to guarantee its call order stability.",
+    "prompt": "¿Cuál es la convención de nomenclatura obligatoria para los hooks personalizados en React?",
+    "explanation": "El prefijo 'use' es esencial porque permite que el linter de React verifique automáticamente las violaciones de las Reglas de los Hooks.",
+    "interviewTip": "Si no empiezas con 'use', React no sabrá que es un hook y no podrá garantizar la estabilidad del orden de sus llamadas.",
     "options": [
-      "They must end with 'Hook' (e.g., useDataHook).",
-      "They must start with the word 'use' (e.g., useFetch).",
-      "They must be written in ALL_CAPS.",
-      "There is no mandatory naming convention."
+      "Deben terminar con 'Hook' (ej., useDataHook).",
+      "Deben comenzar con la palabra 'use' (ej., useFetch).",
+      "Deben escribirse totalmente en MAYÚSCULAS.",
+      "No existe una convención de nomenclatura obligatoria."
     ]
   },
   "ch-02": {
-    "prompt": "What is the primary benefit of creating a custom hook?",
-    "explanation": "Custom hooks let you hide complex logic (like data fetching, form handling, or event listeners) behind a simple API that multiple components can share.",
-    "interviewTip": "Think of custom hooks as 'Logic Composition' rather than 'UI Composition'.",
+    "prompt": "¿Cuál es el beneficio principal de crear un hook personalizado?",
+    "explanation": "Los hooks personalizados permiten ocultar lógica compleja (como obtención de datos, manejo de formularios o listeners de eventos) detrás de una API simple que múltiples componentes pueden compartir.",
+    "interviewTip": "Piensa en los hooks personalizados como 'Composición de Lógica' en lugar de 'Composición de UI'.",
     "options": [
-      "To speed up the rendering of the Virtual DOM.",
-      "To extract and reuse stateful logic between different components.",
-      "To replace the need for the useEffect hook.",
-      "To create a global variable that bypasses the props system."
+      "Acelerar el renderizado del Virtual DOM.",
+      "Extraer y reutilizar lógica de estado entre diferentes componentes.",
+      "Reemplazar la necesidad del hook useEffect.",
+      "Crear una variable global que evite el sistema de props."
     ]
   },
   "ch-03": {
-    "prompt": "If two components use the same custom hook, do they share the same state?",
-    "explanation": "Hooks are a way to reuse *logic*, not *data*. Every time you call a hook, all state and effects inside it are isolated to that specific caller.",
-    "interviewTip": "If you need to share data, you still need Context or a state management library like Redux.",
+    "prompt": "Si dos componentes usan el mismo hook personalizado, ¿comparten el mismo estado?",
+    "explanation": "Los hooks son una forma de reutilizar *lógica*, no *datos*. Cada vez que llamas a un hook, todo el estado y los efectos dentro de él están aislados para ese llamador específico.",
+    "interviewTip": "Si necesitas compartir datos, aún necesitas Context o una librería de gestión de estado como Redux.",
     "options": [
-      "Yes, custom hooks create a singleton state for that logic.",
-      "No, each call to a custom hook creates a completely independent state for that component instance.",
-      "Only if the hook is imported from a global file.",
-      "Only if the components are siblings."
+      "Sí, los hooks personalizados crean un estado único (singleton) para esa lógica.",
+      "No, cada llamada a un hook personalizado crea un estado completamente independiente para esa instancia del componente.",
+      "Solo si el hook se importa desde un archivo global.",
+      "Solo si los componentes son hermanos (siblings)."
     ]
   },
   "ch-04": {
-    "prompt": "What can you call inside a custom hook?",
-    "explanation": "Custom hooks are essentially regular functions that have 'superpowers'—they can use any other React hooks inside them.",
-    "interviewTip": "This is why custom hooks are so powerful; they are the glue that combines multiple built-in hooks into a single feature.",
+    "prompt": "¿Qué se puede llamar dentro de un hook personalizado?",
+    "explanation": "Los hooks personalizados son esencialmente funciones regulares que tienen 'superpoderes': pueden usar cualquier otro hook de React dentro de ellos.",
+    "interviewTip": "Por esto los hooks personalizados son tan potentes; son el pegamento que combina múltiples hooks integrados en una sola funcionalidad.",
     "options": [
-      "Only standard JavaScript functions.",
-      "Only other custom hooks.",
-      "Other built-in React hooks (useState, useEffect, etc.) and even other custom hooks.",
-      "Nothing; custom hooks must be pure functions without state."
+      "Solo funciones estándar de JavaScript.",
+      "Solo otros hooks personalizados.",
+      "Otros hooks integrados de React (useState, useEffect, etc.) e incluso otros hooks personalizados.",
+      "Nada; los hooks personalizados deben ser funciones puras sin estado."
     ]
   },
   "ch-05": {
-    "prompt": "Analyze the custom hook below. What is its return type?",
-    "explanation": "Custom hooks can return anything (arrays, objects, or even single values). Returning an array is a common pattern modeled after useState.",
-    "interviewTip": "Returning an array is great for renaming values during destructuring. Returning an object is better if there are many return values.",
+    "prompt": "Analiza el hook personalizado a continuación. ¿Cuál es su tipo de retorno?",
+    "explanation": "Los hooks personalizados pueden devolver cualquier cosa (arrays, objetos o incluso valores simples). Devolver un array es un patrón común modelado según useState.",
+    "interviewTip": "Devolver un array es genial para renombrar valores durante la desestructuración. Devolver un objeto es mejor si hay muchos valores de retorno.",
     "options": [
-      "A single boolean value.",
-      "An object { value, toggle }.",
-      "An array [boolean, function].",
+      "Un único valor booleano.",
+      "Un objeto { value, toggle }.",
+      "Un array [boolean, function].",
       "undefined"
     ]
   },
   "ch-06": {
-    "prompt": "Which of the following are valid Rules of Hooks that apply to custom hooks?",
-    "explanation": "Custom hooks are bound by the same rules as built-in hooks: they must be called at the top level and must not be conditional.",
-    "interviewTip": "The call order must remain identical between every render for React to track state correctly.",
+    "prompt": "¿Cuáles de las siguientes son Reglas de los Hooks válidas que se aplican a los hooks personalizados?",
+    "explanation": "Los hooks personalizados están sujetos a las mismas reglas que los hooks integrados: deben llamarse en el nivel superior y no deben ser condicionales.",
+    "interviewTip": "El orden de las llamadas debe permanecer idéntico entre cada render para que React rastree el estado correctamente.",
     "options": [
-      "Hooks must be called only at the top level of the function.",
-      "Hooks can be called inside event handlers within the custom hook.",
-      "Hooks cannot be called inside loops or conditions.",
-      "Custom hooks must return JSX."
+      "Los hooks deben llamarse solo en el nivel superior de la función.",
+      "Los hooks pueden llamarse dentro de manejadores de eventos dentro del hook personalizado.",
+      "Los hooks no pueden llamarse dentro de bucles o condiciones.",
+      "Los hooks personalizados deben devolver JSX."
     ]
   },
   "ch-07": {
-    "prompt": "Identify the potential issue in this custom hook:",
-    "explanation": "Side effects like event listeners must be inside a useEffect with a cleanup function to avoid adding thousands of listeners as the component re-renders.",
-    "interviewTip": "Always pair 'add' with 'remove' in a cleanup function.",
+    "prompt": "Identifica el problema potencial en este hook personalizado:",
+    "explanation": "Los efectos secundarios como los listeners de eventos deben estar dentro de un useEffect con una función de limpieza (cleanup) para evitar añadir miles de listeners a medida que el componente se vuelve a renderizar.",
+    "interviewTip": "Empareja siempre 'add' con 'remove' en una función de limpieza.",
     "options": [
-      "The hook should return an object, not a number.",
-      "It causes a memory leak because it adds a new listener on every render without removing it.",
-      "window is not accessible in custom hooks.",
-      "setSize should be called inside a loop."
+      "El hook debería devolver un objeto, no un número.",
+      "Causa una fuga de memoria (memory leak) porque añade un nuevo listener en cada render sin eliminarlo.",
+      "window no es accesible en hooks personalizados.",
+      "setSize debería llamarse dentro de un bucle."
     ]
   },
   "ch-08": {
-    "prompt": "How do you pass parameters to a custom hook?",
-    "explanation": "Since custom hooks are just functions, you can pass any data (strings, objects, or even other functions) as arguments.",
-    "interviewTip": "If the arguments change, make sure the hooks *inside* your custom hook (like useEffect) react to those changes by adding them to dependency arrays.",
+    "prompt": "¿Cómo se pasan parámetros a un hook personalizado?",
+    "explanation": "Dado que los hooks personalizados son solo funciones, puedes pasar cualquier dato (strings, objetos o incluso otras funciones) como argumentos.",
+    "interviewTip": "Si los argumentos cambian, asegúrate de que los hooks *dentro* de tu hook personalizado (como useEffect) reaccionen a esos cambios añadiéndolos a los arrays de dependencias.",
     "options": [
-      "You can't; custom hooks don't accept arguments.",
-      "Pass them as normal function parameters when calling the hook.",
-      "By setting a global variable before the hook is called.",
-      "Using a special 'useParams' prop."
+      "No se puede; los hooks personalizados no aceptan argumentos.",
+      "Pasándolos como parámetros normales de función al llamar al hook.",
+      "Estableciendo una variable global antes de llamar al hook.",
+      "Usando una prop especial llamada 'useParams'."
     ]
   },
   "ch-09": {
-    "prompt": "What is the main advantage of the following pattern?",
-    "explanation": "This is a classic 'useForm' hook. Instead of every component writing its own handleChange logic, they just import this hook.",
-    "interviewTip": "Standardizing common UI logic like forms or modals into custom hooks is a sign of a senior-level codebase.",
+    "prompt": "¿Cuál es la ventaja principal del siguiente patrón?",
+    "explanation": "Este es el clásico hook 'useForm'. En lugar de que cada componente escriba su propia lógica de handleChange, simplemente importan este hook.",
+    "interviewTip": "Estandarizar la lógica común de UI como formularios o modales en hooks personalizados es una señal de una base de código de nivel senior.",
     "options": [
-      "It allows any component to use the same form logic without rewriting the state and handlers.",
-      "It automatically submits the data to a server.",
-      "It makes the form run in the background.",
-      "It validates the inputs using AI."
+      "Permite que cualquier componente use la misma lógica de formulario sin reescribir el estado y los manejadores.",
+      "Envía automáticamente los datos a un servidor.",
+      "Hace que el formulario se ejecute en segundo plano.",
+      "Valida las entradas usando IA."
     ]
   },
   "ch-10": {
-    "prompt": "Can a custom hook be called from inside another custom hook?",
-    "explanation": "Hooks are composable. For example, a `useAuthenticatedFetch` hook might call a `useAuth` hook and a `useFetch` hook internally.",
-    "interviewTip": "Composition is the 'secret sauce' of React's flexibility.",
+    "prompt": "¿Se puede llamar a un hook personalizado desde dentro de otro hook personalizado?",
+    "explanation": "Los hooks son componibles. Por ejemplo, un hook `useAuthenticatedFetch` podría llamar internamente a un hook `useAuth` y a un hook `useFetch`.",
+    "interviewTip": "La composición es la 'salsa secreta' de la flexibilidad de React.",
     "options": [
-      "No, that's nesting and is prohibited.",
-      "Yes, this is a common way to build complex logic out of simpler hooks.",
-      "Only if the parent hook is a class component.",
-      "Only if you use the 'useCompose' utility."
+      "No, eso es anidamiento y está prohibido.",
+      "Sí, esta es una forma común de construir lógica compleja a partir de hooks más simples.",
+      "Solo si el hook padre es un componente de clase.",
+      "Solo si usas la utilidad 'useCompose'."
     ]
   },
   "ch-11": {
-    "prompt": "Why should you use 'useCallback' or 'useMemo' inside a custom hook that returns functions or objects?",
-    "explanation": "If your hook returns a function like `() => {}`, that function is a new reference on every render. If that function is a dependency in a component's useEffect, the component will enter an infinite loop.",
-    "interviewTip": "Providing 'referential stability' is a key responsibility of a well-written custom hook.",
+    "prompt": "¿Por qué deberías usar 'useCallback' o 'useMemo' dentro de un hook personalizado que devuelve funciones u objetos?",
+    "explanation": "Si tu hook devuelve una función como `() => {}`, esa función es una nueva referencia en cada render. Si esa función es una dependencia en el useEffect de un componente, el componente entrará en un bucle infinito.",
+    "interviewTip": "Proporcionar 'estabilidad referencial' es una responsabilidad clave de un hook personalizado bien escrito.",
     "options": [
-      "To prevent the hook from ever re-running.",
-      "To provide stable references so that components using the hook don't re-render unnecessarily.",
-      "To encrypt the returned data.",
-      "To make the code harder to reverse engineer."
+      "Para evitar que el hook se vuelva a ejecutar.",
+      "Para proporcionar referencias estables de modo que los componentes que usan el hook no se rendericen innecesariamente.",
+      "Para encriptar los datos devueltos.",
+      "Para hacer que el código sea más difícil de aplicar ingeniería inversa."
     ]
   },
   "ch-12": {
-    "prompt": "Which of these are good candidates for a custom hook?",
-    "explanation": "Simple math is a regular function. Anything that requires 'State' or 'Lifecycle' (like online status, pagination, or IntersectionObserver) should be a custom hook.",
-    "interviewTip": "If it doesn't use any React hooks (useState, useEffect, etc.), it probably shouldn't be a hook—just a regular utility function.",
+    "prompt": "¿Cuáles de estos son buenos candidatos para un hook personalizado?",
+    "explanation": "Las matemáticas simples son una función regular. Cualquier cosa que requiera 'Estado' o 'Ciclo de vida' (como el estado online, paginación o IntersectionObserver) debería ser un hook personalizado.",
+    "interviewTip": "Si no utiliza ningún hook de React (useState, useEffect, etc.), probablemente no debería ser un hook, sino solo una función de utilidad regular.",
     "options": [
-      "A logic that tracks if the user is currently online/offline.",
-      "A function that adds two numbers and returns the sum.",
-      "A logic that handles pagination and sorting for a data table.",
-      "A logic that checks if an element is currently visible in the viewport."
+      "Una lógica que rastrea si el usuario está actualmente online/offline.",
+      "Una función que suma dos números y devuelve el resultado.",
+      "Una lógica que maneja la paginación y el ordenamiento para una tabla de datos.",
+      "Una lógica que verifica si un elemento es visible actualmente en el viewport."
     ]
   },
   "ch-13": {
-    "prompt": "What happens if you use a custom hook inside an 'if' statement?",
-    "explanation": "React maps state to hooks based on their *index* in the call order. If you skip a hook because of a condition, the internal indexes shift, and the wrong state is assigned to the wrong hooks.",
-    "interviewTip": "Remember: The order of hooks must be identical on every single render.",
+    "prompt": "¿Qué sucede si usas un hook personalizado dentro de una sentencia 'if'?",
+    "explanation": "React mapea el estado a los hooks basándose en su *índice* en el orden de llamada. Si te saltas un hook debido a una condición, los índices internos se desplazan y se asigna el estado incorrecto a los hooks equivocados.",
+    "interviewTip": "Recuerda: El orden de los hooks debe ser idéntico en cada renderizado.",
     "options": [
-      "The data is only fetched for logged-in users, saving bandwidth.",
-      "It will work fine in development but fail in production.",
-      "React will break because the order of hook calls changed, potentially causing a crash or state mismatch.",
-      "The hook will be called once and then cached."
+      "Los datos solo se obtienen para usuarios logueados, ahorrando ancho de banda.",
+      "Funcionará bien en desarrollo pero fallará en producción.",
+      "React fallará porque el orden de las llamadas de los hooks cambió, causando potencialmente un colapso o un desajuste de estado.",
+      "El hook se llamará una vez y luego se guardará en caché."
     ]
   }
 }

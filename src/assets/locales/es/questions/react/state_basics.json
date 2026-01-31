@@ -1,19 +1,19 @@
 {
   "sb-01": {
-    "prompt": "What happens when you update a React state variable using its setter function?",
-    "explanation": "Calling a state setter notifies React that the underlying data has changed, triggering a re-render to synchronize the UI with the new data.",
-    "interviewTip": "Remember that state updates are asynchronous and batched for performance.",
+    "prompt": "¿Qué sucede cuando actualizas una variable de estado (state) de React usando su función setter?",
+    "explanation": "Llamar al setter del estado notifica a React que los datos subyacentes han cambiado, lo que dispara un re-renderizado para sincronizar la UI con los nuevos datos.",
+    "interviewTip": "Recuerda que las actualizaciones de estado son asíncronas y se procesan por lotes (batched) para mejorar el rendimiento.",
     "options": [
-      "The browser window reloads to fetch new data.",
-      "The component and its children are scheduled to re-render.",
-      "The variable is updated, but the UI remains the same until a manual refresh.",
-      "The entire application state is reset to its initial values."
+      "La ventana del navegador se recarga para obtener nuevos datos.",
+      "El componente y sus hijos son programados para un re-renderizado.",
+      "La variable se actualiza, pero la UI permanece igual hasta un refresco manual.",
+      "Todo el estado de la aplicación se restablece a sus valores iniciales."
     ]
   },
   "sb-02": {
-    "prompt": "What is the correct way to initialize a state variable 'count' to 0?",
-    "explanation": "useState returns an array where the first element is the current state and the second is the updater function. We use array destructuring to name them.",
-    "interviewTip": "Always use 'const' for state variables because you should never mutate them directly; only the setter should change them.",
+    "prompt": "¿Cuál es la forma correcta de inicializar una variable de estado 'count' en 0?",
+    "explanation": "useState devuelve un array donde el primer elemento es el estado actual y el segundo es la función de actualización. Usamos la desestructuración de arrays para nombrarlos.",
+    "interviewTip": "Usa siempre 'const' para las variables de estado porque nunca debes mutarlas directamente; solo el setter debe cambiarlas.",
     "options": [
       "const [count, setCount] = useState(0);",
       "const count = useState(0);",
@@ -22,31 +22,26 @@
     ]
   },
   "sb-03": {
-    "prompt": "What will be the value of 'count' displayed in the UI after clicking the button once?",
-    "explanation": "Because 'count' is captured from the current render's scope, all three calls see 'count' as 0. React batches these, and the result is 0 + 1.",
-    "interviewTip": "This is a classic 'Stale Closure' example. To fix this, use the functional update pattern: setCount(prev => prev + 1).",
-    "options": [
-      "3",
-      "0",
-      "1",
-      "undefined"
-    ]
+    "prompt": "¿Cuál será el valor de 'count' mostrado en la UI después de hacer clic en el botón una vez?",
+    "explanation": "Debido a que 'count' se captura del entorno (scope) del renderizado actual, las tres llamadas ven 'count' como 0. React las agrupa y el resultado es 0 + 1.",
+    "interviewTip": "Este es un ejemplo clásico de 'Stale Closure'. Para solucionarlo, usa el patrón de actualización funcional: setCount(prev => prev + 1).",
+    "options": ["3", "0", "1", "undefined"]
   },
   "sb-04": {
-    "prompt": "Which of the following are true regarding the Rules of Hooks?",
-    "explanation": "Hooks must follow a consistent call order. Placing them in loops or conditions breaks React's ability to track state correctly.",
-    "interviewTip": "If you need a conditional hook, put the condition *inside* the hook (like useEffect) rather than wrapping the hook itself.",
+    "prompt": "¿Cuál de las siguientes afirmaciones es cierta respecto a las Reglas de los Hooks?",
+    "explanation": "Los Hooks deben seguir un orden de llamada constante. Colocarlos en bucles o condiciones rompe la capacidad de React para rastrear el estado correctamente.",
+    "interviewTip": "Si necesitas un hook condicional, pon la condición *dentro* del hook (como en useEffect) en lugar de envolver al hook en sí.",
     "options": [
-      "Hooks must be called at the top level of the component.",
-      "Hooks can be called inside loops if the array length is constant.",
-      "Hooks can only be called from React functional components or custom hooks.",
-      "Hooks can be called inside 'if' statements if the condition is based on props."
+      "Los Hooks deben llamarse en el nivel superior del componente.",
+      "Los Hooks pueden llamarse dentro de bucles si la longitud del array es constante.",
+      "Los Hooks solo pueden llamarse desde componentes funcionales de React o hooks personalizados.",
+      "Los Hooks pueden llamarse dentro de sentencias 'if' si la condición se basa en props."
     ]
   },
   "sb-05": {
-    "prompt": "How do you correctly update an object state while preserving existing fields?",
-    "explanation": "The setter function replaces the state entirely. To update a field, you must spread the existing state and overwrite the target field.",
-    "interviewTip": "Directly mutating 'user.age' fails because React uses Object.is to check for changes. If the object reference is the same, no render occurs.",
+    "prompt": "¿Cómo se actualiza correctamente un estado de tipo objeto preservando los campos existentes?",
+    "explanation": "La función setter reemplaza el estado por completo. Para actualizar un campo, debes expandir (spread) el estado existente y sobrescribir el campo de interés.",
+    "interviewTip": "Mutar directamente 'user.age' falla porque React usa Object.is para verificar cambios. Si la referencia del objeto es la misma, no hay renderizado.",
     "options": [
       "setUser({ age: 26 });",
       "user.age = 26; setUser(user);",
@@ -55,64 +50,54 @@
     ]
   },
   "sb-06": {
-    "prompt": "What is the primary benefit of the 'Lazy Initializer' pattern?",
-    "explanation": "If you pass an initial value directly, it is calculated every render. If you pass a function, React only executes it during the first render.",
-    "interviewTip": "Use this for expensive tasks like parsing large JSON from storage or complex mathematical computations.",
+    "prompt": "¿Cuál es el beneficio principal del patrón 'Lazy Initializer'?",
+    "explanation": "Si pasas un valor inicial directamente, se calcula en cada renderizado. Si pasas una función, React solo la ejecuta durante el primer renderizado.",
+    "interviewTip": "Usa esto para tareas costosas como parsear un JSON grande de storage o cálculos matemáticos complejos.",
     "options": [
-      "It makes the state update asynchronously.",
-      "It ensures the function only runs once during the initial mount.",
-      "It automatically caches the result in localStorage.",
-      "It allows the state to be shared with other components."
+      "Hace que la actualización de estado sea asíncrona.",
+      "Asegura que la función solo se ejecute una vez durante el montaje inicial.",
+      "Cachea automáticamente el resultado en localStorage.",
+      "Permite que el estado se comparta con otros componentes."
     ]
   },
   "sb-07": {
-    "prompt": "How do you access the value of an input field in a 'Controlled Component'?",
-    "explanation": "React's synthetic event object 'e' contains a 'target' property pointing to the DOM element, which has the 'value' property.",
-    "interviewTip": "In controlled components, the state is the 'single source of truth' for the input value.",
-    "options": [
-      "e.target.value",
-      "e.value",
-      "text.current",
-      "this.input.value"
-    ]
+    "prompt": "¿Cómo accedes al valor de un campo de entrada en un 'Componente Controlado'?",
+    "explanation": "El objeto de evento sintético 'e' de React contiene una propiedad 'target' que apunta al elemento del DOM, el cual tiene la propiedad 'value'.",
+    "interviewTip": "En los componentes controlados, el estado es la 'única fuente de verdad' para el valor del input.",
+    "options": ["e.target.value", "e.value", "text.current", "this.input.value"]
   },
   "sb-08": {
-    "prompt": "What is a 'SyntheticEvent' in React?",
-    "explanation": "React creates these wrappers so that events behave identically across Chrome, Safari, Firefox, and Edge.",
-    "interviewTip": "You can still access the native browser event via 'e.nativeEvent' if absolutely necessary.",
+    "prompt": "¿Qué es un 'SyntheticEvent' en React?",
+    "explanation": "React crea estos envoltorios para que los eventos se comporten de forma idéntica en Chrome, Safari, Firefox y Edge.",
+    "interviewTip": "Aún puedes acceder al evento nativo del navegador a través de 'e.nativeEvent' si es absolutamente necesario.",
     "options": [
-      "An event that is created by a library like Redux.",
-      "A cross-browser wrapper around the browser’s native event.",
-      "An event that doesn't actually exist in the DOM.",
-      "A way to simulate user clicks during automated testing."
+      "Un evento creado por una librería como Redux.",
+      "Un envoltorio multiplataforma alrededor del evento nativo del navegador.",
+      "Un evento que realmente no existe en el DOM.",
+      "Una forma de simular clics de usuario durante pruebas automatizadas."
     ]
   },
   "sb-09": {
-    "prompt": "What will happen if you update state with the exact same value it currently holds?",
-    "explanation": "React uses Object.is to compare the new state with the old. If they are identical, React avoids the unnecessary work of rendering.",
-    "interviewTip": "This is why mutating an array and calling setState(sameArray) doesn't work—the reference is identical.",
+    "prompt": "¿Qué sucederá si actualizas el estado con exactamente el mismo valor que tiene actualmente?",
+    "explanation": "React usa Object.is para comparar el nuevo estado con el viejo. Si son idénticos, React evita el trabajo innecesario de renderizar.",
+    "interviewTip": "Por esto mutar un array y llamar a setState(mismoArray) no funciona: la referencia es idéntica.",
     "options": [
-      "React will re-render exactly once more.",
-      "React will bail out and skip the re-render entirely.",
-      "The component will unmount and remount.",
-      "The app will throw an 'IdentityError'."
+      "React re-renderizará exactamente una vez más.",
+      "React cancelará y omitirá el re-renderizado por completo.",
+      "El componente se desmontará y se volverá a montar.",
+      "La app lanzará un 'IdentityError'."
     ]
   },
   "sb-10": {
-    "prompt": "Analyze the code. What is the console output after the button is clicked?",
-    "explanation": "Setting state is asynchronous. The 'val' variable belongs to the current execution frame and doesn't change until the next render.",
-    "interviewTip": "If you need to perform an action after state updates, use the 'useEffect' hook.",
-    "options": [
-      "20",
-      "10",
-      "undefined",
-      "null"
-    ]
+    "prompt": "Analiza el código. ¿Cuál es la salida de la consola después de hacer clic en el botón?",
+    "explanation": "Establecer el estado es asíncrono. La variable 'val' pertenece al marco de ejecución actual y no cambia hasta el próximo renderizado.",
+    "interviewTip": "Si necesitas realizar una acción después de que el estado se actualice, usa el hook 'useEffect'.",
+    "options": ["20", "10", "undefined", "null"]
   },
   "sb-11": {
-    "prompt": "Which of these are valid ways to trigger a function when a user clicks a button?",
-    "explanation": "Option A passes a reference. Option C creates an anonymous function. Option D is wrong because it executes the function *during* render.",
-    "interviewTip": "Watch out for 'onClick={handleClick()}'; it will cause an infinite loop if handleClick updates state.",
+    "prompt": "¿Cuáles de estas son formas válidas de disparar una función cuando un usuario hace clic en un botón?",
+    "explanation": "La opción A pasa una referencia. La C crea una función anónima. La D es incorrecta porque ejecuta la función *durante* el renderizado.",
+    "interviewTip": "Cuidado con 'onClick={handleClick()}'; causará un bucle infinito si handleClick actualiza el estado.",
     "options": [
       "onClick={handleClick}",
       "onclick={handleClick}",
@@ -121,69 +106,69 @@
     ]
   },
   "sb-12": {
-    "prompt": "How do you clear an interval created inside a component when using state timers?",
-    "explanation": "To prevent memory leaks and unexpected behavior, you must clear side effects like intervals when a component unmounts.",
-    "interviewTip": "This is a key part of the component lifecycle management.",
+    "prompt": "¿Cómo limpias un intervalo creado dentro de un componente cuando usas temporizadores de estado?",
+    "explanation": "Para evitar fugas de memoria y comportamientos inesperados, debes limpiar los efectos secundarios como intervalos cuando un componente se desmonta.",
+    "interviewTip": "Esta es una parte clave de la gestión del ciclo de vida del componente.",
     "options": [
-      "Call deleteInterval() in the button click.",
-      "Use the cleanup function of a useEffect hook.",
-      "Set the interval variable to null.",
-      "React clears all intervals automatically on every render."
+      "Llamar a deleteInterval() en el clic del botón.",
+      "Usar la función de limpieza (cleanup) de un hook useEffect.",
+      "Establecer la variable del intervalo en null.",
+      "React limpia todos los intervalos automáticamente en cada renderizado."
     ]
   },
   "sb-13": {
-    "prompt": "What is 'State Lifting'?",
-    "explanation": "When two sibling components need to stay in sync, you move the state to their parent and pass it back down via props.",
-    "interviewTip": "This is the standard way to share state without using Context.",
+    "prompt": "¿Qué es el 'State Lifting' (Elevación de Estado)?",
+    "explanation": "Cuando dos componentes hermanos necesitan estar sincronizados, mueves el estado a su padre común y se lo pasas de vuelta a través de props.",
+    "interviewTip": "Esta es la forma estándar de compartir estado sin usar Context.",
     "options": [
-      "A way to make state globally available to all components.",
-      "Moving state to the closest common parent of components that need to share it.",
-      "Deleting state from a component to improve performance.",
-      "Using a library like Redux to handle state."
+      "Una forma de hacer que el estado esté disponible globalmente.",
+      "Mover el estado al padre común más cercano de los componentes que necesitan compartirlo.",
+      "Eliminar el estado de un componente para mejorar el rendimiento.",
+      "Usar una librería como Redux para manejar el estado."
     ]
   },
   "sb-14": {
-    "prompt": "What is the default value of 'event.preventDefault()' in a form's 'onSubmit'?",
-    "explanation": "By default, HTML forms reload the page. In React 'Single Page Apps', we prevent this to handle the submission via JS.",
-    "interviewTip": "Always remember this in form handlers to avoid losing your application state.",
+    "prompt": "¿Cuál es el valor por defecto de 'event.preventDefault()' en el 'onSubmit' de un formulario?",
+    "explanation": "Por defecto, los formularios HTML recargan la página. En las 'Single Page Apps' de React, evitamos esto para manejar el envío vía JS.",
+    "interviewTip": "Recuerda siempre esto en los manejadores de formularios para evitar perder el estado de tu aplicación.",
     "options": [
-      "It stops the browser from reloading the page.",
-      "It clears the state of all input fields.",
-      "It validates the form data automatically.",
-      "It prevents the user from clicking the submit button twice."
+      "Evita que el navegador recargue la página.",
+      "Limpia el estado de todos los campos de entrada.",
+      "Valida los datos del formulario automáticamente.",
+      "Evita que el usuario haga clic en el botón de enviar dos veces."
     ]
   },
   "sb-15": {
-    "prompt": "How do you correctly handle a state update that depends on the previous state?",
-    "explanation": "Functional updates guarantee that you are working with the most recent state, even if multiple updates are queued.",
-    "interviewTip": "This pattern is essential when state updates are triggered rapidly (like in an interval or during high-frequency events).",
+    "prompt": "¿Cómo se maneja correctamente una actualización de estado que depende del estado anterior?",
+    "explanation": "Las actualizaciones funcionales garantizan que estás trabajando con el estado más reciente, incluso si hay múltiples actualizaciones en cola.",
+    "interviewTip": "Este patrón es esencial cuando las actualizaciones de estado se disparan rápidamente (como en un intervalo o eventos de alta frecuencia).",
     "options": [
-      "Passing a function to the setter (Functional Update).",
-      "Passing the updated variable directly.",
-      "Using a global variable for the calculation.",
-      "Calling useState again."
+      "Pasando una función al setter (Actualización Funcional).",
+      "Pasando la variable actualizada directamente.",
+      "Usando una variable global para el cálculo.",
+      "Llamando a useState de nuevo."
     ]
   },
   "sb-16": {
-    "prompt": "Where can you define state in a functional component?",
-    "explanation": "According to the Rules of Hooks, they must be called at the very top of your component function.",
-    "interviewTip": "React uses the call order to map state to the correct component instance.",
+    "prompt": "¿Dónde puedes definir el estado en un componente funcional?",
+    "explanation": "Según las Reglas de los Hooks, deben llamarse en la parte superior de la función de tu componente.",
+    "interviewTip": "React usa el orden de llamada para mapear el estado a la instancia correcta del componente.",
     "options": [
-      "Anywhere inside the function body.",
-      "Inside event handlers.",
-      "Only at the top level of the component function.",
-      "Inside the return statement."
+      "En cualquier lugar dentro del cuerpo de la función.",
+      "Dentro de los manejadores de eventos.",
+      "Solo en el nivel superior de la función del componente.",
+      "Dentro de la sentencia return."
     ]
   },
   "sb-17": {
-    "prompt": "What is an 'Uncontrolled Component'?",
-    "explanation": "In uncontrolled components, the form data is handled by the DOM itself. You use 'useRef' to pull values when needed.",
-    "interviewTip": "Controlled components are usually preferred for complex forms, while uncontrolled are fine for simple, one-off inputs.",
+    "prompt": "¿Qué es un 'Componente No Controlado'?",
+    "explanation": "En los componentes no controlados, los datos del formulario son manejados por el propio DOM. Usas 'useRef' para obtener los valores cuando los necesitas.",
+    "interviewTip": "Los componentes controlados suelen preferirse para formularios complejos, mientras que los no controlados están bien para inputs simples y puntuales.",
     "options": [
-      "A component that doesn't use state and relies on the DOM (via Refs) for data.",
-      "A component that has a bug causing it to re-render infinitely.",
-      "A component that doesn't accept any props.",
-      "A component that is not part of the Virtual DOM."
+      "Un componente que no usa estado y depende del DOM (vía Refs) para los datos.",
+      "Un componente que tiene un error que causa re-renderizados infinitos.",
+      "Un componente que no acepta ninguna prop.",
+      "Un componente que no es parte del Virtual DOM."
     ]
   }
 }

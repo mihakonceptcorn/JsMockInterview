@@ -1,19 +1,14 @@
 {
   "rt-01": {
-    "prompt": "Which component is used to define the mapping between a URL path and a React component?",
-    "explanation": "<Route> is the fundamental building block. It renders its element only when the current URL matches the 'path' prop.",
-    "interviewTip": "In React Router v6, the syntax changed to <Route path='/...' element={<MyComponent />} />.",
-    "options": [
-      "<Link>",
-      "<BrowserRouter>",
-      "<Route>",
-      "<Switch>"
-    ]
+    "prompt": "¿Qué componente se utiliza para definir el mapeo entre una ruta URL y un componente de React?",
+    "explanation": "<Route> es la pieza fundamental. Renderiza su elemento solo cuando la URL actual coincide con la prop 'path'.",
+    "interviewTip": "En React Router v6, la sintaxis cambió a <Route path='/...' element={<MyComponent />} />.",
+    "options": ["<Link>", "<BrowserRouter>", "<Route>", "<Switch>"]
   },
   "rt-02": {
-    "prompt": "How do you navigate to a new page programmatically in a functional component (e.g., after a form submission)?",
-    "explanation": "The 'useNavigate' hook returns a function that lets you change the URL without a full page reload.",
-    "interviewTip": "Use 'navigate('/path', { replace: true })' if you want to replace the current entry in the history stack instead of adding a new one.",
+    "prompt": "¿Cómo navegas a una nueva página programáticamente en un componente funcional (ej., después de enviar un formulario)?",
+    "explanation": "El hook 'useNavigate' devuelve una función que te permite cambiar la URL sin una recarga completa de la página.",
+    "interviewTip": "Usa 'navigate('/path', { replace: true })' si quieres reemplazar la entrada actual en el historial en lugar de añadir una nueva.",
     "options": [
       "navigate('/dashboard');",
       "window.location.href = '/dashboard';",
@@ -22,31 +17,26 @@
     ]
   },
   "rt-03": {
-    "prompt": "What is the primary difference between a standard <a> tag and a React Router <Link> tag?",
-    "explanation": "<a> tags cause the browser to refresh the page. <Link> tags use the History API to update the URL and re-render only the necessary components.",
-    "interviewTip": "Using <a> for internal navigation breaks the 'Single Page' experience and resets the application state.",
+    "prompt": "¿Cuál es la diferencia principal entre una etiqueta <a> estándar y una etiqueta <Link> de React Router?",
+    "explanation": "Las etiquetas <a> provocan que el navegador recargue la página. Las etiquetas <Link> usan la History API para actualizar la URL y re-renderizar solo los componentes necesarios.",
+    "interviewTip": "Usar <a> para navegación interna rompe la experiencia de 'Single Page' y reinicia el estado de la aplicación.",
     "options": [
-      "<a> tags are faster.",
-      "<Link> tags change the URL without triggering a full page reload.",
-      "<Link> tags only work for external websites.",
-      "There is no difference; <Link> is just an alias."
+      "Las etiquetas <a> son más rápidas.",
+      "Las etiquetas <Link> cambian la URL sin disparar una recarga completa de la página.",
+      "Las etiquetas <Link> solo funcionan para sitios web externos.",
+      "No hay diferencia; <Link> es solo un alias."
     ]
   },
   "rt-04": {
-    "prompt": "How do you access dynamic parameters from the URL (e.g., the 'id' in '/users/:id')?",
-    "explanation": "The 'useParams' hook returns an object of key/value pairs of URL parameters defined in the route path.",
-    "interviewTip": "Always ensure the variable name in destructuring matches the placeholder name in the Route path.",
-    "options": [
-      "useQuery",
-      "useParams",
-      "useRouteMatch",
-      "useLocation"
-    ]
+    "prompt": "¿Cómo accedes a los parámetros dinámicos de la URL (ej., el 'id' en '/users/:id')?",
+    "explanation": "El hook 'useParams' devuelve un objeto con pares clave/valor de los parámetros de la URL definidos en la ruta.",
+    "interviewTip": "Asegúrate siempre de que el nombre de la variable en la desestructuración coincida con el nombre del marcador en la ruta de la Route.",
+    "options": ["useQuery", "useParams", "useRouteMatch", "useLocation"]
   },
   "rt-05": {
-    "prompt": "Which of these components must wrap your entire application to enable routing functionality?",
-    "explanation": "BrowserRouter is the most common (uses clean URLs), while HashRouter uses the # fragment for compatibility with older servers/static hosting.",
-    "interviewTip": "Most modern apps use BrowserRouter for SEO-friendly URLs.",
+    "prompt": "¿Cuál de estos componentes debe envolver toda tu aplicación para habilitar la funcionalidad de enrutamiento?",
+    "explanation": "BrowserRouter es el más común (usa URLs limpias), mientras que HashRouter usa el fragmento # para compatibilidad con servidores antiguos o hosting estático.",
+    "interviewTip": "La mayoría de las aplicaciones modernas usan BrowserRouter para tener URLs amigables con el SEO.",
     "options": [
       "<BrowserRouter>",
       "<Routes>",
@@ -55,80 +45,70 @@
     ]
   },
   "rt-06": {
-    "prompt": "What is the purpose of the <Outlet /> component in React Router v6?",
-    "explanation": "Outlet is used in a parent route's element to indicate where child route elements should be rendered.",
-    "interviewTip": "This is the key to creating shared layouts (like a persistent sidebar or navbar).",
+    "prompt": "¿Cuál es el propósito del componente <Outlet /> en React Router v6?",
+    "explanation": "Outlet se usa en el elemento de una ruta padre para indicar dónde deben renderizarse los elementos de las rutas hijas.",
+    "interviewTip": "Esta es la clave para crear diseños (layouts) compartidos (como una barra lateral o de navegación persistente).",
     "options": [
-      "To link to external CSS files.",
-      "To act as a placeholder for child routes in nested routing.",
-      "To display a 404 error page.",
-      "To redirect the user to the home page."
+      "Vincular a archivos CSS externos.",
+      "Actuar como un marcador de posición para rutas hijas en el enrutamiento anidado.",
+      "Mostrar una página de error 404.",
+      "Redirigir al usuario a la página de inicio."
     ]
   },
   "rt-07": {
-    "prompt": "How do you define a '404 Not Found' route in React Router v6?",
-    "explanation": "The '*' (splat) path acts as a wildcard that matches any URL that hasn't been matched by previous routes.",
-    "interviewTip": "Place the wildcard route at the very bottom of your <Routes> list.",
-    "options": [
-      "*",
-      "404",
-      "default",
-      "fallback"
-    ]
+    "prompt": "¿Cómo defines una ruta de '404 Not Found' en React Router v6?",
+    "explanation": "La ruta '*' (splat) actúa como un comodín que coincide con cualquier URL que no haya sido emparejada por rutas anteriores.",
+    "interviewTip": "Coloca la ruta comodín al final de todo tu listado de <Routes>.",
+    "options": ["*", "404", "default", "fallback"]
   },
   "rt-08": {
-    "prompt": "What does the 'useLocation' hook return?",
-    "explanation": "useLocation provides access to the 'location' object, which is useful for tracking page views or reading query strings (?query=abc).",
-    "interviewTip": "You can use 'location.state' to pass hidden data between routes that doesn't appear in the URL.",
+    "prompt": "¿Qué devuelve el hook 'useLocation'?",
+    "explanation": "useLocation da acceso al objeto 'location', que es útil para rastrear vistas de página o leer strings de consulta (?query=abc).",
+    "interviewTip": "Puedes usar 'location.state' para pasar datos ocultos entre rutas que no aparecen en la URL.",
     "options": [
-      "The user's GPS coordinates.",
-      "A function to change the URL.",
-      "An object containing the current URL path, search queries, and state.",
-      "The component that is currently rendered."
+      "Las coordenadas GPS del usuario.",
+      "Una función para cambiar la URL.",
+      "Un objeto que contiene la ruta de la URL actual, las consultas de búsqueda y el estado.",
+      "El componente que se está renderizando actualmente."
     ]
   },
   "rt-09": {
-    "prompt": "How can you pass query parameters (e.g., ?sort=asc) and read them in a component?",
-    "explanation": "useSearchParams is the React-friendly hook for managing query strings. You can also manually parse location.search.",
-    "interviewTip": "Query params are great for shareable UI states like filters or search terms.",
+    "prompt": "¿Cómo puedes pasar parámetros de consulta (ej., ?sort=asc) y leerlos en un componente?",
+    "explanation": "useSearchParams es el hook amigable con React para gestionar strings de consulta. También puedes analizar manualmente location.search.",
+    "interviewTip": "Los parámetros de consulta son geniales para estados de UI compartibles como filtros o términos de búsqueda.",
     "options": [
-      "Using the 'useSearchParams' hook.",
-      "Using the 'URLSearchParams' web API with 'location.search'.",
-      "Using the 'useParams' hook.",
-      "By defining them in the <Route path='...'>."
+      "Usando el hook 'useSearchParams'.",
+      "Usando la API web 'URLSearchParams' con 'location.search'.",
+      "Usando el hook 'useParams'.",
+      "Definiéndolos en el <Route path='...'>."
     ]
   },
   "rt-10": {
-    "prompt": "What happens if you have multiple routes that match the current URL in React Router v6?",
-    "explanation": "Unlike v5 which picked the first match (requiring 'exact'), v6 is smarter and calculates the most specific match automatically.",
-    "interviewTip": "This means the order of routes matters less in v6 than it did in previous versions.",
+    "prompt": "¿Qué sucede si tienes múltiples rutas que coinciden con la URL actual en React Router v6?",
+    "explanation": "A diferencia de v5 que elegía la primera coincidencia (requiriendo 'exact'), v6 es más inteligente y calcula automáticamente la coincidencia más específica.",
+    "interviewTip": "Esto significa que el orden de las rutas importa menos en v6 de lo que importaba en versiones anteriores.",
     "options": [
-      "React renders all matching components in a list.",
-      "The app crashes.",
-      "React Router uses a ranking system to pick the 'best' (most specific) match.",
-      "It only picks the first one it finds."
+      "React renderiza todos los componentes coincidentes en una lista.",
+      "La aplicación colapsa.",
+      "React Router usa un sistema de ranking para elegir la 'mejor' coincidencia (la más específica).",
+      "Solo elige la primera que encuentra."
     ]
   },
   "rt-11": {
-    "prompt": "How do you implement a 'Redirect' after a user logs out in v6?",
-    "explanation": "The <Navigate /> component is the declarative way to perform a redirect during rendering.",
-    "interviewTip": "Use this for 'Protected Routes' where you check authentication before showing a page.",
-    "options": [
-      "Redirect",
-      "Navigate",
-      "Link",
-      "Push"
-    ]
+    "prompt": "¿Cómo implementas una 'Redirección' después de que un usuario cierra sesión en v6?",
+    "explanation": "El componente <Navigate /> es la forma declarativa de realizar una redirección durante el renderizado.",
+    "interviewTip": "Usa esto para 'Rutas Protegidas' donde verificas la autenticación antes de mostrar una página.",
+    "options": ["Redirect", "Navigate", "Link", "Push"]
   },
   "rt-12": {
-    "prompt": "Analyze the code. What is the URL after clicking 'Details'?",
-    "explanation": "Links without a leading slash are 'relative' to the current path. Since we are at /products, appending 123 results in /products/123.",
-    "interviewTip": "Use absolute paths (starting with /) if you want to navigate from the root of the site.",
+    "prompt": "Analiza el código. ¿Cuál es la URL después de hacer clic en 'Details'?",
+    "explanation": "Los enlaces sin una barra inicial son 'relativos' a la ruta actual. Como estamos en /products, añadir 123 resulta en /products/123.",
+    "interviewTip": "Usa rutas absolutas (que comiencen con /) si quieres navegar desde la raíz del sitio.",
     "options": [
       "/123",
       "/products/123",
       "/products/details/123",
-      "Error: 'to' must start with /"
+      "Error: 'to' debe comenzar con /"
     ]
   }
 }

@@ -1,118 +1,113 @@
 {
   "ss-01": {
-    "prompt": "What is the primary problem that React Query solves compared to using useEffect for data fetching?",
-    "explanation": "While useEffect can fetch data, it doesn't handle caching or background re-fetching. React Query manages the lifecycle of your server data so you don't have to.",
-    "interviewTip": "Mention that React Query treats 'Server State' as something the client doesn't own, but merely 'borrows'.",
+    "prompt": "¿Cuál es el problema principal que resuelve React Query en comparación con el uso de useEffect para la obtención de datos?",
+    "explanation": "Aunque `useEffect` puede obtener datos, no gestiona el `caching` ni el re-fetch en segundo plano. React Query gestiona el ciclo de vida de los datos del servidor para que tú no tengas que hacerlo.",
+    "interviewTip": "Menciona que React Query trata el 'Estado del Servidor' como algo que el cliente no posee, sino que simplemente pide prestado.",
     "options": [
-      "It makes the API requests run faster on the server.",
-      "It provides built-in caching and synchronization, preventing unnecessary duplicate network requests.",
-      "It replaces the need for any CSS in the application.",
-      "It allows React to connect directly to a SQL database."
+      "Hace que las peticiones a la API se ejecuten más rápido en el servidor.",
+      "Proporciona `caching` y sincronización integrados, evitando peticiones de red duplicadas innecesarias.",
+      "Reemplaza la necesidad de cualquier CSS en la aplicación.",
+      "Permite que React se conecte directamente a una base de datos SQL."
     ]
   },
   "ss-02": {
-    "prompt": "Analyze the code. What does 'data' contain while 'isLoading' is true?",
-    "explanation": "During the very first fetch (hard loading state), 'data' is undefined until the promise resolves.",
-    "interviewTip": "If you have cached data from a previous session, 'isLoading' might be false while 'isFetching' is true.",
+    "prompt": "Analiza el código. ¿Qué contiene 'data' mientras 'isLoading' es true?",
+    "explanation": "Durante la primera petición (estado de carga inicial), 'data' es `undefined` hasta que la promesa se resuelve.",
+    "interviewTip": "Si tienes datos en caché de una sesión anterior, 'isLoading' podría ser false mientras 'isFetching' es true.",
     "options": [
-      "The previous version of the data.",
-      "An empty array [].",
+      "La versión anterior de los datos.",
+      "Un array vacío [].",
       "undefined",
-      "A placeholder string 'Loading...'"
+      "Un string de marcador de posición 'Cargando...'"
     ]
   },
   "ss-03": {
-    "prompt": "What is the 'queryKey' used for in React Query?",
-    "explanation": "The queryKey (usually an array) tells React Query when to re-fetch data. If the key changes (e.g., ['user', id]), the query automatically re-runs.",
-    "interviewTip": "Think of the queryKey as the 'dependency array' for your server data.",
+    "prompt": "¿Para qué se utiliza el 'queryKey' en React Query?",
+    "explanation": "El `queryKey` (generalmente un array) le indica a React Query cuándo volver a obtener datos. Si la clave cambia (ej., ['user', id]), la consulta se ejecuta automáticamente de nuevo.",
+    "interviewTip": "Piensa en el `queryKey` como el 'dependency array' para tus datos del servidor.",
     "options": [
-      "It is the password used to access the API.",
-      "It acts as a unique identifier for the query to manage caching and dependency tracking.",
-      "It is the URL of the API endpoint.",
-      "It defines the order in which queries are executed."
+      "Es la contraseña utilizada para acceder a la API.",
+      "Actúa como un identificador único para la consulta para gestionar el `caching` y el seguimiento de dependencias.",
+      "Es la URL del endpoint de la API.",
+      "Define el orden en el que se ejecutan las consultas."
     ]
   },
   "ss-04": {
-    "prompt": "Which properties are returned by the 'useQuery' hook to help manage UI states?",
-    "explanation": "useQuery provides a rich set of boolean flags and data objects to handle every possible network state.",
-    "interviewTip": "The difference between 'isLoading' and 'isFetching' is a common senior-level question (Initial fetch vs. Background update).",
+    "prompt": "¿Qué propiedades devuelve el hook 'useQuery' para ayudar a gestionar los estados de la UI?",
+    "explanation": "`useQuery` proporciona un rico conjunto de flags booleanos y objetos de datos para manejar cada estado de red posible.",
+    "interviewTip": "La diferencia entre 'isLoading' e 'isFetching' es una pregunta común de nivel senior (Carga inicial vs. Actualización en segundo plano).",
     "options": [
       "status (loading, error, success).",
-      "isFetching (is the request currently in flight?).",
-      "revalidate (a function to delete the cache).",
-      "error (the error object if the request fails)."
+      "isFetching (indica si la petición está actualmente en curso).",
+      "revalidate (una función para eliminar la caché).",
+      "error (el objeto de error si la petición falla)."
     ]
   },
   "ss-05": {
-    "prompt": "How do you perform 'Data Mutations' (POST/PUT/DELETE) in React Query?",
-    "explanation": "useMutation is used for any server-side side effects. It provides methods like 'mutate' and 'mutateAsync' to trigger the call.",
-    "interviewTip": "Always mention 'Invalidation'—after a mutation, you usually want to tell React Query that the old data is now 'stale'.",
-    "options": [
-      "usePost",
-      "useAction",
-      "useMutation",
-      "useUpdate"
-    ]
+    "prompt": "¿Cómo se realizan las 'Mutaciones de Datos' (POST/PUT/DELETE) en React Query?",
+    "explanation": "`useMutation` se utiliza para cualquier efecto secundario en el lado del servidor. Proporciona métodos como 'mutate' y 'mutateAsync' para disparar la llamada.",
+    "interviewTip": "Menciona siempre la 'Invalidación': después de una mutación, generalmente querrás decirle a React Query que los datos antiguos ahora están obsoletos (`stale`).",
+    "options": ["usePost", "useAction", "useMutation", "useUpdate"]
   },
   "ss-06": {
-    "prompt": "What does 'queryClient.invalidateQueries' do?",
-    "explanation": "This is the 'magic' of React Query. After updating data, you invalidate the key, and the UI automatically refreshes with the latest server values.",
-    "interviewTip": "This is the standard way to handle 'Optimistic Updates' fallbacks as well.",
+    "prompt": "¿Qué hace 'queryClient.invalidateQueries'?",
+    "explanation": "Esta es la 'magia' de React Query. Después de actualizar los datos, invalidas la clave y la UI se refresca automáticamente con los últimos valores del servidor.",
+    "interviewTip": "Esta es también la forma estándar de manejar los fallos en las 'Actualizaciones Optimistas'.",
     "options": [
-      "It deletes all data from the server.",
-      "It marks a specific query as 'stale' and triggers a background re-fetch if that query is currently in use.",
-      "It prevents the user from clicking the submit button.",
-      "It closes all active network connections."
+      "Elimina todos los datos del servidor.",
+      "Marca una consulta específica como 'obsoleta' (`stale`) y dispara un re-fetch en segundo plano si esa consulta se está usando actualmente.",
+      "Evita que el usuario haga clic en el botón de enviar.",
+      "Cierra todas las conexiones de red activas."
     ]
   },
   "ss-07": {
-    "prompt": "What is 'Stale Time' in React Query?",
-    "explanation": "By default, staleTime is 0, meaning data is considered stale immediately. Setting it higher reduces network traffic for data that doesn't change often.",
-    "interviewTip": "Don't confuse 'staleTime' with 'gcTime' (formerly cacheTime). gcTime determines when inactive data is deleted from memory.",
+    "prompt": "¿Qué es el 'Stale Time' en React Query?",
+    "explanation": "Por defecto, `staleTime` es 0, lo que significa que los datos se consideran obsoletos inmediatamente. Configurarlo con un valor más alto reduce el tráfico de red para datos que no cambian a menudo.",
+    "interviewTip": "No confundas `staleTime` con `gcTime` (antes cacheTime). `gcTime` determina cuándo se eliminan de la memoria los datos inactivos.",
     "options": [
-      "The time it takes for a request to time out.",
-      "The duration for which the data is considered 'fresh' and won't trigger a background re-fetch.",
-      "The age of the user's browser.",
-      "The time the user spends on a single page."
+      "El tiempo que tarda una petición en expirar.",
+      "La duración durante la cual los datos se consideran 'frescos' y no dispararán un re-fetch en segundo plano.",
+      "La edad del navegador del usuario.",
+      "El tiempo que el usuario pasa en una sola página."
     ]
   },
   "ss-08": {
-    "prompt": "Identify the issue in the following code snippet:",
-    "explanation": "The 'queryFn' must be a function that React Query can call later. Correct syntax: `queryFn: () => fetchUser(id)`.",
-    "interviewTip": "This is a frequent mistake that leads to infinite loops or execution during the wrong phase.",
+    "prompt": "Identifica el problema en el siguiente fragmento de código:",
+    "explanation": "El `queryFn` debe ser una función que React Query pueda llamar más tarde. Sintaxis correcta: `queryFn: () => fetchUser(id)`.",
+    "interviewTip": "Este es un error frecuente que provoca bucles infinitos o ejecuciones en la fase incorrecta.",
     "options": [
-      "The queryKey must be a string.",
-      "fetchUser(id) executes immediately during render instead of being a function reference.",
-      "The id variable must be a string.",
-      "useQuery does not support IDs."
+      "El queryKey debe ser un string.",
+      "fetchUser(id) se ejecuta inmediatamente durante el renderizado en lugar de ser una referencia a una función.",
+      "La variable id debe ser un string.",
+      "useQuery no soporta IDs."
     ]
   },
   "ss-09": {
-    "prompt": "How does React Query handle a lost internet connection?",
-    "explanation": "React Query has built-in 'Offline Support' and will pause/resume fetches based on the browser's connectivity status.",
-    "interviewTip": "You can customize the 'retry' count and 'retryDelay' in the global configuration.",
+    "prompt": "¿Cómo maneja React Query la pérdida de conexión a internet?",
+    "explanation": "React Query tiene soporte integrado para modo offline y pausará/reanudará las peticiones basándose en el estado de conectividad del navegador.",
+    "interviewTip": "Puedes personalizar el número de reintentos (`retry`) y el retraso (`retryDelay`) en la configuración global.",
     "options": [
-      "It crashes the application.",
-      "It automatically retries the query when the connection is restored.",
-      "It shows a blue screen of death.",
-      "It switches to a local SQL database."
+      "Provoca un colapso en la aplicación.",
+      "Reintenta automáticamente la consulta cuando se restaura la conexión.",
+      "Muestra una pantalla azul de la muerte.",
+      "Cambia a una base de datos SQL local."
     ]
   },
   "ss-10": {
-    "prompt": "What is an 'Optimistic Update'?",
-    "explanation": "You update the cache manually when the user clicks 'Submit'. If the server fails, you 'roll back' to the previous state.",
-    "interviewTip": "This makes your app feel 'instant' even on slow connections.",
+    "prompt": "¿Qué es una 'Actualización Optimista' (Optimistic Update)?",
+    "explanation": "Actualizas la caché manualmente cuando el usuario hace clic en 'Enviar'. Si el servidor falla, haces un 'roll back' al estado anterior.",
+    "interviewTip": "Esto hace que tu app se sienta 'instantánea' incluso en conexiones lentas.",
     "options": [
-      "A way to update the UI immediately before the server confirms the change.",
-      "A method to speed up the server response time.",
-      "A strategy to handle errors by assuming the best-case scenario.",
-      "A feature that only works with React 19."
+      "Una forma de actualizar la UI inmediatamente antes de que el servidor confirme el cambio.",
+      "Un método para acelerar el tiempo de respuesta del servidor.",
+      "Una estrategia para manejar errores asumiendo el mejor escenario posible.",
+      "Una característica que solo funciona con React 19."
     ]
   },
   "ss-11": {
-    "prompt": "Which component is required at the root of your app to use React Query?",
-    "explanation": "You must create a `const queryClient = new QueryClient()` and pass it to the `<QueryClientProvider client={queryClient}>`.",
-    "interviewTip": "This provider holds the 'Query Cache', which is what allows data to be shared across the entire app without Redux.",
+    "prompt": "¿Qué componente es necesario en la raíz de tu app para usar React Query?",
+    "explanation": "Debes crear un `const queryClient = new QueryClient()` y pasarlo al `<QueryClientProvider client={queryClient}>`.",
+    "interviewTip": "Este provider contiene la 'Caché de Consultas', que es lo que permite compartir datos en toda la aplicación sin necesidad de Redux.",
     "options": [
       "<QueryProvider>",
       "<ReactQueryContext>",
@@ -121,14 +116,14 @@
     ]
   },
   "ss-12": {
-    "prompt": "What is the result of 'enabled: false' in useQuery options?",
-    "explanation": "The 'enabled' option is used for 'Dependent Queries' (waiting for a userId) or manual triggers.",
-    "interviewTip": "Use this to prevent a query from running until you have all the necessary data (like an ID from a previous query).",
+    "prompt": "¿Cuál es el resultado de 'enabled: false' en las opciones de useQuery?",
+    "explanation": "La opción `enabled` se utiliza para 'Consultas Dependientes' (esperar a un userId) o disparadores manuales.",
+    "interviewTip": "Usa esto para evitar que una consulta se ejecute hasta que tengas todos los datos necesarios (como un ID de una consulta previa).",
     "options": [
-      "The query is deleted.",
-      "The query is disabled and will only run if 'refetch' is called manually.",
-      "The query runs once and then stops.",
-      "The query only runs on the server."
+      "La consulta se elimina.",
+      "La consulta se deshabilita y solo se ejecutará si se llama a 'refetch' manualmente.",
+      "La consulta se ejecuta una vez y luego se detiene.",
+      "La consulta solo se ejecuta en el servidor."
     ]
   }
 }

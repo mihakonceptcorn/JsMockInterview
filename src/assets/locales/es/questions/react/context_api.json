@@ -1,136 +1,136 @@
 {
   "ca-01": {
-    "prompt": "What are the three main steps to implement React Context?",
+    "prompt": "¿Cuáles son los tres pasos principales para implementar React Context?",
     "options": [
-      "Create Context, Define State, Export Component.",
-      "Create Context, Provide Context, Consume Context.",
-      "Initialize Ref, Pass Prop, Trigger Effect.",
-      "Import Redux, Setup Store, Map Dispatch."
+      "Crear el Context, definir el State, exportar el componente.",
+      "Crear el Context, proveer el Context, consumir el Context.",
+      "Inicializar el Ref, pasar la Prop, disparar el Effect.",
+      "Importar Redux, configurar el Store, mapear el Dispatch."
     ],
-    "explanation": "You first create the context object, wrap the parent tree with a Provider, and then use a hook or consumer in the child to access the data.",
-    "interviewTip": "The most common way to 'consume' today is via the 'useContext' hook."
+    "explanation": "Primero se crea el objeto context, se envuelve el árbol padre con un Provider y luego se utiliza un hook o consumer en el hijo para acceder a los datos.",
+    "interviewTip": "La forma más común de 'consumir' hoy en día es a través del hook 'useContext'."
   },
   "ca-02": {
-    "prompt": "What happens to components consuming a Context when the Provider's 'value' prop updates?",
+    "prompt": "¿Qué sucede con los componentes que consumen un Context cuando la prop 'value' del Provider se actualiza?",
     "options": [
-      "Only the parent component re-renders.",
-      "All components in the app re-render.",
-      "All components that call 'useContext' for that specific context will re-render.",
-      "Nothing happens until the page is refreshed."
+      "Solo el componente padre se vuelve a renderizar.",
+      "Todos los componentes de la app se vuelven a renderizar.",
+      "Todos los componentes que llaman a 'useContext' para ese contexto específico se volverán a renderizar.",
+      "No sucede nada hasta que se refresque la página."
     ],
-    "explanation": "Context triggers a re-render for all consumers whenever the value changes. This is why you should keep context values stable or split large contexts.",
-    "interviewTip": "To optimize, consider memoizing the context value object using 'useMemo'."
+    "explanation": "Context dispara un re-render para todos los consumidores siempre que el valor cambia. Por eso se deben mantener los valores del contexto estables o dividir los contextos grandes.",
+    "interviewTip": "Para optimizar, considera memorizar el objeto del valor del contexto usando 'useMemo'."
   },
   "ca-03": {
-    "prompt": "What is the result of the following code if 'UserContext' has no Provider above the Header?",
+    "prompt": "¿Cuál es el resultado del siguiente código si 'UserContext' no tiene un Provider por encima del Header?",
     "code": "const UserContext = createContext('Guest');\nfunction Header() {\n  const user = useContext(UserContext);\n  return <h1>{user}</h1>;\n}",
     "options": [
-      "The app crashes with a 'ProviderNotFound' error.",
-      "It renders 'Guest'.",
-      "It renders nothing (null).",
-      "It renders 'undefined'."
+      "La app colapsa con un error 'ProviderNotFound'.",
+      "Renderiza 'Guest'.",
+      "No renderiza nada (null).",
+      "Renderiza 'undefined'."
     ],
-    "explanation": "If no Provider is found in the tree, 'useContext' returns the default value passed to 'createContext(defaultValue)'.",
-    "interviewTip": "Default values are useful for testing components in isolation without wrapping them in providers."
+    "explanation": "Si no se encuentra ningún Provider en el árbol, 'useContext' devuelve el valor por defecto pasado a 'createContext(defaultValue)'.",
+    "interviewTip": "Los valores por defecto son útiles para probar componentes de forma aislada sin envolverlos en providers."
   },
   "ca-04": {
-    "prompt": "Which of the following are good use cases for React Context?",
+    "prompt": "¿Cuáles de los siguientes son buenos casos de uso para React Context?",
     "options": [
-      "Managing the current theme (Dark/Light mode).",
-      "Storing the text of a single search input field.",
-      "Handling user authentication/current user profile.",
-      "Managing complex, high-frequency data like real-time game coordinates."
+      "Gestionar el tema actual (modo Oscuro/Claro).",
+      "Almacenar el texto de un único campo de entrada de búsqueda.",
+      "Manejar la autenticación de usuario / perfil de usuario actual.",
+      "Gestionar datos complejos de alta frecuencia como coordenadas de un juego en tiempo real."
     ],
-    "explanation": "Context is great for 'global' data that doesn't change extremely often. For high-frequency updates, Context can cause performance bottlenecks.",
-    "interviewTip": "For high-frequency state, libraries like Redux, Zustand, or Recoil are often better choices."
+    "explanation": "Context es ideal para datos 'globales' que no cambian con demasiada frecuencia. Para actualizaciones de alta frecuencia, Context puede causar cuellos de botella en el rendimiento.",
+    "interviewTip": "Para estados de alta frecuencia, librerías como Redux, Zustand o Recoil suelen ser mejores opciones."
   },
   "ca-05": {
-    "prompt": "Analyze the code. How should 'App' be structured to share 'theme'?",
+    "prompt": "Analiza el código. ¿Cómo debería estructurarse 'App' para compartir 'theme'?",
     "code": "const ThemeContext = createContext();\n\nfunction App() {\n  const [theme, setTheme] = useState('light');\n  return (\n    <ThemeContext.Provider value={theme}>\n      <Layout />\n    </ThemeContext.Provider>\n  );\n}",
     "options": [
-      "The code is correct as is.",
-      "The Provider needs a 'state' prop instead of 'value'.",
-      "The ThemeContext.Provider should be outside the App function.",
-      "You must wrap the Provider in another div."
+      "El código es correcto tal cual.",
+      "El Provider necesita una prop 'state' en lugar de 'value'.",
+      "El ThemeContext.Provider debería estar fuera de la función App.",
+      "Debes envolver el Provider en otro div."
     ],
-    "explanation": "The 'value' prop is the standard way to pass data into the Context tree. Any component inside <Layout /> can now access 'theme'.",
-    "interviewTip": "If you also want to allow children to change the theme, pass `{ theme, setTheme }` as the value."
+    "explanation": "La prop 'value' es la forma estándar de pasar datos al árbol de Context. Cualquier componente dentro de <Layout /> puede ahora acceder a 'theme'.",
+    "interviewTip": "Si también quieres permitir que los hijos cambien el tema, pasa `{ theme, setTheme }` como valor."
   },
   "ca-06": {
-    "prompt": "Why is 'useContext' preferred over the older 'Context.Consumer' component?",
+    "prompt": "¿Por qué se prefiere 'useContext' sobre el antiguo componente 'Context.Consumer'?",
     "options": [
-      "It makes the code more performant.",
-      "It avoids 'wrapper hell' and nested render props, leading to flatter and more readable code.",
-      "It allows Context to be used in Class components.",
-      "It automatically memoizes the data."
+      "Hace que el código sea más eficiente.",
+      "Evita el 'wrapper hell' y los render props anidados, logrando un código más plano y legible.",
+      "Permite que Context se use en componentes de clase (Class components).",
+      "Memoriza automáticamente los datos."
     ],
-    "explanation": "Before hooks, you had to use a render prop pattern which made the JSX tree very deep and hard to follow.",
-    "interviewTip": "Flattening the component tree is one of the primary aesthetic wins of the Hooks API."
+    "explanation": "Antes de los hooks, tenías que usar un patrón de render prop que hacía que el árbol JSX fuera muy profundo y difícil de seguir.",
+    "interviewTip": "Aplanar el árbol de componentes es una de las principales victorias estéticas de la API de Hooks."
   },
   "ca-07": {
-    "prompt": "Can you use multiple Providers in a single application?",
+    "prompt": "¿Se pueden usar múltiples Providers en una sola aplicación?",
     "options": [
-      "No, React only allows one Context per app.",
-      "Yes, and you can nest them to provide different types of data (e.g., Auth, Theme, Settings).",
-      "Yes, but only if they are for the same Context object.",
-      "Only if you use the 'useMultiContext' hook."
+      "No, React solo permite un Context por aplicación.",
+      "Sí, y puedes anidarlos para proveer diferentes tipos de datos (ej. Auth, Theme, Settings).",
+      "Sí, pero solo si son para el mismo objeto Context.",
+      "Solo si usas el hook 'useMultiContext'."
     ],
-    "explanation": "Nesting providers is standard practice. A component will always consume the value from the *closest* provider of that specific context above it in the tree.",
-    "interviewTip": "This is often referred to as 'Context Composition'."
+    "explanation": "Anidar providers es una práctica estándar. Un componente siempre consumirá el valor del provider *más cercano* de ese contexto específico que esté por encima de él en el árbol.",
+    "interviewTip": "A esto se le suele llamar 'Context Composition'."
   },
   "ca-08": {
-    "prompt": "What is the primary risk of putting too much data into a single Context object?",
+    "prompt": "¿Cuál es el riesgo principal de poner demasiados datos en un solo objeto Context?",
     "options": [
-      "The data will become corrupted.",
-      "Unnecessary re-renders: if any part of the context object changes, all components consuming that context will re-render.",
-      "The file size of the app will double.",
-      "It prevents the use of custom hooks."
+      "Los datos se corromperán.",
+      "Re-renders innecesarios: si cualquier parte del objeto context cambia, todos los componentes que consumen ese contexto se volverán a renderizar.",
+      "El tamaño de archivo de la app se duplicará.",
+      "Evita el uso de hooks personalizados."
     ],
-    "explanation": "Because Context updates trigger a re-render for all consumers, large 'monolithic' contexts can lead to performance lag.",
-    "interviewTip": "The fix is 'Context Splitting'—create separate contexts for logically different data (e.g., UserContext and ThemeContext)."
+    "explanation": "Debido a que las actualizaciones de Context disparan un re-render para todos los consumidores, los contextos 'monolíticos' grandes pueden provocar retrasos en el rendimiento.",
+    "interviewTip": "La solución es el 'Context Splitting': crear contextos separados para datos lógicamente diferentes (ej. UserContext y ThemeContext)."
   },
   "ca-09": {
-    "prompt": "How do you provide a function through Context to allow children to update the state?",
-    "explanation": "Context values can be any JS type. Passing an object containing both the state and its setter is the most common pattern for global state management.",
-    "interviewTip": "Always ensure the object passed to 'value' is memoized if it's defined inside a component, otherwise it creates a new reference on every render.",
+    "prompt": "¿Cómo se proporciona una función a través de Context para permitir que los hijos actualicen el estado?",
+    "explanation": "Los valores de Context pueden ser cualquier tipo de JS. Pasar un objeto que contenga tanto el estado como su setter es el patrón más común para la gestión del estado global.",
+    "interviewTip": "Asegúrate siempre de que el objeto pasado a 'value' esté memorizado si se define dentro de un componente, de lo contrario, creará una nueva referencia en cada render.",
     "options": [
-      "You can't pass functions through Context.",
-      "Include the function in the object passed to the 'value' prop.",
-      "Use a separate 'FunctionProvider'.",
-      "Call the function directly in the Provider tags."
+      "No se pueden pasar funciones a través de Context.",
+      "Incluir la función en el objeto pasado a la prop 'value'.",
+      "Usar un 'FunctionProvider' separado.",
+      "Llamar a la función directamente en las etiquetas del Provider."
     ]
   },
   "ca-10": {
-    "prompt": "Identify the error in this Consumer logic:",
-    "explanation": "The context object itself is just a descriptor. You must use the 'useContext' hook to 'pull' the value out of that context.",
-    "interviewTip": "Think of the Context object as a 'Key' and 'useContext' as the 'Lock' that opens it.",
+    "prompt": "Identifica el error en esta lógica de Consumer:",
+    "explanation": "El objeto context en sí mismo es solo un descriptor. Debes usar el hook 'useContext' para 'extraer' el valor de ese contexto.",
+    "interviewTip": "Piensa en el objeto Context como una 'Llave' y en 'useContext' como la 'Cerradura' que la abre.",
     "options": [
-      "theme must be a string.",
-      "You must call useContext(ThemeContext) to get the actual value.",
-      "The style prop is missing a semicolon.",
-      "Display must be capitalized."
+      "theme debe ser un string.",
+      "Debes llamar a useContext(ThemeContext) para obtener el valor real.",
+      "A la prop style le falta un punto y coma.",
+      "Display debe estar en mayúsculas."
     ]
   },
   "ca-11": {
-    "prompt": "Which of these are valid ways to avoid performance issues with Context?",
-    "explanation": "Splitting and memoization are the two most effective strategies. Moving a provider higher actually increases the number of potential components affected by a render.",
-    "interviewTip": "If 'React.memo' doesn't help, the bottleneck is likely the context value itself changing too often.",
+    "prompt": "¿Cuáles de estas son formas válidas de evitar problemas de rendimiento con Context?",
+    "explanation": "La división (splitting) y la memorización son las dos estrategias más efectivas. Mover un provider a una posición más alta en realidad aumenta el número de componentes potenciales afectados por un render.",
+    "interviewTip": "Si 'React.memo' no ayuda, el cuello de botella es probablemente el valor del contexto mismo cambiando con demasiada frecuencia.",
     "options": [
-      "Splitting a large context into multiple smaller contexts.",
-      "Using 'React.memo' on the consumer components.",
-      "Moving the Provider higher up in the tree.",
-      "Memoizing the 'value' prop of the Provider using 'useMemo'."
+      "Dividir un contexto grande en múltiples contextos más pequeños.",
+      "Usar 'React.memo' en los componentes consumidores.",
+      "Mover el Provider a una posición más alta en el árbol.",
+      "Memorizar la prop 'value' del Provider usando 'useMemo'."
     ]
   },
   "ca-12": {
-    "prompt": "What happens if a component calls 'useContext' but its parent Provider is later unmounted?",
-    "explanation": "When the Provider is gone, the hook searches up the tree and, finding nothing, falls back to the original default value.",
-    "interviewTip": "This ensures the component stays 'safe' even during dynamic layout changes.",
+    "prompt": "¿Qué sucede si un componente llama a 'useContext' pero su Provider padre es desmontado posteriormente?",
+    "explanation": "Cuando el Provider desaparece, el hook busca hacia arriba en el árbol y, al no encontrar nada, recurre al valor por defecto original definido en 'createContext'.",
+    "interviewTip": "Esto asegura que el componente se mantenga 'seguro' incluso durante cambios dinámicos en el diseño.",
     "options": [
-      "The component will crash.",
-      "The component will revert to the default value defined in 'createContext'.",
-      "The component will maintain the last known value forever.",
-      "The component will automatically unmount as well."
+      "El componente colapsará.",
+      "El componente volverá al valor por defecto definido en 'createContext'.",
+      "El componente mantendrá el último valor conocido para siempre.",
+      "El componente se desmontará automáticamente también."
     ]
   }
 }

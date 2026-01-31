@@ -1,134 +1,134 @@
 {
   "dp-01": {
-    "prompt": "What is the primary goal of the 'Compound Components' pattern?",
-    "explanation": "Compound components (like <Select> and <Option>) share state behind the scenes, giving the consumer more control over the rendered structure while keeping logic encapsulated.",
-    "interviewTip": "Think of the HTML <select> and <option> tags. They work together as a unit; that is a native compound component.",
+    "prompt": "¿Cuál es el objetivo principal del patrón 'Compound Components'?",
+    "explanation": "Los componentes compuestos (como <Select> y <Option>) comparten estado interno, otorgando al consumidor más control sobre la estructura renderizada mientras mantienen la lógica encapsulada.",
+    "interviewTip": "Piensa en las etiquetas HTML <select> y <option>. Trabajan juntas como una unidad; eso es un componente compuesto nativo.",
     "options": [
-      "To make components render 50% faster.",
-      "To allow a group of components to work together and share implicit state without prop drilling.",
-      "To combine React with other frameworks like Vue.",
-      "To hide all logic inside a single monolithic component."
+      "Hacer que los componentes rendericen un 50% más rápido.",
+      "Permitir que un grupo de componentes trabaje en conjunto y comparta estado implícito sin prop drilling.",
+      "Combinar React con otros frameworks como Vue.",
+      "Ocultar toda la lógica dentro de un único componente monolítico."
     ]
   },
   "dp-02": {
-    "prompt": "In the Compound Component pattern, how is the internal state usually shared among children?",
-    "explanation": "While cloneElement was used in the past, React Context is now the preferred way to share state within a compound component group.",
-    "interviewTip": "Mention that Context is safer and more flexible than cloneElement because it works even if children are wrapped in other divs.",
+    "prompt": "En el patrón de Componente Compuesto, ¿cómo se comparte habitualmente el estado interno entre los hijos?",
+    "explanation": "Aunque `cloneElement` se usaba en el pasado, React Context es ahora la forma preferida de compartir estado dentro de un grupo de componentes compuestos.",
+    "interviewTip": "Menciona que Context es más seguro y flexible que `cloneElement` porque funciona incluso si los hijos están envueltos en otros divs.",
     "options": [
-      "By passing props manually to every child.",
-      "By using React Context to provide state to all nested children.",
-      "By using global window variables.",
-      "By cloning each child and injecting props using React.cloneElement."
+      "Pasando props manualmente a cada hijo.",
+      "Usando React Context para proveer estado a todos los hijos anidados.",
+      "Usando variables globales del objeto window.",
+      "Clonando cada hijo e inyectando props usando React.cloneElement."
     ]
   },
   "dp-03": {
-    "prompt": "What is a 'Higher-Order Component' (HOC)?",
-    "explanation": "HOCs are a pattern for reusing component logic. They act as wrappers that 'enhance' the original component with new props or behaviors.",
-    "interviewTip": "While HOCs are less common since Hooks were introduced, they are still used for Cross-Cutting Concerns like Authentication or Logging.",
+    "prompt": "¿Qué es un 'Higher-Order Component' (HOC)?",
+    "explanation": "Los HOCs son un patrón para reutilizar la lógica de los componentes. Actúan como envoltorios que 'mejoran' el componente original con nuevas props o comportamientos.",
+    "interviewTip": "Aunque los HOCs son menos comunes desde que se introdujeron los Hooks, todavía se usan para 'Cross-Cutting Concerns' como Autenticación o Registro de logs.",
     "options": [
-      "A component that is rendered at the top of the page.",
-      "A function that takes a component and returns a new component with added functionality.",
-      "A hook that replaces the need for state.",
-      "A component with more than 1000 lines of code."
+      "Un componente que se renderiza en la parte superior de la página.",
+      "Una función que toma un componente y devuelve un nuevo componente con funcionalidad añadida.",
+      "Un hook que reemplaza la necesidad de estado.",
+      "Un componente con más de 1000 líneas de código."
     ]
   },
   "dp-04": {
-    "prompt": "Analyze the 'Render Prop' pattern. What is being passed to the Child?",
-    "explanation": "A render prop is a prop that is a function which a component uses to know what to render. It 'shares' its internal state with the function.",
-    "interviewTip": "Render props are highly flexible but can sometimes lead to 'wrapper hell' if over-nested.",
+    "prompt": "Analiza el patrón 'Render Prop'. ¿Qué se le está pasando al Hijo?",
+    "explanation": "Una render prop es una prop que consiste en una función que un componente utiliza para saber qué renderizar. 'Comparte' su estado interno con dicha función.",
+    "interviewTip": "Las render props son altamente flexibles pero a veces pueden llevar al 'wrapper hell' si se anidan en exceso.",
     "options": [
-      "A static object.",
-      "A function that tells the component what to render based on internal state.",
-      "A direct reference to the DOM.",
-      "A boolean flag."
+      "Un objeto estático.",
+      "Una función que le dice al componente qué renderizar basándose en el estado interno.",
+      "Una referencia directa al DOM.",
+      "Un flag booleano."
     ]
   },
   "dp-05": {
-    "prompt": "Which of the following are characteristics of a 'Controlled Component'?",
-    "explanation": "Controlled components allow React to be the 'Single Source of Truth'. Uncontrolled components rely on the DOM (and Refs) to hold the data.",
-    "interviewTip": "Use controlled components for almost everything unless you have a specific performance reason to use a Ref.",
+    "prompt": "¿Cuáles de las siguientes son características de un 'Controlled Component'?",
+    "explanation": "Los componentes controlados permiten que React sea la 'Única Fuente de Verdad' (Single Source of Truth). Los componentes no controlados dependen del DOM (y Refs) para mantener los datos.",
+    "interviewTip": "Usa componentes controlados para casi todo, a menos que tengas una razón de rendimiento específica para usar una Ref.",
     "options": [
-      "The component's data is stored in the React state.",
-      "The component manages its own internal state via the DOM.",
-      "Changes are handled by an onChange callback that updates the state.",
-      "The value prop is set by the parent."
+      "Los datos del componente se almacenan en el estado de React.",
+      "El componente gestiona su propio estado interno a través del DOM.",
+      "Los cambios se gestionan mediante un callback onChange que actualiza el estado.",
+      "La prop value es establecida por el padre."
     ]
   },
   "dp-06": {
-    "prompt": "How do you implement the 'Controlled Props' pattern to allow a user to 'take over' a component's internal state?",
-    "explanation": "This pattern allows a component to manage its own state by default, but gives the parent the option to 'control' it if a prop is provided.",
-    "interviewTip": "This is a common pattern in advanced UI libraries like Downshift or Material UI.",
+    "prompt": "¿Cómo se implementa el patrón 'Controlled Props' para permitir que un usuario 'tome el control' del estado interno de un componente?",
+    "explanation": "Este patrón permite que un componente gestione su propio estado por defecto, pero da al padre la opción de 'controlarlo' si se proporciona una prop específica.",
+    "interviewTip": "Este es un patrón común en librerías de UI avanzadas como Downshift o Material UI.",
     "options": [
-      "The code above shows the logic for a component that can be both controlled or uncontrolled.",
-      "By always using a global Redux store.",
-      "By deleting the internal state entirely.",
-      "By forcing the user to pass all props."
+      "La lógica permite que un componente sea tanto controlado como no controlado.",
+      "Usando siempre una store global de Redux.",
+      "Eliminando el estado interno por completo.",
+      "Forzando al usuario a pasar todas las props."
     ]
   },
   "dp-07": {
-    "prompt": "What is the 'Container/Presentational' pattern?",
-    "explanation": "Presentational components are 'dumb' and only care about how things look. Containers are 'smart' and care about how things work (API calls, state logic).",
-    "interviewTip": "Hooks have largely replaced this pattern because you can now put 'smart' logic in a custom hook instead of a wrapper component.",
+    "prompt": "¿Qué es el patrón 'Container/Presentational'?",
+    "explanation": "Los componentes presentacionales son 'tontos' y solo se preocupan por la apariencia. Los contenedores son 'listos' y se encargan del funcionamiento (llamadas API, lógica de estado).",
+    "interviewTip": "Los Hooks han reemplazado en gran medida este patrón porque ahora puedes poner la lógica 'lista' en un hook personalizado en lugar de en un componente envoltorio.",
     "options": [
-      "A pattern that separates data fetching (Container) from UI rendering (Presentational).",
-      "A way to put all CSS in a container file.",
-      "A method to group components by their size.",
-      "A way to render React components inside a Docker container."
+      "Un patrón que separa la obtención de datos (Container) del renderizado de la UI (Presentational).",
+      "Una forma de poner todo el CSS en un archivo contenedor.",
+      "Un método para agrupar componentes por su tamaño.",
+      "Una forma de renderizar componentes de React dentro de un contenedor Docker."
     ]
   },
   "dp-08": {
-    "prompt": "Identify the issue when using HOCs:",
-    "explanation": "Heavily nested HOCs make debugging difficult because it's unclear which HOC is passing which prop. Hooks solve this by providing a flat structure.",
-    "interviewTip": "This is one of the main reasons the React community shifted from HOCs to Hooks.",
+    "prompt": "Identifica el problema al usar HOCs:",
+    "explanation": "Los HOCs muy anidados dificultan la depuración porque no está claro qué HOC está pasando cada prop. Los Hooks solucionan esto proporcionando una estructura plana.",
+    "interviewTip": "Esta es una de las razones principales por las que la comunidad de React pasó de los HOCs a los Hooks.",
     "options": [
-      "It makes the component render faster.",
-      "It leads to 'Wrapper Hell', making it difficult to track where props are coming from.",
-      "React doesn't allow more than two HOCs.",
-      "The component will lose its state."
+      "Hace que el componente renderice más rápido.",
+      "Lleva al 'Wrapper Hell', dificultando el rastreo del origen de las props.",
+      "React no permite más de dos HOCs.",
+      "El componente perderá su estado."
     ]
   },
   "dp-09": {
-    "prompt": "What does the 'Slot' pattern achieve in React?",
-    "explanation": "Slots are a form of composition that allows a parent to define specific UI 'holes' that a child component fills.",
-    "interviewTip": "Slots are often easier to manage than complex boolean flags within a component.",
+    "prompt": "¿Qué logra el patrón 'Slot' en React?",
+    "explanation": "Los slots son una forma de composición que permite a un padre definir 'huecos' específicos en la UI que un componente hijo rellena.",
+    "interviewTip": "Los slots suelen ser más fáciles de gestionar que flags booleanos complejos dentro de un componente.",
     "options": [
-      "It allows you to pass JSX elements as props to be placed in specific locations.",
-      "It is used to save data in a slot on the server.",
-      "It generates random IDs for components.",
-      "It is a way to use 3D models in React."
+      "Permite pasar elementos JSX como props para ser colocados en ubicaciones específicas.",
+      "Se usa para guardar datos en un slot en el servidor.",
+      "Genera IDs aleatorios para los componentes.",
+      "Es una forma de usar modelos 3D en React."
     ]
   },
   "dp-10": {
-    "prompt": "How do you avoid 'prop drilling' in a deeply nested component tree using patterns?",
-    "explanation": "Compound components use Context to broadcast state to all descendants, effectively ending the need for drilling.",
-    "interviewTip": "Mention that this keeps the component API 'clean' as users don't see the state being passed.",
+    "prompt": "¿Cómo se evita el 'prop drilling' en un árbol de componentes muy profundo usando patrones?",
+    "explanation": "Los componentes compuestos utilizan Context para transmitir el estado a todos los descendientes, eliminando eficazmente la necesidad de 'drilling'.",
+    "interviewTip": "Menciona que esto mantiene la API del componente 'limpia', ya que los usuarios no ven cómo se pasa el estado.",
     "options": [
-      "By using the Render Prop pattern at the top level.",
-      "By using the Compound Components pattern with React Context.",
-      "By copying the data to the clipboard.",
-      "By using a for-loop to inject props."
+      "Usando el patrón Render Prop en el nivel superior.",
+      "Usando el patrón Compound Components con React Context.",
+      "Copiando los datos al portapapeles.",
+      "Usando un bucle for para inyectar props."
     ]
   },
   "dp-11": {
-    "prompt": "Which patterns are considered 'Obsolete' or 'Legacy' due to the introduction of Hooks?",
-    "explanation": "Mixins are completely obsolete. HOCs and Render Props are still valid but are much less common as Hooks solve the same problems with less nesting.",
-    "interviewTip": "Compound Components are still very much alive and well because they solve a different problem (UI structure/API design).",
+    "prompt": "¿Qué patrones se consideran 'Obsoletos' o 'Legacy' debido a la introducción de los Hooks?",
+    "explanation": "Los Mixins están completamente obsoletos. Los HOCs y Render Props siguen siendo válidos pero son mucho menos comunes, ya que los Hooks resuelven los mismos problemas con menos anidamiento.",
+    "interviewTip": "Los Compound Components siguen muy vigentes porque resuelven un problema diferente (estructura de UI / diseño de API).",
     "options": [
       "Mixins.",
-      "Higher-Order Components (partially).",
+      "Higher-Order Components (parcialmente).",
       "Compound Components.",
-      "Render Props (partially)."
+      "Render Props (parcialmente)."
     ]
   },
   "dp-12": {
-    "prompt": "What is the 'Prop Collection' pattern?",
-    "explanation": "This pattern simplifies the consumer's work by bundling accessibility, event handlers, and attributes into a single spreadable object.",
-    "interviewTip": "This is widely used in 'Headless UI' libraries like Radix UI or Reach UI.",
+    "prompt": "¿Qué es el patrón 'Prop Collection'?",
+    "explanation": "Este patrón simplifica el trabajo del consumidor al agrupar accesibilidad, manejadores de eventos y atributos en un único objeto que se puede propagar (spread).",
+    "interviewTip": "Esto se usa ampliamente en librerías de 'Headless UI' como Radix UI o Reach UI.",
     "options": [
-      "A way to delete unused props.",
-      "A pattern where a hook returns a function that provides all necessary props for a specific element.",
-      "A collection of all CSS classes in the app.",
-      "A way to store props in a database."
+      "Una forma de eliminar props no utilizadas.",
+      "Un patrón donde un hook devuelve un objeto con todas las props necesarias para un elemento específico.",
+      "Una colección de todas las clases CSS en la app.",
+      "Una forma de almacenar props en una base de datos."
     ]
   }
 }

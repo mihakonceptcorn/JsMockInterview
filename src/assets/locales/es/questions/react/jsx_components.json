@@ -1,30 +1,30 @@
 {
   "jc-01": {
-    "prompt": "What happens if you define a React component with a lowercase first letter (e.g., function myHeader())?",
-    "explanation": "React uses capitalization to distinguish between native HTML tags (strings) and custom components (functions/classes).",
-    "interviewTip": "Always follow PascalCase for component names (e.g., MyComponent).",
+    "prompt": "¿Qué sucede si defines un componente de React con la primera letra en minúscula (ej., function myHeader())?",
+    "explanation": "React utiliza la capitalización para distinguir entre etiquetas HTML nativas (strings) y componentes personalizados (funciones/clases).",
+    "interviewTip": "Sigue siempre la convención PascalCase para los nombres de los componentes (ej., MyComponent).",
     "options": [
-      "React will treat it as a standard HTML tag and fail to render the component logic.",
-      "React will automatically capitalize it during compilation.",
-      "The app will crash with a 'LowercaseError'.",
-      "It will work perfectly as long as the file name is capitalized."
+      "React lo tratará como una etiqueta HTML estándar y no ejecutará la lógica del componente.",
+      "React lo capitalizará automáticamente durante la compilación.",
+      "La aplicación colapsará con un 'LowercaseError'.",
+      "Funcionará perfectamente siempre que el nombre del archivo esté capitalizado."
     ]
   },
   "jc-02": {
-    "prompt": "What is the result of the following component code?",
-    "explanation": "JSX must have exactly one root element. You cannot return multiple adjacent tags without a wrapper.",
-    "interviewTip": "You can fix this using a <div> or a Fragment (<>...</>).",
+    "prompt": "¿Cuál es el resultado del siguiente código de componente?",
+    "explanation": "JSX debe tener exactamente un elemento raíz. No puedes devolver múltiples etiquetas adyacentes sin un envoltorio.",
+    "interviewTip": "Puedes solucionar esto usando un <div> o un Fragment (<>...</>).",
     "options": [
-      "It renders an h1 followed by a p tag.",
-      "It only renders the h1 tag.",
-      "A syntax error: 'Adjacent JSX elements must be wrapped in an enclosing tag'.",
-      "The p tag is nested inside the h1 tag."
+      "Renderiza un h1 seguido de una etiqueta p.",
+      "Solo renderiza la etiqueta h1.",
+      "Un error de sintaxis: 'Adjacent JSX elements must be wrapped in an enclosing tag'.",
+      "La etiqueta p se anida dentro de la etiqueta h1."
     ]
   },
   "jc-03": {
-    "prompt": "How do you pass a JavaScript variable as an attribute in JSX?",
-    "explanation": "To pass a variable as a prop or attribute, you must use curly braces without quotes.",
-    "interviewTip": "If you put quotes around the braces, React will treat the whole thing as a literal string.",
+    "prompt": "¿Cómo se pasa una variable de JavaScript como atributo en JSX?",
+    "explanation": "Para pasar una variable como prop o atributo, debes usar llaves sin comillas.",
+    "interviewTip": "Si pones comillas alrededor de las llaves, React lo tratará todo como un string literal.",
     "options": [
       "<a href='{myUrl}'>Link</a>",
       "<a href={myUrl}>Link</a>",
@@ -33,31 +33,31 @@
     ]
   },
   "jc-04": {
-    "prompt": "What will be rendered by the following code snippet?",
-    "explanation": "React does not render booleans, null, or undefined. Since isAdmin is false, the && operator stops, and nothing is displayed.",
-    "interviewTip": "Be careful with 0; unlike false, React *will* render the number 0.",
+    "prompt": "¿Qué renderizará el siguiente fragmento de código?",
+    "explanation": "React no renderiza booleanos, null ni undefined. Como isAdmin es false, el operador && se detiene y no se muestra nada.",
+    "interviewTip": "Ten cuidado con el 0; a diferencia de false, React *sí* renderizará el número 0.",
     "options": [
       "<div>false</div>",
-      "<div></div> (nothing inside)",
+      "<div></div> (nada dentro)",
       "<div><button>Delete</button></div>",
-      "An error"
+      "Un error"
     ]
   },
   "jc-05": {
-    "prompt": "What is the purpose of using React Fragments (<> ... </>)?",
-    "explanation": "Fragments allow you to satisfy the 'single root' rule without bloating the HTML with unnecessary <div> tags.",
-    "interviewTip": "Fragments are especially useful when working with CSS Flexbox or Grid where extra parent divs can break the layout.",
+    "prompt": "¿Cuál es el propósito de usar React Fragments (<> ... </>)?",
+    "explanation": "Los Fragments permiten cumplir con la regla del 'elemento raíz único' sin llenar el HTML de etiquetas <div> innecesarias.",
+    "interviewTip": "Los Fragments son especialmente útiles al trabajar con CSS Flexbox o Grid, donde los divs padres extra pueden romper el diseño.",
     "options": [
-      "To speed up the execution of JavaScript logic.",
-      "To group multiple elements without adding an extra node to the DOM tree.",
-      "To automatically generate CSS classes for children.",
-      "To protect components from being re-rendered."
+      "Acelerar la ejecución de la lógica de JavaScript.",
+      "Agrupar múltiples elementos sin añadir un nodo extra al árbol del DOM.",
+      "Generar automáticamente clases CSS para los hijos.",
+      "Proteger a los componentes de ser re-renderizados."
     ]
   },
   "jc-06": {
-    "prompt": "Which of these are valid ways to apply inline styles in JSX?",
-    "explanation": "Inline styles must be objects. You can use camelCase (fontSize) or quoted kebab-case ('background-color').",
-    "interviewTip": "The double curly braces {{ }} represent a JS object inside a JSX expression.",
+    "prompt": "¿Cuáles de estas son formas válidas de aplicar estilos inline en JSX?",
+    "explanation": "Los estilos inline deben ser objetos. Puedes usar camelCase (fontSize) o kebab-case entre comillas ('background-color').",
+    "interviewTip": "Las llaves dobles {{ }} representan un objeto JS dentro de una expresión JSX.",
     "options": [
       "style={{ color: 'red', fontSize: '20px' }}",
       "style='color: red;'",
@@ -66,64 +66,49 @@
     ]
   },
   "jc-07": {
-    "prompt": "How do you write a comment inside a JSX template?",
-    "explanation": "JSX comments must be wrapped in curly braces and use the JavaScript multi-line comment syntax.",
-    "interviewTip": "Single line // comments inside braces can sometimes accidentally comment out the closing brace.",
-    "options": [
-      "",
-      "// Comment",
-      "{/* Comment */}",
-      "/* Comment */"
-    ]
+    "prompt": "¿Cómo se escribe un comentario dentro de una plantilla JSX?",
+    "explanation": "Los comentarios en JSX deben estar envueltos en llaves y usar la sintaxis de comentarios multilínea de JavaScript.",
+    "interviewTip": "Los comentarios de una sola línea // dentro de llaves a veces pueden comentar accidentalmente la llave de cierre.",
+    "options": ["", "// Comment", "{/* Comment */}", "/* Comment */"]
   },
   "jc-08": {
-    "prompt": "What is the output of this component?",
-    "explanation": "React can render arrays directly. It simply concatenates the elements in the UI.",
-    "interviewTip": "Usually, you'll use .map() to wrap each item in a tag like <li> to avoid this joined-text behavior.",
+    "prompt": "¿Cuál es el resultado de este componente?",
+    "explanation": "React puede renderizar arrays directamente. Simplemente concatena los elementos en la UI.",
+    "interviewTip": "Normalmente, usarás .map() para envolver cada ítem en una etiqueta como <li> para evitar este comportamiento de texto unido.",
     "options": [
-      "A list with 3 bullet points.",
-      "An error: 'Arrays are not valid as children'.",
-      "ABC (the items joined as a string).",
-      "A string representation: ['A', 'B', 'C']."
+      "Una lista con 3 puntos (bullets).",
+      "Un error: 'Arrays are not valid as children'.",
+      "ABC (los ítems unidos como un string).",
+      "Una representación de string: ['A', 'B', 'C']."
     ]
   },
   "jc-09": {
-    "prompt": "In JSX, which attribute is used instead of the standard HTML 'for' for labels?",
-    "explanation": "'for' is a reserved keyword in JavaScript (used in loops), so JSX uses 'htmlFor' to avoid conflicts.",
-    "interviewTip": "This is the same reason why 'class' becomes 'className'.",
-    "options": [
-      "labelFor",
-      "htmlFor",
-      "forID",
-      "className"
-    ]
+    "prompt": "En JSX, ¿qué atributo se usa en lugar del estándar HTML 'for' para las etiquetas label?",
+    "explanation": "'for' es una palabra reservada en JavaScript (usada en bucles), por lo que JSX usa 'htmlFor' para evitar conflictos.",
+    "interviewTip": "Esta es la misma razón por la que 'class' se convierte en 'className'.",
+    "options": ["labelFor", "htmlFor", "forID", "className"]
   },
   "jc-10": {
-    "prompt": "What does the following return?",
-    "explanation": "Expressions inside curly braces are evaluated and the result is rendered.",
-    "interviewTip": "You can perform any JS calculation or call functions inside these braces.",
-    "options": [
-      "An empty div.",
-      "\"10 + 20\"",
-      "30",
-      "undefined"
-    ]
+    "prompt": "¿Qué devuelve lo siguiente?",
+    "explanation": "Las expresiones dentro de las llaves se evalúan y el resultado se renderiza.",
+    "interviewTip": "Puedes realizar cualquier cálculo de JS o llamar a funciones dentro de estas llaves.",
+    "options": ["Un div vacío.", "\"10 + 20\"", "30", "undefined"]
   },
   "jc-11": {
-    "prompt": "Why must you close all tags in JSX, even self-closing ones like <img> or <br>?",
-    "explanation": "JSX is not HTML; it is a syntax extension that follows XML rules where every tag must be closed (e.g., <br />).",
-    "interviewTip": "This is a common 'gotcha' for developers moving from plain HTML to React.",
+    "prompt": "¿Por qué se deben cerrar todas las etiquetas en JSX, incluso las que se cierran solas como <img> o <br>?",
+    "explanation": "JSX no es HTML; es una extensión de sintaxis que sigue las reglas de XML donde cada etiqueta debe cerrarse (ej., <br />).",
+    "interviewTip": "Este es un error común para los desarrolladores que pasan de HTML puro a React.",
     "options": [
-      "Because JSX is based on XML/XHTML rules which require strict closing.",
-      "To make the code look more consistent.",
-      "It is a requirement of the CSS-in-JS engine.",
-      "Browsers will crash if tags aren't closed in JSX."
+      "Porque JSX se basa en reglas XML/XHTML que requieren un cierre estricto.",
+      "Para que el código se vea más consistente.",
+      "Es un requisito del motor CSS-in-JS.",
+      "Los navegadores colapsarán si las etiquetas no se cierran en JSX."
     ]
   },
   "jc-12": {
-    "prompt": "Which of the following are valid ways to render 'nothing' from a component?",
-    "explanation": "Returning null, false, or undefined tells React not to render any UI. An empty div renders an actual DOM node.",
-    "interviewTip": "return null is the industry standard for 'conditionally hiding' a component.",
+    "prompt": "¿Cuáles de las siguientes son formas válidas de renderizar 'nada' desde un componente?",
+    "explanation": "Retornar null, false o undefined le indica a React que no renderice ninguna UI. Un div vacío renderiza un nodo real en el DOM.",
+    "interviewTip": "return null es el estándar de la industria para 'ocultar condicionalmente' un componente.",
     "options": [
       "return null;",
       "return false;",
@@ -132,20 +117,20 @@
     ]
   },
   "jc-13": {
-    "prompt": "What is the result of the console log in this component?",
-    "explanation": "JSX tags are transformed into objects that describe the UI. This is what 'console.log' will show.",
-    "interviewTip": "These objects are the building blocks of the Virtual DOM.",
+    "prompt": "¿Cuál es el resultado del console.log en este componente?",
+    "explanation": "Las etiquetas JSX se transforman en objetos que describen la UI. Esto es lo que mostrará 'console.log'.",
+    "interviewTip": "Estos objetos son los bloques de construcción del Virtual DOM.",
     "options": [
-      "The string \"<h1>Hello</h1>\".",
-      "A JavaScript object (React Element).",
-      "A real DOM node.",
+      "El string \"<h1>Hello</h1>\".",
+      "Un objeto JavaScript (React Element).",
+      "Un nodo real del DOM.",
       "undefined"
     ]
   },
   "jc-14": {
-    "prompt": "How do you render a string that contains HTML without escaping it?",
-    "explanation": "React escapes all strings by default for security. 'dangerouslySetInnerHTML' is the intentional way to render raw HTML.",
-    "interviewTip": "The name is a reminder that this can expose your app to XSS attacks if the string comes from an untrusted source.",
+    "prompt": "¿Cómo se renderiza un string que contiene HTML sin que sea escapado?",
+    "explanation": "React escapa todos los strings por defecto por seguridad. 'dangerouslySetInnerHTML' es la forma intencionada de renderizar HTML puro.",
+    "interviewTip": "El nombre es un recordatorio de que esto puede exponer tu app a ataques XSS si el string proviene de una fuente no confiable.",
     "options": [
       "<div>{htmlStr}</div>",
       "<div>{{htmlStr}}</div>",
@@ -154,47 +139,42 @@
     ]
   },
   "jc-15": {
-    "prompt": "What is wrong with the following component?",
-    "explanation": "JavaScript stops executing a function after the 'return' keyword. The code below it is dead code.",
-    "interviewTip": "Always wrap multi-line UI in parentheses to ensure the whole block is returned.",
+    "prompt": "¿Qué está mal en el siguiente componente?",
+    "explanation": "JavaScript detiene la ejecución de una función después de la palabra clave 'return'. El código debajo es código muerto.",
+    "interviewTip": "Envuelve siempre la UI multilínea en paréntesis para asegurar que todo el bloque sea retornado.",
     "options": [
-      "Variable 'name' cannot be used inside h1.",
-      "The p tag is unreachable because it comes after the return statement.",
-      "h1 and p must be inside a div.",
-      "The h1 is not closed."
+      "La variable 'name' no puede usarse dentro de h1.",
+      "La etiqueta p es inalcanzable porque viene después de la sentencia return.",
+      "h1 y p deben estar dentro de un div.",
+      "El h1 no está cerrado."
     ]
   },
   "jc-16": {
-    "prompt": "Can you use a JavaScript 'if' statement directly inside a JSX block?",
-    "explanation": "Braces {} only accept expressions. Statements like 'if', 'for', and 'switch' are not allowed inside JSX.",
-    "interviewTip": "This is why ternaries (condition ? a : b) are so popular in React.",
+    "prompt": "¿Puedes usar una sentencia 'if' de JavaScript directamente dentro de un bloque JSX?",
+    "explanation": "Las llaves {} solo aceptan expresiones. Las sentencias como 'if', 'for' y 'switch' no están permitidas dentro de JSX.",
+    "interviewTip": "Esta es la razón por la cual los ternarios (condición ? a : b) son tan populares en React.",
     "options": [
-      "Yes, if it's inside curly braces.",
-      "No, you must use ternary operators or logical && because 'if' is a statement, not an expression.",
-      "Yes, but only in Class components.",
-      "Yes, if you use the 'v-if' attribute."
+      "Sí, si está dentro de llaves.",
+      "No, debes usar operadores ternarios o el lógico && porque 'if' es una sentencia, no una expresión.",
+      "Sí, pero solo en componentes de clase.",
+      "Sí, si usas el atributo 'v-if'."
     ]
   },
   "jc-17": {
-    "prompt": "What does the 'typeof' check return for a Fragment?",
-    "explanation": "React Fragments (and other built-in types like Suspense or Profiler) are internal React Symbols.",
-    "interviewTip": "Fragments are special 'empty' types that the renderer knows how to handle without a DOM node.",
-    "options": [
-      "\"string\"",
-      "\"object\"",
-      "\"symbol\"",
-      "\"function\""
-    ]
+    "prompt": "¿Qué devuelve el chequeo 'typeof' para un Fragment?",
+    "explanation": "Los React Fragments (y otros tipos integrados como Suspense o Profiler) son Symbols internos de React.",
+    "interviewTip": "Los Fragments son tipos 'vacíos' especiales que el renderizador sabe cómo manejar sin necesidad de un nodo en el DOM.",
+    "options": ["\"string\"", "\"object\"", "\"symbol\"", "\"function\""]
   },
   "jc-18": {
-    "prompt": "Which of these is the correct way to pass a boolean prop 'isActive' as true?",
-    "explanation": "Passing a prop name alone defaults to true. {true} is also explicit and correct.",
-    "interviewTip": "Most developers prefer the shorthand <Tab isActive /> for boolean flags.",
+    "prompt": "¿Cuál de estas es la forma correcta de pasar una prop booleana 'isActive' como true?",
+    "explanation": "Pasar solo el nombre de la prop por defecto es true. {true} también es explícito y correcto.",
+    "interviewTip": "La mayoría de los desarrolladores prefieren la abreviatura <Tab isActive /> para flags booleanos.",
     "options": [
       "<Tab isActive='true' />",
       "<Tab isActive={true} />",
       "<Tab isActive />",
-      "Both B and C are correct."
+      "Tanto B como C son correctas."
     ]
   }
 }
