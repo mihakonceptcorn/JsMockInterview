@@ -1,30 +1,30 @@
 {
   "vue-re-01": {
-    "prompt": "What technology serves as the foundation for the Vue 3 reactivity system, allowing it to track changes in objects more effectively?",
-    "explanation": "Vue 3 uses ES6 Proxies to intercept operations on objects. This solved Vue 2 limitations, such as the inability to automatically detect newly added properties or changes in arrays by index.",
-    "interviewTip": "Expect to be asked about the difference: Vue 2 used getters/setters via defineProperty, whereas Vue 3 uses Proxies, which are more performant and flexible.",
+    "prompt": "¿Qué tecnología sirve como fundamento para el sistema de reactividad de Vue 3, permitiéndole rastrear cambios en objetos más efectivamente?",
+    "explanation": "Vue 3 usa Proxies de ES6 para interceptar operaciones en objetos. Esto resolvió limitaciones de Vue 2, como la incapacidad de detectar automáticamente propiedades recién agregadas o cambios en arrays por índice.",
+    "interviewTip": "Espera que te pregunten sobre la diferencia: Vue 2 usaba getters/setters mediante defineProperty, mientras que Vue 3 usa Proxies, que son más eficientes y flexibles.",
     "options": [
       "Object.defineProperty",
       "Virtual DOM Listeners",
       "ES6 Proxies",
-      "Dirty Checking (as seen in Angular JS)"
+      "Dirty Checking (como se ve en Angular JS)"
     ]
   },
   "vue-re-02": {
-    "prompt": "Analyze the code below. Will the change to property 'b' be reactive in Vue 2?",
-    "explanation": "In Vue 2, reactivity is injected during instance initialization. Properties added afterward (like vm.b) do not become reactive unless Vue.set() is used.",
-    "interviewTip": "This is a classic Vue 2 'gotcha.' In Vue 3, this code would work perfectly due to Proxies.",
+    "prompt": "Analiza el código a continuación. ¿Será reactivo el cambio a la propiedad 'b' en Vue 2?",
+    "explanation": "En Vue 2, la reactividad se inyecta durante la inicialización de la instancia. Las propiedades agregadas después (como vm.b) no se vuelven reactivas a menos que se use Vue.set().",
+    "interviewTip": "Este es un 'gotcha' clásico de Vue 2. En Vue 3, este código funcionaría perfectamente debido a los Proxies.",
     "options": [
-      "Yes, Vue automatically adds all new properties to the reactivity system.",
-      "No, the property must be pre-declared in the data object for tracking in Vue 2.",
-      "Yes, but only if you call vm.$forceUpdate() immediately after.",
-      "No, in Vue 2 only arrays are reactive."
+      "Sí, Vue agrega automáticamente todas las nuevas propiedades al sistema de reactividad.",
+      "No, la propiedad debe estar pre-declarada en el objeto data para el rastreo en Vue 2.",
+      "Sí, pero solo si llamas vm.$forceUpdate() inmediatamente después.",
+      "No, en Vue 2 solo los arrays son reactivos."
     ]
   },
   "vue-re-03": {
-    "prompt": "What does the MVVM acronym stand for in the context of Vue.js architecture?",
-    "explanation": "Vue is inspired by the MVVM pattern. The View is the DOM, the Model is the plain JavaScript data, and the ViewModel is the Vue instance that syncs the two.",
-    "interviewTip": "If asked how Vue relates to MVVM, explain that the 'ViewModel' handles the data binding, so you don't have to manipulate the DOM manually.",
+    "prompt": "¿Qué significa el acrónimo MVVM en el contexto de la arquitectura de Vue.js?",
+    "explanation": "Vue está inspirado en el patrón MVVM. La View es el DOM, el Model son los datos JavaScript planos, y el ViewModel es la instancia de Vue que sincroniza los dos.",
+    "interviewTip": "Si te preguntan cómo se relaciona Vue con MVVM, explica que el 'ViewModel' maneja el enlace de datos, así que no tienes que manipular el DOM manualmente.",
     "options": [
       "Model-View-ViewManager",
       "Model-View-ViewModel",
@@ -33,80 +33,80 @@
     ]
   },
   "vue-re-04": {
-    "prompt": "What is the primary role of the 'Effect' (Watcher) in Vue's reactivity system?",
-    "explanation": "When a reactive property is accessed, the current 'effect' is recorded as a subscriber. When the property is mutated, all its subscribers are notified to re-run.",
-    "interviewTip": "This is the 'Observer' pattern. Understanding that 'Dependency Tracking' happens during 'Getter' access is a sign of a senior developer.",
+    "prompt": "¿Cuál es el rol principal del 'Effect' (Watcher) en el sistema de reactividad de Vue?",
+    "explanation": "Cuando se accede a una propiedad reactiva, el 'effect' actual se registra como suscriptor. Cuando la propiedad se muta, todos sus suscriptores son notificados para re-ejecutarse.",
+    "interviewTip": "Este es el patrón 'Observer'. Entender que el 'Dependency Tracking' ocurre durante el acceso 'Getter' es señal de un desarrollador senior.",
     "options": [
-      "To compile templates into render functions.",
-      "To collect dependencies and re-run functions (like rendering) when reactive data changes.",
-      "To encrypt data before it is sent to a server.",
-      "To handle user click events exclusively."
+      "Para compilar templates en render functions.",
+      "Para recolectar dependencias y re-ejecutar funciones (como renderizado) cuando los datos reactivos cambian.",
+      "Para encriptar datos antes de que se envíen a un servidor.",
+      "Para manejar eventos de clic del usuario exclusivamente."
     ]
   },
   "vue-re-05": {
-    "prompt": "Which of the following limitations of Vue 2 reactivity were eliminated in Vue 3?",
-    "explanation": "Proxies allow Vue to track additions/deletions and array indices. Vue 3 also uses 'lazy' observation, only making nested objects reactive when they are actually accessed.",
-    "interviewTip": "Vue 3 is significantly more memory-efficient for large, nested data structures because of this lazy observation.",
+    "prompt": "¿Cuáles de las siguientes limitaciones de la reactividad de Vue 2 fueron eliminadas en Vue 3?",
+    "explanation": "Los Proxies permiten a Vue rastrear adiciones/eliminaciones e índices de arrays. Vue 3 también usa observación 'lazy', haciendo objetos anidados reactivos solo cuando se accede a ellos.",
+    "interviewTip": "Vue 3 es significativamente más eficiente en memoria para estructuras de datos grandes y anidadas debido a esta observación lazy.",
     "options": [
-      "Detecting property addition/deletion.",
-      "Detecting array index modification (arr[0] = value).",
-      "The need for an initial data object.",
-      "Performance overhead of recursive observation for large datasets."
+      "Detectar adición/eliminación de propiedades.",
+      "Detectar modificación de índice de array (arr[0] = value).",
+      "La necesidad de un objeto data inicial.",
+      "Sobrecarga de rendimiento de observación recursiva para conjuntos de datos grandes."
     ]
   },
   "vue-re-06": {
-    "prompt": "Analyze the Vue 3 Composition API code. What will happen to the UI when 'increment' is called?",
-    "explanation": "In Vue 3, variables must be explicitly made reactive using 'ref()' or 'reactive()'. A plain 'let' variable is not tracked by the reactivity system.",
-    "interviewTip": "Remember that 'ref' creates an object with a '.value' property. Accessing 'count.value' is how you mutate the data in JS.",
+    "prompt": "Analiza el código de la Composition API de Vue 3. ¿Qué pasará con la UI cuando se llame 'increment'?",
+    "explanation": "En Vue 3, las variables deben hacerse explícitamente reactivas usando 'ref()' o 'reactive()'. Una variable 'let' simple no es rastreada por el sistema de reactividad.",
+    "interviewTip": "Recuerda que 'ref' crea un objeto con una propiedad '.value'. Acceder 'count.value' es cómo mutas los datos en JS.",
     "options": [
-      "The UI will update correctly because 'count' is inside setup.",
-      "The UI will not update because 'count' is a plain variable, not a 'ref' or 'reactive' object.",
-      "Vue will throw a compilation error.",
-      "The count will increment in memory but 'setup' will re-run automatically."
+      "La UI se actualizará correctamente porque 'count' está dentro de setup.",
+      "La UI no se actualizará porque 'count' es una variable simple, no un objeto 'ref' o 'reactive'.",
+      "Vue lanzará un error de compilación.",
+      "El count se incrementará en memoria pero 'setup' se re-ejecutará automáticamente."
     ]
   },
   "vue-re-07": {
-    "prompt": "What happens when you pass a reactive object to 'console.log' in Vue 3?",
-    "explanation": "Because Vue 3 uses Proxies, the console will show the Proxy wrapper. To see the raw data, you can use the 'toRaw()' utility or log 'JSON.parse(JSON.stringify(obj))'.",
-    "interviewTip": "Mentioning 'toRaw' shows you've worked with debugging complex reactive states in production.",
+    "prompt": "¿Qué sucede cuando pasas un objeto reactivo a 'console.log' en Vue 3?",
+    "explanation": "Como Vue 3 usa Proxies, la consola mostrará el wrapper Proxy. Para ver los datos en bruto, puedes usar la utilidad 'toRaw()' o hacer log de 'JSON.parse(JSON.stringify(obj))'.",
+    "interviewTip": "Mencionar 'toRaw' muestra que has trabajado depurando estados reactivos complejos en producción.",
     "options": [
-      "You see a standard JS object.",
-      "You see a Proxy object containing the target and handlers.",
-      "The browser console crashes.",
-      "The object is automatically converted to a string."
+      "Ves un objeto JS estándar.",
+      "Ves un objeto Proxy que contiene el target y los handlers.",
+      "La consola del navegador se bloquea.",
+      "El objeto se convierte automáticamente a un string."
     ]
   },
   "vue-re-08": {
-    "prompt": "How does Vue's reactivity system avoid infinite loops when an effect updates the same data it depends on?",
-    "explanation": "Vue's internal scheduler checks if the effect being triggered is the same as the one currently running, preventing immediate recursive loops.",
-    "interviewTip": "Understanding the 'Scheduler' demonstrates a deep knowledge of Vue internals beyond just surface-level syntax.",
+    "prompt": "¿Cómo evita el sistema de reactividad de Vue bucles infinitos cuando un efecto actualiza los mismos datos de los que depende?",
+    "explanation": "El scheduler interno de Vue verifica si el efecto que se está activando es el mismo que el que se está ejecutando actualmente, previniendo bucles recursivos inmediatos.",
+    "interviewTip": "Entender el 'Scheduler' demuestra un conocimiento profundo de los internals de Vue más allá de la sintaxis superficial.",
     "options": [
-      "It limits the number of updates to 10 per second.",
-      "It uses a 'scheduler' and tracking flags to prevent an effect from triggering itself recursively.",
-      "It strictly forbids updating data inside watchers.",
-      "It doesn't; it's the developer's responsibility to avoid loops."
+      "Limita el número de actualizaciones a 10 por segundo.",
+      "Usa un 'scheduler' y tracking flags para prevenir que un efecto se active a sí mismo recursivamente.",
+      "Prohíbe estrictamente actualizar datos dentro de watchers.",
+      "No lo hace; es responsabilidad del desarrollador evitar bucles."
     ]
   },
   "vue-re-09": {
-    "prompt": "What is the difference between 'reactive()' and 'readonly()' in Vue 3?",
-    "explanation": "readonly() is useful when you want to pass data to child components but prevent them from modifying it. The original object can still be mutated, but the readonly proxy will throw warnings in development.",
-    "interviewTip": "Mention readonly() when discussing prop immutability patterns or state management best practices.",
+    "prompt": "¿Cuál es la diferencia entre 'reactive()' y 'readonly()' en Vue 3?",
+    "explanation": "readonly() es útil cuando quieres pasar datos a componentes hijos pero prevenir que los modifiquen. El objeto original aún puede ser mutado, pero el proxy readonly lanzará advertencias en desarrollo.",
+    "interviewTip": "Menciona readonly() al discutir patrones de inmutabilidad de props o mejores prácticas de gestión de estado.",
     "options": [
-      "reactive() is for objects, readonly() is for primitives.",
-      "readonly() creates a read-only proxy of an object, preventing any mutations while still tracking access for reactivity.",
-      "readonly() is faster than reactive().",
-      "There is no difference; they are aliases."
+      "reactive() es para objetos, readonly() es para primitivos.",
+      "readonly() crea un proxy de solo lectura de un objeto, previniendo cualquier mutación mientras sigue rastreando el acceso para reactividad.",
+      "readonly() es más rápido que reactive().",
+      "No hay diferencia; son alias."
     ]
   },
   "vue-re-10": {
-    "prompt": "How does Vue 3 handle reactivity for deeply nested objects?",
-    "explanation": "Vue 3 uses lazy reactive conversion. When you access a nested object for the first time, Vue wraps it in a Proxy. This avoids the upfront cost of converting large data structures.",
-    "interviewTip": "This lazy approach is one of the key performance improvements over Vue 2's eager recursive observation.",
+    "prompt": "¿Cómo maneja Vue 3 la reactividad para objetos profundamente anidados?",
+    "explanation": "Vue 3 usa conversión reactiva lazy. Cuando accedes a un objeto anidado por primera vez, Vue lo envuelve en un Proxy. Esto evita el costo inicial de convertir estructuras de datos grandes.",
+    "interviewTip": "Este enfoque lazy es una de las mejoras clave de rendimiento sobre la observación recursiva eager de Vue 2.",
     "options": [
-      "It only tracks the top-level properties.",
-      "It recursively converts all nested objects into Proxies, but does so lazily (on-access) for better performance.",
-      "You must manually call reactive() on each nested object.",
-      "Deep reactivity is not supported in Vue 3."
+      "Solo rastrea las propiedades de nivel superior.",
+      "Convierte recursivamente todos los objetos anidados en Proxies, pero lo hace de forma lazy (al acceder) para mejor rendimiento.",
+      "Debes llamar manualmente reactive() en cada objeto anidado.",
+      "La reactividad profunda no está soportada en Vue 3."
     ]
   }
 }

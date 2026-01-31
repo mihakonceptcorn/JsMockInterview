@@ -1,30 +1,25 @@
 {
   "vr-01": {
-    "prompt": "How do you define a dynamic route segment that captures a specific value, like a user ID?",
-    "explanation": "Colons denote dynamic segments. The value passed in the URL (e.g., /user/123) will be accessible via 'route.params.id'.",
-    "interviewTip": "You can use Regex in paths for more strict matching, like /user/:id(\\\\d+).",
-    "options": [
-      ":id",
-      "{id}",
-      "*id",
-      "?id"
-    ]
+    "prompt": "¿Cómo defines un segmento de ruta dinámico que captura un valor específico, como un ID de usuario?",
+    "explanation": "Los dos puntos denotan segmentos dinámicos. El valor pasado en la URL (por ejemplo, /user/123) será accesible mediante 'route.params.id'.",
+    "interviewTip": "Puedes usar Regex en rutas para coincidencia más estricta, como /user/:id(\\\\d+).",
+    "options": [":id", "{id}", "*id", "?id"]
   },
   "vr-02": {
-    "prompt": "Analyze the code. What is the difference between these two navigation methods?",
-    "explanation": "Replace is used when you don't want the user to be able to go 'back' to the previous screen (e.g., after a successful login).",
-    "interviewTip": "Use 'replace' for redirects or transient states to keep the history stack clean.",
+    "prompt": "Analiza el código. ¿Cuál es la diferencia entre estos dos métodos de navegación?",
+    "explanation": "Replace se usa cuando no quieres que el usuario pueda 'volver' a la pantalla anterior (por ejemplo, después de un login exitoso).",
+    "interviewTip": "Usa 'replace' para redirecciones o estados transitorios para mantener limpia la pila de historial.",
     "options": [
-      "Option A is for external links; Option B is for internal.",
-      "Option A adds a new entry to the history stack; Option B overwrites the current entry.",
-      "Option B is faster than Option A.",
-      "There is no difference."
+      "La Opción A es para enlaces externos; la Opción B es para internos.",
+      "La Opción A agrega una nueva entrada a la pila de historial; la Opción B sobrescribe la entrada actual.",
+      "La Opción B es más rápida que la Opción A.",
+      "No hay diferencia."
     ]
   },
   "vr-03": {
-    "prompt": "Which hook should you use inside a component to perform logic *before* a user leaves the current page?",
-    "explanation": "onBeforeRouteLeave is a specialized router hook. It allows you to prevent navigation (e.g., if the user has unsaved changes in a form).",
-    "interviewTip": "You can return 'false' from this hook to cancel the navigation.",
+    "prompt": "¿Qué hook debes usar dentro de un componente para realizar lógica *antes* de que un usuario abandone la página actual?",
+    "explanation": "onBeforeRouteLeave es un hook especializado del router. Te permite prevenir la navegación (por ejemplo, si el usuario tiene cambios sin guardar en un formulario).",
+    "interviewTip": "Puedes devolver 'false' desde este hook para cancelar la navegación.",
     "options": [
       "onUnmounted",
       "onBeforeRouteLeave",
@@ -33,64 +28,59 @@
     ]
   },
   "vr-04": {
-    "prompt": "What is the primary benefit of 'Lazy Loading' routes in the router configuration?",
-    "explanation": "Dynamic imports () => import(...) create a separate bundle for that route, significantly improving the initial load time of the app.",
-    "interviewTip": "For large enterprise apps, lazy loading every non-critical route is a mandatory performance optimization.",
+    "prompt": "¿Cuál es el beneficio principal de hacer 'Lazy Loading' de rutas en la configuración del router?",
+    "explanation": "Las importaciones dinámicas () => import(...) crean un bundle separado para esa ruta, mejorando significativamente el tiempo de carga inicial de la aplicación.",
+    "interviewTip": "Para aplicaciones empresariales grandes, hacer lazy loading de cada ruta no crítica es una optimización de rendimiento obligatoria.",
     "options": [
-      "It makes the components load more slowly.",
-      "It splits the application into smaller chunks, only downloading the code for a page when the user actually visits it.",
-      "It automatically compresses the images on that page.",
-      "It allows the page to work offline."
+      "Hace que los componentes carguen más lentamente.",
+      "Divide la aplicación en fragmentos más pequeños, solo descargando el código de una página cuando el usuario realmente la visita.",
+      "Comprime automáticamente las imágenes en esa página.",
+      "Permite que la página funcione offline."
     ]
   },
   "vr-05": {
-    "prompt": "How do you access the current route's parameters inside a <script setup> block?",
-    "explanation": "useRoute gives you access to the current state (params, query, path). useRouter gives you the ability to navigate (push, back).",
-    "interviewTip": "Don't mix them up! UseRoute is for 'What is happening now'; UseRouter is for 'What should happen next'.",
-    "options": [
-      "useRouter",
-      "useRoute",
-      "getParams",
-      "routeLink"
-    ]
+    "prompt": "¿Cómo accedes a los parámetros de la ruta actual dentro de un bloque <script setup>?",
+    "explanation": "useRoute te da acceso al estado actual (params, query, path). useRouter te da la capacidad de navegar (push, back).",
+    "interviewTip": "¡No los confundas! UseRoute es para '¿Qué está pasando ahora?'; UseRouter es para '¿Qué debería pasar después?'.",
+    "options": ["useRouter", "useRoute", "getParams", "routeLink"]
   },
   "vr-06": {
-    "prompt": "Which of these are valid Global Navigation Guards?",
-    "explanation": "Navigation guards are used to protect routes (e.g., checking for auth tokens).",
-    "interviewTip": "Mention 'beforeEach' as the primary place for implementing authentication checks.",
+    "prompt": "¿Cuáles de estos son Navigation Guards Globales válidos?",
+    "explanation": "Los navigation guards se usan para proteger rutas (por ejemplo, verificar tokens de autenticación).",
+    "interviewTip": "Menciona 'beforeEach' como el lugar principal para implementar verificaciones de autenticación.",
     "options": [
-      "router.beforeEach (runs before every navigation)",
-      "router.afterEach (runs after navigation is complete)",
-      "router.beforeResolve (runs before navigation is confirmed, after in-component guards)",
-      "router.onMount (runs when the app starts)"
+      "router.beforeEach (se ejecuta antes de cada navegación)",
+      "router.afterEach (se ejecuta después de que la navegación está completa)",
+      "router.beforeResolve (se ejecuta antes de que la navegación sea confirmada, después de los guards dentro del componente)",
+      "router.onMount (se ejecuta cuando la aplicación inicia)"
     ]
   },
   "vr-07": {
-    "prompt": "What is the purpose of the <router-view> component?",
-    "explanation": "RouterView is where the magic happens. Without it, you might change the URL, but the UI won't update to show the new component.",
-    "interviewTip": "You can use multiple <router-view> components with names to create complex layouts.",
+    "prompt": "¿Cuál es el propósito del componente <router-view>?",
+    "explanation": "RouterView es donde ocurre la magia. Sin él, podrías cambiar la URL, pero la UI no se actualizará para mostrar el nuevo componente.",
+    "interviewTip": "Puedes usar múltiples componentes <router-view> con nombres para crear diseños complejos.",
     "options": [
-      "To show a list of all available routes.",
-      "As a placeholder that renders the component matched by the current URL.",
-      "To create a link to another page.",
-      "To debug the routing state."
+      "Para mostrar una lista de todas las rutas disponibles.",
+      "Como un marcador de posición que renderiza el componente coincidente con la URL actual.",
+      "Para crear un enlace a otra página.",
+      "Para depurar el estado de enrutamiento."
     ]
   },
   "vr-08": {
-    "prompt": "Analyze the code. What is the value of 'props' being set to true?",
-    "explanation": "Setting 'props: true' decouples the component from the router. The User component can declare 'props: ['id']' and use it without knowing about 'this.$route'.",
-    "interviewTip": "This makes components much easier to unit test because they don't depend on the global router state.",
+    "prompt": "Analiza el código. ¿Cuál es el valor de establecer 'props' en true?",
+    "explanation": "Establecer 'props: true' desacopla el componente del router. El componente User puede declarar 'props: ['id']' y usarlo sin saber sobre 'this.$route'.",
+    "interviewTip": "Esto hace que los componentes sean mucho más fáciles de testear unitariamente porque no dependen del estado global del router.",
     "options": [
-      "It allows the component to use CSS props.",
-      "It passes the route parameters (like :id) directly as props to the component.",
-      "It makes the route public.",
-      "It automatically validates the data types."
+      "Permite al componente usar props CSS.",
+      "Pasa los parámetros de ruta (como :id) directamente como props al componente.",
+      "Hace la ruta pública.",
+      "Valida automáticamente los tipos de datos."
     ]
   },
   "vr-09": {
-    "prompt": "How do you programmatically navigate to a different route in Vue Router?",
-    "explanation": "$router is the router instance with navigation methods. $route is the current route information object.",
-    "interviewTip": "In Composition API, use useRouter() to access the router instance.",
+    "prompt": "¿Cómo navegas programáticamente a una ruta diferente en Vue Router?",
+    "explanation": "$router es la instancia del router con métodos de navegación. $route es el objeto de información de la ruta actual.",
+    "interviewTip": "En Composition API, usa useRouter() para acceder a la instancia del router.",
     "options": [
       "this.$router.push('/path')",
       "this.$route.push('/path')",
@@ -99,14 +89,14 @@
     ]
   },
   "vr-10": {
-    "prompt": "What is the purpose of route guards in Vue Router?",
-    "explanation": "Navigation guards (beforeEach, beforeEnter, beforeRouteEnter, etc.) allow you to implement authentication, authorization, and other navigation logic.",
-    "interviewTip": "Global guards run for all routes, per-route guards run for specific routes, and in-component guards run within components.",
+    "prompt": "¿Cuál es el propósito de los route guards en Vue Router?",
+    "explanation": "Los navigation guards (beforeEach, beforeEnter, beforeRouteEnter, etc.) te permiten implementar autenticación, autorización y otra lógica de navegación.",
+    "interviewTip": "Los guards globales se ejecutan para todas las rutas, los guards por ruta se ejecutan para rutas específicas, y los guards dentro del componente se ejecutan dentro de componentes.",
     "options": [
-      "To protect routes from unauthorized access and control navigation flow.",
-      "To guard against XSS attacks.",
-      "To prevent route changes.",
-      "To encrypt route parameters."
+      "Para proteger rutas de acceso no autorizado y controlar el flujo de navegación.",
+      "Para proteger contra ataques XSS.",
+      "Para prevenir cambios de ruta.",
+      "Para encriptar parámetros de ruta."
     ]
   }
 }

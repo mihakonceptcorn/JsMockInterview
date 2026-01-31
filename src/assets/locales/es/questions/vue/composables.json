@@ -1,30 +1,30 @@
 {
   "comp-01": {
-    "prompt": "What is the primary difference between a 'Composable' and a regular utility function?",
-    "explanation": "A utility function like 'sum(a, b)' just returns a value. A Composable like 'useMouse()' returns reactive refs that update automatically as the user moves their mouse.",
-    "interviewTip": "Keywords to use: 'Stateful Logic', 'Reusability', and 'Composition API'.",
+    "prompt": "¿Cuál es la diferencia principal entre un 'Composable' y una función de utilidad regular?",
+    "explanation": "Una función de utilidad como 'sum(a, b)' simplemente devuelve un valor. Un Composable como 'useMouse()' devuelve refs reactivas que se actualizan automáticamente cuando el usuario mueve el ratón.",
+    "interviewTip": "Palabras clave a usar: 'Lógica con Estado', 'Reutilización' y 'Composition API'.",
     "options": [
-      "Composables must be written in TypeScript.",
-      "Composables encapsulate reactive state (ref, reactive) and lifecycle hooks; utilities are typically stateless.",
-      "Composables only work inside the template.",
-      "Utilities can only be used once per app."
+      "Los Composables deben estar escritos en TypeScript.",
+      "Los Composables encapsulan estado reactivo (ref, reactive) y hooks de ciclo de vida; las utilidades son típicamente sin estado.",
+      "Los Composables solo funcionan dentro del template.",
+      "Las utilidades solo pueden usarse una vez por aplicación."
     ]
   },
   "comp-02": {
-    "prompt": "What is the naming convention for Vue Composables?",
-    "explanation": "Starting with 'use' is the community standard. It immediately signals to other developers that the function returns reactive state.",
-    "interviewTip": "This mirrors the 'use' convention from React Hooks, making the transition easier for cross-framework developers.",
+    "prompt": "¿Cuál es la convención de nomenclatura para los Composables de Vue?",
+    "explanation": "Comenzar con 'use' es el estándar de la comunidad. Señala inmediatamente a otros desarrolladores que la función devuelve estado reactivo.",
+    "interviewTip": "Esto refleja la convención 'use' de React Hooks, haciendo la transición más fácil para desarrolladores que trabajan con múltiples frameworks.",
     "options": [
-      "They should start with 'vue'.",
-      "They should start with 'use' (e.g., useUser, useFetch).",
-      "They should be written in ALL_CAPS.",
-      "There is no specific convention."
+      "Deben comenzar con 'vue'.",
+      "Deben comenzar con 'use' (por ejemplo, useUser, useFetch).",
+      "Deben estar escritos en MAYÚSCULAS.",
+      "No hay una convención específica."
     ]
   },
   "comp-03": {
-    "prompt": "Analyze the code. What is the correct way to return data from a Composable to ensure easy destructuring in a component?",
-    "explanation": "Returning an object is preferred in Vue. It allows the component to destructure only the parts it needs and rename them if necessary, without being forced into a specific array order.",
-    "interviewTip": "Mention that returning an object is more flexible for future-proofing your API.",
+    "prompt": "Analiza el código. ¿Cuál es la forma correcta de devolver datos desde un Composable para asegurar una fácil desestructuración en un componente?",
+    "explanation": "Devolver un objeto es preferido en Vue. Permite que el componente desestructure solo las partes que necesita y las renombre si es necesario, sin verse forzado a un orden específico de array.",
+    "interviewTip": "Menciona que devolver un objeto es más flexible para que tu API sea a prueba de futuro.",
     "options": [
       "[count, increment]",
       "{ count, increment }",
@@ -33,80 +33,80 @@
     ]
   },
   "comp-04": {
-    "prompt": "Why is it important to use 'toValue()' (or 'unref') inside a Composable when handling input arguments?",
-    "explanation": "toValue() (introduced in Vue 3.3) normalizes the input. This makes your Composable much more flexible for the consumer.",
-    "interviewTip": "Using toValue/unref is the hallmark of a 'well-designed' library-level Composable.",
+    "prompt": "¿Por qué es importante usar 'toValue()' (o 'unref') dentro de un Composable al manejar argumentos de entrada?",
+    "explanation": "toValue() (introducido en Vue 3.3) normaliza la entrada. Esto hace que tu Composable sea mucho más flexible para el consumidor.",
+    "interviewTip": "Usar toValue/unref es el sello distintivo de un Composable 'bien diseñado' a nivel de biblioteca.",
     "options": [
-      "To make the function run faster.",
-      "To allow the Composable to accept both plain values AND refs/getters as arguments.",
-      "To convert the string to an integer.",
-      "To hide the data from the template."
+      "Para hacer que la función se ejecute más rápido.",
+      "Para permitir que el Composable acepte tanto valores simples COMO refs/getters como argumentos.",
+      "Para convertir el string en un entero.",
+      "Para ocultar los datos del template."
     ]
   },
   "comp-05": {
-    "prompt": "Analyze the code. What is a common pitfall when using 'reactive' inside a Composable and returning it directly?",
-    "explanation": "Destructuring reactive objects kills the reactivity link. To fix this, the Composable should return 'toRefs(state)'.",
-    "interviewTip": "Always recommend 'toRefs' when returning a reactive object from a Composable.",
+    "prompt": "Analiza el código. ¿Cuál es un error común al usar 'reactive' dentro de un Composable y devolverlo directamente?",
+    "explanation": "Desestructurar objetos reactivos rompe el enlace de reactividad. Para solucionar esto, el Composable debe devolver 'toRefs(state)'.",
+    "interviewTip": "Siempre recomienda 'toRefs' al devolver un objeto reactivo desde un Composable.",
     "options": [
-      "The code will throw an error.",
-      "The 'name' variable will lose reactivity because it was destructured from a reactive object.",
-      "The memory usage will double.",
-      "The name will become read-only."
+      "El código lanzará un error.",
+      "La variable 'name' perderá reactividad porque fue desestructurada de un objeto reactivo.",
+      "El uso de memoria se duplicará.",
+      "El name se volverá de solo lectura."
     ]
   },
   "comp-06": {
-    "prompt": "Where can you safely call a Composable that uses lifecycle hooks like 'onMounted'?",
-    "explanation": "Lifecycle hooks must be registered during the synchronous execution of 'setup'. If you call a Composable after an 'await', Vue loses track of which component instance the hook belongs to.",
-    "interviewTip": "This is a strict 'Rule of Composables'. Always call them at the top level of your script.",
+    "prompt": "¿Dónde puedes llamar de forma segura a un Composable que usa hooks de ciclo de vida como 'onMounted'?",
+    "explanation": "Los hooks de ciclo de vida deben registrarse durante la ejecución síncrona de 'setup'. Si llamas a un Composable después de un 'await', Vue pierde el rastro de a qué instancia de componente pertenece el hook.",
+    "interviewTip": "Esta es una 'Regla de Composables' estricta. Siempre llámalos en el nivel superior de tu script.",
     "options": [
-      "Anywhere in the project.",
-      "Only inside the setup() function or <script setup> (synchronously).",
-      "Inside a setInterval timer.",
-      "Inside an async function after an 'await' statement."
+      "En cualquier lugar del proyecto.",
+      "Solo dentro de la función setup() o <script setup> (síncronamente).",
+      "Dentro de un temporizador setInterval.",
+      "Dentro de una función async después de una instrucción 'await'."
     ]
   },
   "comp-07": {
-    "prompt": "What are the advantages of using Composables over the legacy 'Mixins' pattern?",
-    "explanation": "Mixins are 'invisible' injections that make code hard to trace. Composables make it clear where every piece of data originates.",
-    "interviewTip": "If asked about Mixins, call them 'opaque' and describe Composables as 'transparent and explicit'.",
+    "prompt": "¿Cuáles son las ventajas de usar Composables sobre el patrón heredado de 'Mixins'?",
+    "explanation": "Los Mixins son inyecciones 'invisibles' que hacen el código difícil de rastrear. Los Composables dejan claro de dónde se origina cada pieza de datos.",
+    "interviewTip": "Si te preguntan sobre Mixins, llámalos 'opacos' y describe los Composables como 'transparentes y explícitos'.",
     "options": [
-      "Explicit source of state (you know which Composable a variable comes from).",
-      "No namespace collisions (you can rename destructured variables).",
-      "Better TypeScript support.",
-      "Composables are the only way to use CSS."
+      "Origen explícito del estado (sabes de qué Composable proviene una variable).",
+      "Sin colisiones de namespace (puedes renombrar variables desestructuradas).",
+      "Mejor soporte de TypeScript.",
+      "Los Composables son la única forma de usar CSS."
     ]
   },
   "comp-08": {
-    "prompt": "Can one Composable call another Composable?",
-    "explanation": "Nesting Composables is a standard practice (e.g., 'useAuth' might use 'useFetch' and 'useStorage' internally).",
-    "interviewTip": "This is known as 'Composable Composition'.",
+    "prompt": "¿Puede un Composable llamar a otro Composable?",
+    "explanation": "Anidar Composables es una práctica estándar (por ejemplo, 'useAuth' podría usar 'useFetch' y 'useStorage' internamente).",
+    "interviewTip": "Esto se conoce como 'Composición de Composables'.",
     "options": [
-      "No, that creates a circular dependency.",
-      "Yes, Composables are highly nestable, allowing you to build complex logic from small, simple units.",
-      "Only if they are in the same folder.",
-      "Yes, but only if they don't use refs."
+      "No, eso crea una dependencia circular.",
+      "Sí, los Composables son altamente anidables, permitiéndote construir lógica compleja a partir de unidades pequeñas y simples.",
+      "Solo si están en la misma carpeta.",
+      "Sí, pero solo si no usan refs."
     ]
   },
   "comp-09": {
-    "prompt": "What is a composable in Vue 3?",
-    "explanation": "Composables are the Vue 3 equivalent of mixins or higher-order components, but with better composition and no naming conflicts.",
-    "interviewTip": "Composables should be named with the \"use\" prefix (e.g., useMouse, useFetch) following React hooks convention.",
+    "prompt": "¿Qué es un composable en Vue 3?",
+    "explanation": "Los Composables son el equivalente en Vue 3 de los mixins o componentes de orden superior, pero con mejor composición y sin conflictos de nombres.",
+    "interviewTip": "Los Composables deben nombrarse con el prefijo \"use\" (por ejemplo, useMouse, useFetch) siguiendo la convención de React hooks.",
     "options": [
-      "A component that can be composed with other components.",
-      "A function that leverages Vue Composition API to encapsulate and reuse stateful logic.",
-      "A CSS class that can be reused.",
-      "A type of Vue directive."
+      "Un componente que puede componerse con otros componentes.",
+      "Una función que aprovecha la Composition API de Vue para encapsular y reutilizar lógica con estado.",
+      "Una clase CSS que puede reutilizarse.",
+      "Un tipo de directiva de Vue."
     ]
   },
   "comp-10": {
-    "prompt": "What should a composable return?",
-    "explanation": "Composables typically return an object containing refs, reactive objects, computed properties, and methods that components can destructure and use.",
-    "interviewTip": "Return only what the consumer needs to keep the API clean and focused.",
+    "prompt": "¿Qué debe devolver un composable?",
+    "explanation": "Los Composables típicamente devuelven un objeto que contiene refs, objetos reactivos, propiedades computadas y métodos que los componentes pueden desestructurar y usar.",
+    "interviewTip": "Devuelve solo lo que el consumidor necesita para mantener la API limpia y enfocada.",
     "options": [
-      "Nothing, composables are side-effect only.",
-      "Reactive state and functions that the component can use.",
-      "Only primitive values.",
-      "A new Vue instance."
+      "Nada, los composables son solo para efectos secundarios.",
+      "Estado reactivo y funciones que el componente puede usar.",
+      "Solo valores primitivos.",
+      "Una nueva instancia de Vue."
     ]
   }
 }

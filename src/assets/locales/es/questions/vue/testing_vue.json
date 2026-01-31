@@ -1,30 +1,25 @@
 {
   "tv-01": {
-    "prompt": "Which tool is currently recommended by the Vue team as the primary test runner, replacing Jest in most modern setups?",
-    "explanation": "Vitest is built on top of Vite. It is extremely fast, shares the same configuration as your development environment, and has a Jest-compatible API.",
-    "interviewTip": "Highlight Vitest's 'Hot Module Replacement' (HMR) for tests, which makes the TDD (Test Driven Development) cycle feel much faster.",
-    "options": [
-      "Mocha",
-      "Vitest",
-      "Cypress",
-      "Jasmine"
-    ]
+    "prompt": "¿Qué herramienta es recomendada actualmente por el equipo de Vue como el test runner principal, reemplazando a Jest en la mayoría de las configuraciones modernas?",
+    "explanation": "Vitest está construido sobre Vite. Es extremadamente rápido, comparte la misma configuración que tu entorno de desarrollo, y tiene una API compatible con Jest.",
+    "interviewTip": "Destaca el 'Hot Module Replacement' (HMR) de Vitest para tests, lo que hace que el ciclo de TDD (Test Driven Development) se sienta mucho más rápido.",
+    "options": ["Mocha", "Vitest", "Cypress", "Jasmine"]
   },
   "tv-02": {
-    "prompt": "What is the difference between 'mount' and 'shallowMount' in Vue Test Utils?",
-    "explanation": "shallowMount is ideal for unit testing because it isolates the component from its children, ensuring that a bug in a child component doesn't cause the parent's test to fail.",
-    "interviewTip": "Use 'mount' for integration tests and 'shallowMount' for pure unit tests of a single component's logic.",
+    "prompt": "¿Cuál es la diferencia entre 'mount' y 'shallowMount' en Vue Test Utils?",
+    "explanation": "shallowMount es ideal para pruebas unitarias porque aísla el componente de sus hijos, asegurando que un bug en un componente hijo no cause que falle la prueba del padre.",
+    "interviewTip": "Usa 'mount' para pruebas de integración y 'shallowMount' para pruebas unitarias puras de la lógica de un solo componente.",
     "options": [
-      "mount is for Vue 3, shallowMount is for Vue 2.",
-      "mount renders the component and all its children; shallowMount renders only the component, stubbing out all child components.",
-      "shallowMount is only for testing CSS.",
-      "mount is faster than shallowMount."
+      "mount es para Vue 3, shallowMount es para Vue 2.",
+      "mount renderiza el componente y todos sus hijos; shallowMount renderiza solo el componente, haciendo stub de todos los componentes hijos.",
+      "shallowMount es solo para probar CSS.",
+      "mount es más rápido que shallowMount."
     ]
   },
   "tv-03": {
-    "prompt": "Analyze the code. How do you simulate a user clicking a button in a Vitest test?",
-    "explanation": "The 'trigger' method simulates a DOM event. Because Vue updates the DOM asynchronously, you should 'await' the trigger to ensure the DOM has updated before making assertions.",
-    "interviewTip": "Always await 'trigger' and 'setValue' to avoid flaky tests caused by Vue's async rendering.",
+    "prompt": "Analiza el código. ¿Cómo simulas que un usuario hace clic en un botón en una prueba de Vitest?",
+    "explanation": "El método 'trigger' simula un evento del DOM. Como Vue actualiza el DOM de forma asíncrona, debes 'await' el trigger para asegurar que el DOM se haya actualizado antes de hacer aserciones.",
+    "interviewTip": "Siempre await 'trigger' y 'setValue' para evitar pruebas inestables causadas por el renderizado asíncrono de Vue.",
     "options": [
       "button.click()",
       "button.trigger('click')",
@@ -33,9 +28,9 @@
     ]
   },
   "tv-04": {
-    "prompt": "Analyze the code. How do you verify that a component emitted a specific event?",
-    "explanation": "wrapper.emitted() returns an object containing all events emitted by the component and the arguments passed with them.",
-    "interviewTip": "You can check the arguments like this: expect(wrapper.emitted().myEvent[0]).toEqual(['expectedData']).",
+    "prompt": "Analiza el código. ¿Cómo verificas que un componente emitió un evento específico?",
+    "explanation": "wrapper.emitted() devuelve un objeto que contiene todos los eventos emitidos por el componente y los argumentos pasados con ellos.",
+    "interviewTip": "Puedes verificar los argumentos así: expect(wrapper.emitted().myEvent[0]).toEqual(['expectedData']).",
     "options": [
       "emitted().myEvent",
       "events('myEvent')",
@@ -44,20 +39,20 @@
     ]
   },
   "tv-05": {
-    "prompt": "How do you test a component that depends on a global plugin like 'Pinia' or 'Vue Router'?",
-    "explanation": "Vue Test Utils allows you to provide 'mocks' or 'stubs' for global features using the 'global' property in the second argument of mount().",
-    "interviewTip": "For Pinia, it is best to use 'createTestingPinia()', which automatically mocks all your actions.",
+    "prompt": "¿Cómo pruebas un componente que depende de un plugin global como 'Pinia' o 'Vue Router'?",
+    "explanation": "Vue Test Utils te permite proporcionar 'mocks' o 'stubs' para características globales usando la propiedad 'global' en el segundo argumento de mount().",
+    "interviewTip": "Para Pinia, es mejor usar 'createTestingPinia()', que automáticamente hace mock de todas tus actions.",
     "options": [
-      "You cannot test these components.",
-      "By passing a 'global.plugins' array in the mounting options.",
-      "By importing the real router into the test file.",
-      "By hardcoding the data inside the component."
+      "No puedes probar estos componentes.",
+      "Pasando un array 'global.plugins' en las opciones de montaje.",
+      "Importando el router real en el archivo de prueba.",
+      "Codificando los datos dentro del componente."
     ]
   },
   "tv-06": {
-    "prompt": "Which of these are valid ways to find an element using Vue Test Utils 'find' or 'get'?",
-    "explanation": "find() supports CSS selectors and component definitions. It is a best practice to use 'data-testid' for tests to decouple them from CSS classes or HTML structure.",
-    "interviewTip": "Explain that 'get' throws an error if the element is not found, while 'find' returns an empty wrapper, making 'get' safer for assertions.",
+    "prompt": "¿Cuáles de estas son formas válidas de encontrar un elemento usando 'find' o 'get' de Vue Test Utils?",
+    "explanation": "find() soporta selectores CSS y definiciones de componentes. Es una buena práctica usar 'data-testid' para pruebas para desacoplarlas de clases CSS o estructura HTML.",
+    "interviewTip": "Explica que 'get' lanza un error si el elemento no se encuentra, mientras que 'find' devuelve un wrapper vacío, haciendo 'get' más seguro para aserciones.",
     "options": [
       "wrapper.find('.my-class')",
       "wrapper.findComponent(MyChildComponent)",
@@ -66,47 +61,42 @@
     ]
   },
   "tv-07": {
-    "prompt": "What is 'Snapshot Testing' in Vitest?",
-    "explanation": "Snapshots catch regression in the HTML structure. If you change a class name, the snapshot will fail, forcing you to verify if the change was intentional.",
-    "interviewTip": "Warn that snapshots can be 'brittle' if your UI changes frequently; use them sparingly for stable components.",
+    "prompt": "¿Qué es 'Snapshot Testing' en Vitest?",
+    "explanation": "Los snapshots capturan regresión en la estructura HTML. Si cambias un nombre de clase, el snapshot fallará, forzándote a verificar si el cambio fue intencional.",
+    "interviewTip": "Advierte que los snapshots pueden ser 'frágiles' si tu UI cambia frecuentemente; úsalos con moderación para componentes estables.",
     "options": [
-      "Taking a screenshot of the app's UI.",
-      "Comparing the rendered HTML output of a component against a previously saved 'master' version to detect unexpected changes.",
-      "Testing the app's speed.",
-      "A way to store user passwords."
+      "Tomar una captura de pantalla de la UI de la aplicación.",
+      "Comparar la salida HTML renderizada de un componente contra una versión 'maestra' previamente guardada para detectar cambios inesperados.",
+      "Probar la velocidad de la aplicación.",
+      "Una forma de almacenar contraseñas de usuarios."
     ]
   },
   "tv-08": {
-    "prompt": "How do you test code that uses 'nextTick()'?",
-    "explanation": "Since nextTick returns a promise, awaiting it in your test ensures that you are inspecting the DOM after Vue has completed its reactive update cycle.",
-    "interviewTip": "This is crucial for testing components that change their DOM structure based on a reactive state change.",
+    "prompt": "¿Cómo pruebas código que usa 'nextTick()'?",
+    "explanation": "Como nextTick devuelve una promesa, hacer await en tu prueba asegura que estás inspeccionando el DOM después de que Vue haya completado su ciclo de actualización reactiva.",
+    "interviewTip": "Esto es crucial para probar componentes que cambian su estructura DOM basándose en un cambio de estado reactivo.",
     "options": [
-      "Using a while loop.",
-      "By awaiting 'nextTick()' inside your test function.",
-      "Vitest handles nextTick automatically.",
-      "You must use a setTimeout of 1000ms."
+      "Usando un bucle while.",
+      "Haciendo await de 'nextTick()' dentro de tu función de prueba.",
+      "Vitest maneja nextTick automáticamente.",
+      "Debes usar un setTimeout de 1000ms."
     ]
   },
   "tv-09": {
-    "prompt": "What is the recommended testing library for Vue 3 components?",
-    "explanation": "Vue Test Utils is the official testing utility library for Vue, providing methods to mount components and interact with them in tests.",
-    "interviewTip": "Combine Vue Test Utils with Jest or Vitest for a complete testing solution.",
-    "options": [
-      "Enzyme",
-      "Vue Test Utils",
-      "React Testing Library",
-      "Jasmine"
-    ]
+    "prompt": "¿Cuál es la biblioteca de testing recomendada para componentes Vue 3?",
+    "explanation": "Vue Test Utils es la biblioteca oficial de utilidades de testing para Vue, proporcionando métodos para montar componentes e interactuar con ellos en pruebas.",
+    "interviewTip": "Combina Vue Test Utils con Jest o Vitest para una solución completa de testing.",
+    "options": ["Enzyme", "Vue Test Utils", "React Testing Library", "Jasmine"]
   },
   "tv-10": {
-    "prompt": "What is the difference between shallow and full mounting in Vue Test Utils?",
-    "explanation": "Shallow mounting (shallowMount) is useful for unit testing a component in isolation, while full mounting (mount) is better for integration tests.",
-    "interviewTip": "Vue Test Utils v2 (for Vue 3) recommends using mount more often as shallow mounting can hide integration issues.",
+    "prompt": "¿Cuál es la diferencia entre montaje superficial y montaje completo en Vue Test Utils?",
+    "explanation": "El montaje superficial (shallowMount) es útil para probar unitariamente un componente de forma aislada, mientras que el montaje completo (mount) es mejor para pruebas de integración.",
+    "interviewTip": "Vue Test Utils v2 (para Vue 3) recomienda usar mount más frecuentemente ya que el montaje superficial puede ocultar problemas de integración.",
     "options": [
-      "Shallow mounting renders only the component, stubbing child components; full mounting renders the entire component tree.",
-      "Shallow mounting is faster but less accurate.",
-      "Full mounting is deprecated.",
-      "There is no difference."
+      "El montaje superficial renderiza solo el componente, haciendo stub de los componentes hijos; el montaje completo renderiza todo el árbol de componentes.",
+      "El montaje superficial es más rápido pero menos preciso.",
+      "El montaje completo está deprecado.",
+      "No hay diferencia."
     ]
   }
 }

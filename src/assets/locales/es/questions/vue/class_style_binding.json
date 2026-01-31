@@ -1,112 +1,107 @@
 {
   "csb-01": {
-    "prompt": "Analyze the code. Which class will be applied to the div if 'isActive' is true and 'hasError' is false?",
-    "explanation": "In the object syntax, the key is the class name and the value is a boolean. Since isActive is true, 'active' is applied. Since hasError is false, 'text-danger' is omitted.",
-    "interviewTip": "Keys with dashes, like 'text-danger', must be wrapped in quotes in the object syntax.",
-    "options": [
-      "active",
-      "text-danger",
-      "active text-danger",
-      "None"
-    ]
+    "prompt": "Analiza el código. ¿Qué clase se aplicará al div si 'isActive' es true y 'hasError' es false?",
+    "explanation": "En la sintaxis de objeto, la clave es el nombre de la clase y el valor es un booleano. Como isActive es true, se aplica 'active'. Como hasError es false, se omite 'text-danger'.",
+    "interviewTip": "Las claves con guiones, como 'text-danger', deben estar entre comillas en la sintaxis de objeto.",
+    "options": ["active", "text-danger", "active text-danger", "Ninguna"]
   },
   "csb-02": {
-    "prompt": "How can you apply multiple classes by combining them in a list?",
-    "explanation": "The array syntax allows you to apply a list of classes. You can even nest the object syntax inside the array syntax for complex logic.",
-    "interviewTip": "Using `[isActive ? activeClass : '', errorClass]` is a common pattern for conditional classes within an array.",
+    "prompt": "¿Cómo puedes aplicar múltiples clases combinándolas en una lista?",
+    "explanation": "La sintaxis de array permite aplicar una lista de clases. Incluso puedes anidar la sintaxis de objeto dentro de la sintaxis de array para lógicas complejas.",
+    "interviewTip": "Usar `[isActive ? activeClass : '', errorClass]` es un patrón común para clases condicionales dentro de un array.",
     "options": [
       "activeClass",
       "{ active: isActive }",
-      "Both are valid",
-      "Neither is valid"
+      "Ambas son válidas",
+      "Ninguna es válida"
     ]
   },
   "csb-03": {
-    "prompt": "When binding to the 'style' attribute, how should multi-word CSS properties (like 'font-size') be written?",
-    "explanation": "Vue is flexible. You can use camelCase (`fontSize`) which is closer to JS DOM property names, or kebab-case strings (`'font-size'`).",
-    "interviewTip": "CamelCase is generally preferred in the Vue community for cleaner code without extra quotes.",
+    "prompt": "Al vincular el atributo 'style', ¿cómo se deben escribir las propiedades CSS de varias palabras (como 'font-size')?",
+    "explanation": "Vue es flexible. Puedes usar camelCase (`fontSize`) que está más cerca de los nombres de propiedades del DOM en JS, o cadenas kebab-case (`'font-size'`).",
+    "interviewTip": "En la comunidad de Vue generalmente se prefiere camelCase para un código más limpio sin comillas adicionales.",
     "options": [
-      "Always in kebab-case: { 'font-size': '12px' }",
-      "Always in camelCase: { fontSize: '12px' }",
-      "Vue supports both camelCase and kebab-case (with quotes).",
-      "Vue only supports camelCase."
+      "Siempre en kebab-case: { 'font-size': '12px' }",
+      "Siempre en camelCase: { fontSize: '12px' }",
+      "Vue soporta tanto camelCase como kebab-case (con comillas).",
+      "Vue solo soporta camelCase."
     ]
   },
   "csb-04": {
-    "prompt": "What happens if you have both a standard 'class' and a bound ':class' on the same element?",
-    "explanation": "Vue intelligently merges static and dynamic classes. If isActive is true, the result will be class=\"base active\".",
-    "interviewTip": "This merging behavior also applies to 'style' and ':style' bindings.",
+    "prompt": "¿Qué sucede si tienes tanto una clase estándar 'class' como un :class vinculado en el mismo elemento?",
+    "explanation": "Vue combina inteligentemente las clases estáticas y dinámicas. Si isActive es true, el resultado será class=\"base active\".",
+    "interviewTip": "Este comportamiento de fusión también se aplica a las vinculaciones 'style' y ':style'.",
     "options": [
-      "The bound :class overrides the static class.",
-      "The static class overrides the bound :class.",
-      "Vue merges them together into a single class list.",
-      "It results in a template compilation error."
+      "El :class vinculado sobrescribe la clase estática.",
+      "La clase estática sobrescribe el :class vinculado.",
+      "Vue las combina en una única lista de clases.",
+      "Provoca un error de compilación del template."
     ]
   },
   "csb-05": {
-    "prompt": "Analyze the code. What is the benefit of this pattern?",
-    "explanation": "Binding to a computed object is a best practice for complex class logic. It keeps your templates readable and utilizes computed caching.",
-    "interviewTip": "In a Senior dev interview, always suggest moving complex ternary operators from templates into computed properties.",
+    "prompt": "Analiza el código. ¿Cuál es la ventaja de este patrón?",
+    "explanation": "Vincular a un objeto computed es una buena práctica para lógicas de clases complejas. Mantiene los templates legibles y aprovecha el caché de las propiedades computadas.",
+    "interviewTip": "En una entrevista de nivel Senior, siempre sugiere mover operadores ternarios complejos del template a propiedades computadas.",
     "options": [
-      "It makes the template cleaner by moving complex logic into the script.",
-      "It is the only way to use reactive variables in classes.",
-      "It automatically minifies the CSS.",
-      "It prevents the component from re-rendering."
+      "Hace el template más limpio al mover la lógica compleja al script.",
+      "Es la única forma de usar variables reactivas en clases.",
+      "Minifica automáticamente el CSS.",
+      "Evita que el componente se vuelva a renderizar."
     ]
   },
   "csb-06": {
-    "prompt": "Which of these are valid ways to scoped CSS to a single component in Vue?",
-    "explanation": "The 'scoped' attribute uses data-attributes to isolate styles. CSS Modules (module) injects a $style object into the component.",
-    "interviewTip": "Be careful with 'scoped'—it doesn't affect child components' internals, only their root element.",
+    "prompt": "¿Cuáles de estas son formas válidas de aplicar CSS con alcance (scoped) a un solo componente en Vue?",
+    "explanation": "El atributo 'scoped' utiliza data-attributes para aislar los estilos. Los CSS Modules (module) inyectan un objeto $style en el componente.",
+    "interviewTip": "Ten cuidado con 'scoped': no afecta el interior de los componentes hijos, solo su elemento raíz.",
     "options": [
-      "Adding the 'scoped' attribute to the <style> tag.",
-      "Using CSS Modules by adding the 'module' attribute to the <style> tag.",
-      "Vue automatically scopes all CSS by default; no attribute is needed.",
-      "Wrapping the CSS in a 'v-scope' directive."
+      "Añadiendo el atributo 'scoped' a la etiqueta <style>.",
+      "Usando CSS Modules añadiendo el atributo 'module' a la etiqueta <style>.",
+      "Vue aplica alcance automáticamente a todo el CSS por defecto; no se necesita atributo.",
+      "Envolviendo el CSS en una directiva 'v-scope'."
     ]
   },
   "csb-07": {
-    "prompt": "How does Vue handle CSS properties that require vendor prefixes (e.g., 'user-select')?",
-    "explanation": "When you use a CSS property that requires a vendor prefix in :style, Vue will automatically detect and add the appropriate prefixes.",
-    "interviewTip": "This 'Auto-prefixing' is built into Vue's runtime style binding logic.",
+    "prompt": "¿Cómo maneja Vue las propiedades CSS que requieren prefijos de proveedor (por ejemplo, 'user-select')?",
+    "explanation": "Cuando usas una propiedad CSS que requiere prefijo en :style, Vue detecta automáticamente y añade los prefijos adecuados.",
+    "interviewTip": "Este 'auto-prefixing' está integrado en la lógica de vinculación de estilos en tiempo de ejecución de Vue.",
     "options": [
-      "You must write them manually for every browser.",
-      "Vue automatically detects and adds necessary vendor prefixes for you.",
-      "Vue requires an external plugin like PostCSS for this.",
-      "Vue only supports standard properties without prefixes."
+      "Debes escribirlos manualmente para cada navegador.",
+      "Vue detecta automáticamente y añade los prefijos de proveedor necesarios.",
+      "Vue requiere un plugin externo como PostCSS para esto.",
+      "Vue solo soporta propiedades estándar sin prefijos."
     ]
   },
   "csb-08": {
-    "prompt": "What is the result of passing an array of objects to :style?",
-    "explanation": "The array syntax for :style allows you to apply multiple style objects to the same element, with later objects overriding properties in previous ones.",
-    "interviewTip": "This is very useful for composing base styles with conditional modifiers.",
+    "prompt": "¿Cuál es el resultado de pasar un array de objetos a :style?",
+    "explanation": "La sintaxis de array para :style permite aplicar múltiples objetos de estilo al mismo elemento, con los objetos posteriores sobrescribiendo propiedades de los anteriores.",
+    "interviewTip": "Esto es muy útil para componer estilos base con modificadores condicionales.",
     "options": [
-      "It ignores the array and only applies the first object.",
-      "It merges all style objects in the array, applying them to the element.",
-      "It throws a type error.",
-      "It applies styles as a space-separated string."
+      "Ignora el array y solo aplica el primer objeto.",
+      "Combina todos los objetos de estilo del array y los aplica al elemento.",
+      "Lanza un error de tipo.",
+      "Aplica los estilos como una cadena separada por espacios."
     ]
   },
   "csb-09": {
-    "prompt": "How do you bind multiple CSS classes conditionally in Vue?",
-    "explanation": "Object syntax allows you to toggle classes based on reactive data. You can also combine object and array syntax.",
-    "interviewTip": "For class names with hyphens, use quotes around the key.",
+    "prompt": "¿Cómo vinculas múltiples clases CSS de forma condicional en Vue?",
+    "explanation": "La sintaxis de objeto permite alternar clases según datos reactivos. También puedes combinar sintaxis de objeto y array.",
+    "interviewTip": "Para nombres de clase con guiones, usa comillas alrededor de la clave.",
     "options": [
-      "This syntax is invalid.",
-      "Use an object where keys are class names and values are boolean expressions.",
-      "Use an array of strings.",
-      "Use v-bind:classes instead."
+      "Esta sintaxis es inválida.",
+      "Usa un objeto donde las claves son nombres de clase y los valores son expresiones booleanas.",
+      "Usa un array de cadenas.",
+      "Usa v-bind:classes en su lugar."
     ]
   },
   "csb-10": {
-    "prompt": "What is the benefit of using :style binding with an object?",
-    "explanation": "Style binding accepts an object where keys are CSS property names (camelCase or kebab-case) and values are reactive data.",
-    "interviewTip": "Vue automatically adds vendor prefixes for properties that require them.",
+    "prompt": "¿Cuál es la ventaja de usar la vinculación :style con un objeto?",
+    "explanation": "La vinculación de estilo acepta un objeto donde las claves son nombres de propiedades CSS (camelCase o kebab-case) y los valores son datos reactivos.",
+    "interviewTip": "Vue añade automáticamente prefijos de proveedor para las propiedades que los requieren.",
     "options": [
-      "It makes the styles faster.",
-      "It allows you to reactively update inline styles based on component data.",
-      "It automatically adds vendor prefixes.",
-      "It converts CSS to SCSS."
+      "Hace que los estilos sean más rápidos.",
+      "Permite actualizar reactivamente los estilos inline según los datos del componente.",
+      "Añade automáticamente prefijos de proveedor.",
+      "Convierte CSS a SCSS."
     ]
   }
 }

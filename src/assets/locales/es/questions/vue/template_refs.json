@@ -1,30 +1,25 @@
 {
   "tr-01": {
-    "prompt": "In the Composition API, how do you link a 'ref' variable to a specific DOM element in your template?",
-    "explanation": "To create a template ref, you declare a ref with the same name in your script and apply the 'ref' attribute to the element in the template.",
-    "interviewTip": "The variable name in your script must match the string value of the ref attribute in your template exactly.",
-    "options": [
-      "v-ref",
-      "ref",
-      ":id",
-      "bind-ref"
-    ]
+    "prompt": "En la Composition API, ¿cómo vinculas una variable 'ref' a un elemento DOM específico en tu template?",
+    "explanation": "Para crear un template ref, declaras un ref con el mismo nombre en tu script y aplicas el atributo 'ref' al elemento en el template.",
+    "interviewTip": "El nombre de la variable en tu script debe coincidir exactamente con el valor string del atributo ref en tu template.",
+    "options": ["v-ref", "ref", ":id", "bind-ref"]
   },
   "tr-02": {
-    "prompt": "Analyze the code. Why will 'inputRef.value' be null when the console.log runs?",
-    "explanation": "Template refs are only populated after the component is mounted. Any attempt to access them in the immediate body of the setup script will result in null.",
-    "interviewTip": "To access a ref safely, always use the 'onMounted' lifecycle hook.",
+    "prompt": "Analiza el código. ¿Por qué 'inputRef.value' será null cuando se ejecute el console.log?",
+    "explanation": "Los template refs solo se populan después de que el componente está montado. Cualquier intento de acceder a ellos en el cuerpo inmediato del script setup resultará en null.",
+    "interviewTip": "Para acceder a un ref de forma segura, siempre usa el hook de ciclo de vida 'onMounted'.",
     "options": [
-      "Because the variable name is wrong.",
-      "Because the setup script runs before the component is mounted and the DOM is created.",
-      "Because 'ref' variables are private.",
-      "Because you must use reactive() for DOM elements."
+      "Porque el nombre de la variable es incorrecto.",
+      "Porque el script setup se ejecuta antes de que el componente sea montado y el DOM sea creado.",
+      "Porque las variables 'ref' son privadas.",
+      "Porque debes usar reactive() para elementos DOM."
     ]
   },
   "tr-03": {
-    "prompt": "How can you focus an input automatically when a component mounts?",
-    "explanation": "Once mounted, the 'value' of the ref holds the actual HTMLInputElement, giving you access to native methods like .focus().",
-    "interviewTip": "Mention that this is the 'Vue way' rather than using querySelector, which breaks the component encapsulation.",
+    "prompt": "¿Cómo puedes enfocar un input automáticamente cuando un componente se monta?",
+    "explanation": "Una vez montado, el 'value' del ref contiene el HTMLInputElement real, dándote acceso a métodos nativos como .focus().",
+    "interviewTip": "Menciona que esta es la 'forma Vue' en lugar de usar querySelector, que rompe la encapsulación del componente.",
     "options": [
       "inputRef",
       "document.querySelector('input')",
@@ -33,80 +28,75 @@
     ]
   },
   "tr-04": {
-    "prompt": "When using 'v-for', what will a template ref contain if it is applied to the repeated element?",
-    "explanation": "Vue 3 automatically populates the ref with an array of elements when it is used inside a v-for loop.",
-    "interviewTip": "Note that the order of the array is not guaranteed to match the order of your data source if items are reordered.",
+    "prompt": "Al usar 'v-for', ¿qué contendrá un template ref si se aplica al elemento repetido?",
+    "explanation": "Vue 3 automáticamente popula el ref con un array de elementos cuando se usa dentro de un bucle v-for.",
+    "interviewTip": "Ten en cuenta que el orden del array no está garantizado que coincida con el orden de tu fuente de datos si los elementos se reordenan.",
     "options": [
-      "Only the first element in the list.",
-      "Only the last element in the list.",
-      "An array containing all the DOM elements in the list.",
-      "It will throw an error; you cannot use refs in v-for."
+      "Solo el primer elemento de la lista.",
+      "Solo el último elemento de la lista.",
+      "Un array que contiene todos los elementos DOM en la lista.",
+      "Lanzará un error; no puedes usar refs en v-for."
     ]
   },
   "tr-05": {
-    "prompt": "Analyze the code. By default, can a parent access the 'internalCount' of this child component via a template ref?",
-    "explanation": "Components using <script setup> do not expose their internal state to the parent via refs unless you explicitly list them in defineExpose().",
-    "interviewTip": "This is a key security/encapsulation feature of Vue 3 compared to the Options API.",
+    "prompt": "Analiza el código. Por defecto, ¿puede un padre acceder al 'internalCount' de este componente hijo mediante un template ref?",
+    "explanation": "Los componentes que usan <script setup> no exponen su estado interno al padre mediante refs a menos que los listes explícitamente en defineExpose().",
+    "interviewTip": "Esta es una característica clave de seguridad/encapsulación de Vue 3 comparada con la Options API.",
     "options": [
-      "Yes, all setup variables are public.",
-      "No, components using <script setup> are 'closed' by default and need 'defineExpose' to reveal properties.",
-      "Yes, but only if the parent uses $children.",
-      "Only if the child is not scoped."
+      "Sí, todas las variables de setup son públicas.",
+      "No, los componentes que usan <script setup> están 'cerrados' por defecto y necesitan 'defineExpose' para revelar propiedades.",
+      "Sí, pero solo si el padre usa $children.",
+      "Solo si el hijo no está con scope."
     ]
   },
   "tr-06": {
-    "prompt": "What should you do with a template ref in 'onUnmounted'?",
-    "explanation": "Vue's reactivity system handles the lifecycle of the ref. When the element is unmounted, the ref.value is automatically set back to null.",
-    "interviewTip": "However, you *should* use onUnmounted to destroy any third-party instances (like a map or chart) that were attached to that ref.",
+    "prompt": "¿Qué debes hacer con un template ref en 'onUnmounted'?",
+    "explanation": "El sistema de reactividad de Vue maneja el ciclo de vida del ref. Cuando el elemento se desmonta, el ref.value se establece automáticamente de vuelta a null.",
+    "interviewTip": "Sin embargo, *debes* usar onUnmounted para destruir cualquier instancia de terceros (como un mapa o gráfico) que fue adjuntada a ese ref.",
     "options": [
-      "Manually set it to null.",
-      "Nothing; Vue automatically cleans up the ref when the element is destroyed.",
-      "Delete the element from the DOM.",
-      "Call .destroy() on the ref."
+      "Establecerlo manualmente a null.",
+      "Nada; Vue limpia automáticamente el ref cuando el elemento es destruido.",
+      "Eliminar el elemento del DOM.",
+      "Llamar .destroy() en el ref."
     ]
   },
   "tr-07": {
-    "prompt": "How do you use a 'Function Ref' in Vue 3?",
-    "explanation": "If you pass a function to :ref, Vue will call it with the element when it's mounted and with null when it's unmounted. This is useful for complex logic like dynamic refs in a loop.",
-    "interviewTip": "This is the most flexible way to handle refs if a simple variable name isn't enough.",
+    "prompt": "¿Cómo usas un 'Function Ref' en Vue 3?",
+    "explanation": "Si pasas una función a :ref, Vue la llamará con el elemento cuando esté montado y con null cuando esté desmontado. Esto es útil para lógica compleja como refs dinámicos en un bucle.",
+    "interviewTip": "Esta es la forma más flexible de manejar refs si un simple nombre de variable no es suficiente.",
     "options": [
-      "By passing a function to the :ref attribute: :ref=\"(el) => { ... }\".",
-      "By using ref=\"myFunc()\".",
-      "By defining a ref that returns a function.",
-      "Function refs are not supported in Vue 3."
+      "Pasando una función al atributo :ref: :ref=\"(el) => { ... }\".",
+      "Usando ref=\"myFunc()\".",
+      "Definiendo un ref que devuelve una función.",
+      "Los function refs no están soportados en Vue 3."
     ]
   },
   "tr-08": {
-    "prompt": "In which scenarios is it appropriate to use Template Refs?",
-    "explanation": "Template refs are for imperative DOM tasks. You should never use a ref to bypass Vue's reactivity for things that can be handled with props/state.",
-    "interviewTip": "Always prefer the declarative approach (v-bind, v-if) unless you have no other choice.",
+    "prompt": "¿En qué escenarios es apropiado usar Template Refs?",
+    "explanation": "Los template refs son para tareas imperativas del DOM. Nunca debes usar un ref para eludir la reactividad de Vue para cosas que pueden manejarse con props/state.",
+    "interviewTip": "Siempre prefiere el enfoque declarativo (v-bind, v-if) a menos que no tengas otra opción.",
     "options": [
-      "Managing focus, text selection, or media playback.",
-      "Integrating third-party DOM libraries (e.g., D3, Google Maps).",
-      "Changing the component's state (e.g., incrementing a counter).",
-      "Triggering imperative animations not handled by Vue Transitions."
+      "Gestionar enfoque, selección de texto, o reproducción de medios.",
+      "Integrar bibliotecas DOM de terceros (por ejemplo, D3, Google Maps).",
+      "Cambiar el estado del componente (por ejemplo, incrementar un contador).",
+      "Activar animaciones imperativas no manejadas por Vue Transitions."
     ]
   },
   "tr-09": {
-    "prompt": "How do you create a template ref in the Composition API?",
-    "explanation": "In Composition API, you create a ref with the same name as the template ref attribute. Vue automatically assigns the DOM element to it after mount.",
-    "interviewTip": "The ref must be returned from setup() or used in <script setup> to be accessible in the template.",
-    "options": [
-      "createRef",
-      "ref",
-      "useRef",
-      "templateRef"
-    ]
+    "prompt": "¿Cómo creas un template ref en la Composition API?",
+    "explanation": "En la Composition API, creas un ref con el mismo nombre que el atributo template ref. Vue automáticamente asigna el elemento DOM a él después del montaje.",
+    "interviewTip": "El ref debe ser retornado desde setup() o usado en <script setup> para ser accesible en el template.",
+    "options": ["createRef", "ref", "useRef", "templateRef"]
   },
   "tr-10": {
-    "prompt": "When is a template ref populated with the actual DOM element?",
-    "explanation": "Template refs are null during setup() and only get assigned after the component is mounted to the DOM.",
-    "interviewTip": "Always check if the ref is not null before using it, or access it inside onMounted.",
+    "prompt": "¿Cuándo se popula un template ref con el elemento DOM real?",
+    "explanation": "Los template refs son null durante setup() y solo se asignan después de que el componente está montado en el DOM.",
+    "interviewTip": "Siempre verifica que el ref no sea null antes de usarlo, o accede a él dentro de onMounted.",
     "options": [
-      "Immediately when the component is created.",
-      "After the component is mounted (onMounted lifecycle).",
-      "Before the component is mounted.",
-      "Only when you call a special method."
+      "Inmediatamente cuando el componente es creado.",
+      "Después de que el componente está montado (ciclo de vida onMounted).",
+      "Antes de que el componente sea montado.",
+      "Solo cuando llamas a un método especial."
     ]
   }
 }

@@ -1,112 +1,107 @@
 {
   "sl-01": {
-    "prompt": "What is the purpose of the <slot> element in a child component?",
-    "explanation": "Slots act as placeholders. Whatever content the parent places between the child component's tags will replace the <slot> tag in the final render.",
-    "interviewTip": "Content inside slots has access to the parent's data scope, not the child's (unless using Scoped Slots).",
+    "prompt": "¿Cuál es el propósito del elemento <slot> en un componente hijo?",
+    "explanation": "Los slots actúan como marcadores de posición. Cualquier contenido que el padre coloque entre las etiquetas del componente hijo reemplazará la etiqueta <slot> en el renderizado final.",
+    "interviewTip": "El contenido dentro de los slots tiene acceso al scope de datos del padre, no del hijo (a menos que se usen Scoped Slots).",
     "options": [
-      "To define a place where the parent can inject its own HTML or components.",
-      "To create a new reactive state.",
-      "To teleport the component to the footer.",
-      "To link the component to an external CSS file."
+      "Para definir un lugar donde el padre puede inyectar su propio HTML o componentes.",
+      "Para crear un nuevo estado reactivo.",
+      "Para teletransportar el componente al footer.",
+      "Para vincular el componente a un archivo CSS externo."
     ]
   },
   "sl-02": {
-    "prompt": "Analyze the code. How do you pass content to the 'header' slot specifically?",
-    "explanation": "v-slot:header is the full syntax, and #header is the shorthand. Both are used on a <template> tag within the parent to target a named slot.",
-    "interviewTip": "Named slots are essential for building layout components (like Cards or Page Shells).",
+    "prompt": "Analiza el código. ¿Cómo pasas contenido específicamente al slot 'header'?",
+    "explanation": "v-slot:header es la sintaxis completa, y #header es la abreviatura. Ambos se usan en una etiqueta <template> dentro del padre para apuntar a un slot nombrado.",
+    "interviewTip": "Los slots nombrados son esenciales para construir componentes de diseño (como Cards o Page Shells).",
     "options": [
       "<template #header>",
       "<template v-slot:header>",
-      "Both of the above are correct.",
+      "Ambos de arriba son correctos.",
       "<header-slot>"
     ]
   },
   "sl-03": {
-    "prompt": "What are 'Scoped Slots' used for?",
-    "explanation": "Scoped slots allow a child to provide data to the content injected by the parent. For example, a List component providing individual 'item' data to a custom row template provided by the parent.",
-    "interviewTip": "This is a high-level pattern for creating flexible, reusable components like Data Tables.",
+    "prompt": "¿Para qué se usan los 'Scoped Slots'?",
+    "explanation": "Los scoped slots permiten que un hijo proporcione datos al contenido inyectado por el padre. Por ejemplo, un componente List que proporciona datos individuales de 'item' a una plantilla de fila personalizada proporcionada por el padre.",
+    "interviewTip": "Este es un patrón de alto nivel para crear componentes flexibles y reutilizables como Data Tables.",
     "options": [
-      "To prevent CSS from leaking out of the slot.",
-      "To allow the child component to pass data 'up' to the parent's slot content.",
-      "To make the slot content private to the component.",
-      "To automatically translate the text in the slot."
+      "Para prevenir que el CSS se filtre fuera del slot.",
+      "Para permitir que el componente hijo pase datos 'hacia arriba' al contenido del slot del padre.",
+      "Para hacer el contenido del slot privado al componente.",
+      "Para traducir automáticamente el texto en el slot."
     ]
   },
   "sl-04": {
-    "prompt": "Analyze the code. What will happen to the 'Modal' component in the DOM?",
-    "explanation": "Teleport allows you to maintain the component's logical position (props/state) in the Vue tree while rendering it elsewhere in the HTML DOM.",
-    "interviewTip": "This is the 'correct' way to handle Modals/Dialogs to avoid `z-index` and `overflow: hidden` issues from parent containers.",
+    "prompt": "Analiza el código. ¿Qué le pasará al componente 'Modal' en el DOM?",
+    "explanation": "Teleport permite mantener la posición lógica del componente (props/state) en el árbol de Vue mientras lo renderiza en otro lugar en el DOM HTML.",
+    "interviewTip": "Esta es la forma 'correcta' de manejar Modals/Dialogs para evitar problemas de `z-index` y `overflow: hidden` de contenedores padres.",
     "options": [
-      "It will be rendered inside the current component's div.",
-      "It will be physically moved in the DOM and rendered as a direct child of the <body> tag.",
-      "It will be hidden until the user clicks 'body'.",
-      "Vue will throw an error if 'body' is not a Vue component."
+      "Se renderizará dentro del div del componente actual.",
+      "Se moverá físicamente en el DOM y se renderizará como hijo directo de la etiqueta <body>.",
+      "Estará oculto hasta que el usuario haga clic en 'body'.",
+      "Vue lanzará un error si 'body' no es un componente Vue."
     ]
   },
   "sl-05": {
-    "prompt": "How do you provide 'fallback' content that only shows if the parent doesn't provide any slot content?",
-    "explanation": "Any content placed between <slot> and </slot> in the child component serves as the default content if the parent leaves the tags empty.",
-    "interviewTip": "This is great for buttons where you want a default 'Submit' label but allow customization.",
+    "prompt": "¿Cómo proporcionas contenido 'fallback' que solo se muestre si el padre no proporciona ningún contenido de slot?",
+    "explanation": "Cualquier contenido colocado entre <slot> y </slot> en el componente hijo sirve como contenido predeterminado si el padre deja las etiquetas vacías.",
+    "interviewTip": "Esto es genial para botones donde quieres una etiqueta predeterminada 'Submit' pero permitir personalización.",
     "options": [
       "v-else=\"default\"",
-      "Simply place text/tags inside the <slot> tags.",
-      "Using the 'fallback' prop.",
-      "Vue doesn't support fallback content."
+      "Simplemente coloca texto/etiquetas dentro de las etiquetas <slot>.",
+      "Usando la prop 'fallback'.",
+      "Vue no soporta contenido fallback."
     ]
   },
   "sl-06": {
-    "prompt": "Which of the following statements about <Teleport> are true?",
-    "explanation": "Teleport targets can be CSS selectors (like '#app', '.container', or 'body'). Even though the DOM moves, the Vue logical tree remains intact.",
-    "interviewTip": "Confirm that Teleport doesn't break the 'one-way data flow' or event bubbling in the Vue tree.",
+    "prompt": "¿Cuáles de las siguientes afirmaciones sobre <Teleport> son verdaderas?",
+    "explanation": "Los objetivos de Teleport pueden ser selectores CSS (como '#app', '.container', o 'body'). Aunque el DOM se mueve, el árbol lógico de Vue permanece intacto.",
+    "interviewTip": "Confirma que Teleport no rompe el 'flujo de datos unidireccional' o la propagación de eventos en el árbol de Vue.",
     "options": [
-      "The 'to' target must exist in the DOM before the component is mounted.",
-      "Props and events still work normally through the Vue component hierarchy.",
-      "It can only teleport to IDs, not tag names.",
-      "Multiple Teleports can move content to the same target."
+      "El objetivo 'to' debe existir en el DOM antes de que el componente sea montado.",
+      "Las props y eventos aún funcionan normalmente a través de la jerarquía de componentes de Vue.",
+      "Solo puede teletransportarse a IDs, no a nombres de etiquetas.",
+      "Múltiples Teleports pueden mover contenido al mismo objetivo."
     ]
   },
   "sl-07": {
-    "prompt": "Analyze the Scoped Slot syntax. How does the parent access the child's data?",
-    "explanation": "The value of v-slot (here 'slotProps') is an object containing all the props passed to the slot from the child. You can also destructure it: v-slot=\"{ user }\".",
-    "interviewTip": "Destructuring scoped slot props is standard practice for cleaner templates.",
-    "options": [
-      "v-data",
-      "slotProps",
-      "props",
-      "defineProps"
-    ]
+    "prompt": "Analiza la sintaxis de Scoped Slot. ¿Cómo accede el padre a los datos del hijo?",
+    "explanation": "El valor de v-slot (aquí 'slotProps') es un objeto que contiene todas las props pasadas al slot desde el hijo. También puedes desestructurarlo: v-slot=\"{ user }\".",
+    "interviewTip": "Desestructurar las props de scoped slots es práctica estándar para templates más limpios.",
+    "options": ["v-data", "slotProps", "props", "defineProps"]
   },
   "sl-08": {
-    "prompt": "What happens to the state of a component inside <Teleport> if it is disabled?",
-    "explanation": "Teleport has a 'disabled' prop. This is useful for things like a 'PIP' (Picture-in-Picture) window that might toggle between being in the layout or floating.",
-    "interviewTip": "Mentioning the 'disabled' prop shows you've read the advanced documentation for Teleport.",
+    "prompt": "¿Qué sucede con el estado de un componente dentro de <Teleport> si está deshabilitado?",
+    "explanation": "Teleport tiene una prop 'disabled'. Esto es útil para cosas como una ventana 'PIP' (Picture-in-Picture) que podría alternar entre estar en el diseño o flotante.",
+    "interviewTip": "Mencionar la prop 'disabled' muestra que has leído la documentación avanzada de Teleport.",
     "options": [
-      "The state is lost.",
-      "The component is unmounted.",
-      "Teleport doesn't have a 'disabled' prop; it always teleports.",
-      "If :disabled=\"true\", the content renders in its original location instead of the target."
+      "El estado se pierde.",
+      "El componente se desmonta.",
+      "Teleport no tiene una prop 'disabled'; siempre teletransporta.",
+      "Si :disabled=\"true\", el contenido se renderiza en su ubicación original en lugar del objetivo."
     ]
   },
   "st-09": {
-    "prompt": "What is the purpose of the <Teleport> component in Vue 3?",
-    "explanation": "Teleport is useful for modals, toasts, or tooltips that need to be rendered at the document body level to avoid z-index or overflow issues.",
-    "interviewTip": "Teleport was called Portal in the RFC but was renamed before Vue 3 release.",
+    "prompt": "¿Cuál es el propósito del componente <Teleport> en Vue 3?",
+    "explanation": "Teleport es útil para modales, toasts o tooltips que necesitan ser renderizados a nivel del body del documento para evitar problemas de z-index u overflow.",
+    "interviewTip": "Teleport se llamaba Portal en el RFC pero fue renombrado antes del lanzamiento de Vue 3.",
     "options": [
-      "To move data between components.",
-      "To render a component's template in a different part of the DOM tree, outside its parent hierarchy.",
-      "To lazy-load components.",
-      "To create portals to other pages."
+      "Para mover datos entre componentes.",
+      "Para renderizar el template de un componente en una parte diferente del árbol DOM, fuera de su jerarquía padre.",
+      "Para hacer lazy-load de componentes.",
+      "Para crear portales a otras páginas."
     ]
   },
   "st-10": {
-    "prompt": "How do you access slot content in the parent component?",
-    "explanation": "Scoped slots allow child components to pass data back to the parent's slot content, enabling powerful patterns like renderless components.",
-    "interviewTip": "Scoped slots are the foundation of many Vue UI libraries for maximum flexibility.",
+    "prompt": "¿Cómo accedes al contenido del slot en el componente padre?",
+    "explanation": "Los scoped slots permiten que los componentes hijos pasen datos de vuelta al contenido del slot del padre, habilitando patrones poderosos como componentes renderless.",
+    "interviewTip": "Los scoped slots son la base de muchas bibliotecas de UI de Vue para máxima flexibilidad.",
     "options": [
-      "Slots are one-way only; you cannot access them from the parent.",
-      "Use scoped slots to pass data from child to parent.",
-      "Use the $slots property.",
-      "Use v-model."
+      "Los slots son solo de una vía; no puedes acceder a ellos desde el padre.",
+      "Usa scoped slots para pasar datos del hijo al padre.",
+      "Usa la propiedad $slots.",
+      "Usa v-model."
     ]
   }
 }

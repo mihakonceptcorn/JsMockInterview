@@ -1,8 +1,8 @@
 {
   "as-01": {
-    "prompt": "Which function is used to define a component that is loaded lazily from the server only when it is rendered?",
-    "explanation": "defineAsyncComponent accepts a loader function that returns a Promise (usually a dynamic import). Vue handles the loading logic automatically.",
-    "interviewTip": "Mention that this is a key technique for reducing the 'Initial Bundle Size' of your application.",
+    "prompt": "¿Qué función se utiliza para definir un componente que se carga de forma diferida (lazy) desde el servidor solo cuando se renderiza?",
+    "explanation": "defineAsyncComponent acepta una función loader que devuelve una Promise (normalmente un import dinámico). Vue maneja automáticamente la lógica de carga.",
+    "interviewTip": "Menciona que esta es una técnica clave para reducir el 'Initial Bundle Size' de tu aplicación.",
     "options": [
       "defineLazyComponent",
       "defineAsyncComponent",
@@ -11,102 +11,97 @@
     ]
   },
   "as-02": {
-    "prompt": "Analyze the code. What will happen while 'AdminPanel' is downloading?",
-    "explanation": "By default, an async component won't show anything during loading. You can provide a 'loadingComponent' option in defineAsyncComponent or wrap the usage in a <Suspense> tag.",
-    "interviewTip": "Using a skeleton loader as the 'loadingComponent' provides a much better UX than a blank space.",
+    "prompt": "Analiza el código. ¿Qué ocurrirá mientras se está descargando 'AdminPanel'?",
+    "explanation": "Por defecto, un componente asíncrono no muestra nada durante la carga. Puedes proporcionar la opción 'loadingComponent' en defineAsyncComponent o envolver el uso en una etiqueta <Suspense>.",
+    "interviewTip": "Usar un skeleton loader como 'loadingComponent' ofrece una UX mucho mejor que un espacio en blanco.",
     "options": [
-      "Vue will crash.",
-      "The screen will remain blank until it finishes.",
-      "Nothing will be rendered unless a loading component is configured or Suspense is used.",
-      "The entire app pauses execution."
+      "Vue se caerá (crash).",
+      "La pantalla permanecerá en blanco hasta que termine.",
+      "No se renderizará nada a menos que se configure un componente de carga o se use Suspense.",
+      "Toda la aplicación pausa su ejecución."
     ]
   },
   "as-03": {
-    "prompt": "What are the two 'slots' provided by the <Suspense> component?",
-    "explanation": "The #default slot contains the content that might take time to load, and the #fallback slot contains what to show in the meantime (e.g., a spinner).",
-    "interviewTip": "Note that as of Vue 3.x, <Suspense> is still technically an 'experimental' feature, though it is widely used.",
+    "prompt": "¿Cuáles son los dos 'slots' que proporciona el componente <Suspense>?",
+    "explanation": "El slot #default contiene el contenido que puede tardar en cargarse, y el slot #fallback contiene lo que se muestra mientras tanto (por ejemplo, un spinner).",
+    "interviewTip": "Ten en cuenta que, a partir de Vue 3.x, <Suspense> sigue siendo técnicamente una funcionalidad 'experimental', aunque se usa ampliamente.",
     "options": [
-      "header and footer",
-      "default and fallback",
-      "loading and complete",
-      "async and sync"
+      "header y footer",
+      "default y fallback",
+      "loading y complete",
+      "async y sync"
     ]
   },
   "as-04": {
-    "prompt": "Analyze the code. What makes this component 'async' and capable of triggering a <Suspense> boundary?",
-    "explanation": "In Vue 3, if a <script setup> contains top-level 'await', the component automatically becomes an 'async dependency' and must be wrapped in <Suspense> by its parent.",
-    "interviewTip": "This is a very elegant way to handle data fetching, as you don't need a separate 'loading' state ref inside the component.",
+    "prompt": "Analiza el código. ¿Qué hace que este componente sea 'asíncrono' y capaz de activar un límite <Suspense>?",
+    "explanation": "En Vue 3, si un <script setup> contiene un 'await' de nivel superior, el componente se convierte automáticamente en una 'async dependency' y debe estar envuelto en <Suspense> por su padre.",
+    "interviewTip": "Esta es una forma muy elegante de manejar la obtención de datos, ya que no necesitas un ref de estado 'loading' dentro del componente.",
     "options": [
-      "The use of the 'fetch' API.",
-      "Using top-level 'await' inside <script setup>.",
-      "The script tag doesn't have an 'async' attribute.",
-      "It isn't async; it will block the thread."
+      "El uso de la API 'fetch'.",
+      "Usar 'await' de nivel superior dentro de <script setup>.",
+      "La etiqueta script no tiene el atributo 'async'.",
+      "No es asíncrono; bloqueará el hilo."
     ]
   },
   "as-05": {
-    "prompt": "How do you handle errors (like network failure) when an async component fails to load?",
-    "explanation": "While defineAsyncComponent has an 'errorComponent' option, the standard way to catch errors from async dependencies in a tree is the onErrorCaptured hook.",
-    "interviewTip": "You can also use the 'error' slot if your project uses a specialized wrapper, but onErrorCaptured is the official global/parent solution.",
+    "prompt": "¿Cómo manejas los errores (como fallo de red) cuando un componente asíncrono no logra cargarse?",
+    "explanation": "Aunque defineAsyncComponent tiene la opción 'errorComponent', la forma estándar de capturar errores de dependencias asíncronas en el árbol es el hook onErrorCaptured.",
+    "interviewTip": "También puedes usar el slot 'error' si tu proyecto utiliza un wrapper especializado, pero onErrorCaptured es la solución oficial global/padre.",
     "options": [
-      "Using the 'onError' hook in defineAsyncComponent.",
-      "Wrapping the component in an <ErrorBoundary> tag (legacy).",
-      "Using the 'onErrorCaptured' lifecycle hook in a parent component.",
-      "Vue handles all network errors automatically by retrying."
+      "Usando el hook 'onError' en defineAsyncComponent.",
+      "Envolviendo el componente en una etiqueta <ErrorBoundary> (legacy).",
+      "Usando el lifecycle hook 'onErrorCaptured' en un componente padre.",
+      "Vue maneja automáticamente todos los errores de red reintentando."
     ]
   },
   "as-06": {
-    "prompt": "Which of these are valid options when configuring 'defineAsyncComponent'?",
-    "explanation": "delay prevents 'flickering' for fast connections. timeout prevents users from waiting forever. suspensible (default: true) allows the component to control the parent Suspense state.",
-    "interviewTip": "Set 'delay: 0' if you want the loading spinner to appear immediately, even for fast loads.",
+    "prompt": "¿Cuáles de estas son opciones válidas al configurar 'defineAsyncComponent'?",
+    "explanation": "delay evita el 'flickering' en conexiones rápidas. timeout evita que los usuarios esperen indefinidamente. suspensible (por defecto: true) permite que el componente controle el estado Suspense del padre.",
+    "interviewTip": "Establece 'delay: 0' si quieres que el spinner de carga aparezca inmediatamente, incluso en cargas rápidas.",
     "options": [
-      "delay (ms before showing the loading component)",
-      "timeout (ms before showing the error component)",
-      "suspensible (whether it should communicate with a parent Suspense)",
-      "retry (number of times to attempt loading)"
+      "delay (ms antes de mostrar el componente de carga)",
+      "timeout (ms antes de mostrar el componente de error)",
+      "suspensible (si debe comunicarse con un Suspense padre)",
+      "retry (número de veces que intentará cargar)"
     ]
   },
   "as-07": {
-    "prompt": "Can <Suspense> handle multiple nested async components simultaneously?",
-    "explanation": "Suspense is designed to coordinate multiple async dependencies. The fallback stays visible until the entire tree of async components underneath is ready.",
-    "interviewTip": "This prevents 'pop-in' effects where different parts of a page load at different times.",
+    "prompt": "¿Puede <Suspense> manejar varios componentes asíncronos anidados simultáneamente?",
+    "explanation": "Suspense está diseñado para coordinar múltiples dependencias asíncronas. El fallback permanece visible hasta que todo el árbol de componentes asíncronos debajo esté listo.",
+    "interviewTip": "Esto evita efectos de 'pop-in' donde diferentes partes de una página se cargan en momentos distintos.",
     "options": [
-      "No, only one component at a time.",
-      "Yes, it will wait for all nested async dependencies to resolve before showing the default slot.",
-      "Yes, but it shows them one by one.",
-      "Only if they are inside the same file."
+      "No, solo un componente a la vez.",
+      "Sí, esperará a que todas las dependencias asíncronas anidadas se resuelvan antes de mostrar el slot default.",
+      "Sí, pero los muestra uno por uno.",
+      "Solo si están dentro del mismo archivo."
     ]
   },
   "as-08": {
-    "prompt": "What is the purpose of the 'onError' retry function in defineAsyncComponent?",
-    "explanation": "The 'retry' callback allows you to attempt to reload the component, which is useful for handling temporary network issues.",
-    "interviewTip": "This is a great 'Senior' level feature to mention for building resilient applications.",
-    "options": [
-      "retry",
-      "reload",
-      "fetch",
-      "restart"
-    ]
+    "prompt": "¿Cuál es el propósito de la función 'retry' del callback onError en defineAsyncComponent?",
+    "explanation": "El callback 'retry' te permite intentar recargar el componente, lo cual es útil para manejar problemas temporales de red.",
+    "interviewTip": "Esta es una característica muy de nivel 'Senior' que puedes mencionar para construir aplicaciones resilientes.",
+    "options": ["retry", "reload", "fetch", "restart"]
   },
   "acs-09": {
-    "prompt": "How do you define an async component in Vue 3?",
-    "explanation": "defineAsyncComponent accepts a loader function that returns a Promise resolving to the component definition, enabling code splitting.",
-    "interviewTip": "You can provide loading, error, delay, and timeout options for better UX.",
+    "prompt": "¿Cómo defines un componente asíncrono en Vue 3?",
+    "explanation": "defineAsyncComponent acepta una función loader que devuelve una Promise que resuelve con la definición del componente, permitiendo code splitting.",
+    "interviewTip": "Puedes proporcionar opciones de loading, error, delay y timeout para mejorar la experiencia de usuario.",
     "options": [
-      "Use the async keyword in the component definition.",
-      "Use defineAsyncComponent() with a loader function.",
-      "Use import() directly in the template.",
-      "Async components are not supported in Vue 3."
+      "Usar la palabra clave async en la definición del componente.",
+      "Usar defineAsyncComponent() con una función loader.",
+      "Usar import() directamente en el template.",
+      "Los componentes asíncronos no están soportados en Vue 3."
     ]
   },
   "acs-10": {
-    "prompt": "What is the purpose of the <Suspense> component?",
-    "explanation": "Suspense allows you to show a loading state while async components or async setup() are resolving, providing a better user experience.",
-    "interviewTip": "Suspense is still experimental in Vue 3 but is a core feature for async data fetching patterns.",
+    "prompt": "¿Cuál es el propósito del componente <Suspense>?",
+    "explanation": "Suspense te permite mostrar un estado de carga mientras los componentes asíncronos o un setup() asíncrono se están resolviendo, mejorando la experiencia del usuario.",
+    "interviewTip": "Suspense sigue siendo experimental en Vue 3, pero es una funcionalidad central para patrones de obtención de datos asíncronos.",
     "options": [
-      "To suspend user interactions.",
-      "To handle async dependencies in the component tree and show fallback content while waiting.",
-      "To lazy-load CSS files.",
-      "To pause component rendering permanently."
+      "Suspender las interacciones del usuario.",
+      "Manejar dependencias asíncronas en el árbol de componentes y mostrar contenido fallback mientras se espera.",
+      "Cargar archivos CSS de forma diferida.",
+      "Pausar permanentemente el renderizado de componentes."
     ]
   }
 }

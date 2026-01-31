@@ -1,112 +1,102 @@
 {
   "perf-v-01": {
-    "prompt": "Which directive should be used for content that never changes after the initial render to skip Virtual DOM tracking and patching?",
-    "explanation": "v-once treats the element and its children as static content. Once rendered, Vue skips it entirely during update cycles, reducing the work of the Virtual DOM.",
-    "interviewTip": "Use v-once for static help text or icons inside heavy components.",
-    "options": [
-      "v-memo",
-      "v-once",
-      "v-static",
-      "v-pre"
-    ]
+    "prompt": "¿Qué directiva debe usarse para contenido que nunca cambia después del renderizado inicial para omitir el seguimiento y parcheado del Virtual DOM?",
+    "explanation": "v-once trata el elemento y sus hijos como contenido estático. Una vez renderizado, Vue lo omite por completo durante los ciclos de actualización, reduciendo el trabajo del Virtual DOM.",
+    "interviewTip": "Usa v-once para texto de ayuda estático o iconos dentro de componentes pesados.",
+    "options": ["v-memo", "v-once", "v-static", "v-pre"]
   },
   "perf-v-02": {
-    "prompt": "Analyze the code. What is the benefit of using 'v-memo' here?",
-    "explanation": "v-memo (Vue 3.2+) memoizes a sub-tree of the template. It only updates if the dependencies in the array change. This is a massive optimization for large lists where only one item changes at a time.",
-    "interviewTip": "v-memo is essentially 'React.memo' but for a specific piece of a template.",
+    "prompt": "Analiza el código. ¿Cuál es el beneficio de usar 'v-memo' aquí?",
+    "explanation": "v-memo (Vue 3.2+) memoriza un sub-árbol del template. Solo se actualiza si las dependencias en el array cambian. Esta es una optimización masiva para listas grandes donde solo un elemento cambia a la vez.",
+    "interviewTip": "v-memo es esencialmente 'React.memo' pero para una pieza específica de un template.",
     "options": [
-      "It prevents the item from ever being deleted.",
-      "It only re-renders the specific item if its 'selected' state changes, even if other properties in the 'item' object change.",
-      "It automatically saves the list to LocalStorage.",
-      "It converts the div into a canvas element for faster drawing."
+      "Previene que el elemento sea eliminado alguna vez.",
+      "Solo re-renderiza el elemento específico si su estado 'selected' cambia, incluso si otras propiedades en el objeto 'item' cambian.",
+      "Guarda automáticamente la lista en LocalStorage.",
+      "Convierte el div en un elemento canvas para un dibujado más rápido."
     ]
   },
   "perf-v-03": {
-    "prompt": "How does 'shallowRef' help with performance when dealing with massive objects (e.g., a huge JSON response)?",
-    "explanation": "Standard 'ref' is deep. For a list of 10,000 items, Vue has to set up thousands of Proxies. 'shallowRef' avoids this overhead, only triggering an update if you replace the entire object.",
-    "interviewTip": "This is the go-to solution for integrating large third-party instances (like OpenLayers or Three.js) into Vue.",
+    "prompt": "¿Cómo ayuda 'shallowRef' con el rendimiento al tratar con objetos masivos (por ejemplo, una respuesta JSON enorme)?",
+    "explanation": "El 'ref' estándar es profundo. Para una lista de 10,000 elementos, Vue tiene que configurar miles de Proxies. 'shallowRef' evita esta sobrecarga, solo activando una actualización si reemplazas el objeto completo.",
+    "interviewTip": "Esta es la solución de referencia para integrar instancias grandes de terceros (como OpenLayers o Three.js) en Vue.",
     "options": [
-      "It compresses the object in memory.",
-      "It only makes the .value property reactive and does not recursively make all nested properties reactive.",
-      "It moves the object to a Web Worker.",
-      "It prevents the object from being garbage collected."
+      "Comprime el objeto en memoria.",
+      "Solo hace reactiva la propiedad .value y no hace recursivamente reactivas todas las propiedades anidadas.",
+      "Mueve el objeto a un Web Worker.",
+      "Previene que el objeto sea recolectado por el garbage collector."
     ]
   },
   "perf-v-04": {
-    "prompt": "Analyze the code. Why might this 'computed' property cause performance issues?",
-    "explanation": "Computed caching only works if the result is accessed again *without* the dependency changing. If the source data is a stream or updates rapidly, you are performing a heavy sort 60 times a second.",
-    "interviewTip": "Consider debouncing the input data or moving the sort to a Web Worker if the calculation is too heavy.",
+    "prompt": "Analiza el código. ¿Por qué esta propiedad 'computed' podría causar problemas de rendimiento?",
+    "explanation": "El almacenamiento en caché de computed solo funciona si el resultado se accede nuevamente *sin* que la dependencia cambie. Si los datos de origen son un stream o se actualizan rápidamente, estás realizando una ordenación pesada 60 veces por segundo.",
+    "interviewTip": "Considera hacer debounce de los datos de entrada o mover la ordenación a un Web Worker si el cálculo es demasiado pesado.",
     "options": [
-      "Computed properties should not return arrays.",
-      "If 'heavyData' changes frequently, the expensive sort runs on every update, potentially blocking the main thread.",
-      "Computed properties cannot use spread syntax.",
-      "The code is perfectly optimized as is."
+      "Las propiedades computed no deben devolver arrays.",
+      "Si 'heavyData' cambia frecuentemente, la ordenación costosa se ejecuta en cada actualización, potencialmente bloqueando el hilo principal.",
+      "Las propiedades computed no pueden usar sintaxis spread.",
+      "El código está perfectamente optimizado tal como está."
     ]
   },
   "perf-v-05": {
-    "prompt": "Which of the following are 'Tree Shaking' friendly practices in Vue 3?",
-    "explanation": "Tree shaking allows the bundler to remove unused Vue features from your final JS file. Vue 3 was rewritten to be modular specifically for this reason.",
-    "interviewTip": "Mention that Vue 3's core is 'tree-shakable,' meaning if you don't use `<Transition>`, it won't be in your final bundle.",
+    "prompt": "¿Cuáles de las siguientes son prácticas amigables con 'Tree Shaking' en Vue 3?",
+    "explanation": "Tree shaking permite al bundler eliminar características de Vue no usadas de tu archivo JS final. Vue 3 fue reescrito para ser modular específicamente por esta razón.",
+    "interviewTip": "Menciona que el núcleo de Vue 3 es 'tree-shakable', lo que significa que si no usas `<Transition>`, no estará en tu bundle final.",
     "options": [
-      "Using the Composition API (importing only what you need).",
-      "Using the Options API exclusively.",
-      "Avoiding the use of global 'Vue.prototype' (Vue 2 style).",
-      "Using 'defineAsyncComponent' for large modules."
+      "Usar la Composition API (importando solo lo que necesitas).",
+      "Usar la Options API exclusivamente.",
+      "Evitar el uso del 'Vue.prototype' global (estilo Vue 2).",
+      "Usar 'defineAsyncComponent' para módulos grandes."
     ]
   },
   "perf-v-06": {
-    "prompt": "What is the purpose of the 'markRaw' utility?",
-    "explanation": "Some objects (like complex class instances or React components being used inside Vue) should not be reactive. markRaw tags them so Vue ignores them, saving performance.",
-    "interviewTip": "This is vital when wrapping external libraries that have their own internal state management.",
+    "prompt": "¿Cuál es el propósito de la utilidad 'markRaw'?",
+    "explanation": "Algunos objetos (como instancias de clases complejas o componentes React siendo usados dentro de Vue) no deberían ser reactivos. markRaw los etiqueta para que Vue los ignore, ahorrando rendimiento.",
+    "interviewTip": "Esto es vital al envolver bibliotecas externas que tienen su propia gestión de estado interno.",
     "options": [
-      "To make a variable accessible in the console.",
-      "To explicitly prevent an object from ever being converted into a reactive proxy.",
-      "To color-code the object in DevTools.",
-      "To convert an object into a string."
+      "Para hacer una variable accesible en la consola.",
+      "Para prevenir explícitamente que un objeto sea convertido en un proxy reactivo.",
+      "Para codificar con colores el objeto en DevTools.",
+      "Para convertir un objeto en un string."
     ]
   },
   "perf-v-07": {
-    "prompt": "Analyze the code. Which directive is better for a component that toggles visibility 100 times per minute?",
-    "explanation": "v-show only toggles CSS 'display: none'. v-if would destroy and re-create the component 100 times, which is very CPU intensive.",
-    "interviewTip": "Always relate the choice to 'Initialization cost' vs 'Runtime cost'.",
-    "options": [
-      "v-if",
-      "v-show",
-      "v-once",
-      "v-cloak"
-    ]
+    "prompt": "Analiza el código. ¿Qué directiva es mejor para un componente que alterna visibilidad 100 veces por minuto?",
+    "explanation": "v-show solo alterna el CSS 'display: none'. v-if destruiría y recrearía el componente 100 veces, lo cual es muy intensivo para el CPU.",
+    "interviewTip": "Siempre relaciona la elección con 'Costo de inicialización' vs 'Costo de tiempo de ejecución'.",
+    "options": ["v-if", "v-show", "v-once", "v-cloak"]
   },
   "perf-v-08": {
-    "prompt": "What is 'Virtual List Rendering' (or Windowing)?",
-    "explanation": "If you have 10,000 items, rendering 10,000 DOM nodes will crash the browser. Virtual lists only render the ~10 items the user actually sees.",
-    "interviewTip": "Mention libraries like `vue-virtual-scroller` for high-performance lists.",
+    "prompt": "¿Qué es 'Virtual List Rendering' (o Windowing)?",
+    "explanation": "Si tienes 10,000 elementos, renderizar 10,000 nodos del DOM hará que el navegador se bloquee. Las listas virtuales solo renderizan los ~10 elementos que el usuario realmente ve.",
+    "interviewTip": "Menciona bibliotecas como `vue-virtual-scroller` para listas de alto rendimiento.",
     "options": [
-      "A list that only works on VR headsets.",
-      "A technique where only the visible items in a long list are rendered in the DOM to save memory and CPU.",
-      "Using v-for on a Virtual DOM node.",
-      "A way to hide lists from the user."
+      "Una lista que solo funciona en cascos VR.",
+      "Una técnica donde solo los elementos visibles en una lista larga son renderizados en el DOM para ahorrar memoria y CPU.",
+      "Usar v-for en un nodo del Virtual DOM.",
+      "Una forma de ocultar listas del usuario."
     ]
   },
   "pov-09": {
-    "prompt": "What is the purpose of v-memo directive in Vue 3?",
-    "explanation": "v-memo is similar to React.memo but for templates. It's particularly useful for optimizing large v-for lists.",
-    "interviewTip": "v-memo was introduced in Vue 3.2 and is most effective when combined with v-for.",
+    "prompt": "¿Cuál es el propósito de la directiva v-memo en Vue 3?",
+    "explanation": "v-memo es similar a React.memo pero para templates. Es particularmente útil para optimizar listas grandes con v-for.",
+    "interviewTip": "v-memo fue introducido en Vue 3.2 y es más efectivo cuando se combina con v-for.",
     "options": [
-      "To memoize component methods.",
-      "To memoize a template sub-tree and skip re-rendering if dependencies haven't changed.",
-      "To improve memory usage.",
-      "To cache API responses."
+      "Para memorizar métodos de componentes.",
+      "Para memorizar un sub-árbol de template y omitir el re-renderizado si las dependencias no han cambiado.",
+      "Para mejorar el uso de memoria.",
+      "Para cachear respuestas de API."
     ]
   },
   "pov-10": {
-    "prompt": "How can you reduce the bundle size of a Vue application?",
-    "explanation": "Code splitting through dynamic imports allows you to load only the code needed for the current route, reducing initial bundle size.",
-    "interviewTip": "Combine with tree-shaking, proper build configuration, and analyzing bundle size with tools like webpack-bundle-analyzer.",
+    "prompt": "¿Cómo puedes reducir el tamaño del bundle de una aplicación Vue?",
+    "explanation": "La división de código a través de importaciones dinámicas te permite cargar solo el código necesario para la ruta actual, reduciendo el tamaño del bundle inicial.",
+    "interviewTip": "Combina con tree-shaking, configuración de build adecuada, y análisis del tamaño del bundle con herramientas como webpack-bundle-analyzer.",
     "options": [
-      "Use lazy loading for routes and components.",
-      "Remove all comments from code.",
-      "Use only inline styles.",
-      "Avoid using components."
+      "Usar lazy loading para rutas y componentes.",
+      "Eliminar todos los comentarios del código.",
+      "Usar solo estilos inline.",
+      "Evitar usar componentes."
     ]
   }
 }

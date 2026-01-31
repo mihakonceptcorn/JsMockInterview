@@ -1,19 +1,19 @@
 {
   "cb-01": {
-    "prompt": "In Vue, what is the 'One-Way Data Flow' principle regarding props?",
-    "explanation": "This prevents child components from accidentally mutating the parent's state, which would make the data flow hard to understand and debug.",
-    "interviewTip": "If you try to mutate a prop in a child, Vue will throw a warning in the console. If you need to change it, use a local 'ref' or emit an event.",
+    "prompt": "En Vue, ¿cuál es el principio de 'One-Way Data Flow' con respecto a las props?",
+    "explanation": "Esto evita que los componentes hijos muten accidentalmente el estado del padre, lo que haría que el flujo de datos sea difícil de entender y depurar.",
+    "interviewTip": "Si intentas mutar una prop en un hijo, Vue lanzará una advertencia en la consola. Si necesitas cambiarla, usa un 'ref' local o emite un evento.",
     "options": [
-      "Props can only be passed to parent components, never children.",
-      "A child component should not mutate a prop directly; it should instead emit an event to ask the parent to change the data.",
-      "Data can only flow through a central state manager like Pinia.",
-      "Props are automatically synchronized both ways between parent and child."
+      "Las props solo pueden pasarse a componentes padres, nunca a hijos.",
+      "Un componente hijo no debe mutar una prop directamente; en su lugar, debe emitir un evento para pedirle al padre que cambie los datos.",
+      "Los datos solo pueden fluir a través de un gestor de estado central como Pinia.",
+      "Las props se sincronizan automáticamente en ambas direcciones entre padre e hijo."
     ]
   },
   "cb-02": {
-    "prompt": "Analyze the code. How does the child component notify the parent that a button was clicked?",
-    "explanation": "Custom events use the v-on (or @) syntax just like native DOM events. The parent listens for the event name defined in the child's $emit call.",
-    "interviewTip": "Vue 3 recommends declaring emitted events using the 'emits' option or 'defineEmits' for better documentation and validation.",
+    "prompt": "Analiza el código. ¿Cómo notifica el componente hijo al padre que se hizo clic en un botón?",
+    "explanation": "Los eventos personalizados usan la sintaxis v-on (o @) igual que los eventos nativos del DOM. El padre escucha el nombre del evento definido en la llamada $emit del hijo.",
+    "interviewTip": "Vue 3 recomienda declarar los eventos emitidos usando la opción 'emits' o 'defineEmits' para una mejor documentación y validación.",
     "options": [
       ":custom-event",
       "@custom-event",
@@ -22,86 +22,76 @@
     ]
   },
   "cb-03": {
-    "prompt": "How do you define props with validation in a Vue 3 <script setup> component?",
-    "explanation": "defineProps is a compiler macro available inside <script setup>. It doesn't need to be imported and allows for runtime validation of the data being passed.",
-    "interviewTip": "Prop validation is your first line of defense against bugs in large teams. Always use object syntax for props instead of arrays.",
-    "options": [
-      "useProps",
-      "defineProps",
-      "setProps",
-      "injectProps"
-    ]
+    "prompt": "¿Cómo defines props con validación en un componente Vue 3 con <script setup>?",
+    "explanation": "defineProps es una macro del compilador disponible dentro de <script setup>. No necesita importarse y permite la validación en tiempo de ejecución de los datos pasados.",
+    "interviewTip": "La validación de props es tu primera línea de defensa contra errores en equipos grandes. Siempre usa la sintaxis de objeto para las props en lugar de arrays.",
+    "options": ["useProps", "defineProps", "setProps", "injectProps"]
   },
   "cb-04": {
-    "prompt": "What are 'Fallthrough Attributes' in Vue 3?",
-    "explanation": "If a component has a single root element, attributes passed to it (that aren't declared as props) 'fall through' to that root element.",
-    "interviewTip": "You can disable this behavior by setting 'inheritAttrs: false' and manually binding attributes using '$attrs'.",
+    "prompt": "¿Qué son los 'Fallthrough Attributes' en Vue 3?",
+    "explanation": "Si un componente tiene un único elemento raíz, los atributos que se le pasan (que no están declarados como props) 'se trasladan' ('fall through') a ese elemento raíz.",
+    "interviewTip": "Puedes desactivar este comportamiento estableciendo 'inheritAttrs: false' y vinculando manualmente los atributos usando '$attrs'.",
     "options": [
-      "Attributes like 'class', 'style', and 'id' passed to a component that are automatically applied to the component's root element.",
-      "A bug where props accidentally leak into the global scope.",
-      "Variables that bypass the Virtual DOM.",
-      "A way to pass props to grandchildren directly."
+      "Atributos como 'class', 'style' e 'id' pasados a un componente que se aplican automáticamente al elemento raíz del componente.",
+      "Un error donde las props se filtran accidentalmente al ámbito global.",
+      "Variables que evaden el Virtual DOM.",
+      "Una forma de pasar props directamente a nietos."
     ]
   },
   "cb-05": {
-    "prompt": "Analyze the code. What is the correct way for the parent to pass a dynamic numeric value to the child?",
-    "explanation": "Without the colon (:), '42' is passed as a static string. With the colon (:), it is evaluated as a JavaScript expression, passing it as a number.",
-    "interviewTip": "This is a common beginner mistake. Use v-bind (:) for any value that isn't a literal string.",
-    "options": [
-      "count",
-      ":count",
-      "v-bind.count",
-      "count.number"
-    ]
+    "prompt": "Analiza el código. ¿Cuál es la forma correcta para que el padre pase un valor numérico dinámico al hijo?",
+    "explanation": "Sin los dos puntos (:), '42' se pasa como una cadena estática. Con los dos puntos (:), se evalúa como una expresión JavaScript, pasándolo como número.",
+    "interviewTip": "Este es un error común de principiantes. Usa v-bind (:) para cualquier valor que no sea una cadena literal.",
+    "options": ["count", ":count", "v-bind.count", "count.number"]
   },
   "cb-06": {
-    "prompt": "Which of the following are valid ways to communicate between components that are NOT in a direct parent-child relationship?",
-    "explanation": "Provide/Inject is great for 'Prop Drilling' avoidance. Pinia is for global state. Direct mutation of $parent is highly discouraged as it creates tight coupling.",
-    "interviewTip": "Mention Provide/Inject as the Vue equivalent to React's Context API.",
+    "prompt": "¿Cuáles de las siguientes son formas válidas de comunicarse entre componentes que NO están en una relación directa padre-hijo?",
+    "explanation": "Provide/Inject es excelente para evitar el 'Prop Drilling'. Pinia es para estado global. La mutación directa de $parent está muy desaconsejada porque crea un acoplamiento fuerte.",
+    "interviewTip": "Menciona Provide/Inject como el equivalente en Vue al Context API de React.",
     "options": [
-      "Provide / Inject (Dependency Injection)",
-      "Global State Management (Pinia)",
-      "An External Event Bus (using a library like mitt)",
-      "Mutating 'this.$parent' directly"
+      "Provide / Inject (Inyección de dependencias)",
+      "Gestión de estado global (Pinia)",
+      "Un Event Bus externo (usando una librería como mitt)",
+      "Mutar directamente 'this.$parent'"
     ]
   },
   "cb-07": {
-    "prompt": "What happens if a child emits an event but the parent is not listening for it?",
-    "explanation": "Unlike DOM events, Vue's custom events do not bubble by default. If no listener is present on the immediate parent, the event is simply lost.",
-    "interviewTip": "This is why debugging missing events usually starts with checking the event name spelling in the @listener.",
+    "prompt": "¿Qué pasa si un hijo emite un evento pero el padre no está escuchándolo?",
+    "explanation": "A diferencia de los eventos del DOM, los eventos personalizados de Vue no hacen 'bubble' por defecto. Si no hay un listener en el padre inmediato, el evento simplemente se pierde.",
+    "interviewTip": "Por eso, al depurar eventos que no llegan, lo primero suele ser verificar la ortografía del nombre del evento en el @listener.",
     "options": [
-      "Vue will throw a runtime error.",
-      "The event is ignored, and nothing happens.",
-      "The event bubbles up to the 'window' object.",
-      "The app crashes."
+      "Vue lanzará un error en tiempo de ejecución.",
+      "El evento se ignora y no pasa nada.",
+      "El evento sube hasta el objeto 'window'.",
+      "La aplicación se cae (crashea)."
     ]
   },
   "cb-08": {
-    "prompt": "Analyze the code. Why is 'defineEmits' used here?",
-    "explanation": "Using defineEmits makes your component's 'contract' explicit, helping developers (and IDEs) understand how to interact with it.",
-    "interviewTip": "In TypeScript, you can even define the types of the arguments passed with the event using defineEmits<{ (e: 'change', id: number): void }>.",
+    "prompt": "Analiza el código. ¿Por qué se usa 'defineEmits' aquí?",
+    "explanation": "Usar defineEmits hace que el 'contrato' de tu componente sea explícito, ayudando a los desarrolladores (y a los IDEs) a entender cómo interactuar con él.",
+    "interviewTip": "En TypeScript, incluso puedes definir los tipos de los argumentos pasados con el evento usando defineEmits<{ (e: 'change', id: number): void }>.",
     "options": [
-      "To register the component in the global scope.",
-      "To provide type-safety and documentation for the events this component can fire.",
-      "To allow the component to receive data from the parent.",
-      "To style the component buttons."
+      "Para registrar el componente en el ámbito global.",
+      "Para proporcionar seguridad de tipos y documentación sobre los eventos que este componente puede emitir.",
+      "Para permitir que el componente reciba datos del padre.",
+      "Para estilizar los botones del componente."
     ]
   },
   "cb-09": {
-    "prompt": "What is the purpose of the `key` attribute when rendering lists in Vue?",
-    "explanation": "Keys give Vue a hint about the identity of each node. Without keys, Vue uses an algorithm that minimizes element movement but can cause issues with stateful components or transitions.",
-    "interviewTip": "Always use unique, stable keys (like IDs) rather than array indexes for dynamic lists.",
+    "prompt": "¿Cuál es el propósito del atributo `key` al renderizar listas en Vue?",
+    "explanation": "Las keys le dan a Vue una pista sobre la identidad de cada nodo. Sin keys, Vue usa un algoritmo que minimiza el movimiento de elementos pero puede causar problemas con componentes con estado o transiciones.",
+    "interviewTip": "Siempre usa keys únicas y estables (como IDs) en lugar de índices de array para listas dinámicas.",
     "options": [
-      "To encrypt the component data.",
-      "To help Vue identify which items have changed, been added, or removed for efficient DOM updates.",
-      "To set the component ID.",
-      "To improve CSS styling."
+      "Para encriptar los datos del componente.",
+      "Para ayudar a Vue a identificar qué elementos han cambiado, sido añadidos o eliminados para actualizaciones eficientes del DOM.",
+      "Para establecer el ID del componente.",
+      "Para mejorar el estilo CSS."
     ]
   },
   "cb-10": {
-    "prompt": "How do you emit a custom event from a child component to its parent in Vue 3?",
-    "explanation": "In <script setup>, you use defineEmits to declare events, then call emit with the event name and optional payload.",
-    "interviewTip": "Vue 3 encourages explicit event declarations for better type safety and documentation.",
+    "prompt": "¿Cómo emites un evento personalizado desde un componente hijo hacia su padre en Vue 3?",
+    "explanation": "En <script setup>, usas defineEmits para declarar eventos y luego llamas a emit con el nombre del evento y un payload opcional.",
+    "interviewTip": "Vue 3 fomenta las declaraciones explícitas de eventos para una mejor seguridad de tipos y documentación.",
     "options": [
       "'update'",
       "\"update\", newValue",
