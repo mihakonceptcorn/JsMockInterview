@@ -2,51 +2,111 @@
   "of-01": {
     "prompt": "Яка бібліотека є індустріальним стандартом для визначення статусу мережевого з'єднання в React Native?",
     "explanation": "NetInfo надає інформацію про тип з'єднання (wifi, стільниковий зв'язок) та про те, чи пристрій насправді підключений до інтернету.",
-    "interviewTip": "Завжди підписуйтесь на слухача (listener) подій, а не просто перевіряйте одноразове значення, щоб ваш UI міг миттєво реагувати, коли користувач переходить в офлайн."
+    "interviewTip": "Завжди підписуйтесь на слухача (listener) подій, а не просто перевіряйте одноразове значення, щоб ваш UI міг миттєво реагувати, коли користувач переходить в офлайн.",
+    "options": [
+      "react-native-connectivity",
+      "@react-native-community/netinfo",
+      "react-native-offline-check",
+      "expo-network-status"
+    ]
   },
   "of-02": {
     "prompt": "Що таке 'Optimistic UI' (Оптимістичний інтерфейс) у контексті офлайн-додатків?",
     "explanation": "Оптимістичний UI робить додаток «миттєвим». Він оновлює інтерфейс одразу, припускаючи, що запит буде успішним. Якщо пізніше запит не вдається, додаток «відкочує» зміни та інформує користувача.",
-    "interviewTip": "Це ключова функція таких бібліотек, як TanStack (React) Query."
+    "interviewTip": "Це ключова функція таких бібліотек, як TanStack (React) Query.",
+    "options": [
+      "A UI that only works when the user is happy.",
+      "Immediately updating the UI to show a successful action (like liking a post) before the server confirms it.",
+      "A design that uses bright, positive colors.",
+      "Assuming the user will never go offline."
+    ]
   },
   "of-03": {
     "prompt": "Проаналізуйте код. Як ця конфігурація React Query обробляє стан офлайн?",
     "explanation": "У режимі 'offlineFirst' запити намагатимуться виконати функцію завантаження, але також успішно повертатимуть дані з кешу, якщо вони доступні, навіть без з'єднання.",
-    "interviewTip": "Поєднуйте це з «Персистером» (Persister), щоб зберігати кеш у MMKV або AsyncStorage для справжньої офлайн-підтримки після перезапуску додатка."
+    "interviewTip": "Поєднуйте це з «Персистером» (Persister), щоб зберігати кеш у MMKV або AsyncStorage для справжньої офлайн-підтримки після перезапуску додатка.",
+    "options": [
+      "It deletes the data if there is no internet.",
+      "It fetches data from the server first, then the cache.",
+      "It serves data from the cache immediately and only attempts to fetch if the data is stale.",
+      "It prevents the app from opening without a connection."
+    ]
   },
   "of-04": {
     "prompt": "Яка роль «Черги синхронізації» (Sync Queue) в архітектурі offline-first?",
     "explanation": "Черга синхронізації гарантує, що прогрес користувача не буде втрачено. Коли додаток виявляє підключення до мережі, він обробляє відкладені дії в тому порядку, в якому вони були створені.",
-    "interviewTip": "Бібліотеки на кшталт 'redux-persist' у поєднанні з 'redux-offline' були піонерами цього патерна."
+    "interviewTip": "Бібліотеки на кшталт 'redux-persist' у поєднанні з 'redux-offline' були піонерами цього патерна.",
+    "options": [
+      "To speed up the app's animations.",
+      "To store user actions (like 'Submit Quiz') while offline and replay them once the connection is restored.",
+      "To manage the order of images in a gallery.",
+      "To check for app updates in the store."
+    ]
   },
   "of-05": {
     "prompt": "Які з наведених варіантів є поширеними викликами при впровадженні Offline-First?",
     "explanation": "Вирішення конфліктів — найскладніша частина: вирішити, «хто переміг», якщо користувач редагував ті самі дані на двох пристроях, поки один був офлайн.",
-    "interviewTip": "Згадайте стратегію 'Last Write Wins' (перемагає останній запис) або 'CRDTs' як просунуті методи вирішення конфліктів."
+    "interviewTip": "Згадайте стратегію 'Last Write Wins' (перемагає останній запис) або 'CRDTs' як просунуті методи вирішення конфліктів.",
+    "options": [
+      "Conflict Resolution (Server data vs. Local data changes).",
+      "Managing Cache Invalidation (ensuring data isn't too old).",
+      "Handling large binary assets like video.",
+      "Increasing the device's battery capacity."
+    ]
   },
   "of-06": {
     "prompt": "Як визначити, що конкретний мережевий запит не вдався саме через відсутність інтернету?",
     "explanation": "state.isConnected повертає булеве значення, що вказує на наявність мережевого з'єднання (хоча це не завжди гарантує доступ до інтернету).",
-    "interviewTip": "Використовуйте `state.isInternetReachable` для точнішої перевірки того, чи можна насправді зв'язатися з серверами Google/Apple."
+    "interviewTip": "Використовуйте `state.isInternetReachable` для точнішої перевірки того, чи можна насправді зв'язатися з серверами Google/Apple.",
+    "options": [
+      "state.connected",
+      "state.isConnected",
+      "state.online",
+      "state.hasInternet"
+    ]
   },
   "of-07": {
     "prompt": "Що таке 'Rehydration' (Регідратація) у контексті керування станом?",
     "explanation": "Коли додаток відкривається, він зчитує збережений JSON із AsyncStorage/MMKV і «наповнює» стан, щоб користувач побачив свої дані ще до завершення будь-яких мережевих запитів.",
-    "interviewTip": "Завжди показуйте заставку (splash screen), поки регідратація не завершиться, щоб уникнути різкої зміни макета (layout shift)."
+    "interviewTip": "Завжди показуйте заставку (splash screen), поки регідратація не завершиться, щоб уникнути різкої зміни макета (layout shift).",
+    "options": [
+      "Cleaning up the memory after a crash.",
+      "The process of loading the persisted state from storage back into the app's memory (e.g., Redux or Zustand) on startup.",
+      "Updating the app to the latest version.",
+      "Connecting the app to a new database."
+    ]
   },
   "of-08": {
     "prompt": "Чому MMKV часто вибирають замість AsyncStorage для офлайн-додатків?",
     "explanation": "Оскільки MMKV працює синхронно, ви можете зчитати стан миттєво під час початкового рендерингу, що робить роботу в офлайні набагато плавнішою.",
-    "interviewTip": "AsyncStorage вимагає 'await', що завжди змушує додаток пройти принаймні один «порожній» цикл рендерингу."
+    "interviewTip": "AsyncStorage вимагає 'await', що завжди змушує додаток пройти принаймні один «порожній» цикл рендерингу.",
+    "options": [
+      "It has a better UI.",
+      "It allows for synchronous reads, which prevents 'flickering' of UI state during rehydration.",
+      "It is owned by Facebook.",
+      "It supports video files natively."
+    ]
   },
   "of-09": {
     "prompt": "Яка найкраща стратегія для кешування зображень в офлайн-додатку?",
     "explanation": "Бібліотеки на кшталт 'react-native-fast-image' або 'expo-image' забезпечують автоматичне кешування на диску зі стратегіями інвалідації, роблячи офлайн-завантаження зображень непомітним для користувача.",
-    "interviewTip": "Згадайте, що варто встановлювати пріоритети кешування (low/normal/high) залежно від важливості зображення для економії місця на диску."
+    "interviewTip": "Згадайте, що варто встановлювати пріоритети кешування (low/normal/high) залежно від важливості зображення для економії місця на диску.",
+    "options": [
+      "Store all images in AsyncStorage as base64 strings.",
+      "Use a library like 'react-native-fast-image' with disk caching enabled to automatically cache network images.",
+      "Download all images at app startup.",
+      "Images cannot be cached in React Native."
+    ]
   },
   "of-10": {
     "prompt": "Як реалізувати механізм повторних спроб (retry) для невдалих запитів в офлайн-архітектурі?",
     "explanation": "Налаштування 'retry: 3' означає, що мутація автоматично повториться до 3 разів з експоненціальною затримкою перед тим, як здатися. Це ідеально для тимчасових помилок мережі.",
-    "interviewTip": "Для критичних операцій, таких як платежі, варто зберігати невдалі мутації в чергу і намагатися виконати їх знову навіть після перезапуску додатка."
+    "interviewTip": "Для критичних операцій, таких як платежі, варто зберігати невдалі мутації в чергу і намагатися виконати їх знову навіть після перезапуску додатка.",
+    "options": [
+      "false",
+      "true",
+      "3",
+      "Infinity"
+    ]
   }
 }

@@ -2,71 +2,155 @@
   "nav-01": {
     "prompt": "Який тип навігатора слід використовувати для стандартного переходу 'push/pop', де новий екран накладається поверх попереднього?",
     "explanation": "Stack Navigator забезпечує переходи між екранами, де кожен новий екран додається до «стеку» поверх попереднього.",
-    "interviewTip": "У сучасній розробці використовуйте '@react-navigation/native-stack', оскільки він працює на базі нативних примітивів ОС, що забезпечує кращу продуктивність."
+    "interviewTip": "У сучасній розробці використовуйте '@react-navigation/native-stack', оскільки він працює на базі нативних примітивів ОС, що забезпечує кращу продуктивність.",
+    "options": [
+      "Tab Navigator",
+      "Stack Navigator",
+      "Drawer Navigator",
+      "Switch Navigator"
+    ]
   },
   "nav-02": {
     "prompt": "Як перейти на екран 'Details' та передати параметр 'itemId'?",
     "explanation": "Функція 'navigate' — найпоширеніший спосіб переходу. Другий аргумент — це об'єкт із параметрами (params).",
-    "interviewTip": "Зверніть увагу на різницю: 'navigate' повернеться до вже існуючого екрана в стеку, тоді як 'push' завжди створить новий екземпляр, навіть якщо цей екран уже відкритий."
+    "interviewTip": "Зверніть увагу на різницю: 'navigate' повернеться до вже існуючого екрана в стеку, тоді як 'push' завжди створить новий екземпляр, навіть якщо цей екран уже відкритий.",
+    "options": [
+      "push",
+      "navigate",
+      "jumpTo",
+      "goTo"
+    ]
   },
   "nav-03": {
     "prompt": "Як отримати параметр 'itemId' у компоненті екрана 'Details'?",
     "explanation": "Кожен компонент екрана в навігаторі отримує пропс 'route', який містить інформацію про поточний маршрут, включаючи 'params'.",
-    "interviewTip": "Ви також можете використовувати хук 'useRoute', щоб отримати доступ до цієї інформації в будь-якому місці дерева компонентів."
+    "interviewTip": "Ви також можете використовувати хук 'useRoute', щоб отримати доступ до цієї інформації в будь-якому місці дерева компонентів.",
+    "options": [
+      "navigation",
+      "route",
+      "params",
+      "props"
+    ]
   },
   "nav-04": {
     "prompt": "Яке призначення компонента <NavigationContainer>?",
     "explanation": "NavigationContainer має огортати всю структуру вашого додатка. Він керує станом навігації та обробляє Deep Linking.",
-    "interviewTip": "У всьому додатку має бути лише один NavigationContainer."
+    "interviewTip": "У всьому додатку має бути лише один NavigationContainer.",
+    "options": [
+      "It acts as a wrapper for the entire app to manage the navigation state and link your app to the device's environment.",
+      "It is used to create a sidebar menu.",
+      "It automatically handles API calls between screens.",
+      "It is only required for Tab navigation."
+    ]
   },
   "nav-05": {
     "prompt": "Який хук використовується для програмного виконання дії 'go back' (повернутися назад)?",
     "explanation": "useNavigation надає доступ до об'єкта навігації всередині будь-якого вкладеного компонента, дозволяючи виконувати дії 'goBack' або 'navigate'.",
-    "interviewTip": "Це набагато чистіше, ніж вручну прокидати пропс 'navigation' через кілька рівнів компонентів."
+    "interviewTip": "Це набагато чистіше, ніж вручну прокидати пропс 'navigation' через кілька рівнів компонентів.",
+    "options": [
+      "useRoute",
+      "useNavigation",
+      "useHistory",
+      "useStack"
+    ]
   },
   "nav-06": {
     "prompt": "Які з наведених варіантів є найпоширенішими типами навігаторів в екосистемі React Navigation?",
     "explanation": "React Navigation надає окремі пакети для Stack (стек), Tabs (вкладки) та Drawer (бічне меню). Модальні вікна зазвичай реалізуються як режим презентації всередині Stack.",
-    "interviewTip": "Згадуйте 'createNativeStackNavigator' саме через його переваги у швидкодії на iOS та Android."
+    "interviewTip": "Згадуйте 'createNativeStackNavigator' саме через його переваги у швидкодії на iOS та Android.",
+    "options": [
+      "createNativeStackNavigator",
+      "createBottomTabNavigator",
+      "createDrawerNavigator",
+      "createModalNavigator"
+    ]
   },
   "nav-07": {
     "prompt": "Що робить команда 'navigation.replace('Home')'?",
     "explanation": "Метод 'replace' корисний для процесів авторизації: коли користувач увійшов, ви замінюєте екран Login на Home, щоб він не міг повернутися назад до форми входу.",
-    "interviewTip": "Використовуйте це для запобігання нескінченних циклів кнопки «Назад» в історії вашого додатка."
+    "interviewTip": "Використовуйте це для запобігання нескінченних циклів кнопки «Назад» в історії вашого додатка.",
+    "options": [
+      "It adds 'Home' on top of the current screen.",
+      "It removes the current screen from the stack and adds 'Home' in its place.",
+      "It refreshes the current screen.",
+      "It closes the app and reopens the Home screen."
+    ]
   },
   "nav-08": {
     "prompt": "Як змінити заголовок екрана в навігаційній панелі (header)?",
     "explanation": "Пропс 'options' (зокрема поле 'title') керує відображенням екрана в інтерфейсі навігатора (текст заголовка, підпис вкладки).",
-    "interviewTip": "Ви також можете встановлювати ці параметри динамічно всередині компонента за допомогою 'navigation.setOptions'."
+    "interviewTip": "Ви також можете встановлювати ці параметри динамічно всередині компонента за допомогою 'navigation.setOptions'.",
+    "options": [
+      "header",
+      "label",
+      "title",
+      "name"
+    ]
   },
   "nav-09": {
     "prompt": "Що таке 'Deep Linking' у контексті мобільної навігації?",
     "explanation": "Deep Linking дозволяє зовнішнім джерелам (сайти, пошта, сповіщення) відкривати додаток одразу на конкретному вкладеному екрані.",
-    "interviewTip": "Впровадження Deep Linking вимагає конфігурації об'єкта 'linking', який передається в <NavigationContainer>."
+    "interviewTip": "Впровадження Deep Linking вимагає конфігурації об'єкта 'linking', який передається в <NavigationContainer>.",
+    "options": [
+      "Linking the app to a deep database.",
+      "A way to open a specific screen in your app using a URL (e.g., myapp://details/42).",
+      "A method to link two components deeply in the tree.",
+      "Connecting the app to the device's file system."
+    ]
   },
   "nav-10": {
     "prompt": "Як визначити, що екран став активним/видимим для користувача (focus)?",
     "explanation": "Оскільки екрани в стеку залишаються змонтованими навіть будучи прихованими, звичайний 'useEffect' не спрацює при поверненні на екран. 'useFocusEffect' — це спеціальне рішення від React Navigation.",
-    "interviewTip": "Це важливо для оновлення даних, коли користувач повертається назад на попередній екран."
+    "interviewTip": "Це важливо для оновлення даних, коли користувач повертається назад на попередній екран.",
+    "options": [
+      "Using useEffect with no dependencies.",
+      "Using the 'useFocusEffect' hook or the 'focus' event listener.",
+      "Checking window.isVisible.",
+      "React Native handles this automatically with 'onFocus' prop."
+    ]
   },
   "nav-11": {
     "prompt": "Що станеться, якщо викликати 'navigation.popToTop()'?",
     "explanation": "Це зручний метод у Stack-навігаторах для миттєвого очищення історії навігації та повернення до самого першого (кореневого) екрана.",
-    "interviewTip": "Це часто використовується для кнопки «Додому» або при завершенні багатоетапного процесу оформлення замовлення."
+    "interviewTip": "Це часто використовується для кнопки «Додому» або при завершенні багатоетапного процесу оформлення замовлення.",
+    "options": [
+      "It reloads the current screen.",
+      "It goes back one screen.",
+      "It dismisses all screens in the stack except the very first one (the root).",
+      "It takes the user to the phone's home screen."
+    ]
   },
   "nav-12": {
     "prompt": "Як приховати заголовок (header) для конкретного екрана?",
     "explanation": "Опція 'headerShown: false' є стандартом для видалення стандартної панелі навігації на конкретному екрані.",
-    "interviewTip": "Ви можете зробити це, якщо створюєте власний кастомний заголовок або для екрана заставки (splash screen)."
+    "interviewTip": "Ви можете зробити це, якщо створюєте власний кастомний заголовок або для екрана заставки (splash screen).",
+    "options": [
+      "headerShown",
+      "hideHeader",
+      "noHeader",
+      "displayHeader"
+    ]
   },
   "nav-13": {
     "prompt": "Що таке 'Tab Nesting' (Вкладеність навігаторів)?",
     "explanation": "Вкладеність дозволяє мати глобальну панель вкладок (Bottom Tabs), де кожна вкладка має власну незалежну історію переходів (наприклад, Home -> Product Details).",
-    "interviewTip": "Будьте обережні з глибокою вкладеністю; вона може зробити стан навігації складним для відлагодження."
+    "interviewTip": "Будьте обережні з глибокою вкладеністю; вона може зробити стан навігації складним для відлагодження.",
+    "options": [
+      "Putting a Stack Navigator inside a Tab of a Tab Navigator.",
+      "Putting two Tab Navigators on the same screen.",
+      "Creating multiple navigation containers.",
+      "Using Tabs only on iOS."
+    ]
   },
   "nav-14": {
     "prompt": "Який пропс дозволяє налаштувати іконку в Bottom Tab Navigator?",
     "explanation": "tabBarIcon — це функція, яка повертає компонент (зазвичай іконку) для відображення в панелі вкладок.",
-    "interviewTip": "Функція отримує аргументи { focused, color, size }, що допомагає стилізувати активний та неактивний стани."
+    "interviewTip": "Функція отримує аргументи { focused, color, size }, що допомагає стилізувати активний та неактивний стани.",
+    "options": [
+      "tabIcon",
+      "tabBarIcon",
+      "iconName",
+      "renderIcon"
+    ]
   }
 }

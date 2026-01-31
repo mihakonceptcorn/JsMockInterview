@@ -2,51 +2,111 @@
   "perf-01": {
     "prompt": "Який двигун JavaScript зараз є стандартним для React Native, оскільки він забезпечує швидший TTI (час до інтерактивності) та менший розмір APK?",
     "explanation": "Hermes оптимізований спеціально для мобільних пристроїв. Він використовує попередню компіляцію (AOT) для перетворення JS на байт-код під час збірки, а не під час виконання.",
-    "interviewTip": "Зауважте, що Hermes також допомагає зменшити споживання пам'яті (Memory Footprint), що критично важливо для бюджетних Android-пристроїв."
+    "interviewTip": "Зауважте, що Hermes також допомагає зменшити споживання пам'яті (Memory Footprint), що критично важливо для бюджетних Android-пристроїв.",
+    "options": [
+      "V8",
+      "JavaScriptCore (JSC)",
+      "Hermes",
+      "SpiderMonkey"
+    ]
   },
   "perf-02": {
     "prompt": "Що таке 'FlashList' (від Shopify) і чому його часто використовують замість 'FlatList'?",
     "explanation": "FlatList демонтує елементи, що вийшли за екран. FlashList перевикористовує (recycles) нативні в'юхи та просто підміняє в них дані, що набагато легше для пристрою.",
-    "interviewTip": "FlashList заявляє про прискорення у 5-10 разів порівняно з FlatList. Це чудовий аргумент для Senior-рівня обговорення продуктивності."
+    "interviewTip": "FlashList заявляє про прискорення у 5-10 разів порівняно з FlatList. Це чудовий аргумент для Senior-рівня обговорення продуктивності.",
+    "options": [
+      "It is a version of FlatList that only works with images.",
+      "It is a highly optimized list component that recycles cells (Views) instead of unmounting them, resulting in significantly higher FPS.",
+      "It is a list that only renders once and never updates.",
+      "It is a paid plugin for React Native."
+    ]
   },
   "perf-03": {
     "prompt": "Проаналізуйте код. Чому цей список, швидше за все, буде лагати при швидкому скролі?",
     "explanation": "Функції, визначені всередині тіла компонента, перестворюються при кожному рендері. Крім того, важка логіка на кшталт 'expensiveFormat' всередині renderItem блокує JS-потік під час скролу.",
-    "interviewTip": "Рішення: винесіть renderItem за межі компонента або огорніть його в 'useCallback', а важке форматування мемоїзуйте."
+    "interviewTip": "Рішення: винесіть renderItem за межі компонента або огорніть його в 'useCallback', а важке форматування мемоїзуйте.",
+    "options": [
+      "Because the renderItem is defined inside the component and 'expensiveFormat' runs on every render.",
+      "Because FlatList doesn't support Text components.",
+      "Because the data prop is too large.",
+      "Because 'uri' images are always slow."
+    ]
   },
   "perf-04": {
     "prompt": "Яка мета використання методу 'InteractionManager.runAfterInteractions'?",
     "explanation": "Це гарантує, що важке завдання не відбиратиме ресурси процесора в анімації, запобігаючи «фризам» або випадінню кадрів.",
-    "interviewTip": "Це ідеально підходить для завантаження даних одразу після переходу на новий екран, щоб сам перехід не здавався повільним."
+    "interviewTip": "Це ідеально підходить для завантаження даних одразу після переходу на новий екран, щоб сам перехід не здавався повільним.",
+    "options": [
+      "To speed up the network requests.",
+      "To delay long-running tasks (like data processing) until after animations or navigation transitions have finished.",
+      "To check if the user is touching the screen.",
+      "To restart the JS thread."
+    ]
   },
   "perf-05": {
     "prompt": "Які з цих інструментів зазвичай використовують для профілювання та відлагодження продуктивності в React Native?",
     "explanation": "Flipper та React DevTools є стандартом для профілювання JS та моста (bridge). Xcode Instruments (та Android Studio Profiler) потрібні для перевірки нативної пам'яті та завантаження процесора.",
-    "interviewTip": "Flipper — це вибір професіоналів; він дозволяє інспектувати трафік моста, макет та базу даних в одному місці."
+    "interviewTip": "Flipper — це вибір професіоналів; він дозволяє інспектувати трафік моста, макет та базу даних в одному місці.",
+    "options": [
+      "Flipper (with the LeakCanary and Profiler plugins).",
+      "React DevTools (Profiler tab).",
+      "Xcode Instruments (for iOS native performance).",
+      "Chrome Task Manager."
+    ]
   },
   "perf-06": {
     "prompt": "Як визначити, що ваш JS-потік перевантажений на реальному пристрої?",
     "explanation": "Оверлей 'Perf Monitor' показує частоту кадрів обох потоків. Якщо UI — 60 FPS, а JS — 10 FPS, значить, ваша логіка блокує роботу додатка.",
-    "interviewTip": "Падіння JS FPS зазвичай означає занадто багато перерендерингів або важкі обчислення; падіння UI FPS означає, що ваша ієрархія View занадто глибока або складна."
+    "interviewTip": "Падіння JS FPS зазвичай означає занадто багато перерендерингів або важкі обчислення; падіння UI FPS означає, що ваша ієрархія View занадто глибока або складна.",
+    "options": [
+      "The app will automatically close.",
+      "By checking the 'Perf Monitor' in the Developer Menu to see the JS FPS and UI FPS.",
+      "The phone will start to get hot.",
+      "The internet speed will decrease."
+    ]
   },
   "perf-07": {
     "prompt": "Що таке оптимізація «інлайнових функцій» (Inline function) у контексті продуктивності RN?",
     "explanation": "Інлайнова стрілкова функція створює нове посилання при кожному рендері. Навіть якщо кнопка огорнута в 'React.memo', вона все одно перерендериться, бо пропс 'onPress' змінив посилання.",
-    "interviewTip": "Це найпоширеніша причина «марних рендерів» (Wasted Renders) у великих списках."
+    "interviewTip": "Це найпоширеніша причина «марних рендерів» (Wasted Renders) у великих списках.",
+    "options": [
+      "Using useCallback prevents the child from re-rendering unnecessarily if it is memoized.",
+      "Inline functions are faster to write.",
+      "Inline functions are automatically optimized by Hermes.",
+      "There is no performance difference."
+    ]
   },
   "perf-08": {
     "prompt": "Чому варто уникати глибокої вкладеності компонентів View?",
     "explanation": "Кожен рівень вкладеності додає роботи для рушія розмітки Yoga. Спрощення структури UI покращує швидкість початкового рендерингу та оновлень.",
-    "interviewTip": "Якщо у вас 10 вкладених View лише для відступів, спробуйте об'єднати їх у меншу кількість компонентів."
+    "interviewTip": "Якщо у вас 10 вкладених View лише для відступів, спробуйте об'єднати їх у меншу кількість компонентів.",
+    "options": [
+      "It makes the code harder to read.",
+      "It increases the complexity of the Shadow Tree layout calculations (Yoga), slowing down the UI thread.",
+      "It limits the number of colors you can use.",
+      "It is not allowed in the App Store."
+    ]
   },
   "perf-09": {
     "prompt": "У чому перевага використання 'RAM bundles' (Random Access Modules) у React Native?",
     "explanation": "RAM-бандли розбивають JavaScript на індексовані модулі. Додаток спочатку завантажує лише модулі для запуску, а решту — за потреби під час навігації.",
-    "interviewTip": "Це особливо корисно для великих додатків із багатьма екранами. Згадайте конфігурацію 'Metro bundler' для ввімкнення цієї функції."
+    "interviewTip": "Це особливо корисно для великих додатків із багатьма екранами. Згадайте конфігурацію 'Metro bundler' для ввімкнення цієї функції.",
+    "options": [
+      "They increase the device's RAM capacity.",
+      "They allow the app to load JavaScript modules on-demand rather than loading the entire bundle at startup, reducing TTI (Time To Interactive).",
+      "They compress images automatically.",
+      "They are only available on iOS."
+    ]
   },
   "perf-10": {
     "prompt": "Як Нова архітектура покращує продуктивність порівняно зі старою (Legacy)?",
     "explanation": "Нова архітектура (JSI + Fabric + Turbo Modules) прибирає «вузьке місце» у вигляді серіалізації JSON і дозволяє React спілкуватися з нативним кодом напряму, що дає можливість синхронного рендерингу.",
-    "interviewTip": "Зауважте, що це наближає продуктивність React Native до повністю нативних додатків, особливо у складних взаємодіях з інтерфейсом."
+    "interviewTip": "Зауважте, що це наближає продуктивність React Native до повністю нативних додатків, особливо у складних взаємодіях з інтерфейсом.",
+    "options": [
+      "It uses more memory to cache everything.",
+      "It eliminates the asynchronous bridge, uses JSI for synchronous native calls, and enables concurrent rendering with Fabric.",
+      "It removes all animations.",
+      "It only works on Android."
+    ]
   }
 }

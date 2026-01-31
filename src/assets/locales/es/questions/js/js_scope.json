@@ -2,126 +2,276 @@
   "js-scope-01": {
     "prompt": "What will be logged?",
     "explanation": "`var a` is hoisted inside the function, shadowing the outer `a`.",
-    "interviewTip": "Classic hoisting + shadowing question."
+    "interviewTip": "Classic hoisting + shadowing question.",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ]
   },
   "js-scope-02": {
     "prompt": "What is block scope?",
     "explanation": "`let` and `const` are block-scoped.",
-    "interviewTip": "Contrast with `var`."
+    "interviewTip": "Contrast with `var`.",
+    "options": [
+      "Scope created by `{}` with let/const",
+      "Scope of a function",
+      "Scope of an object",
+      "Scope of a file"
+    ]
   },
   "js-scope-03": {
     "prompt": "What will be logged?",
     "explanation": "`x` exists only inside the block.",
-    "interviewTip": "Block scope enforcement."
+    "interviewTip": "Block scope enforcement.",
+    "options": [
+      "10",
+      "undefined",
+      "ReferenceError",
+      "null"
+    ]
   },
   "js-scope-04": {
     "prompt": "What happens?",
     "explanation": "`let` is hoisted but in the Temporal Dead Zone.",
-    "interviewTip": "TDZ is often misunderstood."
+    "interviewTip": "TDZ is often misunderstood.",
+    "options": [
+      "5",
+      "undefined",
+      "ReferenceError",
+      "TypeError"
+    ]
   },
   "js-scope-05": {
     "prompt": "What is the scope of a variable declared with var?",
     "explanation": "`var` ignores block scope.",
-    "interviewTip": "Reason why `let` was introduced."
+    "interviewTip": "Reason why `let` was introduced.",
+    "options": [
+      "Function scope",
+      "Block scope",
+      "Module scope only",
+      "Lexical scope"
+    ]
   },
   "js-scope-06": {
     "prompt": "What will be logged?",
     "explanation": "`var` leaks out of the loop.",
-    "interviewTip": "Loop scoping bug."
+    "interviewTip": "Loop scoping bug.",
+    "options": [
+      "2",
+      "3",
+      "undefined",
+      "ReferenceError"
+    ]
   },
   "js-scope-07": {
     "prompt": "What will be logged?",
     "explanation": "`let` is block-scoped.",
-    "interviewTip": "Per-iteration scope."
+    "interviewTip": "Per-iteration scope.",
+    "options": [
+      "2",
+      "3",
+      "undefined",
+      "ReferenceError"
+    ]
   },
   "js-scope-08": {
     "prompt": "What is lexical scope?",
     "explanation": "Scope is fixed at definition time.",
-    "interviewTip": "JS is lexically scoped."
+    "interviewTip": "JS is lexically scoped.",
+    "options": [
+      "Scope determined by code location",
+      "Scope determined at runtime",
+      "Dynamic scope",
+      "Global scope only"
+    ]
   },
   "js-scope-09": {
     "prompt": "What will be logged?",
     "explanation": "`foo` closes over the outer lexical scope.",
-    "interviewTip": "Lexical vs dynamic scope."
+    "interviewTip": "Lexical vs dynamic scope.",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ]
   },
   "js-scope-10": {
     "prompt": "What is a closure?",
     "explanation": "Closures preserve access to outer variables.",
-    "interviewTip": "One of the most important JS concepts."
+    "interviewTip": "One of the most important JS concepts.",
+    "options": [
+      "Function + its lexical scope",
+      "Function inside another",
+      "Private variable",
+      "Recursive function"
+    ]
   },
   "js-scope-11": {
     "prompt": "What will be logged?",
     "explanation": "Closure keeps `a` alive.",
-    "interviewTip": "Memory retention."
+    "interviewTip": "Memory retention.",
+    "options": [
+      "1",
+      "undefined",
+      "ReferenceError",
+      "null"
+    ]
   },
   "js-scope-12": {
     "prompt": "What causes a global variable leak?",
     "explanation": "Without strict mode, undeclared vars become global.",
-    "interviewTip": "Always use strict mode or modules."
+    "interviewTip": "Always use strict mode or modules.",
+    "options": [
+      "Assigning to undeclared variable",
+      "Using let",
+      "Using strict mode",
+      "Using const"
+    ]
   },
   "js-scope-13": {
     "prompt": "What will be logged?",
     "explanation": "Strict mode forbids implicit globals.",
-    "interviewTip": "Why strict mode matters."
+    "interviewTip": "Why strict mode matters.",
+    "options": [
+      "10",
+      "undefined",
+      "ReferenceError",
+      "TypeError"
+    ]
   },
   "js-scope-14": {
     "prompt": "What is the scope of variables in ES modules?",
     "explanation": "Each module has its own top-level scope.",
-    "interviewTip": "Modules prevent global pollution."
+    "interviewTip": "Modules prevent global pollution.",
+    "options": [
+      "Module scope",
+      "Global scope",
+      "Function scope",
+      "Block scope only"
+    ]
   },
   "js-scope-15": {
     "prompt": "What will be logged?",
     "explanation": "Inner `a` is block-scoped.",
-    "interviewTip": "Shadowing example."
+    "interviewTip": "Shadowing example.",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ]
   },
   "js-scope-16": {
     "prompt": "What is variable shadowing?",
     "explanation": "Inner variable hides outer one.",
-    "interviewTip": "Can reduce readability."
+    "interviewTip": "Can reduce readability.",
+    "options": [
+      "Inner scope variable with same name",
+      "Overwriting global variable",
+      "Garbage collection",
+      "Hoisting"
+    ]
   },
   "js-scope-17": {
     "prompt": "What will be logged?",
     "explanation": "`const` works like `let` in scope rules.",
-    "interviewTip": "const ≠ immutable binding."
+    "interviewTip": "const ≠ immutable binding.",
+    "options": [
+      "10",
+      "undefined",
+      "ReferenceError",
+      "null"
+    ]
   },
   "js-scope-18": {
     "prompt": "What does the scope chain represent?",
     "explanation": "Scope chain resolves identifiers.",
-    "interviewTip": "Not the same as prototype chain."
+    "interviewTip": "Not the same as prototype chain.",
+    "options": [
+      "Hierarchy of lexical environments",
+      "Call stack",
+      "Prototype chain",
+      "Event loop"
+    ]
   },
   "js-scope-19": {
     "prompt": "What will be logged?",
     "explanation": "Hoisting inside IIFE.",
-    "interviewTip": "Very common interview trap."
+    "interviewTip": "Very common interview trap.",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ]
   },
   "js-scope-20": {
     "prompt": "What creates a new scope?",
     "explanation": "All listed constructs create scope.",
-    "interviewTip": "Be precise when explaining."
+    "interviewTip": "Be precise when explaining.",
+    "options": [
+      "Function",
+      "Block with let/const",
+      "Module",
+      "All of the above"
+    ]
   },
   "js-scope-21": {
     "prompt": "Why are closures useful?",
     "explanation": "Closures enable private state.",
-    "interviewTip": "Connect to real-world examples."
+    "interviewTip": "Connect to real-world examples.",
+    "options": [
+      "Data encapsulation",
+      "Better performance",
+      "Avoid async",
+      "Prevent hoisting"
+    ]
   },
   "js-scope-22": {
     "prompt": "What will be logged?",
     "explanation": "Closures reference variables, not values.",
-    "interviewTip": "Important closure nuance."
+    "interviewTip": "Important closure nuance.",
+    "options": [
+      "10",
+      "20",
+      "undefined",
+      "ReferenceError"
+    ]
   },
   "js-scope-23": {
     "prompt": "What is the Temporal Dead Zone?",
     "explanation": "Access before initialization throws error.",
-    "interviewTip": "Key difference from var."
+    "interviewTip": "Key difference from var.",
+    "options": [
+      "Time before let/const initialization",
+      "Async execution delay",
+      "Garbage collection phase",
+      "Event loop queue"
+    ]
   },
   "js-scope-24": {
     "prompt": "What happens if you redeclare let in same scope?",
     "explanation": "`let` cannot be redeclared in same scope.",
-    "interviewTip": "Helps prevent bugs."
+    "interviewTip": "Helps prevent bugs.",
+    "options": [
+      "SyntaxError",
+      "undefined",
+      "Ignored",
+      "Overwritten"
+    ]
   },
   "js-scope-25": {
     "prompt": "Why is global scope dangerous?",
     "explanation": "Global scope increases coupling and bugs.",
-    "interviewTip": "Good architectural question."
+    "interviewTip": "Good architectural question.",
+    "options": [
+      "Name collisions",
+      "Memory leaks",
+      "Hard to test",
+      "All of the above"
+    ]
   }
 }

@@ -2,51 +2,111 @@
   "as-01": {
     "prompt": "Яка функція використовується для визначення компонента, який завантажується з сервера «ліниво» (lazy) лише під час його рендерингу?",
     "explanation": "defineAsyncComponent приймає функцію-завантажувач, яка повертає Promise (зазвичай це динамічний імпорт). Vue автоматично керує логікою завантаження.",
-    "interviewTip": "Зауважте, що це ключова техніка для зменшення початкового розміру бандла (Initial Bundle Size) вашого додатка."
+    "interviewTip": "Зауважте, що це ключова техніка для зменшення початкового розміру бандла (Initial Bundle Size) вашого додатка.",
+    "options": [
+      "defineLazyComponent",
+      "defineAsyncComponent",
+      "importAsync",
+      "createAsyncComponent"
+    ]
   },
   "as-02": {
     "prompt": "Проаналізуйте код. Що відображатиметься, поки завантажується 'AdminPanel'?",
     "explanation": "За замовчуванням асинхронний компонент нічого не показує під час завантаження. Ви можете вказати опцію 'loadingComponent' у defineAsyncComponent або огорнути його тегом <Suspense>.",
-    "interviewTip": "Використання скелетного завантажувача (skeleton loader) як 'loadingComponent' забезпечує набагато кращий UX, ніж порожнє місце."
+    "interviewTip": "Використання скелетного завантажувача (skeleton loader) як 'loadingComponent' забезпечує набагато кращий UX, ніж порожнє місце.",
+    "options": [
+      "Vue will crash.",
+      "The screen will remain blank until it finishes.",
+      "Nothing will be rendered unless a loading component is configured or Suspense is used.",
+      "The entire app pauses execution."
+    ]
   },
   "as-03": {
     "prompt": "Які два слоти (slots) надає компонент <Suspense>?",
     "explanation": "Слот #default містить контент, завантаження якого може зайняти час, а слот #fallback містить те, що потрібно показати тим часом (наприклад, спінер).",
-    "interviewTip": "Майте на увазі, що у Vue 3.x компонент <Suspense> все ще технічно є експериментальною функцією, хоча він уже широко використовується."
+    "interviewTip": "Майте на увазі, що у Vue 3.x компонент <Suspense> все ще технічно є експериментальною функцією, хоча він уже широко використовується.",
+    "options": [
+      "header and footer",
+      "default and fallback",
+      "loading and complete",
+      "async and sync"
+    ]
   },
   "as-04": {
     "prompt": "Проаналізуйте код. Що робить цей компонент асинхронним і здатним активувати межі <Suspense>?",
     "explanation": "У Vue 3, якщо <script setup> містить 'await' на верхньому рівні (top-level await), компонент автоматично стає асинхронною залежністю і має бути огорнутий у <Suspense> батьківським компонентом.",
-    "interviewTip": "Це дуже елегантний спосіб обробки запитів даних, оскільки вам не потрібно створювати окрему змінну стану 'loading' всередині компонента."
+    "interviewTip": "Це дуже елегантний спосіб обробки запитів даних, оскільки вам не потрібно створювати окрему змінну стану 'loading' всередині компонента.",
+    "options": [
+      "The use of the 'fetch' API.",
+      "Using top-level 'await' inside <script setup>.",
+      "The script tag doesn't have an 'async' attribute.",
+      "It isn't async; it will block the thread."
+    ]
   },
   "as-05": {
     "prompt": "Як обробляти помилки (наприклад, збій мережі), якщо асинхронний компонент не вдалося завантажити?",
     "explanation": "Хоча defineAsyncComponent має опцію 'errorComponent', стандартним способом перехоплення помилок від асинхронних залежностей у дереві компонентів є хук onErrorCaptured.",
-    "interviewTip": "Ви також можете використовувати слот 'error', якщо ваш проект використовує спеціальну обгортку, але onErrorCaptured — це офіційне рішення на рівні батька або глобально."
+    "interviewTip": "Ви також можете використовувати слот 'error', якщо ваш проект використовує спеціальну обгортку, але onErrorCaptured — це офіційне рішення на рівні батька або глобально.",
+    "options": [
+      "Using the 'onError' hook in defineAsyncComponent.",
+      "Wrapping the component in an <ErrorBoundary> tag (legacy).",
+      "Using the 'onErrorCaptured' lifecycle hook in a parent component.",
+      "Vue handles all network errors automatically by retrying."
+    ]
   },
   "as-06": {
     "prompt": "Які з цих опцій є валідними при налаштуванні 'defineAsyncComponent'?",
     "explanation": "delay запобігає «мерехтінню» при швидкому з'єднанні. timeout не дозволяє користувачам чекати вічно. suspensible (за замовчуванням true) дозволяє компоненту керувати станом Suspense батька.",
-    "interviewTip": "Встановіть 'delay: 0', якщо хочете, щоб спінер з'являвся миттєво, навіть при дуже швидкому завантаженні."
+    "interviewTip": "Встановіть 'delay: 0', якщо хочете, щоб спінер з'являвся миттєво, навіть при дуже швидкому завантаженні.",
+    "options": [
+      "delay (ms before showing the loading component)",
+      "timeout (ms before showing the error component)",
+      "suspensible (whether it should communicate with a parent Suspense)",
+      "retry (number of times to attempt loading)"
+    ]
   },
   "as-07": {
     "prompt": "Чи може <Suspense> обробляти кілька вкладених асинхронних компонентів одночасно?",
     "explanation": "Suspense розроблений для координації кількох асинхронних залежностей. Fallback залишається видимим, поки все дерево асинхронних компонентів нижче не буде готове.",
-    "interviewTip": "Це запобігає ефекту «поступової появи», коли різні частини сторінки завантажуються в різний час."
+    "interviewTip": "Це запобігає ефекту «поступової появи», коли різні частини сторінки завантажуються в різний час.",
+    "options": [
+      "No, only one component at a time.",
+      "Yes, it will wait for all nested async dependencies to resolve before showing the default slot.",
+      "Yes, but it shows them one by one.",
+      "Only if they are inside the same file."
+    ]
   },
   "as-08": {
     "prompt": "Яка мета функції 'onError' (retry) у defineAsyncComponent?",
     "explanation": "Колбек 'retry' дозволяє спробувати повторно завантажити компонент, що корисно для обробки тимчасових проблем із мережею.",
-    "interviewTip": "Це чудова функція рівня Senior для побудови стійких додатків, про яку варто згадати на співбесіді."
+    "interviewTip": "Це чудова функція рівня Senior для побудови стійких додатків, про яку варто згадати на співбесіді.",
+    "options": [
+      "retry",
+      "reload",
+      "fetch",
+      "restart"
+    ]
   },
   "acs-09": {
     "prompt": "Як визначити асинхронний компонент у Vue 3?",
     "explanation": "defineAsyncComponent приймає функцію завантаження, яка повертає Promise, що розв'язується в опис компонента, забезпечуючи розділення коду.",
-    "interviewTip": "Ви можете додати опції loading, error, delay та timeout для кращого UX."
+    "interviewTip": "Ви можете додати опції loading, error, delay та timeout для кращого UX.",
+    "options": [
+      "Use the async keyword in the component definition.",
+      "Use defineAsyncComponent() with a loader function.",
+      "Use import() directly in the template.",
+      "Async components are not supported in Vue 3."
+    ]
   },
   "acs-10": {
     "prompt": "Яка мета компонента <Suspense>?",
     "explanation": "Suspense дозволяє показувати стан завантаження, поки асинхронні компоненти або асинхронний setup() перебувають у процесі розв'язання.",
-    "interviewTip": "Хоча Suspense все ще експериментальний у Vue 3, він є основною функцією для патернів асинхронного отримання даних."
+    "interviewTip": "Хоча Suspense все ще експериментальний у Vue 3, він є основною функцією для патернів асинхронного отримання даних.",
+    "options": [
+      "To suspend user interactions.",
+      "To handle async dependencies in the component tree and show fallback content while waiting.",
+      "To lazy-load CSS files.",
+      "To pause component rendering permanently."
+    ]
   }
 }

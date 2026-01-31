@@ -2,91 +2,199 @@
   "rn-env-01": {
     "prompt": "What is the primary difference between the 'Bridge' (Old Architecture) and 'JSI' (New Architecture)?",
     "explanation": "The legacy Bridge requires data to be serialized to JSON and sent across an asynchronous queue. JSI (JavaScript Interface) allows JS to hold references to C++ host objects, enabling direct, synchronous calls.",
-    "interviewTip": "Mention that JSI is the foundation for the New Architecture (Fabric and TurboModules)."
+    "interviewTip": "Mention that JSI is the foundation for the New Architecture (Fabric and TurboModules).",
+    "options": [
+      "JSI allows synchronous communication between JS and Native, while the Bridge is asynchronous and serialized.",
+      "The Bridge is faster because it uses JSON for all data transfer.",
+      "JSI requires Expo, while the Bridge works only with React Native CLI.",
+      "The Bridge uses Java exclusively, while JSI uses Swift."
+    ]
   },
   "rn-env-02": {
     "prompt": "Which layout engine does React Native use to calculate positions and sizes of components?",
     "explanation": "Yoga is a cross-platform layout engine developed by Meta that implements Flexbox for native mobile screens.",
-    "interviewTip": "Yoga is written in C++ and is what translates your 'flex: 1' styles into actual pixel coordinates on iOS and Android."
+    "interviewTip": "Yoga is written in C++ and is what translates your 'flex: 1' styles into actual pixel coordinates on iOS and Android.",
+    "options": [
+      "WebKit",
+      "Gecko",
+      "Yoga",
+      "Flexbox-Native"
+    ]
   },
   "rn-env-03": {
     "prompt": "What does the 'Hermes' engine do for a React Native application?",
     "explanation": "Hermes is a small, lightweight JS engine. It uses bytecode pre-compilation (AOT) to make app launches significantly faster.",
-    "interviewTip": "Starting with React Native 0.70, Hermes is the default engine for all new projects."
+    "interviewTip": "Starting with React Native 0.70, Hermes is the default engine for all new projects.",
+    "options": [
+      "It manages the connection to the Google Play Store.",
+      "It is a JavaScript engine optimized for mobile to improve start-up time and reduce app size.",
+      "It handles all image caching and local storage.",
+      "It is a UI library that replaces core components."
+    ]
   },
   "rn-env-04": {
     "prompt": "What will be the result of this code when running in a React Native environment?",
     "explanation": "Core components like View are JavaScript components (usually functions or objects) that act as wrappers for native UI elements.",
-    "interviewTip": "In the end, these components tell the native side to render a 'UIView' on iOS or an 'android.view' on Android."
+    "interviewTip": "In the end, these components tell the native side to render a 'UIView' on iOS or an 'android.view' on Android.",
+    "options": [
+      "\"string\"",
+      "\"function\" (or \"object\" depending on RN version internal implementation)",
+      "\"undefined\"",
+      "\"native-element\""
+    ]
   },
   "rn-env-05": {
     "prompt": "Which of the following are benefits of using 'Expo' over 'React Native CLI'?",
     "explanation": "Expo simplifies development by abstracting away the complex native code, though the CLI is still preferred if you need custom native module modifications that Expo doesn't support.",
-    "interviewTip": "Expo is no longer 'just for beginners'; with 'Development Builds,' it is now powerful enough for professional enterprise apps."
+    "interviewTip": "Expo is no longer 'just for beginners'; with 'Development Builds,' it is now powerful enough for professional enterprise apps.",
+    "options": [
+      "Managed workflow: handles native configurations and certificates automatically.",
+      "Direct access to modify AppDelegate.m and MainApplication.java without workarounds.",
+      "Easier testing on physical devices via the Expo Go app.",
+      "EAS (Expo Application Services) for cloud builds and submissions."
+    ]
   },
   "rn-env-06": {
     "prompt": "What is the 'Metro' bundler in React Native?",
     "explanation": "Metro is similar to Webpack for the web. It resolves dependencies and bundles your code for the mobile environment.",
-    "interviewTip": "Metro is what powers Hot Module Replacement (HMR) / Fast Refresh during development."
+    "interviewTip": "Metro is what powers Hot Module Replacement (HMR) / Fast Refresh during development.",
+    "options": [
+      "A tool that compiles Java code into APKs.",
+      "The JavaScript bundler that takes all your JS files and combines them into a single bundle for the app.",
+      "A debugging tool used to inspect the UI tree.",
+      "The part of the architecture that handles push notifications."
+    ]
   },
   "rn-env-07": {
     "prompt": "In the New Architecture, what replaces the 'UIManager'?",
     "explanation": "Fabric is the new rendering system. It is more efficient because it allows the UI to be updated synchronously and improves interop with host views.",
-    "interviewTip": "Fabric is to Rendering what TurboModules are to Native Logic."
+    "interviewTip": "Fabric is to Rendering what TurboModules are to Native Logic.",
+    "options": [
+      "TurboModules",
+      "Fabric",
+      "Hermes",
+      "Metro"
+    ]
   },
   "rn-env-08": {
     "prompt": "What is the purpose of 'npx react-native run-ios'?",
     "explanation": "This command triggers the build process (via Xcode tools) and pushes the application to the iOS target.",
-    "interviewTip": "You must have Xcode installed on a macOS machine for this command to work."
+    "interviewTip": "You must have Xcode installed on a macOS machine for this command to work.",
+    "options": [
+      "To install dependencies from npm.",
+      "To build and launch the iOS application on a simulator or device.",
+      "To minify the JavaScript bundle.",
+      "To generate a new project from a template."
+    ]
   },
   "rn-env-09": {
     "prompt": "Identify the three main threads in a standard React Native app (Bridge architecture):",
     "explanation": "The UI thread handles native view rendering; the JS thread runs the logic; and the Shadow thread calculates the layout (Yoga) before sending it to the UI thread.",
-    "interviewTip": "If the JS thread is blocked by heavy logic, the UI remains responsive (animations might still work), but user interactions like button clicks won't process."
+    "interviewTip": "If the JS thread is blocked by heavy logic, the UI remains responsive (animations might still work), but user interactions like button clicks won't process.",
+    "options": [
+      "Main Thread (UI Thread)",
+      "Database Thread",
+      "JavaScript Thread",
+      "Shadow Thread (Layout Thread)"
+    ]
   },
   "rn-env-10": {
     "prompt": "What will happen if you run this code in a standard React Native component?",
     "explanation": "React Native does not use the browser's DOM. You must use native primitives like <View> and <Text>.",
-    "interviewTip": "There is no 'div', 'span', or 'p' in React Native; everything text-related must be inside a <Text> component."
+    "interviewTip": "There is no 'div', 'span', or 'p' in React Native; everything text-related must be inside a <Text> component.",
+    "options": [
+      "It works because RN supports all HTML tags.",
+      "It throws an error because 'div' is not a valid component in React Native.",
+      "It renders as a View automatically.",
+      "It only works on the Web version of React Native."
+    ]
   },
   "rn-env-11": {
     "prompt": "What is 'Autolinking' in React Native?",
     "explanation": "Previously, you had to run 'react-native link'. Now, the CLI detects native modules in your node_modules and links them during build time.",
-    "interviewTip": "For iOS, you still need to run 'pod install' after adding a library to finalize the autolinking."
+    "interviewTip": "For iOS, you still need to run 'pod install' after adding a library to finalize the autolinking.",
+    "options": [
+      "A feature that automatically updates your npm packages.",
+      "A mechanism that automatically links native dependencies to your iOS/Android projects without manual steps.",
+      "A way to link two different screens in navigation.",
+      "An AI tool for writing boilerplate code."
+    ]
   },
   "rn-env-12": {
     "prompt": "What is the entry point for native configuration in an Android React Native project?",
     "explanation": "The AndroidManifest.xml is where you define permissions, activities, and app metadata for the Android OS.",
-    "interviewTip": "Knowing where these native files are (android/app/src/main/...) is essential for configuring things like deep links or camera permissions."
+    "interviewTip": "Knowing where these native files are (android/app/src/main/...) is essential for configuring things like deep links or camera permissions.",
+    "options": [
+      "AppDelegate.m",
+      "AndroidManifest.xml",
+      "index.js",
+      "metro.config.js"
+    ]
   },
   "rn-env-13": {
     "prompt": "In React Native, how is a 'TurboModule' different from a standard Native Module?",
     "explanation": "Standard modules are initialized on app startup even if not used. TurboModules are only loaded when required and communicate directly via JSI.",
-    "interviewTip": "This is a key part of the New Architecture aimed at improving app startup performance."
+    "interviewTip": "This is a key part of the New Architecture aimed at improving app startup performance.",
+    "options": [
+      "TurboModules are written in JavaScript, while Native Modules are written in Java.",
+      "TurboModules are loaded lazily and use JSI for faster, synchronous communication.",
+      "TurboModules only work on iOS.",
+      "TurboModules are the old way of writing native code."
+    ]
   },
   "rn-env-14": {
     "prompt": "What command is used to start the Metro bundler manually?",
     "explanation": "This starts the local server that provides the JS bundle and assets to your running app during development.",
-    "interviewTip": "If you get a 'Could not connect to development server' error, checking if this process is running is your first step."
+    "interviewTip": "If you get a 'Could not connect to development server' error, checking if this process is running is your first step.",
+    "options": [
+      "npm build",
+      "npx react-native start",
+      "npx metro-run",
+      "expo-cli build"
+    ]
   },
   "rn-env-15": {
     "prompt": "Which of these is a valid way to specify a version of React Native in a project?",
     "explanation": "The React Native version is managed like any other npm package in the package.json file.",
-    "interviewTip": "Upgrading React Native versions often requires the 'React Native Upgrade Helper' tool because of changes in the underlying native files."
+    "interviewTip": "Upgrading React Native versions often requires the 'React Native Upgrade Helper' tool because of changes in the underlying native files.",
+    "options": [
+      "The code above is correct.",
+      "Versions are specified in the 'native-config.json' file.",
+      "You set the version in the Xcode project settings only.",
+      "React Native versions are managed by the Hermes engine."
+    ]
   },
   "rn-env-16": {
     "prompt": "What does the 'Shadow Tree' represent?",
     "explanation": "The Shadow Tree is where React Native stores the layout information (flex, margin, padding) so Yoga can work its magic.",
-    "interviewTip": "In the New Architecture, the Shadow Tree is immutable and managed in C++ for better performance."
+    "interviewTip": "In the New Architecture, the Shadow Tree is immutable and managed in C++ for better performance.",
+    "options": [
+      "A hidden copy of the DOM.",
+      "A tree structure used by Yoga to calculate the layout before translating it to native views.",
+      "The list of all deleted components.",
+      "A security layer that protects the JS thread."
+    ]
   },
   "rn-env-17": {
     "prompt": "How do you enable the New Architecture in a modern React Native project (iOS)?",
     "explanation": "For most current versions, you must explicitly enable it during the pod installation process for iOS or in gradle.properties for Android.",
-    "interviewTip": "Be aware that some third-party libraries might not be compatible with the New Architecture yet."
+    "interviewTip": "Be aware that some third-party libraries might not be compatible with the New Architecture yet.",
+    "options": [
+      "Changing a setting in the Expo dashboard.",
+      "Running 'bundle exec pod install' with the ENV flag 'RCT_NEW_ARCH_ENABLED=1'.",
+      "It is always enabled and cannot be turned off.",
+      "By deleting the Bridge.js file."
+    ]
   },
   "rn-env-18": {
     "prompt": "What happens when 'Fast Refresh' is triggered?",
     "explanation": "Fast Refresh combines 'hot reloading' and 'live reloading' to provide a seamless update experience without losing the component's state if possible.",
-    "interviewTip": "If you modify a file that exports something other than a React component, Fast Refresh may perform a full reload to be safe."
+    "interviewTip": "If you modify a file that exports something other than a React component, Fast Refresh may perform a full reload to be safe.",
+    "options": [
+      "The whole app reloads and all state is lost.",
+      "React Native tries to update only the modified components while preserving their state.",
+      "The native code (Java/Swift) is recompiled.",
+      "The device vibrates to indicate an update."
+    ]
   }
 }

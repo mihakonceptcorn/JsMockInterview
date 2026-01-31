@@ -2,21 +2,45 @@
   "ca-09": {
     "prompt": "How do you provide a function through Context to allow children to update the state?",
     "explanation": "Context values can be any JS type. Passing an object containing both the state and its setter is the most common pattern for global state management.",
-    "interviewTip": "Always ensure the object passed to 'value' is memoized if it's defined inside a component, otherwise it creates a new reference on every render."
+    "interviewTip": "Always ensure the object passed to 'value' is memoized if it's defined inside a component, otherwise it creates a new reference on every render.",
+    "options": [
+      "You can't pass functions through Context.",
+      "Include the function in the object passed to the 'value' prop.",
+      "Use a separate 'FunctionProvider'.",
+      "Call the function directly in the Provider tags."
+    ]
   },
   "ca-10": {
     "prompt": "Identify the error in this Consumer logic:",
     "explanation": "The context object itself is just a descriptor. You must use the 'useContext' hook to 'pull' the value out of that context.",
-    "interviewTip": "Think of the Context object as a 'Key' and 'useContext' as the 'Lock' that opens it."
+    "interviewTip": "Think of the Context object as a 'Key' and 'useContext' as the 'Lock' that opens it.",
+    "options": [
+      "theme must be a string.",
+      "You must call useContext(ThemeContext) to get the actual value.",
+      "The style prop is missing a semicolon.",
+      "Display must be capitalized."
+    ]
   },
   "ca-11": {
     "prompt": "Which of these are valid ways to avoid performance issues with Context?",
     "explanation": "Splitting and memoization are the two most effective strategies. Moving a provider higher actually increases the number of potential components affected by a render.",
-    "interviewTip": "If 'React.memo' doesn't help, the bottleneck is likely the context value itself changing too often."
+    "interviewTip": "If 'React.memo' doesn't help, the bottleneck is likely the context value itself changing too often.",
+    "options": [
+      "Splitting a large context into multiple smaller contexts.",
+      "Using 'React.memo' on the consumer components.",
+      "Moving the Provider higher up in the tree.",
+      "Memoizing the 'value' prop of the Provider using 'useMemo'."
+    ]
   },
   "ca-12": {
     "prompt": "What happens if a component calls 'useContext' but its parent Provider is later unmounted?",
     "explanation": "When the Provider is gone, the hook searches up the tree and, finding nothing, falls back to the original default value.",
-    "interviewTip": "This ensures the component stays 'safe' even during dynamic layout changes."
+    "interviewTip": "This ensures the component stays 'safe' even during dynamic layout changes.",
+    "options": [
+      "The component will crash.",
+      "The component will revert to the default value defined in 'createContext'.",
+      "The component will maintain the last known value forever.",
+      "The component will automatically unmount as well."
+    ]
   }
 }

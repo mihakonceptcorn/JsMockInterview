@@ -2,81 +2,177 @@
   "rn-core-01": {
     "prompt": "Which component is the most fundamental building block for UI, acting as a container that supports layout with Flexbox?",
     "explanation": "The <View> component maps directly to the native equivalent (UIView on iOS, android.view on Android) and is used for layout and styling.",
-    "interviewTip": "Think of <View> as the <div> of React Native."
+    "interviewTip": "Think of <View> as the <div> of React Native.",
+    "options": [
+      "<Container>",
+      "<View>",
+      "<Section>",
+      "<Div>"
+    ]
   },
   "rn-core-02": {
     "prompt": "What will happen if you try to render raw text outside of a <Text> component?",
     "explanation": "Unlike the web where text can exist inside a <div>, React Native requires all text to be explicitly wrapped in a <Text> component.",
-    "interviewTip": "This is a very common beginner mistake when transitioning from Web to Mobile."
+    "interviewTip": "This is a very common beginner mistake when transitioning from Web to Mobile.",
+    "options": [
+      "It renders correctly as a child of the View.",
+      "It will throw an error: 'Text strings must be rendered within a <Text> component'.",
+      "It renders but cannot be styled.",
+      "React Native automatically wraps it in a <Text> tag."
+    ]
   },
   "rn-core-03": {
     "prompt": "How do you display a remote image from a URL in React Native?",
     "explanation": "Remote images require an object with a 'uri' property. Local images use the 'require' function.",
-    "interviewTip": "Remember that remote images in React Native do not have an automatic size; you MUST specify width and height in the styles or they won't show up."
+    "interviewTip": "Remember that remote images in React Native do not have an automatic size; you MUST specify width and height in the styles or they won't show up.",
+    "options": [
+      "{ require('./path/to/img.png') }",
+      "{ 'https://example.com/logo.png' }",
+      "{ uri: 'https://example.com/logo.png' }",
+      "\"https://example.com/logo.png\""
+    ]
   },
   "rn-core-04": {
     "prompt": "What is the primary purpose of the 'StyleSheet.create' method?",
     "explanation": "StyleSheet.create sends the style object through the bridge only once, rather than recreating it on every render, which is more efficient.",
-    "interviewTip": "It also provides validation, throwing errors if you use invalid CSS properties that React Native doesn't support."
+    "interviewTip": "It also provides validation, throwing errors if you use invalid CSS properties that React Native doesn't support.",
+    "options": [
+      "To allow the use of CSS files (.css) in React Native.",
+      "To provide a centralized and potentially more performant way to define styles outside the render loop.",
+      "To automatically convert pixels to percentages.",
+      "To encrypt the styles for security."
+    ]
   },
   "rn-core-05": {
     "prompt": "Which component should you use if you need a container that allows the user to swipe through content that is larger than the screen?",
     "explanation": "A <View> has no scrolling capabilities. For basic scrolling of a small amount of content, <ScrollView> is the correct choice.",
-    "interviewTip": "For large lists of data, <ScrollView> is inefficient because it renders all children at once. Use <FlatList> instead for performance."
+    "interviewTip": "For large lists of data, <ScrollView> is inefficient because it renders all children at once. Use <FlatList> instead for performance.",
+    "options": [
+      "<View>",
+      "<SwipeView>",
+      "<ScrollView>",
+      "<ListView>"
+    ]
   },
   "rn-core-06": {
     "prompt": "Which of the following properties are valid for the <Text> component in React Native?",
     "explanation": "The <Text> component is surprisingly powerful, supporting truncation, native touch events, and copy-paste selection.",
-    "interviewTip": "Nested <Text> components inherit styles from their parents, which is different from how <View> inheritance works."
+    "interviewTip": "Nested <Text> components inherit styles from their parents, which is different from how <View> inheritance works.",
+    "options": [
+      "numberOfLines (to truncate text)",
+      "onPress (to handle clicks directly on text)",
+      "selectable (to allow the user to copy-paste)",
+      "href (to link to a website)"
+    ]
   },
   "rn-core-07": {
     "prompt": "How do you handle local assets (like a logo) in an <Image> component?",
     "explanation": "The 'require' syntax allows the packager to bundle the image metadata (width, height, path) during build time.",
-    "interviewTip": "Unlike remote images, local images usually don't need explicit width/height to appear, though it's still good practice to set them."
+    "interviewTip": "Unlike remote images, local images usually don't need explicit width/height to appear, though it's still good practice to set them.",
+    "options": [
+      "This is the correct way for local assets.",
+      "Local assets must also use the { uri: ... } syntax.",
+      "You must import the image as a default export first.",
+      "React Native only supports remote images."
+    ]
   },
   "rn-core-08": {
     "prompt": "What is the difference between <View> and <SafeAreaView>?",
     "explanation": "SafeAreaView is essential for iOS devices with notches to ensure content isn't hidden behind system UI elements.",
-    "interviewTip": "In modern development, many developers use the 'react-native-safe-area-context' library for even better control over safe areas."
+    "interviewTip": "In modern development, many developers use the 'react-native-safe-area-context' library for even better control over safe areas.",
+    "options": [
+      "<SafeAreaView> is faster than <View>.",
+      "<SafeAreaView> automatically adds padding to avoid 'notches', status bars, and home indicators on modern devices.",
+      "<SafeAreaView> only works on Android.",
+      "<View> is only for web, <SafeAreaView> is for mobile."
+    ]
   },
   "rn-core-09": {
     "prompt": "What is the result of applying 'flexDirection' to a <View> in React Native?",
     "explanation": "In standard Web CSS, the default is 'row'. In React Native, the default is 'column' to better suit vertical mobile screens.",
-    "interviewTip": "This is one of the most frequent 'gotchas' for web developers moving to React Native."
+    "interviewTip": "This is one of the most frequent 'gotchas' for web developers moving to React Native.",
+    "options": [
+      "The default is 'row'.",
+      "The default is 'column'.",
+      "It has no default; it must be specified.",
+      "It only works on ScrollView."
+    ]
   },
   "rn-core-10": {
     "prompt": "Which component is used to collect text input from the user?",
     "explanation": "TextInput is the core component for keyboard input. It supports various keyboard types (numeric, email) and secure text entry for passwords.",
-    "interviewTip": "Always handle the 'onChangeText' prop (which gives the string directly) rather than 'onChange' (which gives an event object)."
+    "interviewTip": "Always handle the 'onChangeText' prop (which gives the string directly) rather than 'onChange' (which gives an event object).",
+    "options": [
+      "<Input>",
+      "<TextField>",
+      "<TextInput>",
+      "<EditView>"
+    ]
   },
   "rn-core-11": {
     "prompt": "How do you apply multiple style objects to a single component?",
     "explanation": "React Native's 'style' prop accepts an array of objects. The last object in the array takes precedence (overwrites previous ones).",
-    "interviewTip": "This is perfect for conditional styling: style={[styles.box, isActive && styles.activeBox]}."
+    "interviewTip": "This is perfect for conditional styling: style={[styles.box, isActive && styles.activeBox]}.",
+    "options": [
+      "[styles.base, styles.active]",
+      "{ styles.base, styles.active }",
+      "styles.base + styles.active",
+      "Object.assign(styles.base, styles.active)"
+    ]
   },
   "rn-core-12": {
     "prompt": "What is the purpose of the <ActivityIndicator /> component?",
     "explanation": "It's a built-in component that displays a native loading spinner (UIActivityIndicator on iOS, ProgressBar on Android).",
-    "interviewTip": "You can customize its size ('small' or 'large') and color."
+    "interviewTip": "You can customize its size ('small' or 'large') and color.",
+    "options": [
+      "To show the battery percentage.",
+      "To display a circular loading spinner.",
+      "To track user activity for analytics.",
+      "To show a progress bar."
+    ]
   },
   "rn-core-13": {
     "prompt": "Which of these are valid 'resizeMode' values for an <Image> component?",
     "explanation": "resizeMode determines how the image should be scaled when the frame doesn't match the image aspect ratio.",
-    "interviewTip": "'cover' is the default and usually what you want for full-bleed backgrounds."
+    "interviewTip": "'cover' is the default and usually what you want for full-bleed backgrounds.",
+    "options": [
+      "cover (scale to fill, might crop)",
+      "contain (scale to fit, no cropping)",
+      "stretch (scale independently, might distort)",
+      "fit (only works on Android)"
+    ]
   },
   "rn-core-14": {
     "prompt": "Why is it important to use 'key' in a list of components rendered inside a ScrollView?",
     "explanation": "Just like React on the Web, the reconciliation algorithm uses keys to track the identity of elements in an array.",
-    "interviewTip": "Using the array index as a key is generally discouraged if the order of items can change."
+    "interviewTip": "Using the array index as a key is generally discouraged if the order of items can change.",
+    "options": [
+      "To style each item individually.",
+      "To help React identify which items have changed, been added, or removed for efficient re-rendering.",
+      "To enable smooth scrolling.",
+      "Keys are not needed in ScrollView, only in FlatList."
+    ]
   },
   "rn-core-15": {
     "prompt": "What does the 'contentContainerStyle' prop do on a <ScrollView>?",
     "explanation": "If you apply padding to a ScrollView's 'style' prop, the content will be cut off. You must use 'contentContainerStyle' to add padding to the scrollable area itself.",
-    "interviewTip": "This is the most common way to add 'breathing room' at the bottom of a scrollable list."
+    "interviewTip": "This is the most common way to add 'breathing room' at the bottom of a scrollable list.",
+    "options": [
+      "It styles the outer wrapper of the scroll view.",
+      "It styles the inner component that wraps all the children (used for padding/alignment).",
+      "It changes the color of the scroll bar.",
+      "It is used for the background color only."
+    ]
   },
   "rn-core-16": {
     "prompt": "What will the following code render on the screen?",
     "explanation": "By default, Views have 'alignItems: stretch', so it will take up the full width of its parent and act as a 1-pixel high line.",
-    "interviewTip": "This is a common way to create custom border-like separators between list items."
+    "interviewTip": "This is a common way to create custom border-like separators between list items.",
+    "options": [
+      "A black box.",
+      "A horizontal black line (separator).",
+      "Nothing, because it has no width.",
+      "An error."
+    ]
   }
 }

@@ -2,126 +2,276 @@
   "js-proto-01": {
     "prompt": "What is a JavaScript prototype?",
     "explanation": "Every JS object has an internal link to a prototype object.",
-    "interviewTip": "JS uses prototypal inheritance, not classical."
+    "interviewTip": "JS uses prototypal inheritance, not classical.",
+    "options": [
+      "An object from which other objects inherit properties",
+      "A class definition",
+      "A function scope",
+      "A copy of an object"
+    ]
   },
   "js-proto-02": {
     "prompt": "What does `__proto__` point to?",
     "explanation": "`__proto__` references the internal [[Prototype]].",
-    "interviewTip": "Preferred API is `Object.getPrototypeOf`."
+    "interviewTip": "Preferred API is `Object.getPrototypeOf`.",
+    "options": [
+      "The constructor function",
+      "The object's prototype",
+      "The object's class",
+      "The global object"
+    ]
   },
   "js-proto-03": {
     "prompt": "What is `Function.prototype`?",
     "explanation": "All functions inherit from Function.prototype.",
-    "interviewTip": "Functions are objects."
+    "interviewTip": "Functions are objects.",
+    "options": [
+      "Prototype of all functions",
+      "Prototype of all objects",
+      "A method",
+      "The global scope"
+    ]
   },
   "js-proto-04": {
     "prompt": "What is the result?",
     "explanation": "`new` links instance to constructor's prototype.",
-    "interviewTip": "`prototype` exists only on functions."
+    "interviewTip": "`prototype` exists only on functions.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "TypeError"
+    ]
   },
   "js-proto-05": {
     "prompt": "Where are methods usually defined for all instances?",
     "explanation": "Methods on prototype are shared.",
-    "interviewTip": "Memory optimization."
+    "interviewTip": "Memory optimization.",
+    "options": [
+      "On the prototype",
+      "Inside constructor",
+      "On the instance",
+      "In global scope"
+    ]
   },
   "js-proto-06": {
     "prompt": "What will be logged?",
     "explanation": "Plain objects inherit from Object.prototype.",
-    "interviewTip": "Base of prototype chain."
+    "interviewTip": "Base of prototype chain.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "null"
+    ]
   },
   "js-proto-07": {
     "prompt": "What ends the prototype chain?",
     "explanation": "`Object.prototype.__proto__ === null`.",
-    "interviewTip": "Important chain termination."
+    "interviewTip": "Important chain termination.",
+    "options": [
+      "null",
+      "Object",
+      "undefined",
+      "Function.prototype"
+    ]
   },
   "js-proto-08": {
     "prompt": "What does `hasOwnProperty` check?",
     "explanation": "Does not check prototypes.",
-    "interviewTip": "Avoid false positives."
+    "interviewTip": "Avoid false positives.",
+    "options": [
+      "Property exists on the object itself",
+      "Property exists in prototype chain",
+      "Property exists globally",
+      "Property is enumerable"
+    ]
   },
   "js-proto-09": {
     "prompt": "What will be logged?",
     "explanation": "Property resolved via prototype chain.",
-    "interviewTip": "Property lookup order."
+    "interviewTip": "Property lookup order.",
+    "options": [
+      "1",
+      "undefined",
+      "ReferenceError",
+      "null"
+    ]
   },
   "js-proto-10": {
     "prompt": "What happens when you overwrite prototype?",
     "explanation": "Prototype is set at creation time.",
-    "interviewTip": "Common pitfall."
+    "interviewTip": "Common pitfall.",
+    "options": [
+      "Existing instances keep old prototype",
+      "All instances update automatically",
+      "Prototype chain breaks",
+      "Throws error"
+    ]
   },
   "js-proto-11": {
     "prompt": "What does `Object.create(proto)` do?",
     "explanation": "Direct prototype assignment.",
-    "interviewTip": "Clean inheritance."
+    "interviewTip": "Clean inheritance.",
+    "options": [
+      "Creates object with given prototype",
+      "Clones an object",
+      "Creates a class",
+      "Creates constructor"
+    ]
   },
   "js-proto-12": {
     "prompt": "What will be logged?",
     "explanation": "b inherits from a.",
-    "interviewTip": "Delegation, not copying."
+    "interviewTip": "Delegation, not copying.",
+    "options": [
+      "1",
+      "undefined",
+      "ReferenceError",
+      "null"
+    ]
   },
   "js-proto-13": {
     "prompt": "What is `constructor` property?",
     "explanation": "Points back to constructor function.",
-    "interviewTip": "May be lost when overwriting prototype."
+    "interviewTip": "May be lost when overwriting prototype.",
+    "options": [
+      "Reference to the function that created the object",
+      "The prototype itself",
+      "Class definition",
+      "Global constructor"
+    ]
   },
   "js-proto-14": {
     "prompt": "What will be logged?",
     "explanation": "`instanceof` checks prototype chain.",
-    "interviewTip": "Not type-safe."
+    "interviewTip": "Not type-safe.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "TypeError"
+    ]
   },
   "js-proto-15": {
     "prompt": "Why avoid modifying native prototypes?",
     "explanation": "Prototype pollution risks.",
-    "interviewTip": "Never extend Array/Object prototypes."
+    "interviewTip": "Never extend Array/Object prototypes.",
+    "options": [
+      "Can cause conflicts",
+      "Breaks libraries",
+      "Unexpected behavior",
+      "All of the above"
+    ]
   },
   "js-proto-16": {
     "prompt": "What does method lookup do?",
     "explanation": "Stops when found or reaches null.",
-    "interviewTip": "Performance implication."
+    "interviewTip": "Performance implication.",
+    "options": [
+      "Searches up the prototype chain",
+      "Searches globally",
+      "Searches closures",
+      "Searches call stack"
+    ]
   },
   "js-proto-17": {
     "prompt": "What will be logged?",
     "explanation": "Property assignment happens on object itself.",
-    "interviewTip": "Shadowing prototype properties."
+    "interviewTip": "Shadowing prototype properties.",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "null"
+    ]
   },
   "js-proto-18": {
     "prompt": "What is prototype delegation?",
     "explanation": "JS uses delegation, not copying.",
-    "interviewTip": "Mental model shift."
+    "interviewTip": "Mental model shift.",
+    "options": [
+      "Objects delegate behavior to prototypes",
+      "Functions call other functions",
+      "Inheritance via classes",
+      "Copying properties"
+    ]
   },
   "js-proto-19": {
     "prompt": "What is `Object.setPrototypeOf`?",
     "explanation": "Allows changing prototype at runtime.",
-    "interviewTip": "Slow, avoid in hot paths."
+    "interviewTip": "Slow, avoid in hot paths.",
+    "options": [
+      "Changes object's prototype",
+      "Clones object",
+      "Creates inheritance",
+      "Optimizes performance"
+    ]
   },
   "js-proto-20": {
     "prompt": "What happens when method exists on both object and prototype?",
     "explanation": "Own property has priority.",
-    "interviewTip": "Lookup order."
+    "interviewTip": "Lookup order.",
+    "options": [
+      "Object method is used",
+      "Prototype method is used",
+      "Both run",
+      "Error"
+    ]
   },
   "js-proto-21": {
     "prompt": "What will be logged?",
     "explanation": "Prototype chain includes A.prototype.",
-    "interviewTip": "Manual inheritance."
+    "interviewTip": "Manual inheritance.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "TypeError"
+    ]
   },
   "js-proto-22": {
     "prompt": "What is the prototype of an arrow function?",
     "explanation": "Arrow functions are still functions.",
-    "interviewTip": "They just lack `prototype` property."
+    "interviewTip": "They just lack `prototype` property.",
+    "options": [
+      "Function.prototype",
+      "Arrow.prototype",
+      "Object.prototype",
+      "null"
+    ]
   },
   "js-proto-23": {
     "prompt": "What will be logged?",
     "explanation": "Prototypes are objects.",
-    "interviewTip": "Not functions."
+    "interviewTip": "Not functions.",
+    "options": [
+      "object",
+      "function",
+      "null",
+      "undefined"
+    ]
   },
   "js-proto-24": {
     "prompt": "What is prototype pollution?",
     "explanation": "Security risk when prototypes are mutated.",
-    "interviewTip": "Common vulnerability."
+    "interviewTip": "Common vulnerability.",
+    "options": [
+      "Modifying Object.prototype",
+      "Memory leak",
+      "Garbage collection bug",
+      "Hoisting issue"
+    ]
   },
   "js-proto-25": {
     "prompt": "Why is prototypal inheritance powerful?",
     "explanation": "Enables dynamic behavior sharing.",
-    "interviewTip": "Better mental model than classes."
+    "interviewTip": "Better mental model than classes.",
+    "options": [
+      "Flexible object composition",
+      "Static typing",
+      "Faster execution always",
+      "Class safety"
+    ]
   }
 }

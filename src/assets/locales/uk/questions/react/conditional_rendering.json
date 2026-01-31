@@ -2,76 +2,166 @@
   "cr-01": {
     "prompt": "Що буде відрендерено, якщо 'isLoaded' має значення false?",
     "explanation": "Тернарний оператор — це найпоширеніший спосіб виконання умовного рендерингу типу «або-або» всередині JSX.",
-    "interviewTip": "Тернарним операторам надається перевага над інструкціями 'if-else' всередині JSX, оскільки вони є виразами (expressions)."
+    "interviewTip": "Тернарним операторам надається перевага над інструкціями 'if-else' всередині JSX, оскільки вони є виразами (expressions).",
+    "options": [
+      "Success!",
+      "Loading...",
+      "Nothing",
+      "Both 'Success!' and 'Loading...'"
+    ]
   },
   "cr-02": {
     "prompt": "Яка потенційна «пастка» існує при використанні оператора && з числом 0?",
     "explanation": "У JS вираз '0 && що завгодно' повертає 0. React не рендерить булеві значення, але він *рендерить* число 0.",
-    "interviewTip": "Щоб уникнути цього, використовуйте явну перевірку на булеве значення: `{count > 0 && <p>Знайдено елементи</p>}` або тернарний оператор."
+    "interviewTip": "Щоб уникнути цього, використовуйте явну перевірку на булеве значення: `{count > 0 && <p>Знайдено елементи</p>}` або тернарний оператор.",
+    "options": [
+      "It renders nothing.",
+      "It renders the number 0 in the UI.",
+      "It crashes the app.",
+      "It renders '<p>Items found</p>'."
+    ]
   },
   "cr-03": {
     "prompt": "Як змусити React нічого не рендерити на основі умови?",
     "explanation": "Повернення 'null' — це стандартний спосіб сказати React, щоб він не виводив результат для компонента або частини інтерфейсу.",
-    "interviewTip": "Повернення null все одно запускає хуки життєвого циклу компонента; воно просто не створює DOM-вузлів."
+    "interviewTip": "Повернення null все одно запускає хуки життєвого циклу компонента; воно просто не створює DOM-вузлів.",
+    "options": [
+      "Return an empty string \"\".",
+      "Return null.",
+      "Return undefined.",
+      "All of the above."
+    ]
   },
   "cr-04": {
     "prompt": "Які з цих способів є валідними для умовного рендерингу JSX?",
     "explanation": "У React немає директив на кшталт v-if. Він покладається на стандартну логіку JavaScript.",
-    "interviewTip": "Для складних умов використання допоміжної функції або змінної поза межами інструкції return часто робить код чистішим."
+    "interviewTip": "Для складних умов використання допоміжної функції або змінної поза межами інструкції return часто робить код чистішим.",
+    "options": [
+      "Using a switch statement outside of the return.",
+      "Using a ternary operator inside curly braces.",
+      "Using a v-if attribute on a div.",
+      "Using logical && for 'if-this-then-that' logic."
+    ]
   },
   "cr-05": {
     "prompt": "Яким буде результат наступного компонента?",
     "explanation": "Це називається 'Early Return' (раннє повернення). Воно запобігає виконанню решти логіки компонента, якщо умова не виконана.",
-    "interviewTip": "Ранні повернення чудово підходять для обробки станів завантаження або відсутності даних."
+    "interviewTip": "Ранні повернення чудово підходять для обробки станів завантаження або відсутності даних.",
+    "options": [
+      "It renders 'Welcome, undefined' if there is no user.",
+      "It renders nothing if there is no user.",
+      "It crashes if there is no user.",
+      "It renders an empty h1."
+    ]
   },
   "cr-06": {
     "prompt": "Для чого використовується логічний оператор «АБО» (||) в умовному рендерингу?",
     "explanation": "Оператор || ідеально підходить для відображення тексту за замовчуванням або компонентів-заглушок, коли дані відсутні.",
-    "interviewTip": "Пам'ятайте: якщо userName — це порожній рядок \"\", оператор || також спрацює і покаже запасний варіант."
+    "interviewTip": "Пам'ятайте: якщо userName — це порожній рядок \"\", оператор || також спрацює і покаже запасний варіант.",
+    "options": [
+      "To provide a fallback/default value if the first value is falsy.",
+      "To check if both values are true.",
+      "To hide the div if userName exists.",
+      "To loop through a list of names."
+    ]
   },
   "cr-07": {
     "prompt": "Визначте результат цього коду:",
     "explanation": "Тернарні оператори можна використовувати всередині значень атрибутів для умовного застосування CSS-класів або інших пропсів.",
-    "interviewTip": "Це основний спосіб обробки динамічних стилів у базовому React."
+    "interviewTip": "Це основний спосіб обробки динамічних стилів у базовому React.",
+    "options": [
+      "A div with class 'admin-theme'.",
+      "A div with class 'user-theme'.",
+      "A syntax error.",
+      "A div with both classes."
+    ]
   },
   "cr-08": {
     "prompt": "Чому не можна використовувати цикл 'for' або інструкцію 'if' безпосередньо всередині return у JSX?",
     "explanation": "JSX трансформується у виклики React.createElement(). Аргументами функції мають бути вирази (значення), а не інструкції (statements).",
-    "interviewTip": "Вирази обчислюються в значення (як 2+2); інструкції виконують дію (як if або for)."
+    "interviewTip": "Вирази обчислюються в значення (як 2+2); інструкції виконують дію (як if або for).",
+    "options": [
+      "React doesn't support them.",
+      "JSX is just a group of function calls, and you can't put statements inside an argument list.",
+      "It would make the Virtual DOM too slow.",
+      "Browsers don't support loops in HTML."
+    ]
   },
   "cr-09": {
     "prompt": "Що буде відрендерено в даному випадку?",
     "explanation": "Оскільки items.length дорівнює 0, вираз обчислюється в 0. Проте в цьому специфічному контексті 0 && ... повертає 0, і React виведе цифру 0 на екран.",
-    "interviewTip": "Завжди переконуйтеся, що ліва частина вашого && є справжнім булевим значенням, якщо хочете уникнути виводу цифри 0."
+    "interviewTip": "Завжди переконуйтеся, що ліва частина вашого && є справжнім булевим значенням, якщо хочете уникнути виводу цифри 0.",
+    "options": [
+      "<li>Show items</li>",
+      "An empty <ul>.",
+      "The number 0.",
+      "A list with a false value."
+    ]
   },
   "cr-10": {
     "prompt": "Як обробити стани 'Завантаження', 'Помилка' та 'Дані' в одному компоненті?",
     "explanation": "Хоча вкладені тернарні оператори працюють, їх важко читати. Ранні повернення для станів помилки та завантаження виглядають набагато чистіше.",
-    "interviewTip": "Патерн: `if (loading) return <Spinner />; if (error) return <Error />; return <Data />;`"
+    "interviewTip": "Патерн: `if (loading) return <Spinner />; if (error) return <Error />; return <Data />;`",
+    "options": [
+      "By using nested ternary operators.",
+      "By returning different JSX blocks early based on status variables.",
+      "By using the useEffect hook to hide elements.",
+      "By creating three separate apps."
+    ]
   },
   "cr-11": {
     "prompt": "Яка мета оператора «нульового злиття» (??) у React?",
     "explanation": "Це безпечніше, ніж ||, коли 0 є валідним значенням, яке ви хочете відобразити.",
-    "interviewTip": "Використовуйте ??, якщо хочете розглядати 0 та порожні рядки як реальні дані, а не як відсутність значення."
+    "interviewTip": "Використовуйте ??, якщо хочете розглядати 0 та порожні рядки як реальні дані, а не як відсутність значення.",
+    "options": [
+      "It works like ||, but only triggers for null or undefined (not 0 or \"\").",
+      "It checks if two strings are equal.",
+      "It deletes the variable if it's null.",
+      "It is a shorthand for a ternary operator."
+    ]
   },
   "cr-12": {
     "prompt": "Проаналізуйте результат:",
     "explanation": "Хоча React ігнорує «чисті» булеві значення, перетворення їх на рядок змусить їх відобразитися на екрані.",
-    "interviewTip": "Це корисний трюк для налагодження (debugging), щоб побачити стан булевих змінних прямо в інтерфейсі."
+    "interviewTip": "Це корисний трюк для налагодження (debugging), щоб побачити стан булевих змінних прямо в інтерфейсі.",
+    "options": [
+      "It renders nothing.",
+      "It renders 'false' as text.",
+      "It renders 'undefined'.",
+      "It crashes."
+    ]
   },
   "cr-13": {
     "prompt": "Як умовно застосувати кілька пропсів одночасно за допомогою spread-оператора?",
     "explanation": "Розгортання порожнього об'єкта {} не додає жодних пропсів, тоді як розгортання об'єкта з ключами застосовує їх динамічно.",
-    "interviewTip": "Це чистий спосіб передачі пропсів «тільки для адміністратора» або спеціальних конфігурацій."
+    "interviewTip": "Це чистий спосіб передачі пропсів «тільки для адміністратора» або спеціальних конфігурацій.",
+    "options": [
+      "The code above is correct.",
+      "You must pass props individually.",
+      "Spread cannot be used inside return.",
+      "isAdmin must be a string."
+    ]
   },
   "cr-14": {
     "prompt": "Що відбувається, коли компонент демонтується (unmounts) через те, що він більше не рендериться за умовою?",
     "explanation": "Демонтування — це повне знищення екземпляра компонента та очищення його стану.",
-    "interviewTip": "Якщо вам потрібно зберегти стан «живим», підніміть його до батьківського компонента або приховайте компонент через CSS (display: none) замість видалення."
+    "interviewTip": "Якщо вам потрібно зберегти стан «живим», підніміть його до батьківського компонента або приховайте компонент через CSS (display: none) замість видалення.",
+    "options": [
+      "Its local state is destroyed.",
+      "Its useEffect cleanup function runs.",
+      "It stays in the Virtual DOM but is hidden in the real DOM.",
+      "Its state is preserved in the parent component."
+    ]
   },
   "cr-15": {
     "prompt": "Який підхід кращий для продуктивності, якщо перемикання відбувається дуже часто?",
     "explanation": "Умовний рендеринг (&&) щоразу знищує та створює компонент заново. CSS-властивість 'display' зберігає його в DOM, що робить перемикання швидшим ціною початкової пам'яті.",
-    "interviewTip": "Використовуйте приховування через CSS для компонентів із важкою логікою монтування, які часто перемикаються."
+    "interviewTip": "Використовуйте приховування через CSS для компонентів із важкою логікою монтування, які часто перемикаються.",
+    "options": [
+      "{isVisible && <LargeComponent />}",
+      "<div style={{ display: isVisible ? 'block' : 'none' }}><LargeComponent /></div>",
+      "They are the same.",
+      "Using a separate route."
+    ]
   }
 }

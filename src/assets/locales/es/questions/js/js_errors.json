@@ -2,126 +2,276 @@
   "js-err-01": {
     "prompt": "What is an Error object in JavaScript?",
     "explanation": "Error objects carry message and stack trace.",
-    "interviewTip": "Used for exception handling."
+    "interviewTip": "Used for exception handling.",
+    "options": [
+      "An object representing a runtime error",
+      "A syntax construct",
+      "A promise rejection",
+      "A console message"
+    ]
   },
   "js-err-02": {
     "prompt": "Which error occurs at parse time?",
     "explanation": "SyntaxError happens before execution.",
-    "interviewTip": "Code won't run at all."
+    "interviewTip": "Code won't run at all.",
+    "options": [
+      "SyntaxError",
+      "ReferenceError",
+      "TypeError",
+      "RangeError"
+    ]
   },
   "js-err-03": {
     "prompt": "What will be thrown?",
     "explanation": "Accessing undeclared variable.",
-    "interviewTip": "Different from undefined variable."
+    "interviewTip": "Different from undefined variable.",
+    "options": [
+      "ReferenceError",
+      "TypeError",
+      "SyntaxError",
+      "undefined"
+    ]
   },
   "js-err-04": {
     "prompt": "When does TypeError occur?",
     "explanation": "Calling non-function, accessing invalid property.",
-    "interviewTip": "Very common runtime error."
+    "interviewTip": "Very common runtime error.",
+    "options": [
+      "Invalid operation on a value",
+      "Invalid syntax",
+      "Out of range value",
+      "Missing variable"
+    ]
   },
   "js-err-05": {
     "prompt": "What will be logged?",
     "explanation": "Invalid JSON throws SyntaxError.",
-    "interviewTip": "Always validate JSON."
+    "interviewTip": "Always validate JSON.",
+    "options": [
+      "SyntaxError",
+      "TypeError",
+      "ReferenceError",
+      "Error"
+    ]
   },
   "js-err-06": {
     "prompt": "What does try/catch catch?",
     "explanation": "Only synchronous runtime errors.",
-    "interviewTip": "Async needs await or .catch."
+    "interviewTip": "Async needs await or .catch.",
+    "options": [
+      "Runtime errors",
+      "Syntax errors",
+      "Async errors automatically",
+      "Compilation errors"
+    ]
   },
   "js-err-07": {
     "prompt": "What will be logged?",
     "explanation": "Async errors are not caught.",
-    "interviewTip": "Classic async pitfall."
+    "interviewTip": "Classic async pitfall.",
+    "options": [
+      "Nothing",
+      "caught",
+      "Error",
+      "Unhandled"
+    ]
   },
   "js-err-08": {
     "prompt": "How to catch async errors with async/await?",
     "explanation": "Await throws inside try/catch.",
-    "interviewTip": "Preferred pattern."
+    "interviewTip": "Preferred pattern.",
+    "options": [
+      "try/catch",
+      ".then only",
+      "window.onerror",
+      "finally"
+    ]
   },
   "js-err-09": {
     "prompt": "What is finally used for?",
     "explanation": "Runs regardless of outcome.",
-    "interviewTip": "Close resources."
+    "interviewTip": "Close resources.",
+    "options": [
+      "Cleanup logic",
+      "Error handling",
+      "Returning values",
+      "Catching errors"
+    ]
   },
   "js-err-10": {
     "prompt": "What does `throw` do?",
     "explanation": "Interrupts normal execution.",
-    "interviewTip": "Can throw any value."
+    "interviewTip": "Can throw any value.",
+    "options": [
+      "Throws an exception",
+      "Logs error",
+      "Stops program forever",
+      "Returns value"
+    ]
   },
   "js-err-11": {
     "prompt": "What should you throw?",
     "explanation": "Errors include stack trace.",
-    "interviewTip": "Best practice."
+    "interviewTip": "Best practice.",
+    "options": [
+      "Error objects",
+      "Strings",
+      "Numbers",
+      "Booleans"
+    ]
   },
   "js-err-12": {
     "prompt": "What will be logged?",
     "explanation": "message property holds text.",
-    "interviewTip": "Access useful fields."
+    "interviewTip": "Access useful fields.",
+    "options": [
+      "fail",
+      "Error",
+      "undefined",
+      "null"
+    ]
   },
   "js-err-13": {
     "prompt": "What is ReferenceError?",
     "explanation": "Variable not found in scope.",
-    "interviewTip": "Common bug source."
+    "interviewTip": "Common bug source.",
+    "options": [
+      "Accessing undeclared variable",
+      "Calling invalid function",
+      "Invalid syntax",
+      "Out of memory"
+    ]
   },
   "js-err-14": {
     "prompt": "What will be logged?",
     "explanation": "Calling method on null.",
-    "interviewTip": "TypeError is common."
+    "interviewTip": "TypeError is common.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "Error"
+    ]
   },
   "js-err-15": {
     "prompt": "How to create custom error?",
     "explanation": "Extend Error class.",
-    "interviewTip": "Preserve name & stack."
+    "interviewTip": "Preserve name & stack.",
+    "options": [
+      "class MyError extends Error {}",
+      "throw {}",
+      "throw new Object()",
+      "Error.create()"
+    ]
   },
   "js-err-16": {
     "prompt": "What does Error.stack contain?",
     "explanation": "Useful for debugging.",
-    "interviewTip": "Not standardized but common."
+    "interviewTip": "Not standardized but common.",
+    "options": [
+      "Call stack trace",
+      "Error message",
+      "Error type",
+      "Execution time"
+    ]
   },
   "js-err-17": {
     "prompt": "What is an unhandled promise rejection?",
     "explanation": "Leads to warnings or crashes.",
-    "interviewTip": "Always handle rejections."
+    "interviewTip": "Always handle rejections.",
+    "options": [
+      "Promise rejected without catch",
+      "Syntax error",
+      "Async timeout",
+      "Cancelled promise"
+    ]
   },
   "js-err-18": {
     "prompt": "What will be logged?",
     "explanation": "Rejected value is passed.",
-    "interviewTip": "Can reject any value."
+    "interviewTip": "Can reject any value.",
+    "options": [
+      "err",
+      "Error",
+      "undefined",
+      "null"
+    ]
   },
   "js-err-19": {
     "prompt": "What does `catch` return?",
     "explanation": "Allows chaining.",
-    "interviewTip": "Promise chain continues."
+    "interviewTip": "Promise chain continues.",
+    "options": [
+      "A new Promise",
+      "The same Promise",
+      "Undefined",
+      "Error"
+    ]
   },
   "js-err-20": {
     "prompt": "What happens if you throw inside catch?",
     "explanation": "Error propagates.",
-    "interviewTip": "Re-throw pattern."
+    "interviewTip": "Re-throw pattern.",
+    "options": [
+      "Promise rejects again",
+      "Error is swallowed",
+      "Execution continues",
+      "Ignored"
+    ]
   },
   "js-err-21": {
     "prompt": "What is RangeError?",
     "explanation": "E.g. invalid array length.",
-    "interviewTip": "Less common."
+    "interviewTip": "Less common.",
+    "options": [
+      "Value out of allowed range",
+      "Wrong variable",
+      "Invalid syntax",
+      "Async error"
+    ]
   },
   "js-err-22": {
     "prompt": "Can try/catch catch JSON.parse errors?",
     "explanation": "JSON.parse throws synchronously.",
-    "interviewTip": "Wrap parsing logic."
+    "interviewTip": "Wrap parsing logic.",
+    "options": [
+      "Yes",
+      "No",
+      "Only async",
+      "Only sync"
+    ]
   },
   "js-err-23": {
     "prompt": "What is best practice for errors?",
     "explanation": "Errors should be explicit.",
-    "interviewTip": "Production mindset."
+    "interviewTip": "Production mindset.",
+    "options": [
+      "Fail fast and log clearly",
+      "Ignore errors",
+      "Return null",
+      "Use console.log only"
+    ]
   },
   "js-err-24": {
     "prompt": "What will be logged?",
     "explanation": "Any value can be thrown.",
-    "interviewTip": "But don't do this."
+    "interviewTip": "But don't do this.",
+    "options": [
+      "string",
+      "object",
+      "error",
+      "undefined"
+    ]
   },
   "js-err-25": {
     "prompt": "Why prefer Error over strings?",
     "explanation": "Errors carry more context.",
-    "interviewTip": "Interview gold answer."
+    "interviewTip": "Interview gold answer.",
+    "options": [
+      "Stack trace & consistency",
+      "Shorter syntax",
+      "Performance",
+      "Required by JS"
+    ]
   }
 }

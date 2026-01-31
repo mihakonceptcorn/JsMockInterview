@@ -2,51 +2,111 @@
   "sp-01": {
     "prompt": "Яка бібліотека є стандартною та рекомендованою спільнотою заміною для застарілого вбудованого модуля 'AsyncStorage'?",
     "explanation": "AsyncStorage було винесено з ядра React Native у репозиторій спільноти, щоб забезпечити швидші оновлення та кращу підтримку.",
-    "interviewTip": "Завжди наголошуйте на тому, що AsyncStorage є «асинхронним» і «нешифрованим», що робить його непридатним для зберігання конфіденційних секретів."
+    "interviewTip": "Завжди наголошуйте на тому, що AsyncStorage є «асинхронним» і «нешифрованим», що робить його непридатним для зберігання конфіденційних секретів.",
+    "options": [
+      "react-native-local-storage",
+      "@react-native-async-storage/async-storage",
+      "react-native-db",
+      "expo-persistence"
+    ]
   },
   "sp-02": {
     "prompt": "Яка основна архітектурна перевага 'react-native-mmkv' над 'AsyncStorage'?",
     "explanation": "MMKV використовує JavaScript Interface (JSI), що дозволяє JS-потоку читати та записувати дані безпосередньо з пам’яті C++ без витрат на роботу через JSON-міст (bridge).",
-    "interviewTip": "MMKV зараз вважається найшвидшим сховищем типу «ключ-значення» для React Native, часто воно працює в 10–30 разів швидше за AsyncStorage."
+    "interviewTip": "MMKV зараз вважається найшвидшим сховищем типу «ключ-значення» для React Native, часто воно працює в 10–30 разів швидше за AsyncStorage.",
+    "options": [
+      "It uses a cloud-based backup system.",
+      "It provides synchronous access to data via JSI, making it significantly faster.",
+      "It only works on Android, making it more stable there.",
+      "It automatically compresses all data into ZIP files."
+    ]
   },
   "sp-03": {
     "prompt": "Як правильно зберегти об'єкт (а не рядок) в AsyncStorage?",
     "explanation": "AsyncStorage може зберігати лише рядки. Щоб зберегти об'єкти або масиви, ви повинні спочатку серіалізувати їх у рядок JSON.",
-    "interviewTip": "Не забувайте, що виклик `getItem` також вимагатиме `JSON.parse`, щоб перетворити рядок назад в об'єкт."
+    "interviewTip": "Не забувайте, що виклик `getItem` також вимагатиме `JSON.parse`, щоб перетворити рядок назад в об'єкт.",
+    "options": [
+      "user",
+      "JSON.stringify(user)",
+      "user.toString()",
+      "serialize(user)"
+    ]
   },
   "sp-04": {
     "prompt": "Де найбезпечніше місце для зберігання токена автентифікації користувача або біометричних даних?",
     "explanation": "Keychain (iOS) та Keystore (Android) забезпечують шифрування на апаратному рівні, яке зберігається навіть після видалення додатка. Сховища на кшталт AsyncStorage не є безпечними.",
-    "interviewTip": "Згадуйте правило: «Сховище ключ-значення — для налаштувань, Keychain — для секретів» як найкращу практику безпеки."
+    "interviewTip": "Згадуйте правило: «Сховище ключ-значення — для налаштувань, Keychain — для секретів» як найкращу практику безпеки.",
+    "options": [
+      "AsyncStorage (it's hidden from other apps).",
+      "MMKV (it's in memory).",
+      "iOS Keychain / Android Keystore (via libraries like react-native-keychain).",
+      "In a local .txt file."
+    ]
   },
   "sp-05": {
     "prompt": "Проаналізуйте код. Яким буде значення 'name' після цих викликів?",
     "explanation": "AsyncStorage базується на промісах. Оскільки використовується 'await', код чекає, поки сховище поверне рядок 'John'.",
-    "interviewTip": "Якщо ви забудете 'await', константа 'name' буде промісом, який у логічній перевірці дасть 'true', що призведе до багів."
+    "interviewTip": "Якщо ви забудете 'await', константа 'name' буде промісом, який у логічній перевірці дасть 'true', що призведе до багів.",
+    "options": [
+      "\"John\"",
+      "undefined",
+      "null",
+      "A Promise object"
+    ]
   },
   "sp-06": {
     "prompt": "Які з наведених варіантів є валідними причинами використовувати 'SQLite' замість 'AsyncStorage'?",
     "explanation": "SQLite — це повноцінна реляційна база даних. Для простих пар ключ-значення, як-от вибір теми додатка, вона буде надмірною порівняно з AsyncStorage або MMKV.",
-    "interviewTip": "WatermelonDB або Realm — популярні високорівневі альтернативи, які використовують SQLite або власні двигуни «під капотом»."
+    "interviewTip": "WatermelonDB або Realm — популярні високорівневі альтернативи, які використовують SQLite або власні двигуни «під капотом».",
+    "options": [
+      "The app needs to perform complex relational queries (SQL).",
+      "The app needs to store a very large amount of structured data (thousands of rows).",
+      "The app needs to store a simple boolean flag for 'Dark Mode'.",
+      "The app requires transactions to ensure data integrity."
+    ]
   },
   "sp-07": {
     "prompt": "Що робить метод 'multiSet' в AsyncStorage?",
     "explanation": "Групові операції ефективніші за багаторазовий виклик setItem, оскільки вони зменшують кількість пересилань даних через міст (bridge).",
-    "interviewTip": "Завжди використовуйте 'multiSet' або 'multiGet', коли працюєте з пов'язаними групами даних, щоб підвищити продуктивність."
+    "interviewTip": "Завжди використовуйте 'multiSet' або 'multiGet', коли працюєте з пов'язаними групами даних, щоб підвищити продуктивність.",
+    "options": [
+      "It sets a single key with multiple values.",
+      "It allows you to save multiple key-value pairs in a single batch operation.",
+      "It synchronizes data across multiple devices.",
+      "It is used to set data in multiple databases."
+    ]
   },
   "sp-08": {
     "prompt": "Яка бібліотека для безпечного зберігання даних використовується в Expo за замовчуванням?",
     "explanation": "expo-secure-store дозволяє шифрувати та безпечно зберігати пари ключ-значення локально на пристрої.",
-    "interviewTip": "Майте на увазі, що SecureStore має ліміт у 2048 байт на одне значення, тому він призначений суворо для невеликих секретів."
+    "interviewTip": "Майте на увазі, що SecureStore має ліміт у 2048 байт на одне значення, тому він призначений суворо для невеликих секретів.",
+    "options": [
+      "expo-async-storage",
+      "expo-secure-store",
+      "expo-keychain",
+      "expo-safe-data"
+    ]
   },
   "sp-09": {
     "prompt": "Яким є типовий ліміт пам'яті для AsyncStorage на Android?",
     "explanation": "За замовчуванням Android обмежує AsyncStorage обсягом 6 МБ. Для зберігання більших даних цей ліміт потрібно збільшити у файлах `MainApplication.java` або `gradle.properties`.",
-    "interviewTip": "Якщо ваш додаток вилітає при збереженні великих JSON на Android, причиною, швидше за все, є цей ліміт."
+    "interviewTip": "Якщо ваш додаток вилітає при збереженні великих JSON на Android, причиною, швидше за все, є цей ліміт.",
+    "options": [
+      "Unlimited.",
+      "6MB (by default, can be increased).",
+      "1GB.",
+      "50MB."
+    ]
   },
   "sp-10": {
     "prompt": "Яка бібліотека є базою даних типу 'Offline-first', що синхронізується із сервером і часто використовується з React Native?",
     "explanation": "Realm — це об'єктно-орієнтована база даних, яка набагато швидша за SQLite і має вбудовані функції нативної синхронізації.",
-    "interviewTip": "Згадуйте Realm, якщо на співбесіді йдеться про складні додатки, які повинні ідеально працювати без інтернету."
+    "interviewTip": "Згадуйте Realm, якщо на співбесіді йдеться про складні додатки, які повинні ідеально працювати без інтернету.",
+    "options": [
+      "Redux-Persist",
+      "Realm (MongoDB)",
+      "Axios-Cache",
+      "Fast-DB"
+    ]
   }
 }

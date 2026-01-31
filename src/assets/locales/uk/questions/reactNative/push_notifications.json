@@ -2,51 +2,111 @@
   "pn-01": {
     "prompt": "Яка основна різниця між «локальним сповіщенням» та «віддаленим пуш-сповіщенням»?",
     "explanation": "Локальні сповіщення (як будильник або таймер) створюються та залишаються на пристрої. Віддалені сповіщення ініціюються зовнішнім сервером для взаємодії з користувачем.",
-    "interviewTip": "Для вашого додатка JS Mock Interview локальні сповіщення ідеально підійдуть для нагадування «потренуватися завтра»."
+    "interviewTip": "Для вашого додатка JS Mock Interview локальні сповіщення ідеально підійдуть для нагадування «потренуватися завтра».",
+    "options": [
+      "Local notifications require internet; Remote ones do not.",
+      "Local notifications are scheduled by the app itself on the device; Remote ones are sent from a server via APNs or FCM.",
+      "Remote notifications only work when the app is open.",
+      "Local notifications are only for Android."
+    ]
   },
   "pn-02": {
     "prompt": "Який сервіс використовує React Native для доставки сповіщень на iOS-пристрої, навіть при використанні Firebase?",
     "explanation": "Навіть якщо ви використовуєте Firebase, Google зрештою має передати повідомлення службі APNs від Apple, щоб воно потрапило на iPhone.",
-    "interviewTip": "Ось чому вам все одно потрібен обліковий запис Apple Developer та сертифікати .p8, навіть якщо ви працюєте через Firebase."
+    "interviewTip": "Ось чому вам все одно потрібен обліковий запис Apple Developer та сертифікати .p8, навіть якщо ви працюєте через Firebase.",
+    "options": [
+      "GCM (Google Cloud Messaging)",
+      "APNs (Apple Push Notification service)",
+      "iCloud Sync",
+      "WNS (Windows Notification Service)"
+    ]
   },
   "pn-03": {
     "prompt": "Що таке 'FCM Token'?",
     "explanation": "Ваш сервер надсилає повідомлення саме на цей токен. Якщо користувач видалить і знову встановить додаток, токен зазвичай змінюється.",
-    "interviewTip": "Завжди відправляйте токен у базу даних вашого бекенду під час запуску додатка або входу в систему."
+    "interviewTip": "Завжди відправляйте токен у базу даних вашого бекенду під час запуску додатка або входу в систему.",
+    "options": [
+      "A password for the Firebase console.",
+      "A unique identifier for a specific app instance on a specific device, used by the server to target that user.",
+      "A piece of code that encrypts the message.",
+      "The user's email address."
+    ]
   },
   "pn-04": {
     "prompt": "Як обробити натискання на сповіщення, коли додаток повністю закритий (стан Quit)?",
     "explanation": "getInitialNotification — це одноразова перевірка, яка повертає дані сповіщення, якщо додаток було запущено саме через натискання на нього.",
-    "interviewTip": "Це найпоширеніше місце, де починається логіка «Deep Linking» після того, як користувач тапнув на пуш."
+    "interviewTip": "Це найпоширеніше місце, де починається логіка «Deep Linking» після того, як користувач тапнув на пуш.",
+    "options": [
+      "getInitialNotification",
+      "onNotificationOpenedApp",
+      "setBackgroundMessageHandler",
+      "popNotification"
+    ]
   },
   "pn-05": {
     "prompt": "Яке призначення «Каналів сповіщень» (Notification Channels) на Android?",
     "explanation": "Android 8.0+ вимагає наявності каналів. Без валідного ID каналу сповіщення просто не відображатимуться на сучасних Android-пристроях.",
-    "interviewTip": "На iOS цієї концепції не існує; користувачі можуть лише ввімкнути або вимкнути сповіщення для всього додатка."
+    "interviewTip": "На iOS цієї концепції не існує; користувачі можуть лише ввімкнути або вимкнути сповіщення для всього додатка.",
+    "options": [
+      "To stream video content inside the notification.",
+      "To allow users to customize importance and sound for different categories of notifications (e.g., Chat vs. Marketing).",
+      "To increase the speed of delivery.",
+      "To bypass the 'Do Not Disturb' mode."
+    ]
   },
   "pn-06": {
     "prompt": "Що відбувається при отриманні «тихого» (Silent/Data-only) сповіщення?",
     "explanation": "Тихі сповіщення містять лише дані без заголовка (title) чи тексту (body). Вони використовуються, щоб «розбудити» додаток для непомітного завантаження нового контенту.",
-    "interviewTip": "Будьте обережні: і iOS, і Android обмежують кількість тихих пушів для запобігання розряджанню акумулятора."
+    "interviewTip": "Будьте обережні: і iOS, і Android обмежують кількість тихих пушів для запобігання розряджанню акумулятора.",
+    "options": [
+      "The phone vibrates but shows no text.",
+      "It doesn't show a UI alert but triggers a background task in the app to sync data.",
+      "The notification is deleted immediately.",
+      "It only works if the screen is on."
+    ]
   },
   "pn-07": {
     "prompt": "Які з цих елементів необхідні для активації пуш-сповіщень на iOS?",
     "explanation": "iOS дуже сувора в цьому плані. Вам потрібні всі ці налаштування та реальний пристрій для тестування повного циклу від сервера до смартфона.",
-    "interviewTip": "Нові версії Xcode та симулятори додали обмежену підтримку, але фізичний пристрій залишається галузевим стандартом для тестування."
+    "interviewTip": "Нові версії Xcode та симулятори додали обмежену підтримку, але фізичний пристрій залишається галузевим стандартом для тестування.",
+    "options": [
+      "Push Notifications Capability enabled in Xcode.",
+      "Background Modes (Remote notifications) enabled in Xcode.",
+      "A physical device (Simulators do not support remote push by default).",
+      "A valid .p8 Auth Key or .p12 Certificate."
+    ]
   },
   "pn-08": {
     "prompt": "Яка роль 'setBackgroundMessageHandler' у React Native Firebase?",
     "explanation": "Цей обробник працює у власному спеціалізованому потоці поза вашим основним деревом компонентів React.",
-    "interviewTip": "Тримайте цю функцію «чистою» (pure) і уникайте використання хуків або складної UI-логіки всередині неї."
+    "interviewTip": "Тримайте цю функцію «чистою» (pure) і уникайте використання хуків або складної UI-логіки всередині неї.",
+    "options": [
+      "To change the wallpaper of the phone.",
+      "To handle incoming data-only messages when the app is in the background or quit.",
+      "To play a custom sound.",
+      "To save the message to AsyncStorage."
+    ]
   },
   "pn-09": {
     "prompt": "Що таке «перевантаження сповіщеннями» (Notification Overloading)?",
     "explanation": "Це термін з області UX. Занадто часті та нерелевантні сповіщення — це причина №1 видалення додатків.",
-    "interviewTip": "Згадуйте «персоналізацію сповіщень» та «обмеження частоти» (Frequency Capping) як способи вирішення цієї проблеми."
+    "interviewTip": "Згадуйте «персоналізацію сповіщень» та «обмеження частоти» (Frequency Capping) як способи вирішення цієї проблеми.",
+    "options": [
+      "Sending too many notifications, leading to users disabling them or uninstalling the app.",
+      "When the notification text is too long for the screen.",
+      "A bug that causes the same notification to appear twice.",
+      "Using too many images in a notification."
+    ]
   },
   "pn-10": {
     "prompt": "Як запитати дозвіл на сповіщення у користувача в React Native?",
     "explanation": "requestPermission() повертає статус авторизації (authorized, denied, provisional). На iOS це викликає системне вікно запиту.",
-    "interviewTip": "Завжди перевіряйте поточний статус дозволу перед запитом, щоб не дратувати користувачів повторними вікнами. На Android 13+ також потрібно запитувати дозвіл POST_NOTIFICATIONS під час виконання."
+    "interviewTip": "Завжди перевіряйте поточний статус дозволу перед запитом, щоб не дратувати користувачів повторними вікнами. На Android 13+ також потрібно запитувати дозвіл POST_NOTIFICATIONS під час виконання.",
+    "options": [
+      "getPermission",
+      "requestPermission",
+      "askForNotifications",
+      "enablePush"
+    ]
   }
 }

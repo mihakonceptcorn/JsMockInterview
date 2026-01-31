@@ -2,51 +2,111 @@
   "pi-01": {
     "prompt": "Why is Pinia preferred over Vuex for Vue 3 applications?",
     "explanation": "Pinia simplifies state management by removing mutations. You simply update the state directly or via actions. It also offers excellent TypeScript autocompletion by default.",
-    "interviewTip": "Mention that Pinia is modular by design; unlike Vuex's single giant store, Pinia encourages creating multiple small, focused stores."
+    "interviewTip": "Mention that Pinia is modular by design; unlike Vuex's single giant store, Pinia encourages creating multiple small, focused stores.",
+    "options": [
+      "It is the only way to use CSS in Vue.",
+      "It is lighter, has better TypeScript support, and removes the need for 'mutations' (making code less verbose).",
+      "It allows for direct DOM manipulation.",
+      "It is built into the browser natively."
+    ]
   },
   "pi-02": {
     "prompt": "Analyze the code. What will happen if you destructure the store's state directly in a component?",
     "explanation": "Just like reactive objects, destructuring a Pinia store breaks reactivity. To maintain the link, you must use 'storeToRefs(store)'.",
-    "interviewTip": "This is a frequent 'gotcha'. Use 'storeToRefs' for state and getters, but you can destructure actions (functions) normally."
+    "interviewTip": "This is a frequent 'gotcha'. Use 'storeToRefs' for state and getters, but you can destructure actions (functions) normally.",
+    "options": [
+      "The 'score' variable will update automatically in the template.",
+      "The 'score' variable will lose reactivity and stay at the initial value.",
+      "Vue will throw a 'ReferenceError'.",
+      "The store will be reset to zero."
+    ]
   },
   "pi-03": {
     "prompt": "In Pinia, what is the equivalent of a 'Computed' property for a store?",
     "explanation": "Getters are exactly like computed properties for the store state. They are cached and only re-calculate when their dependencies change.",
-    "interviewTip": "Getters can also return a function that accepts arguments (though these are not cached)."
+    "interviewTip": "Getters can also return a function that accepts arguments (though these are not cached).",
+    "options": [
+      "State",
+      "Actions",
+      "Getters",
+      "Plugins"
+    ]
   },
   "pi-04": {
     "prompt": "How do you reset a store back to its initial state in Pinia?",
     "explanation": "The $reset() method is a built-in utility that reverts the entire state of the store to the values defined in the initial state object.",
-    "interviewTip": "Note that $reset() only works in 'Option Stores'. If you use 'Setup Stores' (function syntax), you have to implement your own reset logic."
+    "interviewTip": "Note that $reset() only works in 'Option Stores'. If you use 'Setup Stores' (function syntax), you have to implement your own reset logic.",
+    "options": [
+      "store.clear()",
+      "store.$reset()",
+      "store.state = null",
+      "store.refresh()"
+    ]
   },
   "pi-05": {
     "prompt": "Analyze the code. Where should an API call (like fetching quiz questions) be placed in a Pinia store?",
     "explanation": "Actions are where logic and side effects (like API calls) live. Unlike Vuex, Pinia actions can be asynchronous and update the state directly.",
-    "interviewTip": "In an interview, highlight that actions replace both 'actions' and 'mutations' from Vuex, simplifying the architecture."
+    "interviewTip": "In an interview, highlight that actions replace both 'actions' and 'mutations' from Vuex, simplifying the architecture.",
+    "options": [
+      "getters",
+      "actions",
+      "mutations",
+      "effects"
+    ]
   },
   "pi-06": {
     "prompt": "Which of these are valid ways to update multiple state properties at once in Pinia?",
     "explanation": "Pinia is flexible. Individual updates are fine, but $patch is more efficient for batching changes and allows complex logic within the function version of $patch.",
-    "interviewTip": "$patch is useful when you want to group multiple changes into a single entry for the DevTools timeline."
+    "interviewTip": "$patch is useful when you want to group multiple changes into a single entry for the DevTools timeline.",
+    "options": [
+      "Updating them one by one: store.a = 1; store.b = 2;",
+      "Using store.$patch({ a: 1, b: 2 })",
+      "Using store.$patch((state) => { state.a = 1; state.b = 2; })",
+      "Calling a mutation function"
+    ]
   },
   "pi-07": {
     "prompt": "What is the purpose of 'defineStore'?",
     "explanation": "defineStore creates a hook (like useUserStore) that components can call to access the store instance.",
-    "interviewTip": "Always mention that the first argument is a unique 'id' used for DevTools and store identification."
+    "interviewTip": "Always mention that the first argument is a unique 'id' used for DevTools and store identification.",
+    "options": [
+      "To connect the app to a database.",
+      "To define a new store and its logical structure (state, getters, actions).",
+      "To compile the CSS for the component.",
+      "To register the app in the browser."
+    ]
   },
   "pi-08": {
     "prompt": "How do you listen to state changes globally (e.g., for logging or persistence) in Pinia?",
     "explanation": "$subscribe() triggers whenever the state changes. It is often used to sync the store state with LocalStorage.",
-    "interviewTip": "Many developers use the 'pinia-plugin-persistedstate' instead of writing manual subscriptions for storage."
+    "interviewTip": "Many developers use the 'pinia-plugin-persistedstate' instead of writing manual subscriptions for storage.",
+    "options": [
+      "Using a watch on the whole store.",
+      "Using the store.$subscribe() method.",
+      "Using a regular setInterval.",
+      "Pinia does not support global subscriptions."
+    ]
   },
   "smp-09": {
     "prompt": "What is Pinia and how does it differ from Vuex?",
     "explanation": "Pinia removes concepts like mutations and modules, provides better TypeScript inference, and has a more intuitive API with stores.",
-    "interviewTip": "Pinia is now the recommended state management solution for Vue 3 applications."
+    "interviewTip": "Pinia is now the recommended state management solution for Vue 3 applications.",
+    "options": [
+      "Pinia is a CSS framework.",
+      "Pinia is the official Vue 3 state management library, offering better TypeScript support and a simpler API than Vuex.",
+      "Pinia is slower than Vuex.",
+      "Pinia only works with Vue 2."
+    ]
   },
   "smp-10": {
     "prompt": "How do you define a store in Pinia?",
     "explanation": "defineStore accepts an ID and either an options object (like Options API) or a setup function (like Composition API).",
-    "interviewTip": "The setup store syntax is more flexible and aligns with Composition API patterns."
+    "interviewTip": "The setup store syntax is more flexible and aligns with Composition API patterns.",
+    "options": [
+      "Use createStore()",
+      "Use defineStore() with a unique ID and state/getters/actions.",
+      "Use new Store()",
+      "Use useState()"
+    ]
   }
 }

@@ -2,61 +2,133 @@
   "rtk-01": {
     "prompt": "Яка основна мета 'Slice' (зрізу) у Redux Toolkit?",
     "explanation": "Функція `createSlice` автоматично генерує творців дій (action creators) та типи дій на основі наданих вами редюсерів, що значно скорочує кількість шаблонного коду.",
-    "interviewTip": "У класичному Redux вам доводилося писати дії та редюсери в окремих файлах. Слайси роблять код модульним та лаконічним."
+    "interviewTip": "У класичному Redux вам доводилося писати дії та редюсери в окремих файлах. Слайси роблять код модульним та лаконічним.",
+    "options": [
+      "To divide the UI into smaller components.",
+      "To bundle the initial state, reducers, and actions for a specific feature in one place.",
+      "To split the database into multiple tables.",
+      "To handle API calls exclusively."
+    ]
   },
   "rtk-02": {
     "prompt": "Як Redux Toolkit дозволяє безпечно «мутувати» стан всередині редюсера?",
     "explanation": "RTK використовує бібліотеку Immer, яка відстежує зміни в «чернетці» (draft state) і створює для вас абсолютно новий незмінний об'єкт стану.",
-    "interviewTip": "Це головна перевага: ви отримуєте простоту синтаксису мутації, зберігаючи безпеку незмінності (immutability)."
+    "interviewTip": "Це головна перевага: ви отримуєте простоту синтаксису мутації, зберігаючи безпеку незмінності (immutability).",
+    "options": [
+      "It uses a special compiler that changes the code to CSS.",
+      "It uses the Immer library under the hood to turn 'mutations' into immutable updates.",
+      "It actually mutates the global state, but React doesn't mind.",
+      "It only works if you use the 'mutable' keyword."
+    ]
   },
   "rtk-03": {
     "prompt": "Який хук використовується для отримання даних зі стану Redux store?",
     "explanation": "Хук `useSelector` приймає функцію-селектор, яка отримує весь стан сховища та повертає лише ту частину, яка вам потрібна.",
-    "interviewTip": "useSelector також створює підписку на сховище і перерендерить компонент лише тоді, коли вибрані дані змінюються."
+    "interviewTip": "useSelector також створює підписку на сховище і перерендерить компонент лише тоді, коли вибрані дані змінюються.",
+    "options": [
+      "useStore",
+      "useDispatch",
+      "useSelector",
+      "useContext"
+    ]
   },
   "rtk-04": {
     "prompt": "Який правильний спосіб ініціювати зміну стану з компонента?",
     "explanation": "Хук `useDispatch` повертає функцію dispatch із сховища Redux. Ви викликаєте її з об'єктом дії (action), щоб запустити відповідний редюсер.",
-    "interviewTip": "Диспатч — це *єдиний* спосіб ініціювати зміну стану в Redux, дотримуючись принципу «Єдиного джерела істини»."
+    "interviewTip": "Диспатч — це *єдиний* спосіб ініціювати зміну стану в Redux, дотримуючись принципу «Єдиного джерела істини».",
+    "options": [
+      "trigger",
+      "dispatch",
+      "send",
+      "action"
+    ]
   },
   "rtk-05": {
     "prompt": "Які основні принципи Redux?",
     "explanation": "Redux покладається на передбачуваність. Глобальний стан зберігається в одному дереві, а редюсери мають бути чистими функціями, які приймають (state, action) і повертають новий стан.",
-    "interviewTip": "Передбачуваність робить можливими такі функції, як 'Time Travel Debugging' (налагодження з подорожжю у часі)."
+    "interviewTip": "Передбачуваність робить можливими такі функції, як 'Time Travel Debugging' (налагодження з подорожжю у часі).",
+    "options": [
+      "Single source of truth (one store).",
+      "State is read-only (changes only via actions).",
+      "State can be modified by any component directly.",
+      "Changes are made with pure functions (reducers)."
+    ]
   },
   "rtk-06": {
     "prompt": "Для чого використовується 'createAsyncThunk' у Redux Toolkit?",
     "explanation": "createAsyncThunk генерує типи дій для життєвого циклу проміса (pending, fulfilled, rejected) і автоматично обробляє логіку диспатчу.",
-    "interviewTip": "Обробляйте результати танка (thunk) у секції 'extraReducers' вашого слайсу."
+    "interviewTip": "Обробляйте результати танка (thunk) у секції 'extraReducers' вашого слайсу.",
+    "options": [
+      "To synchronize state with localStorage.",
+      "To handle asynchronous logic like API requests.",
+      "To create custom UI animations.",
+      "To combine multiple slices into one."
+    ]
   },
   "rtk-07": {
     "prompt": "Де ви об'єднуєте всі свої слайси для створення глобального сховища (store)?",
     "explanation": "Функція `configureStore` спрощує налаштування сховища. Вона автоматично додає розширення Redux DevTools та проміжне програмне забезпечення 'thunk'.",
-    "interviewTip": "configureStore — це заміна застарілої функції createStore в екосистемі RTK."
+    "interviewTip": "configureStore — це заміна застарілої функції createStore в екосистемі RTK.",
+    "options": [
+      "Inside the App.js file.",
+      "Using the configureStore function.",
+      "Inside a custom hook.",
+      "In the index.html file."
+    ]
   },
   "rtk-08": {
     "prompt": "Що станеться, якщо редюсер не буде «чистою функцією» (наприклад, використовує Math.random() або викликає API)?",
     "explanation": "Редюсери повинні бути детермінованими. При однакових стані та дії вони завжди мають повертати однаковий результат. Побічні ефекти (side effects) належать танкам або middleware.",
-    "interviewTip": "Запам'ятайте: Редюсери = Логіка/Обчислення; Танки = Побічні ефекти/Асинхронна робота."
+    "interviewTip": "Запам'ятайте: Редюсери = Логіка/Обчислення; Танки = Побічні ефекти/Асинхронна робота.",
+    "options": [
+      "The code will fail to compile.",
+      "State changes become unpredictable and debugging tools like DevTools will break.",
+      "React will automatically fix the function.",
+      "Redux will run the function in a separate thread."
+    ]
   },
   "rtk-09": {
     "prompt": "Як отримати доступ до даних (payload) дії всередині редюсера?",
     "explanation": "У Redux Toolkit дані, надіслані разом із дією, автоматично поміщаються у властивість `payload` об'єкта action.",
-    "interviewTip": "Приклад: виклик dispatch(incrementByAmount(10)) призведе до того, що action.payload дорівнюватиме 10."
+    "interviewTip": "Приклад: виклик dispatch(incrementByAmount(10)) призведе до того, що action.payload дорівнюватиме 10.",
+    "options": [
+      "action.data",
+      "action.payload",
+      "action.value",
+      "action.params"
+    ]
   },
   "rtk-10": {
     "prompt": "Яке призначення компонента <Provider> у Redux?",
     "explanation": "Як і Context API, Redux Provider використовує механізм контексту React, щоб передати сховище (store) до хуків, таких як useSelector.",
-    "interviewTip": "Зазвичай ви огортаєте <Provider> навколо всього додатка <App /> у головному файлі (index.js)."
+    "interviewTip": "Зазвичай ви огортаєте <Provider> навколо всього додатка <App /> у головному файлі (index.js).",
+    "options": [
+      "To fetch data from the server.",
+      "To wrap the React app and make the Redux store available to all components.",
+      "To encrypt the state before it is saved.",
+      "To manage the component's local state."
+    ]
   },
   "rtk-11": {
     "prompt": "Які переваги використання Redux DevTools?",
     "explanation": "DevTools надає візуальну панель, де можна побачити, як кожна дія змінює стан, що значно полегшує налагодження.",
-    "interviewTip": "Це одна з найвагоміших причин обирати Redux для складних застосунків."
+    "interviewTip": "Це одна з найвагоміших причин обирати Redux для складних застосунків.",
+    "options": [
+      "Inspecting the history of every action dispatched.",
+      "Editing the state in real-time to test UI changes.",
+      "Automatically writing CSS for your components.",
+      "Time-traveling to previous states."
+    ]
   },
   "rtk-12": {
     "prompt": "Знайдіть помилку у використанні цього селектора:",
     "explanation": "Завжди враховуйте початковий стан. Якщо дані ще не завантажені, звернення до індексу порожнього або невизначеного списку призведе до помилки.",
-    "interviewTip": "Використовуйте опціональний ланцюжок: state.users?.[0]."
+    "interviewTip": "Використовуйте опціональний ланцюжок: state.users?.[0].",
+    "options": [
+      "Selectors must be defined in a separate file.",
+      "If state.users is undefined (e.g., during loading), the app will crash.",
+      "useSelector cannot access arrays.",
+      "The return value must be a string."
+    ]
   }
 }

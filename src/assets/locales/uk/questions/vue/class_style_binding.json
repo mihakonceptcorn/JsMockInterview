@@ -2,51 +2,111 @@
   "csb-01": {
     "prompt": "Проаналізуйте код. Який клас буде застосовано до div, якщо 'isActive' має значення true, а 'hasError' — false?",
     "explanation": "В об'єктному синтаксисі ключ — це назва класу, а значення — булевий вираз. Оскільки isActive — true, додається клас 'active'. Оскільки hasError — false, клас 'text-danger' пропускається.",
-    "interviewTip": "Ключі з дефісами, як-от 'text-danger', в об'єктному синтаксисі обов'язково мають бути в лапках."
+    "interviewTip": "Ключі з дефісами, як-от 'text-danger', в об'єктному синтаксисі обов'язково мають бути в лапках.",
+    "options": [
+      "active",
+      "text-danger",
+      "active text-danger",
+      "None"
+    ]
   },
   "csb-02": {
     "prompt": "Як можна застосувати кілька класів, об'єднавши їх у список?",
     "explanation": "Синтаксис масиву дозволяє застосовувати список класів. Ви навіть можете вкладати об'єктний синтаксис у масив для реалізації складної логіки.",
-    "interviewTip": "Використання конструкції `[isActive ? activeClass : '', errorClass]` — це поширений патерн для умовних класів усередині масиву."
+    "interviewTip": "Використання конструкції `[isActive ? activeClass : '', errorClass]` — це поширений патерн для умовних класів усередині масиву.",
+    "options": [
+      "activeClass",
+      "{ active: isActive }",
+      "Both are valid",
+      "Neither is valid"
+    ]
   },
   "csb-03": {
     "prompt": "Як слід писати назви CSS-властивостей з кількох слів (наприклад, 'font-size') при прив'язці до атрибута 'style'?",
     "explanation": "Vue гнучкий у цьому питанні. Ви можете використовувати camelCase (`fontSize`), що ближче до назв властивостей JS DOM, або рядки в kebab-case (`'font-size'`).",
-    "interviewTip": "У спільноті Vue зазвичай надають перевагу camelCase для чистішого коду без зайвих лапок."
+    "interviewTip": "У спільноті Vue зазвичай надають перевагу camelCase для чистішого коду без зайвих лапок.",
+    "options": [
+      "Always in kebab-case: { 'font-size': '12px' }",
+      "Always in camelCase: { fontSize: '12px' }",
+      "Vue supports both camelCase and kebab-case (with quotes).",
+      "Vue only supports camelCase."
+    ]
   },
   "csb-04": {
     "prompt": "Що станеться, якщо на одному елементі є одночасно стандартний атрибут 'class' та динамічний ':class'?",
     "explanation": "Vue розумно об'єднує статичні та динамічні класи. Якщо isActive має значення true, результатом буде class=\"base active\".",
-    "interviewTip": "Ця поведінка об'єднання також стосується атрибутів 'style' та ':style'."
+    "interviewTip": "Ця поведінка об'єднання також стосується атрибутів 'style' та ':style'.",
+    "options": [
+      "The bound :class overrides the static class.",
+      "The static class overrides the bound :class.",
+      "Vue merges them together into a single class list.",
+      "It results in a template compilation error."
+    ]
   },
   "csb-05": {
     "prompt": "Проаналізуйте код. У чому перевага такого патерна?",
     "explanation": "Прив'язка до обчислюваного об'єкта (computed property) є найкращою практикою для складної логіки класів. Це робить ваші шаблони читабельними та використовує кешування обчислюваних властивостей.",
-    "interviewTip": "На співбесіді на рівні Senior завжди радьте виносити складні тернарні оператори з шаблонів в обчислювані властивості."
+    "interviewTip": "На співбесіді на рівні Senior завжди радьте виносити складні тернарні оператори з шаблонів в обчислювані властивості.",
+    "options": [
+      "It makes the template cleaner by moving complex logic into the script.",
+      "It is the only way to use reactive variables in classes.",
+      "It automatically minifies the CSS.",
+      "It prevents the component from re-rendering."
+    ]
   },
   "csb-06": {
     "prompt": "Які з наведених варіантів є валідними способами обмежити дію CSS лише одним компонентом (scoped) у Vue?",
     "explanation": "Атрибут 'scoped' використовує data-атрибути для ізоляції стилів. CSS Modules (атрибут module) впорскує об'єкт $style безпосередньо в компонент.",
-    "interviewTip": "Будьте обережні зі 'scoped' — він не впливає на нутрощі дочірніх компонентів, а лише на їхній кореневий елемент."
+    "interviewTip": "Будьте обережні зі 'scoped' — він не впливає на нутрощі дочірніх компонентів, а лише на їхній кореневий елемент.",
+    "options": [
+      "Adding the 'scoped' attribute to the <style> tag.",
+      "Using CSS Modules by adding the 'module' attribute to the <style> tag.",
+      "Vue automatically scopes all CSS by default; no attribute is needed.",
+      "Wrapping the CSS in a 'v-scope' directive."
+    ]
   },
   "csb-07": {
     "prompt": "Як Vue обробляє CSS-властивості, що потребують вендорних префіксів (наприклад, 'user-select')?",
     "explanation": "Коли ви використовуєте властивість, що потребує префікса, у біндінгу ':style', Vue автоматично визначить це і додасть відповідні префікси.",
-    "interviewTip": "Це автоматичне додавання префіксів (Auto-prefixing) вбудоване в логіку виконання Vue для стилів."
+    "interviewTip": "Це автоматичне додавання префіксів (Auto-prefixing) вбудоване в логіку виконання Vue для стилів.",
+    "options": [
+      "You must write them manually for every browser.",
+      "Vue automatically detects and adds necessary vendor prefixes for you.",
+      "Vue requires an external plugin like PostCSS for this.",
+      "Vue only supports standard properties without prefixes."
+    ]
   },
   "csb-08": {
     "prompt": "Яким є результат передачі масиву об'єктів у ':style'?",
     "explanation": "Синтаксис масиву для ':style' дозволяє застосовувати кілька об'єктів стилів до одного елемента, при цьому властивості в наступних об'єктах перезаписують попередні.",
-    "interviewTip": "Це дуже корисно для комбінування базових стилів з умовними модифікаторами."
+    "interviewTip": "Це дуже корисно для комбінування базових стилів з умовними модифікаторами.",
+    "options": [
+      "It ignores the array and only applies the first object.",
+      "It merges all style objects in the array, applying them to the element.",
+      "It throws a type error.",
+      "It applies styles as a space-separated string."
+    ]
   },
   "csb-09": {
     "prompt": "Як у Vue прив'язати кілька CSS-класів за певною умовою?",
     "explanation": "Об'єктний синтаксис дозволяє вмикати/вимикати класи на основі реактивних даних. Ви також можете комбінувати об'єктний та масивний синтаксис.",
-    "interviewTip": "Для назв класів із дефісами використовуйте лапки навколо ключа."
+    "interviewTip": "Для назв класів із дефісами використовуйте лапки навколо ключа.",
+    "options": [
+      "This syntax is invalid.",
+      "Use an object where keys are class names and values are boolean expressions.",
+      "Use an array of strings.",
+      "Use v-bind:classes instead."
+    ]
   },
   "csb-10": {
     "prompt": "У чому перевага використання ':style' з об'єктом?",
     "explanation": "Прив'язка стилів приймає об'єкт, де ключі — це назви CSS-властивостей (camelCase або kebab-case), а значення — реактивні дані.",
-    "interviewTip": "Vue автоматично додає вендорні префікси для властивостей, які цього потребують."
+    "interviewTip": "Vue автоматично додає вендорні префікси для властивостей, які цього потребують.",
+    "options": [
+      "It makes the styles faster.",
+      "It allows you to reactively update inline styles based on component data.",
+      "It automatically adds vendor prefixes.",
+      "It converts CSS to SCSS."
+    ]
   }
 }

@@ -2,91 +2,199 @@
   "ri-01": {
     "prompt": "What is the primary architectural benefit of the Virtual DOM?",
     "explanation": "The Virtual DOM is a lightweight representation of the real DOM. React uses it to batch updates and minimize expensive direct DOM manipulations.",
-    "interviewTip": "Use the term 'Reconciliation' when describing how React synchronizes the Virtual and Real DOMs."
+    "interviewTip": "Use the term 'Reconciliation' when describing how React synchronizes the Virtual and Real DOMs.",
+    "options": [
+      "It speeds up the internet connection between client and server.",
+      "It allows React to compute the most efficient way to update the real DOM.",
+      "It provides a way to store data in the browser's permanent storage.",
+      "It eliminates the need for JavaScript in modern browsers."
+    ]
   },
   "ri-02": {
     "prompt": "Which of the following best describes 'Declarative' programming in React?",
     "explanation": "In React, you declare the desired state of the UI, and React handles the actual DOM transitions. Imperative programming involves manual DOM updates.",
-    "interviewTip": "Declarative code is generally easier to debug and reason about because it is more predictable."
+    "interviewTip": "Declarative code is generally easier to debug and reason about because it is more predictable.",
+    "options": [
+      "Describing *what* the UI should look like for a given state.",
+      "Writing step-by-step instructions on *how* to change the DOM.",
+      "Using only Class-based components to define logic.",
+      "Manually selecting HTML elements using document.querySelector."
+    ]
   },
   "ri-03": {
     "prompt": "Why is React often classified as a 'Library' rather than a 'Framework'?",
     "explanation": "Unlike frameworks (like Angular), React is unopinionated. You must choose external tools for things like navigation and data fetching.",
-    "interviewTip": "This flexibility allows teams to pick the 'best-in-class' tools for their specific needs."
+    "interviewTip": "This flexibility allows teams to pick the 'best-in-class' tools for their specific needs.",
+    "options": [
+      "It is strictly focused on the 'View' layer of an application.",
+      "It does not come with built-in solutions for routing or global state management.",
+      "It is smaller in file size than any other JavaScript tool.",
+      "It cannot be used to build full-scale enterprise applications."
+    ]
   },
   "ri-04": {
     "prompt": "What does this JSX code actually represent after it is compiled by Babel?",
     "explanation": "JSX is 'syntactic sugar'. Babel transforms it into nested React.createElement calls, which return plain JS objects (React Elements).",
-    "interviewTip": "Since React 17, the 'new JSX transform' handles this automatically without requiring 'import React' in every file."
+    "interviewTip": "Since React 17, the 'new JSX transform' handles this automatically without requiring 'import React' in every file.",
+    "options": [
+      "A string of HTML: \"<div id='root'>Hello</div>\"",
+      "A direct reference to a DOM node created by the browser.",
+      "A JavaScript object created via React.createElement().",
+      "A function that returns a Promise."
+    ]
   },
   "ri-05": {
     "prompt": "What will the following code output to the console?",
     "explanation": "React Elements are tagged with a specific Symbol ($$typeof) for security reasons, primarily to prevent XSS (Cross-Site Scripting).",
-    "interviewTip": "This tag ensures that React only renders objects it has created itself."
+    "interviewTip": "This tag ensures that React only renders objects it has created itself.",
+    "options": [
+      "undefined",
+      "Symbol(react.element)",
+      "\"div\"",
+      "null"
+    ]
   },
   "ri-06": {
     "prompt": "What is the 'Single Responsibility Principle' in React components?",
     "explanation": "Components should be modular and focused. If a component grows too large, it should be decomposed into smaller sub-components.",
-    "interviewTip": "Small, focused components are much easier to test and reuse."
+    "interviewTip": "Small, focused components are much easier to test and reuse.",
+    "options": [
+      "A component should only be used once in the entire application.",
+      "A component should ideally do only one thing.",
+      "All state must be managed by a single 'root' component.",
+      "Every component must contain exactly one line of JSX."
+    ]
   },
   "ri-07": {
     "prompt": "What happens if you try to render the following component?",
     "explanation": "React components must return a single root node. This is because a function can only return one value (one object tree).",
-    "interviewTip": "Use a Fragment (<></>) to group elements without adding a wrapper div to the DOM."
+    "interviewTip": "Use a Fragment (<></>) to group elements without adding a wrapper div to the DOM.",
+    "options": [
+      "The browser renders both headings side-by-side.",
+      "A syntax error: JSX must have one parent element.",
+      "Only 'Item 1' is rendered; 'Item 2' is ignored.",
+      "The second heading overwrites the first."
+    ]
   },
   "ri-08": {
     "prompt": "In the context of the React ecosystem, what is 'Babel'?",
     "explanation": "Babel takes modern code (JSX, ES6+) and turns it into backward-compatible versions of JavaScript that all browsers can run.",
-    "interviewTip": "Vite and Create React App use Babel (or alternatives like SWC) under the hood."
+    "interviewTip": "Vite and Create React App use Babel (or alternatives like SWC) under the hood.",
+    "options": [
+      "A CSS-in-JS library.",
+      "A code linter that finds errors in logic.",
+      "A JavaScript compiler/transpiler that converts JSX into valid JS.",
+      "A database management system for React."
+    ]
   },
   "ri-09": {
     "prompt": "Analyze the code below. Why won't the UI update when the user clicks?",
     "explanation": "React is not 'watching' the 'likes' variable. To trigger a UI update, you must use the 'useState' hook.",
-    "interviewTip": "This is a fundamental concept: State change = Re-render."
+    "interviewTip": "This is a fundamental concept: State change = Re-render.",
+    "options": [
+      "The variable 'likes' is not declared with 'const'.",
+      "React doesn't track changes to local variables; it only re-renders on state or prop changes.",
+      "The button's onClick event is not written in lowercase.",
+      "Functions cannot be passed to the onClick attribute."
+    ]
   },
   "ri-10": {
     "prompt": "What does the 'unidirectional data flow' mean in React?",
     "explanation": "In React, children receive data from parents via props. If children need to change parent state, they use callbacks passed down as props.",
-    "interviewTip": "This 'top-down' flow makes the application state much easier to predict and debug."
+    "interviewTip": "This 'top-down' flow makes the application state much easier to predict and debug.",
+    "options": [
+      "Data flows only from the server to the client.",
+      "Data flows strictly from parent components down to child components.",
+      "State and props are updated simultaneously in both directions.",
+      "Users can only interact with the app in one direction (top-to-bottom)."
+    ]
   },
   "ri-11": {
     "prompt": "Which of these are valid ways to render a 'Fragment' in React?",
     "explanation": "All three are valid, with <>...</> being the most concise shorthand.",
-    "interviewTip": "Remember that only <React.Fragment> (the full syntax) can accept a 'key' prop."
+    "interviewTip": "Remember that only <React.Fragment> (the full syntax) can accept a 'key' prop.",
+    "options": [
+      "<React.Fragment>...</React.Fragment>",
+      "<Fragment>...</Fragment>",
+      "<>...</>",
+      "<div fragment>...</div>"
+    ]
   },
   "ri-12": {
     "prompt": "What is the result of the following 'typeof' check?",
     "explanation": "JSX elements are transpiled into plain JavaScript objects.",
-    "interviewTip": "Because they are objects, you can pass them as props, store them in variables, or put them in arrays."
+    "interviewTip": "Because they are objects, you can pass them as props, store them in variables, or put them in arrays.",
+    "options": [
+      "\"string\"",
+      "\"object\"",
+      "\"function\"",
+      "\"undefined\""
+    ]
   },
   "ri-13": {
     "prompt": "What is the purpose of the 'ReactDOM' library?",
     "explanation": "React is platform-independent. ReactDOM is the specific 'glue' that allows React to work with web browsers.",
-    "interviewTip": "React Native uses a different renderer (the native mobile UI) instead of ReactDOM."
+    "interviewTip": "React Native uses a different renderer (the native mobile UI) instead of ReactDOM.",
+    "options": [
+      "To manage the component state and hooks.",
+      "To provide the logic for creating React components.",
+      "To render the React component tree into the actual browser DOM.",
+      "To communicate with a SQL database."
+    ]
   },
   "ri-14": {
     "prompt": "What is wrong with this return statement?",
     "explanation": "Due to Automatic Semicolon Insertion (ASI), the return is cut off. You must place the JSX on the same line or wrap it in parentheses.",
-    "interviewTip": "Always wrap multi-line JSX in parentheses: return (...);"
+    "interviewTip": "Always wrap multi-line JSX in parentheses: return (...);",
+    "options": [
+      "Return statements cannot be used in functional components.",
+      "The semicolon must be inside the tags.",
+      "JavaScript inserts an automatic semicolon after 'return', returning 'undefined' instead of the JSX.",
+      "<h1> tags require a className."
+    ]
   },
   "ri-15": {
     "prompt": "How does React distinguish between an HTML tag and a custom component in JSX?",
     "explanation": "React.createElement() uses the case of the first letter to decide if it should render a string (native HTML) or a variable (component).",
-    "interviewTip": "If you define a component as 'const myHeader = ...', use it as <MyHeader /> to ensure it's recognized."
+    "interviewTip": "If you define a component as 'const myHeader = ...', use it as <MyHeader /> to ensure it's recognized.",
+    "options": [
+      "HTML tags are blue, components are red.",
+      "Custom components must start with a capital letter; HTML tags start with lowercase.",
+      "Components must always use self-closing tags.",
+      "HTML tags must be wrapped in quotes."
+    ]
   },
   "ri-16": {
     "prompt": "What is the 'Reconciliation' algorithm?",
     "explanation": "Reconciliation is the 'diffing' process where React calculates the minimal set of changes needed to update the browser's UI.",
-    "interviewTip": "React assumes that if a component type changes, the whole tree below it needs to be rebuilt."
+    "interviewTip": "React assumes that if a component type changes, the whole tree below it needs to be rebuilt.",
+    "options": [
+      "The process of converting CSS into JS objects.",
+      "The way React compares two Virtual DOM trees to see what changed.",
+      "A way to synchronize the frontend and the backend server.",
+      "The method for combining multiple Redux stores."
+    ]
   },
   "ri-17": {
     "prompt": "Why should components be 'pure' functions regarding their props?",
     "explanation": "A component should never modify its props. It should return the same JSX for the same set of props and state.",
-    "interviewTip": "Immutability is key to React's performance optimizations (like React.memo)."
+    "interviewTip": "Immutability is key to React's performance optimizations (like React.memo).",
+    "options": [
+      "To make the code look more professional.",
+      "To ensure that the component is predictable and doesn't mutate its inputs.",
+      "Because JavaScript doesn't allow changing function arguments.",
+      "To prevent the browser from caching the component."
+    ]
   },
   "ri-18": {
     "prompt": "Identify the dynamic part of this JSX:",
     "explanation": "Curly braces {} are the escape hatch into JavaScript, allowing you to embed dynamic values or logic.",
-    "interviewTip": "You can even put complex logic like map() or ternary operators inside these braces."
+    "interviewTip": "You can even put complex logic like map() or ternary operators inside these braces.",
+    "options": [
+      "className='main'",
+      "<h1>",
+      "{title}",
+      "const title"
+    ]
   }
 }

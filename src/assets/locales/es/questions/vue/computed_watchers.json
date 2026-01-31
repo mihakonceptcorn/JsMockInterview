@@ -2,51 +2,111 @@
   "cw-01": {
     "prompt": "What is the primary advantage of using a 'computed' property over a regular 'method' in a template?",
     "explanation": "Caching is the killer feature. If you have an expensive calculation in a computed property, it will only run once and reuse that result until its source data changes. Methods run every time the component re-renders.",
-    "interviewTip": "Use computed for data transformation (getters) and methods for event handling or actions."
+    "interviewTip": "Use computed for data transformation (getters) and methods for event handling or actions.",
+    "options": [
+      "Computed properties can accept arguments.",
+      "Computed properties are cached based on their reactive dependencies and only re-evaluate when those dependencies change.",
+      "Computed properties run asynchronously.",
+      "Computed properties are the only way to use math in templates."
+    ]
   },
   "cw-02": {
     "prompt": "Analyze the code. How many times will 'Calculating...' be logged if the component re-renders 5 times, but 'count' never changes?",
     "explanation": "Because of caching, the computed function only executes once. As long as 'count' is the same, Vue returns the stored value immediately.",
-    "interviewTip": "Computed properties are 'lazy'. If they aren't used in a template or another effect, they don't even run once!"
+    "interviewTip": "Computed properties are 'lazy'. If they aren't used in a template or another effect, they don't even run once!",
+    "options": [
+      "5 times",
+      "1 time (on initial access)",
+      "0 times",
+      "Every time the template is accessed"
+    ]
   },
   "cw-03": {
     "prompt": "When should you use a 'watcher' (watch) instead of a 'computed' property?",
     "explanation": "Computed properties must be 'pure' (no side effects) and return a value. Watchers are designed to execute logic (like saving to localStorage or fetching data) when a value changes.",
-    "interviewTip": "Rule of thumb: Computed = Getters; Watchers = Side Effects."
+    "interviewTip": "Rule of thumb: Computed = Getters; Watchers = Side Effects.",
+    "options": [
+      "When you need to change the CSS class of an element.",
+      "When you need to perform 'side effects' like an API call or manual DOM manipulation in response to a data change.",
+      "When you want to join two strings together.",
+      "When you need to return a value to the template."
+    ]
   },
   "cw-04": {
     "prompt": "How do you make a watcher trigger immediately upon component creation, rather than waiting for the first change?",
     "explanation": "The 'immediate: true' option forces the watcher callback to run once with the initial value right when the watcher is initialized.",
-    "interviewTip": "This is very useful for fetching data based on a prop as soon as the component mounts."
+    "interviewTip": "This is very useful for fetching data based on a prop as soon as the component mounts.",
+    "options": [
+      "lazy",
+      "deep",
+      "immediate",
+      "flush"
+    ]
   },
   "cw-05": {
     "prompt": "What does the 'deep: true' option do in a watcher?",
     "explanation": "By default, watchers only track 'shallow' changes (the reference of the object). 'deep' recursively traverses the object to catch changes in sub-properties.",
-    "interviewTip": "Warning: Deep watching large objects can be very expensive for performance."
+    "interviewTip": "Warning: Deep watching large objects can be very expensive for performance.",
+    "options": [
+      "It makes the watcher run in a separate thread.",
+      "It allows the watcher to track changes inside nested objects or arrays.",
+      "It ensures the watcher is the last thing to run in the lifecycle.",
+      "It prevents the component from being destroyed."
+    ]
   },
   "cw-06": {
     "prompt": "Analyze the code. Why is the watcher NOT triggering when 'user.name' changes?",
     "explanation": "When watching a 'ref' containing an object, the watcher is triggered only if the entire object is replaced. Internal property changes are ignored unless 'deep' is used or you watch a getter: `() => user.value.name`.",
-    "interviewTip": "In Vue 3, watching a 'reactive' object automatically creates a deep watcher, but watching a 'ref' does not."
+    "interviewTip": "In Vue 3, watching a 'reactive' object automatically creates a deep watcher, but watching a 'ref' does not.",
+    "options": [
+      "Watchers cannot watch objects.",
+      "The watcher is only watching the object reference, not its internal properties (needs 'deep: true').",
+      "The watcher must watch 'user.value.name' directly.",
+      "The console.log is missing quotes."
+    ]
   },
   "cw-07": {
     "prompt": "Which of these are valid ways to create a 'Writable Computed' property (getter and setter)?",
     "explanation": "While most computed properties are getters, you can provide a setter to handle updates (e.g., parsing a 'fullName' string into 'firstName' and 'lastName').",
-    "interviewTip": "Writable computed properties are excellent for wrapping state management (like Pinia) into a clean v-model."
+    "interviewTip": "Writable computed properties are excellent for wrapping state management (like Pinia) into a clean v-model.",
+    "options": [
+      "Passing an object with 'get' and 'set' functions to computed().",
+      "Defining two separate computed properties with the same name.",
+      "Using v-model directly on a regular computed property.",
+      "Computed properties are strictly read-only and cannot be writable."
+    ]
   },
   "cw-08": {
     "prompt": "What is the difference between 'watch' and 'watchEffect'?",
     "explanation": "watchEffect is more concise because you don't list dependencies; it 'discovers' them during execution. However, 'watch' is more precise and gives you access to 'oldValue'.",
-    "interviewTip": "Use 'watch' if you need the previous value; use 'watchEffect' for simpler dependency tracking."
+    "interviewTip": "Use 'watch' if you need the previous value; use 'watchEffect' for simpler dependency tracking.",
+    "options": [
+      "watchEffect is for Vue 2 only.",
+      "watchEffect automatically tracks all reactive properties used inside its function, whereas 'watch' requires you to explicitly state the source.",
+      "watch is faster than watchEffect.",
+      "watchEffect cannot be stopped."
+    ]
   },
   "cw-09": {
     "prompt": "What is the difference between a computed property and a method in Vue?",
     "explanation": "Computed properties are only re-evaluated when their dependencies change. Methods run on every render, making them less efficient for expensive operations.",
-    "interviewTip": "Use computed for derived state, methods for actions or when you need to pass arguments."
+    "interviewTip": "Use computed for derived state, methods for actions or when you need to pass arguments.",
+    "options": [
+      "There is no difference.",
+      "Computed properties are cached based on their reactive dependencies; methods are called every time.",
+      "Methods are faster than computed properties.",
+      "Computed properties can only return strings."
+    ]
   },
   "cw-10": {
     "prompt": "When should you use a watcher with the `immediate: true` option?",
     "explanation": "By default, watchers only run when the watched value changes. `immediate: true` makes the callback run once immediately with the current value.",
-    "interviewTip": "This is useful for initializing data based on props or performing initial API calls."
+    "interviewTip": "This is useful for initializing data based on props or performing initial API calls.",
+    "options": [
+      "When you want the watcher to run immediately on component creation, before the first data change.",
+      "When you want the watcher to run faster.",
+      "When you want to watch multiple properties.",
+      "When you want to prevent the watcher from running."
+    ]
   }
 }

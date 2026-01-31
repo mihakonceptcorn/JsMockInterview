@@ -2,126 +2,276 @@
   "js-async-01": {
     "prompt": "Що таке асинхронне програмування в JavaScript?",
     "explanation": "Асинхронний код дозволяє виконувати операції без блокування основного потоку.",
-    "interviewTip": "JS є однопотоковим, але підтримує асинхронність."
+    "interviewTip": "JS є однопотоковим, але підтримує асинхронність.",
+    "options": [
+      "Code that runs without blocking the main thread",
+      "Multithreaded execution",
+      "Parallel execution of all functions",
+      "Synchronous callbacks"
+    ]
   },
   "js-async-02": {
     "prompt": "Який механізм відповідає за обробку асинхронних завдань?",
     "explanation": "Event Loop координує виконання асинхронного коду.",
-    "interviewTip": "Критично важлива тема для співбесіди."
+    "interviewTip": "Критично важлива тема для співбесіди.",
+    "options": [
+      "Event Loop",
+      "Call Stack",
+      "Heap",
+      "Compiler"
+    ]
   },
   "js-async-03": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "setTimeout є асинхронним, навіть із затримкою 0 мс.",
-    "interviewTip": "Поведінка макрозавдань (macro-tasks)."
+    "interviewTip": "Поведінка макрозавдань (macro-tasks).",
+    "options": [
+      "1 2 3",
+      "1 3 2",
+      "2 1 3",
+      "3 2 1"
+    ]
   },
   "js-async-04": {
     "prompt": "Що таке проміс (Promise)?",
     "explanation": "Promise представляє значення, яке буде доступне в майбутньому.",
-    "interviewTip": "Стани: pending / fulfilled / rejected."
+    "interviewTip": "Стани: pending / fulfilled / rejected.",
+    "options": [
+      "An object representing eventual completion",
+      "A callback",
+      "A thread",
+      "A timer"
+    ]
   },
   "js-async-05": {
     "prompt": "Якого стану НЕ існує у проміса?",
     "explanation": "`resolved` — це неформальний термін, а не офіційний стан.",
-    "interviewTip": "Точна термінологія має значення."
+    "interviewTip": "Точна термінологія має значення.",
+    "options": [
+      "pending",
+      "fulfilled",
+      "rejected",
+      "resolved"
+    ]
   },
   "js-async-06": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Мікрозавдання виконуються одразу після синхронного коду.",
-    "interviewTip": "Черга мікрозавдань (Microtask queue)."
+    "interviewTip": "Черга мікрозавдань (Microtask queue).",
+    "options": [
+      "1 2",
+      "2 1",
+      "undefined",
+      "Error"
+    ]
   },
   "js-async-07": {
     "prompt": "Що таке async/await?",
     "explanation": "Синтаксичний цукор, побудований на базі промісів.",
-    "interviewTip": "Це все одно асинхронний код."
+    "interviewTip": "Це все одно асинхронний код.",
+    "options": [
+      "Syntax sugar over Promises",
+      "New threading model",
+      "Callback replacement",
+      "Blocking code"
+    ]
   },
   "js-async-08": {
     "prompt": "Що робить ключове слово `await`?",
     "explanation": "Призупиняє виконання лише поточної асинхронної функції.",
-    "interviewTip": "Не блокує Event Loop."
+    "interviewTip": "Не блокує Event Loop.",
+    "options": [
+      "Pauses async function execution",
+      "Blocks entire thread",
+      "Stops program",
+      "Resolves Promise synchronously"
+    ]
   },
   "js-async-09": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Асинхронні функції завжди повертають проміс.",
-    "interviewTip": "Результат автоматично огортається в Promise."
+    "interviewTip": "Результат автоматично огортається в Promise.",
+    "options": [
+      "5",
+      "Promise",
+      "undefined",
+      "Error"
+    ]
   },
   "js-async-10": {
     "prompt": "Що виконається першим?",
     "explanation": "Мікрозавдання мають вищий пріоритет, ніж макрозавдання.",
-    "interviewTip": "Порівняння Promise.then та setTimeout."
+    "interviewTip": "Порівняння Promise.then та setTimeout.",
+    "options": [
+      "Microtasks",
+      "Macrotasks",
+      "Rendering",
+      "Timers"
+    ]
   },
   "js-async-11": {
     "prompt": "Що робить `Promise.all`?",
     "explanation": "Відхиляється (reject), якщо хоча б один проміс завершився помилкою.",
-    "interviewTip": "Принцип «швидкого відмовлення» (fail-fast)."
+    "interviewTip": "Принцип «швидкого відмовлення» (fail-fast).",
+    "options": [
+      "Resolves when all promises resolve",
+      "Resolves when first resolves",
+      "Rejects on timeout",
+      "Runs sequentially"
+    ]
   },
   "js-async-12": {
     "prompt": "Що робить `Promise.race`?",
     "explanation": "Повертає результат проміса, який завершився першим (успішно чи з помилкою).",
-    "interviewTip": "Корисно для реалізації таймаутів."
+    "interviewTip": "Корисно для реалізації таймаутів.",
+    "options": [
+      "Resolves/rejects with first settled",
+      "Waits for all",
+      "Executes sequentially",
+      "Cancels others"
+    ]
   },
   "js-async-13": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Await викидає помилку, якщо проміс відхилено.",
-    "interviewTip": "Використовуйте try/catch."
+    "interviewTip": "Використовуйте try/catch.",
+    "options": [
+      "err",
+      "after",
+      "undefined",
+      "Error"
+    ]
   },
   "js-async-14": {
     "prompt": "Як обробляти помилки в async/await?",
     "explanation": "Блок try/catch перехоплює помилки відхилених промісів.",
-    "interviewTip": "Локальна обробка помилок."
+    "interviewTip": "Локальна обробка помилок.",
+    "options": [
+      "try/catch",
+      ".then",
+      "if statement",
+      "finally only"
+    ]
   },
   "js-async-15": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Черга мікрозавдань очищується перед наступним макрозавданням.",
-    "interviewTip": "Класичне питання на співбесіді."
+    "interviewTip": "Класичне питання на співбесіді.",
+    "options": [
+      "start end promise timeout",
+      "start promise end timeout",
+      "start end timeout promise",
+      "promise start end timeout"
+    ]
   },
   "js-async-16": {
     "prompt": "Що робить метод `finally`?",
     "explanation": "Виконується після завершення проміса, незалежно від результату.",
-    "interviewTip": "Не має доступу до результату (value/error)."
+    "interviewTip": "Не має доступу до результату (value/error).",
+    "options": [
+      "Runs regardless of promise outcome",
+      "Catches errors",
+      "Cancels promise",
+      "Returns value"
+    ]
   },
   "js-async-17": {
     "prompt": "Що таке «пекло колбеків» (callback hell)?",
     "explanation": "Складна вкладеність функцій, яку важко читати та підтримувати.",
-    "interviewTip": "Проміси допомагають вирішити цю проблему."
+    "interviewTip": "Проміси допомагають вирішити цю проблему.",
+    "options": [
+      "Deeply nested callbacks",
+      "Promise chaining",
+      "Async/await usage",
+      "Event loop bug"
+    ]
   },
   "js-async-18": {
     "prompt": "Що робить `await Promise.all([...])`?",
     "explanation": "Запускає проміси паралельно і чекає на виконання всіх.",
-    "interviewTip": "Оптимізація продуктивності."
+    "interviewTip": "Оптимізація продуктивності.",
+    "options": [
+      "Runs promises in parallel",
+      "Runs sequentially",
+      "Blocks thread",
+      "Cancels slower promises"
+    ]
   },
   "js-async-19": {
     "prompt": "Чому варто уникати `await` всередині циклів?",
     "explanation": "Це призводить до послідовного виконання замість паралельного. Використовуйте Promise.all.",
-    "interviewTip": "Поширена проблема продуктивності."
+    "interviewTip": "Поширена проблема продуктивності.",
+    "options": [
+      "Causes sequential execution",
+      "Syntax error",
+      "Memory leak",
+      "Infinite loop"
+    ]
   },
   "js-async-20": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Проміс автоматично розгортається (flattening) при поверненні.",
-    "interviewTip": "Особливість розділення промісів."
+    "interviewTip": "Особливість розділення промісів.",
+    "options": [
+      "1",
+      "Promise",
+      "undefined",
+      "Error"
+    ]
   },
   "js-async-21": {
     "prompt": "Що таке макрозавдання (macrotask)?",
     "explanation": "Завдання, яке планується через чергу завдань (наприклад, таймери, події вводу).",
-    "interviewTip": "Має нижчий пріоритет за мікрозавдання."
+    "interviewTip": "Має нижчий пріоритет за мікрозавдання.",
+    "options": [
+      "setTimeout, setInterval",
+      "Promise.then",
+      "Microtask",
+      "Call stack"
+    ]
   },
   "js-async-22": {
     "prompt": "Що станеться, якщо проміс відхилено, а `catch` відсутній?",
     "explanation": "Це призводить до помилки 'Unhandled Promise Rejection'.",
-    "interviewTip": "Завжди обробляйте відхилення."
+    "interviewTip": "Завжди обробляйте відхилення.",
+    "options": [
+      "Unhandled rejection",
+      "Silent fail",
+      "Program stops",
+      "Ignored"
+    ]
   },
   "js-async-23": {
     "prompt": "Що робить `queueMicrotask`?",
     "explanation": "Явно додає завдання в чергу мікрозавдань.",
-    "interviewTip": "Просунута тема для Senior/Middle рівнів."
+    "interviewTip": "Просунута тема для Senior/Middle рівнів.",
+    "options": [
+      "Schedules microtask",
+      "Schedules macrotask",
+      "Blocks execution",
+      "Creates promise"
+    ]
   },
   "js-async-24": {
     "prompt": "Чому асинхронний код важко відлагоджувати?",
     "explanation": "Стек викликів (stack trace) може перериватися між асинхронними кроками.",
-    "interviewTip": "Використовуйте асинхронні стеки викликів у DevTools."
+    "interviewTip": "Використовуйте асинхронні стеки викликів у DevTools.",
+    "options": [
+      "Execution order is non-linear",
+      "JS has no debugger",
+      "Promises hide errors",
+      "Single thread"
+    ]
   },
   "js-async-25": {
     "prompt": "Яка найкраща практика для асинхронного коду?",
     "explanation": "Код має бути читабельним, передбачуваним та містити обробку помилок.",
-    "interviewTip": "Підхід, готовий до використання у продакшені."
+    "interviewTip": "Підхід, готовий до використання у продакшені.",
+    "options": [
+      "Use async/await + try/catch",
+      "Nested callbacks",
+      "Ignore errors",
+      "Block thread"
+    ]
   }
 }

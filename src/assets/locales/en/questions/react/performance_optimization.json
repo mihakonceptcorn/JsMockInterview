@@ -2,61 +2,133 @@
   "po-01": {
     "prompt": "What is the primary purpose of 'React.lazy' and 'Suspense'?",
     "explanation": "React.lazy allows you to render a dynamic import as a regular component. Suspense provides a fallback UI (like a spinner) while that component is loading.",
-    "interviewTip": "This reduces the initial bundle size, which improves the 'Time to Interactive' metric."
+    "interviewTip": "This reduces the initial bundle size, which improves the 'Time to Interactive' metric.",
+    "options": [
+      "To make the Virtual DOM diffing algorithm faster.",
+      "To implement code-splitting by loading components only when they are needed.",
+      "To automatically minify the CSS files.",
+      "To cache API responses in the browser's memory."
+    ]
   },
   "po-02": {
     "prompt": "Analyze the code. What happens to 'HugeComponent' when the app first loads?",
     "explanation": "By using dynamic import(), the build tool (like Webpack or Vite) creates a separate chunk for this component that is fetched over the network only when needed.",
-    "interviewTip": "Lazy loading is best used for components that aren't immediately visible, like Modals or separate Routes."
+    "interviewTip": "Lazy loading is best used for components that aren't immediately visible, like Modals or separate Routes.",
+    "options": [
+      "It is downloaded immediately as part of the main bundle.",
+      "It is only downloaded when the App component is rendered.",
+      "It is ignored by the browser.",
+      "It is pre-rendered on the server only."
+    ]
   },
   "po-03": {
     "prompt": "Which of these are effective ways to identify performance bottlenecks in a React app?",
     "explanation": "The Profiler shows which components rendered and why. 'Highlight updates' gives visual feedback on re-renders, and the Network tab helps identify bloated code.",
-    "interviewTip": "The Profiler's 'Flamegraph' helps pinpoint exactly which component in a deep tree is causing a lag."
+    "interviewTip": "The Profiler's 'Flamegraph' helps pinpoint exactly which component in a deep tree is causing a lag.",
+    "options": [
+      "Using the 'Profiler' tab in React Developer Tools.",
+      "Turning on 'Highlight updates' in the React DevTools settings.",
+      "Checking the 'Network' tab to see bundle sizes.",
+      "Increasing the CPU speed of the development machine."
+    ]
   },
   "po-04": {
     "prompt": "What is 'Windowing' (or Virtualization) used for?",
     "explanation": "If you have 10,000 items, rendering them all creates 10,000+ DOM nodes, which slows the browser. Windowing keeps the DOM small (e.g., only 20 nodes).",
-    "interviewTip": "Mention libraries like 'react-window' or 'react-virtualized' as the industry standard for this."
+    "interviewTip": "Mention libraries like 'react-window' or 'react-virtualized' as the industry standard for this.",
+    "options": [
+      "To allow the app to run in multiple browser windows.",
+      "To render only the items in a long list that are currently visible on the screen.",
+      "To create a transparent background for the UI.",
+      "To handle pop-up windows in the browser."
+    ]
   },
   "po-05": {
     "prompt": "What happens to the performance if you define a component inside another component's body?",
     "explanation": "Because the component function is recreated, React sees it as a completely new type every time. This destroys all state of the child and forces a full remount.",
-    "interviewTip": "Always define your components outside the main function or in separate files."
+    "interviewTip": "Always define your components outside the main function or in separate files.",
+    "options": [
+      "It is faster because the scope is smaller.",
+      "It is extremely inefficient because 'Child' is redefined as a brand-new component on every single render of 'Parent'.",
+      "React optimizes this automatically.",
+      "It is only allowed in React 19."
+    ]
   },
   "po-06": {
     "prompt": "What is 'Throttling' and 'Debouncing' in the context of React events?",
     "explanation": "Debouncing waits for a pause in activity (e.g., typing), while Throttling limits calls to once every X milliseconds (e.g., scrolling).",
-    "interviewTip": "Use 'lodash.debounce' or similar utilities to prevent 100 API calls as a user types a single word."
+    "interviewTip": "Use 'lodash.debounce' or similar utilities to prevent 100 API calls as a user types a single word.",
+    "options": [
+      "Methods to encrypt user input.",
+      "Techniques to limit how often a function (like a search API call or window resize) is executed.",
+      "Ways to speed up CSS animations.",
+      "Tools to delete unused state variables."
+    ]
   },
   "po-07": {
     "prompt": "How does 'Transition API' (useTransition) help with performance in React 18+?",
     "explanation": "startTransition tells React that an update (like filtering a massive list) can be interrupted by more urgent tasks like typing or clicking.",
-    "interviewTip": "Use 'useTransition' to prevent the UI from 'freezing' during heavy rendering tasks."
+    "interviewTip": "Use 'useTransition' to prevent the UI from 'freezing' during heavy rendering tasks.",
+    "options": [
+      "It adds CSS transitions between pages.",
+      "It allows you to mark certain state updates as 'non-urgent', keeping the UI responsive.",
+      "It automatically compresses images.",
+      "It forces the browser to use more RAM."
+    ]
   },
   "po-08": {
     "prompt": "What is the benefit of moving state down to a child component?",
     "explanation": "This is called 'Localizing State'. If only the Modal needs to know if it's open, keep that state there to avoid rendering the whole App whenever it toggles.",
-    "interviewTip": "Before using useMemo, always check if you can simply restructure your component tree to avoid re-renders."
+    "interviewTip": "Before using useMemo, always check if you can simply restructure your component tree to avoid re-renders.",
+    "options": [
+      "It increases the complexity of the app.",
+      "It limits re-renders to only that child component instead of the entire parent tree.",
+      "It makes the data accessible to all components.",
+      "There is no performance benefit."
+    ]
   },
   "po-09": {
     "prompt": "Why is 'index' as a key bad for performance in a dynamic list?",
     "explanation": "If the list reorders, the item at index 0 changes, but the key '0' remains. React thinks the content changed rather than the item moving.",
-    "interviewTip": "Stable keys (like IDs) allow React to simply 'move' DOM nodes instead of re-creating them."
+    "interviewTip": "Stable keys (like IDs) allow React to simply 'move' DOM nodes instead of re-creating them.",
+    "options": [
+      "It takes too long for the browser to read the numbers.",
+      "It confuses React's diffing algorithm during reordering, leading to incorrect DOM updates and wasted renders.",
+      "Keys must be strings, not numbers.",
+      "Indices are not supported in React 18."
+    ]
   },
   "po-10": {
     "prompt": "What does the 'useDeferredValue' hook do?",
     "explanation": "Similar to useTransition, but for values. It gives you a 'deferred' version of a value that 'lags behind' the urgent update, keeping the UI smooth.",
-    "interviewTip": "Perfect for a search input where the input updates instantly, but the results list updates slightly later."
+    "interviewTip": "Perfect for a search input where the input updates instantly, but the results list updates slightly later.",
+    "options": [
+      "It delays the rendering of a value until the next day.",
+      "It allows you to defer updating a part of the UI that takes a long time to render.",
+      "It caches the value in a cookie.",
+      "It prevents the value from ever changing."
+    ]
   },
   "po-11": {
     "prompt": "Which of these patterns can lead to memory leaks in React?",
     "explanation": "When a component unmounts, global things like timers and event listeners stay in memory unless you manually stop them.",
-    "interviewTip": "Always use the return function in useEffect to clean up your mess!"
+    "interviewTip": "Always use the return function in useEffect to clean up your mess!",
+    "options": [
+      "Starting a setInterval and not clearing it in the cleanup function.",
+      "Using a lot of console.log statements.",
+      "Adding a window event listener without removing it.",
+      "Declaring too many variables."
+    ]
   },
   "po-12": {
     "prompt": "What is the result of using 'inline functions' as props for a component wrapped in 'React.memo'?",
     "explanation": "React.memo uses shallow comparison. `() => {} !== () => {}`, so the memoization check fails.",
-    "interviewTip": "Pair 'React.memo' with 'useCallback' on the parent function to make the optimization work."
+    "interviewTip": "Pair 'React.memo' with 'useCallback' on the parent function to make the optimization work.",
+    "options": [
+      "The button will never re-render.",
+      "The button will still re-render on every parent render because the function is a new reference every time.",
+      "React will ignore the function.",
+      "The function will be automatically memoized."
+    ]
   }
 }

@@ -2,126 +2,276 @@
   "js-proto-01": {
     "prompt": "Що таке прототип у JavaScript?",
     "explanation": "Кожен об'єкт у JS має внутрішнє посилання на інший об'єкт, який називається прототипом.",
-    "interviewTip": "JS використовує прототипне наслідування, а не класичне."
+    "interviewTip": "JS використовує прототипне наслідування, а не класичне.",
+    "options": [
+      "An object from which other objects inherit properties",
+      "A class definition",
+      "A function scope",
+      "A copy of an object"
+    ]
   },
   "js-proto-02": {
     "prompt": "На що вказує властивість `__proto__`?",
     "explanation": "`__proto__` посилається на внутрішню властивість [[Prototype]] об'єкта.",
-    "interviewTip": "Рекомендований API для доступу — `Object.getPrototypeOf`."
+    "interviewTip": "Рекомендований API для доступу — `Object.getPrototypeOf`.",
+    "options": [
+      "The constructor function",
+      "The object's prototype",
+      "The object's class",
+      "The global object"
+    ]
   },
   "js-proto-03": {
     "prompt": "Що таке `Function.prototype`?",
     "explanation": "Усі функції в JavaScript успадковують методи від об'єкта Function.prototype.",
-    "interviewTip": "Пам'ятайте, що функції — це теж об'єкти."
+    "interviewTip": "Пам'ятайте, що функції — це теж об'єкти.",
+    "options": [
+      "Prototype of all functions",
+      "Prototype of all objects",
+      "A method",
+      "The global scope"
+    ]
   },
   "js-proto-04": {
     "prompt": "Яким буде результат?",
     "explanation": "Оператор `new` пов'язує новий екземпляр із прототипом конструктора.",
-    "interviewTip": "Властивість `prototype` існує лише у функцій."
+    "interviewTip": "Властивість `prototype` існує лише у функцій.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "TypeError"
+    ]
   },
   "js-proto-05": {
     "prompt": "Де зазвичай визначаються методи для всіх екземплярів?",
     "explanation": "Методи, визначені в прототипі, є спільними для всіх екземплярів.",
-    "interviewTip": "Це суттєва оптимізація пам'яті."
+    "interviewTip": "Це суттєва оптимізація пам'яті.",
+    "options": [
+      "On the prototype",
+      "Inside constructor",
+      "On the instance",
+      "In global scope"
+    ]
   },
   "js-proto-06": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Звичайні об'єкти успадковують властивості від Object.prototype.",
-    "interviewTip": "Це корінь більшості ланцюжків прототипів."
+    "interviewTip": "Це корінь більшості ланцюжків прототипів.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "null"
+    ]
   },
   "js-proto-07": {
     "prompt": "Чим закінчується ланцюжок прототипів?",
     "explanation": "Ланцюжок закінчується на null: `Object.prototype.__proto__ === null`.",
-    "interviewTip": "Важлива точка термінації пошуку властивостей."
+    "interviewTip": "Важлива точка термінації пошуку властивостей.",
+    "options": [
+      "null",
+      "Object",
+      "undefined",
+      "Function.prototype"
+    ]
   },
   "js-proto-08": {
     "prompt": "Що перевіряє метод `hasOwnProperty`?",
     "explanation": "Він перевіряє лише власні властивості об'єкта, ігноруючи прототипи.",
-    "interviewTip": "Допомагає уникнути помилкових результатів при переборі ключів."
+    "interviewTip": "Допомагає уникнути помилкових результатів при переборі ключів.",
+    "options": [
+      "Property exists on the object itself",
+      "Property exists in prototype chain",
+      "Property exists globally",
+      "Property is enumerable"
+    ]
   },
   "js-proto-09": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Властивість розпізнається через ланцюжок прототипів, якщо її немає в самому об'єкті.",
-    "interviewTip": "Розуміння порядку пошуку (lookup order)."
+    "interviewTip": "Розуміння порядку пошуку (lookup order).",
+    "options": [
+      "1",
+      "undefined",
+      "ReferenceError",
+      "null"
+    ]
   },
   "js-proto-10": {
     "prompt": "Що станеться, якщо перезаписати властивість prototype?",
     "explanation": "Прототип встановлюється в момент створення об'єкта.",
-    "interviewTip": "Типова помилка при спробі змінити поведінку вже створених об'єктів."
+    "interviewTip": "Типова помилка при спробі змінити поведінку вже створених об'єктів.",
+    "options": [
+      "Existing instances keep old prototype",
+      "All instances update automatically",
+      "Prototype chain breaks",
+      "Throws error"
+    ]
   },
   "js-proto-11": {
     "prompt": "Що робить метод `Object.create(proto)`?",
     "explanation": "Створює новий об'єкт із явно вказаним прототипом.",
-    "interviewTip": "Дозволяє реалізувати чисте наслідування без виклику конструктора."
+    "interviewTip": "Дозволяє реалізувати чисте наслідування без виклику конструктора.",
+    "options": [
+      "Creates object with given prototype",
+      "Clones an object",
+      "Creates a class",
+      "Creates constructor"
+    ]
   },
   "js-proto-12": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Об'єкт b успадковує властивості від a через прототип.",
-    "interviewTip": "Це делегування (delegation), а не копіювання властивостей."
+    "interviewTip": "Це делегування (delegation), а не копіювання властивостей.",
+    "options": [
+      "1",
+      "undefined",
+      "ReferenceError",
+      "null"
+    ]
   },
   "js-proto-13": {
     "prompt": "Що таке властивість `constructor`?",
     "explanation": "Це посилання на функцію-конструктор, яка створила екземпляр.",
-    "interviewTip": "Це посилання може бути втрачене при повній заміні об'єкта прототипу."
+    "interviewTip": "Це посилання може бути втрачене при повній заміні об'єкта прототипу.",
+    "options": [
+      "Reference to the function that created the object",
+      "The prototype itself",
+      "Class definition",
+      "Global constructor"
+    ]
   },
   "js-proto-14": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Оператор `instanceof` перевіряє наявність прототипу конструктора в ланцюжку об'єкта.",
-    "interviewTip": "Не завжди є безпечним способом перевірки типів."
+    "interviewTip": "Не завжди є безпечним способом перевірки типів.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "TypeError"
+    ]
   },
   "js-proto-15": {
     "prompt": "Чому варто уникати модифікації вбудованих прототипів?",
     "explanation": "Це створює ризик «забруднення прототипів» (prototype pollution) та конфліктів.",
-    "interviewTip": "Ніколи не розширюйте прототипи Array чи Object у реальних проектах."
+    "interviewTip": "Ніколи не розширюйте прототипи Array чи Object у реальних проектах.",
+    "options": [
+      "Can cause conflicts",
+      "Breaks libraries",
+      "Unexpected behavior",
+      "All of the above"
+    ]
   },
   "js-proto-16": {
     "prompt": "Як працює пошук методу?",
     "explanation": "Пошук зупиняється на першому знайденому збігу або коли досягає null.",
-    "interviewTip": "Довгі ланцюжки прототипів можуть впливати на продуктивність."
+    "interviewTip": "Довгі ланцюжки прототипів можуть впливати на продуктивність.",
+    "options": [
+      "Searches up the prototype chain",
+      "Searches globally",
+      "Searches closures",
+      "Searches call stack"
+    ]
   },
   "js-proto-17": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Присвоєння властивості завжди відбувається безпосередньо в самому об'єкті.",
-    "interviewTip": "Це називається «затіненням» (shadowing) властивостей прототипу."
+    "interviewTip": "Це називається «затіненням» (shadowing) властивостей прототипу.",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "null"
+    ]
   },
   "js-proto-18": {
     "prompt": "Що таке делегування прототипів?",
     "explanation": "JS не копіює методи, а делегує виклик об'єкту-прототипу.",
-    "interviewTip": "Важлива зміна ментальної моделі порівняно з Java чи C++."
+    "interviewTip": "Важлива зміна ментальної моделі порівняно з Java чи C++.",
+    "options": [
+      "Objects delegate behavior to prototypes",
+      "Functions call other functions",
+      "Inheritance via classes",
+      "Copying properties"
+    ]
   },
   "js-proto-19": {
     "prompt": "Що таке `Object.setPrototypeOf`?",
     "explanation": "Метод, який дозволяє змінювати прототип об'єкта вже після його створення.",
-    "interviewTip": "Це дуже повільна операція, її варто уникати в критичному коді."
+    "interviewTip": "Це дуже повільна операція, її варто уникати в критичному коді.",
+    "options": [
+      "Changes object's prototype",
+      "Clones object",
+      "Creates inheritance",
+      "Optimizes performance"
+    ]
   },
   "js-proto-20": {
     "prompt": "Що станеться, якщо метод існує і в об'єкті, і в прототипі?",
     "explanation": "Власна властивість об'єкта має пріоритет.",
-    "interviewTip": "Знову ж таки, порядок пошуку в ланцюжку."
+    "interviewTip": "Знову ж таки, порядок пошуку в ланцюжку.",
+    "options": [
+      "Object method is used",
+      "Prototype method is used",
+      "Both run",
+      "Error"
+    ]
   },
   "js-proto-21": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Ланцюжок прототипів включає прототип батьківського класу.",
-    "interviewTip": "Основа ручного налаштування наслідування."
+    "interviewTip": "Основа ручного налаштування наслідування.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "TypeError"
+    ]
   },
   "js-proto-22": {
     "prompt": "Який прототип у стрілкової функції?",
     "explanation": "Стрілкові функції є функціями, тому успадковують від Function.prototype.",
-    "interviewTip": "Але вони не мають власної властивості `.prototype`."
+    "interviewTip": "Але вони не мають власної властивості `.prototype`.",
+    "options": [
+      "Function.prototype",
+      "Arrow.prototype",
+      "Object.prototype",
+      "null"
+    ]
   },
   "js-proto-23": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Прототипи самі по собі є звичайними об'єктами.",
-    "interviewTip": "Прототип — це не функція (якщо це не Function.prototype)."
+    "interviewTip": "Прототип — це не функція (якщо це не Function.prototype).",
+    "options": [
+      "object",
+      "function",
+      "null",
+      "undefined"
+    ]
   },
   "js-proto-24": {
     "prompt": "Що таке prototype pollution (забруднення прототипів)?",
     "explanation": "Вразливість, при якій зловмисник може змінити базові прототипи через вхідні дані.",
-    "interviewTip": "Серйозна проблема безпеки в Node.js застосунках."
+    "interviewTip": "Серйозна проблема безпеки в Node.js застосунках.",
+    "options": [
+      "Modifying Object.prototype",
+      "Memory leak",
+      "Garbage collection bug",
+      "Hoisting issue"
+    ]
   },
   "js-proto-25": {
     "prompt": "У чому сила прототипного наслідування?",
     "explanation": "Воно дозволяє динамічно ділитися поведінкою між об'єктами без створення копій.",
-    "interviewTip": "Це гнучкіша модель, ніж жорсткі класи в інших мовах."
+    "interviewTip": "Це гнучкіша модель, ніж жорсткі класи в інших мовах.",
+    "options": [
+      "Flexible object composition",
+      "Static typing",
+      "Faster execution always",
+      "Class safety"
+    ]
   }
 }

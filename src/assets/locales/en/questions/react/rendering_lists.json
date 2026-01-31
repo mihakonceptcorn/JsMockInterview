@@ -2,86 +2,188 @@
   "rl-01": {
     "prompt": "What is the primary purpose of the 'key' prop when rendering a list in React?",
     "explanation": "Keys act as stable identities for elements across renders. Without them, React might unnecessarily re-render the entire list or misidentify which element is which during updates.",
-    "interviewTip": "Keys should be unique among siblings and stable (not changing on every render)."
+    "interviewTip": "Keys should be unique among siblings and stable (not changing on every render).",
+    "options": [
+      "To provide a CSS class name for the list item.",
+      "To help React identify which items have changed, been added, or removed.",
+      "To determine the order of elements in the DOM.",
+      "To automatically sort the array of data."
+    ]
   },
   "rl-02": {
     "prompt": "Which JavaScript method is most commonly used to transform an array of data into a list of React components?",
     "explanation": "The .map() method is ideal because it returns a new array of the same length, allowing you to wrap each data item in JSX.",
-    "interviewTip": "Remember that .forEach() returns undefined and won't render anything in JSX."
+    "interviewTip": "Remember that .forEach() returns undefined and won't render anything in JSX.",
+    "options": [
+      "forEach",
+      "filter",
+      "map",
+      "reduce"
+    ]
   },
   "rl-03": {
     "prompt": "What is a potential downside of using the array 'index' as a key?",
     "explanation": "If the list changes order, the index stays the same for a position even if the content moves. This confuses React's state management for those components.",
-    "interviewTip": "Only use the index as a key if the list is static (never changes, filters, or sorts)."
+    "interviewTip": "Only use the index as a key if the list is static (never changes, filters, or sorts).",
+    "options": [
+      "It causes a syntax error in the browser console.",
+      "It can lead to UI bugs and performance issues if the list is reordered or filtered.",
+      "It prevents the component from receiving any props.",
+      "It makes the application incompatible with mobile browsers."
+    ]
   },
   "rl-04": {
     "prompt": "Analyze the code below. What will happen if two items have the same ID?",
     "explanation": "React requires keys to be unique among siblings. Duplicate keys cause unpredictable behavior during updates, and React will warn you in development.",
-    "interviewTip": "If your data lacks unique IDs, you can combine fields (like item.type + item.id) to create a unique string."
+    "interviewTip": "If your data lacks unique IDs, you can combine fields (like item.type + item.id) to create a unique string.",
+    "options": [
+      "React will only render the first item.",
+      "The app will crash immediately.",
+      "React will show a warning in the console about duplicate keys.",
+      "The items will be merged into a single <li>."
+    ]
   },
   "rl-05": {
     "prompt": "Where exactly should the 'key' prop be placed when rendering a list of custom components?",
     "explanation": "The key must always be applied to the outermost element returned by the map function so React can track the item in the collection.",
-    "interviewTip": "If you wrap your component in a <div> or a Fragment inside the map, the key goes on that wrapper."
+    "interviewTip": "If you wrap your component in a <div> or a Fragment inside the map, the key goes on that wrapper.",
+    "options": [
+      "Inside the <ul> tag.",
+      "On the root element inside the .map() callback.",
+      "Inside the <h1> tag within the UserCard component.",
+      "Keys are only needed for standard HTML tags like <li>."
+    ]
   },
   "rl-06": {
     "prompt": "Which of the following are recommended sources for a 'key' prop?",
     "explanation": "Keys must be stable. Random numbers or timestamps change every render, causing the entire list to unmount and remount, which destroys state and performance.",
-    "interviewTip": "Stable, unique IDs are the gold standard for React keys."
+    "interviewTip": "Stable, unique IDs are the gold standard for React keys.",
+    "options": [
+      "IDs from a database (e.g., UUID or primary key).",
+      "The result of Math.random().",
+      "A unique property like a 'slug' or 'username'.",
+      "The current timestamp (Date.now())."
+    ]
   },
   "rl-07": {
     "prompt": "How do you render a list if you don't want an extra wrapper tag like <div> or <li>?",
     "explanation": "The shorthand <> syntax does not support the 'key' prop. When mapping multiple elements without a wrapper, you must use <React.Fragment key={...}>.",
-    "interviewTip": "This is one of the few cases where the long-form Fragment syntax is mandatory."
+    "interviewTip": "This is one of the few cases where the long-form Fragment syntax is mandatory.",
+    "options": [
+      "Use the shorthand Fragment syntax <>...</>.",
+      "Use the full <React.Fragment> syntax with a key.",
+      "You must use a <div>; there is no other way.",
+      "Return an array of elements directly."
+    ]
   },
   "rl-08": {
     "prompt": "What is the output of the following rendering logic?",
     "explanation": "React allows you to mix dynamic content (arrays) with static JSX. It will simply render them in the order they appear.",
-    "interviewTip": "This is useful for adding a 'Create New' or 'Load More' item at the end of a dynamic list."
+    "interviewTip": "This is useful for adding a 'Create New' or 'Load More' item at the end of a dynamic list.",
+    "options": [
+      "A list with A, B, and then 'Extra'.",
+      "An error: Cannot mix mapped items with static items.",
+      "Only 'Extra' will be rendered.",
+      "A list with 'Extra' and then A, B."
+    ]
   },
   "rl-09": {
     "prompt": "What does React do when it detects a key change for a component (e.g., key 1 becomes key 2)?",
     "explanation": "Changing a key tells React the identity of the component has changed. It destroys the old instance (including its local state) and creates a fresh one.",
-    "interviewTip": "You can intentionally change a key to 'reset' a component (like a form) to its initial state."
+    "interviewTip": "You can intentionally change a key to 'reset' a component (like a form) to its initial state.",
+    "options": [
+      "It updates the props of the existing component.",
+      "It unmounts the old component and mounts a completely new one.",
+      "It ignores the change to save performance.",
+      "It re-renders only the children of that component."
+    ]
   },
   "rl-10": {
     "prompt": "Is it possible to use an object as a key?",
     "explanation": "React converts keys to strings internally. Using an object will result in the string '[object Object]' for all items, making them non-unique.",
-    "interviewTip": "Always pick a primitive value (string/number) for your key."
+    "interviewTip": "Always pick a primitive value (string/number) for your key.",
+    "options": [
+      "Yes, React will stringify the object automatically.",
+      "No, keys must be strings or numbers.",
+      "Only if the object has a toString() method.",
+      "Yes, but only in React 18+."
+    ]
   },
   "rl-11": {
     "prompt": "What will happen if you provide no key at all while mapping?",
     "explanation": "React will default to using the array index as a key if none is provided, but it will log a warning to alert you of potential performance and bug issues.",
-    "interviewTip": "Warnings in the console are often missed—always check your logs during development."
+    "interviewTip": "Warnings in the console are often missed—always check your logs during development.",
+    "options": [
+      "The app crashes with a 'KeyMissingError'.",
+      "React renders correctly but shows a warning in the console.",
+      "React uses a random number as a key automatically.",
+      "The browser will hide the list items."
+    ]
   },
   "rl-12": {
     "prompt": "Which of the following scenarios absolutely require a unique key?",
     "explanation": "Sorting and removing items are operations where React's diffing algorithm relies heavily on keys to avoid state bugs (like text staying in an input while the label changes).",
-    "interviewTip": "If the list can be manipulated by the user, a stable key is mandatory."
+    "interviewTip": "If the list can be manipulated by the user, a stable key is mandatory.",
+    "options": [
+      "A list of news articles that can be sorted by date.",
+      "A list of input fields where users can add or remove rows.",
+      "A static navigation menu with 3 links that never change.",
+      "A list of chat messages where new ones are added to the bottom."
+    ]
   },
   "rl-13": {
     "prompt": "How do you render a list in reverse order using .map()?",
     "explanation": "Since .reverse() mutates the original array, we spread the data into a new array `[...data]` first, then reverse and map.",
-    "interviewTip": "Always keep your data transformations 'immutable' to avoid side effects."
+    "interviewTip": "Always keep your data transformations 'immutable' to avoid side effects.",
+    "options": [
+      "The logic above is correct.",
+      "React has a v-for-reverse directive.",
+      "You must use a for loop instead.",
+      "Reverse the DOM elements using CSS."
+    ]
   },
   "rl-14": {
     "prompt": "What is the most efficient way to render a very long list (e.g., 10,000 items)?",
     "explanation": "Windowing only renders the items currently visible in the viewport, significantly reducing the number of DOM nodes.",
-    "interviewTip": "Mention libraries like 'react-window' or 'react-virtualized' for this purpose."
+    "interviewTip": "Mention libraries like 'react-window' or 'react-virtualized' for this purpose.",
+    "options": [
+      "Standard .map() function.",
+      "A technique called 'Windowing' or 'Virtualization'.",
+      "Using a while loop for speed.",
+      "React's useList() hook."
+    ]
   },
   "rl-15": {
     "prompt": "In the following snippet, why is 'Math.random()' a bad choice for a key?",
     "explanation": "Every time the component re-renders, a new random key is generated. React thinks it's a new element and recreates it from scratch.",
-    "interviewTip": "A key must stay the same for the same item between renders to be useful."
+    "interviewTip": "A key must stay the same for the same item between renders to be useful.",
+    "options": [
+      "It's too slow to calculate.",
+      "It's not a string.",
+      "It causes the component to recreate on every render, losing focus and state.",
+      "React only allows integers for keys."
+    ]
   },
   "rl-16": {
     "prompt": "How do you filter a list before rendering it?",
     "explanation": "Method chaining (filter then map) is the standard and most readable way to handle conditional list rendering.",
-    "interviewTip": "For large lists, you might wrap this logic in useMemo to avoid re-calculating on every render."
+    "interviewTip": "For large lists, you might wrap this logic in useMemo to avoid re-calculating on every render.",
+    "options": [
+      "The logic above is correct.",
+      "React uses a 'v-if' inside the 'v-for'.",
+      "You cannot filter data inside the return statement.",
+      "Use a separate useEffect to filter."
+    ]
   },
   "rl-17": {
     "prompt": "If a list item has a state (like a toggle), what happens to that state if the item is removed from the array?",
     "explanation": "State is tied to the component instance in the DOM tree. When an item is removed from the array, its component is unmounted and its state is wiped.",
-    "interviewTip": "If data must survive a list removal, it should be stored in the parent's state or a global store."
+    "interviewTip": "If data must survive a list removal, it should be stored in the parent's state or a global store.",
+    "options": [
+      "The state is moved to the next item in the list.",
+      "The state is permanently destroyed when the component unmounts.",
+      "The state is saved in the parent component.",
+      "React throws a 'StateOrphanWarning'."
+    ]
   }
 }

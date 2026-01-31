@@ -2,51 +2,111 @@
   "hf-01": {
     "prompt": "What is the mandatory first step before accessing any hardware feature like the Camera or Location in a production app?",
     "explanation": "Modern OS (iOS and Android) require apps to explicitly ask the user for permission. Attempting to use a sensor without permission will cause a crash or a silent fail.",
-    "interviewTip": "Distinguish between 'Ask once' and 'Always allowed' permissions, especially for Location."
+    "interviewTip": "Distinguish between 'Ask once' and 'Always allowed' permissions, especially for Location.",
+    "options": [
+      "Import the 'Hardware' module.",
+      "Request and verify the user's permission at runtime.",
+      "Turn on the sensor in the device settings manually.",
+      "Check if the device has enough battery."
+    ]
   },
   "hf-02": {
     "prompt": "In Expo, which library is the standard for accessing the device's camera?",
     "explanation": "expo-camera provides a high-level component that handles the viewfinder, taking photos, and recording videos.",
-    "interviewTip": "Mention that for highly advanced needs (like frame processors for AI), 'react-native-vision-camera' is often used in the CLI workflow."
+    "interviewTip": "Mention that for highly advanced needs (like frame processors for AI), 'react-native-vision-camera' is often used in the CLI workflow.",
+    "options": [
+      "expo-video",
+      "expo-camera",
+      "expo-media-capture",
+      "react-native-vision-camera"
+    ]
   },
   "hf-03": {
     "prompt": "How do you handle the difference between 'Foreground' and 'Background' location permissions on Android?",
     "explanation": "To protect privacy, Android 10+ requires users to specifically grant 'Allow all the time' for background access.",
-    "interviewTip": "Always follow the 'Principle of Least Privilege'—only ask for background access if it is critical to the app's core function."
+    "interviewTip": "Always follow the 'Principle of Least Privilege'—only ask for background access if it is critical to the app's core function.",
+    "options": [
+      "They are the same permission.",
+      "Foreground allows tracking while the app is open; Background requires an extra, separate permission and strict Google Play review.",
+      "Background location is only available on iOS.",
+      "You only need to set a flag in the JavaScript code."
+    ]
   },
   "hf-04": {
     "prompt": "Which library is used to implement FaceID or Fingerprint authentication in React Native?",
     "explanation": "expo-local-authentication (and react-native-local-auth for CLI) provides a unified API to trigger the device's native biometric prompt.",
-    "interviewTip": "Always check 'hasHardwareAsync()' and 'isEnrolledAsync()' before showing the 'Login with FaceID' button."
+    "interviewTip": "Always check 'hasHardwareAsync()' and 'isEnrolledAsync()' before showing the 'Login with FaceID' button.",
+    "options": [
+      "react-native-fingerprint",
+      "expo-local-authentication",
+      "react-native-biometrics-unlock",
+      "expo-face-id"
+    ]
   },
   "hf-05": {
     "prompt": "Analyze the code. What happens if the user denies the permission?",
     "explanation": "To prevent 'permission spamming,' iOS only shows the system dialog once. If the status is 'denied,' you must programmatically link to Settings using 'Linking.openSettings()'.",
-    "interviewTip": "This is a critical UX detail for apps that rely on hardware."
+    "interviewTip": "This is a critical UX detail for apps that rely on hardware.",
+    "options": [
+      "The app will automatically ask again the next time this code runs.",
+      "On iOS, the system prompt will only appear once; after that, you must guide the user to the device Settings app.",
+      "The app will crash.",
+      "The alert will be blocked by the system."
+    ]
   },
   "hf-06": {
     "prompt": "What is 'Geofencing'?",
     "explanation": "Geofencing allows apps to be notified by the OS when the user crosses a coordinate radius, even if the app isn't actively running.",
-    "interviewTip": "This is very efficient for battery life compared to constantly polling the user's location."
+    "interviewTip": "This is very efficient for battery life compared to constantly polling the user's location.",
+    "options": [
+      "A way to encrypt GPS data.",
+      "Triggering an action (like a notification) when a device enters or leaves a specific geographical boundary.",
+      "Measuring the altitude of the device.",
+      "Using Bluetooth to find nearby devices."
+    ]
   },
   "hf-07": {
     "prompt": "Where must you declare the 'reason' for requesting a permission (e.g., CameraUsageDescription) for iOS?",
     "explanation": "iOS requires a 'Purpose String' in the Info.plist. In Expo, you define these in the 'plugins' section of app.json and they are injected into the plist during build.",
-    "interviewTip": "If you don't provide a clear, user-friendly reason, Apple will reject your app during review."
+    "interviewTip": "If you don't provide a clear, user-friendly reason, Apple will reject your app during review.",
+    "options": [
+      "In the package.json file.",
+      "In the Info.plist file.",
+      "Directly in the JavaScript code.",
+      "In the app.json / expo config."
+    ]
   },
   "hf-08": {
     "prompt": "What does the 'Accelerometer' sensor measure?",
     "explanation": "Accelerometers are used for shake detection, step counting, and controlling games by tilting the phone.",
-    "interviewTip": "Mention that sensors like this produce data at high frequencies, so it's important to use a 'Subscription' model and clean it up in 'useEffect'."
+    "interviewTip": "Mention that sensors like this produce data at high frequencies, so it's important to use a 'Subscription' model and clean it up in 'useEffect'.",
+    "options": [
+      "The compass heading.",
+      "The change in velocity (acceleration) along three axes (X, Y, Z).",
+      "The distance to the nearest object.",
+      "The brightness of the screen."
+    ]
   },
   "hf-09": {
     "prompt": "How do you check if an Android device has a physical 'Back' button or is using gesture navigation?",
     "explanation": "The BackHandler module lets you listen to the hardware back button press and prevent it or customize its behavior.",
-    "interviewTip": "This is an Android-only concern; iOS users expect a 'Back' button in the navigation header or a swipe-back gesture."
+    "interviewTip": "This is an Android-only concern; iOS users expect a 'Back' button in the navigation header or a swipe-back gesture.",
+    "options": [
+      "Using the BackHandler module.",
+      "Using the DeviceInfo library.",
+      "This is handled automatically by the OS; you don't need to check.",
+      "Checking the screen height."
+    ]
   },
   "hf-10": {
     "prompt": "What is 'Linking' used for in hardware access?",
     "explanation": "The Linking module is the bridge to other apps. For example, `Linking.openURL('tel:123456')` triggers the native dialer.",
-    "interviewTip": "Use 'Linking.canOpenURL' first to ensure the device has a handler for that specific link (like an email client)."
+    "interviewTip": "Use 'Linking.canOpenURL' first to ensure the device has a handler for that specific link (like an email client).",
+    "options": [
+      "To connect to a Wi-Fi network.",
+      "To open other apps, websites, or system settings (e.g., tel: or mailto:).",
+      "To link the Camera to the Image component.",
+      "To download assets."
+    ]
   }
 }

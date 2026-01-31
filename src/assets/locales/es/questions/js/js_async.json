@@ -2,126 +2,276 @@
   "js-async-01": {
     "prompt": "What is asynchronous programming in JavaScript?",
     "explanation": "Async code allows non-blocking operations.",
-    "interviewTip": "JS is single-threaded but async."
+    "interviewTip": "JS is single-threaded but async.",
+    "options": [
+      "Code that runs without blocking the main thread",
+      "Multithreaded execution",
+      "Parallel execution of all functions",
+      "Synchronous callbacks"
+    ]
   },
   "js-async-02": {
     "prompt": "Which API is used to handle async tasks?",
     "explanation": "Event Loop coordinates async execution.",
-    "interviewTip": "Critical interview topic."
+    "interviewTip": "Critical interview topic.",
+    "options": [
+      "Event Loop",
+      "Call Stack",
+      "Heap",
+      "Compiler"
+    ]
   },
   "js-async-03": {
     "prompt": "What will be logged?",
     "explanation": "setTimeout is async.",
-    "interviewTip": "Macro-task behavior."
+    "interviewTip": "Macro-task behavior.",
+    "options": [
+      "1 2 3",
+      "1 3 2",
+      "2 1 3",
+      "3 2 1"
+    ]
   },
   "js-async-04": {
     "prompt": "What is a Promise?",
     "explanation": "Promise represents future value.",
-    "interviewTip": "Pending / fulfilled / rejected."
+    "interviewTip": "Pending / fulfilled / rejected.",
+    "options": [
+      "An object representing eventual completion",
+      "A callback",
+      "A thread",
+      "A timer"
+    ]
   },
   "js-async-05": {
     "prompt": "Which state does a Promise NOT have?",
     "explanation": "`resolved` is informal term.",
-    "interviewTip": "Precise terminology matters."
+    "interviewTip": "Precise terminology matters.",
+    "options": [
+      "pending",
+      "fulfilled",
+      "rejected",
+      "resolved"
+    ]
   },
   "js-async-06": {
     "prompt": "What will be logged?",
     "explanation": "Microtasks run after sync code.",
-    "interviewTip": "Microtask queue."
+    "interviewTip": "Microtask queue.",
+    "options": [
+      "1 2",
+      "2 1",
+      "undefined",
+      "Error"
+    ]
   },
   "js-async-07": {
     "prompt": "What is async/await?",
     "explanation": "Built on top of Promises.",
-    "interviewTip": "Still async."
+    "interviewTip": "Still async.",
+    "options": [
+      "Syntax sugar over Promises",
+      "New threading model",
+      "Callback replacement",
+      "Blocking code"
+    ]
   },
   "js-async-08": {
     "prompt": "What does `await` do?",
     "explanation": "Pauses only current async function.",
-    "interviewTip": "Does not block event loop."
+    "interviewTip": "Does not block event loop.",
+    "options": [
+      "Pauses async function execution",
+      "Blocks entire thread",
+      "Stops program",
+      "Resolves Promise synchronously"
+    ]
   },
   "js-async-09": {
     "prompt": "What will be logged?",
     "explanation": "Async functions return Promises.",
-    "interviewTip": "Return is wrapped."
+    "interviewTip": "Return is wrapped.",
+    "options": [
+      "5",
+      "Promise",
+      "undefined",
+      "Error"
+    ]
   },
   "js-async-10": {
     "prompt": "Which runs first?",
     "explanation": "Microtasks have higher priority.",
-    "interviewTip": "Promise.then vs setTimeout."
+    "interviewTip": "Promise.then vs setTimeout.",
+    "options": [
+      "Microtasks",
+      "Macrotasks",
+      "Rendering",
+      "Timers"
+    ]
   },
   "js-async-11": {
     "prompt": "What does `Promise.all` do?",
     "explanation": "Rejects if any promise rejects.",
-    "interviewTip": "Fail-fast."
+    "interviewTip": "Fail-fast.",
+    "options": [
+      "Resolves when all promises resolve",
+      "Resolves when first resolves",
+      "Rejects on timeout",
+      "Runs sequentially"
+    ]
   },
   "js-async-12": {
     "prompt": "What does `Promise.race` do?",
     "explanation": "First settled wins.",
-    "interviewTip": "Useful for timeouts."
+    "interviewTip": "Useful for timeouts.",
+    "options": [
+      "Resolves/rejects with first settled",
+      "Waits for all",
+      "Executes sequentially",
+      "Cancels others"
+    ]
   },
   "js-async-13": {
     "prompt": "What will be logged?",
     "explanation": "Await throws on rejection.",
-    "interviewTip": "Use try/catch."
+    "interviewTip": "Use try/catch.",
+    "options": [
+      "err",
+      "after",
+      "undefined",
+      "Error"
+    ]
   },
   "js-async-14": {
     "prompt": "How to handle errors in async/await?",
     "explanation": "try/catch catches rejected promises.",
-    "interviewTip": "Local error handling."
+    "interviewTip": "Local error handling.",
+    "options": [
+      "try/catch",
+      ".then",
+      "if statement",
+      "finally only"
+    ]
   },
   "js-async-15": {
     "prompt": "What will be logged?",
     "explanation": "Microtasks before macrotasks.",
-    "interviewTip": "Classic interview question."
+    "interviewTip": "Classic interview question.",
+    "options": [
+      "start end promise timeout",
+      "start promise end timeout",
+      "start end timeout promise",
+      "promise start end timeout"
+    ]
   },
   "js-async-16": {
     "prompt": "What does `finally` do?",
     "explanation": "Runs after resolve or reject.",
-    "interviewTip": "No access to result."
+    "interviewTip": "No access to result.",
+    "options": [
+      "Runs regardless of promise outcome",
+      "Catches errors",
+      "Cancels promise",
+      "Returns value"
+    ]
   },
   "js-async-17": {
     "prompt": "What is callback hell?",
     "explanation": "Hard to read and maintain.",
-    "interviewTip": "Promises solve it."
+    "interviewTip": "Promises solve it.",
+    "options": [
+      "Deeply nested callbacks",
+      "Promise chaining",
+      "Async/await usage",
+      "Event loop bug"
+    ]
   },
   "js-async-18": {
     "prompt": "What does `await Promise.all([...])` do?",
     "explanation": "Promises start immediately.",
-    "interviewTip": "Performance optimization."
+    "interviewTip": "Performance optimization.",
+    "options": [
+      "Runs promises in parallel",
+      "Runs sequentially",
+      "Blocks thread",
+      "Cancels slower promises"
+    ]
   },
   "js-async-19": {
     "prompt": "Why avoid `await` inside loops?",
     "explanation": "Use Promise.all instead.",
-    "interviewTip": "Common performance issue."
+    "interviewTip": "Common performance issue.",
+    "options": [
+      "Causes sequential execution",
+      "Syntax error",
+      "Memory leak",
+      "Infinite loop"
+    ]
   },
   "js-async-20": {
     "prompt": "What will be logged?",
     "explanation": "Promise is flattened.",
-    "interviewTip": "Promise resolution."
+    "interviewTip": "Promise resolution.",
+    "options": [
+      "1",
+      "Promise",
+      "undefined",
+      "Error"
+    ]
   },
   "js-async-21": {
     "prompt": "What is a macrotask?",
     "explanation": "Scheduled via task queue.",
-    "interviewTip": "Lower priority than microtasks."
+    "interviewTip": "Lower priority than microtasks.",
+    "options": [
+      "setTimeout, setInterval",
+      "Promise.then",
+      "Microtask",
+      "Call stack"
+    ]
   },
   "js-async-22": {
     "prompt": "What happens if Promise rejects and no catch?",
     "explanation": "Leads to warnings/errors.",
-    "interviewTip": "Always handle rejections."
+    "interviewTip": "Always handle rejections.",
+    "options": [
+      "Unhandled rejection",
+      "Silent fail",
+      "Program stops",
+      "Ignored"
+    ]
   },
   "js-async-23": {
     "prompt": "What does `queueMicrotask` do?",
     "explanation": "Runs before next macrotask.",
-    "interviewTip": "Advanced topic."
+    "interviewTip": "Advanced topic.",
+    "options": [
+      "Schedules microtask",
+      "Schedules macrotask",
+      "Blocks execution",
+      "Creates promise"
+    ]
   },
   "js-async-24": {
     "prompt": "Why is async code hard to debug?",
     "explanation": "Async flow is harder to trace.",
-    "interviewTip": "Use async stack traces."
+    "interviewTip": "Use async stack traces.",
+    "options": [
+      "Execution order is non-linear",
+      "JS has no debugger",
+      "Promises hide errors",
+      "Single thread"
+    ]
   },
   "js-async-25": {
     "prompt": "Best practice for async code?",
     "explanation": "Readable and maintainable.",
-    "interviewTip": "Production-ready approach."
+    "interviewTip": "Production-ready approach.",
+    "options": [
+      "Use async/await + try/catch",
+      "Nested callbacks",
+      "Ignore errors",
+      "Block thread"
+    ]
   }
 }

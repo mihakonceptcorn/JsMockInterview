@@ -2,126 +2,276 @@
   "js-br-01": {
     "prompt": "What is the first step in the rendering pipeline?",
     "explanation": "HTML is parsed into the DOM first.",
-    "interviewTip": "Start of critical render path."
+    "interviewTip": "Start of critical render path.",
+    "options": [
+      "HTML parsing",
+      "CSS parsing",
+      "Layout",
+      "Paint"
+    ]
   },
   "js-br-02": {
     "prompt": "What is created from parsing CSS?",
     "explanation": "CSSOM represents parsed CSS.",
-    "interviewTip": "DOM + CSSOM = Render Tree."
+    "interviewTip": "DOM + CSSOM = Render Tree.",
+    "options": [
+      "CSSOM",
+      "DOM",
+      "Render Tree",
+      "Layer Tree"
+    ]
   },
   "js-br-03": {
     "prompt": "What does the render tree contain?",
     "explanation": "Hidden nodes are excluded.",
-    "interviewTip": "display:none nodes skipped."
+    "interviewTip": "display:none nodes skipped.",
+    "options": [
+      "Visible nodes with styles",
+      "All DOM nodes",
+      "Only text nodes",
+      "Only layout info"
+    ]
   },
   "js-br-04": {
     "prompt": "What is layout (reflow)?",
     "explanation": "Layout computes geometry.",
-    "interviewTip": "Very expensive step."
+    "interviewTip": "Very expensive step.",
+    "options": [
+      "Calculating element sizes and positions",
+      "Drawing pixels",
+      "Applying styles",
+      "Executing JS"
+    ]
   },
   "js-br-05": {
     "prompt": "What triggers a reflow?",
     "explanation": "Geometry changes require reflow.",
-    "interviewTip": "Avoid layout thrashing."
+    "interviewTip": "Avoid layout thrashing.",
+    "options": [
+      "Changing width or height",
+      "Changing color",
+      "Changing opacity",
+      "Changing visibility"
+    ]
   },
   "js-br-06": {
     "prompt": "What is repaint?",
     "explanation": "Visual-only updates.",
-    "interviewTip": "Cheaper than reflow."
+    "interviewTip": "Cheaper than reflow.",
+    "options": [
+      "Redrawing pixels without layout",
+      "Recalculating layout",
+      "Rebuilding DOM",
+      "Running JS"
+    ]
   },
   "js-br-07": {
     "prompt": "Which CSS property avoids reflow and repaint?",
     "explanation": "Transforms are compositor-only.",
-    "interviewTip": "Key animation trick."
+    "interviewTip": "Key animation trick.",
+    "options": [
+      "transform",
+      "width",
+      "top",
+      "margin"
+    ]
   },
   "js-br-08": {
     "prompt": "What is compositing?",
     "explanation": "Final step before display.",
-    "interviewTip": "GPU-accelerated."
+    "interviewTip": "GPU-accelerated.",
+    "options": [
+      "Combining layers into final image",
+      "Parsing CSS",
+      "Calculating layout",
+      "Executing JS"
+    ]
   },
   "js-br-09": {
     "prompt": "Which properties are typically GPU-accelerated?",
     "explanation": "They skip layout.",
-    "interviewTip": "Smooth animations."
+    "interviewTip": "Smooth animations.",
+    "options": [
+      "transform and opacity",
+      "width and height",
+      "top and left",
+      "margin and padding"
+    ]
   },
   "js-br-10": {
     "prompt": "What causes layout thrashing?",
     "explanation": "Forces sync layout.",
-    "interviewTip": "Classic performance bug."
+    "interviewTip": "Classic performance bug.",
+    "options": [
+      "Reading layout after writing styles",
+      "Batching DOM updates",
+      "Using rAF",
+      "Using transforms"
+    ]
   },
   "js-br-11": {
     "prompt": "What is forced synchronous layout?",
     "explanation": "Triggered by layout reads.",
-    "interviewTip": "Avoid offsetHeight after writes."
+    "interviewTip": "Avoid offsetHeight after writes.",
+    "options": [
+      "Immediate layout recalculation",
+      "Deferred layout",
+      "Async rendering",
+      "GPU compositing"
+    ]
   },
   "js-br-12": {
     "prompt": "When does requestAnimationFrame run?",
     "explanation": "Frame-synced callback.",
-    "interviewTip": "Use for animations."
+    "interviewTip": "Use for animations.",
+    "options": [
+      "Before next repaint",
+      "After repaint",
+      "As microtask",
+      "As macrotask"
+    ]
   },
   "js-br-13": {
     "prompt": "What is a render layer?",
     "explanation": "Used in compositing.",
-    "interviewTip": "Too many layers hurt memory."
+    "interviewTip": "Too many layers hurt memory.",
+    "options": [
+      "Element promoted for compositing",
+      "DOM node",
+      "CSS rule",
+      "JS object"
+    ]
   },
   "js-br-14": {
     "prompt": "What promotes an element to its own layer?",
     "explanation": "Hints browser optimization.",
-    "interviewTip": "Use will-change sparingly."
+    "interviewTip": "Use will-change sparingly.",
+    "options": [
+      "transform or will-change",
+      "color change",
+      "font-size",
+      "margin change"
+    ]
   },
   "js-br-15": {
     "prompt": "What is the critical render path?",
     "explanation": "From HTML to pixels.",
-    "interviewTip": "Optimize for FCP."
+    "interviewTip": "Optimize for FCP.",
+    "options": [
+      "Steps to first paint",
+      "JS execution order",
+      "Event loop cycle",
+      "Network waterfall"
+    ]
   },
   "js-br-16": {
     "prompt": "Why inline critical CSS?",
     "explanation": "CSS blocks rendering.",
-    "interviewTip": "Common optimization."
+    "interviewTip": "Common optimization.",
+    "options": [
+      "Avoid render blocking",
+      "Reduce bundle size",
+      "Improve caching",
+      "Reduce JS"
+    ]
   },
   "js-br-17": {
     "prompt": "Which metric measures layout stability?",
     "explanation": "Cumulative Layout Shift.",
-    "interviewTip": "Web Vitals."
+    "interviewTip": "Web Vitals.",
+    "options": [
+      "CLS",
+      "FCP",
+      "LCP",
+      "TTFB"
+    ]
   },
   "js-br-18": {
     "prompt": "Which metric reflects render performance best?",
     "explanation": "Largest Contentful Paint.",
-    "interviewTip": "User-centric."
+    "interviewTip": "User-centric.",
+    "options": [
+      "LCP",
+      "TTFB",
+      "DNS",
+      "CPU usage"
+    ]
   },
   "js-br-19": {
     "prompt": "What blocks first paint?",
     "explanation": "CSS must be parsed first.",
-    "interviewTip": "Critical CSS again."
+    "interviewTip": "Critical CSS again.",
+    "options": [
+      "Render-blocking CSS",
+      "Images",
+      "Async JS",
+      "Fonts always"
+    ]
   },
   "js-br-20": {
     "prompt": "What is paint flashing used for?",
     "explanation": "DevTools feature.",
-    "interviewTip": "Helps optimize UI."
+    "interviewTip": "Helps optimize UI.",
+    "options": [
+      "Debug repaint areas",
+      "Measure FPS",
+      "Detect leaks",
+      "Profile JS"
+    ]
   },
   "js-br-21": {
     "prompt": "What happens if JS blocks main thread?",
     "explanation": "Single-threaded rendering.",
-    "interviewTip": "Chunk JS work."
+    "interviewTip": "Chunk JS work.",
+    "options": [
+      "Rendering pauses",
+      "CSS continues",
+      "Network stops",
+      "GPU crashes"
+    ]
   },
   "js-br-22": {
     "prompt": "Why avoid large DOM trees?",
     "explanation": "Layout cost grows.",
-    "interviewTip": "Virtualization helps."
+    "interviewTip": "Virtualization helps.",
+    "options": [
+      "Slower layout and paint",
+      "More JS errors",
+      "Network overhead",
+      "Memory leaks"
+    ]
   },
   "js-br-23": {
     "prompt": "Which tool profiles rendering?",
     "explanation": "Shows frames and paint.",
-    "interviewTip": "Know how to read flame charts."
+    "interviewTip": "Know how to read flame charts.",
+    "options": [
+      "Chrome DevTools Performance tab",
+      "Console",
+      "Network tab",
+      "Lighthouse SEO"
+    ]
   },
   "js-br-24": {
     "prompt": "What is frame budget at 60fps?",
     "explanation": "1000ms / 60 ≈ 16ms.",
-    "interviewTip": "Includes JS + render."
+    "interviewTip": "Includes JS + render.",
+    "options": [
+      "~16ms",
+      "~8ms",
+      "~32ms",
+      "~60ms"
+    ]
   },
   "js-br-25": {
     "prompt": "Golden rule of rendering optimization?",
     "explanation": "Data-driven optimization.",
-    "interviewTip": "Senior-level answer."
+    "interviewTip": "Senior-level answer.",
+    "options": [
+      "Measure, then optimize",
+      "Use GPU everywhere",
+      "Avoid CSS",
+      "Avoid DOM"
+    ]
   }
 }

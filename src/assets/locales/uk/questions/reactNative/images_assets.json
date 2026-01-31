@@ -2,71 +2,155 @@
   "ia-01": {
     "prompt": "Як забезпечити різні роздільні здатності зображень для екранів з різною щільністю пікселів (наприклад, Retina-дисплеї)?",
     "explanation": "Якщо у вас є файли 'logo.png', 'logo@2x.png' та 'logo@3x.png', React Native автоматично обере найкращий варіант залежно від щільності пікселів пристрою.",
-    "interviewTip": "Це гарантує чіткість зображень без завантаження зайво великих файлів на бюджетних пристроях."
+    "interviewTip": "Це гарантує чіткість зображень без завантаження зайво великих файлів на бюджетних пристроях.",
+    "options": [
+      "React Native automatically resizes one large image.",
+      "By naming files with @2x and @3x suffixes (e.g., logo@2x.png).",
+      "By using a 'resolution' prop on the Image component.",
+      "It is only possible via the native Android/iOS folders."
+    ]
   },
   "ia-02": {
     "prompt": "Що станеться, якщо не вказати стилі 'width' та 'height' для віддаленого (мережевого) зображення?",
     "explanation": "На відміну від локальних зображень (через require), React Native не знає розмірів мережевого зображення до завершення завантаження. Ви ПОВИННІ вказувати розміри явно.",
-    "interviewTip": "Завжди надавайте розміри або значення flex для віддалених зображень, щоб уникнути «невидимих» компонентів."
+    "interviewTip": "Завжди надавайте розміри або значення flex для віддалених зображень, щоб уникнути «невидимих» компонентів.",
+    "options": [
+      "The image takes up the full screen.",
+      "The image will not render (it will have 0 width and 0 height).",
+      "It automatically calculates the size based on the aspect ratio.",
+      "It defaults to 100x100 pixels."
+    ]
   },
   "ia-03": {
     "prompt": "Яка бібліотека вважається індустріальним стандартом для просунутого кешування та продуктивності зображень у React Native?",
     "explanation": "FastImage замінює стандартний компонент Image, пропонуючи краще кешування, пріоритетне завантаження та підтримку GIF за допомогою нативних SDWebImage (iOS) та Glide (Android).",
-    "interviewTip": "Згадуйте FastImage, коли вас запитують про «мерехтіння зображень» або проблеми з продуктивністю в довгих списках FlatList."
+    "interviewTip": "Згадуйте FastImage, коли вас запитують про «мерехтіння зображень» або проблеми з продуктивністю в довгих списках FlatList.",
+    "options": [
+      "react-native-image-cache",
+      "react-native-fast-image",
+      "react-native-optimized-media",
+      "expo-image-loader"
+    ]
   },
   "ia-04": {
     "prompt": "Як відрендерити SVG-файл у стандартному проекті React Native?",
     "explanation": "SVG не є нативними елементами інтерфейсу в мобільних ОС. Вам знадобиться бібліотека 'react-native-svg' (і часто 'react-native-svg-transformer') для їх рендерингу.",
-    "interviewTip": "Використання SVG є кращим для іконок, оскільки вони залишаються чіткими при будь-якому розмірі та зменшують розмір бандла."
+    "interviewTip": "Використання SVG є кращим для іконок, оскільки вони залишаються чіткими при будь-якому розмірі та зменшують розмір бандла.",
+    "options": [
+      "Use the core <Svg> component.",
+      "React Native does not support SVGs out of the box; you need 'react-native-svg'.",
+      "Treat it like a normal image: <Image source={require('./icon.svg')} />.",
+      "Convert the SVG to a Base64 string."
+    ]
   },
   "ia-05": {
     "prompt": "Яке призначення пропса 'defaultSource' у компоненті Image?",
     "explanation": "Він покращує UX, відображаючи локальне зображення (заглушку або аватар), поки виконується мережевий запит на завантаження основного зображення.",
-    "interviewTip": "Зауважте, що 'defaultSource' підтримується лише на iOS. Для Android цей стан зазвичай обробляється вручну через state."
+    "interviewTip": "Зауважте, що 'defaultSource' підтримується лише на iOS. Для Android цей стан зазвичай обробляється вручну через state.",
+    "options": [
+      "To set the primary image URL.",
+      "To show a placeholder image (static asset) while the main network image is loading.",
+      "To define the image's Alt text.",
+      "To set a background color."
+    ]
   },
   "ia-06": {
     "prompt": "Який компонент слід використовувати для відображення фонового зображення, що містить інші компоненти як дочірні?",
     "explanation": "ImageBackground — це обгортка, яка має ті ж пропси, що й Image, але дозволяє вкладати в неї інші елементи.",
-    "interviewTip": "Фактично це <View> з абсолютно позиціонованим <Image> на задньому плані."
+    "interviewTip": "Фактично це <View> з абсолютно позиціонованим <Image> на задньому плані.",
+    "options": [
+      "<View background={image}>",
+      "<ImageBackground>",
+      "<BackgroundImage>",
+      "<ViewStyle image={...}>"
+    ]
   },
   "ia-07": {
     "prompt": "Що таке рендеринг зображень у форматі 'Base64'?",
     "explanation": "Base64 дозволяє передавати бінарні дані зображення безпосередньо як рядок. Це корисно для маленьких іконок або зображень із локальної бази даних.",
-    "interviewTip": "Уникайте Base64 для великих зображень, оскільки це збільшує споживання пам'яті та сповільнює JS-потік."
+    "interviewTip": "Уникайте Base64 для великих зображень, оскільки це збільшує споживання пам'яті та сповільнює JS-потік.",
+    "options": [
+      "An image format that only works on Android.",
+      "A way to embed image data directly into the string, avoiding an extra network request.",
+      "A high-compression format for 4K images.",
+      "A method to encrypt images."
+    ]
   },
   "ia-08": {
     "prompt": "Як обробляти зображення, які потребують тонування (наприклад, зміна кольору чорної іконки на синю)?",
     "explanation": "Властивість стилю 'tintColor' змінює колір усіх непрозорих пікселів на вказаний вами колір.",
-    "interviewTip": "Це ідеально для іконок: ви можете використовувати один PNG-ресурс для різних тем (світлої та темної)."
+    "interviewTip": "Це ідеально для іконок: ви можете використовувати один PNG-ресурс для різних тем (світлої та темної).",
+    "options": [
+      "Edit the image in Photoshop.",
+      "Use the 'tintColor' style property.",
+      "Use 'overlayColor'.",
+      "Change the 'opacity'."
+    ]
   },
   "ia-09": {
     "prompt": "Яка бібліотека в Expo використовується для високопродуктивної роботи із зображеннями, аналогічно до 'FastImage'?",
     "explanation": "'expo-image' — це високопродуктивний компонент, розроблений для швидкості, що підтримує blurhash (заглушки) та плавні переходи.",
-    "interviewTip": "Наразі це рекомендований спосіб роботи із зображеннями в екосистемі Expo."
+    "interviewTip": "Наразі це рекомендований спосіб роботи із зображеннями в екосистемі Expo.",
+    "options": [
+      "expo-fast-image",
+      "expo-image",
+      "expo-media-library",
+      "expo-assets"
+    ]
   },
   "ia-10": {
     "prompt": "Які з наведених форматів зображень підтримуються в React Native?",
     "explanation": "У той час як PNG, JPG та GIF підтримуються всюди, SVG вимагає бібліотеки. WebP чудово підходить для продуктивності, але потребує уваги на старих версіях iOS.",
-    "interviewTip": "Згадуйте WebP як спосіб зменшити розмір додатка, зберігаючи високу якість."
+    "interviewTip": "Згадуйте WebP як спосіб зменшити розмір додатка, зберігаючи високу якість.",
+    "options": [
+      "PNG and JPG",
+      "GIF",
+      "WebP (supported natively on Android, needs setup on iOS)",
+      "SVG (natively)"
+    ]
   },
   "ia-11": {
     "prompt": "Яким є результат використання 'resizeMode: \"contain\"'?",
     "explanation": "'contain' гарантує, що все зображення буде видимим у межах рамки, що може залишити порожнє місце з боків.",
-    "interviewTip": "Використовуйте 'contain' для логотипів та 'cover' для фонових фотографій."
+    "interviewTip": "Використовуйте 'contain' для логотипів та 'cover' для фонових фотографій.",
+    "options": [
+      "The image covers the entire container, potentially cropping the edges.",
+      "The image is scaled to fit inside the container while maintaining its aspect ratio, without cropping.",
+      "The image is stretched to fill the container, ignoring aspect ratio.",
+      "The image is repeated as a pattern."
+    ]
   },
   "ia-12": {
     "prompt": "Як можна попередньо завантажити віддалене зображення до того, як показати його користувачеві?",
     "explanation": "Image.prefetch(url) завантажує зображення в локальний кеш диска, щоб воно миттєво з'явилося, коли компонент буде змонтовано.",
-    "interviewTip": "Це ідеально підходить для завантаження наступного зображення в галереї або фото профілю під час входу в систему."
+    "interviewTip": "Це ідеально підходить для завантаження наступного зображення в галереї або фото профілю під час входу в систему.",
+    "options": [
+      "cache",
+      "prefetch",
+      "load",
+      "download"
+    ]
   },
   "ia-13": {
     "prompt": "Чому зображення може зникати або «мерехтіти» під час скролу FlatList?",
     "explanation": "Стандартні компоненти Image часто повторно завантажують або декодують зображення при поверненні в область видимості. Використання бібліотеки з кращим кешуванням вирішує цю проблему.",
-    "interviewTip": "Це головний сигнал для того, що вам потрібен react-native-fast-image або expo-image."
+    "interviewTip": "Це головний сигнал для того, що вам потрібен react-native-fast-image або expo-image.",
+    "options": [
+      "The JS thread is too fast.",
+      "The component is being unmounted and the default Image component isn't caching efficiently.",
+      "The image file size is too small.",
+      "You are using the wrong resizeMode."
+    ]
   },
   "ia-14": {
     "prompt": "Що таке 'BlurHash'?",
     "explanation": "Blurhash дозволяє показувати гарну кольорову розмиту заглушку, поки завантажується зображення у високій якості.",
-    "interviewTip": "Це значно покращує «сприйняття продуктивності» (Perceived Performance) вашого додатка."
+    "interviewTip": "Це значно покращує «сприйняття продуктивності» (Perceived Performance) вашого додатка.",
+    "options": [
+      "A way to encrypt an image.",
+      "A compact string representation of a placeholder that looks like a blurred version of the image.",
+      "A bug in the rendering engine.",
+      "A type of image compression."
+    ]
   }
 }

@@ -2,61 +2,133 @@
   "rt-01": {
     "prompt": "Який компонент використовується для визначення зв'язку між шляхом URL та компонентом React?",
     "explanation": "<Route> — це основний будівельний блок. Він рендерить свій елемент лише тоді, коли поточний URL збігається з пропсом 'path'.",
-    "interviewTip": "У React Router v6 синтаксис змінився на <Route path='/...' element={<MyComponent />} />."
+    "interviewTip": "У React Router v6 синтаксис змінився на <Route path='/...' element={<MyComponent />} />.",
+    "options": [
+      "<Link>",
+      "<BrowserRouter>",
+      "<Route>",
+      "<Switch>"
+    ]
   },
   "rt-02": {
     "prompt": "Як програмно перейти на нову сторінку у функціональному компоненті (наприклад, після відправки форми)?",
     "explanation": "Хук 'useNavigate' повертає функцію, яка дозволяє змінювати URL без повного перезавантаження сторінки.",
-    "interviewTip": "Використовуйте 'navigate('/path', { replace: true })', якщо хочете замінити поточний запис у стеку історії замість додавання нового."
+    "interviewTip": "Використовуйте 'navigate('/path', { replace: true })', якщо хочете замінити поточний запис у стеку історії замість додавання нового.",
+    "options": [
+      "navigate('/dashboard');",
+      "window.location.href = '/dashboard';",
+      "history.push('/dashboard');",
+      "navigate.to('/dashboard');"
+    ]
   },
   "rt-03": {
     "prompt": "Яка основна різниця між стандартним тегом <a> та тегом <Link> з React Router?",
     "explanation": "Теги <a> змушують браузер оновити всю сторінку. Теги <Link> використовують History API для оновлення URL та перерендерингу лише необхідних компонентів.",
-    "interviewTip": "Використання <a> для внутрішньої навігації руйнує досвід «односторінкового застосунку» (SPA) і скидає стан програми."
+    "interviewTip": "Використання <a> для внутрішньої навігації руйнує досвід «односторінкового застосунку» (SPA) і скидає стан програми.",
+    "options": [
+      "<a> tags are faster.",
+      "<Link> tags change the URL without triggering a full page reload.",
+      "<Link> tags only work for external websites.",
+      "There is no difference; <Link> is just an alias."
+    ]
   },
   "rt-04": {
     "prompt": "Як отримати доступ до динамічних параметрів з URL (наприклад, 'id' у шляху '/users/:id')?",
     "explanation": "Хук 'useParams' повертає об'єкт із парами ключ/значення параметрів URL, визначених у шляху маршруту.",
-    "interviewTip": "Завжди перевіряйте, щоб назва змінної при деструктуризації збігалася з назвою плейсхолдера в шляху Route."
+    "interviewTip": "Завжди перевіряйте, щоб назва змінної при деструктуризації збігалася з назвою плейсхолдера в шляху Route.",
+    "options": [
+      "useQuery",
+      "useParams",
+      "useRouteMatch",
+      "useLocation"
+    ]
   },
   "rt-05": {
     "prompt": "Який із цих компонентів має огортати весь ваш застосунок для ввімкнення функціональності маршрутизації?",
     "explanation": "BrowserRouter є найпоширенішим (використовує «чисті» URL-адреси), тоді як HashRouter використовує фрагмент # для сумісності зі старими серверами або статичним хостингом.",
-    "interviewTip": "Більшість сучасних застосунків використовують BrowserRouter для створення SEO-дружніх посилань."
+    "interviewTip": "Більшість сучасних застосунків використовують BrowserRouter для створення SEO-дружніх посилань.",
+    "options": [
+      "<BrowserRouter>",
+      "<Routes>",
+      "<HashRouter>",
+      "<RouterContext>"
+    ]
   },
   "rt-06": {
     "prompt": "Яке призначення компонента <Outlet /> у React Router v6?",
     "explanation": "Outlet використовується в елементі батьківського маршруту, щоб вказати місце, де мають рендеритися елементи дочірніх маршрутів.",
-    "interviewTip": "Це ключ до створення спільних макетів (наприклад, постійної бічної панелі або навбара)."
+    "interviewTip": "Це ключ до створення спільних макетів (наприклад, постійної бічної панелі або навбара).",
+    "options": [
+      "To link to external CSS files.",
+      "To act as a placeholder for child routes in nested routing.",
+      "To display a 404 error page.",
+      "To redirect the user to the home page."
+    ]
   },
   "rt-07": {
     "prompt": "Як визначити маршрут '404 Not Found' у React Router v6?",
     "explanation": "Шлях '*' (wildcard) діє як універсальний маркер, який відповідає будь-якому URL, що не збігся з попередніми маршрутами.",
-    "interviewTip": "Розміщуйте маршрут із зірочкою в самому кінці вашого списку <Routes>."
+    "interviewTip": "Розміщуйте маршрут із зірочкою в самому кінці вашого списку <Routes>.",
+    "options": [
+      "*",
+      "404",
+      "default",
+      "fallback"
+    ]
   },
   "rt-08": {
     "prompt": "Що повертає хук 'useLocation'?",
     "explanation": "useLocation надає доступ до об'єкта 'location', який корисний для відстеження переглядів сторінок або читання рядків запиту (?query=abc).",
-    "interviewTip": "Ви можете використовувати 'location.state' для передачі прихованих даних між маршрутами, які не відображаються в URL."
+    "interviewTip": "Ви можете використовувати 'location.state' для передачі прихованих даних між маршрутами, які не відображаються в URL.",
+    "options": [
+      "The user's GPS coordinates.",
+      "A function to change the URL.",
+      "An object containing the current URL path, search queries, and state.",
+      "The component that is currently rendered."
+    ]
   },
   "rt-09": {
     "prompt": "Як можна передати параметри запиту (наприклад, ?sort=asc) та прочитати їх у компоненті?",
     "explanation": "useSearchParams — це зручний для React хук для керування рядками запиту. Ви також можете вручну розпарсити location.search.",
-    "interviewTip": "Параметри запиту чудово підходять для станів інтерфейсу, якими можна поділитися через посилання, як-от фільтри або умови пошуку."
+    "interviewTip": "Параметри запиту чудово підходять для станів інтерфейсу, якими можна поділитися через посилання, як-от фільтри або умови пошуку.",
+    "options": [
+      "Using the 'useSearchParams' hook.",
+      "Using the 'URLSearchParams' web API with 'location.search'.",
+      "Using the 'useParams' hook.",
+      "By defining them in the <Route path='...'>."
+    ]
   },
   "rt-10": {
     "prompt": "Що станеться, якщо у вас є кілька маршрутів, які відповідають поточному URL у React Router v6?",
     "explanation": "На відміну від v5, де обирався перший збіг (що вимагало 'exact'), v6 розумніша і автоматично обчислює найбільш специфічний збіг.",
-    "interviewTip": "Це означає, що порядок маршрутів у v6 має менше значення, ніж у попередніх версіях."
+    "interviewTip": "Це означає, що порядок маршрутів у v6 має менше значення, ніж у попередніх версіях.",
+    "options": [
+      "React renders all matching components in a list.",
+      "The app crashes.",
+      "React Router uses a ranking system to pick the 'best' (most specific) match.",
+      "It only picks the first one it finds."
+    ]
   },
   "rt-11": {
     "prompt": "Як реалізувати перенаправлення (Redirect) після виходу користувача в v6?",
     "explanation": "Компонент <Navigate /> — це декларативний спосіб виконати перенаправлення під час рендерингу.",
-    "interviewTip": "Використовуйте це для «захищених маршрутів» (Protected Routes), де ви перевіряєте автентифікацію перед показом сторінки."
+    "interviewTip": "Використовуйте це для «захищених маршрутів» (Protected Routes), де ви перевіряєте автентифікацію перед показом сторінки.",
+    "options": [
+      "Redirect",
+      "Navigate",
+      "Link",
+      "Push"
+    ]
   },
   "rt-12": {
     "prompt": "Проаналізуйте код. Яким буде URL після натискання на 'Details'?",
     "explanation": "Посилання без початкового слеша є відносними щодо поточного шляху. Оскільки ми на /products, додавання 123 дасть /products/123.",
-    "interviewTip": "Використовуйте абсолютні шляхи (що починаються з /), якщо хочете перейти від кореня сайту."
+    "interviewTip": "Використовуйте абсолютні шляхи (що починаються з /), якщо хочете перейти від кореня сайту.",
+    "options": [
+      "/123",
+      "/products/123",
+      "/products/details/123",
+      "Error: 'to' must start with /"
+    ]
   }
 }

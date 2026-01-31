@@ -2,51 +2,111 @@
   "ps-01": {
     "prompt": "Який вбудований модуль використовується для визначення операційної системи під час виконання коду JavaScript?",
     "explanation": "Модуль 'Platform' надає властивість 'Platform.OS', яка повертає значення 'ios' або 'android'.",
-    "interviewTip": "Ви також можете використовувати 'Platform.Version', щоб перевірити конкретний рівень API або версію системи пристрою."
+    "interviewTip": "Ви також можете використовувати 'Platform.Version', щоб перевірити конкретний рівень API або версію системи пристрою.",
+    "options": [
+      "Device",
+      "OS",
+      "Platform",
+      "System"
+    ]
   },
   "ps-02": {
     "prompt": "Як застосувати різні стилі для iOS та Android за допомогою методу Platform.select?",
     "explanation": "Platform.select приймає об'єкт, де ключами є назви платформ, і повертає значення для тієї платформи, на якій зараз запущено додаток.",
-    "interviewTip": "Це набагато чистіше, ніж використання кількох тернарних операторів (Platform.OS === 'ios' ? ... : ...)."
+    "interviewTip": "Це набагато чистіше, ніж використання кількох тернарних операторів (Platform.OS === 'ios' ? ... : ...).",
+    "options": [
+      "paddingTop",
+      "marginTop",
+      "safeArea",
+      "topOffset"
+    ]
   },
   "ps-03": {
     "prompt": "Яким є правило іменування файлів для створення окремих реалізацій для iOS та Android, які React Native підхопить автоматично?",
     "explanation": "Пакувальник React Native (Metro) виявляє розширення для конкретної платформи (.ios.js або .android.js) і автоматично імпортує правильний файл при виклику 'import Header from \"./Header\"'.",
-    "interviewTip": "Це найкращий патерн для складних компонентів, які потребують абсолютно різних нативних реалізацій."
+    "interviewTip": "Це найкращий патерн для складних компонентів, які потребують абсолютно різних нативних реалізацій.",
+    "options": [
+      "Header.ios.js and Header.android.js",
+      "ios/Header.js and android/Header.js",
+      "Header(ios).js and Header(android).js",
+      "Header_ios.js and Header_android.js"
+    ]
   },
   "ps-04": {
     "prompt": "Які з наведених варіантів є валідними способами обробки відмінностей між платформами в React Native?",
     "explanation": "React Native надає можливість визначення ОС, утиліту select та поділ на рівні файлів. Вбудованого компонента <NativeTarget> не існує.",
-    "interviewTip": "Зауважте, що розширення файлів найкраще підходять для великих відмінностей у логіці, тоді як Platform.select — для незначних коригувань стилів."
+    "interviewTip": "Зауважте, що розширення файлів найкраще підходять для великих відмінностей у логіці, тоді як Platform.select — для незначних коригувань стилів.",
+    "options": [
+      "Using the Platform.OS conditional.",
+      "Using the Platform.select() method.",
+      "Using platform-specific file extensions (.ios.js / .android.js).",
+      "Using the <NativeTarget> wrapper component."
+    ]
   },
   "ps-05": {
     "prompt": "Як перевірити, чи має поточний пристрій Android певний рівень API (наприклад, API 30)?",
     "explanation": "Для Android Platform.Version повертає ціле число (наприклад, 30, 31). Для iOS він повертає рядок із версією системи (наприклад, '17.2').",
-    "interviewTip": "Завжди пам'ятайте спочатку перевіряти ОС, оскільки '30' (число) та '17.2' (рядок) порівнюються в JS по-різному."
+    "interviewTip": "Завжди пам'ятайте спочатку перевіряти ОС, оскільки '30' (число) та '17.2' (рядок) порівнюються в JS по-різному.",
+    "options": [
+      "This is the correct way.",
+      "Use Platform.API_LEVEL.",
+      "Use DeviceInfo.getApiLevel().",
+      "Android API levels are not accessible via Platform."
+    ]
   },
   "ps-06": {
     "prompt": "Що повертає властивість 'Platform.isPad'?",
     "explanation": "Platform.isPad — це булеве значення, специфічне для iOS, яке дозволяє розрізняти макети для iPhone та iPad.",
-    "interviewTip": "Для кросплатформної перевірки на планшет зазвичай потрібно перевіряти ширину екрана за допомогою Dimensions."
+    "interviewTip": "Для кросплатформної перевірки на планшет зазвичай потрібно перевіряти ширину екрана за допомогою Dimensions.",
+    "options": [
+      "True if the app is running on a tablet (Android or iOS).",
+      "True if the app is running on an Apple iPad.",
+      "A string identifying the tablet manufacturer.",
+      "True if the device has a stylus connected."
+    ]
   },
   "ps-07": {
     "prompt": "Яка властивість модуля Platform використовується для перевірки, чи запущено додаток у середовищі TV (як-от Apple TV або Android TV)?",
     "explanation": "Platform.isTV — це булеве значення, яке допомагає адаптувати логіку навігації для інтерфейсів, що керуються пультом (focus-based).",
-    "interviewTip": "Додатки для ТБ вимагають фокусованих (focusable) компонентів, що є зовсім іншою парадигмою, ніж сенсорне керування."
+    "interviewTip": "Додатки для ТБ вимагають фокусованих (focusable) компонентів, що є зовсім іншою парадигмою, ніж сенсорне керування.",
+    "options": [
+      "Platform.isTV",
+      "Platform.TV_MODE",
+      "Platform.isTVOS",
+      "Platform.uiMode === 'tv'"
+    ]
   },
   "ps-08": {
     "prompt": "Проаналізуйте код. Що робитиме властивість 'elevation' на пристрої iOS?",
     "explanation": "Android використовує 'elevation' для створення тіней (Material Design), тоді як iOS використовує набір властивостей: 'shadowColor', 'shadowOffset', 'shadowOpacity' та 'shadowRadius'.",
-    "interviewTip": "Щоб отримати однакові тіні на обох платформах, потрібно визначити обидва набори властивостей або використати бібліотеку на кшталт 'react-native-shadow-2'."
+    "interviewTip": "Щоб отримати однакові тіні на обох платформах, потрібно визначити обидва набори властивостей або використати бібліотеку на кшталт 'react-native-shadow-2'.",
+    "options": [
+      "It will create a shadow on iOS.",
+      "It will be ignored because 'elevation' is an Android-only property.",
+      "It will cause an error on iOS.",
+      "It will change the z-index of the card."
+    ]
   },
   "ps-09": {
     "prompt": "Як визначити компонент, який рендериться лише у веб-версії при використанні 'React Native for Web'?",
     "explanation": "Metro та Webpack можна налаштувати так, щоб вони розпізнавали розширення '.web.js' для специфічних реалізацій під браузер.",
-    "interviewTip": "Це дозволяє використовувати стандартні теги <div> та <a> для веб-версії, зберігаючи View/Text для мобільної."
+    "interviewTip": "Це дозволяє використовувати стандартні теги <div> та <a> для веб-версії, зберігаючи View/Text для мобільної.",
+    "options": [
+      "MyComponent.web.js",
+      "MyComponent.browser.js",
+      "MyComponent.html.js",
+      "MyComponent.js and check Platform.OS === 'web'"
+    ]
   },
   "ps-10": {
     "prompt": "Яке призначення ключа 'default' у методі 'Platform.select'?",
     "explanation": "Ключ 'default' діє як запасний варіант (fallback) для будь-якої платформи, яка не вказана явно в об'єкті.",
-    "interviewTip": "Це чудово підходить для підтримки сумісності з майбутніми платформами, такими як 'macos' або 'windows'."
+    "interviewTip": "Це чудово підходить для підтримки сумісності з майбутніми платформами, такими як 'macos' або 'windows'.",
+    "options": [
+      "It selects 'Hello World' if the OS is not iOS or Android (e.g., Web/Windows).",
+      "It causes an error if a platform is missing.",
+      "It randomly picks one of the options.",
+      "The 'default' key is not supported."
+    ]
   }
 }

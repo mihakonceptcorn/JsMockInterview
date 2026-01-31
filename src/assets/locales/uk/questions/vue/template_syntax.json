@@ -2,51 +2,111 @@
   "ts-01": {
     "prompt": "Яка директива використовується для реактивного оновлення атрибута HTML, такого як 'src' або 'disabled'?",
     "explanation": "v-bind (скорочено ':') використовується для прив'язки атрибута до виразу. Наприклад, :disabled='isPending' застосує атрибут disabled, якщо isPending має істинне значення.",
-    "interviewTip": "У Vue 3.4+ ви можете використовувати скорочення :id замість :id='id', якщо назва атрибута збігається з назвою змінної."
+    "interviewTip": "У Vue 3.4+ ви можете використовувати скорочення :id замість :id='id', якщо назва атрибута збігається з назвою змінної.",
+    "options": [
+      "v-on",
+      "v-model",
+      "v-bind",
+      "v-attr"
+    ]
   },
   "ts-02": {
     "prompt": "Проаналізуйте код. Що буде відрендерено в браузері?",
     "explanation": "v-html оновлює innerHTML елемента наданим рядком. Використовуйте це обережно, оскільки це може призвести до XSS-атак.",
-    "interviewTip": "Завжди попереджайте про ризик XSS при обговоренні v-html; використовуйте її лише для перевіреного контенту."
+    "interviewTip": "Завжди попереджайте про ризик XSS при обговоренні v-html; використовуйте її лише для перевіреного контенту.",
+    "options": [
+      "The literal string: <span style=\"color: red\">Hello</span>",
+      "A red span saying 'Hello'",
+      "An empty div (for security reasons)",
+      "The word 'Hello' in default black text"
+    ]
   },
   "ts-03": {
     "prompt": "Яка різниця між {{ message }} та v-text=\"message\"?",
     "explanation": "Інтерполяція (вуса/mustaches) дозволяє змішувати текст і змінні, наприклад 'Привіт, {{ name }}'. v-text повністю перезапише все всередині тегу значенням змінної.",
-    "interviewTip": "«Вуса» є кращими для читабельності, тоді як v-text використовується рідко, хіба що ви хочете уникнути миготіння нескомпільованого шаблону."
+    "interviewTip": "«Вуса» є кращими для читабельності, тоді як v-text використовується рідко, хіба що ви хочете уникнути миготіння нескомпільованого шаблону.",
+    "options": [
+      "v-text is faster than interpolation.",
+      "{{ }} allows for partial content replacement; v-text replaces the entire textContent of the element.",
+      "v-text supports HTML tags; {{ }} does not.",
+      "There is no difference; they are exactly the same."
+    ]
   },
   "ts-04": {
     "prompt": "Як прослуховувати події DOM (наприклад, клік) і запускати JavaScript, коли вони виникають?",
     "explanation": "v-on (скорочено '@') — це директива для слухачів подій. Вона може викликати метод або виконувати інлайновий вираз.",
-    "interviewTip": "Згадайте модифікатори подій, такі як @click.prevent або @click.stop, для декларативної обробки стандартної логіки подій."
+    "interviewTip": "Згадайте модифікатори подій, такі як @click.prevent або @click.stop, для декларативної обробки стандартної логіки подій.",
+    "options": [
+      "v-bind:click",
+      "v-on:click",
+      "v-model:click",
+      "v-trigger:click"
+    ]
   },
   "ts-05": {
     "prompt": "Яка директива створює двостороннє зв'язування даних (two-way binding) для полів введення, textarea та елементів select?",
     "explanation": "v-model — це «синтаксичний цукор», який поєднує v-bind (для встановлення значення) та v-on (для прослуховування змін введення).",
-    "interviewTip": "У Vue 3 ви можете мати кілька v-model на одному кастомному компоненті (наприклад, v-model:first-name та v-model:last-name)."
+    "interviewTip": "У Vue 3 ви можете мати кілька v-model на одному кастомному компоненті (наприклад, v-model:first-name та v-model:last-name).",
+    "options": [
+      "v-bind",
+      "v-sync",
+      "v-model",
+      "v-on"
+    ]
   },
   "ts-06": {
     "prompt": "Які з наведених директив використовуються для оптимізації продуктивності шляхом пропуску повторних рендерингів або компіляції?",
     "explanation": "v-once та v-memo призначені для продуктивності під час виконання (runtime). v-pre — для оптимізації під час компіляції, дозволяючи показувати сирі теги {{ }} без обробки їх Vue.",
-    "interviewTip": "v-memo — це потужна функція Vue 3.2+ спеціально для оптимізації великих списків v-for."
+    "interviewTip": "v-memo — це потужна функція Vue 3.2+ спеціально для оптимізації великих списків v-for.",
+    "options": [
+      "v-once (renders the element only once and skips future updates)",
+      "v-pre (skips compilation for this element and its children)",
+      "v-memo (memoizes a sub-tree of the template based on dependencies)",
+      "v-static (forces the component to never change)"
+    ]
   },
   "ts-07": {
     "prompt": "Проаналізуйте код. Що станеться зі значенням інпуту після натискання кнопки?",
     "explanation": "Модифікатор .number автоматично приводить введений рядок до числа за допомогою parseFloat().",
-    "interviewTip": "Модифікатори на кшталт .trim та .lazy також важливі для уточнення поведінки введення без написання додаткового JS-коду."
+    "interviewTip": "Модифікатори на кшталт .trim та .lazy також важливі для уточнення поведінки введення без написання додаткового JS-коду.",
+    "options": [
+      "string",
+      "number",
+      "undefined",
+      "NaN"
+    ]
   },
   "ts-08": {
     "prompt": "Яким є результат використання JavaScript-виразу всередині інтерполяції, наприклад {{ number + 1 }}?",
     "explanation": "Vue підтримує повноцінні вирази JavaScript всередині прив'язок даних, але це мають бути поодинокі вирази (без інструкцій або керування потоком, як-от if/for).",
-    "interviewTip": "Хоча вирази потужні, тримайте їх простими. Якщо логіка стає складною, винесіть її в 'computed' властивість."
+    "interviewTip": "Хоча вирази потужні, тримайте їх простими. Якщо логіка стає складною, винесіть її в 'computed' властивість.",
+    "options": [
+      "It will throw an error; only variable names are allowed.",
+      "It will evaluate the expression and render the result.",
+      "It will render the expression as a string.",
+      "It only works inside v-bind."
+    ]
   },
   "ts-09": {
     "prompt": "Яке призначення директиви 'v-cloak'?",
     "explanation": "v-cloak залишається на елементі, поки екземпляр Vue не завершить компіляцію. Зазвичай її використовують разом із CSS [v-cloak] { display: none }, щоб приховати необроблені шаблони під час завантаження сторінки.",
-    "interviewTip": "Це корисно переважно для серверного HTML, де шаблон видимий до того, як Vue проведе гідратацію."
+    "interviewTip": "Це корисно переважно для серверного HTML, де шаблон видимий до того, як Vue проведе гідратацію.",
+    "options": [
+      "To hide elements until Vue has finished compiling, preventing the flash of uncompiled template (FOUC).",
+      "To encrypt the template content.",
+      "To make the element invisible permanently.",
+      "To improve rendering performance."
+    ]
   },
   "ts-10": {
     "prompt": "Як динамічно прив'язати аргумент директиви у Vue 3?",
     "explanation": "Динамічні аргументи директив дозволяють використовувати JS-вираз як аргумент, огортаючи його у квадратні дужки: v-on:[eventName].",
-    "interviewTip": "Це корисно для створення універсальних компонентів, які можуть підписуватися на різні події залежно від пропсів."
+    "interviewTip": "Це корисно для створення універсальних компонентів, які можуть підписуватися на різні події залежно від пропсів.",
+    "options": [
+      "This syntax is invalid.",
+      "Use square brackets around the argument name to make it dynamic.",
+      "Use curly braces: v-on:{eventName}",
+      "Use parentheses: v-on:(eventName)"
+    ]
   }
 }

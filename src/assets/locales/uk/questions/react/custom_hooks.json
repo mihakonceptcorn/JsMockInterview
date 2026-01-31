@@ -2,66 +2,144 @@
   "ch-01": {
     "prompt": "Яка обов'язкова угода щодо найменування спеціальних хуків у React?",
     "explanation": "Префікс 'use' є обов'язковим, оскільки він дозволяє лінтеру React автоматично перевіряти код на дотримання правил хуків (Rules of Hooks).",
-    "interviewTip": "Якщо ви не почнете назву з 'use', React не знатиме, що це хук, і не зможе гарантувати стабільність порядку його викликів."
+    "interviewTip": "Якщо ви не почнете назву з 'use', React не знатиме, що це хук, і не зможе гарантувати стабільність порядку його викликів.",
+    "options": [
+      "They must end with 'Hook' (e.g., useDataHook).",
+      "They must start with the word 'use' (e.g., useFetch).",
+      "They must be written in ALL_CAPS.",
+      "There is no mandatory naming convention."
+    ]
   },
   "ch-02": {
     "prompt": "Яка головна перевага створення спеціального хука?",
     "explanation": "Спеціальні хуки дозволяють приховати складну логіку (наприклад, отримання даних, обробку форм або слухачів подій) за простим API, який можуть використовувати декілька компонентів.",
-    "interviewTip": "Сприймайте спеціальні хуки як «композицію логіки», а не «композицію інтерфейсу»."
+    "interviewTip": "Сприймайте спеціальні хуки як «композицію логіки», а не «композицію інтерфейсу».",
+    "options": [
+      "To speed up the rendering of the Virtual DOM.",
+      "To extract and reuse stateful logic between different components.",
+      "To replace the need for the useEffect hook.",
+      "To create a global variable that bypasses the props system."
+    ]
   },
   "ch-03": {
     "prompt": "Якщо два компоненти використовують один і той самий спеціальний хук, чи мають вони спільний стан?",
     "explanation": "Хуки — це спосіб повторного використання *логіки*, а не *даних*. Кожного разу, коли ви викликаєте хук, увесь стан та ефекти всередині нього ізолюються для конкретного виклику.",
-    "interviewTip": "Якщо вам потрібно поділитися даними, вам все одно знадобиться Context або бібліотека для керування станом, як-от Redux."
+    "interviewTip": "Якщо вам потрібно поділитися даними, вам все одно знадобиться Context або бібліотека для керування станом, як-от Redux.",
+    "options": [
+      "Yes, custom hooks create a singleton state for that logic.",
+      "No, each call to a custom hook creates a completely independent state for that component instance.",
+      "Only if the hook is imported from a global file.",
+      "Only if the components are siblings."
+    ]
   },
   "ch-04": {
     "prompt": "Що можна викликати всередині спеціального хука?",
     "explanation": "Спеціальні хуки — це, по суті, звичайні функції з «суперздібностями»: вони можуть використовувати будь-які інші вбудовані хуки React всередині себе.",
-    "interviewTip": "Саме тому спеціальні хуки такі потужні — вони є сполучною ланкою, що об'єднує кілька вбудованих хуків в одну функцію."
+    "interviewTip": "Саме тому спеціальні хуки такі потужні — вони є сполучною ланкою, що об'єднує кілька вбудованих хуків в одну функцію.",
+    "options": [
+      "Only standard JavaScript functions.",
+      "Only other custom hooks.",
+      "Other built-in React hooks (useState, useEffect, etc.) and even other custom hooks.",
+      "Nothing; custom hooks must be pure functions without state."
+    ]
   },
   "ch-05": {
     "prompt": "Проаналізуйте спеціальний хук нижче. Який тип значення він повертає?",
     "explanation": "Спеціальні хуки можуть повертати будь-що (масиви, об'єкти або навіть поодинокі значення). Повернення масиву — це поширений патерн, змодельований за прикладом useState.",
-    "interviewTip": "Повернення масиву зручне для перейменування значень під час деструктуризації. Об'єкт краще використовувати, якщо значень, що повертаються, багато."
+    "interviewTip": "Повернення масиву зручне для перейменування значень під час деструктуризації. Об'єкт краще використовувати, якщо значень, що повертаються, багато.",
+    "options": [
+      "A single boolean value.",
+      "An object { value, toggle }.",
+      "An array [boolean, function].",
+      "undefined"
+    ]
   },
   "ch-06": {
     "prompt": "Які з наведених нижче правил хуків застосовуються до спеціальних хуків?",
     "explanation": "Спеціальні хуки обмежені тими ж правилами, що й вбудовані: вони повинні викликатися на верхньому рівні та не можуть бути умовними.",
-    "interviewTip": "Порядок викликів повинен залишатися ідентичним під час кожного рендеру, щоб React міг правильно відстежувати стан."
+    "interviewTip": "Порядок викликів повинен залишатися ідентичним під час кожного рендеру, щоб React міг правильно відстежувати стан.",
+    "options": [
+      "Hooks must be called only at the top level of the function.",
+      "Hooks can be called inside event handlers within the custom hook.",
+      "Hooks cannot be called inside loops or conditions.",
+      "Custom hooks must return JSX."
+    ]
   },
   "ch-07": {
     "prompt": "Визначте потенційну проблему в цьому спеціальному хуку:",
     "explanation": "Побічні ефекти, як-от слухачі подій, повинні бути всередині useEffect з функцією очищення, щоб уникнути накопичення тисяч слухачів при повторних рендерах.",
-    "interviewTip": "Завжди поєднуйте додавання ('add') із видаленням ('remove') у функції очищення."
+    "interviewTip": "Завжди поєднуйте додавання ('add') із видаленням ('remove') у функції очищення.",
+    "options": [
+      "The hook should return an object, not a number.",
+      "It causes a memory leak because it adds a new listener on every render without removing it.",
+      "window is not accessible in custom hooks.",
+      "setSize should be called inside a loop."
+    ]
   },
   "ch-08": {
     "prompt": "Як передати параметри в спеціальний хук?",
     "explanation": "Оскільки спеціальні хуки — це просто функції, ви можете передавати будь-які дані (рядки, об'єкти або навіть інші функції) як аргументи.",
-    "interviewTip": "Якщо аргументи змінюються, переконайтеся, що хуки *всередині* вашого спеціального хука (наприклад, useEffect) реагують на ці зміни, додавши їх до масивів залежностей."
+    "interviewTip": "Якщо аргументи змінюються, переконайтеся, що хуки *всередині* вашого спеціального хука (наприклад, useEffect) реагують на ці зміни, додавши їх до масивів залежностей.",
+    "options": [
+      "You can't; custom hooks don't accept arguments.",
+      "Pass them as normal function parameters when calling the hook.",
+      "By setting a global variable before the hook is called.",
+      "Using a special 'useParams' prop."
+    ]
   },
   "ch-09": {
     "prompt": "У чому головна перевага наступного патерну?",
     "explanation": "Це класичний хук `useForm`. Замість того, щоб кожен компонент писав власну логіку handleChange, вони просто імпортують цей хук.",
-    "interviewTip": "Стандартизація загальної логіки інтерфейсу (форми, модальні вікна) у спеціальні хуки — ознака кодової бази рівня Senior."
+    "interviewTip": "Стандартизація загальної логіки інтерфейсу (форми, модальні вікна) у спеціальні хуки — ознака кодової бази рівня Senior.",
+    "options": [
+      "It allows any component to use the same form logic without rewriting the state and handlers.",
+      "It automatically submits the data to a server.",
+      "It makes the form run in the background.",
+      "It validates the inputs using AI."
+    ]
   },
   "ch-10": {
     "prompt": "Чи можна викликати спеціальний хук зсередини іншого спеціального хука?",
     "explanation": "Хуки підтримують композицію. Наприклад, хук `useAuthenticatedFetch` може викликати хуки `useAuth` та `useFetch` всередині себе.",
-    "interviewTip": "Композиція — це «секретний інгредієнт» гнучкості React."
+    "interviewTip": "Композиція — це «секретний інгредієнт» гнучкості React.",
+    "options": [
+      "No, that's nesting and is prohibited.",
+      "Yes, this is a common way to build complex logic out of simpler hooks.",
+      "Only if the parent hook is a class component.",
+      "Only if you use the 'useCompose' utility."
+    ]
   },
   "ch-11": {
     "prompt": "Чому варто використовувати 'useCallback' або 'useMemo' всередині спеціального хука, який повертає функції або об'єкти?",
     "explanation": "Якщо ваш хук повертає функцію `() => {}`, ця функція отримує нове посилання при кожному рендері. Якщо вона є залежністю в useEffect іншого компонента, це призведе до нескінченного циклу.",
-    "interviewTip": "Забезпечення «стабільності посилань» — це ключовий обов'язок добре написаного спеціального хука."
+    "interviewTip": "Забезпечення «стабільності посилань» — це ключовий обов'язок добре написаного спеціального хука.",
+    "options": [
+      "To prevent the hook from ever re-running.",
+      "To provide stable references so that components using the hook don't re-render unnecessarily.",
+      "To encrypt the returned data.",
+      "To make the code harder to reverse engineer."
+    ]
   },
   "ch-12": {
     "prompt": "Які з наведених варіантів є хорошими кандидатами для створення спеціального хука?",
     "explanation": "Проста математика — це звичайна функція. Все, що потребує стану ('State') або життєвого циклу (статус мережі, пагінація, IntersectionObserver), має бути спеціальним хуком.",
-    "interviewTip": "Якщо функція не використовує жодних хуків React (useState, useEffect тощо), вона, ймовірно, має бути простою утилітою, а не хуком."
+    "interviewTip": "Якщо функція не використовує жодних хуків React (useState, useEffect тощо), вона, ймовірно, має бути простою утилітою, а не хуком.",
+    "options": [
+      "A logic that tracks if the user is currently online/offline.",
+      "A function that adds two numbers and returns the sum.",
+      "A logic that handles pagination and sorting for a data table.",
+      "A logic that checks if an element is currently visible in the viewport."
+    ]
   },
   "ch-13": {
     "prompt": "Що станеться, якщо використати спеціальний хук всередині оператора 'if'?",
     "explanation": "React зіставляє стан із хуками на основі їхнього *індексу* в черзі викликів. Якщо пропустити хук через умову, індекси змістяться, і неправильний стан буде призначено неправильним хукам.",
-    "interviewTip": "Пам'ятайте: черговість виклику хуків повинна бути ідентичною при кожному рендері."
+    "interviewTip": "Пам'ятайте: черговість виклику хуків повинна бути ідентичною при кожному рендері.",
+    "options": [
+      "The data is only fetched for logged-in users, saving bandwidth.",
+      "It will work fine in development but fail in production.",
+      "React will break because the order of hook calls changed, potentially causing a crash or state mismatch.",
+      "The hook will be called once and then cached."
+    ]
   }
 }

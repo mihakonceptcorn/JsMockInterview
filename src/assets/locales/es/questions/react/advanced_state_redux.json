@@ -2,61 +2,133 @@
   "rtk-01": {
     "prompt": "What is the primary purpose of a 'Slice' in Redux Toolkit?",
     "explanation": "createSlice automatically generates action creators and action types based on the reducers you provide, drastically reducing boilerplate code.",
-    "interviewTip": "In legacy Redux, you had to write actions and reducers in separate files. Slices make it modular and concise."
+    "interviewTip": "In legacy Redux, you had to write actions and reducers in separate files. Slices make it modular and concise.",
+    "options": [
+      "To divide the UI into smaller components.",
+      "To bundle the initial state, reducers, and actions for a specific feature in one place.",
+      "To split the database into multiple tables.",
+      "To handle API calls exclusively."
+    ]
   },
   "rtk-02": {
     "prompt": "How does Redux Toolkit allow you to 'mutate' state safely inside a reducer?",
     "explanation": "RTK uses Immer, which tracks changes to a 'draft' state and produces a brand new immutable state object for you.",
-    "interviewTip": "This is a key benefit: you get the simplicity of mutation syntax with the safety of immutability."
+    "interviewTip": "This is a key benefit: you get the simplicity of mutation syntax with the safety of immutability.",
+    "options": [
+      "It uses a special compiler that changes the code to CSS.",
+      "It uses the Immer library under the hood to turn 'mutations' into immutable updates.",
+      "It actually mutates the global state, but React doesn't mind.",
+      "It only works if you use the 'mutable' keyword."
+    ]
   },
   "rtk-03": {
     "prompt": "Which hook is used to extract data from the Redux store state?",
     "explanation": "useSelector takes a selector function that receives the entire store state and returns the specific part you need.",
-    "interviewTip": "useSelector also creates a subscription to the store and re-renders the component when the selected data changes."
+    "interviewTip": "useSelector also creates a subscription to the store and re-renders the component when the selected data changes.",
+    "options": [
+      "useStore",
+      "useDispatch",
+      "useSelector",
+      "useContext"
+    ]
   },
   "rtk-04": {
     "prompt": "What is the correct way to trigger a state change from a component?",
     "explanation": "The useDispatch hook returns the dispatch function from the Redux store. You call it with an action object to trigger a reducer.",
-    "interviewTip": "Dispatching is the *only* way to trigger a state change in Redux, following the 'Single Source of Truth' principle."
+    "interviewTip": "Dispatching is the *only* way to trigger a state change in Redux, following the 'Single Source of Truth' principle.",
+    "options": [
+      "trigger",
+      "dispatch",
+      "send",
+      "action"
+    ]
   },
   "rtk-05": {
     "prompt": "What are the core principles of Redux?",
     "explanation": "Redux relies on predictability. The global state is stored in a single tree, and reducers must be pure functions that take (state, action) and return a new state.",
-    "interviewTip": "Predictability makes features like 'Time Travel Debugging' possible."
+    "interviewTip": "Predictability makes features like 'Time Travel Debugging' possible.",
+    "options": [
+      "Single source of truth (one store).",
+      "State is read-only (changes only via actions).",
+      "State can be modified by any component directly.",
+      "Changes are made with pure functions (reducers)."
+    ]
   },
   "rtk-06": {
     "prompt": "What is 'createAsyncThunk' used for in Redux Toolkit?",
     "explanation": "createAsyncThunk generates promise lifecycle action types (pending, fulfilled, rejected) and handles the dispatching logic for you.",
-    "interviewTip": "Handle the results of a thunk in the 'extraReducers' section of your slice."
+    "interviewTip": "Handle the results of a thunk in the 'extraReducers' section of your slice.",
+    "options": [
+      "To synchronize state with localStorage.",
+      "To handle asynchronous logic like API requests.",
+      "To create custom UI animations.",
+      "To combine multiple slices into one."
+    ]
   },
   "rtk-07": {
     "prompt": "Where do you combine all your slices to create the global store?",
     "explanation": "configureStore simplifies store setup. It automatically adds the Redux DevTools extension and the 'thunk' middleware.",
-    "interviewTip": "configureStore is the RTK replacement for the legacy createStore function."
+    "interviewTip": "configureStore is the RTK replacement for the legacy createStore function.",
+    "options": [
+      "Inside the App.js file.",
+      "Using the configureStore function.",
+      "Inside a custom hook.",
+      "In the index.html file."
+    ]
   },
   "rtk-08": {
     "prompt": "What happens if a reducer is not a 'pure function' (e.g., it uses Math.random() or calls an API)?",
     "explanation": "Reducers must be deterministic. Given the same state and action, they must always return the same result. Side effects belong in thunks or middleware.",
-    "interviewTip": "Reducers = 'Logic/Calculation'; Thunks = 'Side Effects/Asynchronous work'."
+    "interviewTip": "Reducers = 'Logic/Calculation'; Thunks = 'Side Effects/Asynchronous work'.",
+    "options": [
+      "The code will fail to compile.",
+      "State changes become unpredictable and debugging tools like DevTools will break.",
+      "React will automatically fix the function.",
+      "Redux will run the function in a separate thread."
+    ]
   },
   "rtk-09": {
     "prompt": "How do you access the 'payload' of an action inside a reducer?",
     "explanation": "In Redux Toolkit, the data sent with an action is automatically placed in the 'payload' property of the action object.",
-    "interviewTip": "Example call: dispatch(incrementByAmount(10)) results in action.payload being 10."
+    "interviewTip": "Example call: dispatch(incrementByAmount(10)) results in action.payload being 10.",
+    "options": [
+      "action.data",
+      "action.payload",
+      "action.value",
+      "action.params"
+    ]
   },
   "rtk-10": {
     "prompt": "What is the purpose of the <Provider> component in Redux?",
     "explanation": "Just like Context API, the Redux Provider uses React's context mechanism to pass the store down to hooks like useSelector.",
-    "interviewTip": "Usually, you wrap the <Provider> around the <App /> in your main entry file (index.js)."
+    "interviewTip": "Usually, you wrap the <Provider> around the <App /> in your main entry file (index.js).",
+    "options": [
+      "To fetch data from the server.",
+      "To wrap the React app and make the Redux store available to all components.",
+      "To encrypt the state before it is saved.",
+      "To manage the component's local state."
+    ]
   },
   "rtk-11": {
     "prompt": "Which of these are benefits of using Redux DevTools?",
     "explanation": "DevTools provides a visual dashboard to see exactly how actions change the state, making debugging much easier.",
-    "interviewTip": "It’s one of the strongest reasons to choose Redux for complex apps."
+    "interviewTip": "It’s one of the strongest reasons to choose Redux for complex apps.",
+    "options": [
+      "Inspecting the history of every action dispatched.",
+      "Editing the state in real-time to test UI changes.",
+      "Automatically writing CSS for your components.",
+      "Time-traveling to previous states."
+    ]
   },
   "rtk-12": {
     "prompt": "Identify the error in this selector usage:",
     "explanation": "Always consider the initial state. If the data hasn't loaded yet, accessing an index of an empty/undefined list will throw an error.",
-    "interviewTip": "Use optional chaining: state.users?.[0]."
+    "interviewTip": "Use optional chaining: state.users?.[0].",
+    "options": [
+      "Selectors must be defined in a separate file.",
+      "If state.users is undefined (e.g., during loading), the app will crash.",
+      "useSelector cannot access arrays.",
+      "The return value must be a string."
+    ]
   }
 }

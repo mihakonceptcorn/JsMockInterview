@@ -2,126 +2,276 @@
   "js-basics-01": {
     "prompt": "What will be logged?",
     "explanation": "`typeof null` returns `object` due to a historical bug.",
-    "interviewTip": "Mention backward compatibility and proper null checks."
+    "interviewTip": "Mention backward compatibility and proper null checks.",
+    "options": [
+      "null",
+      "object",
+      "undefined",
+      "number"
+    ]
   },
   "js-basics-02": {
     "prompt": "What will be logged?",
     "explanation": "Uninitialized variables have value `undefined`.",
-    "interviewTip": "Explain `undefined` vs `not defined`."
+    "interviewTip": "Explain `undefined` vs `not defined`.",
+    "options": [
+      "null",
+      "undefined",
+      "ReferenceError",
+      "0"
+    ]
   },
   "js-basics-03": {
     "prompt": "What will be the result?",
     "explanation": "Once a string is involved, `+` becomes concatenation.",
-    "interviewTip": "Explain left-to-right evaluation."
+    "interviewTip": "Explain left-to-right evaluation.",
+    "options": [
+      "6",
+      "123",
+      "15",
+      "NaN"
+    ]
   },
   "js-basics-04": {
     "prompt": "What will be logged?",
     "explanation": "`-` triggers numeric coercion.",
-    "interviewTip": "Contrast `+` vs other operators."
+    "interviewTip": "Contrast `+` vs other operators.",
+    "options": [
+      "4",
+      "51",
+      "NaN",
+      "TypeError"
+    ]
   },
   "js-basics-05": {
     "prompt": "Which value is falsy?",
     "explanation": "`0` is falsy; objects and non-empty strings are truthy.",
-    "interviewTip": "List all falsy values."
+    "interviewTip": "List all falsy values.",
+    "options": [
+      "'0'",
+      "[]",
+      "0",
+      "{}"
+    ]
   },
   "js-basics-06": {
     "prompt": "What will be logged?",
     "explanation": "All objects are truthy.",
-    "interviewTip": "Arrays are objects in JS."
+    "interviewTip": "Arrays are objects in JS.",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-07": {
     "prompt": "Which statements are correct?",
     "explanation": "`const` prevents reassignment, not mutation.",
-    "interviewTip": "Clarify reassignment vs mutation."
+    "interviewTip": "Clarify reassignment vs mutation.",
+    "options": [
+      "`var` is function-scoped",
+      "`let` is block-scoped",
+      "`const` prevents reassignment",
+      "`const` makes objects immutable"
+    ]
   },
   "js-basics-08": {
     "prompt": "What will be logged?",
     "explanation": "Loose equality triggers complex coercion.",
-    "interviewTip": "Recommend avoiding `==`."
+    "interviewTip": "Recommend avoiding `==`.",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-09": {
     "prompt": "What will be logged?",
     "explanation": "Empty string converts to 0.",
-    "interviewTip": "Explain numeric coercion rules."
+    "interviewTip": "Explain numeric coercion rules.",
+    "options": [
+      "0",
+      "NaN",
+      "undefined",
+      "TypeError"
+    ]
   },
   "js-basics-10": {
     "prompt": "What will be logged?",
     "explanation": "`NaN` is of type `number`.",
-    "interviewTip": "Mention `Number.isNaN`."
+    "interviewTip": "Mention `Number.isNaN`.",
+    "options": [
+      "number",
+      "NaN",
+      "undefined",
+      "object"
+    ]
   },
   "js-basics-11": {
     "prompt": "What will be logged?",
     "explanation": "`null` and `undefined` are equal only to each other.",
-    "interviewTip": "Explain special case in `==`."
+    "interviewTip": "Explain special case in `==`.",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-12": {
     "prompt": "What will be logged?",
     "explanation": "Objects are compared by reference.",
-    "interviewTip": "Stress reference equality."
+    "interviewTip": "Stress reference equality.",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-13": {
     "prompt": "What will be logged?",
     "explanation": "Non-empty strings are truthy.",
-    "interviewTip": "Explain double negation."
+    "interviewTip": "Explain double negation.",
+    "options": [
+      "true",
+      "false",
+      "NaN",
+      "undefined"
+    ]
   },
   "js-basics-14": {
     "prompt": "What will be logged?",
     "explanation": "`undefined` has its own type.",
-    "interviewTip": "Contrast with `null`."
+    "interviewTip": "Contrast with `null`.",
+    "options": [
+      "undefined",
+      "null",
+      "object",
+      "number"
+    ]
   },
   "js-basics-15": {
     "prompt": "What will be logged?",
     "explanation": "`0` and `-0` are equal in JS.",
-    "interviewTip": "Mention `Object.is` difference."
+    "interviewTip": "Mention `Object.is` difference.",
+    "options": [
+      "true",
+      "false",
+      "NaN",
+      "TypeError"
+    ]
   },
   "js-basics-16": {
     "prompt": "What will be logged?",
     "explanation": "`Object.is` treats `0` and `-0` as different.",
-    "interviewTip": "Compare `===` vs `Object.is`."
+    "interviewTip": "Compare `===` vs `Object.is`.",
+    "options": [
+      "true",
+      "false",
+      "NaN",
+      "TypeError"
+    ]
   },
   "js-basics-17": {
     "prompt": "What will be logged?",
     "explanation": "Arrow functions are still functions.",
-    "interviewTip": "Arrow is syntax, not type."
+    "interviewTip": "Arrow is syntax, not type.",
+    "options": [
+      "function",
+      "object",
+      "undefined",
+      "arrow"
+    ]
   },
   "js-basics-18": {
     "prompt": "What will be logged?",
     "explanation": "`isNaN` coerces values before checking.",
-    "interviewTip": "Recommend `Number.isNaN`."
+    "interviewTip": "Recommend `Number.isNaN`.",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-19": {
     "prompt": "What will be logged?",
     "explanation": "`Number.isNaN` does not coerce.",
-    "interviewTip": "Explain strict NaN check."
+    "interviewTip": "Explain strict NaN check.",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-20": {
     "prompt": "What will be logged?",
     "explanation": "Classes are functions under the hood.",
-    "interviewTip": "Explain syntactic sugar."
+    "interviewTip": "Explain syntactic sugar.",
+    "options": [
+      "function",
+      "class",
+      "object",
+      "undefined"
+    ]
   },
   "js-basics-21": {
     "prompt": "What will be logged?",
     "explanation": "Unary plus converts to number.",
-    "interviewTip": "Mention unary operators."
+    "interviewTip": "Mention unary operators.",
+    "options": [
+      "0",
+      "NaN",
+      "undefined",
+      "TypeError"
+    ]
   },
   "js-basics-22": {
     "prompt": "What will be logged?",
     "explanation": "Arrays convert to empty strings.",
-    "interviewTip": "Explain `toString` coercion."
+    "interviewTip": "Explain `toString` coercion.",
+    "options": [
+      "''",
+      "'[]'",
+      "0",
+      "NaN"
+    ]
   },
   "js-basics-23": {
     "prompt": "What will be logged?",
     "explanation": "Object converts to string, then concatenates.",
-    "interviewTip": "Context matters (`{}` as block vs object)."
+    "interviewTip": "Context matters (`{}` as block vs object).",
+    "options": [
+      "'[object Object]'",
+      "0",
+      "NaN",
+      "TypeError"
+    ]
   },
   "js-basics-24": {
     "prompt": "What will be logged?",
     "explanation": "Infinity is a number.",
-    "interviewTip": "Mention IEEE 754."
+    "interviewTip": "Mention IEEE 754.",
+    "options": [
+      "number",
+      "infinity",
+      "object",
+      "undefined"
+    ]
   },
   "js-basics-25": {
     "prompt": "What will be logged?",
     "explanation": "Invalid numeric conversion results in NaN.",
-    "interviewTip": "Explain arithmetic coercion."
+    "interviewTip": "Explain arithmetic coercion.",
+    "options": [
+      "NaN",
+      "Infinity",
+      "0",
+      "TypeError"
+    ]
   }
 }

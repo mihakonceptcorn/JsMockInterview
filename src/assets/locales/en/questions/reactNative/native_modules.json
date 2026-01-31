@@ -2,51 +2,111 @@
   "nm-01": {
     "prompt": "In the legacy architecture, what is the role of 'RCTBridgeModule' on iOS?",
     "explanation": "To expose a native class to JS, it must implement the RCTBridgeModule protocol and use the RCT_EXPORT_MODULE macro.",
-    "interviewTip": "Remember that data passed through this bridge must be serialized into JSON, which can be a bottleneck."
+    "interviewTip": "Remember that data passed through this bridge must be serialized into JSON, which can be a bottleneck.",
+    "options": [
+      "It is a JavaScript class that defines UI components.",
+      "It is a protocol that an Objective-C/Swift class must adopt to be accessible from JavaScript.",
+      "It is a tool that compiles JS into machine code.",
+      "It is the main entry point for the App Store."
+    ]
   },
   "nm-02": {
     "prompt": "What is the primary technical improvement of 'Turbo Modules' over the legacy Native Modules?",
     "explanation": "Legacy modules are all initialized at app launch, slowing down startup. Turbo Modules are loaded on demand and allow synchronous calls via JSI (JavaScript Interface).",
-    "interviewTip": "If an interviewer asks about app startup performance, mention 'Lazy Loading' of Turbo Modules."
+    "interviewTip": "If an interviewer asks about app startup performance, mention 'Lazy Loading' of Turbo Modules.",
+    "options": [
+      "They are written in Python instead of Java.",
+      "They are loaded lazily (only when needed) and use JSI for direct communication.",
+      "They automatically upload data to the cloud.",
+      "They do not require any native code."
+    ]
   },
   "nm-03": {
     "prompt": "Analyze the Android native code. What is the purpose of the @ReactMethod annotation?",
     "explanation": "Without this annotation, the method remains invisible to the React Native bridge, even if the class itself is exported.",
-    "interviewTip": "Only methods marked with @ReactMethod can be triggered via 'NativeModules.ModuleName.methodName()'."
+    "interviewTip": "Only methods marked with @ReactMethod can be triggered via 'NativeModules.ModuleName.methodName()'.",
+    "options": [
+      "It marks the method as private to the native class.",
+      "It exports the method so it can be called from JavaScript code.",
+      "It tells the Android OS to run this in the background.",
+      "It encrypts the parameters."
+    ]
   },
   "nm-04": {
     "prompt": "How does JavaScript communicate with the native side in the New Architecture without serialization?",
     "explanation": "JSI allows the JavaScript engine (Hermes) to hold a reference to a C++ object, enabling direct, synchronous method calls instead of passing JSON messages.",
-    "interviewTip": "JSI is what makes 'Reanimated' so fast—it allows the UI to update without waiting for the bridge."
+    "interviewTip": "JSI is what makes 'Reanimated' so fast—it allows the UI to update without waiting for the bridge.",
+    "options": [
+      "Via the Bridge queue.",
+      "Using JSI (JavaScript Interface) to hold C++ references to native objects.",
+      "By writing files to the disk.",
+      "Using WebSockets."
+    ]
   },
   "nm-05": {
     "prompt": "What is the purpose of 'Codegen' in the New Architecture?",
     "explanation": "Codegen ensures type safety between JS and Native code. It creates the 'glue' code automatically so you don't have to write C++ boilerplate manually.",
-    "interviewTip": "Codegen helps prevent runtime crashes caused by sending the wrong data types across the JS-Native boundary."
+    "interviewTip": "Codegen helps prevent runtime crashes caused by sending the wrong data types across the JS-Native boundary.",
+    "options": [
+      "To write the UI for you using AI.",
+      "To generate the native interface code (C++ / Java / Obj-C) based on your TypeScript/Flow definitions.",
+      "To minify the JS bundle.",
+      "To verify npm package versions."
+    ]
   },
   "nm-06": {
     "prompt": "Which of these are valid ways to send data from Native back to JavaScript?",
     "explanation": "Callbacks and Promises are for responses to specific calls. Events (EventEmitter) are for native actions the JS didn't trigger, like a GPS location update.",
-    "interviewTip": "Always remember to remove event listeners in 'useEffect' cleanup to avoid memory leaks."
+    "interviewTip": "Always remember to remove event listeners in 'useEffect' cleanup to avoid memory leaks.",
+    "options": [
+      "Using a Callback (one-time response).",
+      "Using Promises (one-time response, modern).",
+      "Using DeviceEventEmitter (for streaming events).",
+      "Directly modifying the JS variable from Java."
+    ]
   },
   "nm-07": {
     "prompt": "What is a 'Native UI Component' (as opposed to a Native Module)?",
     "explanation": "While Native Modules provide 'logic', Native UI Components provide 'views'. You use 'requireNativeComponent' to bring them into your JSX.",
-    "interviewTip": "If you need a very complex UI element that doesn't exist in RN, you build a 'ViewManager' on the native side."
+    "interviewTip": "If you need a very complex UI element that doesn't exist in RN, you build a 'ViewManager' on the native side.",
+    "options": [
+      "A piece of logic like an API fetcher.",
+      "An actual native view (like a specialized Video Player or Map) that is rendered as a React component.",
+      "A button provided by the OS.",
+      "A local storage database."
+    ]
   },
   "nm-08": {
     "prompt": "Identify the issue in this iOS native method:",
     "explanation": "Legacy bridge methods are asynchronous and return 'void'. To get a result back to JS, you must pass an RCTResponseSenderBlock or an RCTPromiseResolveBlock.",
-    "interviewTip": "In the New Architecture with JSI, you actually *can* return values synchronously."
+    "interviewTip": "In the New Architecture with JSI, you actually *can* return values synchronously.",
+    "options": [
+      "The types must be 'NSInteger'.",
+      "Native methods on the bridge cannot return values directly; they must use callbacks or promises.",
+      "The method name is too short.",
+      "There is no issue."
+    ]
   },
   "nm-09": {
     "prompt": "What does the 'RCT_EXPORT_MODULE()' macro do?",
     "explanation": "Without this macro, React Native's bridge won't know the class exists at runtime.",
-    "interviewTip": "You can pass an optional name to the macro (e.g., RCT_EXPORT_MODULE(MyCustomName)) to change how it appears in JS."
+    "interviewTip": "You can pass an optional name to the macro (e.g., RCT_EXPORT_MODULE(MyCustomName)) to change how it appears in JS.",
+    "options": [
+      "It compiles the class into a binary.",
+      "It registers the class with React Native so it can be accessed via NativeModules in JS.",
+      "It exports the class to the App Store.",
+      "It makes the class a singleton."
+    ]
   },
   "nm-10": {
     "prompt": "What is 'Fabric' in the New Architecture and how does it differ from the legacy renderer?",
     "explanation": "The legacy renderer used an asynchronous bridge to send UI updates. Fabric uses JSI to communicate synchronously with the native UI thread, enabling features like priority-based rendering and layout animations.",
-    "interviewTip": "Fabric is the 'React 18 Concurrent Mode' equivalent for the native side—it allows React Native to interrupt and prioritize UI updates."
+    "interviewTip": "Fabric is the 'React 18 Concurrent Mode' equivalent for the native side—it allows React Native to interrupt and prioritize UI updates.",
+    "options": [
+      "Fabric is a new CSS framework for React Native.",
+      "Fabric is the new synchronous rendering system that replaces the asynchronous UIManager, allowing for better performance and concurrent rendering.",
+      "Fabric is a tool for deploying apps to the cloud.",
+      "Fabric is a database for storing native modules."
+    ]
   }
 }

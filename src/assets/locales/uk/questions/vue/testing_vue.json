@@ -2,51 +2,111 @@
   "tv-01": {
     "prompt": "Який інструмент наразі рекомендується командою Vue як основний засіб запуску тестів, замінюючи Jest у більшості сучасних проектів?",
     "explanation": "Vitest побудований на базі Vite. Він надзвичайно швидкий, використовує ту саму конфігурацію, що і ваше середовище розробки, і має API, сумісний із Jest.",
-    "interviewTip": "Підкресліть підтримку «Гарячої заміни модулів» (HMR) у Vitest для тестів, що робить цикл розробки через тестування (TDD) набагато швидшим."
+    "interviewTip": "Підкресліть підтримку «Гарячої заміни модулів» (HMR) у Vitest для тестів, що робить цикл розробки через тестування (TDD) набагато швидшим.",
+    "options": [
+      "Mocha",
+      "Vitest",
+      "Cypress",
+      "Jasmine"
+    ]
   },
   "tv-02": {
     "prompt": "Яка різниця між 'mount' та 'shallowMount' у бібліотеці Vue Test Utils?",
     "explanation": "shallowMount ідеально підходить для модульного тестування (unit testing), оскільки він ізолює компонент від його дітей. Це гарантує, що баг у дочірньому компоненті не призведе до провалу тесту батьківського.",
-    "interviewTip": "Використовуйте 'mount' для інтеграційних тестів, а 'shallowMount' — для чистих модульних тестів логіки окремого компонента."
+    "interviewTip": "Використовуйте 'mount' для інтеграційних тестів, а 'shallowMount' — для чистих модульних тестів логіки окремого компонента.",
+    "options": [
+      "mount is for Vue 3, shallowMount is for Vue 2.",
+      "mount renders the component and all its children; shallowMount renders only the component, stubbing out all child components.",
+      "shallowMount is only for testing CSS.",
+      "mount is faster than shallowMount."
+    ]
   },
   "tv-03": {
     "prompt": "Проаналізуйте код. Як симулювати натискання кнопки користувачем у тесті Vitest?",
     "explanation": "Метод 'trigger' симулює подію DOM. Оскільки Vue оновлює DOM асинхронно, ви повинні використовувати 'await' перед trigger, щоб гарантувати оновлення DOM перед перевіркою результату (assertion).",
-    "interviewTip": "Завжди очікуйте ('await') результатів 'trigger' та 'setValue', щоб уникнути нестабільних (flaky) тестів, спричинених асинхронним рендерингом Vue."
+    "interviewTip": "Завжди очікуйте ('await') результатів 'trigger' та 'setValue', щоб уникнути нестабільних (flaky) тестів, спричинених асинхронним рендерингом Vue.",
+    "options": [
+      "button.click()",
+      "button.trigger('click')",
+      "button.emit('click')",
+      "button.fire('click')"
+    ]
   },
   "tv-04": {
     "prompt": "Проаналізуйте код. Як перевірити, що компонент емітив (emitted) конкретну подію?",
     "explanation": "wrapper.emitted() повертає об'єкт, що містить усі події, які викликав компонент, та аргументи, що були передані разом із ними.",
-    "interviewTip": "Ви можете перевірити аргументи так: expect(wrapper.emitted().myEvent[0]).toEqual(['expectedData'])."
+    "interviewTip": "Ви можете перевірити аргументи так: expect(wrapper.emitted().myEvent[0]).toEqual(['expectedData']).",
+    "options": [
+      "emitted().myEvent",
+      "events('myEvent')",
+      "fired('myEvent')",
+      "getEvent('myEvent')"
+    ]
   },
   "tv-05": {
     "prompt": "Як протестувати компонент, який залежить від глобального плагіна, такого як 'Pinia' або 'Vue Router'?",
     "explanation": "Vue Test Utils дозволяє надавати «моки» (mocks) або «заглушки» (stubs) для глобальних функцій через властивість 'global' у другому аргументі функції mount().",
-    "interviewTip": "Для Pinia найкраще використовувати 'createTestingPinia()', який автоматично створює моки для всіх ваших дій (actions)."
+    "interviewTip": "Для Pinia найкраще використовувати 'createTestingPinia()', який автоматично створює моки для всіх ваших дій (actions).",
+    "options": [
+      "You cannot test these components.",
+      "By passing a 'global.plugins' array in the mounting options.",
+      "By importing the real router into the test file.",
+      "By hardcoding the data inside the component."
+    ]
   },
   "tv-06": {
     "prompt": "Які з наведених варіантів є валідними способами пошуку елемента за допомогою методів 'find' або 'get' у Vue Test Utils?",
     "explanation": "Метод find() підтримує CSS-селектори та визначення компонентів. Найкращою практикою є використання атрибута 'data-testid' для тестів, щоб відв'язати їх від CSS-класів або структури HTML.",
-    "interviewTip": "Поясніть, що 'get' видає помилку, якщо елемент не знайдено, тоді як 'find' повертає порожню обгортку. Це робить 'get' безпечнішим для перевірок наявності елемента."
+    "interviewTip": "Поясніть, що 'get' видає помилку, якщо елемент не знайдено, тоді як 'find' повертає порожню обгортку. Це робить 'get' безпечнішим для перевірок наявності елемента.",
+    "options": [
+      "wrapper.find('.my-class')",
+      "wrapper.findComponent(MyChildComponent)",
+      "wrapper.find({ ref: 'myRef' })",
+      "wrapper.find('[data-testid=\"submit\"]')"
+    ]
   },
   "tv-07": {
     "prompt": "Що таке «Знімкове тестування» (Snapshot Testing) у Vitest?",
     "explanation": "Знімки фіксують регресію в структурі HTML. Якщо ви зміните назву класу, знімок не збігатиметься, що змусить вас перевірити, чи була ця зміна навмисною.",
-    "interviewTip": "Попередьте, що знімки можуть бути «крихкими», якщо ваш UI часто змінюється; використовуйте їх помірно для стабільних компонентів."
+    "interviewTip": "Попередьте, що знімки можуть бути «крихкими», якщо ваш UI часто змінюється; використовуйте їх помірно для стабільних компонентів.",
+    "options": [
+      "Taking a screenshot of the app's UI.",
+      "Comparing the rendered HTML output of a component against a previously saved 'master' version to detect unexpected changes.",
+      "Testing the app's speed.",
+      "A way to store user passwords."
+    ]
   },
   "tv-08": {
     "prompt": "Як протестувати код, який використовує 'nextTick()'?",
     "explanation": "Оскільки nextTick повертає проміс, очікування його ('await') у вашому тесті гарантує, що ви інспектуєте DOM після того, як Vue завершив свій цикл реактивного оновлення.",
-    "interviewTip": "Це критично важливо для тестування компонентів, які змінюють структуру DOM у відповідь на зміну реактивного стану."
+    "interviewTip": "Це критично важливо для тестування компонентів, які змінюють структуру DOM у відповідь на зміну реактивного стану.",
+    "options": [
+      "Using a while loop.",
+      "By awaiting 'nextTick()' inside your test function.",
+      "Vitest handles nextTick automatically.",
+      "You must use a setTimeout of 1000ms."
+    ]
   },
   "tv-09": {
     "prompt": "Яка бібліотека є рекомендованою для тестування компонентів Vue 3?",
     "explanation": "Vue Test Utils — це офіційна бібліотека утиліт для тестування Vue, яка надає методи для монтування компонентів та взаємодії з ними.",
-    "interviewTip": "Поєднуйте Vue Test Utils із Vitest для отримання повного та сучасного рішення для тестування."
+    "interviewTip": "Поєднуйте Vue Test Utils із Vitest для отримання повного та сучасного рішення для тестування.",
+    "options": [
+      "Enzyme",
+      "Vue Test Utils",
+      "React Testing Library",
+      "Jasmine"
+    ]
   },
   "tv-10": {
     "prompt": "Яка різниця між поверхневим (shallow) та повним монтуванням у Vue Test Utils?",
     "explanation": "Поверхневе монтування (shallowMount) корисне для модульного тестування компонента в ізоляції, тоді як повне монтування (mount) краще підходить для інтеграційних тестів.",
-    "interviewTip": "Vue Test Utils v2 (для Vue 3) рекомендує частіше використовувати 'mount', оскільки поверхневе монтування може приховувати проблеми інтеграції компонентів."
+    "interviewTip": "Vue Test Utils v2 (для Vue 3) рекомендує частіше використовувати 'mount', оскільки поверхневе монтування може приховувати проблеми інтеграції компонентів.",
+    "options": [
+      "Shallow mounting renders only the component, stubbing child components; full mounting renders the entire component tree.",
+      "Shallow mounting is faster but less accurate.",
+      "Full mounting is deprecated.",
+      "There is no difference."
+    ]
   }
 }

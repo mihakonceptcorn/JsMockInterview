@@ -2,86 +2,188 @@
   "rl-01": {
     "prompt": "Яка основна мета пропса 'key' при рендерингу списку в React?",
     "explanation": "Ключі слугують стабільними ідентифікаторами для елементів між рендерами. Без них React може некоректно оновлювати список або повністю перерендерити його, втрачаючи стан.",
-    "interviewTip": "Ключі повинні бути унікальними серед сусідніх елементів і стабільними (не змінюватися при кожному рендері)."
+    "interviewTip": "Ключі повинні бути унікальними серед сусідніх елементів і стабільними (не змінюватися при кожному рендері).",
+    "options": [
+      "To provide a CSS class name for the list item.",
+      "To help React identify which items have changed, been added, or removed.",
+      "To determine the order of elements in the DOM.",
+      "To automatically sort the array of data."
+    ]
   },
   "rl-02": {
     "prompt": "Який метод JavaScript найчастіше використовується для перетворення масиву даних у список компонентів React?",
     "explanation": "Метод .map() ідеально підходить, оскільки він повертає новий масив тієї ж довжини, дозволяючи огорнути кожен елемент даних у JSX.",
-    "interviewTip": "Пам'ятайте, що .forEach() повертає undefined і нічого не відрендерить у JSX."
+    "interviewTip": "Пам'ятайте, що .forEach() повертає undefined і нічого не відрендерить у JSX.",
+    "options": [
+      "forEach",
+      "filter",
+      "map",
+      "reduce"
+    ]
   },
   "rl-03": {
     "prompt": "У чому полягає потенційний недолік використання індексу масиву як ключа?",
     "explanation": "Якщо порядок елементів зміниться, індекс залишиться прив'язаним до позиції, а не до контенту. Це заплутує механізм керування станом React для цих компонентів.",
-    "interviewTip": "Використовуйте індекс як ключ лише якщо список статичний (ніколи не змінюється, не фільтрується і не сортується)."
+    "interviewTip": "Використовуйте індекс як ключ лише якщо список статичний (ніколи не змінюється, не фільтрується і не сортується).",
+    "options": [
+      "It causes a syntax error in the browser console.",
+      "It can lead to UI bugs and performance issues if the list is reordered or filtered.",
+      "It prevents the component from receiving any props.",
+      "It makes the application incompatible with mobile browsers."
+    ]
   },
   "rl-04": {
     "prompt": "Проаналізуйте код нижче. Що станеться, якщо два елементи матимуть однаковий ID?",
     "explanation": "React вимагає, щоб ключі були унікальними серед сусідів. Дублікати ключів спричиняють непередбачувану поведінку при оновленні, і React видасть попередження під час розробки.",
-    "interviewTip": "Якщо у ваших даних немає унікальних ID, можна комбінувати поля (наприклад, item.type + item.id), щоб створити унікальний рядок."
+    "interviewTip": "Якщо у ваших даних немає унікальних ID, можна комбінувати поля (наприклад, item.type + item.id), щоб створити унікальний рядок.",
+    "options": [
+      "React will only render the first item.",
+      "The app will crash immediately.",
+      "React will show a warning in the console about duplicate keys.",
+      "The items will be merged into a single <li>."
+    ]
   },
   "rl-05": {
     "prompt": "Де саме слід розміщувати пропс 'key' при рендерингу списку власних компонентів?",
     "explanation": "Ключ завжди має бути на найзовнішньому елементі, який повертає функція map, щоб React міг відстежувати цей елемент у колекції.",
-    "interviewTip": "Якщо ви огортаєте свій компонент у <div> або фрагмент всередині map, ключ має бути саме на цій обгортці."
+    "interviewTip": "Якщо ви огортаєте свій компонент у <div> або фрагмент всередині map, ключ має бути саме на цій обгортці.",
+    "options": [
+      "Inside the <ul> tag.",
+      "On the root element inside the .map() callback.",
+      "Inside the <h1> tag within the UserCard component.",
+      "Keys are only needed for standard HTML tags like <li>."
+    ]
   },
   "rl-06": {
     "prompt": "Які з наведених варіантів є рекомендованими джерелами для значення 'key'?",
     "explanation": "Ключі мають бути стабільними. Випадкові числа або позначки часу змінюються при кожному рендері, що змушує весь список демонтуватися та монтуватися заново, знищуючи продуктивність.",
-    "interviewTip": "Стабільні унікальні ID — це «золотий стандарт» для ключів у React."
+    "interviewTip": "Стабільні унікальні ID — це «золотий стандарт» для ключів у React.",
+    "options": [
+      "IDs from a database (e.g., UUID or primary key).",
+      "The result of Math.random().",
+      "A unique property like a 'slug' or 'username'.",
+      "The current timestamp (Date.now())."
+    ]
   },
   "rl-07": {
     "prompt": "Як відрендерити список, якщо ви не хочете додавати зайвий тег-обгортку на кшталт <div> або <li>?",
     "explanation": "Скорочений синтаксис фрагмента <> не підтримує пропс 'key'. У такому разі ви повинні використовувати повний запис: <React.Fragment key={...}>.",
-    "interviewTip": "Це один із небагатьох випадків, коли повний синтаксис Fragment є обов'язковим."
+    "interviewTip": "Це один із небагатьох випадків, коли повний синтаксис Fragment є обов'язковим.",
+    "options": [
+      "Use the shorthand Fragment syntax <>...</>.",
+      "Use the full <React.Fragment> syntax with a key.",
+      "You must use a <div>; there is no other way.",
+      "Return an array of elements directly."
+    ]
   },
   "rl-08": {
     "prompt": "Яким буде результат наступної логіки рендерингу?",
     "explanation": "React дозволяє змішувати динамічний контент (масиви) зі статичним JSX. Він просто відрендерить їх у тому порядку, в якому вони з'являються в коді.",
-    "interviewTip": "Це корисно для додавання елементів «Створити новий» або «Завантажити ще» в кінець динамічного списку."
+    "interviewTip": "Це корисно для додавання елементів «Створити новий» або «Завантажити ще» в кінець динамічного списку.",
+    "options": [
+      "A list with A, B, and then 'Extra'.",
+      "An error: Cannot mix mapped items with static items.",
+      "Only 'Extra' will be rendered.",
+      "A list with 'Extra' and then A, B."
+    ]
   },
   "rl-09": {
     "prompt": "Що робить React, коли виявляє зміну ключа для компонента (наприклад, ключ 1 став ключем 2)?",
     "explanation": "Зміна ключа вказує React, що ідентичність компонента змінилася. Він знищує старий екземпляр (разом із його локальним станом) і створює новий.",
-    "interviewTip": "Ви можете навмисно змінювати ключ, щоб «скинути» компонент (наприклад, форму) до початкового стану."
+    "interviewTip": "Ви можете навмисно змінювати ключ, щоб «скинути» компонент (наприклад, форму) до початкового стану.",
+    "options": [
+      "It updates the props of the existing component.",
+      "It unmounts the old component and mounts a completely new one.",
+      "It ignores the change to save performance.",
+      "It re-renders only the children of that component."
+    ]
   },
   "rl-10": {
     "prompt": "Чи можливо використовувати об'єкт як значення ключа?",
     "explanation": "Внутрішньо React перетворює ключі на рядки. Використання об'єкта призведе до того, що всі елементи отримають рядок '[object Object]', що зробить їх неунікальними.",
-    "interviewTip": "Завжди обирайте примітивне значення (рядок або число) для вашого ключа."
+    "interviewTip": "Завжди обирайте примітивне значення (рядок або число) для вашого ключа.",
+    "options": [
+      "Yes, React will stringify the object automatically.",
+      "No, keys must be strings or numbers.",
+      "Only if the object has a toString() method.",
+      "Yes, but only in React 18+."
+    ]
   },
   "rl-11": {
     "prompt": "Що станеться, якщо ви взагалі не вкажете ключ під час використання map?",
     "explanation": "React за замовчуванням використає індекси масиву як ключі, але виведе попередження в консоль, щоб сповістити вас про можливі проблеми з продуктивністю та баги.",
-    "interviewTip": "Попередження в консолі часто ігноруються — завжди перевіряйте логи під час розробки."
+    "interviewTip": "Попередження в консолі часто ігноруються — завжди перевіряйте логи під час розробки.",
+    "options": [
+      "The app crashes with a 'KeyMissingError'.",
+      "React renders correctly but shows a warning in the console.",
+      "React uses a random number as a key automatically.",
+      "The browser will hide the list items."
+    ]
   },
   "rl-12": {
     "prompt": "Які з наведених сценаріїв обов'язково потребують унікальних ключів?",
     "explanation": "Сортування та видалення елементів — це операції, де алгоритм порівняння React критично покладається на ключі, щоб уникнути багів зі станом елементів.",
-    "interviewTip": "Якщо користувач може маніпулювати списком, стабільний ключ є обов'язковим."
+    "interviewTip": "Якщо користувач може маніпулювати списком, стабільний ключ є обов'язковим.",
+    "options": [
+      "A list of news articles that can be sorted by date.",
+      "A list of input fields where users can add or remove rows.",
+      "A static navigation menu with 3 links that never change.",
+      "A list of chat messages where new ones are added to the bottom."
+    ]
   },
   "rl-13": {
     "prompt": "Як відрендерити список у зворотному порядку за допомогою .map()?",
     "explanation": "Оскільки .reverse() мутує оригінальний масив, ми спочатку створюємо копію `[...data]`, а потім застосовуємо reverse та map.",
-    "interviewTip": "Завжди тримайте трансформації даних «незмінними» (immutable), щоб уникнути побічних ефектів."
+    "interviewTip": "Завжди тримайте трансформації даних «незмінними» (immutable), щоб уникнути побічних ефектів.",
+    "options": [
+      "The logic above is correct.",
+      "React has a v-for-reverse directive.",
+      "You must use a for loop instead.",
+      "Reverse the DOM elements using CSS."
+    ]
   },
   "rl-14": {
     "prompt": "Який найефективніший спосіб рендерингу дуже довгого списку (наприклад, 10 000 елементів)?",
     "explanation": "Віртуалізація (Windowing) рендерить лише ті елементи, які зараз видно у вікні перегляду, значно зменшуючи кількість DOM-вузлів.",
-    "interviewTip": "Згадайте бібліотеки 'react-window' або 'react-virtualized' для вирішення цього завдання."
+    "interviewTip": "Згадайте бібліотеки 'react-window' або 'react-virtualized' для вирішення цього завдання.",
+    "options": [
+      "Standard .map() function.",
+      "A technique called 'Windowing' or 'Virtualization'.",
+      "Using a while loop for speed.",
+      "React's useList() hook."
+    ]
   },
   "rl-15": {
     "prompt": "Чому в даному фрагменті 'Math.random()' — це поганий вибір для ключа?",
     "explanation": "При кожному рендерингу створюється новий випадковий ключ. React думає, що це абсолютно новий елемент, і створює його з нуля, втрачаючи фокус та стан.",
-    "interviewTip": "Ключ повинен залишатися незмінним для одного й того самого елемента між рендерами."
+    "interviewTip": "Ключ повинен залишатися незмінним для одного й того самого елемента між рендерами.",
+    "options": [
+      "It's too slow to calculate.",
+      "It's not a string.",
+      "It causes the component to recreate on every render, losing focus and state.",
+      "React only allows integers for keys."
+    ]
   },
   "rl-16": {
     "prompt": "Як відфільтрувати список перед рендерингом?",
     "explanation": "Ланцюжок методів (.filter().map()) є стандартним і найбільш читабельним способом обробки умовного рендерингу списків.",
-    "interviewTip": "Для великих списків варто огорнути цю логіку в useMemo, щоб уникнути перерахунків при кожному рендері."
+    "interviewTip": "Для великих списків варто огорнути цю логіку в useMemo, щоб уникнути перерахунків при кожному рендері.",
+    "options": [
+      "The logic above is correct.",
+      "React uses a 'v-if' inside the 'v-for'.",
+      "You cannot filter data inside the return statement.",
+      "Use a separate useEffect to filter."
+    ]
   },
   "rl-17": {
     "prompt": "Якщо елемент списку має власний стан (наприклад, перемикач), що станеться з цим станом, якщо елемент видалити з масиву?",
     "explanation": "Стан прив'язаний до екземпляра компонента в дереві DOM. Коли елемент видаляється з масиву, його компонент демонтується, а його стан знищується.",
-    "interviewTip": "Якщо дані мають зберегтися після видалення зі списку, їх слід зберігати в стані батька або в глобальному сховищі."
+    "interviewTip": "Якщо дані мають зберегтися після видалення зі списку, їх слід зберігати в стані батька або в глобальному сховищі.",
+    "options": [
+      "The state is moved to the next item in the list.",
+      "The state is permanently destroyed when the component unmounts.",
+      "The state is saved in the parent component.",
+      "React throws a 'StateOrphanWarning'."
+    ]
   }
 }

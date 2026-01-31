@@ -2,51 +2,111 @@
   "ra-01": {
     "prompt": "Що таке 'Worklet' у контексті React Native Reanimated?",
     "explanation": "Ворклет (Worklet) — це основа Reanimated. Вони дозволяють коду JavaScript виконуватися синхронно в UI-потоці, обходячи асинхронний міст (bridge) для миттєвого оновлення інтерфейсу.",
-    "interviewTip": "Зауважте, що Reanimated 2+ використовує окрему віртуальну машину JS в UI-потоці для виконання цих ворклетів."
+    "interviewTip": "Зауважте, що Reanimated 2+ використовує окрему віртуальну машину JS в UI-потоці для виконання цих ворклетів.",
+    "options": [
+      "A background task for fetching API data.",
+      "A small JavaScript function marked with the 'worklet' directive that runs on the UI thread.",
+      "A UI component that only works on Android.",
+      "A debugging tool for measuring frame rates."
+    ]
   },
   "ra-02": {
     "prompt": "Який хук використовується для створення мутабельного значення, яким можна ділитися між JS-потоком та UI-потоком?",
     "explanation": "useSharedValue — це версія стану (state) від Reanimated. Коли ви змінюєте його властивість '.value', це автоматично запускає анімації або оновлює об'єкти стилів в UI-потоці.",
-    "interviewTip": "На відміну від useState, зміна shared value не викликає повторного рендерингу компонента React у головному JS-потоці."
+    "interviewTip": "На відміну від useState, зміна shared value не викликає повторного рендерингу компонента React у головному JS-потоці.",
+    "options": [
+      "useRef",
+      "useState",
+      "useSharedValue",
+      "useDerivedValue"
+    ]
   },
   "ra-03": {
     "prompt": "Проаналізуйте код. Який правильний спосіб застосувати shared value до стилю компонента?",
     "explanation": "useAnimatedStyle повертає об'єкт стилю, який «слухає» зміну shared values. Коли значення змінюється, UI-потік оновлює вигляд без затримок на пересилання даних через міст.",
-    "interviewTip": "Завжди перевіряйте, чи є компонент анімованою версією (наприклад, Animated.View) саме з бібліотеки Reanimated."
+    "interviewTip": "Завжди перевіряйте, чи є компонент анімованою версією (наприклад, Animated.View) саме з бібліотеки Reanimated.",
+    "options": [
+      "useCallback",
+      "useMemo",
+      "useAnimatedStyle",
+      "useUIStyle"
+    ]
   },
   "ra-04": {
     "prompt": "Як плавно анімувати shared value до нової позиції, використовуючи фізичну модель пружини (spring)?",
     "explanation": "withSpring — це функція-обгортка, яка описує перехід до нового значення. Вона використовує фізичні параметри (жорсткість, демпфування) замість простого часу.",
-    "interviewTip": "На відміну від стандартного Animated API, Reanimated дозволяє встановлювати нове значення напряму: `val.value = withSpring(target)`."
+    "interviewTip": "На відміну від стандартного Animated API, Reanimated дозволяє встановлювати нове значення напряму: `val.value = withSpring(target)`.",
+    "options": [
+      "withSpring",
+      "withTiming",
+      "withPhysics",
+      "withTransition"
+    ]
   },
   "ra-05": {
     "prompt": "Яке призначення 'useDerivedValue'?",
     "explanation": "useDerivedValue створює shared value тільки для читання, яке автоматично оновлюється щоразу, коли змінюються залежності всередині його ворклета.",
-    "interviewTip": "Сприймайте це як 'useMemo' для UI-потоку."
+    "interviewTip": "Сприймайте це як 'useMemo' для UI-потоку.",
+    "options": [
+      "To calculate a new shared value based on other shared values (e.g., rotation based on scroll position).",
+      "To convert a shared value into a React state.",
+      "To delay an animation.",
+      "To fetch data from a server during an animation."
+    ]
   },
   "ra-06": {
     "prompt": "Які з цих функцій були представлені в Reanimated 3?",
     "explanation": "Reanimated 3 зосередилася на повній сумісності з Новою архітектурою (New Architecture) та надійних переходах спільних елементів (Shared Element Transitions) між екранами.",
-    "interviewTip": "Shared Element Transitions роблять додатки візуально дорогими, наближаючи їх до рівня App Store або Instagram."
+    "interviewTip": "Shared Element Transitions роблять додатки візуально дорогими, наближаючи їх до рівня App Store або Instagram.",
+    "options": [
+      "Shared Element Transitions (animating a component from one screen to another).",
+      "Support for the Bridge architecture.",
+      "Layout Animations (Entry/Exit/Layout transitions).",
+      "Improved support for the New Architecture (Fabric)."
+    ]
   },
   "ra-07": {
     "prompt": "Як запустити код JavaScript у головному JS-потоці після того, як анімація завершилася в UI-потоці?",
     "explanation": "Оскільки колбек завершення працює в UI-потоці, ви повинні використовувати runOnJS, щоб «викликати назад» JS-потік для таких речей, як повідомлення або оновлення глобального стану.",
-    "interviewTip": "Якщо виклик JS-функції всередині ворклета відбудеться без runOnJS, це призведе до аварійного завершення програми (crash)."
+    "interviewTip": "Якщо виклик JS-функції всередині ворклета відбудеться без runOnJS, це призведе до аварійного завершення програми (crash).",
+    "options": [
+      "runOnJS",
+      "dispatchToJS",
+      "callMainThread",
+      "useMainThread"
+    ]
   },
   "ra-08": {
     "prompt": "Що таке 'Layout Animations' (анімації макета) у Reanimated?",
     "explanation": "Анімації макета — це простий спосіб анімувати появу/зникнення (mounting/unmounting) компонентів та зміни їх розташування без ручного керування складними shared values.",
-    "interviewTip": "Використовуйте `Layout.springify()`, щоб зміщення елементів у списку виглядало пружним та природним."
+    "interviewTip": "Використовуйте `Layout.springify()`, щоб зміщення елементів у списку виглядало пружним та природним.",
+    "options": [
+      "A way to manually calculate the size of a View.",
+      "Declarative animations that trigger automatically when a component enters the DOM, leaves, or changes position.",
+      "A method to group components into a grid.",
+      "Animations that only work on the Web."
+    ]
   },
   "ra-09": {
     "prompt": "Яка функція 'interpolateColor' у Reanimated?",
     "explanation": "Це аналог звичайної інтерполяції, але спеціально оптимізований для UI-потоку для плавної зміни кольорів.",
-    "interviewTip": "Це ідеально підходить для зміни кольору заголовка з білого на прозорий під час скролу."
+    "interviewTip": "Це ідеально підходить для зміни кольору заголовка з білого на прозорий під час скролу.",
+    "options": [
+      "To change the contrast of an image.",
+      "To smoothly transition between two or more hex/rgb color strings based on a shared value.",
+      "To generate a random color.",
+      "To check if a color is accessible."
+    ]
   },
   "ra-10": {
     "prompt": "Чому 'useAnimatedGestureHandler' (v2) або використання жестів із Reanimated (v3) краще за стандартні події дотику?",
     "explanation": "Поєднуючи Gesture Handler із Reanimated, дані про рух пальця (translation) можуть оновлювати shared value і переміщувати View повністю в UI-потоці.",
-    "interviewTip": "Це ключ до створення плавних взаємодій (60/120 FPS), таких як «змахнути, щоб видалити» або закриття вікна тяжінням вниз."
+    "interviewTip": "Це ключ до створення плавних взаємодій (60/120 FPS), таких як «змахнути, щоб видалити» або закриття вікна тяжінням вниз.",
+    "options": [
+      "It supports more fingers.",
+      "It allows the gesture data to drive animations directly on the UI thread with zero lag.",
+      "It automatically prevents all scrolling.",
+      "It is only available on iOS."
+    ]
   }
 }

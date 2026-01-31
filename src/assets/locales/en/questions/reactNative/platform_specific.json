@@ -2,51 +2,111 @@
   "ps-01": {
     "prompt": "Which built-in module is used to detect the operating system at runtime within your JavaScript code?",
     "explanation": "The 'Platform' module provides a 'Platform.OS' property which returns either 'ios' or 'android'.",
-    "interviewTip": "You can also use 'Platform.Version' to check the specific API level of the device."
+    "interviewTip": "You can also use 'Platform.Version' to check the specific API level of the device.",
+    "options": [
+      "Device",
+      "OS",
+      "Platform",
+      "System"
+    ]
   },
   "ps-02": {
     "prompt": "How do you apply different styles for iOS and Android using the Platform.select method?",
     "explanation": "Platform.select takes an object where keys are platforms and returns the value for the platform the app is currently running on.",
-    "interviewTip": "This is much cleaner than using multiple ternary operators (Platform.OS === 'ios' ? ... : ...)."
+    "interviewTip": "This is much cleaner than using multiple ternary operators (Platform.OS === 'ios' ? ... : ...).",
+    "options": [
+      "paddingTop",
+      "marginTop",
+      "safeArea",
+      "topOffset"
+    ]
   },
   "ps-03": {
     "prompt": "What is the naming convention for creating separate files for iOS and Android that React Native will automatically pick up?",
     "explanation": "React Native's packager (Metro) detects the platform-specific extension and imports the correct file automatically when you 'import Header from \"./Header\"'.",
-    "interviewTip": "This is the best pattern for complex components that require completely different native implementations."
+    "interviewTip": "This is the best pattern for complex components that require completely different native implementations.",
+    "options": [
+      "Header.ios.js and Header.android.js",
+      "ios/Header.js and android/Header.js",
+      "Header(ios).js and Header(android).js",
+      "Header_ios.js and Header_android.js"
+    ]
   },
   "ps-04": {
     "prompt": "Which of these are valid ways to handle platform-specific differences in React Native?",
     "explanation": "React Native provides OS detection, the select utility, and file-level splitting. There is no built-in <NativeTarget> component.",
-    "interviewTip": "Mention that file extensions are best for large logic differences, while Platform.select is best for minor style tweaks."
+    "interviewTip": "Mention that file extensions are best for large logic differences, while Platform.select is best for minor style tweaks.",
+    "options": [
+      "Using the Platform.OS conditional.",
+      "Using the Platform.select() method.",
+      "Using platform-specific file extensions (.ios.js / .android.js).",
+      "Using the <NativeTarget> wrapper component."
+    ]
   },
   "ps-05": {
     "prompt": "How do you check if the current Android device has a specific API level (e.g., API 30)?",
     "explanation": "For Android, Platform.Version returns the integer API level (e.g., 30, 31). For iOS, it returns a string of the system version (e.g., '17.2').",
-    "interviewTip": "Always remember to check the OS first, because '30' (number) and '17.2' (string) are compared differently in JS."
+    "interviewTip": "Always remember to check the OS first, because '30' (number) and '17.2' (string) are compared differently in JS.",
+    "options": [
+      "This is the correct way.",
+      "Use Platform.API_LEVEL.",
+      "Use DeviceInfo.getApiLevel().",
+      "Android API levels are not accessible via Platform."
+    ]
   },
   "ps-06": {
     "prompt": "What does the 'Platform.isPad' property return?",
     "explanation": "Platform.isPad is a boolean specifically for iOS to distinguish between iPhone and iPad layouts.",
-    "interviewTip": "For a cross-platform tablet check, you usually need to check the screen width using Dimensions."
+    "interviewTip": "For a cross-platform tablet check, you usually need to check the screen width using Dimensions.",
+    "options": [
+      "True if the app is running on a tablet (Android or iOS).",
+      "True if the app is running on an Apple iPad.",
+      "A string identifying the tablet manufacturer.",
+      "True if the device has a stylus connected."
+    ]
   },
   "ps-07": {
     "prompt": "Which property in the Platform module is used to check if the app is running in a TV environment (like Apple TV or Android TV)?",
     "explanation": "Platform.isTV is a boolean that helps you adjust navigation logic for focus-based (remote control) interfaces.",
-    "interviewTip": "TV apps require 'focusable' components, which is a different paradigm than touch."
+    "interviewTip": "TV apps require 'focusable' components, which is a different paradigm than touch.",
+    "options": [
+      "Platform.isTV",
+      "Platform.TV_MODE",
+      "Platform.isTVOS",
+      "Platform.uiMode === 'tv'"
+    ]
   },
   "ps-08": {
     "prompt": "Analyze the code. What will the 'elevation' property do on an iOS device?",
     "explanation": "Android uses 'elevation' for shadows (Material Design), while iOS uses 'shadowColor', 'shadowOffset', 'shadowOpacity', and 'shadowRadius'.",
-    "interviewTip": "To get consistent shadows on both, you must define both sets of properties or use a library like 'react-native-shadow-2'."
+    "interviewTip": "To get consistent shadows on both, you must define both sets of properties or use a library like 'react-native-shadow-2'.",
+    "options": [
+      "It will create a shadow on iOS.",
+      "It will be ignored because 'elevation' is an Android-only property.",
+      "It will cause an error on iOS.",
+      "It will change the z-index of the card."
+    ]
   },
   "ps-09": {
     "prompt": "How do you define a component that only renders on the web when using 'React Native for Web'?",
     "explanation": "Metro and Webpack can be configured to recognize '.web.js' extensions for web-specific implementations.",
-    "interviewTip": "This allows you to use standard <div> and <a> tags for the web version while using View/Text for mobile."
+    "interviewTip": "This allows you to use standard <div> and <a> tags for the web version while using View/Text for mobile.",
+    "options": [
+      "MyComponent.web.js",
+      "MyComponent.browser.js",
+      "MyComponent.html.js",
+      "MyComponent.js and check Platform.OS === 'web'"
+    ]
   },
   "ps-10": {
     "prompt": "What is the purpose of 'Platform.select' for default values?",
     "explanation": "The 'default' key acts as a fallback for any platform not explicitly listed in the object.",
-    "interviewTip": "This is great for maintaining future compatibility with platforms like 'macos' or 'windows'."
+    "interviewTip": "This is great for maintaining future compatibility with platforms like 'macos' or 'windows'.",
+    "options": [
+      "It selects 'Hello World' if the OS is not iOS or Android (e.g., Web/Windows).",
+      "It causes an error if a platform is missing.",
+      "It randomly picks one of the options.",
+      "The 'default' key is not supported."
+    ]
   }
 }

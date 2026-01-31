@@ -2,126 +2,276 @@
   "js-err-01": {
     "prompt": "Що таке об'єкт Error у JavaScript?",
     "explanation": "Об'єкти Error містять повідомлення про помилку та стек викликів (stack trace).",
-    "interviewTip": "Використовується для обробки виняткових ситуацій."
+    "interviewTip": "Використовується для обробки виняткових ситуацій.",
+    "options": [
+      "An object representing a runtime error",
+      "A syntax construct",
+      "A promise rejection",
+      "A console message"
+    ]
   },
   "js-err-02": {
     "prompt": "Яка помилка виникає на етапі парсингу коду?",
     "explanation": "SyntaxError виникає ще до початку виконання коду.",
-    "interviewTip": "У такому разі код взагалі не запуститься."
+    "interviewTip": "У такому разі код взагалі не запуститься.",
+    "options": [
+      "SyntaxError",
+      "ReferenceError",
+      "TypeError",
+      "RangeError"
+    ]
   },
   "js-err-03": {
     "prompt": "Яка помилка буде викинута?",
     "explanation": "Звернення до неоголошеної змінної викликає ReferenceError.",
-    "interviewTip": "Це відрізняється від змінної зі значенням undefined."
+    "interviewTip": "Це відрізняється від змінної зі значенням undefined.",
+    "options": [
+      "ReferenceError",
+      "TypeError",
+      "SyntaxError",
+      "undefined"
+    ]
   },
   "js-err-04": {
     "prompt": "Коли виникає TypeError?",
     "explanation": "При спробі викликати те, що не є функцією, або звернутися до властивості null/undefined.",
-    "interviewTip": "Дуже поширена помилка під час виконання (runtime)."
+    "interviewTip": "Дуже поширена помилка під час виконання (runtime).",
+    "options": [
+      "Invalid operation on a value",
+      "Invalid syntax",
+      "Out of range value",
+      "Missing variable"
+    ]
   },
   "js-err-05": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Некоректний JSON викликає SyntaxError при спробі парсингу.",
-    "interviewTip": "Завжди валідуйте або обробляйте JSON.parse."
+    "interviewTip": "Завжди валідуйте або обробляйте JSON.parse.",
+    "options": [
+      "SyntaxError",
+      "TypeError",
+      "ReferenceError",
+      "Error"
+    ]
   },
   "js-err-06": {
     "prompt": "Що саме перехоплює try/catch?",
     "explanation": "Лише синхронні помилки під час виконання.",
-    "interviewTip": "Для асинхронного коду потрібен await або .catch()."
+    "interviewTip": "Для асинхронного коду потрібен await або .catch().",
+    "options": [
+      "Runtime errors",
+      "Syntax errors",
+      "Async errors automatically",
+      "Compilation errors"
+    ]
   },
   "js-err-07": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Асинхронні помилки всередині звичайного try/catch (без await) не перехоплюються.",
-    "interviewTip": "Класична пастка асинхронного програмування."
+    "interviewTip": "Класична пастка асинхронного програмування.",
+    "options": [
+      "Nothing",
+      "caught",
+      "Error",
+      "Unhandled"
+    ]
   },
   "js-err-08": {
     "prompt": "Як перехоплювати асинхронні помилки з async/await?",
     "explanation": "Коли ви використовуєте await всередині try/catch, помилки стають «синхронними» для обробника.",
-    "interviewTip": "Це рекомендований патерн розробки."
+    "interviewTip": "Це рекомендований патерн розробки.",
+    "options": [
+      "try/catch",
+      ".then only",
+      "window.onerror",
+      "finally"
+    ]
   },
   "js-err-09": {
     "prompt": "Для чого використовується блок finally?",
     "explanation": "Він виконується завжди, незалежно від того, чи була помилка.",
-    "interviewTip": "Підходить для очищення ресурсів або закриття з'єднань."
+    "interviewTip": "Підходить для очищення ресурсів або закриття з'єднань.",
+    "options": [
+      "Cleanup logic",
+      "Error handling",
+      "Returning values",
+      "Catching errors"
+    ]
   },
   "js-err-10": {
     "prompt": "Що робить оператор `throw`?",
     "explanation": "Він зупиняє нормальне виконання програми та генерує виняток.",
-    "interviewTip": "Викинути (throw) можна будь-яке значення, не лише об'єкт Error."
+    "interviewTip": "Викинути (throw) можна будь-яке значення, не лише об'єкт Error.",
+    "options": [
+      "Throws an exception",
+      "Logs error",
+      "Stops program forever",
+      "Returns value"
+    ]
   },
   "js-err-11": {
     "prompt": "Що найкраще використовувати як аргумент для throw?",
     "explanation": "Краще викидати об'єкти `new Error()`, бо вони містять стек викликів.",
-    "interviewTip": "Це вважається найкращою практикою (best practice)."
+    "interviewTip": "Це вважається найкращою практикою (best practice).",
+    "options": [
+      "Error objects",
+      "Strings",
+      "Numbers",
+      "Booleans"
+    ]
   },
   "js-err-12": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Властивість `message` об'єкта Error містить текст помилки.",
-    "interviewTip": "Використовуйте корисні поля об'єкта для логування."
+    "interviewTip": "Використовуйте корисні поля об'єкта для логування.",
+    "options": [
+      "fail",
+      "Error",
+      "undefined",
+      "null"
+    ]
   },
   "js-err-13": {
     "prompt": "Що таке ReferenceError?",
     "explanation": "Помилка, яка виникає, коли в поточному контексті не знайдено змінну.",
-    "interviewTip": "Часте джерело багів через помилки в іменах або області видимості."
+    "interviewTip": "Часте джерело багів через помилки в іменах або області видимості.",
+    "options": [
+      "Accessing undeclared variable",
+      "Calling invalid function",
+      "Invalid syntax",
+      "Out of memory"
+    ]
   },
   "js-err-14": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Спроба викликати метод у null призведе до TypeError.",
-    "interviewTip": "TypeError — найпоширеніша помилка при роботі з даними."
+    "interviewTip": "TypeError — найпоширеніша помилка при роботі з даними.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "Error"
+    ]
   },
   "js-err-15": {
     "prompt": "Як створити власну помилку (custom error)?",
     "explanation": "Шляхом створення класу, що наслідує (extends) базовий клас Error.",
-    "interviewTip": "Не забувайте зберігати назву та стек викликів."
+    "interviewTip": "Не забувайте зберігати назву та стек викликів.",
+    "options": [
+      "class MyError extends Error {}",
+      "throw {}",
+      "throw new Object()",
+      "Error.create()"
+    ]
   },
   "js-err-16": {
     "prompt": "Що містить Error.stack?",
     "explanation": "Список викликів функцій, що призвели до виникнення помилки.",
-    "interviewTip": "Це поле не стандартизоване, але підтримується всіма сучасними браузерами."
+    "interviewTip": "Це поле не стандартизоване, але підтримується всіма сучасними браузерами.",
+    "options": [
+      "Call stack trace",
+      "Error message",
+      "Error type",
+      "Execution time"
+    ]
   },
   "js-err-17": {
     "prompt": "Що таке необроблене відхилення проміса (unhandled promise rejection)?",
     "explanation": "Проміс, який було відхилено (reject), але для якого не було викликано .catch().",
-    "interviewTip": "У Node.js та браузерах це може призвести до попереджень або завершення роботи."
+    "interviewTip": "У Node.js та браузерах це може призвести до попереджень або завершення роботи.",
+    "options": [
+      "Promise rejected without catch",
+      "Syntax error",
+      "Async timeout",
+      "Cancelled promise"
+    ]
   },
   "js-err-18": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Значення, передане в reject(), потрапляє в перший обробник catch.",
-    "interviewTip": "Проміс може бути відхилений з будь-яким значенням."
+    "interviewTip": "Проміс може бути відхилений з будь-яким значенням.",
+    "options": [
+      "err",
+      "Error",
+      "undefined",
+      "null"
+    ]
   },
   "js-err-19": {
     "prompt": "Що повертає метод `catch`?",
     "explanation": "Він повертає новий проміс, що дозволяє будувати ланцюжки.",
-    "interviewTip": "Після catch ланцюжок промісів може продовжуватися."
+    "interviewTip": "Після catch ланцюжок промісів може продовжуватися.",
+    "options": [
+      "A new Promise",
+      "The same Promise",
+      "Undefined",
+      "Error"
+    ]
   },
   "js-err-20": {
     "prompt": "Що станеться, якщо викинути помилку всередині catch?",
     "explanation": "Помилка передасться далі в наступний обробник catch у ланцюжку.",
-    "interviewTip": "Це патерн «перевикидання» (re-throw) для фільтрації помилок."
+    "interviewTip": "Це патерн «перевикидання» (re-throw) для фільтрації помилок.",
+    "options": [
+      "Promise rejects again",
+      "Error is swallowed",
+      "Execution continues",
+      "Ignored"
+    ]
   },
   "js-err-21": {
     "prompt": "Що таке RangeError?",
     "explanation": "Виникає, коли значення не входить у допустимий діапазон (наприклад, некоректна довжина масиву).",
-    "interviewTip": "Зустрічається рідше, ніж TypeError чи ReferenceError."
+    "interviewTip": "Зустрічається рідше, ніж TypeError чи ReferenceError.",
+    "options": [
+      "Value out of allowed range",
+      "Wrong variable",
+      "Invalid syntax",
+      "Async error"
+    ]
   },
   "js-err-22": {
     "prompt": "Чи може try/catch перехопити помилки JSON.parse?",
     "explanation": "Так, оскільки JSON.parse виконується синхронно.",
-    "interviewTip": "Завжди огортайте логіку парсингу в блоки обробки винятків."
+    "interviewTip": "Завжди огортайте логіку парсингу в блоки обробки винятків.",
+    "options": [
+      "Yes",
+      "No",
+      "Only async",
+      "Only sync"
+    ]
   },
   "js-err-23": {
     "prompt": "Яка найкраща практика обробки помилок?",
     "explanation": "Помилки мають бути явними та надавати достатньо контексту для виправлення.",
-    "interviewTip": "Ознака професійного «production-ready» підходу."
+    "interviewTip": "Ознака професійного «production-ready» підходу.",
+    "options": [
+      "Fail fast and log clearly",
+      "Ignore errors",
+      "Return null",
+      "Use console.log only"
+    ]
   },
   "js-err-24": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Будь-яке значення, навіть число чи рядок, може бути викинуте через throw.",
-    "interviewTip": "Але ніколи не робіть так у реальних проектах."
+    "interviewTip": "Але ніколи не робіть так у реальних проектах.",
+    "options": [
+      "string",
+      "object",
+      "error",
+      "undefined"
+    ]
   },
   "js-err-25": {
     "prompt": "Чому краще викидати Error, а не звичайні рядки?",
     "explanation": "Об'єкти Error збирають метадані (стек викликів, тип), що критично для відлагодження.",
-    "interviewTip": "Це «золота» відповідь на співбесіді."
+    "interviewTip": "Це «золота» відповідь на співбесіді.",
+    "options": [
+      "Stack trace & consistency",
+      "Shorter syntax",
+      "Performance",
+      "Required by JS"
+    ]
   }
 }

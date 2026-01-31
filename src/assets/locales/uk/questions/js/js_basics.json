@@ -2,126 +2,276 @@
   "js-basics-01": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "`typeof null` повертає `object` через історичну помилку в реалізації мови.",
-    "interviewTip": "Згадайте про зворотну сумісність та правильну перевірку на null."
+    "interviewTip": "Згадайте про зворотну сумісність та правильну перевірку на null.",
+    "options": [
+      "null",
+      "object",
+      "undefined",
+      "number"
+    ]
   },
   "js-basics-02": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Неініціалізовані змінні мають значення `undefined`.",
-    "interviewTip": "Поясніть різницю між `undefined` та `not defined`."
+    "interviewTip": "Поясніть різницю між `undefined` та `not defined`.",
+    "options": [
+      "null",
+      "undefined",
+      "ReferenceError",
+      "0"
+    ]
   },
   "js-basics-03": {
     "prompt": "Яким буде результат?",
     "explanation": "Якщо в операції бере участь рядок, оператор `+` виконує конкатенацію (склеювання).",
-    "interviewTip": "Поясніть обчислення зліва направо."
+    "interviewTip": "Поясніть обчислення зліва направо.",
+    "options": [
+      "6",
+      "123",
+      "15",
+      "NaN"
+    ]
   },
   "js-basics-04": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Оператор `-` завжди намагається привести значення до числа.",
-    "interviewTip": "Порівняйте поведінку `+` з іншими арифметичними операторами."
+    "interviewTip": "Порівняйте поведінку `+` з іншими арифметичними операторами.",
+    "options": [
+      "4",
+      "51",
+      "NaN",
+      "TypeError"
+    ]
   },
   "js-basics-05": {
     "prompt": "Яке з цих значень є хибним (falsy)?",
     "explanation": "`0` — хибне значення; об'єкти та непорожні рядки — істинні (truthy).",
-    "interviewTip": "Перелічіть усі хибні значення (falsy values)."
+    "interviewTip": "Перелічіть усі хибні значення (falsy values).",
+    "options": [
+      "'0'",
+      "[]",
+      "0",
+      "{}"
+    ]
   },
   "js-basics-06": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Усі об'єкти в JS (включаючи масиви) є істинними (truthy).",
-    "interviewTip": "Нагадайте, що масиви — це об'єкти."
+    "interviewTip": "Нагадайте, що масиви — це об'єкти.",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-07": {
     "prompt": "Яке твердження є правильним?",
     "explanation": "`const` забороняє перепризначення посилання, але не забороняє мутацію (зміну вмісту) об'єкта.",
-    "interviewTip": "Уточніть різницю між перепризначенням (reassignment) та мутацією."
+    "interviewTip": "Уточніть різницю між перепризначенням (reassignment) та мутацією.",
+    "options": [
+      "`var` is function-scoped",
+      "`let` is block-scoped",
+      "`const` prevents reassignment",
+      "`const` makes objects immutable"
+    ]
   },
   "js-basics-08": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Несуворе порівняння (==) запускає складний процес приведення типів.",
-    "interviewTip": "Рекомендуйте уникати `==` на користь `===`."
+    "interviewTip": "Рекомендуйте уникати `==` на користь `===`.",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-09": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Порожній рядок при порівнянні з числом перетворюється на 0.",
-    "interviewTip": "Поясніть правила приведення типів до чисел."
+    "interviewTip": "Поясніть правила приведення типів до чисел.",
+    "options": [
+      "0",
+      "NaN",
+      "undefined",
+      "TypeError"
+    ]
   },
   "js-basics-10": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "`NaN` (Not a Number) має тип `number`.",
-    "interviewTip": "Згадайте про метод `Number.isNaN`."
+    "interviewTip": "Згадайте про метод `Number.isNaN`.",
+    "options": [
+      "number",
+      "NaN",
+      "undefined",
+      "object"
+    ]
   },
   "js-basics-11": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "При несуворому порівнянні `null` та `undefined` дорівнюють лише одне одному.",
-    "interviewTip": "Поясніть це як особливий випадок для оператора `==`."
+    "interviewTip": "Поясніть це як особливий випадок для оператора `==`.",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-12": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Об'єкти порівнюються за посиланням, а не за вмістом.",
-    "interviewTip": "Наголосіть на важливості посилальної рівності (reference equality)."
+    "interviewTip": "Наголосіть на важливості посилальної рівності (reference equality).",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-13": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Будь-який непорожній рядок перетворюється на true.",
-    "interviewTip": "Поясніть роботу подвійного заперечення (!!)."
+    "interviewTip": "Поясніть роботу подвійного заперечення (!!).",
+    "options": [
+      "true",
+      "false",
+      "NaN",
+      "undefined"
+    ]
   },
   "js-basics-14": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "`undefined` — це окремий примітивний тип даних.",
-    "interviewTip": "Порівняйте його з типом `null`."
+    "interviewTip": "Порівняйте його з типом `null`.",
+    "options": [
+      "undefined",
+      "null",
+      "object",
+      "number"
+    ]
   },
   "js-basics-15": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "У звичайному порівнянні JS вважає `0` та `-0` однаковими.",
-    "interviewTip": "Згадайте, що `Object.is` бачить різницю."
+    "interviewTip": "Згадайте, що `Object.is` бачить різницю.",
+    "options": [
+      "true",
+      "false",
+      "NaN",
+      "TypeError"
+    ]
   },
   "js-basics-16": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "`Object.is` вважає `0` та `-0` різними значеннями.",
-    "interviewTip": "Порівняйте `===` та `Object.is`."
+    "interviewTip": "Порівняйте `===` та `Object.is`.",
+    "options": [
+      "true",
+      "false",
+      "NaN",
+      "TypeError"
+    ]
   },
   "js-basics-17": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Стрілкові функції все одно мають тип `function`.",
-    "interviewTip": "Стрілка — це синтаксис, а не новий тип даних."
+    "interviewTip": "Стрілка — це синтаксис, а не новий тип даних.",
+    "options": [
+      "function",
+      "object",
+      "undefined",
+      "arrow"
+    ]
   },
   "js-basics-18": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Глобальна функція `isNaN` спочатку намагається привести значення до числа.",
-    "interviewTip": "Рекомендуйте використовувати `Number.isNaN`."
+    "interviewTip": "Рекомендуйте використовувати `Number.isNaN`.",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-19": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "`Number.isNaN` не виконує приведення типів і перевіряє значення як є.",
-    "interviewTip": "Поясніть перевагу суворої перевірки на NaN."
+    "interviewTip": "Поясніть перевагу суворої перевірки на NaN.",
+    "options": [
+      "true",
+      "false",
+      "TypeError",
+      "undefined"
+    ]
   },
   "js-basics-20": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Класи в JS — це лише «синтаксичний цукор» над функціями.",
-    "interviewTip": "Поясніть концепцію прототипного наслідування під капотом."
+    "interviewTip": "Поясніть концепцію прототипного наслідування під капотом.",
+    "options": [
+      "function",
+      "class",
+      "object",
+      "undefined"
+    ]
   },
   "js-basics-21": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Унарний плюс (+) — це найшвидший спосіб перетворити рядок на число.",
-    "interviewTip": "Згадайте про унарні оператори."
+    "interviewTip": "Згадайте про унарні оператори.",
+    "options": [
+      "0",
+      "NaN",
+      "undefined",
+      "TypeError"
+    ]
   },
   "js-basics-22": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "При перетворенні на рядок порожній масив стає порожнім рядком.",
-    "interviewTip": "Поясніть, як працює метод `toString` у масивів."
+    "interviewTip": "Поясніть, як працює метод `toString` у масивів.",
+    "options": [
+      "''",
+      "'[]'",
+      "0",
+      "NaN"
+    ]
   },
   "js-basics-23": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Об'єкт перетворюється на рядок `[object Object]`, а потім склеюється.",
-    "interviewTip": "Контекст має значення (наприклад, коли `{}` сприймається як блок коду)."
+    "interviewTip": "Контекст має значення (наприклад, коли `{}` сприймається як блок коду).",
+    "options": [
+      "'[object Object]'",
+      "0",
+      "NaN",
+      "TypeError"
+    ]
   },
   "js-basics-24": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "`Infinity` — це числове значення (тип number).",
-    "interviewTip": "Згадайте стандарт IEEE 754."
+    "interviewTip": "Згадайте стандарт IEEE 754.",
+    "options": [
+      "number",
+      "infinity",
+      "object",
+      "undefined"
+    ]
   },
   "js-basics-25": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Неможливість числового перетворення при арифметичних операціях дає `NaN`.",
-    "interviewTip": "Поясніть арифметичне приведення типів."
+    "interviewTip": "Поясніть арифметичне приведення типів.",
+    "options": [
+      "NaN",
+      "Infinity",
+      "0",
+      "TypeError"
+    ]
   }
 }

@@ -2,51 +2,111 @@
   "hf-01": {
     "prompt": "Який обов'язковий перший крок перед доступом до будь-якої апаратної функції, як-от камери чи геолокації, у продакшн-додатку?",
     "explanation": "Сучасні ОС (iOS та Android) вимагають, щоб додатки явно запитували дозвіл у користувача. Спроба використати сенсор без дозволу призведе до аварійного завершення (crash) або ігнорування запиту.",
-    "interviewTip": "Розрізняйте дозволи «Запитати один раз» та «Дозволяти завжди», особливо для геолокації."
+    "interviewTip": "Розрізняйте дозволи «Запитати один раз» та «Дозволяти завжди», особливо для геолокації.",
+    "options": [
+      "Import the 'Hardware' module.",
+      "Request and verify the user's permission at runtime.",
+      "Turn on the sensor in the device settings manually.",
+      "Check if the device has enough battery."
+    ]
   },
   "hf-02": {
     "prompt": "Яка бібліотека в Expo є стандартом для доступу до камери пристрою?",
     "explanation": "Бібліотека expo-camera надає високорівневий компонент, який керує видошукачем, зйомкою фото та записом відео.",
-    "interviewTip": "Зауважте, що для просунутих потреб (як-от обробка кадрів для ШІ) у CLI-проектах часто використовують 'react-native-vision-camera'."
+    "interviewTip": "Зауважте, що для просунутих потреб (як-от обробка кадрів для ШІ) у CLI-проектах часто використовують 'react-native-vision-camera'.",
+    "options": [
+      "expo-video",
+      "expo-camera",
+      "expo-media-capture",
+      "react-native-vision-camera"
+    ]
   },
   "hf-03": {
     "prompt": "Як ви обробляєте різницю між дозволами на фонову (Background) та активну (Foreground) геолокацію на Android?",
     "explanation": "Для захисту приватності Android 10+ вимагає, щоб користувачі спеціально обирали «Дозволяти завжди» для фонового доступу.",
-    "interviewTip": "Завжди дотримуйтесь «Принципу найменших привілеїв» — запитуйте фоновий доступ лише якщо це критично важливо для основної функції додатка."
+    "interviewTip": "Завжди дотримуйтесь «Принципу найменших привілеїв» — запитуйте фоновий доступ лише якщо це критично важливо для основної функції додатка.",
+    "options": [
+      "They are the same permission.",
+      "Foreground allows tracking while the app is open; Background requires an extra, separate permission and strict Google Play review.",
+      "Background location is only available on iOS.",
+      "You only need to set a flag in the JavaScript code."
+    ]
   },
   "hf-04": {
     "prompt": "Яка бібліотека використовується для впровадження FaceID або відбитка пальця в React Native?",
     "explanation": "expo-local-authentication (та react-native-local-auth для CLI) надає уніфікований API для виклику нативного вікна біометричної автентифікації.",
-    "interviewTip": "Завжди перевіряйте 'hasHardwareAsync()' та 'isEnrolledAsync()' перед тим, як показувати кнопку «Увійти за допомогою FaceID»."
+    "interviewTip": "Завжди перевіряйте 'hasHardwareAsync()' та 'isEnrolledAsync()' перед тим, як показувати кнопку «Увійти за допомогою FaceID».",
+    "options": [
+      "react-native-fingerprint",
+      "expo-local-authentication",
+      "react-native-biometrics-unlock",
+      "expo-face-id"
+    ]
   },
   "hf-05": {
     "prompt": "Проаналізуйте код. Що станеться, якщо користувач відхилить запит на дозвіл?",
     "explanation": "Щоб запобігти спаму запитами, iOS показує системний діалог лише один раз. Якщо статус 'denied' (відхилено), ви повинні програмно перенаправити користувача в налаштування за допомогою 'Linking.openSettings()'.",
-    "interviewTip": "Це критична деталь UX для додатків, які покладаються на апаратне забезпечення."
+    "interviewTip": "Це критична деталь UX для додатків, які покладаються на апаратне забезпечення.",
+    "options": [
+      "The app will automatically ask again the next time this code runs.",
+      "On iOS, the system prompt will only appear once; after that, you must guide the user to the device Settings app.",
+      "The app will crash.",
+      "The alert will be blocked by the system."
+    ]
   },
   "hf-06": {
     "prompt": "Що таке 'Geofencing' (Геозонування)?",
     "explanation": "Геозонування дозволяє ОС сповіщати додаток, коли користувач перетинає межі певного радіуса координат, навіть якщо додаток не запущений.",
-    "interviewTip": "Це дуже енергоефективно для акумулятора порівняно з постійним опитуванням місцезнаходження користувача."
+    "interviewTip": "Це дуже енергоефективно для акумулятора порівняно з постійним опитуванням місцезнаходження користувача.",
+    "options": [
+      "A way to encrypt GPS data.",
+      "Triggering an action (like a notification) when a device enters or leaves a specific geographical boundary.",
+      "Measuring the altitude of the device.",
+      "Using Bluetooth to find nearby devices."
+    ]
   },
   "hf-07": {
     "prompt": "Де потрібно вказати «причину» запиту дозволу (наприклад, CameraUsageDescription) для iOS?",
     "explanation": "iOS вимагає вказати рядок із метою використання (Purpose String) у файлі Info.plist. В Expo ви вказуєте ці рядки в розділі 'plugins' файлу app.json, і вони впорскуються в plist під час збірки.",
-    "interviewTip": "Якщо ви не надасте чітку та зрозумілу користувачеві причину, Apple відхилить ваш додаток під час модерації."
+    "interviewTip": "Якщо ви не надасте чітку та зрозумілу користувачеві причину, Apple відхилить ваш додаток під час модерації.",
+    "options": [
+      "In the package.json file.",
+      "In the Info.plist file.",
+      "Directly in the JavaScript code.",
+      "In the app.json / expo config."
+    ]
   },
   "hf-08": {
     "prompt": "Що вимірює сенсор 'Accelerometer' (Акселерометр)?",
     "explanation": "Акселерометри використовуються для виявлення струшування, підрахунку кроків та керування іграми за допомогою нахилу телефону.",
-    "interviewTip": "Згадайте, що такі сенсори видають дані з високою частотою, тому важливо використовувати модель підписки (Subscription) та очищувати її в 'useEffect'."
+    "interviewTip": "Згадайте, що такі сенсори видають дані з високою частотою, тому важливо використовувати модель підписки (Subscription) та очищувати її в 'useEffect'.",
+    "options": [
+      "The compass heading.",
+      "The change in velocity (acceleration) along three axes (X, Y, Z).",
+      "The distance to the nearest object.",
+      "The brightness of the screen."
+    ]
   },
   "hf-09": {
     "prompt": "Як перевірити, чи має пристрій Android фізичну кнопку «Назад», чи використовує навігацію жестами?",
     "explanation": "Модуль BackHandler дозволяє слухати натискання апаратної кнопки «Назад», запобігати йому або налаштовувати власну поведінку.",
-    "interviewTip": "Це актуально лише для Android; користувачі iOS очікують кнопку «Назад» у заголовку навігації або жест гортання назад (swipe-back)."
+    "interviewTip": "Це актуально лише для Android; користувачі iOS очікують кнопку «Назад» у заголовку навігації або жест гортання назад (swipe-back).",
+    "options": [
+      "Using the BackHandler module.",
+      "Using the DeviceInfo library.",
+      "This is handled automatically by the OS; you don't need to check.",
+      "Checking the screen height."
+    ]
   },
   "hf-10": {
     "prompt": "Для чого використовується модуль 'Linking' при роботі з апаратними функціями?",
     "explanation": "Модуль Linking — це місток до інших додатків. Наприклад, `Linking.openURL('tel:123456')` викликає нативну програму для здійснення дзвінків.",
-    "interviewTip": "Спочатку використовуйте 'Linking.canOpenURL', щоб переконатися, що на пристрої є обробник для цього конкретного посилання (наприклад, поштовий клієнт)."
+    "interviewTip": "Спочатку використовуйте 'Linking.canOpenURL', щоб переконатися, що на пристрої є обробник для цього конкретного посилання (наприклад, поштовий клієнт).",
+    "options": [
+      "To connect to a Wi-Fi network.",
+      "To open other apps, websites, or system settings (e.g., tel: or mailto:).",
+      "To link the Camera to the Image component.",
+      "To download assets."
+    ]
   }
 }

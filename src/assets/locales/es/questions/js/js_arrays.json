@@ -2,126 +2,276 @@
   "js-arr-01": {
     "prompt": "What is an array in JavaScript?",
     "explanation": "Arrays are ordered, zero-indexed objects.",
-    "interviewTip": "Arrays are objects internally."
+    "interviewTip": "Arrays are objects internally.",
+    "options": [
+      "An ordered collection of values",
+      "A fixed-size list",
+      "A key-value store",
+      "A primitive type"
+    ]
   },
   "js-arr-02": {
     "prompt": "What will be logged?",
     "explanation": "Arrays are a type of object.",
-    "interviewTip": "Use Array.isArray()."
+    "interviewTip": "Use Array.isArray().",
+    "options": [
+      "array",
+      "object",
+      "undefined",
+      "list"
+    ]
   },
   "js-arr-03": {
     "prompt": "How to correctly check if value is an array?",
     "explanation": "Array.isArray is the safest method.",
-    "interviewTip": "Works across realms."
+    "interviewTip": "Works across realms.",
+    "options": [
+      "typeof value === 'array'",
+      "value instanceof Array",
+      "Array.isArray(value)",
+      "value.constructor === 'array'"
+    ]
   },
   "js-arr-04": {
     "prompt": "Which method mutates the array?",
     "explanation": "push mutates the original array.",
-    "interviewTip": "Mutation vs immutability."
+    "interviewTip": "Mutation vs immutability.",
+    "options": [
+      "map",
+      "filter",
+      "slice",
+      "push"
+    ]
   },
   "js-arr-05": {
     "prompt": "What will be logged?",
     "explanation": "Reducing length truncates the array.",
-    "interviewTip": "Length is writable."
+    "interviewTip": "Length is writable.",
+    "options": [
+      "[1]",
+      "[1,2,3]",
+      "[]",
+      "Error"
+    ]
   },
   "js-arr-06": {
     "prompt": "What does `slice` do?",
     "explanation": "slice is non-mutating.",
-    "interviewTip": "Common interview distinction."
+    "interviewTip": "Common interview distinction.",
+    "options": [
+      "Returns a new array",
+      "Mutates array",
+      "Deletes items",
+      "Sorts array"
+    ]
   },
   "js-arr-07": {
     "prompt": "Which method removes the last element?",
     "explanation": "pop removes last element.",
-    "interviewTip": "Mutates array."
+    "interviewTip": "Mutates array.",
+    "options": [
+      "shift",
+      "pop",
+      "splice",
+      "slice"
+    ]
   },
   "js-arr-08": {
     "prompt": "What will be logged?",
     "explanation": "map returns a new array.",
-    "interviewTip": "Reference comparison."
+    "interviewTip": "Reference comparison.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "Error"
+    ]
   },
   "js-arr-09": {
     "prompt": "What does `splice` do?",
     "explanation": "splice mutates the array.",
-    "interviewTip": "Often confused with slice."
+    "interviewTip": "Often confused with slice.",
+    "options": [
+      "Mutates array",
+      "Returns shallow copy",
+      "Does not affect original",
+      "Only removes items"
+    ]
   },
   "js-arr-10": {
     "prompt": "What will be logged?",
     "explanation": "Array length becomes highest index + 1.",
-    "interviewTip": "Sparse arrays."
+    "interviewTip": "Sparse arrays.",
+    "options": [
+      "3",
+      "10",
+      "11",
+      "Error"
+    ]
   },
   "js-arr-11": {
     "prompt": "Which creates a shallow copy?",
     "explanation": "slice returns a new array.",
-    "interviewTip": "Still shallow."
+    "interviewTip": "Still shallow.",
+    "options": [
+      "slice",
+      "push",
+      "pop",
+      "shift"
+    ]
   },
   "js-arr-12": {
     "prompt": "What does `forEach` return?",
     "explanation": "forEach always returns undefined.",
-    "interviewTip": "Not chainable."
+    "interviewTip": "Not chainable.",
+    "options": [
+      "New array",
+      "Original array",
+      "undefined",
+      "Boolean"
+    ]
   },
   "js-arr-13": {
     "prompt": "What will be logged?",
     "explanation": "includes checks value existence.",
-    "interviewTip": "Uses SameValueZero."
+    "interviewTip": "Uses SameValueZero.",
+    "options": [
+      "true",
+      "false",
+      "undefined",
+      "Error"
+    ]
   },
   "js-arr-14": {
     "prompt": "Which method flattens arrays?",
     "explanation": "flat flattens nested arrays.",
-    "interviewTip": "Depth can be specified."
+    "interviewTip": "Depth can be specified.",
+    "options": [
+      "flat",
+      "map",
+      "reduce",
+      "concat"
+    ]
   },
   "js-arr-15": {
     "prompt": "What will be logged?",
     "explanation": "Arrays are coerced to strings.",
-    "interviewTip": "Implicit coercion."
+    "interviewTip": "Implicit coercion.",
+    "options": [
+      "[1,2,3,4,5]",
+      "1,2,34,5",
+      "1,2,34,5",
+      "Error"
+    ]
   },
   "js-arr-16": {
     "prompt": "Which method does NOT mutate?",
     "explanation": "filter returns a new array.",
-    "interviewTip": "sort mutates!"
+    "interviewTip": "sort mutates!",
+    "options": [
+      "sort",
+      "reverse",
+      "filter",
+      "splice"
+    ]
   },
   "js-arr-17": {
     "prompt": "What does `reduce` do?",
     "explanation": "reduce accumulates to a single value.",
-    "interviewTip": "Very powerful method."
+    "interviewTip": "Very powerful method.",
+    "options": [
+      "Accumulates values into one",
+      "Maps array",
+      "Filters array",
+      "Sorts array"
+    ]
   },
   "js-arr-18": {
     "prompt": "What will be logged?",
     "explanation": "Both references point to same array.",
-    "interviewTip": "Reference vs copy."
+    "interviewTip": "Reference vs copy.",
+    "options": [
+      "3",
+      "4",
+      "Error",
+      "undefined"
+    ]
   },
   "js-arr-19": {
     "prompt": "What does `Array.from` do?",
     "explanation": "Converts array-like objects.",
-    "interviewTip": "Useful for NodeList."
+    "interviewTip": "Useful for NodeList.",
+    "options": [
+      "Creates array from iterable",
+      "Clones array",
+      "Sorts array",
+      "Filters array"
+    ]
   },
   "js-arr-20": {
     "prompt": "What will be logged?",
     "explanation": "Empty array length is 0.",
-    "interviewTip": "Basic but common."
+    "interviewTip": "Basic but common.",
+    "options": [
+      "0",
+      "undefined",
+      "null",
+      "Error"
+    ]
   },
   "js-arr-21": {
     "prompt": "What does `every` return?",
     "explanation": "Checks all elements against condition.",
-    "interviewTip": "Stops early."
+    "interviewTip": "Stops early.",
+    "options": [
+      "Boolean",
+      "Array",
+      "Number",
+      "Object"
+    ]
   },
   "js-arr-22": {
     "prompt": "What does `some` do?",
     "explanation": "Returns true if any element matches.",
-    "interviewTip": "Short-circuit."
+    "interviewTip": "Short-circuit.",
+    "options": [
+      "Checks if at least one element matches",
+      "Checks all elements",
+      "Filters array",
+      "Maps array"
+    ]
   },
   "js-arr-23": {
     "prompt": "What will be logged?",
     "explanation": "Sparse arrays count empty slots.",
-    "interviewTip": "Empty slots exist."
+    "interviewTip": "Empty slots exist.",
+    "options": [
+      "2",
+      "3",
+      "Error",
+      "undefined"
+    ]
   },
   "js-arr-24": {
     "prompt": "What does `concat` do?",
     "explanation": "concat does not mutate.",
-    "interviewTip": "Immutable pattern."
+    "interviewTip": "Immutable pattern.",
+    "options": [
+      "Returns new combined array",
+      "Mutates original array",
+      "Sorts array",
+      "Flattens deeply"
+    ]
   },
   "js-arr-25": {
     "prompt": "Why avoid mutating arrays in React?",
     "explanation": "Immutability helps change detection.",
-    "interviewTip": "Key React concept."
+    "interviewTip": "Key React concept.",
+    "options": [
+      "State updates may not trigger re-render",
+      "Arrays are slow",
+      "JS forbids it",
+      "Garbage collection"
+    ]
   }
 }

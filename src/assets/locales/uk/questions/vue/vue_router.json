@@ -2,51 +2,111 @@
   "vr-01": {
     "prompt": "Як визначити сегмент динамічного маршруту, який захоплює конкретне значення, наприклад ID користувача?",
     "explanation": "Двокрапка позначає динамічні сегменти. Значення, передане в URL (наприклад, /user/123), буде доступне через 'route.params.id'.",
-    "interviewTip": "Ви можете використовувати регулярні вирази (Regex) у шляхах для суворішої перевірки, наприклад /user/:id(\\\\d+)."
+    "interviewTip": "Ви можете використовувати регулярні вирази (Regex) у шляхах для суворішої перевірки, наприклад /user/:id(\\\\d+).",
+    "options": [
+      ":id",
+      "{id}",
+      "*id",
+      "?id"
+    ]
   },
   "vr-02": {
     "prompt": "Проаналізуйте код. Яка різниця між цими двома методами навігації (push та replace)?",
     "explanation": "Метод Replace використовується, коли ви не хочете, щоб користувач міг повернутися назад на попередній екран (наприклад, після успішного входу в систему).",
-    "interviewTip": "Використовуйте 'replace' для редиректів або тимчасових станів, щоб стека історії браузера залишався чистим."
+    "interviewTip": "Використовуйте 'replace' для редиректів або тимчасових станів, щоб стека історії браузера залишався чистим.",
+    "options": [
+      "Option A is for external links; Option B is for internal.",
+      "Option A adds a new entry to the history stack; Option B overwrites the current entry.",
+      "Option B is faster than Option A.",
+      "There is no difference."
+    ]
   },
   "vr-03": {
     "prompt": "Який хук слід використовувати всередині компонента для виконання логіки ПЕРЕД тим, як користувач залишить поточну сторінку?",
     "explanation": "onBeforeRouteLeave — це спеціалізований хук роутера. Він дозволяє запобігти переходу (наприклад, якщо у користувача є незбережені зміни у формі).",
-    "interviewTip": "Ви можете повернути 'false' з цього хука, щоб скасувати навігацію."
+    "interviewTip": "Ви можете повернути 'false' з цього хука, щоб скасувати навігацію.",
+    "options": [
+      "onUnmounted",
+      "onBeforeRouteLeave",
+      "onBeforeRouteUpdate",
+      "watchEffect"
+    ]
   },
   "vr-04": {
     "prompt": "У чому основна перевага «лінивого завантаження» (Lazy Loading) маршрутів у конфігурації роутера?",
     "explanation": "Динамічні імпорти () => import(...) створюють окремий файл (bundle) для цього маршруту, що значно покращує час початкового завантаження додатка.",
-    "interviewTip": "Для великих корпоративних додатків ліниве завантаження кожного некритичного маршруту є обов'язковою оптимізацією продуктивності."
+    "interviewTip": "Для великих корпоративних додатків ліниве завантаження кожного некритичного маршруту є обов'язковою оптимізацією продуктивності.",
+    "options": [
+      "It makes the components load more slowly.",
+      "It splits the application into smaller chunks, only downloading the code for a page when the user actually visits it.",
+      "It automatically compresses the images on that page.",
+      "It allows the page to work offline."
+    ]
   },
   "vr-05": {
     "prompt": "Як отримати доступ до параметрів поточного маршруту всередині блоку <script setup>?",
     "explanation": "useRoute дає доступ до поточного стану (params, query, path). useRouter надає можливість здійснювати навігацію (push, back).",
-    "interviewTip": "Не плутайте їх! useRoute — для того, що відбувається зараз; useRouter — для того, що має статися далі."
+    "interviewTip": "Не плутайте їх! useRoute — для того, що відбувається зараз; useRouter — для того, що має статися далі.",
+    "options": [
+      "useRouter",
+      "useRoute",
+      "getParams",
+      "routeLink"
+    ]
   },
   "vr-06": {
     "prompt": "Які з наведених варіантів є валідними глобальними охоронцями навігації (Global Navigation Guards)?",
     "explanation": "Охоронці навігації використовуються для захисту маршрутів (наприклад, перевірка токенів авторизації).",
-    "interviewTip": "Згадуйте 'beforeEach' як основне місце для впровадження перевірок авторизації."
+    "interviewTip": "Згадуйте 'beforeEach' як основне місце для впровадження перевірок авторизації.",
+    "options": [
+      "router.beforeEach (runs before every navigation)",
+      "router.afterEach (runs after navigation is complete)",
+      "router.beforeResolve (runs before navigation is confirmed, after in-component guards)",
+      "router.onMount (runs when the app starts)"
+    ]
   },
   "vr-07": {
     "prompt": "Яке призначення компонента <router-view>?",
     "explanation": "RouterView — це місце, де відбувається магія рендерингу. Без нього ви можете змінити URL, але інтерфейс не оновиться і не покаже новий компонент.",
-    "interviewTip": "Ви можете використовувати кілька компонентів <router-view> з іменами (named views) для створення складних макетів."
+    "interviewTip": "Ви можете використовувати кілька компонентів <router-view> з іменами (named views) для створення складних макетів.",
+    "options": [
+      "To show a list of all available routes.",
+      "As a placeholder that renders the component matched by the current URL.",
+      "To create a link to another page.",
+      "To debug the routing state."
+    ]
   },
   "vr-08": {
     "prompt": "Проаналізуйте код. Що означає налаштування 'props: true' для маршруту?",
     "explanation": "Встановлення 'props: true' відв'язує компонент від роутера. Компонент може оголосити 'props: ['id']' і використовувати його, не знаючи про існування '$route'.",
-    "interviewTip": "Це робить компоненти набагато легшими для модульного тестування, оскільки вони не залежать від глобального стану роутера."
+    "interviewTip": "Це робить компоненти набагато легшими для модульного тестування, оскільки вони не залежать від глобального стану роутера.",
+    "options": [
+      "It allows the component to use CSS props.",
+      "It passes the route parameters (like :id) directly as props to the component.",
+      "It makes the route public.",
+      "It automatically validates the data types."
+    ]
   },
   "vr-09": {
     "prompt": "Як програмно перейти на інший маршрут у Vue Router?",
     "explanation": "$router — це екземпляр роутера з методами навігації. $route — це об'єкт з інформацією про поточний маршрут.",
-    "interviewTip": "У Composition API використовуйте функцію useRouter() для доступу до екземпляра роутера."
+    "interviewTip": "У Composition API використовуйте функцію useRouter() для доступу до екземпляра роутера.",
+    "options": [
+      "this.$router.push('/path')",
+      "this.$route.push('/path')",
+      "router.navigate('/path')",
+      "window.location = '/path'"
+    ]
   },
   "vr-10": {
     "prompt": "Яка мета використання «охоронців маршрутів» (route guards) у Vue Router?",
     "explanation": "Охоронці навігації (beforeEach, beforeEnter тощо) дозволяють реалізувати автентифікацію, авторизацію та іншу логіку перед переходом.",
-    "interviewTip": "Глобальні охоронці працюють для всіх маршрутів, охоронці рівня маршруту — для конкретних, а внутрішньокомпонентні — всередині самих компонентів."
+    "interviewTip": "Глобальні охоронці працюють для всіх маршрутів, охоронці рівня маршруту — для конкретних, а внутрішньокомпонентні — всередині самих компонентів.",
+    "options": [
+      "To protect routes from unauthorized access and control navigation flow.",
+      "To guard against XSS attacks.",
+      "To prevent route changes.",
+      "To encrypt route parameters."
+    ]
   }
 }

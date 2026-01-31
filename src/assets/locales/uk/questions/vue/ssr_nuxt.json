@@ -2,51 +2,111 @@
   "ssr-01": {
     "prompt": "Що таке «Гідратація» (Hydration) у контексті Vue SSR?",
     "explanation": "Сервер надсилає «мертвий» HTML для швидкості. Гідратація — це процес, коли Vue запускається в браузері, зіставляє цей HTML із Virtual DOM і прикріплює слухачі подій, щоб зробити сторінку «живою».",
-    "interviewTip": "Якщо HTML від сервера не збігається з тим, що згенерував клієнт, ви отримаєте помилку 'Hydration Mismatch' — це найпоширеніша проблема в SSR."
+    "interviewTip": "Якщо HTML від сервера не збігається з тим, що згенерував клієнт, ви отримаєте помилку 'Hydration Mismatch' — це найпоширеніша проблема в SSR.",
+    "options": [
+      "The process of downloading the CSS files.",
+      "The process where the client-side Vue takes over the static HTML sent by the server and makes it interactive.",
+      "Cleaning up the server cache after every request.",
+      "A way to compress JavaScript files for faster delivery."
+    ]
   },
   "ssr-02": {
     "prompt": "Проаналізуйте код Nuxt 3. Яке призначення цієї вбудованої функції?",
     "explanation": "useFetch працює розумно: він отримує дані на сервері, серіалізує їх у HTML-пейлоад, а клієнт підхоплює їх звідти без повторного мережевого запиту.",
-    "interviewTip": "Це «вилучення даних» (Payload Extraction) — причина, чому додатки на Nuxt здаються набагато швидшими, ніж кастомні SSR-рішення."
+    "interviewTip": "Це «вилучення даних» (Payload Extraction) — причина, чому додатки на Nuxt здаються набагато швидшими, ніж кастомні SSR-рішення.",
+    "options": [
+      "It is a standard browser fetch wrapper.",
+      "It is an SSR-friendly composable that prevents double data fetching (once on server, once on client).",
+      "It only works in development mode.",
+      "It encrypts the API response for security."
+    ]
   },
   "ssr-03": {
     "prompt": "Яка директорія в Nuxt.js використовується для автоматичної генерації маршрутів на основі імен файлів?",
     "explanation": "Nuxt використовує файлову систему для роутингу. Файл за адресою `pages/about.vue` автоматично стає маршрутом `/about`. Ручне налаштування роутера не потрібне.",
-    "interviewTip": "Для динамічних маршрутів у Nuxt 3 використовуються квадратні дужки, наприклад `pages/quiz/[id].vue`."
+    "interviewTip": "Для динамічних маршрутів у Nuxt 3 використовуються квадратні дужки, наприклад `pages/quiz/[id].vue`.",
+    "options": [
+      "routes/",
+      "pages/",
+      "views/",
+      "screens/"
+    ]
   },
   "ssr-04": {
     "prompt": "Проаналізуйте код. Де з'явиться цей лог у середовищі Nuxt SSR?",
     "explanation": "Код у script setup під час SSR запускається спочатку на сервері для генерації HTML, а потім ще раз на клієнті під час гідратації додатка.",
-    "interviewTip": "Будьте обережні! Код, що використовує глобальні змінні браузера (window, localStorage), викличе помилку на сервері, якщо не огорнути його перевіркою або хуком 'onMounted'."
+    "interviewTip": "Будьте обережні! Код, що використовує глобальні змінні браузера (window, localStorage), викличе помилку на сервері, якщо не огорнути його перевіркою або хуком 'onMounted'.",
+    "options": [
+      "Only in the browser console.",
+      "Only in the server terminal.",
+      "In both the server terminal (during render) and the browser console (during hydration).",
+      "Only in the Nuxt DevTools."
+    ]
   },
   "ssr-05": {
     "prompt": "Що таке 'Static Site Generation' (SSG) у Nuxt?",
     "explanation": "SSG (через `nuxt generate`) створює папку з HTML-файлами, які можна розмістити на CDN. Це найшвидший та найбезпечніший спосіб доставки контенту.",
-    "interviewTip": "Nuxt 3 підтримує 'Hybrid Rendering', дозволяючи вибирати SSR для одних маршрутів та SSG для інших."
+    "interviewTip": "Nuxt 3 підтримує 'Hybrid Rendering', дозволяючи вибирати SSR для одних маршрутів та SSG для інших.",
+    "options": [
+      "Rendering the page every time a user visits it.",
+      "Pre-rendering every page of the app into static HTML files at build time.",
+      "A way to disable JavaScript entirely.",
+      "Using only static CSS without any JS."
+    ]
   },
   "ssr-06": {
     "prompt": "Які з наведених варіантів є валідними способами керування SEO-метаданими в компоненті Nuxt 3?",
     "explanation": "Nuxt 3 надає кілька способів керування тегом `<head>`. Хук `useSeoMeta` є найбільш продуктивним та типізованим для тегів соціальних мереж.",
-    "interviewTip": "Оскільки Nuxt рендерить HTML на сервері, ці теги стають видимими для пошукових роботів миттєво."
+    "interviewTip": "Оскільки Nuxt рендерить HTML на сервері, ці теги стають видимими для пошукових роботів миттєво.",
+    "options": [
+      "useHead({ title: 'My Quiz' })",
+      "useSeoMeta({ description: 'Practice JS' })",
+      "<Title>My Quiz</Title> (built-in component)",
+      "Adding a <meta> tag manually in the index.html"
+    ]
   },
   "ssr-07": {
     "prompt": "Проаналізуйте код компонента. Яка поведінка <ClientOnly>?",
     "explanation": "Деякі компоненти (наприклад, ті, що використовують D3 або Canvas) просто не можуть працювати на сервері. <ClientOnly> запобігає помилкам сервера та конфліктам гідратації.",
-    "interviewTip": "Ви також можете надати слот 'placeholder', щоб показати стан завантаження, поки сервер рендерить сторінку."
+    "interviewTip": "Ви також можете надати слот 'placeholder', щоб показати стан завантаження, поки сервер рендерить сторінку.",
+    "options": [
+      "It hides the chart from users.",
+      "It tells Nuxt to skip rendering this component on the server and only render it in the browser.",
+      "It optimizes the chart for mobile devices.",
+      "It prevents the chart from using any network resources."
+    ]
   },
   "ssr-08": {
     "prompt": "Яка роль 'Nitro' в екосистемі Nuxt 3?",
     "explanation": "Nitro — це потужний серверний бекенд для Nuxt. Він дозволяє створювати API-маршрути та розгортати додаток будь-де: від традиційного сервера до Cloudflare Workers.",
-    "interviewTip": "Згадка про Nitro показує, що ви розумієте Nuxt як Full-Stack фреймворк, а не просто фронтенд-бібліотеку."
+    "interviewTip": "Згадка про Nitro показує, що ви розумієте Nuxt як Full-Stack фреймворк, а не просто фронтенд-бібліотеку.",
+    "options": [
+      "The CSS engine for Nuxt.",
+      "The server engine that allows Nuxt to run on any provider (Node.js, Serverless, Edge Workers).",
+      "The image optimization tool.",
+      "The unit testing framework for Nuxt."
+    ]
   },
   "ssrn-09": {
     "prompt": "У чому головна перевага Server-Side Rendering (SSR) у Vue?",
     "explanation": "SSR рендерить додаток на сервері, надсилаючи клієнту вже сформований HTML, що покращує сприйняття швидкості та SEO.",
-    "interviewTip": "SSR має свої недоліки: збільшення навантаження на сервер та складність розробки. Для контентних сайтів розгляньте SSG."
+    "interviewTip": "SSR має свої недоліки: збільшення навантаження на сервер та складність розробки. Для контентних сайтів розгляньте SSG.",
+    "options": [
+      "Faster client-side interactivity.",
+      "Better SEO and faster initial page load by sending pre-rendered HTML to the browser.",
+      "Smaller bundle sizes.",
+      "Automatic code splitting."
+    ]
   },
   "ssrn-10": {
     "prompt": "Що таке Nuxt.js?",
     "explanation": "Nuxt спрощує розробку на Vue, надаючи стандарти іменування, автоматичний роутинг, підтримку SSR/SSG та багату екосистему модулів.",
-    "interviewTip": "Nuxt 3 побудований на Vue 3 та Vite, пропонуючи значно кращу продуктивність порівняно з Nuxt 2."
+    "interviewTip": "Nuxt 3 побудований на Vue 3 та Vite, пропонуючи значно кращу продуктивність порівняно з Nuxt 2.",
+    "options": [
+      "A Vue component library.",
+      "A meta-framework for Vue that provides SSR, SSG, routing, and other features out of the box.",
+      "A CSS preprocessor.",
+      "A testing framework."
+    ]
   }
 }

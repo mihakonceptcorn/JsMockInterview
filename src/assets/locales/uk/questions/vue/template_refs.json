@@ -2,51 +2,111 @@
   "tr-01": {
     "prompt": "Як у Composition API пов'язати змінну 'ref' із конкретним елементом DOM у вашому шаблоні?",
     "explanation": "Щоб створити посилання на шаблон (template ref), ви оголошуєте ref із тією ж назвою у вашому скрипті та додаєте атрибут 'ref' до відповідного елемента в шаблоні.",
-    "interviewTip": "Назва змінної у вашому скрипті має точно збігатися зі строковим значенням атрибута ref у шаблоні."
+    "interviewTip": "Назва змінної у вашому скрипті має точно збігатися зі строковим значенням атрибута ref у шаблоні.",
+    "options": [
+      "v-ref",
+      "ref",
+      ":id",
+      "bind-ref"
+    ]
   },
   "tr-02": {
     "prompt": "Проаналізуйте код. Чому 'inputRef.value' буде мати значення null під час виконання console.log?",
     "explanation": "Посилання на шаблони заповнюються лише після монтування компонента. Будь-яка спроба отримати доступ до них безпосередньо в тілі скрипта setup поверне null, оскільки DOM ще не створено.",
-    "interviewTip": "Щоб безпечно отримати доступ до посилання, завжди використовуйте хук життєвого циклу 'onMounted'."
+    "interviewTip": "Щоб безпечно отримати доступ до посилання, завжди використовуйте хук життєвого циклу 'onMounted'.",
+    "options": [
+      "Because the variable name is wrong.",
+      "Because the setup script runs before the component is mounted and the DOM is created.",
+      "Because 'ref' variables are private.",
+      "Because you must use reactive() for DOM elements."
+    ]
   },
   "tr-03": {
     "prompt": "Як автоматично встановити фокус на поле введення (input) під час монтування компонента?",
     "explanation": "Після монтування властивість '.value' посилання містить реальний об'єкт HTMLInputElement, що дає вам доступ до нативних методів, таких як .focus().",
-    "interviewTip": "Зауважте, що це «шлях Vue», на відміну від використання querySelector, який порушує інкапсуляцію компонента."
+    "interviewTip": "Зауважте, що це «шлях Vue», на відміну від використання querySelector, який порушує інкапсуляцію компонента.",
+    "options": [
+      "inputRef",
+      "document.querySelector('input')",
+      "this.$refs.input",
+      "inputRef.current"
+    ]
   },
   "tr-04": {
     "prompt": "Що буде містити посилання на шаблон, якщо воно застосоване до елемента всередині циклу 'v-for'?",
     "explanation": "У Vue 3, якщо ref використовується всередині циклу v-for, він автоматично заповнюється масивом відповідних DOM-елементів.",
-    "interviewTip": "Майте на увазі, що порядок елементів у масиві не гарантовано відповідатиме порядку у вашому джерелі даних, якщо елементи були перевпорядковані."
+    "interviewTip": "Майте на увазі, що порядок елементів у масиві не гарантовано відповідатиме порядку у вашому джерелі даних, якщо елементи були перевпорядковані.",
+    "options": [
+      "Only the first element in the list.",
+      "Only the last element in the list.",
+      "An array containing all the DOM elements in the list.",
+      "It will throw an error; you cannot use refs in v-for."
+    ]
   },
   "tr-05": {
     "prompt": "Проаналізуйте код. Чи може батько за замовчуванням отримати доступ до 'internalCount' цього дочірнього компонента через посилання на шаблон?",
     "explanation": "Компоненти, що використовують <script setup>, є «закритими» за замовчуванням. Вони не відкривають свій внутрішній стан батькам через посилання, якщо ви явно не вкажете їх у defineExpose().",
-    "interviewTip": "Це ключова особливість безпеки та інкапсуляції у Vue 3 порівняно з Options API."
+    "interviewTip": "Це ключова особливість безпеки та інкапсуляції у Vue 3 порівняно з Options API.",
+    "options": [
+      "Yes, all setup variables are public.",
+      "No, components using <script setup> are 'closed' by default and need 'defineExpose' to reveal properties.",
+      "Yes, but only if the parent uses $children.",
+      "Only if the child is not scoped."
+    ]
   },
   "tr-06": {
     "prompt": "Що відбувається з посиланням на шаблон у хуку 'onUnmounted'?",
     "explanation": "Система реактивності Vue сама керує життєвим циклом посилання. Коли елемент видаляється з DOM, значення ref.value автоматично скидається до null.",
-    "interviewTip": "Проте ви *повинні* використовувати onUnmounted для знищення будь-яких сторонніх екземплярів (наприклад, карт або графіків), які були прив'язані до цього посилання."
+    "interviewTip": "Проте ви *повинні* використовувати onUnmounted для знищення будь-яких сторонніх екземплярів (наприклад, карт або графіків), які були прив'язані до цього посилання.",
+    "options": [
+      "Manually set it to null.",
+      "Nothing; Vue automatically cleans up the ref when the element is destroyed.",
+      "Delete the element from the DOM.",
+      "Call .destroy() on the ref."
+    ]
   },
   "tr-07": {
     "prompt": "Як використовувати «функціональне посилання» (Function Ref) у Vue 3?",
     "explanation": "Якщо ви передаєте функцію в атрибут :ref, Vue викличе її з елементом під час монтування і з null під час розмонтування. Це корисно для складної логіки або динамічних посилань у циклі.",
-    "interviewTip": "Це найбільш гнучкий спосіб роботи з посиланнями, якщо простої назви змінної недостатньо."
+    "interviewTip": "Це найбільш гнучкий спосіб роботи з посиланнями, якщо простої назви змінної недостатньо.",
+    "options": [
+      "By passing a function to the :ref attribute: :ref=\"(el) => { ... }\".",
+      "By using ref=\"myFunc()\".",
+      "By defining a ref that returns a function.",
+      "Function refs are not supported in Vue 3."
+    ]
   },
   "tr-08": {
     "prompt": "У яких сценаріях доцільно використовувати Template Refs?",
     "explanation": "Посилання на шаблони призначені для імперативних завдань з DOM. Ніколи не використовуйте їх, щоб обійти реактивність Vue для речей, які можна вирішити через пропси або стан.",
-    "interviewTip": "Завжди надавайте перевагу декларативному підходу (v-bind, v-if), поки у вас є така можливість."
+    "interviewTip": "Завжди надавайте перевагу декларативному підходу (v-bind, v-if), поки у вас є така можливість.",
+    "options": [
+      "Managing focus, text selection, or media playback.",
+      "Integrating third-party DOM libraries (e.g., D3, Google Maps).",
+      "Changing the component's state (e.g., incrementing a counter).",
+      "Triggering imperative animations not handled by Vue Transitions."
+    ]
   },
   "tr-09": {
     "prompt": "Як створити посилання на шаблон у Composition API?",
     "explanation": "Ви створюєте ref із назвою, що збігається з атрибутом ref у шаблоні. Vue автоматично призначить йому DOM-елемент після монтування.",
-    "interviewTip": "Посилання має бути повернуте із setup() або оголошене в <script setup>, щоб бути доступним у шаблоні."
+    "interviewTip": "Посилання має бути повернуте із setup() або оголошене в <script setup>, щоб бути доступним у шаблоні.",
+    "options": [
+      "createRef",
+      "ref",
+      "useRef",
+      "templateRef"
+    ]
   },
   "tr-10": {
     "prompt": "Коли саме посилання на шаблон заповнюється реальним DOM-елементом?",
     "explanation": "Посилання мають значення null під час виконання setup() і отримують значення лише після того, як компонент буде змонтований у DOM.",
-    "interviewTip": "Завжди перевіряйте, чи не є посилання null перед використанням, або звертайтеся до нього всередині onMounted."
+    "interviewTip": "Завжди перевіряйте, чи не є посилання null перед використанням, або звертайтеся до нього всередині onMounted.",
+    "options": [
+      "Immediately when the component is created.",
+      "After the component is mounted (onMounted lifecycle).",
+      "Before the component is mounted.",
+      "Only when you call a special method."
+    ]
   }
 }

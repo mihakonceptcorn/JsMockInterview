@@ -2,51 +2,111 @@
   "nm-01": {
     "prompt": "Яку роль відіграє 'RCTBridgeModule' в iOS у старій архітектурі (Legacy)?",
     "explanation": "Щоб зробити нативний клас доступним для JS, він повинен реалізувати протокол RCTBridgeModule та використовувати макрос RCT_EXPORT_MODULE.",
-    "interviewTip": "Пам'ятайте, що дані, які проходять через цей міст (bridge), повинні бути серіалізовані в JSON, що може бути «вузьким місцем» для продуктивності."
+    "interviewTip": "Пам'ятайте, що дані, які проходять через цей міст (bridge), повинні бути серіалізовані в JSON, що може бути «вузьким місцем» для продуктивності.",
+    "options": [
+      "It is a JavaScript class that defines UI components.",
+      "It is a protocol that an Objective-C/Swift class must adopt to be accessible from JavaScript.",
+      "It is a tool that compiles JS into machine code.",
+      "It is the main entry point for the App Store."
+    ]
   },
   "nm-02": {
     "prompt": "У чому полягає основна технічна перевага 'Turbo Modules' над старими нативними модулями?",
     "explanation": "Старі модулі ініціалізуються всі разом при запуску додатка, що уповільнює старт. Turbo Modules завантажуються за запитом (lazy loading) і дозволяють синхронні виклики через JSI.",
-    "interviewTip": "Якщо інтерв'юер запитає про продуктивність запуску додатка, обов'язково згадайте про «ледаче завантаження» (Lazy Loading) Turbo-модулів."
+    "interviewTip": "Якщо інтерв'юер запитає про продуктивність запуску додатка, обов'язково згадайте про «ледаче завантаження» (Lazy Loading) Turbo-модулів.",
+    "options": [
+      "They are written in Python instead of Java.",
+      "They are loaded lazily (only when needed) and use JSI for direct communication.",
+      "They automatically upload data to the cloud.",
+      "They do not require any native code."
+    ]
   },
   "nm-03": {
     "prompt": "Проаналізуйте нативний код для Android. Яке призначення анотації @ReactMethod?",
     "explanation": "Без цієї анотації метод залишиться невидимим для моста React Native, навіть якщо сам клас було експортовано.",
-    "interviewTip": "Лише методи, позначені @ReactMethod, можуть бути викликані через 'NativeModules.ModuleName.methodName()'."
+    "interviewTip": "Лише методи, позначені @ReactMethod, можуть бути викликані через 'NativeModules.ModuleName.methodName()'.",
+    "options": [
+      "It marks the method as private to the native class.",
+      "It exports the method so it can be called from JavaScript code.",
+      "It tells the Android OS to run this in the background.",
+      "It encrypts the parameters."
+    ]
   },
   "nm-04": {
     "prompt": "Як JavaScript взаємодіє з нативною стороною в Новій архітектурі без серіалізації даних?",
     "explanation": "JSI дозволяє рушію JavaScript (Hermes) тримати пряме посилання на об'єкт C++, що уможливлює миттєві синхронні виклики методів замість передачі JSON-повідомлень.",
-    "interviewTip": "JSI — це те, що робить бібліотеку 'Reanimated' такою швидкою: вона дозволяє оновлювати UI без очікування відповіді від моста."
+    "interviewTip": "JSI — це те, що робить бібліотеку 'Reanimated' такою швидкою: вона дозволяє оновлювати UI без очікування відповіді від моста.",
+    "options": [
+      "Via the Bridge queue.",
+      "Using JSI (JavaScript Interface) to hold C++ references to native objects.",
+      "By writing files to the disk.",
+      "Using WebSockets."
+    ]
   },
   "nm-05": {
     "prompt": "Яке призначення 'Codegen' у Новій архітектурі?",
     "explanation": "Codegen забезпечує типізацію між JS та нативним кодом. Він автоматично створює допоміжний код («клей»), тому вам не потрібно писати шаблони C++ вручную.",
-    "interviewTip": "Codegen допомагає запобігти помилкам під час виконання (runtime crashes), спричиненим передачею неправильних типів даних між JS та нативною частиною."
+    "interviewTip": "Codegen допомагає запобігти помилкам під час виконання (runtime crashes), спричиненим передачею неправильних типів даних між JS та нативною частиною.",
+    "options": [
+      "To write the UI for you using AI.",
+      "To generate the native interface code (C++ / Java / Obj-C) based on your TypeScript/Flow definitions.",
+      "To minify the JS bundle.",
+      "To verify npm package versions."
+    ]
   },
   "nm-06": {
     "prompt": "Які з цих способів є валідними для передачі даних із нативної сторони назад у JavaScript?",
     "explanation": "Callbacks та Promises використовуються для відповідей на конкретні виклики. Події (EventEmitter) потрібні для нативних дій, які JS не ініціював, як-от оновлення GPS-координат.",
-    "interviewTip": "Завжди пам'ятайте про видалення слухачів подій у функції очищення 'useEffect', щоб уникнути витоків пам'яті."
+    "interviewTip": "Завжди пам'ятайте про видалення слухачів подій у функції очищення 'useEffect', щоб уникнути витоків пам'яті.",
+    "options": [
+      "Using a Callback (one-time response).",
+      "Using Promises (one-time response, modern).",
+      "Using DeviceEventEmitter (for streaming events).",
+      "Directly modifying the JS variable from Java."
+    ]
   },
   "nm-07": {
     "prompt": "Що таке 'Native UI Component' (на відміну від Native Module)?",
     "explanation": "У той час як Native Modules надають «логіку», Native UI Components надають «інтерфейс» (views). Ви використовуєте 'requireNativeComponent', щоб додати їх у свій JSX.",
-    "interviewTip": "Якщо вам потрібен складний елемент інтерфейсу, якого не існує в RN, ви створюєте 'ViewManager' на нативній стороні."
+    "interviewTip": "Якщо вам потрібен складний елемент інтерфейсу, якого не існує в RN, ви створюєте 'ViewManager' на нативній стороні.",
+    "options": [
+      "A piece of logic like an API fetcher.",
+      "An actual native view (like a specialized Video Player or Map) that is rendered as a React component.",
+      "A button provided by the OS.",
+      "A local storage database."
+    ]
   },
   "nm-08": {
     "prompt": "Визначте проблему в цьому нативному методі iOS:",
     "explanation": "Методи старого моста (bridge) є асинхронними та повертають 'void'. Щоб повернути результат у JS, потрібно передати RCTResponseSenderBlock або RCTPromiseResolveBlock.",
-    "interviewTip": "У Новій архітектурі з використанням JSI ви дійсно *можете* повертати значення синхронно."
+    "interviewTip": "У Новій архітектурі з використанням JSI ви дійсно *можете* повертати значення синхронно.",
+    "options": [
+      "The types must be 'NSInteger'.",
+      "Native methods on the bridge cannot return values directly; they must use callbacks or promises.",
+      "The method name is too short.",
+      "There is no issue."
+    ]
   },
   "nm-09": {
     "prompt": "Що робить макрос 'RCT_EXPORT_MODULE()'?",
     "explanation": "Без цього макроса міст React Native не знатиме про існування класу під час виконання програми.",
-    "interviewTip": "Ви можете передати макросу необов'язкове ім'я (наприклад, RCT_EXPORT_MODULE(MyCustomName)), щоб змінити те, як він буде називатися в JS."
+    "interviewTip": "Ви можете передати макросу необов'язкове ім'я (наприклад, RCT_EXPORT_MODULE(MyCustomName)), щоб змінити те, як він буде називатися в JS.",
+    "options": [
+      "It compiles the class into a binary.",
+      "It registers the class with React Native so it can be accessed via NativeModules in JS.",
+      "It exports the class to the App Store.",
+      "It makes the class a singleton."
+    ]
   },
   "nm-10": {
     "prompt": "Що таке 'Fabric' у Новій архітектурі та чим він відрізняється від старого рендерера?",
     "explanation": "Старий рендерер використовував асинхронний міст для передачі оновлень UI. Fabric використовує JSI для синхронного зв'язку з нативним потоком UI, що дозволяє пріоритетний рендеринг та складні анімації.",
-    "interviewTip": "Fabric — це еквівалент Concurrent Mode (React 18) для нативної сторони: він дозволяє React Native переривати та пріоритезувати оновлення інтерфейсу."
+    "interviewTip": "Fabric — це еквівалент Concurrent Mode (React 18) для нативної сторони: він дозволяє React Native переривати та пріоритезувати оновлення інтерфейсу.",
+    "options": [
+      "Fabric is a new CSS framework for React Native.",
+      "Fabric is the new synchronous rendering system that replaces the asynchronous UIManager, allowing for better performance and concurrent rendering.",
+      "Fabric is a tool for deploying apps to the cloud.",
+      "Fabric is a database for storing native modules."
+    ]
   }
 }

@@ -2,61 +2,133 @@
   "dp-01": {
     "prompt": "Яка основна мета патерна 'Compound Components' (Складені компоненти)?",
     "explanation": "Складені компоненти (як <Select> та <Option>) спільно використовують стан «за лаштунками», що дає розробнику більше контролю над структурою рендерингу, зберігаючи логіку інкапсульованою.",
-    "interviewTip": "Згадайте стандартні HTML-теги <select> та <option>. Вони працюють як єдине ціле; це і є нативний складений компонент."
+    "interviewTip": "Згадайте стандартні HTML-теги <select> та <option>. Вони працюють як єдине ціле; це і є нативний складений компонент.",
+    "options": [
+      "To make components render 50% faster.",
+      "To allow a group of components to work together and share implicit state without prop drilling.",
+      "To combine React with other frameworks like Vue.",
+      "To hide all logic inside a single monolithic component."
+    ]
   },
   "dp-02": {
     "prompt": "Як у патерні Compound Component внутрішній стан зазвичай передається дочірнім елементам?",
     "explanation": "Хоча раніше використовувався cloneElement, зараз React Context є кращим способом передачі стану всередині групи складених компонентів.",
-    "interviewTip": "Зауважте, що Context безпечніший і гнучкіший за cloneElement, оскільки він працює, навіть якщо дочірні елементи обгорнуті в інші div-и."
+    "interviewTip": "Зауважте, що Context безпечніший і гнучкіший за cloneElement, оскільки він працює, навіть якщо дочірні елементи обгорнуті в інші div-и.",
+    "options": [
+      "By passing props manually to every child.",
+      "By using React Context to provide state to all nested children.",
+      "By using global window variables.",
+      "By cloning each child and injecting props using React.cloneElement."
+    ]
   },
   "dp-03": {
     "prompt": "Що таке 'Higher-Order Component' (HOC) — компонент вищого порядку?",
     "explanation": "HOC — це патерн для повторного використання логіки компонентів. Вони діють як обгортки, які «посилюють» оригінальний компонент новими пропсами або поведінкою.",
-    "interviewTip": "Хоча HOC стали менш поширеними після появи хуків, вони все ще використовуються для наскрізної логіки, такої як аутентифікація або логування."
+    "interviewTip": "Хоча HOC стали менш поширеними після появи хуків, вони все ще використовуються для наскрізної логіки, такої як аутентифікація або логування.",
+    "options": [
+      "A component that is rendered at the top of the page.",
+      "A function that takes a component and returns a new component with added functionality.",
+      "A hook that replaces the need for state.",
+      "A component with more than 1000 lines of code."
+    ]
   },
   "dp-04": {
     "prompt": "Проаналізуйте патерн 'Render Prop'. Що саме передається дочірньому елементу?",
     "explanation": "Render prop — це пропс у вигляді функції, яку компонент використовує, щоб знати, що рендерити. Він «ділиться» своїм внутрішнім станом із цією функцією.",
-    "interviewTip": "Render props дуже гнучкі, але іноді можуть призвести до «пекла обгорток» (wrapper hell) при надмірній вкладеності."
+    "interviewTip": "Render props дуже гнучкі, але іноді можуть призвести до «пекла обгорток» (wrapper hell) при надмірній вкладеності.",
+    "options": [
+      "A static object.",
+      "A function that tells the component what to render based on internal state.",
+      "A direct reference to the DOM.",
+      "A boolean flag."
+    ]
   },
   "dp-05": {
     "prompt": "Які з наведених характеристик притаманні 'Controlled Component' (Керованому компоненту)?",
     "explanation": "Керовані компоненти дозволяють React бути «Єдиним джерелом істини». Некеровані компоненти покладаються на DOM (і Ref-и) для зберігання даних.",
-    "interviewTip": "Використовуйте керовані компоненти майже для всього, якщо у вас немає специфічної причини для продуктивності використовувати Ref."
+    "interviewTip": "Використовуйте керовані компоненти майже для всього, якщо у вас немає специфічної причини для продуктивності використовувати Ref.",
+    "options": [
+      "The component's data is stored in the React state.",
+      "The component manages its own internal state via the DOM.",
+      "Changes are handled by an onChange callback that updates the state.",
+      "The value prop is set by the parent."
+    ]
   },
   "dp-06": {
     "prompt": "Як реалізувати патерн 'Controlled Props', щоб дозволити користувачеві «перехопити» внутрішній стан компонента?",
     "explanation": "Цей патерн дозволяє компоненту керувати власним станом за замовчуванням, але дає батьківському компоненту можливість «контролювати» його, якщо передано відповідний пропс.",
-    "interviewTip": "Це поширений патерн у просунутих бібліотеках інтерфейсу, таких як Downshift або Material UI."
+    "interviewTip": "Це поширений патерн у просунутих бібліотеках інтерфейсу, таких як Downshift або Material UI.",
+    "options": [
+      "The code above shows the logic for a component that can be both controlled or uncontrolled.",
+      "By always using a global Redux store.",
+      "By deleting the internal state entirely.",
+      "By forcing the user to pass all props."
+    ]
   },
   "dp-07": {
     "prompt": "Що таке патерн 'Container/Presentational'?",
     "explanation": "Презентаційні компоненти відповідають лише за вигляд. Контейнери — «розумні», вони відповідають за логіку роботи (API-запити, стан).",
-    "interviewTip": "Хуки значною мірою замінили цей патерн, оскільки тепер ви можете винести «розумну» логіку в кастомний хук замість компонента-обгортки."
+    "interviewTip": "Хуки значною мірою замінили цей патерн, оскільки тепер ви можете винести «розумну» логіку в кастомний хук замість компонента-обгортки.",
+    "options": [
+      "A pattern that separates data fetching (Container) from UI rendering (Presentational).",
+      "A way to put all CSS in a container file.",
+      "A method to group components by their size.",
+      "A way to render React components inside a Docker container."
+    ]
   },
   "dp-08": {
     "prompt": "Визначте проблему при використанні HOC (компонентів вищого порядку):",
     "explanation": "Велика вкладеність HOC ускладнює відлагодження, оскільки незрозуміло, який саме HOC передає конкретний пропс. Хуки вирішують це завдяки пласкій структурі.",
-    "interviewTip": "Це одна з головних причин, чому спільнота React перейшла від HOC до хуків."
+    "interviewTip": "Це одна з головних причин, чому спільнота React перейшла від HOC до хуків.",
+    "options": [
+      "It makes the component render faster.",
+      "It leads to 'Wrapper Hell', making it difficult to track where props are coming from.",
+      "React doesn't allow more than two HOCs.",
+      "The component will lose its state."
+    ]
   },
   "dp-09": {
     "prompt": "Чого дозволяє досягти патерн 'Slot' (слоти) у React?",
     "explanation": "Слоти — це форма композиції, яка дозволяє батьківському компоненту визначати специфічні «отвори» в інтерфейсі, які дочірній компонент заповнює контентом.",
-    "interviewTip": "Слотами часто легше керувати, ніж складними булевими прапорцями (flags) всередині компонента."
+    "interviewTip": "Слотами часто легше керувати, ніж складними булевими прапорцями (flags) всередині компонента.",
+    "options": [
+      "It allows you to pass JSX elements as props to be placed in specific locations.",
+      "It is used to save data in a slot on the server.",
+      "It generates random IDs for components.",
+      "It is a way to use 3D models in React."
+    ]
   },
   "dp-10": {
     "prompt": "Як за допомогою патернів уникнути 'prop drilling' (прокидання пропсів) у глибоко вкладеному дереві компонентів?",
     "explanation": "Складені компоненти використовують Context для трансляції стану всім нащадкам, фактично усуваючи потребу в ручному прокиданні пропсів.",
-    "interviewTip": "Згадайте, що це зберігає API компонента «чистим», оскільки користувачі не бачать процесу передачі стану."
+    "interviewTip": "Згадайте, що це зберігає API компонента «чистим», оскільки користувачі не бачать процесу передачі стану.",
+    "options": [
+      "By using the Render Prop pattern at the top level.",
+      "By using the Compound Components pattern with React Context.",
+      "By copying the data to the clipboard.",
+      "By using a for-loop to inject props."
+    ]
   },
   "dp-11": {
     "prompt": " які патерни вважаються «застарілими» через впровадження хуків?",
     "explanation": "Mixins (міксини) повністю застаріли. HOC та Render Props все ще валідні, але використовуються рідше, бо хуки вирішують ті ж проблеми без зайвої вкладеності.",
-    "interviewTip": "Compound Components (складені компоненти) все ще дуже актуальні, бо вони вирішують іншу задачу — проектування структури UI та API."
+    "interviewTip": "Compound Components (складені компоненти) все ще дуже актуальні, бо вони вирішують іншу задачу — проектування структури UI та API.",
+    "options": [
+      "Mixins.",
+      "Higher-Order Components (partially).",
+      "Compound Components.",
+      "Render Props (partially)."
+    ]
   },
   "dp-12": {
     "prompt": "Що таке патерн 'Prop Collection'?",
     "explanation": "Цей патерн спрощує роботу користувача, збираючи атрибути доступності, обробники подій та інші властивості в один об'єкт, який можна розгорнути (spread).",
-    "interviewTip": "Це широко використовується в 'Headless UI' бібліотеках, таких як Radix UI або Reach UI."
+    "interviewTip": "Це широко використовується в 'Headless UI' бібліотеках, таких як Radix UI або Reach UI.",
+    "options": [
+      "A way to delete unused props.",
+      "A pattern where a hook returns a function that provides all necessary props for a specific element.",
+      "A collection of all CSS classes in the app.",
+      "A way to store props in a database."
+    ]
   }
 }

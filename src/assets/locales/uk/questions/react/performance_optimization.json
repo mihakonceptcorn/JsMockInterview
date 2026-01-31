@@ -2,61 +2,133 @@
   "po-01": {
     "prompt": "Яка основна мета використання 'React.lazy' та 'Suspense'?",
     "explanation": "React.lazy дозволяє рендерити динамічний імпорт як звичайний компонент. Suspense забезпечує резервний інтерфейс (наприклад, спінер), поки цей компонент завантажується.",
-    "interviewTip": "Це зменшує початковий розмір бандла (bundle size), що покращує метрику 'Time to Interactive' (час до інтерактивності)."
+    "interviewTip": "Це зменшує початковий розмір бандла (bundle size), що покращує метрику 'Time to Interactive' (час до інтерактивності).",
+    "options": [
+      "To make the Virtual DOM diffing algorithm faster.",
+      "To implement code-splitting by loading components only when they are needed.",
+      "To automatically minify the CSS files.",
+      "To cache API responses in the browser's memory."
+    ]
   },
   "po-02": {
     "prompt": "Проаналізуйте код. Що відбувається з 'HugeComponent', коли додаток завантажується вперше?",
     "explanation": "Завдяки динамічному імпорту import(), інструмент збірки (Webpack або Vite) створює окремий чанк для цього компонента, який завантажується по мережі лише за потреби.",
-    "interviewTip": "Ледаче завантаження (lazy loading) найкраще підходить для компонентів, які не видно одразу, наприклад, модальних вікон або окремих маршрутів (Routes)."
+    "interviewTip": "Ледаче завантаження (lazy loading) найкраще підходить для компонентів, які не видно одразу, наприклад, модальних вікон або окремих маршрутів (Routes).",
+    "options": [
+      "It is downloaded immediately as part of the main bundle.",
+      "It is only downloaded when the App component is rendered.",
+      "It is ignored by the browser.",
+      "It is pre-rendered on the server only."
+    ]
   },
   "po-03": {
     "prompt": "Які з цих методів є ефективними для виявлення «вузьких місць» у продуктивності React-додатка?",
     "explanation": "Профайлер (Profiler) показує, які компоненти рендерилися і чому. Функція 'Highlight updates' дає візуальний фідбек про перерендери, а вкладка Network допомагає знайти занадто важкий код.",
-    "interviewTip": "Графік 'Flamegraph' у профайлері допомагає точно визначити, який саме компонент у глибокому дереві спричиняє затримку."
+    "interviewTip": "Графік 'Flamegraph' у профайлері допомагає точно визначити, який саме компонент у глибокому дереві спричиняє затримку.",
+    "options": [
+      "Using the 'Profiler' tab in React Developer Tools.",
+      "Turning on 'Highlight updates' in the React DevTools settings.",
+      "Checking the 'Network' tab to see bundle sizes.",
+      "Increasing the CPU speed of the development machine."
+    ]
   },
   "po-04": {
     "prompt": "Для чого використовується «віконний режим» (Windowing) або віртуалізація?",
     "explanation": "Якщо у вас 10 000 елементів, рендеринг усіх створить понад 10 000 DOM-вузлів, що сповільнить браузер. Віртуалізація тримає DOM малим (наприклад, лише 20 вузлів у полі зору).",
-    "interviewTip": "Згадайте бібліотеки 'react-window' або 'react-virtualized' як галузевий стандарт для цього завдання."
+    "interviewTip": "Згадайте бібліотеки 'react-window' або 'react-virtualized' як галузевий стандарт для цього завдання.",
+    "options": [
+      "To allow the app to run in multiple browser windows.",
+      "To render only the items in a long list that are currently visible on the screen.",
+      "To create a transparent background for the UI.",
+      "To handle pop-up windows in the browser."
+    ]
   },
   "po-05": {
     "prompt": "Як вплине на продуктивність визначення одного компонента всередині тіла іншого компонента?",
     "explanation": "Оскільки функція компонента створюється заново, React щоразу бачить її як абсолютно новий тип. Це знищує весь стан (state) дочірнього елемента і змушує його повністю перемонтуватися.",
-    "interviewTip": "Завжди визначайте свої компоненти поза основною функцією або в окремих файлах."
+    "interviewTip": "Завжди визначайте свої компоненти поза основною функцією або в окремих файлах.",
+    "options": [
+      "It is faster because the scope is smaller.",
+      "It is extremely inefficient because 'Child' is redefined as a brand-new component on every single render of 'Parent'.",
+      "React optimizes this automatically.",
+      "It is only allowed in React 19."
+    ]
   },
   "po-06": {
     "prompt": "Що таке 'Throttling' та 'Debouncing' у контексті подій React?",
     "explanation": "Debouncing (усунення брязкоту) чекає на паузу в активності (наприклад, при друку), тоді як Throttling (дроселювання) обмежує кількість викликів до одного разу на X мілісекунд (наприклад, при скролі).",
-    "interviewTip": "Використовуйте 'lodash.debounce' або подібні утиліти, щоб запобігти 100 API-запитам, поки користувач вводить одне слово."
+    "interviewTip": "Використовуйте 'lodash.debounce' або подібні утиліти, щоб запобігти 100 API-запитам, поки користувач вводить одне слово.",
+    "options": [
+      "Methods to encrypt user input.",
+      "Techniques to limit how often a function (like a search API call or window resize) is executed.",
+      "Ways to speed up CSS animations.",
+      "Tools to delete unused state variables."
+    ]
   },
   "po-07": {
     "prompt": "Як 'Transition API' (useTransition) допомагає з продуктивністю в React 18+?",
     "explanation": "startTransition підказує React, що оновлення (наприклад, фільтрація величезного списку) може бути перерване більш терміновими завданнями, такими як введення тексту або клік.",
-    "interviewTip": "Використовуйте 'useTransition', щоб запобігти «зависанню» інтерфейсу під час важких завдань рендерингу."
+    "interviewTip": "Використовуйте 'useTransition', щоб запобігти «зависанню» інтерфейсу під час важких завдань рендерингу.",
+    "options": [
+      "It adds CSS transitions between pages.",
+      "It allows you to mark certain state updates as 'non-urgent', keeping the UI responsive.",
+      "It automatically compresses images.",
+      "It forces the browser to use more RAM."
+    ]
   },
   "po-08": {
     "prompt": "У чому перевага перенесення стану (state) вниз до дочірнього компонента?",
     "explanation": "Це називається «локалізація стану». Якщо лише модальному вікну потрібно знати, чи воно відкрите, тримайте стан там, щоб уникнути рендерингу всього додатка при кожному перемиканні.",
-    "interviewTip": "Перед використанням useMemo завжди перевіряйте, чи можна просто змінити структуру дерева компонентів, щоб уникнути зайвих рендерів."
+    "interviewTip": "Перед використанням useMemo завжди перевіряйте, чи можна просто змінити структуру дерева компонентів, щоб уникнути зайвих рендерів.",
+    "options": [
+      "It increases the complexity of the app.",
+      "It limits re-renders to only that child component instead of the entire parent tree.",
+      "It makes the data accessible to all components.",
+      "There is no performance benefit."
+    ]
   },
   "po-09": {
     "prompt": "Чому використання індексу масиву як ключа (key) — це погано для продуктивності в динамічних списках?",
     "explanation": "Якщо список перевпорядковується, елемент за індексом 0 змінюється, але ключ '0' залишається. React думає, що змінився вміст, а не те, що елемент просто перемістився.",
-    "interviewTip": "Стабільні ключі (наприклад, ID) дозволяють React просто переміщати DOM-вузли замість їх повторного створення."
+    "interviewTip": "Стабільні ключі (наприклад, ID) дозволяють React просто переміщати DOM-вузли замість їх повторного створення.",
+    "options": [
+      "It takes too long for the browser to read the numbers.",
+      "It confuses React's diffing algorithm during reordering, leading to incorrect DOM updates and wasted renders.",
+      "Keys must be strings, not numbers.",
+      "Indices are not supported in React 18."
+    ]
   },
   "po-10": {
     "prompt": "Що робить хук 'useDeferredValue'?",
     "explanation": "Подібно до useTransition, але для значень. Він дає «відкладену» версію значення, яка оновлюється з невеликою затримкою після термінового оновлення, зберігаючи плавність UI.",
-    "interviewTip": "Ідеально підходить для пошукового введення, де поле вводу оновлюється миттєво, а список результатів — трохи згодом."
+    "interviewTip": "Ідеально підходить для пошукового введення, де поле вводу оновлюється миттєво, а список результатів — трохи згодом.",
+    "options": [
+      "It delays the rendering of a value until the next day.",
+      "It allows you to defer updating a part of the UI that takes a long time to render.",
+      "It caches the value in a cookie.",
+      "It prevents the value from ever changing."
+    ]
   },
   "po-11": {
     "prompt": "Які з цих патернів можуть призвести до витоків пам'яті в React?",
     "explanation": "Коли компонент демонтується, глобальні речі, такі як таймери та слухачі подій, залишаються в пам'яті, якщо ви не зупините їх вручну.",
-    "interviewTip": "Завжди використовуйте функцію повернення в useEffect, щоб «прибрати за собою»!"
+    "interviewTip": "Завжди використовуйте функцію повернення в useEffect, щоб «прибрати за собою»!",
+    "options": [
+      "Starting a setInterval and not clearing it in the cleanup function.",
+      "Using a lot of console.log statements.",
+      "Adding a window event listener without removing it.",
+      "Declaring too many variables."
+    ]
   },
   "po-12": {
     "prompt": "Яким буде результат використання інлайнових функцій як пропсів для компонента, огорнутого в 'React.memo'?",
     "explanation": "React.memo використовує поверхневе порівняння. Оскільки `() => {} !== () => {}`, перевірка мемоїзації не спрацьовує і компонент перерендериться.",
-    "interviewTip": "Поєднуйте 'React.memo' з 'useCallback' у батьківському компоненті, щоб оптимізація дійсно працювала."
+    "interviewTip": "Поєднуйте 'React.memo' з 'useCallback' у батьківському компоненті, щоб оптимізація дійсно працювала.",
+    "options": [
+      "The button will never re-render.",
+      "The button will still re-render on every parent render because the function is a new reference every time.",
+      "React will ignore the function.",
+      "The function will be automatically memoized."
+    ]
   }
 }

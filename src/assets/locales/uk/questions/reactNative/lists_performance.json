@@ -2,71 +2,155 @@
   "lp-01": {
     "prompt": "Чому <FlatList> продуктивніший за <ScrollView> для довгих списків даних?",
     "explanation": "FlatList використовує «ледачий» рендеринг: він створює елементи лише тоді, коли вони мають з'явитися на екрані, і видаляє ті, що вийшли далеко за його межі, зберігаючи пам'ять.",
-    "interviewTip": "Ця концепція називається «Віртуалізація» (Virtualization) або «Віконний режим» (Windowing)."
+    "interviewTip": "Ця концепція називається «Віртуалізація» (Virtualization) або «Віконний режим» (Windowing).",
+    "options": [
+      "It uses a faster C++ implementation for the scroll bar.",
+      "It only renders the items currently visible on the screen and recycles views.",
+      "It compresses images inside the list automatically.",
+      "It runs on the Shadow Thread instead of the JS Thread."
+    ]
   },
   "lp-02": {
     "prompt": "Який пропс є обов'язковим у <FlatList>, щоб вказати, що саме рендерити для кожного елемента масиву?",
     "explanation": "Пропс renderItem приймає функцію, яка отримує об'єкт (зазвичай деструктурований як { item, index }) і повертає JSX-елемент.",
-    "interviewTip": "Для високої продуктивності визначайте функцію renderItem поза компонентом або огортайте її в useCallback."
+    "interviewTip": "Для високої продуктивності визначайте функцію renderItem поза компонентом або огортайте її в useCallback.",
+    "options": [
+      "renderItem",
+      "component",
+      "ItemTemplate",
+      "rowRenderer"
+    ]
   },
   "lp-03": {
     "prompt": "Яке призначення пропса 'keyExtractor'?",
     "explanation": "За замовчуванням FlatList шукає властивість 'id' або 'key'. Якщо ваші дані використовують інші назви (наприклад, 'uuid'), ви повинні використати keyExtractor.",
-    "interviewTip": "Завжди надавайте унікальний рядок як ключ. Уникайте використання індексу, якщо дані можуть сортуватися або фільтруватися."
+    "interviewTip": "Завжди надавайте унікальний рядок як ключ. Уникайте використання індексу, якщо дані можуть сортуватися або фільтруватися.",
+    "options": [
+      "To encrypt the data for security.",
+      "To provide a unique ID for each item so React can track changes and re-render efficiently.",
+      "To sort the list based on the key.",
+      "To link the list to a database."
+    ]
   },
   "lp-04": {
     "prompt": "Як відрендерити заголовок (header), який прокручується разом із елементами списку?",
     "explanation": "Використання ListHeaderComponent гарантує, що заголовок залишається частиною області прокрутки, не порушуючи логіку віртуалізації.",
-    "interviewTip": "Ніколи не огортайте FlatList всередину ScrollView тієї ж орієнтації; це ламає віртуалізацію і викликає попередження про продуктивність."
+    "interviewTip": "Ніколи не огортайте FlatList всередину ScrollView тієї ж орієнтації; це ламає віртуалізацію і викликає попередження про продуктивність.",
+    "options": [
+      "Place the header inside a View above the FlatList.",
+      "Use the 'ListHeaderComponent' prop.",
+      "Wrap the FlatList in a ScrollView.",
+      "Put the header in the first item of the data array."
+    ]
   },
   "lp-05": {
     "prompt": "Який компонент слід використовувати для рендерингу групованих даних (наприклад, список контактів за алфавітом)?",
     "explanation": "SectionList розроблений спеціально для даних, розділених на логічні секції, кожна з яких має власний заголовок.",
-    "interviewTip": "Дані для SectionList мають бути масивом об'єктів, де кожен об'єкт має масив 'data' (наприклад, { title: 'A', data: ['Alice', 'Aaron'] })."
+    "interviewTip": "Дані для SectionList мають бути масивом об'єктів, де кожен об'єкт має масив 'data' (наприклад, { title: 'A', data: ['Alice', 'Aaron'] }).",
+    "options": [
+      "GroupedList",
+      "SectionList",
+      "FlatList with nested Maps",
+      "CategoryView"
+    ]
   },
   "lp-06": {
     "prompt": "Що саме оптимізує пропс 'getItemLayout'?",
     "explanation": "Вказуючи точні розміри елементів заздалегідь, ви звільняєте FlatList від потреби обчислювати їх «на льоту» під час скролу, що робить прокрутку плавною.",
-    "interviewTip": "Це оптимізація рівня «про» для списків із сотнями елементів, де кожен елемент має однакову фіксовану висоту."
+    "interviewTip": "Це оптимізація рівня «про» для списків із сотнями елементів, де кожен елемент має однакову фіксовану висоту.",
+    "options": [
+      "It allows the list to skip measurement of items if they have a fixed height/width.",
+      "It defines the Flexbox layout of the row.",
+      "It automatically calculates the font size of the text.",
+      "It handles the spacing between items."
+    ]
   },
   "lp-07": {
     "prompt": "Проаналізуйте код. Що станеться, якщо користувач дійде до кінця списку?",
     "explanation": "onEndReachedThreshold — це значення від 0 до 1, що вказує, наскільки близько до кінця (як частка довжини списку) має бути користувач, щоб спрацювала подія.",
-    "interviewTip": "Саме так реалізується «Нескінченний скрол» (Infinite Scroll) у мобільних додатках."
+    "interviewTip": "Саме так реалізується «Нескінченний скрол» (Infinite Scroll) у мобільних додатках.",
+    "options": [
+      "The list will stop scrolling.",
+      "loadMoreData will be called when the user is within 50% of the end of the list content.",
+      "loadMoreData will be called only when the user hits the exact pixel at the bottom.",
+      "The list will restart from the top."
+    ]
   },
   "lp-08": {
     "prompt": "Як додати лінію-розділювач між елементами, не додаючи її в самий початок або кінець списку?",
     "explanation": "ItemSeparatorComponent рендерить компонент між кожним елементом, але виключає його для самого верху та самого низу списку.",
-    "interviewTip": "Це чистіше, ніж використання margin або border, оскільки автоматично обробляє краї списку."
+    "interviewTip": "Це чистіше, ніж використання margin або border, оскільки автоматично обробляє краї списку.",
+    "options": [
+      "Add a border to every item.",
+      "Use the 'ItemSeparatorComponent' prop.",
+      "Add a line inside the renderItem function.",
+      "Use the 'gap' style on the FlatList."
+    ]
   },
   "lp-09": {
     "prompt": "Які з цих пропсів можуть допомогти покращити роботу дуже повільного FlatList?",
     "explanation": "Усі ці пропси налаштовують двигун віртуалізації. Наприклад, менший windowSize зменшує споживання пам'яті, але може показувати порожні місця при швидкому скролі.",
-    "interviewTip": "Завжди починайте зі значень за замовчуванням. Змінюйте їх лише якщо помічаєте лаги або високе споживання пам'яті."
+    "interviewTip": "Завжди починайте зі значень за замовчуванням. Змінюйте їх лише якщо помічаєте лаги або високе споживання пам'яті.",
+    "options": [
+      "initialNumToRender (how many items to load initially)",
+      "windowSize (how many pages of items to keep in memory)",
+      "removeClippedSubviews (unmounts views off-screen)",
+      "maxToRenderPerBatch (limits items rendered per scroll increment)"
+    ]
   },
   "lp-10": {
     "prompt": "Для чого використовується пропс 'extraData' у FlatList?",
     "explanation": "FlatList — це PureComponent. Він перерендериться лише якщо зміниться посилання на 'data'. Якщо ваші елементи залежать від теми або вибраного ID, передайте це в extraData.",
-    "interviewTip": "Якщо ваш список не оновлюється при зміні стану одного елемента, ви, ймовірно, забули вказати extraData."
+    "interviewTip": "Якщо ваш список не оновлюється при зміні стану одного елемента, ви, ймовірно, забули вказати extraData.",
+    "options": [
+      "To pass metadata to the database.",
+      "To tell the FlatList to re-render when a piece of state *outside* the 'data' array changes.",
+      "To add more items to the end of the list.",
+      "To style the empty list state."
+    ]
   },
   "lp-11": {
     "prompt": "Як реалізувати функцію «Оновити тягнучи» (Pull to Refresh) у FlatList?",
     "explanation": "refreshing (boolean) показує індикатор завантаження; onRefresh (function) — це колбек, де ви завантажуєте нові дані.",
-    "interviewTip": "Це забезпечує нативний досвід взаємодії, якого користувачі очікують від мобільних додатків."
+    "interviewTip": "Це забезпечує нативний досвід взаємодії, якого користувачі очікують від мобільних додатків.",
+    "options": [
+      "loading, onReload",
+      "isFetching, onFetch",
+      "refreshing, onRefresh",
+      "active, onPull"
+    ]
   },
   "lp-12": {
     "prompt": "Що станеться, якщо не надати унікальний ключ елементам списку?",
     "explanation": "React використовує ключі для оптимізації оновлень. Використання індексу може призвести до того, що стан «приклеїться» до неправильних елементів при зміні списку.",
-    "interviewTip": "На співбесіді поясніть, що стабільні ключі запобігають дороговартісним повторним монтуванням (re-mounts)."
+    "interviewTip": "На співбесіді поясніть, що стабільні ключі запобігають дороговартісним повторним монтуванням (re-mounts).",
+    "options": [
+      "The app will crash immediately.",
+      "React will show a warning and use the index as a key, which might lead to performance bugs.",
+      "The list will be empty.",
+      "The items will be rendered in random order."
+    ]
   },
   "lp-13": {
     "prompt": "Який пропс дозволяє рендерити список у кілька колонок (наприклад, сітку)?",
     "explanation": "numColumns={2} автоматично розташує елементи у дві колонки. Це вимагає, щоб ваші елементи мали гнучку або відповідну фіксовану ширину.",
-    "interviewTip": "Зверніть увагу, що ви не можете змінювати numColumns «на льоту»; для цього компонент має перемонтуватися."
+    "interviewTip": "Зверніть увагу, що ви не можете змінювати numColumns «на льоту»; для цього компонент має перемонтуватися.",
+    "options": [
+      "columnCount",
+      "numColumns",
+      "gridEnabled",
+      "flexWrap"
+    ]
   },
   "lp-14": {
     "prompt": "Для чого використовується 'ListEmptyComponent'?",
     "explanation": "Це зручний пропс для обробки стану порожнього списку без використання зайвих тернарних операторів у вашому JSX.",
-    "interviewTip": "Це робить код вашого компонента набагато чистішим."
+    "interviewTip": "Це робить код вашого компонента набагато чистішим.",
+    "options": [
+      "To delete all data from the list.",
+      "To render a specific UI (like a 'No results found' message) when the data array is empty.",
+      "To style the background of the list.",
+      "To hide the list entirely."
+    ]
   }
 }

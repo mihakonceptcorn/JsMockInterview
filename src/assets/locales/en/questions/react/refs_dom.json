@@ -2,71 +2,155 @@
   "rd-01": {
     "prompt": "What is the primary purpose of the 'useRef' hook in React?",
     "explanation": "useRef returns a plain JavaScript object that persists for the full lifetime of the component. Changing the .current property does not trigger a re-render.",
-    "interviewTip": "Think of useRef as a 'box' that can hold any value, but most commonly it holds a DOM element."
+    "interviewTip": "Think of useRef as a 'box' that can hold any value, but most commonly it holds a DOM element.",
+    "options": [
+      "To trigger a re-render whenever the value changes.",
+      "To store a mutable value that persists across renders without causing a re-render.",
+      "To validate the types of props passed to a component.",
+      "To create a global state accessible by all components."
+    ]
   },
   "rd-02": {
     "prompt": "How do you access a DOM node using a ref in a functional component?",
     "explanation": "When you pass a ref to a JSX element, React sets the '.current' property of that ref object to the corresponding DOM node.",
-    "interviewTip": "Always check if inputRef.current exists before calling methods on it to avoid null errors."
+    "interviewTip": "Always check if inputRef.current exists before calling methods on it to avoid null errors.",
+    "options": [
+      "inputRef.focus()",
+      "inputRef.current.focus()",
+      "inputRef.value.focus()",
+      "document.getElementById('input').focus()"
+    ]
   },
   "rd-03": {
     "prompt": "What happens to the value stored in 'useRef' when the component re-renders?",
     "explanation": "Unlike local variables, which are recreated every render, useRef values are kept by React throughout the component's lifecycle.",
-    "interviewTip": "This makes refs perfect for storing timers, interval IDs, or previous prop values."
+    "interviewTip": "This makes refs perfect for storing timers, interval IDs, or previous prop values.",
+    "options": [
+      "It is reset to the initial value provided in useRef(initial).",
+      "It is preserved and stays exactly as it was before the render.",
+      "It is cleared and becomes null.",
+      "It causes an infinite render loop."
+    ]
   },
   "rd-04": {
     "prompt": "In which scenarios is it appropriate to use a Ref?",
     "explanation": "If something can be done 'declaratively' with state, use state. Use refs only for 'imperative' actions like focusing or measuring.",
-    "interviewTip": "The React docs call refs an 'escape hatch'—use them only when state isn't enough."
+    "interviewTip": "The React docs call refs an 'escape hatch'—use them only when state isn't enough.",
+    "options": [
+      "Managing focus, text selection, or media playback.",
+      "Storing the current text of an input field to display it in the UI.",
+      "Integrating with third-party DOM libraries.",
+      "Triggering an animation that depends on state changes."
+    ]
   },
   "rd-05": {
     "prompt": "What is the purpose of 'forwardRef'?",
     "explanation": "By default, you cannot pass a 'ref' prop to a functional component. forwardRef 'forwards' the ref from the parent down to a specific element in the child.",
-    "interviewTip": "This is a common pattern for design system components like Inputs or Buttons."
+    "interviewTip": "This is a common pattern for design system components like Inputs or Buttons.",
+    "options": [
+      "To allow a parent component to access a DOM ref inside a child component.",
+      "To speed up the rendering of functional components.",
+      "To prevent a component from re-rendering when props change.",
+      "To automatically focus the first input in a component."
+    ]
   },
   "rd-06": {
     "prompt": "When does React update the 'ref.current' property?",
     "explanation": "React assigns the DOM node to .current when the component mounts and sets it to null when it unmounts.",
-    "interviewTip": "Because of this timing, you should only access DOM refs inside useEffect or event handlers."
+    "interviewTip": "Because of this timing, you should only access DOM refs inside useEffect or event handlers.",
+    "options": [
+      "During the render phase.",
+      "Before the DOM elements are created.",
+      "After the component is committed to the screen (during mount/update).",
+      "Only when the developer calls ref.update()."
+    ]
   },
   "rd-07": {
     "prompt": "What is the result of the following code after clicking 'Log'?",
     "explanation": "Every time the component renders, the count increments. Since it's a ref, it persists, but it doesn't *trigger* a render itself.",
-    "interviewTip": "This is a great way to track how many times a component is re-rendering for performance debugging."
+    "interviewTip": "This is a great way to track how many times a component is re-rendering for performance debugging.",
+    "options": [
+      "It will always log 0.",
+      "It will log the number of times the component has rendered.",
+      "It will cause a 'Max depth exceeded' error.",
+      "The button text will change to the count."
+    ]
   },
   "rd-08": {
     "prompt": "How do you store an interval ID in a functional component correctly?",
     "explanation": "A local variable would be reset on every render. useState would trigger a re-render when the ID is set. useRef is the perfect middle ground.",
-    "interviewTip": "Always clear your intervals in the cleanup function of useEffect to avoid memory leaks."
+    "interviewTip": "Always clear your intervals in the cleanup function of useEffect to avoid memory leaks.",
+    "options": [
+      "Using a local variable: let timer = setInterval(...)",
+      "Using useState: const [timer, setTimer] = useState(...)",
+      "Using useRef as shown in the code.",
+      "Intervals are not supported in functional components."
+    ]
   },
   "rd-09": {
     "prompt": "Can you use 'useRef' to store a value that isn't a DOM element?",
     "explanation": "useRef is essentially a generic container for any mutable value you want to keep between renders.",
-    "interviewTip": "This is often used to store 'previousProps' for comparison logic."
+    "interviewTip": "This is often used to store 'previousProps' for comparison logic.",
+    "options": [
+      "No, it's only for HTML elements.",
+      "Yes, it can store any JavaScript value (strings, objects, functions).",
+      "Only if the value is a number.",
+      "Only if you use the useMemo hook instead."
+    ]
   },
   "rd-10": {
     "prompt": "What is the difference between 'useRef' and 'createRef'?",
     "explanation": "In functional components, createRef would lose its value on every re-render. useRef is designed to 'hook' into React's persistent storage.",
-    "interviewTip": "If you use createRef inside a function component, it will be reset every time the function runs."
+    "interviewTip": "If you use createRef inside a function component, it will be reset every time the function runs.",
+    "options": [
+      "createRef is primarily used in Class components.",
+      "useRef always returns the same object; createRef creates a new object every render.",
+      "createRef is faster than useRef.",
+      "useRef only works with DOM nodes."
+    ]
   },
   "rd-11": {
     "prompt": "Identify the issue in this code:",
     "explanation": "During the first render, the DOM hasn't been created yet, so myRef.current is undefined/null. You should only access it in a useEffect or an event.",
-    "interviewTip": "This is a very common 'TypeError: Cannot read property of null' bug."
+    "interviewTip": "This is a very common 'TypeError: Cannot read property of null' bug.",
+    "options": [
+      "The div tag is missing a key.",
+      "myRef.current is null during the first render, leading to a crash.",
+      "useRef cannot access innerText.",
+      "Refs must be initialized with a string."
+    ]
   },
   "rd-12": {
     "prompt": "How do you handle multiple refs in a list generated by .map()?",
     "explanation": "You cannot call hooks inside loops. Instead, create a single ref to an array or a Map and assign each element to an index/key.",
-    "interviewTip": "Pattern: `<li ref={el => (itemsRef.current[i] = el)} />` (this is called a callback ref)."
+    "interviewTip": "Pattern: `<li ref={el => (itemsRef.current[i] = el)} />` (this is called a callback ref).",
+    "options": [
+      "Create an array of refs using a single useRef([]).",
+      "Call useRef inside the .map() callback.",
+      "Pass the index as the ref name: ref={index}.",
+      "React doesn't support multiple refs in a loop."
+    ]
   },
   "rd-13": {
     "prompt": "What does 'useImperativeHandle' do?",
     "explanation": "Used with forwardRef, it lets you hide the raw DOM node and instead expose only specific methods (like .focus() or .scrollTo()) to the parent.",
-    "interviewTip": "This is helpful for encapsulation—don't let the parent mess with the child's internals."
+    "interviewTip": "This is helpful for encapsulation—don't let the parent mess with the child's internals.",
+    "options": [
+      "It makes the component render faster.",
+      "It allows a child component to customize the instance value that is exposed to a parent using a ref.",
+      "It forces React to update the DOM immediately.",
+      "It replaces the useState hook for complex forms."
+    ]
   },
   "rd-14": {
     "prompt": "What will be printed to the console?",
     "explanation": "Unlike state updates which are async, updates to ref.current happen instantly. The incremented value is available immediately.",
-    "interviewTip": "This is a key distinction: State is for data that the UI depends on; Refs are for data the UI *doesn't* directly render."
+    "interviewTip": "This is a key distinction: State is for data that the UI depends on; Refs are for data the UI *doesn't* directly render.",
+    "options": [
+      "0",
+      "1",
+      "The previous count.",
+      "undefined"
+    ]
   }
 }

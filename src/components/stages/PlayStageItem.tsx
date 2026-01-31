@@ -120,7 +120,7 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                   {item.options.map((option, index) => (
                     <SelectOption
                       key={index}
-                      title={option}
+                      title={t(`${item.id}.options.${index}`)}
                       isSelected={selectedOptions.includes(index)}
                       onPress={() => {
                         onSelectOption(index);
@@ -175,7 +175,7 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                       </Text>
                       <Text style={styles.correctAnswerText}>
                         {item.correct
-                          .map((index) => item.options[index])
+                          .map((index) => t(`${item.id}.options.${index}`))
                           .join('; ')}
                       </Text>
                     </View>

@@ -2,51 +2,111 @@
   "comp-01": {
     "prompt": "Яка основна різниця між «композиційною функцією» (Composable) та звичайною утилітою (utility function)?",
     "explanation": "Утиліта, наприклад 'sum(a, b)', просто повертає значення. Composable, як-от 'useMouse()', повертає реактивні посилання (refs), які автоматично оновлюються, коли користувач рухає мишею.",
-    "interviewTip": "Ключові слова для відповіді: «Логіка зі станом» (Stateful Logic), «Повторне використання» та «Composition API»."
+    "interviewTip": "Ключові слова для відповіді: «Логіка зі станом» (Stateful Logic), «Повторне використання» та «Composition API».",
+    "options": [
+      "Composables must be written in TypeScript.",
+      "Composables encapsulate reactive state (ref, reactive) and lifecycle hooks; utilities are typically stateless.",
+      "Composables only work inside the template.",
+      "Utilities can only be used once per app."
+    ]
   },
   "comp-02": {
     "prompt": "Яким є стандарт іменування для Vue Composables?",
     "explanation": "Починати назву з 'use' — це стандарт спільноти. Це одразу сигналізує іншим розробникам, що функція повертає реактивний стан.",
-    "interviewTip": "Це дзеркальне відображення конвенції 'use' з React Hooks, що полегшує перехід для розробників, які працюють з різними фреймворками."
+    "interviewTip": "Це дзеркальне відображення конвенції 'use' з React Hooks, що полегшує перехід для розробників, які працюють з різними фреймворками.",
+    "options": [
+      "They should start with 'vue'.",
+      "They should start with 'use' (e.g., useUser, useFetch).",
+      "They should be written in ALL_CAPS.",
+      "There is no specific convention."
+    ]
   },
   "comp-03": {
     "prompt": "Проаналізуйте код. Який найкращий спосіб повернення даних із Composable для зручної деструктуризації в компоненті?",
     "explanation": "У Vue краще повертати об'єкт. Це дозволяє компоненту деструктурувати лише потрібні частини та перейменовувати їх за потреби, не залежачи від суворого порядку в масиві.",
-    "interviewTip": "Зауважте, що повернення об'єкта є більш гнучким для майбутнього розширення вашого API."
+    "interviewTip": "Зауважте, що повернення об'єкта є більш гнучким для майбутнього розширення вашого API.",
+    "options": [
+      "[count, increment]",
+      "{ count, increment }",
+      "count, increment",
+      "new Counter(count)"
+    ]
   },
   "comp-04": {
     "prompt": "Чому важливо використовувати 'toValue()' (або 'unref') всередині Composable при обробці вхідних аргументів?",
     "explanation": "toValue() (введений у Vue 3.3) нормалізує вхідні дані (число, ref або функцію-гетер). Це робить ваш Composable набагато гнучкішим для споживача.",
-    "interviewTip": "Використання toValue/unref — це ознака «добре спроектованого» Composable рівня бібліотеки."
+    "interviewTip": "Використання toValue/unref — це ознака «добре спроектованого» Composable рівня бібліотеки.",
+    "options": [
+      "To make the function run faster.",
+      "To allow the Composable to accept both plain values AND refs/getters as arguments.",
+      "To convert the string to an integer.",
+      "To hide the data from the template."
+    ]
   },
   "comp-05": {
     "prompt": "Проаналізуйте код. Яка поширена пастка виникає при використанні 'reactive' всередині Composable та його прямому поверненні?",
     "explanation": "Деструктуризація об'єктів reactive руйнує зв'язок реактивності. Щоб це виправити, Composable має повертати 'toRefs(state)'.",
-    "interviewTip": "Завжди рекомендуйте 'toRefs' при поверненні реактивного об'єкта з Composable."
+    "interviewTip": "Завжди рекомендуйте 'toRefs' при поверненні реактивного об'єкта з Composable.",
+    "options": [
+      "The code will throw an error.",
+      "The 'name' variable will lose reactivity because it was destructured from a reactive object.",
+      "The memory usage will double.",
+      "The name will become read-only."
+    ]
   },
   "comp-06": {
     "prompt": "Де можна безпечно викликати Composable, який використовує хуки життєвого циклу, такі як 'onMounted'?",
     "explanation": "Хуки життєвого циклу мають бути зареєстровані під час синхронного виконання 'setup'. Якщо викликати Composable після 'await', Vue втратить зв'язок із екземпляром компонента, якому належить хук.",
-    "interviewTip": "Це суворе «Правило Composables». Завжди викликайте їх на верхньому рівні вашого скрипта."
+    "interviewTip": "Це суворе «Правило Composables». Завжди викликайте їх на верхньому рівні вашого скрипта.",
+    "options": [
+      "Anywhere in the project.",
+      "Only inside the setup() function or <script setup> (synchronously).",
+      "Inside a setInterval timer.",
+      "Inside an async function after an 'await' statement."
+    ]
   },
   "comp-07": {
     "prompt": "Які переваги використання Composables над застарілим патерном 'Mixins'?",
     "explanation": "Міксини (Mixins) — це «невидимі» ін'єкції, які важко відстежити. Composables чітко показують, звідки походить кожна частина даних.",
-    "interviewTip": "Якщо запитають про Mixins, називайте їх «непрозорими» (opaque), а Composables — «прозорими та явними»."
+    "interviewTip": "Якщо запитають про Mixins, називайте їх «непрозорими» (opaque), а Composables — «прозорими та явними».",
+    "options": [
+      "Explicit source of state (you know which Composable a variable comes from).",
+      "No namespace collisions (you can rename destructured variables).",
+      "Better TypeScript support.",
+      "Composables are the only way to use CSS."
+    ]
   },
   "comp-08": {
     "prompt": "Чи може один Composable викликати інший Composable?",
     "explanation": "Вкладення композиційних функцій (наприклад, 'useAuth' може використовувати 'useFetch' всередині) є стандартною практикою.",
-    "interviewTip": "Цей патерн відомий як «Композиція композицій» (Composable Composition)."
+    "interviewTip": "Цей патерн відомий як «Композиція композицій» (Composable Composition).",
+    "options": [
+      "No, that creates a circular dependency.",
+      "Yes, Composables are highly nestable, allowing you to build complex logic from small, simple units.",
+      "Only if they are in the same folder.",
+      "Yes, but only if they don't use refs."
+    ]
   },
   "comp-09": {
     "prompt": "Що таке composable у Vue 3?",
     "explanation": "Composables — це еквівалент міксинів або компонентів вищого порядку у Vue 3, але з кращою структурою та без конфліктів іменування.",
-    "interviewTip": "Назви Composables мають починатися з префікса 'use' (наприклад, useMouse, useFetch), наслідуючи конвенцію хуків React."
+    "interviewTip": "Назви Composables мають починатися з префікса 'use' (наприклад, useMouse, useFetch), наслідуючи конвенцію хуків React.",
+    "options": [
+      "A component that can be composed with other components.",
+      "A function that leverages Vue Composition API to encapsulate and reuse stateful logic.",
+      "A CSS class that can be reused.",
+      "A type of Vue directive."
+    ]
   },
   "comp-10": {
     "prompt": "Що має повертати composable?",
     "explanation": "Composables зазвичай повертають об'єкт, що містить refs, реактивні об'єкти, обчислювані властивості та методи, які компоненти можуть використовувати.",
-    "interviewTip": "Повертайте лише те, що потрібно споживачеві, щоб API залишався чистим та сфокусованим."
+    "interviewTip": "Повертайте лише те, що потрібно споживачеві, щоб API залишався чистим та сфокусованим.",
+    "options": [
+      "Nothing, composables are side-effect only.",
+      "Reactive state and functions that the component can use.",
+      "Only primitive values.",
+      "A new Vue instance."
+    ]
   }
 }

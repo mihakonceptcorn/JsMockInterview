@@ -2,126 +2,276 @@
   "js-el-adv-01": {
     "prompt": "Which queue has higher priority in the event loop?",
     "explanation": "Microtasks run before the next macrotask.",
-    "interviewTip": "Promises can starve rendering."
+    "interviewTip": "Promises can starve rendering.",
+    "options": [
+      "Microtask queue",
+      "Macrotask queue",
+      "Animation frame queue",
+      "Idle queue"
+    ]
   },
   "js-el-adv-02": {
     "prompt": "Which API schedules a microtask?",
     "explanation": "Promise callbacks go to microtask queue.",
-    "interviewTip": "queueMicrotask exists."
+    "interviewTip": "queueMicrotask exists.",
+    "options": [
+      "Promise.then",
+      "setTimeout",
+      "setInterval",
+      "requestAnimationFrame"
+    ]
   },
   "js-el-adv-03": {
     "prompt": "What happens if microtasks keep scheduling new microtasks?",
     "explanation": "This causes starvation.",
-    "interviewTip": "Common performance pitfall."
+    "interviewTip": "Common performance pitfall.",
+    "options": [
+      "Macrotasks are delayed",
+      "Browser crashes",
+      "Call stack overflows",
+      "Tasks are merged"
+    ]
   },
   "js-el-adv-04": {
     "prompt": "When does rendering occur?",
     "explanation": "Rendering happens after microtasks drain.",
-    "interviewTip": "Why promises can block paint."
+    "interviewTip": "Why promises can block paint.",
+    "options": [
+      "Between macrotasks",
+      "After each microtask",
+      "Before JS starts",
+      "Only on load"
+    ]
   },
   "js-el-adv-05": {
     "prompt": "Where does requestAnimationFrame run?",
     "explanation": "Runs before the next paint.",
-    "interviewTip": "Use for animations."
+    "interviewTip": "Use for animations.",
+    "options": [
+      "Before repaint",
+      "As a microtask",
+      "As a macrotask",
+      "In idle time"
+    ]
   },
   "js-el-adv-06": {
     "prompt": "Which callback may never run under heavy load?",
     "explanation": "Idle time may never occur.",
-    "interviewTip": "Not guaranteed."
+    "interviewTip": "Not guaranteed.",
+    "options": [
+      "requestIdleCallback",
+      "Promise.then",
+      "setTimeout",
+      "rAF"
+    ]
   },
   "js-el-adv-07": {
     "prompt": "What queue does MutationObserver use?",
     "explanation": "Runs as microtask.",
-    "interviewTip": "Often forgotten."
+    "interviewTip": "Often forgotten.",
+    "options": [
+      "Microtask queue",
+      "Macrotask queue",
+      "Render queue",
+      "Idle queue"
+    ]
   },
   "js-el-adv-08": {
     "prompt": "Which task blocks rendering the most?",
     "explanation": "Main thread is blocked.",
-    "interviewTip": "Chunk long tasks."
+    "interviewTip": "Chunk long tasks.",
+    "options": [
+      "Long JS execution",
+      "Network request",
+      "CSS download",
+      "Image loading"
+    ]
   },
   "js-el-adv-09": {
     "prompt": "What is a long task?",
     "explanation": "Used in performance metrics.",
-    "interviewTip": "Related to TBT."
+    "interviewTip": "Related to TBT.",
+    "options": [
+      "Task > 50ms",
+      "Task > 5ms",
+      "Async task",
+      "Microtask"
+    ]
   },
   "js-el-adv-10": {
     "prompt": "Which API helps split long tasks?",
     "explanation": "Runs work in idle periods.",
-    "interviewTip": "Not supported everywhere."
+    "interviewTip": "Not supported everywhere.",
+    "options": [
+      "setTimeout",
+      "requestIdleCallback",
+      "Promise.then",
+      "eval"
+    ]
   },
   "js-el-adv-11": {
     "prompt": "What happens after a macrotask finishes?",
     "explanation": "Microtasks drain first.",
-    "interviewTip": "Key interview flow."
+    "interviewTip": "Key interview flow.",
+    "options": [
+      "Microtasks run",
+      "Rendering immediately",
+      "Next macrotask",
+      "Idle callbacks"
+    ]
   },
   "js-el-adv-12": {
     "prompt": "Which is a macrotask?",
     "explanation": "Timers create macrotasks.",
-    "interviewTip": "Know examples."
+    "interviewTip": "Know examples.",
+    "options": [
+      "setTimeout",
+      "Promise.then",
+      "MutationObserver",
+      "queueMicrotask"
+    ]
   },
   "js-el-adv-13": {
     "prompt": "Why is setTimeout(fn, 0) not immediate?",
     "explanation": "Subject to clamping.",
-    "interviewTip": "4ms rule."
+    "interviewTip": "4ms rule.",
+    "options": [
+      "Minimum delay + queue",
+      "Blocked by GC",
+      "Network latency",
+      "Thread creation"
+    ]
   },
   "js-el-adv-14": {
     "prompt": "Which can delay input handling?",
     "explanation": "Main thread contention.",
-    "interviewTip": "INP metric."
+    "interviewTip": "INP metric.",
+    "options": [
+      "Heavy JS",
+      "CSS parsing",
+      "Image decoding",
+      "Font loading"
+    ]
   },
   "js-el-adv-15": {
     "prompt": "Best way to avoid starvation?",
     "explanation": "Break work into chunks.",
-    "interviewTip": "Cooperative scheduling."
+    "interviewTip": "Cooperative scheduling.",
+    "options": [
+      "Yield to event loop",
+      "Use promises",
+      "Use sync code",
+      "Disable microtasks"
+    ]
   },
   "js-el-adv-16": {
     "prompt": "Which runs outside the event loop?",
     "explanation": "Separate thread.",
-    "interviewTip": "No DOM access."
+    "interviewTip": "No DOM access.",
+    "options": [
+      "Web Worker",
+      "Promise",
+      "setTimeout",
+      "rAF"
+    ]
   },
   "js-el-adv-17": {
     "prompt": "What is cooperative scheduling?",
     "explanation": "JS must yield explicitly.",
-    "interviewTip": "Contrast with threads."
+    "interviewTip": "Contrast with threads.",
+    "options": [
+      "Manually yielding control",
+      "Browser scheduling",
+      "Preemptive threads",
+      "Async/await"
+    ]
   },
   "js-el-adv-18": {
     "prompt": "What does await do internally?",
     "explanation": "Continuation via promise.",
-    "interviewTip": "Syntactic sugar."
+    "interviewTip": "Syntactic sugar.",
+    "options": [
+      "Splits function into microtasks",
+      "Blocks thread",
+      "Creates macrotask",
+      "Pauses browser"
+    ]
   },
   "js-el-adv-19": {
     "prompt": "Which affects paint timing?",
     "explanation": "Microtasks delay paint.",
-    "interviewTip": "Subtle bug source."
+    "interviewTip": "Subtle bug source.",
+    "options": [
+      "Microtasks",
+      "Console.log",
+      "Network latency",
+      "LocalStorage"
+    ]
   },
   "js-el-adv-20": {
     "prompt": "What metric measures JS blocking?",
     "explanation": "Part of Core Web Vitals.",
-    "interviewTip": "Performance interviews."
+    "interviewTip": "Performance interviews.",
+    "options": [
+      "Total Blocking Time",
+      "CLS",
+      "FCP",
+      "LCP"
+    ]
   },
   "js-el-adv-21": {
     "prompt": "What happens if JS never yields?",
     "explanation": "Single-threaded limitation.",
-    "interviewTip": "Classic explanation."
+    "interviewTip": "Classic explanation.",
+    "options": [
+      "UI freezes",
+      "GC stops",
+      "Browser reloads",
+      "Tasks reorder"
+    ]
   },
   "js-el-adv-22": {
     "prompt": "Which callback runs first?",
     "explanation": "Microtasks first.",
-    "interviewTip": "Order questions common."
+    "interviewTip": "Order questions common.",
+    "options": [
+      "Promise.then",
+      "setTimeout 0",
+      "rAF",
+      "setInterval"
+    ]
   },
   "js-el-adv-23": {
     "prompt": "What is task batching?",
     "explanation": "Improves responsiveness.",
-    "interviewTip": "React uses it."
+    "interviewTip": "React uses it.",
+    "options": [
+      "Grouping work per frame",
+      "Parallel execution",
+      "Promise chaining",
+      "Thread pooling"
+    ]
   },
   "js-el-adv-24": {
     "prompt": "Which API is frame-aligned?",
     "explanation": "Synced with refresh rate.",
-    "interviewTip": "Avoid jank."
+    "interviewTip": "Avoid jank.",
+    "options": [
+      "requestAnimationFrame",
+      "setTimeout",
+      "Promise",
+      "IdleCallback"
+    ]
   },
   "js-el-adv-25": {
     "prompt": "Best rule for event loop optimization?",
     "explanation": "Always profile.",
-    "interviewTip": "Senior-level answer."
+    "interviewTip": "Senior-level answer.",
+    "options": [
+      "Measure first",
+      "Use more promises",
+      "Avoid async",
+      "Use setTimeout everywhere"
+    ]
   }
 }

@@ -2,61 +2,133 @@
   "rt-01": {
     "prompt": "Which component is used to define the mapping between a URL path and a React component?",
     "explanation": "<Route> is the fundamental building block. It renders its element only when the current URL matches the 'path' prop.",
-    "interviewTip": "In React Router v6, the syntax changed to <Route path='/...' element={<MyComponent />} />."
+    "interviewTip": "In React Router v6, the syntax changed to <Route path='/...' element={<MyComponent />} />.",
+    "options": [
+      "<Link>",
+      "<BrowserRouter>",
+      "<Route>",
+      "<Switch>"
+    ]
   },
   "rt-02": {
     "prompt": "How do you navigate to a new page programmatically in a functional component (e.g., after a form submission)?",
     "explanation": "The 'useNavigate' hook returns a function that lets you change the URL without a full page reload.",
-    "interviewTip": "Use 'navigate('/path', { replace: true })' if you want to replace the current entry in the history stack instead of adding a new one."
+    "interviewTip": "Use 'navigate('/path', { replace: true })' if you want to replace the current entry in the history stack instead of adding a new one.",
+    "options": [
+      "navigate('/dashboard');",
+      "window.location.href = '/dashboard';",
+      "history.push('/dashboard');",
+      "navigate.to('/dashboard');"
+    ]
   },
   "rt-03": {
     "prompt": "What is the primary difference between a standard <a> tag and a React Router <Link> tag?",
     "explanation": "<a> tags cause the browser to refresh the page. <Link> tags use the History API to update the URL and re-render only the necessary components.",
-    "interviewTip": "Using <a> for internal navigation breaks the 'Single Page' experience and resets the application state."
+    "interviewTip": "Using <a> for internal navigation breaks the 'Single Page' experience and resets the application state.",
+    "options": [
+      "<a> tags are faster.",
+      "<Link> tags change the URL without triggering a full page reload.",
+      "<Link> tags only work for external websites.",
+      "There is no difference; <Link> is just an alias."
+    ]
   },
   "rt-04": {
     "prompt": "How do you access dynamic parameters from the URL (e.g., the 'id' in '/users/:id')?",
     "explanation": "The 'useParams' hook returns an object of key/value pairs of URL parameters defined in the route path.",
-    "interviewTip": "Always ensure the variable name in destructuring matches the placeholder name in the Route path."
+    "interviewTip": "Always ensure the variable name in destructuring matches the placeholder name in the Route path.",
+    "options": [
+      "useQuery",
+      "useParams",
+      "useRouteMatch",
+      "useLocation"
+    ]
   },
   "rt-05": {
     "prompt": "Which of these components must wrap your entire application to enable routing functionality?",
     "explanation": "BrowserRouter is the most common (uses clean URLs), while HashRouter uses the # fragment for compatibility with older servers/static hosting.",
-    "interviewTip": "Most modern apps use BrowserRouter for SEO-friendly URLs."
+    "interviewTip": "Most modern apps use BrowserRouter for SEO-friendly URLs.",
+    "options": [
+      "<BrowserRouter>",
+      "<Routes>",
+      "<HashRouter>",
+      "<RouterContext>"
+    ]
   },
   "rt-06": {
     "prompt": "What is the purpose of the <Outlet /> component in React Router v6?",
     "explanation": "Outlet is used in a parent route's element to indicate where child route elements should be rendered.",
-    "interviewTip": "This is the key to creating shared layouts (like a persistent sidebar or navbar)."
+    "interviewTip": "This is the key to creating shared layouts (like a persistent sidebar or navbar).",
+    "options": [
+      "To link to external CSS files.",
+      "To act as a placeholder for child routes in nested routing.",
+      "To display a 404 error page.",
+      "To redirect the user to the home page."
+    ]
   },
   "rt-07": {
     "prompt": "How do you define a '404 Not Found' route in React Router v6?",
     "explanation": "The '*' (splat) path acts as a wildcard that matches any URL that hasn't been matched by previous routes.",
-    "interviewTip": "Place the wildcard route at the very bottom of your <Routes> list."
+    "interviewTip": "Place the wildcard route at the very bottom of your <Routes> list.",
+    "options": [
+      "*",
+      "404",
+      "default",
+      "fallback"
+    ]
   },
   "rt-08": {
     "prompt": "What does the 'useLocation' hook return?",
     "explanation": "useLocation provides access to the 'location' object, which is useful for tracking page views or reading query strings (?query=abc).",
-    "interviewTip": "You can use 'location.state' to pass hidden data between routes that doesn't appear in the URL."
+    "interviewTip": "You can use 'location.state' to pass hidden data between routes that doesn't appear in the URL.",
+    "options": [
+      "The user's GPS coordinates.",
+      "A function to change the URL.",
+      "An object containing the current URL path, search queries, and state.",
+      "The component that is currently rendered."
+    ]
   },
   "rt-09": {
     "prompt": "How can you pass query parameters (e.g., ?sort=asc) and read them in a component?",
     "explanation": "useSearchParams is the React-friendly hook for managing query strings. You can also manually parse location.search.",
-    "interviewTip": "Query params are great for shareable UI states like filters or search terms."
+    "interviewTip": "Query params are great for shareable UI states like filters or search terms.",
+    "options": [
+      "Using the 'useSearchParams' hook.",
+      "Using the 'URLSearchParams' web API with 'location.search'.",
+      "Using the 'useParams' hook.",
+      "By defining them in the <Route path='...'>."
+    ]
   },
   "rt-10": {
     "prompt": "What happens if you have multiple routes that match the current URL in React Router v6?",
     "explanation": "Unlike v5 which picked the first match (requiring 'exact'), v6 is smarter and calculates the most specific match automatically.",
-    "interviewTip": "This means the order of routes matters less in v6 than it did in previous versions."
+    "interviewTip": "This means the order of routes matters less in v6 than it did in previous versions.",
+    "options": [
+      "React renders all matching components in a list.",
+      "The app crashes.",
+      "React Router uses a ranking system to pick the 'best' (most specific) match.",
+      "It only picks the first one it finds."
+    ]
   },
   "rt-11": {
     "prompt": "How do you implement a 'Redirect' after a user logs out in v6?",
     "explanation": "The <Navigate /> component is the declarative way to perform a redirect during rendering.",
-    "interviewTip": "Use this for 'Protected Routes' where you check authentication before showing a page."
+    "interviewTip": "Use this for 'Protected Routes' where you check authentication before showing a page.",
+    "options": [
+      "Redirect",
+      "Navigate",
+      "Link",
+      "Push"
+    ]
   },
   "rt-12": {
     "prompt": "Analyze the code. What is the URL after clicking 'Details'?",
     "explanation": "Links without a leading slash are 'relative' to the current path. Since we are at /products, appending 123 results in /products/123.",
-    "interviewTip": "Use absolute paths (starting with /) if you want to navigate from the root of the site."
+    "interviewTip": "Use absolute paths (starting with /) if you want to navigate from the root of the site.",
+    "options": [
+      "/123",
+      "/products/123",
+      "/products/details/123",
+      "Error: 'to' must start with /"
+    ]
   }
 }

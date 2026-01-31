@@ -2,61 +2,133 @@
   "ss-01": {
     "prompt": "What is the primary problem that React Query solves compared to using useEffect for data fetching?",
     "explanation": "While useEffect can fetch data, it doesn't handle caching or background re-fetching. React Query manages the lifecycle of your server data so you don't have to.",
-    "interviewTip": "Mention that React Query treats 'Server State' as something the client doesn't own, but merely 'borrows'."
+    "interviewTip": "Mention that React Query treats 'Server State' as something the client doesn't own, but merely 'borrows'.",
+    "options": [
+      "It makes the API requests run faster on the server.",
+      "It provides built-in caching and synchronization, preventing unnecessary duplicate network requests.",
+      "It replaces the need for any CSS in the application.",
+      "It allows React to connect directly to a SQL database."
+    ]
   },
   "ss-02": {
     "prompt": "Analyze the code. What does 'data' contain while 'isLoading' is true?",
     "explanation": "During the very first fetch (hard loading state), 'data' is undefined until the promise resolves.",
-    "interviewTip": "If you have cached data from a previous session, 'isLoading' might be false while 'isFetching' is true."
+    "interviewTip": "If you have cached data from a previous session, 'isLoading' might be false while 'isFetching' is true.",
+    "options": [
+      "The previous version of the data.",
+      "An empty array [].",
+      "undefined",
+      "A placeholder string 'Loading...'"
+    ]
   },
   "ss-03": {
     "prompt": "What is the 'queryKey' used for in React Query?",
     "explanation": "The queryKey (usually an array) tells React Query when to re-fetch data. If the key changes (e.g., ['user', id]), the query automatically re-runs.",
-    "interviewTip": "Think of the queryKey as the 'dependency array' for your server data."
+    "interviewTip": "Think of the queryKey as the 'dependency array' for your server data.",
+    "options": [
+      "It is the password used to access the API.",
+      "It acts as a unique identifier for the query to manage caching and dependency tracking.",
+      "It is the URL of the API endpoint.",
+      "It defines the order in which queries are executed."
+    ]
   },
   "ss-04": {
     "prompt": "Which properties are returned by the 'useQuery' hook to help manage UI states?",
     "explanation": "useQuery provides a rich set of boolean flags and data objects to handle every possible network state.",
-    "interviewTip": "The difference between 'isLoading' and 'isFetching' is a common senior-level question (Initial fetch vs. Background update)."
+    "interviewTip": "The difference between 'isLoading' and 'isFetching' is a common senior-level question (Initial fetch vs. Background update).",
+    "options": [
+      "status (loading, error, success).",
+      "isFetching (is the request currently in flight?).",
+      "revalidate (a function to delete the cache).",
+      "error (the error object if the request fails)."
+    ]
   },
   "ss-05": {
     "prompt": "How do you perform 'Data Mutations' (POST/PUT/DELETE) in React Query?",
     "explanation": "useMutation is used for any server-side side effects. It provides methods like 'mutate' and 'mutateAsync' to trigger the call.",
-    "interviewTip": "Always mention 'Invalidation'—after a mutation, you usually want to tell React Query that the old data is now 'stale'."
+    "interviewTip": "Always mention 'Invalidation'—after a mutation, you usually want to tell React Query that the old data is now 'stale'.",
+    "options": [
+      "usePost",
+      "useAction",
+      "useMutation",
+      "useUpdate"
+    ]
   },
   "ss-06": {
     "prompt": "What does 'queryClient.invalidateQueries' do?",
     "explanation": "This is the 'magic' of React Query. After updating data, you invalidate the key, and the UI automatically refreshes with the latest server values.",
-    "interviewTip": "This is the standard way to handle 'Optimistic Updates' fallbacks as well."
+    "interviewTip": "This is the standard way to handle 'Optimistic Updates' fallbacks as well.",
+    "options": [
+      "It deletes all data from the server.",
+      "It marks a specific query as 'stale' and triggers a background re-fetch if that query is currently in use.",
+      "It prevents the user from clicking the submit button.",
+      "It closes all active network connections."
+    ]
   },
   "ss-07": {
     "prompt": "What is 'Stale Time' in React Query?",
     "explanation": "By default, staleTime is 0, meaning data is considered stale immediately. Setting it higher reduces network traffic for data that doesn't change often.",
-    "interviewTip": "Don't confuse 'staleTime' with 'gcTime' (formerly cacheTime). gcTime determines when inactive data is deleted from memory."
+    "interviewTip": "Don't confuse 'staleTime' with 'gcTime' (formerly cacheTime). gcTime determines when inactive data is deleted from memory.",
+    "options": [
+      "The time it takes for a request to time out.",
+      "The duration for which the data is considered 'fresh' and won't trigger a background re-fetch.",
+      "The age of the user's browser.",
+      "The time the user spends on a single page."
+    ]
   },
   "ss-08": {
     "prompt": "Identify the issue in the following code snippet:",
     "explanation": "The 'queryFn' must be a function that React Query can call later. Correct syntax: `queryFn: () => fetchUser(id)`.",
-    "interviewTip": "This is a frequent mistake that leads to infinite loops or execution during the wrong phase."
+    "interviewTip": "This is a frequent mistake that leads to infinite loops or execution during the wrong phase.",
+    "options": [
+      "The queryKey must be a string.",
+      "fetchUser(id) executes immediately during render instead of being a function reference.",
+      "The id variable must be a string.",
+      "useQuery does not support IDs."
+    ]
   },
   "ss-09": {
     "prompt": "How does React Query handle a lost internet connection?",
     "explanation": "React Query has built-in 'Offline Support' and will pause/resume fetches based on the browser's connectivity status.",
-    "interviewTip": "You can customize the 'retry' count and 'retryDelay' in the global configuration."
+    "interviewTip": "You can customize the 'retry' count and 'retryDelay' in the global configuration.",
+    "options": [
+      "It crashes the application.",
+      "It automatically retries the query when the connection is restored.",
+      "It shows a blue screen of death.",
+      "It switches to a local SQL database."
+    ]
   },
   "ss-10": {
     "prompt": "What is an 'Optimistic Update'?",
     "explanation": "You update the cache manually when the user clicks 'Submit'. If the server fails, you 'roll back' to the previous state.",
-    "interviewTip": "This makes your app feel 'instant' even on slow connections."
+    "interviewTip": "This makes your app feel 'instant' even on slow connections.",
+    "options": [
+      "A way to update the UI immediately before the server confirms the change.",
+      "A method to speed up the server response time.",
+      "A strategy to handle errors by assuming the best-case scenario.",
+      "A feature that only works with React 19."
+    ]
   },
   "ss-11": {
     "prompt": "Which component is required at the root of your app to use React Query?",
     "explanation": "You must create a `const queryClient = new QueryClient()` and pass it to the `<QueryClientProvider client={queryClient}>`.",
-    "interviewTip": "This provider holds the 'Query Cache', which is what allows data to be shared across the entire app without Redux."
+    "interviewTip": "This provider holds the 'Query Cache', which is what allows data to be shared across the entire app without Redux.",
+    "options": [
+      "<QueryProvider>",
+      "<ReactQueryContext>",
+      "<QueryClientProvider>",
+      "<ServerStateProvider>"
+    ]
   },
   "ss-12": {
     "prompt": "What is the result of 'enabled: false' in useQuery options?",
     "explanation": "The 'enabled' option is used for 'Dependent Queries' (waiting for a userId) or manual triggers.",
-    "interviewTip": "Use this to prevent a query from running until you have all the necessary data (like an ID from a previous query)."
+    "interviewTip": "Use this to prevent a query from running until you have all the necessary data (like an ID from a previous query).",
+    "options": [
+      "The query is deleted.",
+      "The query is disabled and will only run if 'refetch' is called manually.",
+      "The query runs once and then stops.",
+      "The query only runs on the server."
+    ]
   }
 }
