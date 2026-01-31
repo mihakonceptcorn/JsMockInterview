@@ -4,10 +4,10 @@
     "explanation": "Fastlane автоматизує рутинні частини деплою iOS та Android. Ви можете визначити 'Lane' (шлях), який збирає додаток, підписує його сертифікатами та завантажує в TestFlight або Google Play.",
     "interviewTip": "Fastlane зазвичай використовується в конвеєрах CI/CD (наприклад, GitHub Actions), щоб уникнути ручного завантаження з ноутбука розробника.",
     "options": [
-      "A library that makes the JavaScript code run faster.",
-      "An open-source automation tool that handles tasks like generating screenshots and submitting builds to the stores.",
-      "A specialized hosting service for mobile assets.",
-      "A feature in Chrome DevTools for mobile debugging."
+      "Бібліотека, яка змушує JavaScript-код працювати швидше.",
+      "Інструмент автоматизації з відкритим вихідним кодом, який обробляє такі завдання, як створення скріншотів і подання збірок у магазини.",
+      "Спеціалізований хостинг-сервіс для мобільних ресурсів.",
+      "Функція в Chrome DevTools для мобільної відладки."
     ]
   },
   "dep-02": {
@@ -15,10 +15,10 @@
     "explanation": "CodePush дозволяє миттєво виправляти баги або оновлювати UI, «проштовхуючи» (pushing) новий JS-бандл користувачам. Це дозволяє обійти 24-48-годинний процес перевірки в магазинах додатків.",
     "interviewTip": "Пам’ятайте: CodePush *не можна* використовувати для змін, які включають нові нативні модулі або зміни у файлах AppDelegate/MainApplication.",
     "options": [
-      "To push new native code (Java/Swift) to devices instantly.",
-      "To update the JavaScript bundle and assets of an app without requiring a new store submission.",
-      "To push notifications to users.",
-      "To force-quit the app remotely."
+      "Для миттєвого надсилання нового нативного коду (Java/Swift) на пристрої.",
+      "Для оновлення JavaScript-бандла та ресурсів додатка без необхідності нового подання в магазин.",
+      "Для надсилання push-сповіщень користувачам.",
+      "Для віддаленого примусового завершення роботи додатка."
     ]
   },
   "dep-03": {
@@ -26,10 +26,10 @@
     "explanation": "EAS (Expo Application Services) Build бере ваш проект і компілює його на серверах Expo. Це надзвичайно важливо для розробників, які не мають Mac, але потребують збірки iOS-додатка.",
     "interviewTip": "EAS працює як з керованими (Managed), так і з «голими» (Bare) проектами React Native.",
     "options": [
-      "A way to build your app's binary (IPA/APK) in the cloud without needing a local macOS/Android environment.",
-      "A tool for writing CSS more efficiently.",
-      "A local debugger for Expo Go.",
-      "An AI assistant for fixing build errors."
+      "Спосіб зібрати бінарний файл додатка (IPA/APK) у хмарі без локального середовища macOS/Android.",
+      "Інструмент для більш ефективного написання CSS.",
+      "Локальний налагоджувач для Expo Go.",
+      "AI-помічник для виправлення помилок збірки."
     ]
   },
   "dep-04": {
@@ -37,10 +37,10 @@
     "explanation": "Тип дистрибуції 'internal' та тип збірки 'apk' ідеально підходять для надання тестового файлу команді через посилання, повністю обходячи магазин додатків.",
     "interviewTip": "Android використовує .aab (Android App Bundle) для Play Store, але .apk необхідний для прямого встановлення на пристрої.",
     "options": [
-      "It builds a production-ready app for the Play Store.",
-      "It builds an APK file that can be shared directly with testers (side-loading) instead of an AAB.",
-      "It only runs the app in the browser.",
-      "It deletes the previous build."
+      "Створюється готова до продакшну збірка для Play Store.",
+      "Створюється APK-файл, яким можна поділитися безпосередньо з тестувальниками (side-loading) замість AAB.",
+      "Додаток запускається лише у браузері.",
+      "Видаляється попередня збірка."
     ]
   },
   "dep-05": {
@@ -48,10 +48,10 @@
     "explanation": "Підпис коду в iOS — це система з трьох частин: Сертифікат (Хто ви), App ID (Що це за додаток) та Provisioning Profile (Місток між першими двома).",
     "interviewTip": "Керування цими елементами часто є найскладнішою частиною мобільної розробки. Інструменти на кшталт 'fastlane match' допомагають ділитися ними всередині команди.",
     "options": [
-      "A Distribution Certificate.",
-      "An App ID (Bundle ID).",
-      "A Provisioning Profile.",
-      "A Google Service Account JSON."
+      "Сертифікат розповсюдження (Distribution Certificate).",
+      "App ID (Bundle ID).",
+      "Профіль забезпечення (Provisioning Profile).",
+      "Файл JSON сервісного акаунта Google."
     ]
   },
   "dep-06": {
@@ -59,10 +59,10 @@
     "explanation": "Оновлення OTA (через Expo Updates або CodePush) — це мобільний еквівалент «оновлення сторінки в браузері» у вебі.",
     "interviewTip": "Примітка: Правила Apple дозволяють оновлення OTA, якщо ви суттєво не змінюєте «основне призначення» додатка.",
     "options": [
-      "Updating the device's firmware.",
-      "The general term for updating an app's logic (JS/Assets) directly via the internet, bypassing the app store stores.",
-      "Charging the phone wirelessly while updating.",
-      "A way to fix hardware issues remotely."
+      "Оновлення прошивки пристрою.",
+      "Загальний термін для оновлення логіки додатка (JS/Assets) безпосередньо через інтернет, в обхід магазинів додатків.",
+      "Бездротова зарядка телефону під час оновлення.",
+      "Спосіб віддаленого виправлення апаратних проблем."
     ]
   },
   "dep-07": {
@@ -71,7 +71,7 @@
     "interviewTip": "Кожного разу, коли ви подаєте додаток у Play Store, 'versionCode' ПОВИНЕН бути вищим за попередній.",
     "options": [
       "AndroidManifest.xml",
-      "build.gradle (app level)",
+      "build.gradle (рівень додатка)",
       "gradle.properties",
       "package.json"
     ]
@@ -81,10 +81,10 @@
     "explanation": "Major: Кардинальні зміни. Minor: Нові функції. Patch: Виправлення помилок. Це стандарт для майже всього ПЗ, включаючи додатки React Native.",
     "interviewTip": "Для мобільних пристроїв зміна Major часто вказує на необхідність оновлення через магазин через нативні зміни.",
     "options": [
-      "Giving apps names based on colors.",
-      "A system of versioning using Major.Minor.Patch (e.g., 2.1.0).",
-      "A way to encrypt the build number.",
-      "Using only prime numbers for versions."
+      "Надання додаткам імен на основі кольорів.",
+      "Система версіонування за схемою Major.Minor.Patch (наприклад, 2.1.0).",
+      "Спосіб шифрування номера збірки.",
+      "Використання лише простих чисел для версій."
     ]
   },
   "dep-09": {
@@ -92,10 +92,10 @@
     "explanation": "Якщо ви втратите свій продакшн-Keystore, ви більше не зможете оновлювати свій додаток у Play Store. Критично важливо зберігати його в безпеці та мати резервну копію.",
     "interviewTip": "Google Play App Signing тепер дозволяє Google керувати ключем за вас, що є безпечнішою сучасною альтернативою.",
     "options": [
-      "To store the app's local database.",
-      "A binary file that contains the private key used to digitally sign your APK/AAB for the Play Store.",
-      "A list of all users who bought the app.",
-      "To manage the app's internal styles."
+      "Зберігання локальної бази даних додатка.",
+      "Бінарний файл, що містить закритий ключ для цифрового підпису вашого APK/AAB для Play Store.",
+      "Список усіх користувачів, які купили додаток.",
+      "Управління внутрішніми стилями додатка."
     ]
   },
   "dep-10": {
@@ -103,10 +103,10 @@
     "explanation": "Змінні середовища дозволяють перемикатися між локальним сервером розробки та продакшн-API, не торкаючись вихідного коду.",
     "interviewTip": "Ніколи не додавайте секретні ключі API безпосередньо у файли .env, якщо вони будуть завантажені у публічний репозиторій.",
     "options": [
-      "By manually changing the API URL before every build.",
-      "Using '.env' files with a library like 'react-native-config' or 'expo-constants'.",
-      "By creating three different GitHub accounts.",
-      "React Native handles this automatically based on the time of day."
+      "Шляхом ручної зміни URL-адреси API перед кожною збіркою.",
+      "Використання '.env' файлів з бібліотекою типу 'react-native-config' або 'expo-constants'.",
+      "Створення трьох різних акаунтів на GitHub.",
+      "React Native обробляє це автоматично залежно від часу доби."
     ]
   }
 }

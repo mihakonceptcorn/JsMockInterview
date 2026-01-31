@@ -4,10 +4,10 @@
     "explanation": "Навіть із HTTPS зловмисник іноді може змусити пристрій довіряти фальшивому сертифікату. SSL Pinning гарантує, що додаток відхилить будь-який сертифікат, який не збігається з «закріпленим» (pinned) сертифікатом вашого сервера.",
     "interviewTip": "Згадайте бібліотеки на кшталт 'react-native-ssl-pinning' або 'TrustKit'. Попередження: якщо термін дії сертифіката вашого сервера закінчиться, а ви не оновите додаток, він перестане працювати!",
     "options": [
-      "A way to pin the app's icon to the home screen.",
-      "A technique to prevent Man-in-the-Middle (MITM) attacks by ensuring the app only trusts a specific, pre-defined server certificate.",
-      "A method to encrypt the JavaScript bundle.",
-      "A feature that keeps the user logged in forever."
+      "Спосіб закріпити іконку додатка на головному екрані.",
+      "Техніка запобігання атакам Man-in-the-Middle (MITM) шляхом перевірки відповідності сертифіката сервера заздалегідь визначеному значенню в додатку.",
+      "Метод шифрування JavaScript-бандла.",
+      "Функція, яка тримає користувача залогіненим назавжди."
     ]
   },
   "sec-02": {
@@ -15,10 +15,10 @@
     "explanation": "Стандартні сховища (AsyncStorage/MMKV) не шифруються. Keychain (iOS) та Keystore (Android) забезпечують шифрування на апаратному рівні, розроблене спеціально для секретів.",
     "interviewTip": "Чудова відповідь включає: «Я використовую .env файли для конфігурації під час збірки, але секрети, специфічні для пристрою, зберігаються в Secure Keychain».",
     "options": [
-      "Hardcoded in a 'constants.js' file.",
-      "Stored in the 'package.json' for easy access.",
-      "In the iOS Keychain or Android Keystore using a library like 'react-native-keychain'.",
-      "In the component's local state."
+      "Прописати їх жорстко (hardcode) у файлі 'constants.js'.",
+      "Зберігати у 'package.json' для легкого доступу.",
+      "В iOS Keychain або Android Keystore за допомогою бібліотеки на кшталт 'react-native-keychain'.",
+      "У локальному стані (state) компонента."
     ]
   },
   "sec-03": {
@@ -26,10 +26,10 @@
     "explanation": "На пристроях із рут-правами зловмисники можуть обходити обмеження «пісочниці», читати приватні дані вашого додатка або перехоплювати дані з пам'яті. Банківські та високонадійні додатки часто блокують доступ на таких пристроях.",
     "interviewTip": "Використовуйте 'react-native-jail-monkey' або 'expo-device', щоб перевірити, чи є середовище пристрою надійним.",
     "options": [
-      "To speed up the app on modified devices.",
-      "To identify if the device's security layers have been compromised, allowing the app to disable sensitive features (like payments).",
-      "To automatically update the OS.",
-      "To allow the user to bypass the App Store."
+      "Для прискорення додатка на модифікованих пристроях.",
+      "Для ідентифікації компрометації рівнів безпеки пристрою, що дозволяє додатку вимкнути чутливі функції (наприклад, платежі).",
+      "Для автоматичного оновлення ОС.",
+      "Щоб дозволити користувачеві обійти App Store."
     ]
   },
   "sec-04": {
@@ -37,10 +37,10 @@
     "explanation": "Proguard/R8 видаляє невикористовуваний код і перейменовує класи та методи на безглузді імена (наприклад, 'a', 'b', 'c'), що робить нативний бінарний файл складним для аналізу (обфускація).",
     "interviewTip": "Завжди вмикайте це для релізних збірок. Це перша лінія захисту від декомпіляторів.",
     "options": [
-      "It makes the app's font sizes smaller.",
-      "It obfuscates the code and removes unused code, making it much harder for hackers to reverse-engineer your Java/Kotlin logic.",
-      "It encrypts the user's photos.",
-      "It enables faster debugging on Android."
+      "Це робить розмір шрифтів у додатку меншим.",
+      "Це обфускує код і видаляє невикористовувані частини, що значно ускладнює реверс-інжиніринг вашої Java/Kotlin логіки.",
+      "Це шифрує фотографії користувача.",
+      "Це вмикає швидше налагодження на Android."
     ]
   },
   "sec-05": {
@@ -48,10 +48,10 @@
     "explanation": "Логи відображаються не лише у вашому терміналі; вони транслюються в системний лог пристрою. У релізних збірках усі логи мають бути видалені.",
     "interviewTip": "Використовуйте 'babel-plugin-transform-remove-console', щоб автоматично видалити всі логи під час процесу збірки продакшн-версії.",
     "options": [
-      "It makes the app's UI look ugly.",
-      "Logs are accessible via system tools (like logcat or Xcode) and can leak sensitive data (tokens, user info) to anyone with the device.",
-      "It causes the app to be rejected by the App Store automatically.",
-      "It drains the battery extremely fast."
+      "Це робить інтерфейс додатка потворним.",
+      "Логи доступні через системні інструменти (logcat, Xcode), що може призвести до витоку конфіденційних даних (токенів, інфо користувача).",
+      "Це призводить до автоматичної відмови App Store.",
+      "Це надзвичайно швидко розряджає батарею."
     ]
   },
   "sec-06": {
@@ -59,10 +59,10 @@
     "explanation": "Двигун Hermes забезпечує «захист через компіляцію» у байт-код. Обфускатори додають додатковий рівень складності до самої логіки коду.",
     "interviewTip": "Поясніть, що жоден JS-код не є на 100% «прихованим», але ці кроки роблять його злом значно дорожчим та складнішим для атакуючого.",
     "options": [
-      "Using 'JSC' instead of 'Hermes'.",
-      "Using Hermes (it compiles JS to bytecode, which is harder to read than plain text).",
-      "Using an obfuscator like 'javascript-obfuscator' before bundling.",
-      "Renaming the .js file to .png."
+      "Використання 'JSC' замість 'Hermes'.",
+      "Використання Hermes (він компілює JS у байт-код, який важче прочитати, ніж звичайний текст).",
+      "Використання обфускатора на кшталт 'javascript-obfuscator' перед збіркою.",
+      "Перейменування файлу .js у .png."
     ]
   },
   "sec-07": {
@@ -70,10 +70,10 @@
     "explanation": "Схеми URL (myapp://) не є ексклюзивними. Щоб запобігти перехопленню, слід використовувати 'Universal Links' (iOS) або 'App Links' (Android), які використовують верифікований домен веб-сайту для підтвердження власності.",
     "interviewTip": "Завжди надавайте перевагу Universal Links на основі HTTPS замість кастомних URI-схем для процесів автентифікації.",
     "options": [
-      "When a website links to the wrong page.",
-      "When a malicious app registers the same URL scheme as your app (e.g., myapp://) to intercept sensitive data sent via links.",
-      "When the internet goes down during a navigation event.",
-      "When the user clicks a link too many times."
+      "Коли веб-сайт посилається на неправильну сторінку.",
+      "Коли шкідливий додаток реєструє таку ж URL-схему, як і ваш, щоб перехопити дані, надіслані через посилання.",
+      "Коли інтернет зникає під час навігації.",
+      "Коли користувач натискає на посилання занадто багато разів."
     ]
   },
   "sec-08": {
@@ -81,10 +81,10 @@
     "explanation": "WebView — це фактично міні-браузери. Якщо ви завантажуєте ненадійні URL-адреси з повними дозволами, ви ризикуєте надати цьому сайту доступ до внутрішньої файлової системи додатка.",
     "interviewTip": "Вмикайте лише ті функції, які вам дійсно потрібні, і завжди використовуйте 'originWhitelist' для обмеження доменів, які може відвідувати WebView.",
     "options": [
-      "The app will run out of memory.",
-      "It can open the door to Cross-Site Scripting (XSS) attacks where malicious web content accesses local device files.",
-      "The WebView will render too slowly.",
-      "The user will be able to see the source code of the app."
+      "Додаток вичерпає оперативну пам'ять.",
+      "Це може відкрити двері для атак Cross-Site Scripting (XSS), де шкідливий веб-контент отримує доступ до локальних файлів пристрою.",
+      "WebView буде рендеритися занадто повільно.",
+      "Користувач зможе побачити вихідний код додатка."
     ]
   },
   "sec-09": {
@@ -92,10 +92,10 @@
     "explanation": "Спеціальні бібліотеки надають кросплатформний API для перевірки доступності біометрії та виклику системного вікна автентифікації.",
     "interviewTip": "Завжди залишайте можливість входу за допомогою ПІН-коду або пароля на випадок, якщо біометрія не спрацює або недоступна на пристрої.",
     "options": [
-      "It's built into React Native by default.",
-      "Use a library like 'react-native-biometrics' or 'expo-local-authentication' to access the device's biometric sensors.",
-      "You must write native Swift/Kotlin code for each platform.",
-      "Biometric authentication is not possible in React Native."
+      "Це вбудовано в React Native за замовчуванням.",
+      "Використовувати бібліотеку типу 'react-native-biometrics' або 'expo-local-authentication'.",
+      "Потрібно писати нативний Swift/Kotlin код для кожної платформи.",
+      "Біометрична автентифікація неможлива в React Native."
     ]
   },
   "sec-10": {
@@ -103,10 +103,10 @@
     "explanation": "Base64 — це кодування, а не шифрування; його легко розкодувати. AES-256 — це надійний стандарт шифрування, який вимагає ключ для доступу до даних.",
     "interviewTip": "Зберігайте ключ шифрування в Keychain/Keystore і ніколи не прописуйте його жорстко (hardcode) у вашому JavaScript-коді.",
     "options": [
-      "Use Base64 encoding.",
-      "Use a library like 'react-native-aes-crypto' to encrypt data with AES-256 before saving to AsyncStorage/MMKV.",
-      "Store data in plain text but hide the file.",
-      "Encryption is not needed for mobile apps."
+      "Використовувати кодування Base64.",
+      "Використовувати бібліотеку на кшталт 'react-native-aes-crypto' для шифрування AES-256 перед збереженням в AsyncStorage/MMKV.",
+      "Зберігати дані у відкритому тексті, але приховати файл.",
+      "Шифрування не потрібне для мобільних додатків."
     ]
   }
 }

@@ -3,34 +3,24 @@
     "prompt": "Який тип компонента потрібно використовувати, щоб зробити звичайний View анімованим за допомогою Animated API?",
     "explanation": "Стандартні компоненти не можуть обробляти анімовані значення напряму. Ви повинні використовувати спеціальні версії: Animated.View, Animated.Text, Animated.Image та Animated.ScrollView.",
     "interviewTip": "Якщо у вас є власний кастомний компонент, ви можете огорнути його за допомогою 'Animated.createAnimatedComponent(MyComponent)'.",
-    "options": [
-      "<View>",
-      "<Animated.View>",
-      "<Motion.View>",
-      "<View.Animated>"
-    ]
+    "options": ["<View>", "<Animated.View>", "<Motion.View>", "<View.Animated>"]
   },
   "ab-02": {
     "prompt": "Яка основна перевага встановлення 'useNativeDriver: true' у конфігурації анімації?",
     "explanation": "Надсилаючи визначення анімації на нативну сторону один раз, нативний потік може оновлювати UI незалежно від черги подій JavaScript.",
     "interviewTip": "Пам'ятайте, що 'useNativeDriver' працює лише з властивостями, які не впливають на макет, такими як 'opacity' та 'transform'.",
     "options": [
-      "It makes the JavaScript code shorter.",
-      "It offloads the animation execution to the native UI thread, preventing lag even if the JS thread is busy.",
-      "It allows the animation to work on the web.",
-      "It automatically calculates the interpolation values."
+      "Це робить код JavaScript коротшим.",
+      "Це переносить виконання анімації на нативний потік інтерфейсу, запобігаючи затримкам, навіть якщо потік JS зайнятий.",
+      "Це дозволяє анімації працювати у вебі.",
+      "Це автоматично розраховує значення інтерполяції."
     ]
   },
   "ab-03": {
     "prompt": "Як перетворити (map) значення, що змінюється від 0 до 1, у властивість, що змінюється від 0 до 360 градусів?",
     "explanation": "Інтерполяція (interpolation) дозволяє зіставити вхідний діапазон із вихідним, включаючи такі значення, як кольори або градуси.",
     "interviewTip": "Інтерполяція — це ключова концепція Animated API для створення складних анімацій кількох властивостей на основі одного значення.",
-    "options": [
-      "transform",
-      "map",
-      "interpolate",
-      "extrapolate"
-    ]
+    "options": ["transform", "map", "interpolate", "extrapolate"]
   },
   "ab-04": {
     "prompt": "Який метод використовується для створення анімації на основі пружини (spring), що імітує фізичний рух?",
@@ -47,12 +37,7 @@
     "prompt": "Який правильний спосіб ініціалізації анімованого значення у функціональному компоненті, щоб воно зберігалося між рендерами?",
     "explanation": "Використання useRef гарантує, що екземпляр Animated.Value створюється один раз і не скидається при повторному рендерингу компонента.",
     "interviewTip": "Ініціалізація в 'useRef' є стандартним патерном для функціональних компонентів, щоб уникнути витоків пам'яті та скидання стану.",
-    "options": [
-      "useState",
-      "useMemo",
-      "useRef",
-      "useEffect"
-    ]
+    "options": ["useState", "useMemo", "useRef", "useEffect"]
   },
   "ab-06": {
     "prompt": "Як запустити кілька анімацій одночасно?",
@@ -70,43 +55,33 @@
     "explanation": "Sequence гарантує, що наступна анімація в масиві не почнеться, поки попередня не завершиться успішно.",
     "interviewTip": "Це ідеально підходить для багатоетапних анімацій «онбордингу» або складних переходів інтерфейсу.",
     "options": [
-      "Starts animations one after another, waiting for each to finish.",
-      "Starts all animations at once.",
-      "Repeats the animation in a loop.",
-      "Randomizes the order of animations."
+      "Запускає анімації одну за одною, чекаючи завершення кожної.",
+      "Запускає всі анімації одночасно.",
+      "Повторює анімацію циклічно.",
+      "Вибирає випадковий порядок анімацій."
     ]
   },
   "ab-08": {
     "prompt": "Як запустити анімацію після того, як вона була визначена?",
     "explanation": "Анімації в React Native є декларативними. Вони не почнуть виконуватися, поки ви явно не викличете метод '.start()'.",
     "interviewTip": "Ви можете передати колбек у .start(({ finished }) => { ... }), щоб виконати логіку після завершення анімації.",
-    "options": [
-      "play",
-      "begin",
-      "start",
-      "run"
-    ]
+    "options": ["play", "begin", "start", "run"]
   },
   "ab-09": {
     "prompt": "Яку з цих властивостей стилю НЕ МОЖНА використовувати з 'useNativeDriver: true'?",
     "explanation": "Нативний драйвер переважно підтримує 'transform' та 'opacity'. Властивості макета (width, height, flex) та деякі властивості кольору зазвичай потребують обробки в JS-потоці.",
     "interviewTip": "Якщо вам потрібно плавно анімувати властивості макета, зверніть увагу на LayoutAnimation API або бібліотеку 'Reanimated'.",
-    "options": [
-      "opacity",
-      "scale",
-      "backgroundColor",
-      "translateX"
-    ]
+    "options": ["opacity", "scale", "backgroundColor", "translateX"]
   },
   "ab-10": {
     "prompt": "Для чого насамперед використовується 'Animated.event'?",
     "explanation": "Animated.event дозволяє створювати надзвичайно плавну взаємодію, наприклад, заголовок, що зменшується при скролі, пов'язуючи 'contentOffset' ScrollView з анімованим значенням.",
     "interviewTip": "Це найефективніший спосіб пов'язати жести користувача зі змінами в інтерфейсі.",
     "options": [
-      "To trigger a function when an animation finishes.",
-      "To map native events (like scroll or pan) directly to an Animated Value without going through the JS thread.",
-      "To listen for device orientation changes.",
-      "To create custom touch events."
+      "Щоб запустити функцію після завершення анімації.",
+      "Щоб прив'язати нативні події (як-от скрол або панорамування) безпосередньо до анімованого значення в обхід потоку JS.",
+      "Щоб відстежувати зміни орієнтації пристрою.",
+      "Щоб створювати кастомні події дотику."
     ]
   },
   "ab-11": {
@@ -117,7 +92,7 @@
       "Animated.repeat()",
       "Animated.loop()",
       "Animated.forever()",
-      "Calling .start() inside the completion callback."
+      "Викликати .start() всередині колбеку завершення."
     ]
   },
   "ab-12": {
@@ -125,10 +100,10 @@
     "explanation": "LayoutAnimation — це API типу «запустив і забув». Ви викликаєте його перед оновленням стану, і нативна сторона плавно обробляє всі зміни макета.",
     "interviewTip": "Він дуже потужний, але пропонує менше можливостей для тонкого налаштування, ніж Animated API.",
     "options": [
-      "To animate individual components like a fade-in.",
-      "To automatically animate any change to the layout (flex, width, height) in the next render cycle.",
-      "To handle complex 3D transforms.",
-      "To manage the z-index transitions."
+      "Для анімації окремих компонентів, наприклад, появи (fade-in).",
+      "Для автоматичної анімації будь-якої зміни макета (flex, ширина, висота) у наступному циклі рендерингу.",
+      "Для обробки складних 3D-трансформацій.",
+      "Для керування переходами z-index."
     ]
   },
   "ab-13": {
@@ -136,10 +111,10 @@
     "explanation": "toValue: 0 для властивості opacity призведе до того, що елемент стане повністю прозорим.",
     "interviewTip": "Завжди перевіряйте, чи початкове значення відповідає задуму (наприклад, new Animated.Value(1) для ефекту зникнення).",
     "options": [
-      "It will become fully opaque.",
-      "It will disappear (fade out).",
-      "It will move 2000 pixels to the left.",
-      "The box will change its color to black."
+      "Він стане повністю непрозорим.",
+      "Він зникне (fade out).",
+      "Він переміститься на 2000 пікселів вліво.",
+      "Блок змінить свій колір на чорний."
     ]
   },
   "ab-14": {
@@ -147,10 +122,10 @@
     "explanation": "Хоча React Native зазвичай стабільний, незавершені анімації можуть призводити до попереджень про оновлення стану демонтованого компонента або проблем із пам'яттю.",
     "interviewTip": "В очищенні useEffect варто зупиняти активні анімації, якщо вони прив'язані до локального стану.",
     "options": [
-      "It continues in the background.",
-      "React Native handles the cleanup automatically, but it's good practice to call .stop() manually.",
-      "The app will crash.",
-      "The phone will vibrate."
+      "Вона продовжується у фоновому режимі.",
+      "React Native автоматично очищує ресурси, але рекомендується викликати .stop() вручну.",
+      "Додаток завершиться з помилкою.",
+      "Телефон завібрує."
     ]
   }
 }

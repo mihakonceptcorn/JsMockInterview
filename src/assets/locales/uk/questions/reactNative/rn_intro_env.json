@@ -4,32 +4,27 @@
     "explanation": "Старий міст вимагає серіалізації даних у JSON та їх відправки через асинхронну чергу. JSI (JavaScript Interface) дозволяє JS тримати прямі посилання на об'єкти C++, що забезпечує миттєві синхронні виклики.",
     "interviewTip": "Зауважте, що JSI є фундаментом для всієї Нової архітектури (Fabric та TurboModules).",
     "options": [
-      "JSI allows synchronous communication between JS and Native, while the Bridge is asynchronous and serialized.",
-      "The Bridge is faster because it uses JSON for all data transfer.",
-      "JSI requires Expo, while the Bridge works only with React Native CLI.",
-      "The Bridge uses Java exclusively, while JSI uses Swift."
+      "JSI дозволяє синхронний зв'язок між JS та Native, тоді як Bridge є асинхронним та серіалізованим.",
+      "Bridge швидший, оскільки використовує JSON для передачі всіх даних.",
+      "JSI потребує Expo, тоді як Bridge працює лише з React Native CLI.",
+      "Bridge використовує виключно Java, тоді як JSI використовує Swift."
     ]
   },
   "rn-env-02": {
     "prompt": "Який рушій розмітки використовує React Native для обчислення позицій та розмірів компонентів?",
     "explanation": "Yoga — це кросплатформний рушій розмітки, розроблений Meta, який реалізує Flexbox для нативних мобільних екранів.",
     "interviewTip": "Yoga написаний на C++ і саме він перетворює ваші стилі 'flex: 1' у реальні координати пікселів на iOS та Android.",
-    "options": [
-      "WebKit",
-      "Gecko",
-      "Yoga",
-      "Flexbox-Native"
-    ]
+    "options": ["WebKit", "Gecko", "Yoga", "Flexbox-Native"]
   },
   "rn-env-03": {
     "prompt": "Яку роль відіграє рушій 'Hermes' у додатку React Native?",
     "explanation": "Hermes — це малий та легкий рушій JS. Він використовує попередню компіляцію в байт-код (AOT), що значно пришвидшує запуск додатка.",
     "interviewTip": "Починаючи з React Native 0.70, Hermes є рушієм за замовчуванням для всіх нових проектів.",
     "options": [
-      "It manages the connection to the Google Play Store.",
-      "It is a JavaScript engine optimized for mobile to improve start-up time and reduce app size.",
-      "It handles all image caching and local storage.",
-      "It is a UI library that replaces core components."
+      "Він керує підключенням до Google Play Store.",
+      "Це рушій JavaScript, оптимізований для мобільних пристроїв, щоб скоротити час запуску та розмір додатка.",
+      "Він обробляє кешування зображень та локальне сховище.",
+      "Це бібліотека UI, яка замінює основні компоненти."
     ]
   },
   "rn-env-04": {
@@ -38,7 +33,7 @@
     "interviewTip": "Зрештою, ці компоненти дають команду нативній стороні відрендерити UIView на iOS або android.view на Android.",
     "options": [
       "\"string\"",
-      "\"function\" (or \"object\" depending on RN version internal implementation)",
+      "\"function\" (або \"object\" залежно від внутрішньої реалізації версії RN)",
       "\"undefined\"",
       "\"native-element\""
     ]
@@ -48,10 +43,10 @@
     "explanation": "Expo спрощує розробку, абстрагуючись від складного нативного коду, хоча CLI все ще кращий, якщо вам потрібні специфічні модифікації нативних модулів, які Expo не підтримує.",
     "interviewTip": "Expo більше не «тільки для початківців»; з появою 'Development Builds' він став достатньо потужним для професійних корпоративних додатків.",
     "options": [
-      "Managed workflow: handles native configurations and certificates automatically.",
-      "Direct access to modify AppDelegate.m and MainApplication.java without workarounds.",
-      "Easier testing on physical devices via the Expo Go app.",
-      "EAS (Expo Application Services) for cloud builds and submissions."
+      "Managed workflow: автоматично обробляє нативні конфігурації та сертифікати.",
+      "Прямий доступ до модифікації AppDelegate.m та MainApplication.java без обхідних шляхів.",
+      "Легше тестування на фізичних пристроях через додаток Expo Go.",
+      "EAS (Expo Application Services) для хмарних збірок та подання в магазини."
     ]
   },
   "rn-env-06": {
@@ -59,32 +54,27 @@
     "explanation": "Metro — це збирач (bundler), схожий на Webpack для вебу. Він розв'язує залежності та збирає ваш код у єдиний бандл для мобільного середовища.",
     "interviewTip": "Metro — це те, що забезпечує роботу функцій Hot Module Replacement (HMR) та Fast Refresh під час розробки.",
     "options": [
-      "A tool that compiles Java code into APKs.",
-      "The JavaScript bundler that takes all your JS files and combines them into a single bundle for the app.",
-      "A debugging tool used to inspect the UI tree.",
-      "The part of the architecture that handles push notifications."
+      "Інструмент, який компілює Java-код в APK.",
+      "Збирач JavaScript, який бере всі ваші JS-файли та об'єднує їх в один бандл для додатка.",
+      "Інструмент налагодження для інспектування дерева UI.",
+      "Частина архітектури, яка відповідає за пуш-сповіщення."
     ]
   },
   "rn-env-07": {
     "prompt": "Що замінює 'UIManager' у Новій архітектурі?",
     "explanation": "Fabric — це нова система рендерингу. Вона ефективніша, оскільки дозволяє оновлювати UI синхронно та покращує взаємодію з нативними в'юхами.",
     "interviewTip": "Fabric для рендерингу — це те саме, що TurboModules для нативної логіки.",
-    "options": [
-      "TurboModules",
-      "Fabric",
-      "Hermes",
-      "Metro"
-    ]
+    "options": ["TurboModules", "Fabric", "Hermes", "Metro"]
   },
   "rn-env-08": {
     "prompt": "Яке призначення команди 'npx react-native run-ios'?",
     "explanation": "Ця команда запускає процес збірки (через інструменти Xcode) та встановлює додаток на обраний симулятор або пристрій iOS.",
     "interviewTip": "Для роботи цієї команди на комп'ютері з macOS обов'язково має бути встановлений Xcode.",
     "options": [
-      "To install dependencies from npm.",
-      "To build and launch the iOS application on a simulator or device.",
-      "To minify the JavaScript bundle.",
-      "To generate a new project from a template."
+      "Для встановлення залежностей з npm.",
+      "Для збірки та запуску iOS-додатка на симуляторі чи пристрої.",
+      "Для мініфікації JavaScript-бандла.",
+      "Для генерації нового проекту з шаблону."
     ]
   },
   "rn-env-09": {
@@ -103,10 +93,10 @@
     "explanation": "React Native не використовує DOM браузера. Ви повинні використовувати нативні примітиви, такі як <View> та <Text>.",
     "interviewTip": "У React Native немає тегів 'div', 'span' або 'p'; увесь текст має бути всередині компонента <Text>.",
     "options": [
-      "It works because RN supports all HTML tags.",
-      "It throws an error because 'div' is not a valid component in React Native.",
-      "It renders as a View automatically.",
-      "It only works on the Web version of React Native."
+      "Це працює, бо RN підтримує всі HTML-теги.",
+      "Виникне помилка, оскільки 'div' не є валідним компонентом у React Native.",
+      "Він автоматично відрендериться як View.",
+      "Це працює лише у веб-версії React Native."
     ]
   },
   "rn-env-11": {
@@ -114,10 +104,10 @@
     "explanation": "Раніше потрібно було запускати 'react-native link'. Тепер CLI автоматично виявляє нативні модулі в node_modules і підключає їх під час збірки.",
     "interviewTip": "Для iOS після додавання бібліотеки все одно потрібно запустити 'pod install', щоб завершити процес автолінкування.",
     "options": [
-      "A feature that automatically updates your npm packages.",
-      "A mechanism that automatically links native dependencies to your iOS/Android projects without manual steps.",
-      "A way to link two different screens in navigation.",
-      "An AI tool for writing boilerplate code."
+      "Функція, яка автоматично оновлює ваші npm-пакети.",
+      "Механізм, який автоматично підключає нативні залежності до ваших проектів iOS/Android без ручних кроків.",
+      "Спосіб пов'язати два різні екрани в навігації.",
+      "AI-інструмент для написання шаблонного коду."
     ]
   },
   "rn-env-12": {
@@ -136,10 +126,10 @@
     "explanation": "Стандартні модулі ініціалізуються при запуску додатка, навіть якщо вони не використовуються. TurboModules завантажуються лише за потреби та спілкуються напряму через JSI.",
     "interviewTip": "Це ключова частина Нової архітектури, спрямована на покращення швидкості запуску додатка.",
     "options": [
-      "TurboModules are written in JavaScript, while Native Modules are written in Java.",
-      "TurboModules are loaded lazily and use JSI for faster, synchronous communication.",
-      "TurboModules only work on iOS.",
-      "TurboModules are the old way of writing native code."
+      "TurboModules написані на JavaScript, а Native Modules — на Java.",
+      "TurboModules завантажуються «ледаче» і використовують JSI для швидшого синхронного зв'язку.",
+      "TurboModules працюють лише на iOS.",
+      "TurboModules — це застарілий спосіб написання нативного коду."
     ]
   },
   "rn-env-14": {
@@ -158,10 +148,10 @@
     "explanation": "Версія React Native керується як і будь-який інший npm-пакет у файлі package.json.",
     "interviewTip": "Оновлення версій React Native часто вимагає використання інструмента 'React Native Upgrade Helper' через зміни в нативних файлах.",
     "options": [
-      "The code above is correct.",
-      "Versions are specified in the 'native-config.json' file.",
-      "You set the version in the Xcode project settings only.",
-      "React Native versions are managed by the Hermes engine."
+      "Наведений вище код є правильним.",
+      "Версії вказуються у файлі 'native-config.json'.",
+      "Ви встановлюєте версію лише в налаштуваннях проекту Xcode.",
+      "Версії React Native керовані рушієм Hermes."
     ]
   },
   "rn-env-16": {
@@ -169,10 +159,10 @@
     "explanation": "Тіньове дерево — це місце, де React Native зберігає інформацію про макет (flex, відступи), щоб Yoga міг обчислити фінальні розміри.",
     "interviewTip": "У Новій архітектурі Тіньове дерево є незмінним (immutable) і керується в C++ для кращої продуктивності.",
     "options": [
-      "A hidden copy of the DOM.",
-      "A tree structure used by Yoga to calculate the layout before translating it to native views.",
-      "The list of all deleted components.",
-      "A security layer that protects the JS thread."
+      "Прихована копія DOM.",
+      "Деревоподібна структура, що використовується Yoga для розрахунку макета перед перетворенням його в нативні в'юхи.",
+      "Список усіх видалених компонентів.",
+      "Рівень безпеки, що захищає JS-потік."
     ]
   },
   "rn-env-17": {
@@ -180,10 +170,10 @@
     "explanation": "У більшості актуальних версій її потрібно явно увімкнути під час інсталяції подів (pods) для iOS або у файлі gradle.properties для Android.",
     "interviewTip": "Майте на увазі, що деякі сторонні бібліотеки можуть бути ще не сумісними з Новою архітектурою.",
     "options": [
-      "Changing a setting in the Expo dashboard.",
-      "Running 'bundle exec pod install' with the ENV flag 'RCT_NEW_ARCH_ENABLED=1'.",
-      "It is always enabled and cannot be turned off.",
-      "By deleting the Bridge.js file."
+      "Зміна налаштування в панелі Expo.",
+      "Запуск 'bundle exec pod install' з прапорцем оточення 'RCT_NEW_ARCH_ENABLED=1'.",
+      "Вона завжди увімкнена і її не можна вимкнути.",
+      "Шляхом видалення файлу Bridge.js."
     ]
   },
   "rn-env-18": {
@@ -191,10 +181,10 @@
     "explanation": "Fast Refresh поєднує «гаряче» та «живе» перезавантаження, забезпечуючи плавне оновлення коду без втрати стану компонента, де це можливо.",
     "interviewTip": "Якщо ви зміните файл, який експортує щось окрім React-компонента, Fast Refresh може виконати повне перезавантаження для безпеки.",
     "options": [
-      "The whole app reloads and all state is lost.",
-      "React Native tries to update only the modified components while preserving their state.",
-      "The native code (Java/Swift) is recompiled.",
-      "The device vibrates to indicate an update."
+      "Весь додаток перезавантажується, і весь стан втрачається.",
+      "React Native намагається оновити лише змінені компоненти, зберігаючи їх стан.",
+      "Нативний код (Java/Swift) перекомпілюється.",
+      "Пристрій вібрує, вказуючи на оновлення."
     ]
   }
 }

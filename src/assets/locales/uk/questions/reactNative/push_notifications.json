@@ -4,10 +4,10 @@
     "explanation": "Локальні сповіщення (як будильник або таймер) створюються та залишаються на пристрої. Віддалені сповіщення ініціюються зовнішнім сервером для взаємодії з користувачем.",
     "interviewTip": "Для вашого додатка JS Mock Interview локальні сповіщення ідеально підійдуть для нагадування «потренуватися завтра».",
     "options": [
-      "Local notifications require internet; Remote ones do not.",
-      "Local notifications are scheduled by the app itself on the device; Remote ones are sent from a server via APNs or FCM.",
-      "Remote notifications only work when the app is open.",
-      "Local notifications are only for Android."
+      "Локальні сповіщення потребують інтернету; віддалені — ні.",
+      "Локальні сповіщення плануються самим додатком на пристрої; віддалені надсилаються з сервера через APNs або FCM.",
+      "Віддалені сповіщення працюють лише тоді, коли додаток відкритий.",
+      "Локальні сповіщення призначені лише для Android."
     ]
   },
   "pn-02": {
@@ -26,10 +26,10 @@
     "explanation": "Ваш сервер надсилає повідомлення саме на цей токен. Якщо користувач видалить і знову встановить додаток, токен зазвичай змінюється.",
     "interviewTip": "Завжди відправляйте токен у базу даних вашого бекенду під час запуску додатка або входу в систему.",
     "options": [
-      "A password for the Firebase console.",
-      "A unique identifier for a specific app instance on a specific device, used by the server to target that user.",
-      "A piece of code that encrypts the message.",
-      "The user's email address."
+      "Пароль для консолі Firebase.",
+      "Унікальний ідентифікатор екземпляра додатка на конкретному пристрої, який використовується сервером для таргетингу на цього користувача.",
+      "Частина коду, яка шифрує повідомлення.",
+      "Електронна адреса користувача."
     ]
   },
   "pn-04": {
@@ -48,10 +48,10 @@
     "explanation": "Android 8.0+ вимагає наявності каналів. Без валідного ID каналу сповіщення просто не відображатимуться на сучасних Android-пристроях.",
     "interviewTip": "На iOS цієї концепції не існує; користувачі можуть лише ввімкнути або вимкнути сповіщення для всього додатка.",
     "options": [
-      "To stream video content inside the notification.",
-      "To allow users to customize importance and sound for different categories of notifications (e.g., Chat vs. Marketing).",
-      "To increase the speed of delivery.",
-      "To bypass the 'Do Not Disturb' mode."
+      "Для стрімінгу відеоконтенту всередині сповіщення.",
+      "Щоб дозволити користувачам налаштовувати важливість та звук для різних категорій сповіщень (наприклад, Чати проти Маркетингу).",
+      "Для збільшення швидкості доставки.",
+      "Щоб обійти режим «Не турбувати»."
     ]
   },
   "pn-06": {
@@ -59,10 +59,10 @@
     "explanation": "Тихі сповіщення містять лише дані без заголовка (title) чи тексту (body). Вони використовуються, щоб «розбудити» додаток для непомітного завантаження нового контенту.",
     "interviewTip": "Будьте обережні: і iOS, і Android обмежують кількість тихих пушів для запобігання розряджанню акумулятора.",
     "options": [
-      "The phone vibrates but shows no text.",
-      "It doesn't show a UI alert but triggers a background task in the app to sync data.",
-      "The notification is deleted immediately.",
-      "It only works if the screen is on."
+      "Телефон вібрує, але не показує текст.",
+      "Воно не показує UI-повідомлення, але запускає фонове завдання в додатку для синхронізації даних.",
+      "Сповіщення видаляється негайно.",
+      "Це працює лише тоді, коли екран увімкнено."
     ]
   },
   "pn-07": {
@@ -70,10 +70,10 @@
     "explanation": "iOS дуже сувора в цьому плані. Вам потрібні всі ці налаштування та реальний пристрій для тестування повного циклу від сервера до смартфона.",
     "interviewTip": "Нові версії Xcode та симулятори додали обмежену підтримку, але фізичний пристрій залишається галузевим стандартом для тестування.",
     "options": [
-      "Push Notifications Capability enabled in Xcode.",
-      "Background Modes (Remote notifications) enabled in Xcode.",
-      "A physical device (Simulators do not support remote push by default).",
-      "A valid .p8 Auth Key or .p12 Certificate."
+      "Увімкнена опція Push Notifications Capability в Xcode.",
+      "Увімкнені Background Modes (Remote notifications) в Xcode.",
+      "Фізичний пристрій (симулятори за замовчуванням не підтримують віддалені пуші).",
+      "Валідний Auth Key (.p8) або сертифікат (.p12)."
     ]
   },
   "pn-08": {
@@ -81,10 +81,10 @@
     "explanation": "Цей обробник працює у власному спеціалізованому потоці поза вашим основним деревом компонентів React.",
     "interviewTip": "Тримайте цю функцію «чистою» (pure) і уникайте використання хуків або складної UI-логіки всередині неї.",
     "options": [
-      "To change the wallpaper of the phone.",
-      "To handle incoming data-only messages when the app is in the background or quit.",
-      "To play a custom sound.",
-      "To save the message to AsyncStorage."
+      "Для зміни шпалер телефону.",
+      "Для обробки вхідних повідомлень з даними (data-only), коли додаток знаходиться у фоновому режимі або закритий.",
+      "Для відтворення кастомного звуку.",
+      "Для збереження повідомлення в AsyncStorage."
     ]
   },
   "pn-09": {
@@ -92,10 +92,10 @@
     "explanation": "Це термін з області UX. Занадто часті та нерелевантні сповіщення — це причина №1 видалення додатків.",
     "interviewTip": "Згадуйте «персоналізацію сповіщень» та «обмеження частоти» (Frequency Capping) як способи вирішення цієї проблеми.",
     "options": [
-      "Sending too many notifications, leading to users disabling them or uninstalling the app.",
-      "When the notification text is too long for the screen.",
-      "A bug that causes the same notification to appear twice.",
-      "Using too many images in a notification."
+      "Надсилання занадто великої кількості сповіщень, що призводить до їх вимкнення користувачами або видалення додатка.",
+      "Коли текст сповіщення занадто довгий для екрана.",
+      "Помилка, через яку одне й те саме сповіщення з'являється двічі.",
+      "Використання занадто великої кількості зображень у сповіщенні."
     ]
   },
   "pn-10": {

@@ -3,22 +3,17 @@
     "prompt": "Який фреймворк для тестування є стандартним для React Native і відповідає за виконання модульних (unit) тестів?",
     "explanation": "Jest — це стандартний інструмент для запуску тестів у React Native. Він постачається з попередньо налаштованим пресетом 'react-native', який емулює мобільне середовище.",
     "interviewTip": "Зауважте, що 'Snapshot Testing' у Jest — це популярний, але суперечливий спосіб відстеження небажаних змін у UI.",
-    "options": [
-      "Mocha",
-      "Jest",
-      "Detox",
-      "Cypress"
-    ]
+    "options": ["Mocha", "Jest", "Detox", "Cypress"]
   },
   "tm-02": {
     "prompt": "У чому полягає основна філософія 'React Native Testing Library' (RNTL)?",
     "explanation": "RNTL заохочує тестувати *поведінку*, а не *реалізацію*. Якщо ви проведете рефакторинг коду, але користувач все одно бачить кнопку 'Submit', ваші тести мають залишатися успішними.",
     "interviewTip": "Уникайте використання бібліотеки 'enzyme' у сучасних проектах; RNTL є загальноприйнятим стандартом спільноти.",
     "options": [
-      "To test the internal state and private methods of a component.",
-      "To test components from the user's perspective (e.g., finding elements by text or accessibility labels).",
-      "To automatically fix bugs in the code.",
-      "To test the app's performance on a real device."
+      "Тестування внутрішнього стану та приватних методів компонента.",
+      "Тестування компонентів з точки зору користувача (наприклад, пошук елементів за текстом або мітками доступності).",
+      "Автоматичне виправлення помилок у коді.",
+      "Перевірка продуктивності додатка на реальному пристрої."
     ]
   },
   "tm-03": {
@@ -35,12 +30,12 @@
   "tm-04": {
     "prompt": "Для чого використовується 'Detox' в екосистемі React Native?",
     "explanation": "Detox запускає ваш додаток у реальному симуляторі та взаємодіє з ним як користувач. Його називають 'gray-box' тестуванням, оскільки він синхронізується з внутрішнім станом додатка для запобігання нестабільним (flaky) тестам.",
-    "interviewTip": "Порівнюйте Detox із Cypress; це найближчий мобільний еквівалент для автоматизації повних сценаріїв (End-to-End).",
+    "interviewTip": "Порівнюйте Detox із Cypress; це найближчий мобільний еквівалет для автоматизації повних сценаріїв (End-to-End).",
     "options": [
-      "To clean up the node_modules folder.",
-      "For gray-box End-to-End (E2E) testing on real simulators/emulators.",
-      "To unit test individual utility functions.",
-      "To check the app's security vulnerabilities."
+      "Для очищення папки node_modules.",
+      "Для наскрізного (E2E) тестування за принципом «сірої скриньки» на реальних симуляторах/емуляторах.",
+      "Для модульного тестування окремих утиліт.",
+      "Для перевірки вразливостей безпеки додатка."
     ]
   },
   "tm-05": {
@@ -48,32 +43,27 @@
     "explanation": "Jest працює в середовищі Node, а не в мобільній ОС. Нативних модулів (C++/Java/Swift) там не існує, тому ви повинні надати JS-реалізацію (mock) для імітації їхньої роботи.",
     "interviewTip": "Більшість популярних бібліотек (наприклад, React Navigation) надають власні Jest-моки, які можна просто імпортувати у ваш 'jest.setup.js'.",
     "options": [
-      "To make the tests run faster.",
-      "Because native code cannot run in the Node.js environment where Jest executes.",
-      "To reduce the size of the test files.",
-      "Jest only supports pure JavaScript."
+      "Щоб тести працювали швидше.",
+      "Тому що нативний код не може виконуватися в середовищі Node.js, де працює Jest.",
+      "Щоб зменшити розмір тестових файлів.",
+      "Jest підтримує лише чистий JavaScript."
     ]
   },
   "tm-06": {
     "prompt": "Які з цих варіантів є валідними «запитами» (queries) RNTL для пошуку елементів у UI?",
     "explanation": "getByText та getByTestId є найпоширенішими. queryBy... використовується, коли ви хочете перевірити, що елемент *не* існує (він повертає null замість помилки).",
     "interviewTip": "Надавайте перевагу 'getByText' або 'getByLabelText' (доступність) перед 'getByTestId', де це можливо, щоб ваш додаток був інклюзивним.",
-    "options": [
-      "getByText",
-      "getByTestId",
-      "queryByRole",
-      "findElementById"
-    ]
+    "options": ["getByText", "getByTestId", "queryByRole", "findElementById"]
   },
   "tm-07": {
     "prompt": "Яке призначення команди 'jest.useFakeTimers()'?",
     "explanation": "Якщо у вашому додатку Mock Interview є 3-секундний зворотний відлік перед питанням, фейкові таймери дозволяють миттєво пропустити ці 3 секунди під час тесту.",
     "interviewTip": "Не забувайте викликати 'jest.runAllTimers()' або 'jest.advanceTimersByTime()' після використання цієї функції.",
     "options": [
-      "To speed up the computer's clock.",
-      "To control and fast-forward time in tests that use setTimeout or setInterval (like a splash screen timer).",
-      "To record how long a test takes to run.",
-      "To schedule tests for a later date."
+      "Для прискорення годинника комп'ютера.",
+      "Для керування та прискорення часу в тестах, що використовують setTimeout або setInterval.",
+      "Для запису тривалості виконання тесту.",
+      "Для планування тестів на пізнішу дату."
     ]
   },
   "tm-08": {
@@ -81,10 +71,10 @@
     "explanation": "Це типовий E2E-тест. Він перевіряє видимість елементів та виконує дії (натискання), щоб верифікувати логіку переходу між кількома екранами.",
     "interviewTip": "У Detox 'by.id' посилається на пропс 'testID', який ви додаєте до своїх компонентів React Native.",
     "options": [
-      "A unit test for the Start button.",
-      "A full user flow: seeing the welcome screen, clicking start, and arriving at the first question.",
-      "The performance of the screen transition.",
-      "If the server is responding to requests."
+      "Модульний тест кнопки Start.",
+      "Повний шлях користувача: екран привітання, натискання кнопки старту та перехід до першого питання.",
+      "Продуктивність анімації переходу між екранами.",
+      "Чи відповідає сервер на запити."
     ]
   },
   "tm-09": {
@@ -92,10 +82,10 @@
     "explanation": "Як і в самому додатку, хукам часто потрібен контекст. Огортання тестованого компонента в провайдер (наприклад, NavigationContainer або Redux Provider) є стандартним рішенням.",
     "interviewTip": "Ви можете створити власну функцію 'render', яка автоматично огортатиме кожен компонент у всі необхідні провайдери.",
     "options": [
-      "Wrap the component in the library's Provider (e.g., NavigationContainer) inside the test.",
-      "You cannot test components with hooks.",
-      "Delete the hook before running the test.",
-      "Move the hook to a different file."
+      "Огорнути компонент у Провайдер бібліотеки (наприклад, NavigationContainer) всередині тесту.",
+      "Компоненти з хуками неможливо протестувати.",
+      "Видалити хук перед запуском тесту.",
+      "Перенести хук в інший файл."
     ]
   },
   "tm-10": {
@@ -103,10 +93,10 @@
     "explanation": "Покриття допомагає виявити «темні плями» у вашому коді, які ще не були перевірені жодним тестом.",
     "interviewTip": "Попередження: 100% покриття не означає відсутність багів; це лише означає, що кожен рядок коду був виконаний хоча б один раз.",
     "options": [
-      "The number of users who have downloaded the app.",
-      "The percentage of your source code (lines, branches, functions) that was executed during the tests.",
-      "The amount of memory the app uses.",
-      "The physical area where the app works."
+      "Кількість користувачів, які завантажили додаток.",
+      "Відсоток вихідного коду (рядки, гілки, функції), який був виконаний під час тестів.",
+      "Обсяг пам'яті, який використовує додаток.",
+      "Фізична територія, де працює додаток."
     ]
   }
 }

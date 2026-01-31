@@ -15,10 +15,10 @@
     "explanation": "Оптимістичний UI робить додаток «миттєвим». Він оновлює інтерфейс одразу, припускаючи, що запит буде успішним. Якщо пізніше запит не вдається, додаток «відкочує» зміни та інформує користувача.",
     "interviewTip": "Це ключова функція таких бібліотек, як TanStack (React) Query.",
     "options": [
-      "A UI that only works when the user is happy.",
-      "Immediately updating the UI to show a successful action (like liking a post) before the server confirms it.",
-      "A design that uses bright, positive colors.",
-      "Assuming the user will never go offline."
+      "Інтерфейс, який працює лише тоді, коли користувач задоволений.",
+      "Миттєве оновлення інтерфейсу для показу успішної дії (наприклад, лайк допису) до того, як сервер підтвердить це.",
+      "Дизайн, у якому використовуються лише яскраві та позитивні кольори.",
+      "Припущення, що користувач ніколи не перейде в офлайн."
     ]
   },
   "of-03": {
@@ -26,10 +26,10 @@
     "explanation": "У режимі 'offlineFirst' запити намагатимуться виконати функцію завантаження, але також успішно повертатимуть дані з кешу, якщо вони доступні, навіть без з'єднання.",
     "interviewTip": "Поєднуйте це з «Персистером» (Persister), щоб зберігати кеш у MMKV або AsyncStorage для справжньої офлайн-підтримки після перезапуску додатка.",
     "options": [
-      "It deletes the data if there is no internet.",
-      "It fetches data from the server first, then the cache.",
-      "It serves data from the cache immediately and only attempts to fetch if the data is stale.",
-      "It prevents the app from opening without a connection."
+      "Він видаляє дані, якщо немає інтернету.",
+      "Він завантажує дані спочатку з сервера, а потім із кешу.",
+      "Він миттєво надає дані з кешу і намагається завантажити нові лише якщо дані застаріли.",
+      "Він забороняє відкривати додаток без з'єднання."
     ]
   },
   "of-04": {
@@ -37,10 +37,10 @@
     "explanation": "Черга синхронізації гарантує, що прогрес користувача не буде втрачено. Коли додаток виявляє підключення до мережі, він обробляє відкладені дії в тому порядку, в якому вони були створені.",
     "interviewTip": "Бібліотеки на кшталт 'redux-persist' у поєднанні з 'redux-offline' були піонерами цього патерна.",
     "options": [
-      "To speed up the app's animations.",
-      "To store user actions (like 'Submit Quiz') while offline and replay them once the connection is restored.",
-      "To manage the order of images in a gallery.",
-      "To check for app updates in the store."
+      "Для прискорення анімації додатка.",
+      "Для зберігання дій користувача (наприклад, 'Надіслати квіз') під час офлайну та їх повторення після відновлення з'єднання.",
+      "Для керування порядком зображень у галереї.",
+      "Для перевірки наявності оновлень додатка в магазині."
     ]
   },
   "of-05": {
@@ -48,10 +48,10 @@
     "explanation": "Вирішення конфліктів — найскладніша частина: вирішити, «хто переміг», якщо користувач редагував ті самі дані на двох пристроях, поки один був офлайн.",
     "interviewTip": "Згадайте стратегію 'Last Write Wins' (перемагає останній запис) або 'CRDTs' як просунуті методи вирішення конфліктів.",
     "options": [
-      "Conflict Resolution (Server data vs. Local data changes).",
-      "Managing Cache Invalidation (ensuring data isn't too old).",
-      "Handling large binary assets like video.",
-      "Increasing the device's battery capacity."
+      "Вирішення конфліктів (дані сервера проти локальних змін).",
+      "Управління інвалідацією кешу (забезпечення актуальності даних).",
+      "Обробка великих бінарних ресурсів, таких як відео.",
+      "Збільшення ємності акумулятора пристрою."
     ]
   },
   "of-06": {
@@ -70,10 +70,10 @@
     "explanation": "Коли додаток відкривається, він зчитує збережений JSON із AsyncStorage/MMKV і «наповнює» стан, щоб користувач побачив свої дані ще до завершення будь-яких мережевих запитів.",
     "interviewTip": "Завжди показуйте заставку (splash screen), поки регідратація не завершиться, щоб уникнути різкої зміни макета (layout shift).",
     "options": [
-      "Cleaning up the memory after a crash.",
-      "The process of loading the persisted state from storage back into the app's memory (e.g., Redux or Zustand) on startup.",
-      "Updating the app to the latest version.",
-      "Connecting the app to a new database."
+      "Очищення пам'яті після аварійного завершення.",
+      "Процес завантаження збереженого стану зі сховища назад у пам'ять додатка (наприклад, у Redux або Zustand) під час запуску.",
+      "Оновлення додатка до останньої версії.",
+      "Підключення додатка до нової бази даних."
     ]
   },
   "of-08": {
@@ -81,10 +81,10 @@
     "explanation": "Оскільки MMKV працює синхронно, ви можете зчитати стан миттєво під час початкового рендерингу, що робить роботу в офлайні набагато плавнішою.",
     "interviewTip": "AsyncStorage вимагає 'await', що завжди змушує додаток пройти принаймні один «порожній» цикл рендерингу.",
     "options": [
-      "It has a better UI.",
-      "It allows for synchronous reads, which prevents 'flickering' of UI state during rehydration.",
-      "It is owned by Facebook.",
-      "It supports video files natively."
+      "Він має кращий інтерфейс користувача.",
+      "Він дозволяє синхронне зчитування, що запобігає «мерехтінню» стану інтерфейсу під час регідратації.",
+      "Він належить компанії Facebook.",
+      "Він нативно підтримує відеофайли."
     ]
   },
   "of-09": {
@@ -92,21 +92,16 @@
     "explanation": "Бібліотеки на кшталт 'react-native-fast-image' або 'expo-image' забезпечують автоматичне кешування на диску зі стратегіями інвалідації, роблячи офлайн-завантаження зображень непомітним для користувача.",
     "interviewTip": "Згадайте, що варто встановлювати пріоритети кешування (low/normal/high) залежно від важливості зображення для економії місця на диску.",
     "options": [
-      "Store all images in AsyncStorage as base64 strings.",
-      "Use a library like 'react-native-fast-image' with disk caching enabled to automatically cache network images.",
-      "Download all images at app startup.",
-      "Images cannot be cached in React Native."
+      "Зберігати всі зображення в AsyncStorage як рядки base64.",
+      "Використовувати бібліотеку типу 'react-native-fast-image' з увімкненим кешуванням на диску для автоматичного кешування мережевих зображень.",
+      "Завантажувати всі зображення під час запуску додатка.",
+      "Зображення неможливо кешувати в React Native."
     ]
   },
   "of-10": {
     "prompt": "Як реалізувати механізм повторних спроб (retry) для невдалих запитів в офлайн-архітектурі?",
     "explanation": "Налаштування 'retry: 3' означає, що мутація автоматично повториться до 3 разів з експоненціальною затримкою перед тим, як здатися. Це ідеально для тимчасових помилок мережі.",
     "interviewTip": "Для критичних операцій, таких як платежі, варто зберігати невдалі мутації в чергу і намагатися виконати їх знову навіть після перезапуску додатка.",
-    "options": [
-      "false",
-      "true",
-      "3",
-      "Infinity"
-    ]
+    "options": ["false", "true", "3", "Infinity"]
   }
 }

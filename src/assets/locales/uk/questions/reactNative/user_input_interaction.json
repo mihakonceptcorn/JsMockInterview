@@ -3,77 +3,57 @@
     "prompt": "Який компонент є сучасною та більш гнучкою альтернативою TouchableOpacity та TouchableHighlight для обробки дотиків?",
     "explanation": "Pressable — це базовий компонент, який забезпечує точніший контроль над різними етапами взаємодії (наведення, натискання, фокус).",
     "interviewTip": "Використовуйте Pressable, коли вам потрібна дуже детальна зона натискання або складна логіка зворотного зв'язку.",
-    "options": [
-      "<Button>",
-      "<Clickable>",
-      "<Pressable>",
-      "<TouchView>"
-    ]
+    "options": ["<Button>", "<Clickable>", "<Pressable>", "<TouchView>"]
   },
   "ui-02": {
     "prompt": "Яка основна візуальна різниця між TouchableOpacity та TouchableHighlight?",
     "explanation": "TouchableOpacity забезпечує відгук шляхом зменшення непрозорості (прозорості) огорнутого компонента. TouchableHighlight вимагає кольору 'underlayColor' і додає суцільний ефект виділення.",
     "interviewTip": "TouchableOpacity найчастіше використовується для звичайних кнопок завдяки своїй простоті.",
     "options": [
-      "TouchableOpacity changes the background color; TouchableHighlight reduces opacity.",
-      "TouchableOpacity reduces the opacity of the child; TouchableHighlight darkens or highlights the background color.",
-      "There is no visual difference; they are identical.",
-      "TouchableOpacity only works on Android."
+      "TouchableOpacity змінює колір фону; TouchableHighlight зменшує непрозорість.",
+      "TouchableOpacity зменшує непрозорість дочірнього елемента; TouchableHighlight затемнює або підсвічує колір фону.",
+      "Візуальної різниці немає; вони ідентичні.",
+      "TouchableOpacity працює лише на Android."
     ]
   },
   "ui-03": {
     "prompt": "Як приховати символи, що вводяться в TextInput (наприклад, для пароля)?",
     "explanation": "Встановлення 'secureTextEntry' у значення true замінює символи крапками або зірочками, наслідуючи нативну поведінку введення пароля в ОС.",
     "interviewTip": "Не забудьте поєднати це з 'autoCorrect={false}' та 'autoCapitalize=\"none\"' для екранів входу.",
-    "options": [
-      "passwordMode",
-      "hideText",
-      "secureTextEntry",
-      "maskCharacters"
-    ]
+    "options": ["passwordMode", "hideText", "secureTextEntry", "maskCharacters"]
   },
   "ui-04": {
     "prompt": "Який пропс використовується в TextInput для визначення типу клавіатури (наприклад, цифрова, для email)?",
     "explanation": "Пропс 'keyboardType' дозволяє встановлювати спеціалізовані клавіатури, як-от 'numeric', 'email-address' або 'phone-pad'.",
     "interviewTip": "Пам'ятайте, що типи клавіатур можуть дещо відрізнятися між iOS та Android.",
-    "options": [
-      "inputMode",
-      "keyboardType",
-      "type",
-      "keypadStyle"
-    ]
+    "options": ["inputMode", "keyboardType", "type", "keypadStyle"]
   },
   "ui-05": {
     "prompt": "Яке призначення компонента <KeyboardAvoidingView>?",
     "explanation": "Віртуальні клавіатури займають місце на екрані. KeyboardAvoidingView коригує своє положення або відступи так, щоб поля введення залишалися видимими для користувача.",
     "interviewTip": "Ключовим тут є пропс 'behavior'; зазвичай 'padding' найкраще працює на iOS, а 'height' або 'none' — на Android.",
     "options": [
-      "To prevent the user from using the keyboard.",
-      "To automatically move components out of the way of the virtual keyboard so they aren't hidden.",
-      "To change the color of the keyboard.",
-      "To check if the keyboard is open for analytics."
+      "Щоб заборонити користувачеві використовувати клавіатуру.",
+      "Щоб автоматично прибирати компоненти з-під віртуальної клавіатури, щоб вони не перекривалися.",
+      "Щоб змінити колір клавіатури.",
+      "Щоб перевірити, чи відкрита клавіатура, для аналітики."
     ]
   },
   "ui-06": {
     "prompt": "Які з наведених варіантів є валідними способами визначити, що користувач закінчив введення в TextInput?",
     "explanation": "onEndEditing спрацьовує при втраті фокусу; onSubmitEditing — при натисканні клавіші 'return'; onBlur — при втраті фокусу полем.",
     "interviewTip": "Використовуйте 'onSubmitEditing' для однорядкових інпутів, щоб ініціювати відправку форми.",
-    "options": [
-      "onEndEditing",
-      "onSubmitEditing",
-      "onBlur",
-      "onFinished"
-    ]
+    "options": ["onEndEditing", "onSubmitEditing", "onBlur", "onFinished"]
   },
   "ui-07": {
     "prompt": "Для чого в React Native використовується пропс 'hitSlop' у компонентах, що обробляють дотики?",
     "explanation": "На мобільних екранах буває важко влучити в ціль. 'hitSlop' полегшує натискання на малі іконки, розширюючи інтерактивну область за межі видимого елемента.",
     "interviewTip": "Це чудовий трюк рівня Senior для покращення UX на дрібних елементах, як-от кнопки закриття.",
     "options": [
-      "To increase the visible size of the button.",
-      "To increase the touchable area without changing the visible size of the component.",
-      "To add a shadow effect.",
-      "To slow down the response time of the click."
+      "Щоб збільшити видимий розмір кнопки.",
+      "Щоб збільшити область натискання без зміни видимого розміру компонента.",
+      "Щоб додати ефект тіні.",
+      "Щоб уповільнити час відгуку на натискання."
     ]
   },
   "ui-08": {
@@ -81,10 +61,10 @@
     "explanation": "React Native не закриває клавіатуру автоматично при всіх діях. Зазвичай потрібно імпортувати модуль 'Keyboard' і викликати 'Keyboard.dismiss()'.",
     "interviewTip": "Інший спосіб — огорнути екран у 'TouchableWithoutFeedback', який викликає dismiss.",
     "options": [
-      "Buttons don't close the keyboard by default.",
-      "You must manually call Keyboard.dismiss() or use the blur() method on the input.",
-      "The input is broken.",
-      "You need a special prop on the View."
+      "Кнопки не закривають клавіатуру за замовчуванням.",
+      "Ви повинні вручну викликати Keyboard.dismiss() або використовувати метод blur() на інпуті.",
+      "Поле введення зламане.",
+      "Вам потрібен спеціальний пропс на View."
     ]
   },
   "ui-09": {
@@ -92,22 +72,17 @@
     "explanation": "onChangeText — це зручний пропс, який повертає лише текст. onChange повертає повний об'єкт SyntheticEvent, що містить текст у 'event.nativeEvent.text'.",
     "interviewTip": "У 99% випадків слід використовувати 'onChangeText' для чистішого оновлення стану.",
     "options": [
-      "onChangeText gives you the raw string; onChange gives you a complex event object.",
-      "onChange is faster than onChangeText.",
-      "onChange is only for Web; onChangeText is for Native.",
-      "There is no difference."
+      "onChangeText повертає чистий рядок; onChange повертає складний об'єкт події.",
+      "onChange швидше, ніж onChangeText.",
+      "onChange лише для Web; onChangeText для Native.",
+      "Різниці немає."
     ]
   },
   "ui-10": {
     "prompt": "Як зробити TextInput багаторядковим для розділу біографії чи коментарів?",
     "explanation": "Пропс 'multiline' дозволяє тексту переноситися, а полю — рости або прокручуватися вертикально.",
     "interviewTip": "На Android поєднуйте це з 'textAlignVertical=\"top\"', щоб текст завжди починався з верхньої частини поля.",
-    "options": [
-      "multiple",
-      "textArea",
-      "multiline",
-      "expand"
-    ]
+    "options": ["multiple", "textArea", "multiline", "expand"]
   },
   "ui-11": {
     "prompt": "Які стани зворотного зв'язку надає функція стилю компонента 'Pressable'?",
@@ -115,7 +90,7 @@
     "interviewTip": "Саме тому Pressable замінює компоненти Touchable; він набагато описовіший.",
     "options": [
       "pressed",
-      "hovered (on web/desktop platforms)",
+      "hovered (на веб/десктоп платформах)",
       "focused",
       "clicked"
     ]
@@ -125,10 +100,10 @@
     "explanation": "Більшість мобільних клавіатур за замовчуванням роблять першу літеру великою. Це незручно для адрес електронної пошти, які зазвичай пишуться малими літерами.",
     "interviewTip": "Валідні значення: 'none', 'sentences', 'words' та 'characters'.",
     "options": [
-      "To prevent the first letter of the email from being uppercase.",
-      "To encrypt the email.",
-      "To stop the keyboard from suggesting words.",
-      "To make the text smaller."
+      "Щоб запобігти написанню першої літери email великою.",
+      "Щоб зашифрувати email.",
+      "Щоб клавіатура перестала пропонувати варіанти слів.",
+      "Щоб зробити текст меншим."
     ]
   },
   "ui-13": {
@@ -136,10 +111,10 @@
     "explanation": "returnKeyType змінює текст або іконку клавіші 'Enter' на віртуальній клавіатурі, щоб вона краще відповідала дії користувача.",
     "interviewTip": "Поширені значення: 'search', 'next', 'done' та 'send'.",
     "options": [
-      "use the 'returnKeyType' prop (e.g., 'done', 'go', 'send').",
-      "use the 'buttonLabel' prop.",
-      "It happens automatically.",
-      "You must build a custom keyboard."
+      "використовувати пропс 'returnKeyType' (наприклад, 'done', 'go', 'send').",
+      "використовувати пропс 'buttonLabel'.",
+      "це відбувається автоматично.",
+      "ви повинні створити власну клавіатуру."
     ]
   },
   "ui-14": {
@@ -147,10 +122,10 @@
     "explanation": "Базовий <Button> дуже обмежений (тільки заголовок і колір). Якщо ви хочете кнопку з іконкою, кастомними межами або відступами, потрібно використовувати Touchable або Pressable як обгортку для View.",
     "interviewTip": "Більшість продакшн-додатків взагалі уникають компонента <Button> на користь власних кнопок.",
     "options": [
-      "Button is a basic component with a native look that can't be styled much; TouchableOpacity is a wrapper that lets you build any UI into a button.",
-      "Button only works on iOS.",
-      "TouchableOpacity is only for images.",
-      "Button is faster."
+      "Button — це базовий компонент із нативним виглядом, який не можна сильно стилізувати; TouchableOpacity — це обгортка, яка дозволяє побудувати будь-який інтерфейс у вигляді кнопки.",
+      "Button працює лише на iOS.",
+      "TouchableOpacity лише для зображень.",
+      "Button швидший."
     ]
   }
 }

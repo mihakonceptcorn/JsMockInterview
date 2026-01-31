@@ -3,22 +3,17 @@
     "prompt": "Який компонент є найфундаментальнішим будівельним блоком інтерфейсу, що діє як контейнер і підтримує макет за допомогою Flexbox?",
     "explanation": "Компонент <View> напряму відображається на нативні аналоги (UIView в iOS, android.view в Android) і використовується для розмітки та стилізації.",
     "interviewTip": "Сприймайте <View> як <div> у React Native.",
-    "options": [
-      "<Container>",
-      "<View>",
-      "<Section>",
-      "<Div>"
-    ]
+    "options": ["<Container>", "<View>", "<Section>", "<Div>"]
   },
   "rn-core-02": {
     "prompt": "Що станеться, якщо спробувати відрендерити звичайний текст поза компонентом <Text>?",
     "explanation": "На відміну від вебу, де текст може знаходитися всередині <div>, React Native вимагає, щоб увесь текст був явно огорнутий у компонент <Text>.",
     "interviewTip": "Це дуже поширена помилка початківців при переході з веб-розробки на мобільну.",
     "options": [
-      "It renders correctly as a child of the View.",
-      "It will throw an error: 'Text strings must be rendered within a <Text> component'.",
-      "It renders but cannot be styled.",
-      "React Native automatically wraps it in a <Text> tag."
+      "Він коректно відрендериться як дочірній елемент View.",
+      "Буде викликана помилка: 'Text strings must be rendered within a <Text> component'.",
+      "Він відрендериться, але його неможливо буде стилізувати.",
+      "React Native автоматично загорне його в тег <Text>."
     ]
   },
   "rn-core-03": {
@@ -37,43 +32,38 @@
     "explanation": "StyleSheet.create надсилає об'єкт стилів через міст (bridge) лише один раз, а не створює його заново при кожному рендері, що є більш ефективним.",
     "interviewTip": "Він також забезпечує валідацію, викидаючи помилки, якщо ви використовуєте невалідні властивості CSS, які не підтримуються в React Native.",
     "options": [
-      "To allow the use of CSS files (.css) in React Native.",
-      "To provide a centralized and potentially more performant way to define styles outside the render loop.",
-      "To automatically convert pixels to percentages.",
-      "To encrypt the styles for security."
+      "Щоб дозволити використання CSS-файлів (.css) у React Native.",
+      "Щоб забезпечити централізований і потенційно більш продуктивний спосіб визначення стилів поза циклом рендерингу.",
+      "Щоб автоматично конвертувати пікселі у відсотки.",
+      "Щоб зашифрувати стилі задля безпеки."
     ]
   },
   "rn-core-05": {
     "prompt": "Який компонент слід використовувати, якщо вам потрібен контейнер, що дозволяє користувачеві гортати контент, розмір якого перевищує екран?",
     "explanation": "<View> не має можливості прокрутки. Для базової прокрутки невеликої кількості контенту правильним вибором є <ScrollView>.",
     "interviewTip": "Для великих списків даних <ScrollView> неефективний, оскільки він рендерить усіх дітей одночасно. Використовуйте <FlatList> для кращої продуктивності.",
-    "options": [
-      "<View>",
-      "<SwipeView>",
-      "<ScrollView>",
-      "<ListView>"
-    ]
+    "options": ["<View>", "<SwipeView>", "<ScrollView>", "<ListView>"]
   },
   "rn-core-06": {
     "prompt": "Які з наступних властивостей є валідними для компонента <Text> у React Native?",
     "explanation": "Компонент <Text> напрочуд потужний: він підтримує скорочення тексту (truncation), нативні події натискання та виділення тексту для копіювання.",
     "interviewTip": "Вкладені компоненти <Text> успадковують стилі від своїх батьків, що відрізняється від того, як працює успадкування у <View>.",
     "options": [
-      "numberOfLines (to truncate text)",
-      "onPress (to handle clicks directly on text)",
-      "selectable (to allow the user to copy-paste)",
-      "href (to link to a website)"
+      "numberOfLines (для обрізання тексту)",
+      "onPress (для обробки натискань безпосередньо на тексті)",
+      "selectable (щоб дозволити користувачеві копіювати текст)",
+      "href (для посилання на вебсайт)"
     ]
   },
   "rn-core-07": {
     "prompt": "Як обробляти локальні ресурси (наприклад, логотип) у компоненті <Image>?",
     "explanation": "Синтаксис 'require' дозволяє пакувальнику (bundler) зібрати метадані зображення (ширину, висоту, шлях) під час збірки додатка.",
-    "interviewTip": "На відміну від віддалених зображень, локальним зображенням зазвичай не потрібні явні width/height для появи, хоча їх встановлення вважається хорошою практикою.",
+    "interviewTip": "На відміну від віддалених зображень, локальним зображенням зазвичай не потрібні явні width/height для появи, хоча їх встановлення вважається Cancer практикою.",
     "options": [
-      "This is the correct way for local assets.",
-      "Local assets must also use the { uri: ... } syntax.",
-      "You must import the image as a default export first.",
-      "React Native only supports remote images."
+      "Це правильний спосіб для локальних ресурсів.",
+      "Локальні ресурси також повинні використовувати синтаксис { uri: ... }.",
+      "Спочатку ви повинні імпортувати зображення як default export.",
+      "React Native підтримує лише віддалені зображення."
     ]
   },
   "rn-core-08": {
@@ -81,10 +71,10 @@
     "explanation": "SafeAreaView необхідний для пристроїв iOS із «вирізами» (notches), щоб контент не перекривався системними елементами інтерфейсу (статус-баром тощо).",
     "interviewTip": "У сучасній розробці багато хто використовує бібліотеку 'react-native-safe-area-context' для ще кращого контролю над безпечними зонами.",
     "options": [
-      "<SafeAreaView> is faster than <View>.",
-      "<SafeAreaView> automatically adds padding to avoid 'notches', status bars, and home indicators on modern devices.",
-      "<SafeAreaView> only works on Android.",
-      "<View> is only for web, <SafeAreaView> is for mobile."
+      "<SafeAreaView> швидший за <View>.",
+      "<SafeAreaView> автоматично додає відступи, щоб уникнути «вирізів», статус-барів та індикаторів головного екрана на сучасних пристроях.",
+      "<SafeAreaView> працює лише на Android.",
+      "<View> призначений лише для вебу, <SafeAreaView> — для мобільних пристроїв."
     ]
   },
   "rn-core-09": {
@@ -92,22 +82,17 @@
     "explanation": "У стандартному Web CSS значенням за замовчуванням є 'row'. У React Native це 'column', що краще підходить для вертикальних екранів мобільних пристроїв.",
     "interviewTip": "Це одна з найчастіших пасток для веб-розробників, які переходять на React Native.",
     "options": [
-      "The default is 'row'.",
-      "The default is 'column'.",
-      "It has no default; it must be specified.",
-      "It only works on ScrollView."
+      "Значення за замовчуванням — 'row'.",
+      "Значення за замовчуванням — 'column'.",
+      "Значення за замовчуванням відсутнє; його потрібно вказувати обов'язково.",
+      "Це працює лише в ScrollView."
     ]
   },
   "rn-core-10": {
     "prompt": "Який компонент використовується для збору тексту від користувача?",
     "explanation": "TextInput — основний компонент для введення з клавіатури. Він підтримує різні типи клавіатур (цифрова, email) та приховане введення для паролів.",
     "interviewTip": "Завжди використовуйте пропс 'onChangeText' (який повертає рядок напряму), а не 'onChange' (який повертає об'єкт події).",
-    "options": [
-      "<Input>",
-      "<TextField>",
-      "<TextInput>",
-      "<EditView>"
-    ]
+    "options": ["<Input>", "<TextField>", "<TextInput>", "<EditView>"]
   },
   "rn-core-11": {
     "prompt": "Як застосувати кілька об'єктів стилів до одного компонента?",
@@ -125,10 +110,10 @@
     "explanation": "Це вбудований компонент, який відображає нативний індикатор завантаження (спінер).",
     "interviewTip": "Ви можете налаштувати його розмір ('small' або 'large') та колір.",
     "options": [
-      "To show the battery percentage.",
-      "To display a circular loading spinner.",
-      "To track user activity for analytics.",
-      "To show a progress bar."
+      "Щоб показати відсоток заряду батареї.",
+      "Щоб відобразити круглий індикатор завантаження.",
+      "Щоб відстежувати активність користувача для аналітики.",
+      "Щоб показати прогрес-бар (смугу завантаження)."
     ]
   },
   "rn-core-13": {
@@ -136,10 +121,10 @@
     "explanation": "resizeMode визначає, як зображення має масштабуватися, якщо його рамка не збігається зі співвідношенням сторін самого зображення.",
     "interviewTip": "'cover' є значенням за замовчуванням і зазвичай це те, що вам потрібно для фонів на весь екран.",
     "options": [
-      "cover (scale to fill, might crop)",
-      "contain (scale to fit, no cropping)",
-      "stretch (scale independently, might distort)",
-      "fit (only works on Android)"
+      "cover (масштабування до заповнення, можливе обрізання)",
+      "contain (масштабування до вміщення, без обрізання)",
+      "stretch (незалежне масштабування сторін, можливе спотворення)",
+      "fit (працює лише на Android)"
     ]
   },
   "rn-core-14": {
@@ -147,10 +132,10 @@
     "explanation": "Як і в React для вебу, алгоритм узгодження (reconciliation) використовує ключі для відстеження ідентичності елементів у масиві.",
     "interviewTip": "Використання індексу масиву як ключа зазвичай не рекомендується, якщо порядок елементів може змінюватися.",
     "options": [
-      "To style each item individually.",
-      "To help React identify which items have changed, been added, or removed for efficient re-rendering.",
-      "To enable smooth scrolling.",
-      "Keys are not needed in ScrollView, only in FlatList."
+      "Для стилізації кожного елемента окремо.",
+      "Щоб допомогти React визначити, які елементи змінилися, були додані або видалені для ефективного повторного рендерингу.",
+      "Для забезпечення плавної прокрутки.",
+      "Ключі не потрібні в ScrollView, лише у FlatList."
     ]
   },
   "rn-core-15": {
@@ -158,10 +143,10 @@
     "explanation": "Якщо ви додасте padding до пропса 'style' у ScrollView, контент буде обрізатися. Ви повинні використовувати 'contentContainerStyle', щоб додати відступи до самої області прокрутки.",
     "interviewTip": "Це найпоширеніший спосіб додати «місце для вдиху» внизу довгого списку.",
     "options": [
-      "It styles the outer wrapper of the scroll view.",
-      "It styles the inner component that wraps all the children (used for padding/alignment).",
-      "It changes the color of the scroll bar.",
-      "It is used for the background color only."
+      "Він стилізує зовнішню обгортку scroll view.",
+      "Він стилізує внутрішній компонент, який огортає всіх дочірніх елементів (використовується для відступів/вирівнювання).",
+      "Він змінює колір смуги прокрутки.",
+      "Він використовується лише для кольору фону."
     ]
   },
   "rn-core-16": {
@@ -169,10 +154,10 @@
     "explanation": "За замовчуванням Views мають властивість 'alignItems: stretch', тому компонент розтягнеться на всю ширину батька і буде виглядати як лінія висотою в 1 піксель.",
     "interviewTip": "Це поширений спосіб створення кастомних розділювачів (separators) між елементами списку.",
     "options": [
-      "A black box.",
-      "A horizontal black line (separator).",
-      "Nothing, because it has no width.",
-      "An error."
+      "Чорний квадрат (box).",
+      "Горизонтальну чорну лінію (розділювач).",
+      "Нічого, оскільки компонент не має ширини.",
+      "Помилку."
     ]
   }
 }

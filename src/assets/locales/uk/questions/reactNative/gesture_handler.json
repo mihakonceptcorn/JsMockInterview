@@ -4,10 +4,10 @@
     "explanation": "RNGH взаємодіє безпосередньо з нативною системою розпізнавання жестів платформи, що означає, що події дотику не повинні проходити через JS-потік для обробки.",
     "interviewTip": "Завжди згадуйте про 'детермінізм' та 'чуйність' (responsiveness) при порівнянні RNGH з PanResponder.",
     "options": [
-      "It uses less battery.",
-      "It runs on the native thread, avoiding the 'bridge' bottleneck for smooth 60fps gestures.",
-      "It is written in pure JavaScript and easier to debug.",
-      "It only works with Expo."
+      "Він споживає менше заряду батареї.",
+      "Він працює в нативному потоці, уникаючи вузького місця «мосту» (bridge) для плавних жестів при 60fps.",
+      "Він написаний чистою мовою JavaScript, і його легше відлагоджувати.",
+      "Він працює лише з Expo."
     ]
   },
   "gh-02": {
@@ -26,10 +26,10 @@
     "explanation": "У жесті Pan (панорамування) 'translationX' та 'translationY' представляють відстань, на яку перемістився палець з моменту початку жесту.",
     "interviewTip": "Порівнюйте 'translation' (рух відносно початку) з 'absolutePosition' (координата відносно батьківського елемента).",
     "options": [
-      "It tracks the horizontal distance moved from the starting point.",
-      "It tracks the total number of fingers on the screen.",
-      "It logs the absolute X coordinate relative to the screen.",
-      "It only works if the user double-taps."
+      "Він відстежує горизонтальну відстань, пройдену від початкової точки.",
+      "Він відстежує загальну кількість пальців на екрані.",
+      "Він логує абсолютну координату X відносно екрана.",
+      "Він працює лише за умови подвійного натискання (double-tap)."
     ]
   },
   "gh-04": {
@@ -48,10 +48,10 @@
     "explanation": "Gesture.Simultaneous() дозволяє всім зазначеним жестам залишатися активними разом.",
     "interviewTip": "Це важливо для складних інтерфейсів (наприклад, фоторедакторів), де користувачі очікують свободи мультитач-керування.",
     "options": [
-      "The code above is correct.",
-      "Use Gesture.Parallel(pinch, rotate).",
-      "Use Gesture.Exclusive(pinch, rotate).",
-      "Gestures cannot run simultaneously."
+      "Наведений вище код є правильним.",
+      "Використовувати Gesture.Parallel(pinch, rotate).",
+      "Використовувати Gesture.Exclusive(pinch, rotate).",
+      "Жести не можуть працювати одночасно."
     ]
   },
   "gh-06": {
@@ -59,32 +59,27 @@
     "explanation": "Exclusive надає пріоритет першому жесту. Якщо виявлено подвійне натискання, він запобігає спрацьовуванню одиночного натискання.",
     "interviewTip": "Саме так вирішуються конфлікти між зонами дотику, що накладаються одна на одну.",
     "options": [
-      "To make a gesture work only on iOS.",
-      "To set a priority where only one gesture can 'win' (e.g., favoring a double-tap over a single-tap).",
-      "To prevent the parent ScrollView from scrolling.",
-      "To disable all other buttons on the screen."
+      "Щоб жест працював лише на iOS.",
+      "Щоб встановити пріоритет, де лише один жест може «виграти» (наприклад, пріоритет подвійного тапу над одиночним).",
+      "Щоб запобігти прокручуванню батьківського ScrollView.",
+      "Щоб вимкнути всі інші кнопки на екрані."
     ]
   },
   "gh-07": {
     "prompt": "Який колбек події запускається, коли користувач піднімає палець з екрана?",
     "explanation": "onFinalize запускається незалежно від того, чи завершився жест успішно, чи був скасований. onEnd запускається лише за успішного завершення.",
     "interviewTip": "Використовуйте onFinalize для «скидання» стану UI, щоб він не застряг, якщо жест був перерваний (наприклад, вхідним дзвінком).",
-    "options": [
-      "onBegin",
-      "onStart",
-      "onEnd",
-      "onFinalize"
-    ]
+    "options": ["onBegin", "onStart", "onEnd", "onFinalize"]
   },
   "gh-08": {
     "prompt": "Які з цих жестів є вбудованими типами в RNGH?",
     "explanation": "Pinch (щипок), Rotation (обертання) та Fling (швидке гортання) — це жести дотику. 'Shake' (струшування) — це подія руху пристрою, яку RNGH не обробляє.",
     "interviewTip": "Згадайте 'Fling' як оптимізований спосіб реалізації взаємодії 'Swipe to delete' (проведіть, щоб видалити).",
     "options": [
-      "Pinch (two-finger zoom)",
-      "Rotation (two-finger rotate)",
-      "Fling (quick swipe in a specific direction)",
-      "Shake (physical device movement)"
+      "Pinch (масштабування двома пальцями)",
+      "Rotation (обертання двома пальцями)",
+      "Fling (швидкий свайп у певному напрямку)",
+      "Shake (фізичне струшування пристрою)"
     ]
   },
   "gh-09": {
@@ -92,10 +87,10 @@
     "explanation": "Без нього ScrollView «вкрав» би подію дотику, як тільки помітив би рух. simultaneousHandlers дозволяє обом компонентам співпрацювати.",
     "interviewTip": "Це критично важливо для бокових панелей (drawers) або нижніх листів (bottom sheets), що містять контент, який можна прокручувати.",
     "options": [
-      "It speeds up the JS thread.",
-      "It allows a component to recognize a gesture while a specific parent (like a ScrollView) is also active.",
-      "It allows two different users to touch the screen.",
-      "It converts touches into mouse clicks."
+      "Він прискорює JS-потік.",
+      "Він дозволяє компоненту розпізнавати жест, поки певний батьківський елемент (наприклад, ScrollView) також активний.",
+      "Він дозволяє двом різним користувачам торкатися екрана.",
+      "Він конвертує дотики в кліки миші."
     ]
   },
   "gh-10": {
@@ -103,10 +98,10 @@
     "explanation": "GestureDetector — це компонент-обгортка, який поєднує визначення жесту з конкретним елементом інтерфейсу.",
     "interviewTip": "Пам'ятайте, що GestureDetector може мати лише ОДНОГО дочірнього елемента.",
     "options": [
-      "The code above is correct.",
-      "By passing it to the 'onGesture' prop of the View.",
-      "Using the 'useGesture' hook.",
-      "By wrapping the View in a <PanHandler>."
+      "Наведений вище код є правильним.",
+      "Шляхом передачі його в пропс 'onGesture' компонента View.",
+      "Використовуючи хук 'useGesture'.",
+      "Шляхом обгортання View у <PanHandler>."
     ]
   }
 }

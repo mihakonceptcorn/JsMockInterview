@@ -4,10 +4,10 @@
     "explanation": "Сучасні ОС (iOS та Android) вимагають, щоб додатки явно запитували дозвіл у користувача. Спроба використати сенсор без дозволу призведе до аварійного завершення (crash) або ігнорування запиту.",
     "interviewTip": "Розрізняйте дозволи «Запитати один раз» та «Дозволяти завжди», особливо для геолокації.",
     "options": [
-      "Import the 'Hardware' module.",
-      "Request and verify the user's permission at runtime.",
-      "Turn on the sensor in the device settings manually.",
-      "Check if the device has enough battery."
+      "Імпортувати модуль 'Hardware'.",
+      "Запитати та перевірити дозвіл користувача під час виконання коду (runtime).",
+      "Увімкнути сенсор у налаштуваннях пристрою вручну.",
+      "Перевірити, чи достатньо заряду батареї."
     ]
   },
   "hf-02": {
@@ -26,10 +26,10 @@
     "explanation": "Для захисту приватності Android 10+ вимагає, щоб користувачі спеціально обирали «Дозволяти завжди» для фонового доступу.",
     "interviewTip": "Завжди дотримуйтесь «Принципу найменших привілеїв» — запитуйте фоновий доступ лише якщо це критично важливо для основної функції додатка.",
     "options": [
-      "They are the same permission.",
-      "Foreground allows tracking while the app is open; Background requires an extra, separate permission and strict Google Play review.",
-      "Background location is only available on iOS.",
-      "You only need to set a flag in the JavaScript code."
+      "Це один і той самий дозвіл.",
+      "Foreground дозволяє відстеження, поки додаток відкритий; Background потребує додаткового окремого дозволу та суворої перевірки Google Play.",
+      "Фонова геолокація доступна лише на iOS.",
+      "Потрібно лише встановити прапорець (flag) у JavaScript-коді."
     ]
   },
   "hf-04": {
@@ -48,10 +48,10 @@
     "explanation": "Щоб запобігти спаму запитами, iOS показує системний діалог лише один раз. Якщо статус 'denied' (відхилено), ви повинні програмно перенаправити користувача в налаштування за допомогою 'Linking.openSettings()'.",
     "interviewTip": "Це критична деталь UX для додатків, які покладаються на апаратне забезпечення.",
     "options": [
-      "The app will automatically ask again the next time this code runs.",
-      "On iOS, the system prompt will only appear once; after that, you must guide the user to the device Settings app.",
-      "The app will crash.",
-      "The alert will be blocked by the system."
+      "Додаток автоматично запитає знову під час наступного виконання цього коду.",
+      "На iOS системне вікно з'явиться лише один раз; після цього ви повинні спрямувати користувача в додаток «Налаштування».",
+      "Додаток завершиться з помилкою (crash).",
+      "Попередження буде заблоковано системою."
     ]
   },
   "hf-06": {
@@ -59,21 +59,21 @@
     "explanation": "Геозонування дозволяє ОС сповіщати додаток, коли користувач перетинає межі певного радіуса координат, навіть якщо додаток не запущений.",
     "interviewTip": "Це дуже енергоефективно для акумулятора порівняно з постійним опитуванням місцезнаходження користувача.",
     "options": [
-      "A way to encrypt GPS data.",
-      "Triggering an action (like a notification) when a device enters or leaves a specific geographical boundary.",
-      "Measuring the altitude of the device.",
-      "Using Bluetooth to find nearby devices."
+      "Спосіб шифрування даних GPS.",
+      "Запуск дії (наприклад, сповіщення), коли пристрій входить або виходить за межі певної географічної зони.",
+      "Вимірювання висоти над рівнем моря.",
+      "Використання Bluetooth для пошуку пристроїв поблизу."
     ]
   },
   "hf-07": {
     "prompt": "Де потрібно вказати «причину» запиту дозволу (наприклад, CameraUsageDescription) для iOS?",
-    "explanation": "iOS вимагає вказати рядок із метою використання (Purpose String) у файлі Info.plist. В Expo ви вказуєте ці рядки в розділі 'plugins' файлу app.json, і вони впорскуються в plist під час збірки.",
+    "explanation": "iOS вимагає вказати рядок із метою використання (Purpose String) у файлі Info.plist. В Expo ви вказуєте ці рядки в розділі 'plugins' файлу app.json, і вони впорськуться в plist під час збірки.",
     "interviewTip": "Якщо ви не надасте чітку та зрозумілу користувачеві причину, Apple відхилить ваш додаток під час модерації.",
     "options": [
-      "In the package.json file.",
-      "In the Info.plist file.",
-      "Directly in the JavaScript code.",
-      "In the app.json / expo config."
+      "У файлі package.json.",
+      "У файлі Info.plist.",
+      "Безпосередньо в JavaScript-коді.",
+      "У файлі app.json або в конфігурації Expo."
     ]
   },
   "hf-08": {
@@ -81,10 +81,10 @@
     "explanation": "Акселерометри використовуються для виявлення струшування, підрахунку кроків та керування іграми за допомогою нахилу телефону.",
     "interviewTip": "Згадайте, що такі сенсори видають дані з високою частотою, тому важливо використовувати модель підписки (Subscription) та очищувати її в 'useEffect'.",
     "options": [
-      "The compass heading.",
-      "The change in velocity (acceleration) along three axes (X, Y, Z).",
-      "The distance to the nearest object.",
-      "The brightness of the screen."
+      "Напрямок за компасом.",
+      "Зміну швидкості (прискорення) вздовж трьох осей (X, Y, Z).",
+      "Відстань до найближчого об'єкта.",
+      "Яскравість екрана."
     ]
   },
   "hf-09": {
@@ -92,10 +92,10 @@
     "explanation": "Модуль BackHandler дозволяє слухати натискання апаратної кнопки «Назад», запобігати йому або налаштовувати власну поведінку.",
     "interviewTip": "Це актуально лише для Android; користувачі iOS очікують кнопку «Назад» у заголовку навігації або жест гортання назад (swipe-back).",
     "options": [
-      "Using the BackHandler module.",
-      "Using the DeviceInfo library.",
-      "This is handled automatically by the OS; you don't need to check.",
-      "Checking the screen height."
+      "Використовуючи модуль BackHandler.",
+      "Використовуючи бібліотеку DeviceInfo.",
+      "Це обробляється ОС автоматично; перевірка не потрібна.",
+      "Шляхом перевірки висоти екрана."
     ]
   },
   "hf-10": {
@@ -103,10 +103,10 @@
     "explanation": "Модуль Linking — це місток до інших додатків. Наприклад, `Linking.openURL('tel:123456')` викликає нативну програму для здійснення дзвінків.",
     "interviewTip": "Спочатку використовуйте 'Linking.canOpenURL', щоб переконатися, що на пристрої є обробник для цього конкретного посилання (наприклад, поштовий клієнт).",
     "options": [
-      "To connect to a Wi-Fi network.",
-      "To open other apps, websites, or system settings (e.g., tel: or mailto:).",
-      "To link the Camera to the Image component.",
-      "To download assets."
+      "Для підключення до мережі Wi-Fi.",
+      "Для відкриття інших додатків, вебсайтів або системних налаштувань (наприклад, tel: або mailto:).",
+      "Для зв'язку камери з компонентом Image.",
+      "Для завантаження ресурсів (assets)."
     ]
   }
 }

@@ -15,10 +15,10 @@
     "explanation": "MMKV використовує JavaScript Interface (JSI), що дозволяє JS-потоку читати та записувати дані безпосередньо з пам’яті C++ без витрат на роботу через JSON-міст (bridge).",
     "interviewTip": "MMKV зараз вважається найшвидшим сховищем типу «ключ-значення» для React Native, часто воно працює в 10–30 разів швидше за AsyncStorage.",
     "options": [
-      "It uses a cloud-based backup system.",
-      "It provides synchronous access to data via JSI, making it significantly faster.",
-      "It only works on Android, making it more stable there.",
-      "It automatically compresses all data into ZIP files."
+      "Він використовує хмарну систему резервного копіювання.",
+      "Він забезпечує синхронний доступ до даних через JSI, що робить його значно швидшим.",
+      "Він працює лише на Android, що робить його більш стабільним там.",
+      "Він автоматично стискає всі дані в ZIP-файли."
     ]
   },
   "sp-03": {
@@ -37,32 +37,27 @@
     "explanation": "Keychain (iOS) та Keystore (Android) забезпечують шифрування на апаратному рівні, яке зберігається навіть після видалення додатка. Сховища на кшталт AsyncStorage не є безпечними.",
     "interviewTip": "Згадуйте правило: «Сховище ключ-значення — для налаштувань, Keychain — для секретів» як найкращу практику безпеки.",
     "options": [
-      "AsyncStorage (it's hidden from other apps).",
-      "MMKV (it's in memory).",
-      "iOS Keychain / Android Keystore (via libraries like react-native-keychain).",
-      "In a local .txt file."
+      "AsyncStorage (він прихований від інших додатків).",
+      "MMKV (він знаходиться в пам'яті).",
+      "iOS Keychain / Android Keystore (через бібліотеки типу react-native-keychain).",
+      "У локальному .txt файлі."
     ]
   },
   "sp-05": {
     "prompt": "Проаналізуйте код. Яким буде значення 'name' після цих викликів?",
     "explanation": "AsyncStorage базується на промісах. Оскільки використовується 'await', код чекає, поки сховище поверне рядок 'John'.",
     "interviewTip": "Якщо ви забудете 'await', константа 'name' буде промісом, який у логічній перевірці дасть 'true', що призведе до багів.",
-    "options": [
-      "\"John\"",
-      "undefined",
-      "null",
-      "A Promise object"
-    ]
+    "options": ["\"John\"", "undefined", "null", "Об'єкт Promise"]
   },
   "sp-06": {
     "prompt": "Які з наведених варіантів є валідними причинами використовувати 'SQLite' замість 'AsyncStorage'?",
     "explanation": "SQLite — це повноцінна реляційна база даних. Для простих пар ключ-значення, як-от вибір теми додатка, вона буде надмірною порівняно з AsyncStorage або MMKV.",
     "interviewTip": "WatermelonDB або Realm — популярні високорівневі альтернативи, які використовують SQLite або власні двигуни «під капотом».",
     "options": [
-      "The app needs to perform complex relational queries (SQL).",
-      "The app needs to store a very large amount of structured data (thousands of rows).",
-      "The app needs to store a simple boolean flag for 'Dark Mode'.",
-      "The app requires transactions to ensure data integrity."
+      "Додатку потрібно виконувати складні реляційні запити (SQL).",
+      "Додатку потрібно зберігати дуже велику кількість структурованих даних (тисячі рядків).",
+      "Додатку потрібно зберегти простий булевий прапорець для 'Dark Mode'.",
+      "Додаток потребує транзакцій для забезпечення цілісності даних."
     ]
   },
   "sp-07": {
@@ -70,10 +65,10 @@
     "explanation": "Групові операції ефективніші за багаторазовий виклик setItem, оскільки вони зменшують кількість пересилань даних через міст (bridge).",
     "interviewTip": "Завжди використовуйте 'multiSet' або 'multiGet', коли працюєте з пов'язаними групами даних, щоб підвищити продуктивність.",
     "options": [
-      "It sets a single key with multiple values.",
-      "It allows you to save multiple key-value pairs in a single batch operation.",
-      "It synchronizes data across multiple devices.",
-      "It is used to set data in multiple databases."
+      "Він встановлює одне ключ-значення з кількома значеннями.",
+      "Він дозволяє зберігати кілька пар ключ-значення за одну пакетну операцію.",
+      "Він синхронізує дані на кількох пристроях.",
+      "Він використовується для встановлення даних у кількох базах даних."
     ]
   },
   "sp-08": {
@@ -92,21 +87,16 @@
     "explanation": "За замовчуванням Android обмежує AsyncStorage обсягом 6 МБ. Для зберігання більших даних цей ліміт потрібно збільшити у файлах `MainApplication.java` або `gradle.properties`.",
     "interviewTip": "Якщо ваш додаток вилітає при збереженні великих JSON на Android, причиною, швидше за все, є цей ліміт.",
     "options": [
-      "Unlimited.",
-      "6MB (by default, can be increased).",
-      "1GB.",
-      "50MB."
+      "Необмежений.",
+      "6 МБ (за замовчуванням, можна збільшити).",
+      "1 ГБ.",
+      "50 МБ."
     ]
   },
   "sp-10": {
     "prompt": "Яка бібліотека є базою даних типу 'Offline-first', що синхронізується із сервером і часто використовується з React Native?",
     "explanation": "Realm — це об'єктно-орієнтована база даних, яка набагато швидша за SQLite і має вбудовані функції нативної синхронізації.",
     "interviewTip": "Згадуйте Realm, якщо на співбесіді йдеться про складні додатки, які повинні ідеально працювати без інтернету.",
-    "options": [
-      "Redux-Persist",
-      "Realm (MongoDB)",
-      "Axios-Cache",
-      "Fast-DB"
-    ]
+    "options": ["Redux-Persist", "Realm (MongoDB)", "Axios-Cache", "Fast-DB"]
   }
 }

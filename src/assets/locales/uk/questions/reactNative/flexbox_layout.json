@@ -3,56 +3,36 @@
     "prompt": "Який 'flexDirection' встановлено за замовчуванням для View у React Native?",
     "explanation": "У вебі значенням за замовчуванням є 'row'. У React Native це 'column', що краще відповідає вертикальній природі мобільних пристроїв.",
     "interviewTip": "Завжди перевіряйте напрямок перед тим, як виправляти вирівнювання, оскільки 'justifyContent' та 'alignItems' змінюють свої ролі залежно від цієї властивості.",
-    "options": [
-      "row",
-      "row-reverse",
-      "column",
-      "column-reverse"
-    ]
+    "options": ["row", "row-reverse", "column", "column-reverse"]
   },
   "rn-flex-02": {
     "prompt": "Яка властивість вирівнює дочірні елементи вздовж головної осі (Main Axis)?",
     "explanation": "justifyContent визначає, як дочірні елементи розподіляються вздовж головної осі (яка задається через flexDirection).",
     "interviewTip": "Поширені значення: 'center', 'space-between' та 'space-around'.",
-    "options": [
-      "alignContent",
-      "justifyContent",
-      "alignItems",
-      "selfAlign"
-    ]
+    "options": ["alignContent", "justifyContent", "alignItems", "selfAlign"]
   },
   "rn-flex-03": {
     "prompt": "Яким буде розмір цих двох блоків?",
     "explanation": "Значення flex є пропорційними. Загальний flex: 1 + 3 = 4. Червоний блок займе 1/4 (25%), а синій — 3/4 (75%).",
     "interviewTip": "У React Native 'flex: 1' для одного дочірнього елемента вказує йому заповнити весь доступний простір у батьківському компоненті.",
     "options": [
-      "Red takes 25% height, Blue takes 75% height.",
-      "Red takes 50% height, Blue takes 50% height.",
-      "Red takes 1/3 height, Blue takes 2/3 height.",
-      "Both will have 0 height because no width was specified."
+      "Червоний займає 25% висоти, синій — 75%.",
+      "Червоний займає 50% висоти, синій — 50%.",
+      "Червоний займає 1/3 висоти, синій — 2/3.",
+      "Обидва матимуть нульову висоту, оскільки ширина не вказана."
     ]
   },
   "rn-flex-04": {
     "prompt": "Яка властивість дозволяє окремому дочірньому елементу відхилитися від 'alignItems', встановленого батьком?",
     "explanation": "alignSelf дозволяє перевизначити вирівнювання батька для конкретного елемента.",
     "interviewTip": "Це дуже корисно для центрування одного конкретного елемента в списку, де всі інші елементи розтягнуті на всю ширину.",
-    "options": [
-      "alignItem",
-      "justifySelf",
-      "alignSelf",
-      "flexSelf"
-    ]
+    "options": ["alignItem", "justifySelf", "alignSelf", "flexSelf"]
   },
   "rn-flex-05": {
     "prompt": "Яке значення за замовчуванням для 'alignItems' у React Native?",
     "explanation": "За замовчуванням дочірні елементи розтягуються ('stretch'), щоб заповнити вторинну вісь батька, якщо не вказано конкретну ширину чи висоту.",
     "interviewTip": "Якщо ваш дочірній компонент «зникає», можливо, ви встановили flexDirection: 'row', а стандартний 'stretch' намагається знайти висоту, якої немає.",
-    "options": [
-      "center",
-      "flex-start",
-      "stretch",
-      "baseline"
-    ]
+    "options": ["center", "flex-start", "stretch", "baseline"]
   },
   "rn-flex-06": {
     "prompt": "Як відцентрувати дочірній елемент і по горизонталі, і по вертикалі всередині звичайного View?",
@@ -70,32 +50,27 @@
     "explanation": "Від'ємне значення flex дозволяє компоненту стискатися, коли контент виходить за межі батька, але він не займатиме зайвого простору в інших випадках.",
     "interviewTip": "Це використовується рідко, але корисно для обробки динамічного тексту у вузьких заголовках (headers).",
     "options": [
-      "The component is hidden.",
-      "The component shrinks to its minimum size if there is an overflow, but doesn't grow.",
-      "It works the same as 'flex: 1'.",
-      "It causes an error."
+      "Компонент стає прихованим.",
+      "Компонент стискається до мінімального розміру при переповненні, але не розширюється.",
+      "Працює так само як 'flex: 1'.",
+      "Викликає помилку."
     ]
   },
   "rn-flex-08": {
     "prompt": "Яку властивість слід використовувати для додавання простору між елементами у Flex-контейнері без використання марджинів?",
     "explanation": "Сучасні версії React Native підтримують властивість 'gap' (а також rowGap та columnGap), яка додає простір саме між елементами.",
     "interviewTip": "Використання 'gap' набагато чистіше, ніж застосування margin до кожного елемента з подальшим його видаленням у останнього.",
-    "options": [
-      "spacing",
-      "item-padding",
-      "gap",
-      "grid-gap"
-    ]
+    "options": ["spacing", "item-padding", "gap", "grid-gap"]
   },
   "rn-flex-09": {
     "prompt": "Проаналізуйте цей код. Де буде розташований 'Box'?",
     "explanation": "flex-end для напрямку row ставить його праворуч; flex-end для вторинної осі ставить його внизу.",
     "interviewTip": "Завжди візуалізуйте вісь у формі літери 'L': Головна вісь (X) та Вторинна вісь (Y) для напрямку 'row'.",
     "options": [
-      "Top-right corner",
-      "Top-left corner",
-      "Bottom-right corner",
-      "Bottom-left corner"
+      "Верхній правий кут",
+      "Верхній лівий кут",
+      "Нижній правий кут",
+      "Нижній лівий кут"
     ]
   },
   "rn-flex-10": {
@@ -103,10 +78,10 @@
     "explanation": "React Native підтримує zIndex. Проте, якщо кілька елементів мають однаковий zIndex, той, що визначений пізніше в JSX, буде зверху.",
     "interviewTip": "На Android іноді потрібна властивість 'elevation' разом із zIndex для вирішення проблем із накладанням тіней.",
     "options": [
-      "No, you must change the order of components in the JSX.",
-      "Yes, it works exactly like the web.",
-      "Only on Android.",
-      "Only on iOS."
+      "Ні, потрібно змінювати черговість компонентів у JSX.",
+      "Так, працює точно так само, як у вебі.",
+      "Лише на Android.",
+      "Лише на iOS."
     ]
   },
   "rn-flex-11": {
@@ -114,10 +89,10 @@
     "explanation": "React Native переважно використовує числа без одиниць (логічні пікселі) та відсоткові рядки. rem/em/vh/vw нативно не підтримуються.",
     "interviewTip": "Щоб отримати одиниці на основі екрана (як vw/vh), використовуйте API 'Dimensions' або хук 'useWindowDimensions'.",
     "options": [
-      "Numbers (representing logical pixels)",
-      "Percentages (e.g., '50%')",
-      "rem or em units",
-      "vh or vw units"
+      "Числа (що представляють логічні пікселі)",
+      "Відсотки (наприклад, '50%')",
+      "Одиниці rem або em",
+      "Одиниці vh або vw"
     ]
   },
   "rn-flex-12": {
@@ -125,10 +100,10 @@
     "explanation": "flexBasis визначає початковий розмір елемента перед тим, як залишок простору буде розподілено через flexGrow або flexShrink.",
     "interviewTip": "Якщо flexDirection: 'column', flexBasis діє як 'height'. Якщо 'row' — як 'width'.",
     "options": [
-      "To set the final size of the component after all growth is done.",
-      "To set the initial size of the component before any extra space is distributed.",
-      "To define the background color of the flex container.",
-      "To set the minimum width."
+      "Для встановлення кінцевого розміру компонента після розширення.",
+      "Для встановлення початкового розміру компонента до розподілу додаткового простору.",
+      "Для визначення кольору фону flex-контейнера.",
+      "Для встановлення мінімальної ширини."
     ]
   },
   "rn-flex-13": {
@@ -147,32 +122,27 @@
     "explanation": "Shadow Thread — це місце, де React Native обчислює математичну розкладку ваших компонентів за допомогою Yoga перед відправкою її в UI Thread.",
     "interviewTip": "Знання цього допомагає зрозуміти, що зміни стилів у JS проходять певний шлях через потоки, перш ніж з'явитися на екрані.",
     "options": [
-      "Calculating shadows and borders.",
-      "Running the Yoga engine to calculate the layout of the UI.",
-      "Protecting the app from hacking.",
-      "Handling background API calls."
+      "Обчислення тіней та меж (borders).",
+      "Запуск рушія Yoga для обчислення макета інтерфейсу.",
+      "Захист додатка від злому.",
+      "Обробка фонових викликів API."
     ]
   },
   "rn-flex-15": {
     "prompt": "Як отримати ширину фізичного екрана в React Native?",
     "explanation": "API Dimensions (або хук useWindowDimensions) надає ширину та висоту поточного вікна/екрана.",
     "interviewTip": "Надавайте перевагу 'useWindowDimensions', оскільки він автоматично оновлюється при повороті екрана або зміні розміру вікна (на планшетах чи у вебі).",
-    "options": [
-      "Screen",
-      "Dimensions",
-      "Device",
-      "Layout"
-    ]
+    "options": ["Screen", "Dimensions", "Device", "Layout"]
   },
   "rn-flex-16": {
     "prompt": "Що робить властивість 'aspectRatio' в об'єкті Style?",
     "explanation": "Якщо встановити 'aspectRatio: 1', компонент завжди буде квадратом, навіть якщо визначено лише ширину.",
-    "interviewTip": "Це надзвичайно корисно для зображень та контейнерів відео, коли ви хочете, щоб вони були адаптивними, але зберігали пропорції 16:9 або 4:3.",
+    "interviewTip": "Це надзвичайно корисно для зображений та контейнерів відео, коли ви хочете, щоб вони були адаптивними, але зберігали пропорції 16:9 або 4:3.",
     "options": [
-      "It sets the opacity of the image.",
-      "It forces the component to maintain a specific width-to-height ratio.",
-      "It is used only for video playback.",
-      "It rounds the corners of the View."
+      "Встановлює прозорість зображення.",
+      "Змушує компонент зберігати певне співвідношення ширини до висоти.",
+      "Використовується лише для відтворення відео.",
+      "Закруглює кути View."
     ]
   },
   "rn-flex-17": {
@@ -180,10 +150,10 @@
     "explanation": "React Native не реалізує повну специфікацію CSS. Властивостей на кшталт float, clear та display: block/inline не існує.",
     "interviewTip": "Якщо вам потрібна розкладка «пліч-о-пліч», завжди використовуйте 'flexDirection: row'.",
     "options": [
-      "flex cannot be 1.",
-      "React Native doesn't support 'float' or 'display: block' (everything is flex by default).",
-      "StyleSheet.create is deprecated.",
-      "There is no error."
+      "flex не може дорівнювати 1.",
+      "React Native не підтримує 'float' або 'display: block' (все є flex за замовчуванням).",
+      "StyleSheet.create застарів.",
+      "Помилок немає."
     ]
   }
 }
