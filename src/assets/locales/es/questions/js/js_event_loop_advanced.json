@@ -1,8 +1,8 @@
 {
   "js-el-adv-01": {
-    "prompt": "Which queue has higher priority in the event loop?",
-    "explanation": "Microtasks run before the next macrotask.",
-    "interviewTip": "Promises can starve rendering.",
+    "prompt": "¿Qué cola tiene mayor prioridad en el event loop?",
+    "explanation": "Las microtasks se ejecutan antes de la siguiente macrotask.",
+    "interviewTip": "Las Promises pueden causar starvation en el renderizado.",
     "options": [
       "Microtask queue",
       "Macrotask queue",
@@ -11,9 +11,9 @@
     ]
   },
   "js-el-adv-02": {
-    "prompt": "Which API schedules a microtask?",
-    "explanation": "Promise callbacks go to microtask queue.",
-    "interviewTip": "queueMicrotask exists.",
+    "prompt": "¿Qué API programa una microtask?",
+    "explanation": "Los callbacks de las Promises van a la cola de microtasks.",
+    "interviewTip": "También existe queueMicrotask.",
     "options": [
       "Promise.then",
       "setTimeout",
@@ -22,53 +22,48 @@
     ]
   },
   "js-el-adv-03": {
-    "prompt": "What happens if microtasks keep scheduling new microtasks?",
-    "explanation": "This causes starvation.",
-    "interviewTip": "Common performance pitfall.",
+    "prompt": "¿Qué sucede si las microtasks siguen programando nuevas microtasks?",
+    "explanation": "Esto causa starvation (inanición de otras tareas).",
+    "interviewTip": "Es un error común de rendimiento.",
     "options": [
-      "Macrotasks are delayed",
-      "Browser crashes",
-      "Call stack overflows",
-      "Tasks are merged"
+      "Las macrotasks se retrasan",
+      "El navegador se bloquea",
+      "El call stack se desborda",
+      "Las tareas se fusionan"
     ]
   },
   "js-el-adv-04": {
-    "prompt": "When does rendering occur?",
-    "explanation": "Rendering happens after microtasks drain.",
-    "interviewTip": "Why promises can block paint.",
+    "prompt": "¿Cuándo ocurre el renderizado?",
+    "explanation": "El renderizado sucede después de vaciar las microtasks.",
+    "interviewTip": "Por esto las promises pueden bloquear el pintado (paint).",
     "options": [
-      "Between macrotasks",
-      "After each microtask",
-      "Before JS starts",
-      "Only on load"
+      "Entre macrotasks",
+      "Después de cada microtask",
+      "Antes de que comience el JS",
+      "Solo en la carga inicial"
     ]
   },
   "js-el-adv-05": {
-    "prompt": "Where does requestAnimationFrame run?",
-    "explanation": "Runs before the next paint.",
-    "interviewTip": "Use for animations.",
+    "prompt": "¿Dónde se ejecuta requestAnimationFrame?",
+    "explanation": "Se ejecuta justo antes del siguiente repintado.",
+    "interviewTip": "Úsalo para animaciones.",
     "options": [
-      "Before repaint",
-      "As a microtask",
-      "As a macrotask",
-      "In idle time"
+      "Antes del repaint",
+      "Como una microtask",
+      "Como una macrotask",
+      "En el tiempo de inactividad (idle)"
     ]
   },
   "js-el-adv-06": {
-    "prompt": "Which callback may never run under heavy load?",
-    "explanation": "Idle time may never occur.",
-    "interviewTip": "Not guaranteed.",
-    "options": [
-      "requestIdleCallback",
-      "Promise.then",
-      "setTimeout",
-      "rAF"
-    ]
+    "prompt": "¿Qué callback podría no ejecutarse nunca bajo una carga pesada?",
+    "explanation": "El tiempo de inactividad (idle time) podría no ocurrir.",
+    "interviewTip": "No está garantizado.",
+    "options": ["requestIdleCallback", "Promise.then", "setTimeout", "rAF"]
   },
   "js-el-adv-07": {
-    "prompt": "What queue does MutationObserver use?",
-    "explanation": "Runs as microtask.",
-    "interviewTip": "Often forgotten.",
+    "prompt": "¿Qué cola utiliza MutationObserver?",
+    "explanation": "Se ejecuta como una microtask.",
+    "interviewTip": "A menudo se olvida este detalle.",
     "options": [
       "Microtask queue",
       "Macrotask queue",
@@ -77,53 +72,43 @@
     ]
   },
   "js-el-adv-08": {
-    "prompt": "Which task blocks rendering the most?",
-    "explanation": "Main thread is blocked.",
-    "interviewTip": "Chunk long tasks.",
+    "prompt": "¿Qué tarea bloquea más el renderizado?",
+    "explanation": "El hilo principal (main thread) se queda bloqueado.",
+    "interviewTip": "Divide las tareas largas (long tasks).",
     "options": [
-      "Long JS execution",
-      "Network request",
-      "CSS download",
-      "Image loading"
+      "Ejecución larga de JS",
+      "Petición de red",
+      "Descarga de CSS",
+      "Carga de imágenes"
     ]
   },
   "js-el-adv-09": {
-    "prompt": "What is a long task?",
-    "explanation": "Used in performance metrics.",
-    "interviewTip": "Related to TBT.",
-    "options": [
-      "Task > 50ms",
-      "Task > 5ms",
-      "Async task",
-      "Microtask"
-    ]
+    "prompt": "¿Qué se considera una 'long task'?",
+    "explanation": "Se utiliza en métricas de rendimiento.",
+    "interviewTip": "Relacionado con el TBT (Total Blocking Time).",
+    "options": ["Tarea > 50ms", "Tarea > 5ms", "Tarea asíncrona", "Microtask"]
   },
   "js-el-adv-10": {
-    "prompt": "Which API helps split long tasks?",
-    "explanation": "Runs work in idle periods.",
-    "interviewTip": "Not supported everywhere.",
-    "options": [
-      "setTimeout",
-      "requestIdleCallback",
-      "Promise.then",
-      "eval"
-    ]
+    "prompt": "¿Qué API ayuda a dividir tareas largas?",
+    "explanation": "Ejecuta el trabajo en periodos de inactividad.",
+    "interviewTip": "No es compatible con todos los navegadores.",
+    "options": ["setTimeout", "requestIdleCallback", "Promise.then", "eval"]
   },
   "js-el-adv-11": {
-    "prompt": "What happens after a macrotask finishes?",
-    "explanation": "Microtasks drain first.",
-    "interviewTip": "Key interview flow.",
+    "prompt": "¿Qué sucede después de que termina una macrotask?",
+    "explanation": "Primero se deben vaciar todas las microtasks.",
+    "interviewTip": "Flujo clave en entrevistas.",
     "options": [
-      "Microtasks run",
-      "Rendering immediately",
-      "Next macrotask",
-      "Idle callbacks"
+      "Se ejecutan las microtasks",
+      "Renderizado inmediato",
+      "Siguiente macrotask",
+      "Callbacks de inactividad"
     ]
   },
   "js-el-adv-12": {
-    "prompt": "Which is a macrotask?",
-    "explanation": "Timers create macrotasks.",
-    "interviewTip": "Know examples.",
+    "prompt": "¿Cuál de estos es una macrotask?",
+    "explanation": "Los temporizadores crean macrotasks.",
+    "interviewTip": "Debes conocer ejemplos claros.",
     "options": [
       "setTimeout",
       "Promise.then",
@@ -132,130 +117,110 @@
     ]
   },
   "js-el-adv-13": {
-    "prompt": "Why is setTimeout(fn, 0) not immediate?",
-    "explanation": "Subject to clamping.",
-    "interviewTip": "4ms rule.",
+    "prompt": "¿Por qué setTimeout(fn, 0) no es inmediato?",
+    "explanation": "Está sujeto a restricciones (clamping).",
+    "interviewTip": "Regla de los 4ms.",
     "options": [
-      "Minimum delay + queue",
-      "Blocked by GC",
-      "Network latency",
-      "Thread creation"
+      "Retraso mínimo + cola",
+      "Bloqueado por el GC",
+      "Latencia de red",
+      "Creación de hilos"
     ]
   },
   "js-el-adv-14": {
-    "prompt": "Which can delay input handling?",
-    "explanation": "Main thread contention.",
-    "interviewTip": "INP metric.",
+    "prompt": "¿Qué puede retrasar la gestión de la entrada del usuario?",
+    "explanation": "Saturación del hilo principal.",
+    "interviewTip": "Métrica INP (Interaction to Next Paint).",
     "options": [
-      "Heavy JS",
-      "CSS parsing",
-      "Image decoding",
-      "Font loading"
+      "JS pesado",
+      "Parsing de CSS",
+      "Decodificación de imágenes",
+      "Carga de fuentes"
     ]
   },
   "js-el-adv-15": {
-    "prompt": "Best way to avoid starvation?",
-    "explanation": "Break work into chunks.",
-    "interviewTip": "Cooperative scheduling.",
+    "prompt": "¿Cuál es la mejor forma de evitar la inanición (starvation)?",
+    "explanation": "Divide el trabajo en fragmentos (chunks).",
+    "interviewTip": "Programación cooperativa.",
     "options": [
-      "Yield to event loop",
-      "Use promises",
-      "Use sync code",
-      "Disable microtasks"
+      "Ceder el control (yield) al event loop",
+      "Usar promises",
+      "Usar código síncrono",
+      "Desactivar microtasks"
     ]
   },
   "js-el-adv-16": {
-    "prompt": "Which runs outside the event loop?",
-    "explanation": "Separate thread.",
-    "interviewTip": "No DOM access.",
-    "options": [
-      "Web Worker",
-      "Promise",
-      "setTimeout",
-      "rAF"
-    ]
+    "prompt": "¿Qué se ejecuta fuera del event loop?",
+    "explanation": "Se ejecuta en un hilo separado.",
+    "interviewTip": "No tiene acceso al DOM.",
+    "options": ["Web Worker", "Promise", "setTimeout", "rAF"]
   },
   "js-el-adv-17": {
-    "prompt": "What is cooperative scheduling?",
-    "explanation": "JS must yield explicitly.",
-    "interviewTip": "Contrast with threads.",
+    "prompt": "¿Qué es la programación cooperativa?",
+    "explanation": "El JS debe ceder el control explícitamente.",
+    "interviewTip": "Contrasta con los hilos preemptive.",
     "options": [
-      "Manually yielding control",
-      "Browser scheduling",
-      "Preemptive threads",
+      "Ceder el control manualmente",
+      "Programación del navegador",
+      "Hilos preemptive",
       "Async/await"
     ]
   },
   "js-el-adv-18": {
-    "prompt": "What does await do internally?",
-    "explanation": "Continuation via promise.",
-    "interviewTip": "Syntactic sugar.",
+    "prompt": "¿Qué hace `await` internamente?",
+    "explanation": "Es una continuación vía promise.",
+    "interviewTip": "Azúcar sintáctica.",
     "options": [
-      "Splits function into microtasks",
-      "Blocks thread",
-      "Creates macrotask",
-      "Pauses browser"
+      "Divide la función en microtasks",
+      "Bloquea el hilo",
+      "Crea una macrotask",
+      "Pausa el navegador"
     ]
   },
   "js-el-adv-19": {
-    "prompt": "Which affects paint timing?",
-    "explanation": "Microtasks delay paint.",
-    "interviewTip": "Subtle bug source.",
-    "options": [
-      "Microtasks",
-      "Console.log",
-      "Network latency",
-      "LocalStorage"
-    ]
+    "prompt": "¿Qué afecta al tiempo de pintado (paint timing)?",
+    "explanation": "Las microtasks retrasan el pintado.",
+    "interviewTip": "Fuente de bugs sutiles.",
+    "options": ["Microtasks", "Console.log", "Latencia de red", "LocalStorage"]
   },
   "js-el-adv-20": {
-    "prompt": "What metric measures JS blocking?",
-    "explanation": "Part of Core Web Vitals.",
-    "interviewTip": "Performance interviews.",
-    "options": [
-      "Total Blocking Time",
-      "CLS",
-      "FCP",
-      "LCP"
-    ]
+    "prompt": "¿Qué métrica mide el bloqueo por JS?",
+    "explanation": "Parte de las Core Web Vitals.",
+    "interviewTip": "Común en entrevistas de rendimiento.",
+    "options": ["Total Blocking Time", "CLS", "FCP", "LCP"]
   },
   "js-el-adv-21": {
-    "prompt": "What happens if JS never yields?",
-    "explanation": "Single-threaded limitation.",
-    "interviewTip": "Classic explanation.",
+    "prompt": "¿Qué sucede si el JS nunca cede el control (never yields)?",
+    "explanation": "Es una limitación de ser single-threaded.",
+    "interviewTip": "Explicación clásica.",
     "options": [
-      "UI freezes",
-      "GC stops",
-      "Browser reloads",
-      "Tasks reorder"
+      "La UI se congela",
+      "El GC se detiene",
+      "El navegador se recarga",
+      "Las tareas se reordenan"
     ]
   },
   "js-el-adv-22": {
-    "prompt": "Which callback runs first?",
-    "explanation": "Microtasks first.",
-    "interviewTip": "Order questions common.",
-    "options": [
-      "Promise.then",
-      "setTimeout 0",
-      "rAF",
-      "setInterval"
-    ]
+    "prompt": "¿Qué callback se ejecuta primero?",
+    "explanation": "Las microtasks van primero.",
+    "interviewTip": "Las preguntas de orden son muy comunes.",
+    "options": ["Promise.then", "setTimeout 0", "rAF", "setInterval"]
   },
   "js-el-adv-23": {
-    "prompt": "What is task batching?",
-    "explanation": "Improves responsiveness.",
-    "interviewTip": "React uses it.",
+    "prompt": "¿Qué es el 'task batching'?",
+    "explanation": "Mejora la capacidad de respuesta.",
+    "interviewTip": "React lo utiliza.",
     "options": [
-      "Grouping work per frame",
-      "Parallel execution",
+      "Agrupar trabajo por frame",
+      "Ejecución paralela",
       "Promise chaining",
       "Thread pooling"
     ]
   },
   "js-el-adv-24": {
-    "prompt": "Which API is frame-aligned?",
-    "explanation": "Synced with refresh rate.",
-    "interviewTip": "Avoid jank.",
+    "prompt": "¿Qué API está alineada con los frames?",
+    "explanation": "Sincronizada con la tasa de refresco.",
+    "interviewTip": "Evita el 'jank' (saltos en la imagen).",
     "options": [
       "requestAnimationFrame",
       "setTimeout",
@@ -264,14 +229,14 @@
     ]
   },
   "js-el-adv-25": {
-    "prompt": "Best rule for event loop optimization?",
-    "explanation": "Always profile.",
-    "interviewTip": "Senior-level answer.",
+    "prompt": "¿Mejor regla para optimizar el event loop?",
+    "explanation": "Mide siempre antes de actuar.",
+    "interviewTip": "Respuesta de nivel Senior.",
     "options": [
-      "Measure first",
-      "Use more promises",
-      "Avoid async",
-      "Use setTimeout everywhere"
+      "Medir primero",
+      "Usar más promises",
+      "Evitar asincronía",
+      "Usar setTimeout en todas partes"
     ]
   }
 }

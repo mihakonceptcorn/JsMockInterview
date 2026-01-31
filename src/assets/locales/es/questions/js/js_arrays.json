@@ -1,30 +1,25 @@
 {
   "js-arr-01": {
-    "prompt": "What is an array in JavaScript?",
-    "explanation": "Arrays are ordered, zero-indexed objects.",
-    "interviewTip": "Arrays are objects internally.",
+    "prompt": "¿Qué es un array en JavaScript?",
+    "explanation": "Los arrays son objetos ordenados con índice basado en cero.",
+    "interviewTip": "Los arrays son objetos internamente.",
     "options": [
-      "An ordered collection of values",
-      "A fixed-size list",
-      "A key-value store",
-      "A primitive type"
+      "Una colección ordenada de valores",
+      "Una lista de tamaño fijo",
+      "Un almacén de key-value",
+      "Un primitive type"
     ]
   },
   "js-arr-02": {
-    "prompt": "What will be logged?",
-    "explanation": "Arrays are a type of object.",
-    "interviewTip": "Use Array.isArray().",
-    "options": [
-      "array",
-      "object",
-      "undefined",
-      "list"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los arrays son un tipo de object.",
+    "interviewTip": "Usa Array.isArray().",
+    "options": ["array", "object", "undefined", "list"]
   },
   "js-arr-03": {
-    "prompt": "How to correctly check if value is an array?",
-    "explanation": "Array.isArray is the safest method.",
-    "interviewTip": "Works across realms.",
+    "prompt": "¿Cómo verificar correctamente si un valor es un array?",
+    "explanation": "Array.isArray es el método más seguro.",
+    "interviewTip": "Funciona a través de diferentes realms.",
     "options": [
       "typeof value === 'array'",
       "value instanceof Array",
@@ -33,244 +28,169 @@
     ]
   },
   "js-arr-04": {
-    "prompt": "Which method mutates the array?",
-    "explanation": "push mutates the original array.",
+    "prompt": "¿Qué método muta el array?",
+    "explanation": "push muta el array original.",
     "interviewTip": "Mutation vs immutability.",
-    "options": [
-      "map",
-      "filter",
-      "slice",
-      "push"
-    ]
+    "options": ["map", "filter", "slice", "push"]
   },
   "js-arr-05": {
-    "prompt": "What will be logged?",
-    "explanation": "Reducing length truncates the array.",
-    "interviewTip": "Length is writable.",
-    "options": [
-      "[1]",
-      "[1,2,3]",
-      "[]",
-      "Error"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Reducir la propiedad length trunca el array.",
+    "interviewTip": "La propiedad length es writable.",
+    "options": ["[1]", "[1,2,3]", "[]", "Error"]
   },
   "js-arr-06": {
-    "prompt": "What does `slice` do?",
-    "explanation": "slice is non-mutating.",
-    "interviewTip": "Common interview distinction.",
+    "prompt": "¿Qué hace `slice`?",
+    "explanation": "slice es non-mutating.",
+    "interviewTip": "Distinción común en entrevistas.",
     "options": [
-      "Returns a new array",
-      "Mutates array",
-      "Deletes items",
-      "Sorts array"
+      "Devuelve un nuevo array",
+      "Muta el array",
+      "Elimina elementos",
+      "Ordena el array"
     ]
   },
   "js-arr-07": {
-    "prompt": "Which method removes the last element?",
-    "explanation": "pop removes last element.",
-    "interviewTip": "Mutates array.",
-    "options": [
-      "shift",
-      "pop",
-      "splice",
-      "slice"
-    ]
+    "prompt": "¿Qué método elimina el último elemento?",
+    "explanation": "pop elimina el último elemento.",
+    "interviewTip": "Muta el array.",
+    "options": ["shift", "pop", "splice", "slice"]
   },
   "js-arr-08": {
-    "prompt": "What will be logged?",
-    "explanation": "map returns a new array.",
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "map devuelve un nuevo array.",
     "interviewTip": "Reference comparison.",
-    "options": [
-      "true",
-      "false",
-      "undefined",
-      "Error"
-    ]
+    "options": ["true", "false", "undefined", "Error"]
   },
   "js-arr-09": {
-    "prompt": "What does `splice` do?",
-    "explanation": "splice mutates the array.",
-    "interviewTip": "Often confused with slice.",
+    "prompt": "¿Qué hace `splice`?",
+    "explanation": "splice muta el array.",
+    "interviewTip": "A menudo se confunde con slice.",
     "options": [
-      "Mutates array",
-      "Returns shallow copy",
-      "Does not affect original",
-      "Only removes items"
+      "Muta el array",
+      "Devuelve una shallow copy",
+      "No afecta al original",
+      "Solo elimina elementos"
     ]
   },
   "js-arr-10": {
-    "prompt": "What will be logged?",
-    "explanation": "Array length becomes highest index + 1.",
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "El length del array se convierte en el índice más alto + 1.",
     "interviewTip": "Sparse arrays.",
-    "options": [
-      "3",
-      "10",
-      "11",
-      "Error"
-    ]
+    "options": ["3", "10", "11", "Error"]
   },
   "js-arr-11": {
-    "prompt": "Which creates a shallow copy?",
-    "explanation": "slice returns a new array.",
-    "interviewTip": "Still shallow.",
-    "options": [
-      "slice",
-      "push",
-      "pop",
-      "shift"
-    ]
+    "prompt": "¿Cuál crea una shallow copy?",
+    "explanation": "slice devuelve un nuevo array.",
+    "interviewTip": "Sigue siendo shallow.",
+    "options": ["slice", "push", "pop", "shift"]
   },
   "js-arr-12": {
-    "prompt": "What does `forEach` return?",
-    "explanation": "forEach always returns undefined.",
-    "interviewTip": "Not chainable.",
-    "options": [
-      "New array",
-      "Original array",
-      "undefined",
-      "Boolean"
-    ]
+    "prompt": "¿Qué devuelve `forEach`?",
+    "explanation": "forEach siempre devuelve undefined.",
+    "interviewTip": "No es chainable.",
+    "options": ["Nuevo array", "Array original", "undefined", "Boolean"]
   },
   "js-arr-13": {
-    "prompt": "What will be logged?",
-    "explanation": "includes checks value existence.",
-    "interviewTip": "Uses SameValueZero.",
-    "options": [
-      "true",
-      "false",
-      "undefined",
-      "Error"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "includes verifica la existencia de un valor.",
+    "interviewTip": "Usa SameValueZero.",
+    "options": ["true", "false", "undefined", "Error"]
   },
   "js-arr-14": {
-    "prompt": "Which method flattens arrays?",
-    "explanation": "flat flattens nested arrays.",
-    "interviewTip": "Depth can be specified.",
-    "options": [
-      "flat",
-      "map",
-      "reduce",
-      "concat"
-    ]
+    "prompt": "¿Qué método aplana arrays?",
+    "explanation": "flat aplana arrays anidados.",
+    "interviewTip": "Se puede especificar la profundidad (depth).",
+    "options": ["flat", "map", "reduce", "concat"]
   },
   "js-arr-15": {
-    "prompt": "What will be logged?",
-    "explanation": "Arrays are coerced to strings.",
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los arrays son coaccionados a strings.",
     "interviewTip": "Implicit coercion.",
-    "options": [
-      "[1,2,3,4,5]",
-      "1,2,34,5",
-      "1,2,34,5",
-      "Error"
-    ]
+    "options": ["[1,2,3,4,5]", "1,2,34,5", "1,2,34,5", "Error"]
   },
   "js-arr-16": {
-    "prompt": "Which method does NOT mutate?",
-    "explanation": "filter returns a new array.",
-    "interviewTip": "sort mutates!",
-    "options": [
-      "sort",
-      "reverse",
-      "filter",
-      "splice"
-    ]
+    "prompt": "¿Qué método NO muta?",
+    "explanation": "filter devuelve un nuevo array.",
+    "interviewTip": "¡sort muta!",
+    "options": ["sort", "reverse", "filter", "splice"]
   },
   "js-arr-17": {
-    "prompt": "What does `reduce` do?",
-    "explanation": "reduce accumulates to a single value.",
-    "interviewTip": "Very powerful method.",
+    "prompt": "¿Qué hace `reduce`?",
+    "explanation": "reduce acumula en un solo valor.",
+    "interviewTip": "Método muy potente.",
     "options": [
-      "Accumulates values into one",
-      "Maps array",
-      "Filters array",
-      "Sorts array"
+      "Acumula valores en uno solo",
+      "Mapea el array",
+      "Filtra el array",
+      "Ordena el array"
     ]
   },
   "js-arr-18": {
-    "prompt": "What will be logged?",
-    "explanation": "Both references point to same array.",
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Ambas referencias apuntan al mismo array.",
     "interviewTip": "Reference vs copy.",
-    "options": [
-      "3",
-      "4",
-      "Error",
-      "undefined"
-    ]
+    "options": ["3", "4", "Error", "undefined"]
   },
   "js-arr-19": {
-    "prompt": "What does `Array.from` do?",
-    "explanation": "Converts array-like objects.",
-    "interviewTip": "Useful for NodeList.",
+    "prompt": "¿Qué hace `Array.from`?",
+    "explanation": "Convierte objetos array-like.",
+    "interviewTip": "Útil para NodeList.",
     "options": [
-      "Creates array from iterable",
-      "Clones array",
-      "Sorts array",
-      "Filters array"
+      "Crea un array desde un iterable",
+      "Clona un array",
+      "Ordena un array",
+      "Filtra un array"
     ]
   },
   "js-arr-20": {
-    "prompt": "What will be logged?",
-    "explanation": "Empty array length is 0.",
-    "interviewTip": "Basic but common.",
-    "options": [
-      "0",
-      "undefined",
-      "null",
-      "Error"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "El length de un array vacío es 0.",
+    "interviewTip": "Básico pero común.",
+    "options": ["0", "undefined", "null", "Error"]
   },
   "js-arr-21": {
-    "prompt": "What does `every` return?",
-    "explanation": "Checks all elements against condition.",
-    "interviewTip": "Stops early.",
-    "options": [
-      "Boolean",
-      "Array",
-      "Number",
-      "Object"
-    ]
+    "prompt": "¿Qué devuelve `every`?",
+    "explanation": "Verifica todos los elementos contra una condición.",
+    "interviewTip": "Se detiene tempranamente.",
+    "options": ["Boolean", "Array", "Number", "Object"]
   },
   "js-arr-22": {
-    "prompt": "What does `some` do?",
-    "explanation": "Returns true if any element matches.",
+    "prompt": "¿Qué hace `some`?",
+    "explanation": "Devuelve true si algún elemento coincide.",
     "interviewTip": "Short-circuit.",
     "options": [
-      "Checks if at least one element matches",
-      "Checks all elements",
-      "Filters array",
-      "Maps array"
+      "Verifica si al menos un elemento coincide",
+      "Verifica todos los elementos",
+      "Filtra el array",
+      "Mapea el array"
     ]
   },
   "js-arr-23": {
-    "prompt": "What will be logged?",
-    "explanation": "Sparse arrays count empty slots.",
-    "interviewTip": "Empty slots exist.",
-    "options": [
-      "2",
-      "3",
-      "Error",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los sparse arrays cuentan los slots vacíos.",
+    "interviewTip": "Los slots vacíos existen.",
+    "options": ["2", "3", "Error", "undefined"]
   },
   "js-arr-24": {
-    "prompt": "What does `concat` do?",
-    "explanation": "concat does not mutate.",
-    "interviewTip": "Immutable pattern.",
+    "prompt": "¿Qué hace `concat`?",
+    "explanation": "concat no muta.",
+    "interviewTip": "Patrón de immutability.",
     "options": [
-      "Returns new combined array",
-      "Mutates original array",
-      "Sorts array",
-      "Flattens deeply"
+      "Devuelve un nuevo array combinado",
+      "Muta el array original",
+      "Ordena el array",
+      "Aplana profundamente"
     ]
   },
   "js-arr-25": {
-    "prompt": "Why avoid mutating arrays in React?",
-    "explanation": "Immutability helps change detection.",
-    "interviewTip": "Key React concept.",
+    "prompt": "¿Por qué evitar mutar arrays en React?",
+    "explanation": "La immutability ayuda a la detección de cambios.",
+    "interviewTip": "Concepto clave en React.",
     "options": [
-      "State updates may not trigger re-render",
-      "Arrays are slow",
-      "JS forbids it",
+      "Las actualizaciones de estado podrían no disparar re-render",
+      "Los arrays son lentos",
+      "JS lo prohíbe",
       "Garbage collection"
     ]
   }

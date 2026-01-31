@@ -1,162 +1,122 @@
 {
   "js-err-01": {
-    "prompt": "What is an Error object in JavaScript?",
-    "explanation": "Error objects carry message and stack trace.",
-    "interviewTip": "Used for exception handling.",
+    "prompt": "¿Qué es un objeto Error en JavaScript?",
+    "explanation": "Los objetos Error contienen un mensaje y el stack trace.",
+    "interviewTip": "Se utilizan para el manejo de excepciones.",
     "options": [
-      "An object representing a runtime error",
-      "A syntax construct",
-      "A promise rejection",
-      "A console message"
+      "Un objeto que representa un error en tiempo de ejecución",
+      "Una construcción sintáctica",
+      "Un rechazo de promise",
+      "Un mensaje de consola"
     ]
   },
   "js-err-02": {
-    "prompt": "Which error occurs at parse time?",
-    "explanation": "SyntaxError happens before execution.",
-    "interviewTip": "Code won't run at all.",
-    "options": [
-      "SyntaxError",
-      "ReferenceError",
-      "TypeError",
-      "RangeError"
-    ]
+    "prompt": "¿Qué error ocurre en el tiempo de parseo?",
+    "explanation": "El SyntaxError ocurre antes de la ejecución.",
+    "interviewTip": "El código no llegará a ejecutarse en absoluto.",
+    "options": ["SyntaxError", "ReferenceError", "TypeError", "RangeError"]
   },
   "js-err-03": {
-    "prompt": "What will be thrown?",
-    "explanation": "Accessing undeclared variable.",
-    "interviewTip": "Different from undefined variable.",
-    "options": [
-      "ReferenceError",
-      "TypeError",
-      "SyntaxError",
-      "undefined"
-    ]
+    "prompt": "¿Qué excepción se lanzará?",
+    "explanation": "Acceder a una variable no declarada.",
+    "interviewTip": "Diferente de una variable con valor undefined.",
+    "options": ["ReferenceError", "TypeError", "SyntaxError", "undefined"]
   },
   "js-err-04": {
-    "prompt": "When does TypeError occur?",
-    "explanation": "Calling non-function, accessing invalid property.",
-    "interviewTip": "Very common runtime error.",
+    "prompt": "¿Cuándo ocurre un TypeError?",
+    "explanation": "Al llamar a algo que no es función o acceder a propiedades de valores inválidos.",
+    "interviewTip": "Error de tiempo de ejecución muy común.",
     "options": [
-      "Invalid operation on a value",
-      "Invalid syntax",
-      "Out of range value",
-      "Missing variable"
+      "Operación inválida sobre un valor",
+      "Sintaxis inválida",
+      "Valor fuera de rango",
+      "Falta una variable"
     ]
   },
   "js-err-05": {
-    "prompt": "What will be logged?",
-    "explanation": "Invalid JSON throws SyntaxError.",
-    "interviewTip": "Always validate JSON.",
-    "options": [
-      "SyntaxError",
-      "TypeError",
-      "ReferenceError",
-      "Error"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Un JSON inválido lanza un SyntaxError.",
+    "interviewTip": "Valida siempre el JSON.",
+    "options": ["SyntaxError", "TypeError", "ReferenceError", "Error"]
   },
   "js-err-06": {
-    "prompt": "What does try/catch catch?",
-    "explanation": "Only synchronous runtime errors.",
-    "interviewTip": "Async needs await or .catch.",
+    "prompt": "¿Qué captura el bloque try/catch?",
+    "explanation": "Solo errores síncronos en tiempo de ejecución.",
+    "interviewTip": "Async requiere await o .catch.",
     "options": [
-      "Runtime errors",
-      "Syntax errors",
-      "Async errors automatically",
-      "Compilation errors"
+      "Errores de tiempo de ejecución",
+      "Errores de sintaxis",
+      "Errores asíncronos automáticamente",
+      "Errores de compilación"
     ]
   },
   "js-err-07": {
-    "prompt": "What will be logged?",
-    "explanation": "Async errors are not caught.",
-    "interviewTip": "Classic async pitfall.",
-    "options": [
-      "Nothing",
-      "caught",
-      "Error",
-      "Unhandled"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los errores asíncronos no son capturados por un catch síncrono.",
+    "interviewTip": "Trampa clásica de asincronía.",
+    "options": ["Nada", "caught", "Error", "Unhandled"]
   },
   "js-err-08": {
-    "prompt": "How to catch async errors with async/await?",
-    "explanation": "Await throws inside try/catch.",
-    "interviewTip": "Preferred pattern.",
-    "options": [
-      "try/catch",
-      ".then only",
-      "window.onerror",
-      "finally"
-    ]
+    "prompt": "¿Cómo capturar errores asíncronos con async/await?",
+    "explanation": "Await lanza la excepción dentro del try/catch.",
+    "interviewTip": "Patrón preferido.",
+    "options": ["try/catch", "solo .then", "window.onerror", "finally"]
   },
   "js-err-09": {
-    "prompt": "What is finally used for?",
-    "explanation": "Runs regardless of outcome.",
-    "interviewTip": "Close resources.",
+    "prompt": "¿Para qué se usa finally?",
+    "explanation": "Se ejecuta sin importar el resultado.",
+    "interviewTip": "Útil para cerrar recursos.",
     "options": [
-      "Cleanup logic",
-      "Error handling",
-      "Returning values",
-      "Catching errors"
+      "Lógica de limpieza (cleanup)",
+      "Manejo de errores",
+      "Retornar valores",
+      "Capturar errores"
     ]
   },
   "js-err-10": {
-    "prompt": "What does `throw` do?",
-    "explanation": "Interrupts normal execution.",
-    "interviewTip": "Can throw any value.",
+    "prompt": "¿Qué hace la palabra clave `throw`?",
+    "explanation": "Interrumpe la ejecución normal.",
+    "interviewTip": "Puede lanzar cualquier valor.",
     "options": [
-      "Throws an exception",
-      "Logs error",
-      "Stops program forever",
-      "Returns value"
+      "Lanza una excepción",
+      "Registra un error en el log",
+      "Detiene el programa para siempre",
+      "Retorna un valor"
     ]
   },
   "js-err-11": {
-    "prompt": "What should you throw?",
-    "explanation": "Errors include stack trace.",
-    "interviewTip": "Best practice.",
-    "options": [
-      "Error objects",
-      "Strings",
-      "Numbers",
-      "Booleans"
-    ]
+    "prompt": "¿Qué deberías lanzar idealmente?",
+    "explanation": "Los objetos Error incluyen el stack trace.",
+    "interviewTip": "Mejor práctica.",
+    "options": ["Objetos Error", "Strings", "Numbers", "Booleans"]
   },
   "js-err-12": {
-    "prompt": "What will be logged?",
-    "explanation": "message property holds text.",
-    "interviewTip": "Access useful fields.",
-    "options": [
-      "fail",
-      "Error",
-      "undefined",
-      "null"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "La propiedad message contiene el texto del error.",
+    "interviewTip": "Accede a campos útiles.",
+    "options": ["fail", "Error", "undefined", "null"]
   },
   "js-err-13": {
-    "prompt": "What is ReferenceError?",
-    "explanation": "Variable not found in scope.",
-    "interviewTip": "Common bug source.",
+    "prompt": "¿Qué es un ReferenceError?",
+    "explanation": "Variable no encontrada en el scope.",
+    "interviewTip": "Fuente común de bugs.",
     "options": [
-      "Accessing undeclared variable",
-      "Calling invalid function",
-      "Invalid syntax",
-      "Out of memory"
+      "Acceder a una variable no declarada",
+      "Llamar a una función inválida",
+      "Sintaxis inválida",
+      "Falta de memoria"
     ]
   },
   "js-err-14": {
-    "prompt": "What will be logged?",
-    "explanation": "Calling method on null.",
-    "interviewTip": "TypeError is common.",
-    "options": [
-      "true",
-      "false",
-      "undefined",
-      "Error"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Llamar a un método sobre null.",
+    "interviewTip": "TypeError es muy frecuente.",
+    "options": ["true", "false", "undefined", "Error"]
   },
   "js-err-15": {
-    "prompt": "How to create custom error?",
-    "explanation": "Extend Error class.",
-    "interviewTip": "Preserve name & stack.",
+    "prompt": "¿Cómo crear un error personalizado?",
+    "explanation": "Extiende la clase Error.",
+    "interviewTip": "Preserva el nombre y el stack.",
     "options": [
       "class MyError extends Error {}",
       "throw {}",
@@ -165,113 +125,93 @@
     ]
   },
   "js-err-16": {
-    "prompt": "What does Error.stack contain?",
-    "explanation": "Useful for debugging.",
-    "interviewTip": "Not standardized but common.",
+    "prompt": "¿Qué contiene Error.stack?",
+    "explanation": "Útil para el debugging.",
+    "interviewTip": "No está estandarizado pero es común.",
     "options": [
-      "Call stack trace",
-      "Error message",
-      "Error type",
-      "Execution time"
+      "Traza de la pila de llamadas",
+      "Mensaje de error",
+      "Tipo de error",
+      "Tiempo de ejecución"
     ]
   },
   "js-err-17": {
-    "prompt": "What is an unhandled promise rejection?",
-    "explanation": "Leads to warnings or crashes.",
-    "interviewTip": "Always handle rejections.",
+    "prompt": "¿Qué es un unhandled promise rejection?",
+    "explanation": "Provoca advertencias o cierres inesperados.",
+    "interviewTip": "Maneja siempre los rechazos.",
     "options": [
-      "Promise rejected without catch",
-      "Syntax error",
-      "Async timeout",
-      "Cancelled promise"
+      "Promise rechazada sin un catch",
+      "Error de sintaxis",
+      "Timeout asíncrono",
+      "Promise cancelada"
     ]
   },
   "js-err-18": {
-    "prompt": "What will be logged?",
-    "explanation": "Rejected value is passed.",
-    "interviewTip": "Can reject any value.",
-    "options": [
-      "err",
-      "Error",
-      "undefined",
-      "null"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Se pasa el valor rechazado.",
+    "interviewTip": "Se puede rechazar con cualquier valor.",
+    "options": ["err", "Error", "undefined", "null"]
   },
   "js-err-19": {
-    "prompt": "What does `catch` return?",
-    "explanation": "Allows chaining.",
-    "interviewTip": "Promise chain continues.",
-    "options": [
-      "A new Promise",
-      "The same Promise",
-      "Undefined",
-      "Error"
-    ]
+    "prompt": "¿Qué devuelve `catch`?",
+    "explanation": "Permite el encadenamiento.",
+    "interviewTip": "La cadena de promises continúa.",
+    "options": ["Una nueva Promise", "La misma Promise", "Undefined", "Error"]
   },
   "js-err-20": {
-    "prompt": "What happens if you throw inside catch?",
-    "explanation": "Error propagates.",
-    "interviewTip": "Re-throw pattern.",
+    "prompt": "¿Qué sucede si lanzas un error dentro de un catch?",
+    "explanation": "El error se propaga.",
+    "interviewTip": "Patrón de re-lanzamiento (re-throw).",
     "options": [
-      "Promise rejects again",
-      "Error is swallowed",
-      "Execution continues",
-      "Ignored"
+      "La Promise se rechaza de nuevo",
+      "El error es silenciado",
+      "La ejecución continúa",
+      "Se ignora"
     ]
   },
   "js-err-21": {
-    "prompt": "What is RangeError?",
-    "explanation": "E.g. invalid array length.",
-    "interviewTip": "Less common.",
+    "prompt": "¿Qué es un RangeError?",
+    "explanation": "Ej. longitud de array inválida.",
+    "interviewTip": "Es menos común.",
     "options": [
-      "Value out of allowed range",
-      "Wrong variable",
-      "Invalid syntax",
-      "Async error"
+      "Valor fuera del rango permitido",
+      "Variable incorrecta",
+      "Sintaxis inválida",
+      "Error asíncrono"
     ]
   },
   "js-err-22": {
-    "prompt": "Can try/catch catch JSON.parse errors?",
-    "explanation": "JSON.parse throws synchronously.",
-    "interviewTip": "Wrap parsing logic.",
-    "options": [
-      "Yes",
-      "No",
-      "Only async",
-      "Only sync"
-    ]
+    "prompt": "¿Puede try/catch capturar errores de JSON.parse?",
+    "explanation": "JSON.parse lanza excepciones de forma síncrona.",
+    "interviewTip": "Envuelve la lógica de parseo.",
+    "options": ["Sí", "No", "Solo asíncronos", "Solo síncronos"]
   },
   "js-err-23": {
-    "prompt": "What is best practice for errors?",
-    "explanation": "Errors should be explicit.",
-    "interviewTip": "Production mindset.",
+    "prompt": "¿Cuál es la mejor práctica para los errores?",
+    "explanation": "Los errores deben ser explícitos.",
+    "interviewTip": "Mentalidad de producción.",
     "options": [
-      "Fail fast and log clearly",
-      "Ignore errors",
-      "Return null",
-      "Use console.log only"
+      "Falla rápido y registra logs claros",
+      "Ignora los errores",
+      "Retorna null",
+      "Usa solo console.log"
     ]
   },
   "js-err-24": {
-    "prompt": "What will be logged?",
-    "explanation": "Any value can be thrown.",
-    "interviewTip": "But don't do this.",
-    "options": [
-      "string",
-      "object",
-      "error",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Se puede lanzar cualquier valor.",
+    "interviewTip": "Pero no hagas esto.",
+    "options": ["string", "object", "error", "undefined"]
   },
   "js-err-25": {
-    "prompt": "Why prefer Error over strings?",
-    "explanation": "Errors carry more context.",
-    "interviewTip": "Interview gold answer.",
+    "prompt": "¿Por qué preferir objetos Error sobre strings?",
+    "explanation": "Los errores llevan más contexto.",
+    "interviewTip": "Respuesta de oro en entrevistas.",
     "options": [
-      "Stack trace & consistency",
-      "Shorter syntax",
-      "Performance",
-      "Required by JS"
+      "Stack trace y consistencia",
+      "Sintaxis más corta",
+      "Rendimiento",
+      "Requerido por JS"
     ]
   }
 }

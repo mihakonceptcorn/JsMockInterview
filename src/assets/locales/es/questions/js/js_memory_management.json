@@ -1,277 +1,257 @@
 {
   "js-mm-01": {
-    "prompt": "Where are primitive values stored?",
-    "explanation": "Primitives are stored on the stack.",
-    "interviewTip": "Objects live on the heap.",
-    "options": [
-      "Stack",
-      "Heap",
-      "Call queue",
-      "DOM tree"
-    ]
+    "prompt": "¿Dónde se almacenan los valores primitivos?",
+    "explanation": "Los primitivos se almacenan en el stack.",
+    "interviewTip": "Los objetos viven en el heap.",
+    "options": ["Stack", "Heap", "Call queue", "DOM tree"]
   },
   "js-mm-02": {
-    "prompt": "Where are objects stored?",
-    "explanation": "Objects are allocated on the heap.",
-    "interviewTip": "References are stored on the stack.",
-    "options": [
-      "Heap",
-      "Stack",
-      "Call stack",
-      "Registers"
-    ]
+    "prompt": "¿Dónde se almacenan los objetos?",
+    "explanation": "Los objetos se asignan en el heap.",
+    "interviewTip": "Las referencias se almacenan en el stack.",
+    "options": ["Heap", "Stack", "Call stack", "Registers"]
   },
   "js-mm-03": {
-    "prompt": "What is garbage collection?",
-    "explanation": "GC frees unreachable memory.",
-    "interviewTip": "JS is GC-based.",
+    "prompt": "¿Qué es el garbage collection?",
+    "explanation": "El GC libera la memoria que ya no es alcanzable.",
+    "interviewTip": "JS se basa en un sistema de GC.",
     "options": [
-      "Automatic memory cleanup",
-      "Manual deallocation",
-      "Heap compression",
-      "Stack reset"
+      "Limpieza automática de memoria",
+      "Desasignación manual",
+      "Compresión del heap",
+      "Reinicio del stack"
     ]
   },
   "js-mm-04": {
-    "prompt": "Which algorithm is commonly used by JS engines?",
-    "explanation": "Modern engines use mark-and-sweep variants.",
-    "interviewTip": "V8 uses generational GC.",
+    "prompt": "¿Qué algoritmo utilizan comúnmente los motores de JS?",
+    "explanation": "Los motores modernos usan variantes de mark-and-sweep.",
+    "interviewTip": "V8 utiliza un GC generacional.",
     "options": [
       "Mark-and-sweep",
-      "Reference counting only",
-      "Manual GC",
-      "Stop-and-copy only"
+      "Solo reference counting",
+      "GC manual",
+      "Solo stop-and-copy"
     ]
   },
   "js-mm-05": {
-    "prompt": "What makes an object eligible for GC?",
-    "explanation": "Reachability determines GC.",
-    "interviewTip": "Scope alone is not enough.",
+    "prompt": "¿Qué hace que un objeto sea elegible para el GC?",
+    "explanation": "La alcanzabilidad (reachability) determina el GC.",
+    "interviewTip": "El scope por sí solo no es suficiente.",
     "options": [
-      "No reachable references",
-      "Out of scope variable",
-      "Null value",
-      "Low memory"
+      "No hay referencias alcanzables",
+      "Variable fuera de scope",
+      "Valor null",
+      "Memoria baja"
     ]
   },
   "js-mm-06": {
-    "prompt": "What is a memory leak?",
-    "explanation": "Leaked memory stays reachable.",
-    "interviewTip": "Common in closures.",
+    "prompt": "¿Qué es una memory leak (fuga de memoria)?",
+    "explanation": "La memoria filtrada permanece alcanzable aunque no se use.",
+    "interviewTip": "Común en los closures.",
     "options": [
-      "Unused memory not released",
+      "Memoria no utilizada que no se libera",
       "Stack overflow",
-      "Slow GC",
-      "Heap fragmentation"
+      "GC lento",
+      "Fragmentación del heap"
     ]
   },
   "js-mm-07": {
-    "prompt": "Which is a common source of memory leaks?",
-    "explanation": "Detached DOM nodes keep references.",
-    "interviewTip": "Check event listeners.",
+    "prompt": "¿Cuál es una fuente común de memory leaks?",
+    "explanation": "Los nodos del DOM desvinculados mantienen referencias.",
+    "interviewTip": "Revisa siempre los event listeners.",
     "options": [
-      "Detached DOM nodes",
-      "Local variables",
-      "Primitive values",
-      "Function parameters"
+      "Nodos del DOM desvinculados",
+      "Variables locales",
+      "Valores primitivos",
+      "Parámetros de función"
     ]
   },
   "js-mm-08": {
-    "prompt": "Why are global variables dangerous?",
-    "explanation": "Globals are always reachable.",
-    "interviewTip": "Avoid accidental globals.",
+    "prompt": "¿Por qué son peligrosas las variables globales?",
+    "explanation": "Las globales son siempre alcanzables.",
+    "interviewTip": "Evita las globales accidentales.",
     "options": [
-      "They live for app lifetime",
-      "They slow down GC",
-      "They block rendering",
-      "They use stack memory"
+      "Viven durante toda la vida de la app",
+      "Ralentizan el GC",
+      "Bloquean el renderizado",
+      "Usan memoria del stack"
     ]
   },
   "js-mm-09": {
-    "prompt": "What happens during mark phase?",
-    "explanation": "GC traverses object graph.",
-    "interviewTip": "Starts from roots.",
+    "prompt": "¿Qué sucede durante la fase de 'mark'?",
+    "explanation": "El GC recorre el grafo de objetos.",
+    "interviewTip": "Comienza desde las raíces (roots).",
     "options": [
-      "Reachable objects are marked",
-      "Memory is freed",
-      "Heap is compacted",
-      "Stack is cleared"
+      "Se marcan los objetos alcanzables",
+      "Se libera la memoria",
+      "Se compacta el heap",
+      "Se limpia el stack"
     ]
   },
   "js-mm-10": {
-    "prompt": "What are GC roots?",
-    "explanation": "GC starts from roots.",
+    "prompt": "¿Qué son las GC roots?",
+    "explanation": "El GC comienza desde las raíces.",
     "interviewTip": "window, stack, closures.",
     "options": [
-      "Global objects and stack references",
-      "Heap objects",
-      "DOM nodes",
+      "Objetos globales y referencias del stack",
+      "Objetos del heap",
+      "Nodos del DOM",
       "Timers"
     ]
   },
   "js-mm-11": {
-    "prompt": "What is generational GC?",
-    "explanation": "Young objects collected more often.",
-    "interviewTip": "Most objects die young.",
+    "prompt": "¿Qué es el GC generacional?",
+    "explanation": "Los objetos jóvenes se recolectan con más frecuencia.",
+    "interviewTip": "La mayoría de los objetos mueren jóvenes.",
     "options": [
-      "Objects grouped by age",
-      "GC by priority",
-      "Manual generations",
-      "Stack-based GC"
+      "Objetos agrupados por edad",
+      "GC por prioridad",
+      "Generaciones manuales",
+      "GC basado en stack"
     ]
   },
   "js-mm-12": {
-    "prompt": "What is a closure-related leak?",
-    "explanation": "Closures may retain memory.",
-    "interviewTip": "Clear references.",
+    "prompt": "¿Qué es una fuga de memoria relacionada con closures?",
+    "explanation": "Los closures pueden retener memoria innecesariamente.",
+    "interviewTip": "Limpia las referencias.",
     "options": [
-      "Closure holding unused references",
-      "Function recursion",
+      "Closure que retiene referencias no utilizadas",
+      "Recursión de funciones",
       "Stack overflow",
-      "Async execution"
+      "Ejecución asíncrona"
     ]
   },
   "js-mm-13": {
-    "prompt": "Which structure prevents GC?",
-    "explanation": "Strong references keep objects alive.",
-    "interviewTip": "WeakMap doesn't.",
+    "prompt": "¿Qué estructura impide el GC?",
+    "explanation": "Las referencias fuertes (strong references) mantienen vivos los objetos.",
+    "interviewTip": "WeakMap no lo hace.",
     "options": [
-      "Strong references",
-      "Weak references",
-      "Null values",
-      "Primitives"
+      "Referencias fuertes",
+      "Referencias débiles",
+      "Valores null",
+      "Primitivos"
     ]
   },
   "js-mm-14": {
-    "prompt": "Why use WeakMap?",
-    "explanation": "Keys are weakly held.",
-    "interviewTip": "Great for caching.",
+    "prompt": "¿Por qué usar WeakMap?",
+    "explanation": "Las claves se mantienen de forma débil.",
+    "interviewTip": "Excelente para el almacenamiento en caché (caching).",
     "options": [
-      "Avoid memory leaks",
-      "Faster access",
-      "More features",
-      "Serialization"
+      "Evitar memory leaks",
+      "Acceso más rápido",
+      "Más funciones",
+      "Serialización"
     ]
   },
   "js-mm-15": {
-    "prompt": "Can WeakMap keys be primitives?",
-    "explanation": "Keys must be objects.",
-    "interviewTip": "WeakSet too.",
-    "options": [
-      "No",
-      "Yes",
-      "Only strings",
-      "Only numbers"
-    ]
+    "prompt": "¿Pueden las claves de un WeakMap ser primitivos?",
+    "explanation": "Las claves deben ser objetos.",
+    "interviewTip": "Lo mismo aplica para WeakSet.",
+    "options": ["No", "Sí", "Solo strings", "Solo numbers"]
   },
   "js-mm-16": {
-    "prompt": "What is heap fragmentation?",
-    "explanation": "Impacts allocation performance.",
-    "interviewTip": "Compaction fixes it.",
+    "prompt": "¿Qué es la fragmentación del heap?",
+    "explanation": "Impacta el rendimiento de la asignación de memoria.",
+    "interviewTip": "La compactación lo soluciona.",
     "options": [
-      "Scattered free memory blocks",
-      "Stack corruption",
+      "Bloques de memoria libre dispersos",
+      "Corrupción del stack",
       "Memory leak",
-      "Slow GC"
+      "GC lento"
     ]
   },
   "js-mm-17": {
-    "prompt": "What is stop-the-world GC?",
-    "explanation": "JS execution pauses.",
-    "interviewTip": "Causes jank.",
+    "prompt": "¿Qué es el GC 'stop-the-world'?",
+    "explanation": "La ejecución de JS se pausa durante la recolección.",
+    "interviewTip": "Causa tirones o 'jank'.",
     "options": [
-      "Pauses JS execution",
-      "Runs in background",
-      "Only for stack",
-      "Only for DOM"
+      "Pausa la ejecución de JS",
+      "Se ejecuta en segundo plano",
+      "Solo para el stack",
+      "Solo para el DOM"
     ]
   },
   "js-mm-18": {
-    "prompt": "Which tool helps detect memory leaks?",
-    "explanation": "Heap snapshots reveal leaks.",
-    "interviewTip": "Compare snapshots.",
+    "prompt": "¿Qué herramienta ayuda a detectar memory leaks?",
+    "explanation": "Los heap snapshots revelan fugas.",
+    "interviewTip": "Compara varios snapshots.",
     "options": [
-      "Chrome DevTools Memory tab",
+      "Pestaña Memory de Chrome DevTools",
       "Console.log",
-      "Network tab",
-      "Lighthouse only"
+      "Pestaña Network",
+      "Solo Lighthouse"
     ]
   },
   "js-mm-19": {
-    "prompt": "What causes excessive GC?",
-    "explanation": "Short-lived objects increase GC pressure.",
-    "interviewTip": "Reuse objects.",
+    "prompt": "¿Qué causa un GC excesivo?",
+    "explanation": "Los objetos de vida corta aumentan la presión sobre el GC.",
+    "interviewTip": "Reutiliza objetos.",
     "options": [
-      "Frequent allocations",
-      "Async code",
+      "Asignaciones frecuentes",
+      "Código asíncrono",
       "Promises",
       "Event loop"
     ]
   },
   "js-mm-20": {
-    "prompt": "What is object pooling?",
-    "explanation": "Reduces allocations.",
-    "interviewTip": "Use carefully.",
+    "prompt": "¿Qué es el object pooling?",
+    "explanation": "Reduce el número de asignaciones.",
+    "interviewTip": "Úsalo con cuidado.",
     "options": [
-      "Reusing allocated objects",
-      "Cloning objects",
-      "Freezing objects",
-      "Serializing objects"
+      "Reutilizar objetos ya asignados",
+      "Clonar objetos",
+      "Congelar objetos",
+      "Serializar objetos"
     ]
   },
   "js-mm-21": {
-    "prompt": "Why avoid large arrays kept globally?",
-    "explanation": "GC cannot free them.",
-    "interviewTip": "Release references.",
+    "prompt": "¿Por qué evitar arrays grandes mantenidos globalmente?",
+    "explanation": "El GC no puede liberarlos.",
+    "interviewTip": "Libera las referencias.",
     "options": [
-      "Memory stays allocated",
-      "Slower loops",
+      "La memoria permanece asignada",
+      "Bucles más lentos",
       "Stack overflow",
-      "Scope issues"
+      "Problemas de scope"
     ]
   },
   "js-mm-22": {
-    "prompt": "What does nulling a reference do?",
-    "explanation": "GC still decides.",
-    "interviewTip": "Common misconception.",
+    "prompt": "¿Qué hace el asignar una referencia a null?",
+    "explanation": "El GC aún decide cuándo limpiar.",
+    "interviewTip": "Idea errónea muy común.",
     "options": [
-      "Allows GC if no other refs exist",
-      "Immediately frees memory",
-      "Deletes object",
-      "Compacts heap"
+      "Permite el GC si no hay otras referencias",
+      "Libera memoria inmediatamente",
+      "Elimina el objeto",
+      "Compacta el heap"
     ]
   },
   "js-mm-23": {
-    "prompt": "Which API allows weak references?",
-    "explanation": "Introduced for advanced cases.",
-    "interviewTip": "Use with caution.",
-    "options": [
-      "WeakRef",
-      "Map",
-      "Set",
-      "Object"
-    ]
+    "prompt": "¿Qué API permite referencias débiles?",
+    "explanation": "Introducida para casos avanzados.",
+    "interviewTip": "Usa con precaución.",
+    "options": ["WeakRef", "Map", "Set", "Object"]
   },
   "js-mm-24": {
-    "prompt": "Why is WeakRef dangerous?",
-    "explanation": "Non-deterministic lifecycle.",
-    "interviewTip": "Expert-level topic.",
+    "prompt": "¿Por qué es peligroso WeakRef?",
+    "explanation": "Ciclo de vida no determinista.",
+    "interviewTip": "Tema de nivel experto.",
     "options": [
-      "Object may disappear anytime",
-      "It leaks memory",
-      "It blocks GC",
-      "It crashes browser"
+      "El objeto puede desaparecer en cualquier momento",
+      "Fuga memoria",
+      "Bloquea el GC",
+      "Cierra el navegador"
     ]
   },
   "js-mm-25": {
-    "prompt": "Best rule for memory optimization?",
-    "explanation": "Profiling is key.",
-    "interviewTip": "Senior answer.",
+    "prompt": "¿Mejor regla para la optimización de memoria?",
+    "explanation": "El perfilado (profiling) es clave.",
+    "interviewTip": "Respuesta de nivel Senior.",
     "options": [
-      "Measure before optimizing",
-      "Avoid objects",
-      "Disable GC",
-      "Use primitives only"
+      "Medir antes de optimizar",
+      "Evitar objetos",
+      "Desactivar el GC",
+      "Usar solo primitivos"
     ]
   }
 }

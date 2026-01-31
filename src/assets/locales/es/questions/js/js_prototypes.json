@@ -1,239 +1,199 @@
 {
   "js-proto-01": {
-    "prompt": "What is a JavaScript prototype?",
-    "explanation": "Every JS object has an internal link to a prototype object.",
-    "interviewTip": "JS uses prototypal inheritance, not classical.",
+    "prompt": "¿Qué es un prototipo en JavaScript?",
+    "explanation": "Cada objeto en JS tiene un enlace interno a un objeto prototipo.",
+    "interviewTip": "JS utiliza herencia prototípica, no clásica.",
     "options": [
-      "An object from which other objects inherit properties",
-      "A class definition",
-      "A function scope",
-      "A copy of an object"
+      "Un objeto del cual otros objetos heredan propiedades",
+      "Una definición de clase",
+      "Un scope de función",
+      "Una copia de un objeto"
     ]
   },
   "js-proto-02": {
-    "prompt": "What does `__proto__` point to?",
-    "explanation": "`__proto__` references the internal [[Prototype]].",
-    "interviewTip": "Preferred API is `Object.getPrototypeOf`.",
+    "prompt": "¿A qué apunta `__proto__`?",
+    "explanation": "`__proto__` hace referencia al [[Prototype]] interno.",
+    "interviewTip": "La API preferida es `Object.getPrototypeOf`.",
     "options": [
-      "The constructor function",
-      "The object's prototype",
-      "The object's class",
-      "The global object"
+      "La función constructora",
+      "El prototipo del objeto",
+      "La clase del objeto",
+      "El objeto global"
     ]
   },
   "js-proto-03": {
-    "prompt": "What is `Function.prototype`?",
-    "explanation": "All functions inherit from Function.prototype.",
-    "interviewTip": "Functions are objects.",
+    "prompt": "¿Qué es `Function.prototype`?",
+    "explanation": "Todas las funciones heredan de Function.prototype.",
+    "interviewTip": "Las funciones son objetos.",
     "options": [
-      "Prototype of all functions",
-      "Prototype of all objects",
-      "A method",
-      "The global scope"
+      "El prototipo de todas las funciones",
+      "El prototipo de todos los objetos",
+      "Un método",
+      "El scope global"
     ]
   },
   "js-proto-04": {
-    "prompt": "What is the result?",
-    "explanation": "`new` links instance to constructor's prototype.",
-    "interviewTip": "`prototype` exists only on functions.",
-    "options": [
-      "true",
-      "false",
-      "undefined",
-      "TypeError"
-    ]
+    "prompt": "¿Cuál es el resultado?",
+    "explanation": "`new` vincula la instancia al prototipo del constructor.",
+    "interviewTip": "`prototype` existe solo en las funciones.",
+    "options": ["true", "false", "undefined", "TypeError"]
   },
   "js-proto-05": {
-    "prompt": "Where are methods usually defined for all instances?",
-    "explanation": "Methods on prototype are shared.",
-    "interviewTip": "Memory optimization.",
+    "prompt": "¿Dónde se definen usualmente los métodos para todas las instancias?",
+    "explanation": "Los métodos en el prototipo se comparten entre instancias.",
+    "interviewTip": "Optimización de memoria.",
     "options": [
-      "On the prototype",
-      "Inside constructor",
-      "On the instance",
-      "In global scope"
+      "En el prototipo",
+      "Dentro del constructor",
+      "En la instancia",
+      "En el scope global"
     ]
   },
   "js-proto-06": {
-    "prompt": "What will be logged?",
-    "explanation": "Plain objects inherit from Object.prototype.",
-    "interviewTip": "Base of prototype chain.",
-    "options": [
-      "true",
-      "false",
-      "undefined",
-      "null"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los objetos planos heredan de Object.prototype.",
+    "interviewTip": "Base de la cadena de prototipos.",
+    "options": ["true", "false", "undefined", "null"]
   },
   "js-proto-07": {
-    "prompt": "What ends the prototype chain?",
+    "prompt": "¿Qué pone fin a la cadena de prototipos?",
     "explanation": "`Object.prototype.__proto__ === null`.",
-    "interviewTip": "Important chain termination.",
-    "options": [
-      "null",
-      "Object",
-      "undefined",
-      "Function.prototype"
-    ]
+    "interviewTip": "Importante terminación de la cadena.",
+    "options": ["null", "Object", "undefined", "Function.prototype"]
   },
   "js-proto-08": {
-    "prompt": "What does `hasOwnProperty` check?",
-    "explanation": "Does not check prototypes.",
-    "interviewTip": "Avoid false positives.",
+    "prompt": "¿Qué verifica `hasOwnProperty`?",
+    "explanation": "No verifica los prototipos.",
+    "interviewTip": "Evita falsos positivos.",
     "options": [
-      "Property exists on the object itself",
-      "Property exists in prototype chain",
-      "Property exists globally",
-      "Property is enumerable"
+      "Si la propiedad existe en el objeto mismo",
+      "Si la propiedad existe en la cadena de prototipos",
+      "Si la propiedad existe globalmente",
+      "Si la propiedad es enumerable"
     ]
   },
   "js-proto-09": {
-    "prompt": "What will be logged?",
-    "explanation": "Property resolved via prototype chain.",
-    "interviewTip": "Property lookup order.",
-    "options": [
-      "1",
-      "undefined",
-      "ReferenceError",
-      "null"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "La propiedad se resuelve a través de la cadena de prototipos.",
+    "interviewTip": "Orden de búsqueda de propiedades (lookup order).",
+    "options": ["1", "undefined", "ReferenceError", "null"]
   },
   "js-proto-10": {
-    "prompt": "What happens when you overwrite prototype?",
-    "explanation": "Prototype is set at creation time.",
-    "interviewTip": "Common pitfall.",
+    "prompt": "¿Qué sucede cuando sobrescribes un prototipo?",
+    "explanation": "El prototipo se establece en el momento de la creación.",
+    "interviewTip": "Trampa común.",
     "options": [
-      "Existing instances keep old prototype",
-      "All instances update automatically",
-      "Prototype chain breaks",
-      "Throws error"
+      "Las instancias existentes mantienen el prototipo antiguo",
+      "Todas las instancias se actualizan automáticamente",
+      "La cadena de prototipos se rompe",
+      "Lanza un error"
     ]
   },
   "js-proto-11": {
-    "prompt": "What does `Object.create(proto)` do?",
-    "explanation": "Direct prototype assignment.",
-    "interviewTip": "Clean inheritance.",
+    "prompt": "¿Qué hace `Object.create(proto)`?",
+    "explanation": "Asignación directa de prototipo.",
+    "interviewTip": "Herencia limpia.",
     "options": [
-      "Creates object with given prototype",
-      "Clones an object",
-      "Creates a class",
-      "Creates constructor"
+      "Crea un objeto con el prototipo dado",
+      "Clona un objeto",
+      "Crea una clase",
+      "Crea un constructor"
     ]
   },
   "js-proto-12": {
-    "prompt": "What will be logged?",
-    "explanation": "b inherits from a.",
-    "interviewTip": "Delegation, not copying.",
-    "options": [
-      "1",
-      "undefined",
-      "ReferenceError",
-      "null"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "b hereda de a.",
+    "interviewTip": "Delegación, no copia.",
+    "options": ["1", "undefined", "ReferenceError", "null"]
   },
   "js-proto-13": {
-    "prompt": "What is `constructor` property?",
-    "explanation": "Points back to constructor function.",
-    "interviewTip": "May be lost when overwriting prototype.",
+    "prompt": "¿Qué es la propiedad `constructor`?",
+    "explanation": "Apunta de vuelta a la función constructora.",
+    "interviewTip": "Puede perderse al sobrescribir el prototipo.",
     "options": [
-      "Reference to the function that created the object",
-      "The prototype itself",
-      "Class definition",
-      "Global constructor"
+      "Referencia a la función que creó el objeto",
+      "El prototipo en sí mismo",
+      "Definición de clase",
+      "Constructor global"
     ]
   },
   "js-proto-14": {
-    "prompt": "What will be logged?",
-    "explanation": "`instanceof` checks prototype chain.",
-    "interviewTip": "Not type-safe.",
-    "options": [
-      "true",
-      "false",
-      "undefined",
-      "TypeError"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`instanceof` verifica la cadena de prototipos.",
+    "interviewTip": "No es totalmente 'type-safe'.",
+    "options": ["true", "false", "undefined", "TypeError"]
   },
   "js-proto-15": {
-    "prompt": "Why avoid modifying native prototypes?",
-    "explanation": "Prototype pollution risks.",
-    "interviewTip": "Never extend Array/Object prototypes.",
+    "prompt": "¿Por qué evitar modificar prototipos nativos?",
+    "explanation": "Riesgos de 'prototype pollution'.",
+    "interviewTip": "Nunca extiendas prototipos de Array u Object.",
     "options": [
-      "Can cause conflicts",
-      "Breaks libraries",
-      "Unexpected behavior",
-      "All of the above"
+      "Puede causar conflictos",
+      "Rompe librerías externas",
+      "Comportamiento inesperado",
+      "Todas las anteriores"
     ]
   },
   "js-proto-16": {
-    "prompt": "What does method lookup do?",
-    "explanation": "Stops when found or reaches null.",
-    "interviewTip": "Performance implication.",
+    "prompt": "¿Cómo funciona la búsqueda de métodos (method lookup)?",
+    "explanation": "Se detiene cuando se encuentra o llega a null.",
+    "interviewTip": "Implicación en el rendimiento.",
     "options": [
-      "Searches up the prototype chain",
-      "Searches globally",
-      "Searches closures",
-      "Searches call stack"
+      "Busca hacia arriba en la cadena de prototipos",
+      "Busca globalmente",
+      "Busca en los closures",
+      "Busca en el call stack"
     ]
   },
   "js-proto-17": {
-    "prompt": "What will be logged?",
-    "explanation": "Property assignment happens on object itself.",
-    "interviewTip": "Shadowing prototype properties.",
-    "options": [
-      "1",
-      "2",
-      "undefined",
-      "null"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "La asignación de propiedades ocurre en el objeto mismo.",
+    "interviewTip": "Sombreado (shadowing) de propiedades del prototipo.",
+    "options": ["1", "2", "undefined", "null"]
   },
   "js-proto-18": {
-    "prompt": "What is prototype delegation?",
-    "explanation": "JS uses delegation, not copying.",
-    "interviewTip": "Mental model shift.",
+    "prompt": "¿Qué es la delegación de prototipos?",
+    "explanation": "JS utiliza delegación, no copiado.",
+    "interviewTip": "Cambio necesario de modelo mental.",
     "options": [
-      "Objects delegate behavior to prototypes",
-      "Functions call other functions",
-      "Inheritance via classes",
-      "Copying properties"
+      "Los objetos delegan comportamiento a sus prototipos",
+      "Las funciones llaman a otras funciones",
+      "Herencia vía clases",
+      "Copiado de propiedades"
     ]
   },
   "js-proto-19": {
-    "prompt": "What is `Object.setPrototypeOf`?",
-    "explanation": "Allows changing prototype at runtime.",
-    "interviewTip": "Slow, avoid in hot paths.",
+    "prompt": "¿Qué es `Object.setPrototypeOf`?",
+    "explanation": "Permite cambiar el prototipo en tiempo de ejecución.",
+    "interviewTip": "Es lento, evítalo en rutas críticas (hot paths).",
     "options": [
-      "Changes object's prototype",
-      "Clones object",
-      "Creates inheritance",
-      "Optimizes performance"
+      "Cambia el prototipo de un objeto",
+      "Clona un objeto",
+      "Crea herencia",
+      "Optimiza el rendimiento"
     ]
   },
   "js-proto-20": {
-    "prompt": "What happens when method exists on both object and prototype?",
-    "explanation": "Own property has priority.",
-    "interviewTip": "Lookup order.",
+    "prompt": "¿Qué sucede cuando un método existe tanto en el objeto como en su prototipo?",
+    "explanation": "La propiedad propia tiene prioridad.",
+    "interviewTip": "Orden de búsqueda (lookup order).",
     "options": [
-      "Object method is used",
-      "Prototype method is used",
-      "Both run",
+      "Se usa el método del objeto",
+      "Se usa el método del prototipo",
+      "Ambos se ejecutan",
       "Error"
     ]
   },
   "js-proto-21": {
-    "prompt": "What will be logged?",
-    "explanation": "Prototype chain includes A.prototype.",
-    "interviewTip": "Manual inheritance.",
-    "options": [
-      "true",
-      "false",
-      "undefined",
-      "TypeError"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "La cadena de prototipos incluye A.prototype.",
+    "interviewTip": "Herencia manual.",
+    "options": ["true", "false", "undefined", "TypeError"]
   },
   "js-proto-22": {
-    "prompt": "What is the prototype of an arrow function?",
-    "explanation": "Arrow functions are still functions.",
-    "interviewTip": "They just lack `prototype` property.",
+    "prompt": "¿Cuál es el prototipo de una arrow function?",
+    "explanation": "Las arrow functions siguen siendo funciones.",
+    "interviewTip": "Simplemente carecen de la propiedad `prototype`.",
     "options": [
       "Function.prototype",
       "Arrow.prototype",
@@ -242,36 +202,31 @@
     ]
   },
   "js-proto-23": {
-    "prompt": "What will be logged?",
-    "explanation": "Prototypes are objects.",
-    "interviewTip": "Not functions.",
-    "options": [
-      "object",
-      "function",
-      "null",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los prototipos son objetos.",
+    "interviewTip": "No son funciones.",
+    "options": ["object", "function", "null", "undefined"]
   },
   "js-proto-24": {
-    "prompt": "What is prototype pollution?",
-    "explanation": "Security risk when prototypes are mutated.",
-    "interviewTip": "Common vulnerability.",
+    "prompt": "¿Qué es la 'prototype pollution'?",
+    "explanation": "Riesgo de seguridad cuando se mutan prototipos globales.",
+    "interviewTip": "Vulnerabilidad común.",
     "options": [
-      "Modifying Object.prototype",
-      "Memory leak",
-      "Garbage collection bug",
-      "Hoisting issue"
+      "Modificar Object.prototype",
+      "Fuga de memoria",
+      "Bug del Garbage Collector",
+      "Problema de hoisting"
     ]
   },
   "js-proto-25": {
-    "prompt": "Why is prototypal inheritance powerful?",
-    "explanation": "Enables dynamic behavior sharing.",
-    "interviewTip": "Better mental model than classes.",
+    "prompt": "¿Por qué es potente la herencia prototípica?",
+    "explanation": "Permite compartir comportamientos de forma dinámica.",
+    "interviewTip": "Mejor modelo mental que las clases.",
     "options": [
-      "Flexible object composition",
-      "Static typing",
-      "Faster execution always",
-      "Class safety"
+      "Composición de objetos flexible",
+      "Tipado estático",
+      "Ejecución siempre más rápida",
+      "Seguridad de clases"
     ]
   }
 }

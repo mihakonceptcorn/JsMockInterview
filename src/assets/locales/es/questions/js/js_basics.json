@@ -1,277 +1,157 @@
 {
   "js-basics-01": {
-    "prompt": "What will be logged?",
-    "explanation": "`typeof null` returns `object` due to a historical bug.",
-    "interviewTip": "Mention backward compatibility and proper null checks.",
-    "options": [
-      "null",
-      "object",
-      "undefined",
-      "number"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`typeof null` devuelve `object` debido a un error histórico.",
+    "interviewTip": "Menciona la compatibilidad hacia atrás y las comprobaciones adecuadas de null.",
+    "options": ["null", "object", "undefined", "number"]
   },
   "js-basics-02": {
-    "prompt": "What will be logged?",
-    "explanation": "Uninitialized variables have value `undefined`.",
-    "interviewTip": "Explain `undefined` vs `not defined`.",
-    "options": [
-      "null",
-      "undefined",
-      "ReferenceError",
-      "0"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Las variables no inicializadas tienen el valor `undefined`.",
+    "interviewTip": "Explica la diferencia entre `undefined` y `not defined`.",
+    "options": ["null", "undefined", "ReferenceError", "0"]
   },
   "js-basics-03": {
-    "prompt": "What will be the result?",
-    "explanation": "Once a string is involved, `+` becomes concatenation.",
-    "interviewTip": "Explain left-to-right evaluation.",
-    "options": [
-      "6",
-      "123",
-      "15",
-      "NaN"
-    ]
+    "prompt": "¿Cuál será el resultado?",
+    "explanation": "Una vez que hay un string involucrado, `+` se convierte en concatenación.",
+    "interviewTip": "Explica la evaluación de izquierda a derecha.",
+    "options": ["6", "123", "15", "NaN"]
   },
   "js-basics-04": {
-    "prompt": "What will be logged?",
-    "explanation": "`-` triggers numeric coercion.",
-    "interviewTip": "Contrast `+` vs other operators.",
-    "options": [
-      "4",
-      "51",
-      "NaN",
-      "TypeError"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "El operador `-` dispara la numeric coercion.",
+    "interviewTip": "Contrasta `+` frente a otros operadores.",
+    "options": ["4", "51", "NaN", "TypeError"]
   },
   "js-basics-05": {
-    "prompt": "Which value is falsy?",
-    "explanation": "`0` is falsy; objects and non-empty strings are truthy.",
-    "interviewTip": "List all falsy values.",
-    "options": [
-      "'0'",
-      "[]",
-      "0",
-      "{}"
-    ]
+    "prompt": "¿Cuál valor es falsy?",
+    "explanation": "`0` es falsy; los objects y strings no vacíos son truthy.",
+    "interviewTip": "Enumera todos los valores falsy.",
+    "options": ["'0'", "[]", "0", "{}"]
   },
   "js-basics-06": {
-    "prompt": "What will be logged?",
-    "explanation": "All objects are truthy.",
-    "interviewTip": "Arrays are objects in JS.",
-    "options": [
-      "true",
-      "false",
-      "TypeError",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Todos los objects son truthy.",
+    "interviewTip": "Los arrays son objects en JS.",
+    "options": ["true", "false", "TypeError", "undefined"]
   },
   "js-basics-07": {
-    "prompt": "Which statements are correct?",
-    "explanation": "`const` prevents reassignment, not mutation.",
-    "interviewTip": "Clarify reassignment vs mutation.",
+    "prompt": "¿Qué afirmaciones son correctas?",
+    "explanation": "`const` evita la reasignación, no la mutación.",
+    "interviewTip": "Aclara reasignación vs mutación.",
     "options": [
-      "`var` is function-scoped",
-      "`let` is block-scoped",
-      "`const` prevents reassignment",
-      "`const` makes objects immutable"
+      "`var` tiene function-scope",
+      "`let` tiene block-scope",
+      "`const` evita la reasignación",
+      "`const` hace que los objetos sean inmutables"
     ]
   },
   "js-basics-08": {
-    "prompt": "What will be logged?",
-    "explanation": "Loose equality triggers complex coercion.",
-    "interviewTip": "Recommend avoiding `==`.",
-    "options": [
-      "true",
-      "false",
-      "TypeError",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "La loose equality dispara una complex coercion.",
+    "interviewTip": "Recomienda evitar el uso de `==`.",
+    "options": ["true", "false", "TypeError", "undefined"]
   },
   "js-basics-09": {
-    "prompt": "What will be logged?",
-    "explanation": "Empty string converts to 0.",
-    "interviewTip": "Explain numeric coercion rules.",
-    "options": [
-      "0",
-      "NaN",
-      "undefined",
-      "TypeError"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Un string vacío se convierte en 0.",
+    "interviewTip": "Explica las reglas de numeric coercion.",
+    "options": ["0", "NaN", "undefined", "TypeError"]
   },
   "js-basics-10": {
-    "prompt": "What will be logged?",
-    "explanation": "`NaN` is of type `number`.",
-    "interviewTip": "Mention `Number.isNaN`.",
-    "options": [
-      "number",
-      "NaN",
-      "undefined",
-      "object"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`NaN` es de tipo `number`.",
+    "interviewTip": "Menciona `Number.isNaN`.",
+    "options": ["number", "NaN", "undefined", "object"]
   },
   "js-basics-11": {
-    "prompt": "What will be logged?",
-    "explanation": "`null` and `undefined` are equal only to each other.",
-    "interviewTip": "Explain special case in `==`.",
-    "options": [
-      "true",
-      "false",
-      "TypeError",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`null` y `undefined` solo son iguales entre sí (con `==`).",
+    "interviewTip": "Explica el caso especial en `==`.",
+    "options": ["true", "false", "TypeError", "undefined"]
   },
   "js-basics-12": {
-    "prompt": "What will be logged?",
-    "explanation": "Objects are compared by reference.",
-    "interviewTip": "Stress reference equality.",
-    "options": [
-      "true",
-      "false",
-      "TypeError",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los objects se comparan por referencia.",
+    "interviewTip": "Enfatiza la reference equality.",
+    "options": ["true", "false", "TypeError", "undefined"]
   },
   "js-basics-13": {
-    "prompt": "What will be logged?",
-    "explanation": "Non-empty strings are truthy.",
-    "interviewTip": "Explain double negation.",
-    "options": [
-      "true",
-      "false",
-      "NaN",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los strings no vacíos son truthy.",
+    "interviewTip": "Explica la doble negación.",
+    "options": ["true", "false", "NaN", "undefined"]
   },
   "js-basics-14": {
-    "prompt": "What will be logged?",
-    "explanation": "`undefined` has its own type.",
-    "interviewTip": "Contrast with `null`.",
-    "options": [
-      "undefined",
-      "null",
-      "object",
-      "number"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`undefined` tiene su propio tipo.",
+    "interviewTip": "Contrasta con `null`.",
+    "options": ["undefined", "null", "object", "number"]
   },
   "js-basics-15": {
-    "prompt": "What will be logged?",
-    "explanation": "`0` and `-0` are equal in JS.",
-    "interviewTip": "Mention `Object.is` difference.",
-    "options": [
-      "true",
-      "false",
-      "NaN",
-      "TypeError"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`0` y `-0` son iguales en JS.",
+    "interviewTip": "Menciona la diferencia con `Object.is`.",
+    "options": ["true", "false", "NaN", "TypeError"]
   },
   "js-basics-16": {
-    "prompt": "What will be logged?",
-    "explanation": "`Object.is` treats `0` and `-0` as different.",
-    "interviewTip": "Compare `===` vs `Object.is`.",
-    "options": [
-      "true",
-      "false",
-      "NaN",
-      "TypeError"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`Object.is` trata a `0` y `-0` como diferentes.",
+    "interviewTip": "Compara `===` vs `Object.is`.",
+    "options": ["true", "false", "NaN", "TypeError"]
   },
   "js-basics-17": {
-    "prompt": "What will be logged?",
-    "explanation": "Arrow functions are still functions.",
-    "interviewTip": "Arrow is syntax, not type.",
-    "options": [
-      "function",
-      "object",
-      "undefined",
-      "arrow"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Las arrow functions siguen siendo funciones.",
+    "interviewTip": "Arrow es sintaxis, no un tipo de dato.",
+    "options": ["function", "object", "undefined", "arrow"]
   },
   "js-basics-18": {
-    "prompt": "What will be logged?",
-    "explanation": "`isNaN` coerces values before checking.",
-    "interviewTip": "Recommend `Number.isNaN`.",
-    "options": [
-      "true",
-      "false",
-      "TypeError",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`isNaN` coacciona los valores antes de verificar.",
+    "interviewTip": "Recomienda `Number.isNaN`.",
+    "options": ["true", "false", "TypeError", "undefined"]
   },
   "js-basics-19": {
-    "prompt": "What will be logged?",
-    "explanation": "`Number.isNaN` does not coerce.",
-    "interviewTip": "Explain strict NaN check.",
-    "options": [
-      "true",
-      "false",
-      "TypeError",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`Number.isNaN` no realiza coacción.",
+    "interviewTip": "Explica el chequeo estricto de NaN.",
+    "options": ["true", "false", "TypeError", "undefined"]
   },
   "js-basics-20": {
-    "prompt": "What will be logged?",
-    "explanation": "Classes are functions under the hood.",
-    "interviewTip": "Explain syntactic sugar.",
-    "options": [
-      "function",
-      "class",
-      "object",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Las classes son funciones bajo el capó.",
+    "interviewTip": "Explica el concepto de syntactic sugar.",
+    "options": ["function", "class", "object", "undefined"]
   },
   "js-basics-21": {
-    "prompt": "What will be logged?",
-    "explanation": "Unary plus converts to number.",
-    "interviewTip": "Mention unary operators.",
-    "options": [
-      "0",
-      "NaN",
-      "undefined",
-      "TypeError"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "El plus unario convierte a number.",
+    "interviewTip": "Menciona los operadores unarios.",
+    "options": ["0", "NaN", "undefined", "TypeError"]
   },
   "js-basics-22": {
-    "prompt": "What will be logged?",
-    "explanation": "Arrays convert to empty strings.",
-    "interviewTip": "Explain `toString` coercion.",
-    "options": [
-      "''",
-      "'[]'",
-      "0",
-      "NaN"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los arrays se convierten en strings vacíos.",
+    "interviewTip": "Explica la coacción vía `toString`.",
+    "options": ["''", "'[]'", "0", "NaN"]
   },
   "js-basics-23": {
-    "prompt": "What will be logged?",
-    "explanation": "Object converts to string, then concatenates.",
-    "interviewTip": "Context matters (`{}` as block vs object).",
-    "options": [
-      "'[object Object]'",
-      "0",
-      "NaN",
-      "TypeError"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "El object se convierte a string y luego se concatena.",
+    "interviewTip": "El contexto importa (`{}` como bloque vs objeto).",
+    "options": ["'[object Object]'", "0", "NaN", "TypeError"]
   },
   "js-basics-24": {
-    "prompt": "What will be logged?",
-    "explanation": "Infinity is a number.",
-    "interviewTip": "Mention IEEE 754.",
-    "options": [
-      "number",
-      "infinity",
-      "object",
-      "undefined"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Infinity es un number.",
+    "interviewTip": "Menciona el estándar IEEE 754.",
+    "options": ["number", "infinity", "object", "undefined"]
   },
   "js-basics-25": {
-    "prompt": "What will be logged?",
-    "explanation": "Invalid numeric conversion results in NaN.",
-    "interviewTip": "Explain arithmetic coercion.",
-    "options": [
-      "NaN",
-      "Infinity",
-      "0",
-      "TypeError"
-    ]
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Una conversión numérica inválida resulta en NaN.",
+    "interviewTip": "Explica la arithmetic coercion.",
+    "options": ["NaN", "Infinity", "0", "TypeError"]
   }
 }

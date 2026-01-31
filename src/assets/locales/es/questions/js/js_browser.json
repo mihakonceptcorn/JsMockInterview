@@ -1,140 +1,125 @@
 {
   "js-browser-01": {
-    "prompt": "What is the main responsibility of the browser?",
-    "explanation": "Browser renders UI and runs JS engine.",
-    "interviewTip": "Rendering pipeline matters.",
+    "prompt": "¿Cuál es la responsabilidad principal del navegador?",
+    "explanation": "El navegador renderiza la UI y ejecuta el JS engine.",
+    "interviewTip": "El rendering pipeline es fundamental.",
     "options": [
-      "Render UI and execute JS",
-      "Compile JavaScript",
-      "Store databases",
-      "Manage servers"
+      "Renderizar la UI y ejecutar JS",
+      "Compilar JavaScript",
+      "Almacenar bases de datos",
+      "Gestionar servidores"
     ]
   },
   "js-browser-02": {
-    "prompt": "What happens first when loading a webpage?",
-    "explanation": "HTML is parsed into DOM.",
+    "prompt": "¿Qué sucede primero al cargar una página web?",
+    "explanation": "El HTML es parseado para construir el DOM.",
     "interviewTip": "Critical render path.",
     "options": [
-      "HTML parsing",
-      "CSS parsing",
-      "JS execution",
+      "Parsing de HTML",
+      "Parsing de CSS",
+      "Ejecución de JS",
       "Painting"
     ]
   },
   "js-browser-03": {
-    "prompt": "What is the DOM?",
-    "explanation": "DOM is a node tree.",
-    "interviewTip": "JS manipulates DOM.",
+    "prompt": "¿Qué es el DOM?",
+    "explanation": "El DOM es un node tree.",
+    "interviewTip": "JS manipula el DOM.",
     "options": [
-      "Tree representation of HTML",
+      "Representación en árbol del HTML",
       "JS runtime",
       "CSS engine",
       "Browser cache"
     ]
   },
   "js-browser-04": {
-    "prompt": "What is the CSSOM?",
-    "explanation": "CSSOM is created from CSS.",
+    "prompt": "¿Qué es el CSSOM?",
+    "explanation": "El CSSOM se crea a partir del CSS.",
     "interviewTip": "DOM + CSSOM = Render Tree.",
     "options": [
-      "Parsed CSS tree",
-      "CSS file",
-      "DOM styles",
+      "Árbol de CSS parseado",
+      "Archivo CSS",
+      "Estilos del DOM",
       "Browser theme"
     ]
   },
   "js-browser-05": {
-    "prompt": "What blocks HTML parsing?",
-    "explanation": "Blocking scripts stop parsing.",
-    "interviewTip": "Use defer/async.",
-    "options": [
-      "Synchronous JavaScript",
-      "Images",
-      "Fonts",
-      "Meta tags"
-    ]
+    "prompt": "¿Qué bloquea el parsing del HTML?",
+    "explanation": "Los scripts bloqueantes detienen el parsing.",
+    "interviewTip": "Usa defer/async.",
+    "options": ["JavaScript síncrono", "Imágenes", "Fuentes", "Meta tags"]
   },
   "js-browser-06": {
-    "prompt": "Difference between async and defer?",
-    "explanation": "Defer preserves order.",
-    "interviewTip": "Classic interview question.",
+    "prompt": "¿Diferencia entre async y defer?",
+    "explanation": "Defer preserva el orden de ejecución.",
+    "interviewTip": "Pregunta clásica de entrevista.",
     "options": [
-      "Async executes ASAP, defer after DOM",
-      "They are the same",
-      "Defer blocks parsing",
-      "Async waits for CSS"
+      "Async ejecuta lo antes posible, defer tras el DOM",
+      "Son lo mismo",
+      "Defer bloquea el parsing",
+      "Async espera al CSS"
     ]
   },
   "js-browser-07": {
-    "prompt": "What is reflow?",
-    "explanation": "Reflow recalculates layout.",
-    "interviewTip": "Expensive operation.",
+    "prompt": "¿Qué es el reflow?",
+    "explanation": "El reflow recalcula el layout.",
+    "interviewTip": "Es una operación costosa.",
     "options": [
-      "Layout recalculation",
-      "Repainting colors",
-      "JS execution",
+      "Recálculo del layout",
+      "Repintado de colores",
+      "Ejecución de JS",
       "Garbage collection"
     ]
   },
   "js-browser-08": {
-    "prompt": "What triggers repaint?",
-    "explanation": "Color/visibility changes.",
-    "interviewTip": "Cheaper than reflow.",
+    "prompt": "¿Qué dispara un repaint?",
+    "explanation": "Cambios de color o visibilidad.",
+    "interviewTip": "Es más barato que un reflow.",
     "options": [
-      "Visual-only changes",
-      "Layout changes",
-      "JS execution",
+      "Cambios puramente visuales",
+      "Cambios de layout",
+      "Ejecución de JS",
       "Network requests"
     ]
   },
   "js-browser-09": {
-    "prompt": "What is the render tree?",
-    "explanation": "Used for layout and paint.",
-    "interviewTip": "Invisible nodes excluded.",
-    "options": [
-      "DOM + CSSOM",
-      "Only DOM",
-      "Only CSSOM",
-      "JS heap"
-    ]
+    "prompt": "¿Qué es el render tree?",
+    "explanation": "Se usa para el layout y el paint.",
+    "interviewTip": "Excluye los nodos invisibles.",
+    "options": ["DOM + CSSOM", "Solo DOM", "Solo CSSOM", "JS heap"]
   },
   "js-browser-10": {
-    "prompt": "What does the event loop handle?",
-    "explanation": "Manages task execution order.",
+    "prompt": "¿Qué gestiona el event loop?",
+    "explanation": "Gestiona el orden de ejecución de las tareas.",
     "interviewTip": "Macro vs micro tasks.",
     "options": [
       "Async callbacks",
-      "Rendering only",
+      "Solo renderizado",
       "Garbage collection",
       "Networking"
     ]
   },
   "js-browser-11": {
-    "prompt": "Which task has higher priority?",
-    "explanation": "Promises resolve first.",
-    "interviewTip": "Critical for async bugs.",
-    "options": [
-      "Microtask",
-      "Macrotask",
-      "setTimeout",
-      "requestIdleCallback"
-    ]
+    "prompt": "¿Qué tarea tiene mayor prioridad?",
+    "explanation": "Las Promises se resuelven primero.",
+    "interviewTip": "Crítico para errores de async.",
+    "options": ["Microtask", "Macrotask", "setTimeout", "requestIdleCallback"]
   },
   "js-browser-12": {
-    "prompt": "What is same-origin policy?",
-    "explanation": "Prevents cross-origin access.",
-    "interviewTip": "CORS exists because of it.",
+    "prompt": "¿Qué es la same-origin policy?",
+    "explanation": "Evita el acceso cross-origin.",
+    "interviewTip": "CORS existe debido a esto.",
     "options": [
-      "Security restriction",
-      "Caching rule",
-      "Rendering rule",
-      "Network optimization"
+      "Restricción de seguridad",
+      "Regla de cache",
+      "Regla de renderizado",
+      "Optimización de red"
     ]
   },
   "js-browser-13": {
-    "prompt": "What is CORS?",
-    "explanation": "Controls cross-origin requests.",
-    "interviewTip": "Server-controlled.",
+    "prompt": "¿Qué es CORS?",
+    "explanation": "Controla las peticiones cross-origin.",
+    "interviewTip": "Controlado por el servidor.",
     "options": [
       "Cross-Origin Resource Sharing",
       "Client-Origin Request System",
@@ -143,97 +128,87 @@
     ]
   },
   "js-browser-14": {
-    "prompt": "Which storage is synchronous?",
-    "explanation": "Blocks main thread.",
-    "interviewTip": "Avoid heavy usage.",
-    "options": [
-      "localStorage",
-      "IndexedDB",
-      "Cache API",
-      "Cookies async"
-    ]
+    "prompt": "¿Qué almacenamiento es síncrono?",
+    "explanation": "Bloquea el main thread.",
+    "interviewTip": "Evita el uso intensivo.",
+    "options": ["localStorage", "IndexedDB", "Cache API", "Cookies async"]
   },
   "js-browser-15": {
-    "prompt": "Best storage for large data?",
-    "explanation": "Async and large capacity.",
-    "interviewTip": "Used by PWAs.",
-    "options": [
-      "IndexedDB",
-      "localStorage",
-      "sessionStorage",
-      "Cookies"
-    ]
+    "prompt": "¿Mejor almacenamiento para grandes volúmenes de datos?",
+    "explanation": "Es asíncrono y de gran capacidad.",
+    "interviewTip": "Usado por las PWAs.",
+    "options": ["IndexedDB", "localStorage", "sessionStorage", "Cookies"]
   },
   "js-browser-16": {
-    "prompt": "What is a Service Worker?",
-    "explanation": "Intercepts network requests.",
-    "interviewTip": "Offline support.",
+    "prompt": "¿Qué es un Service Worker?",
+    "explanation": "Interintercepta peticiones de red.",
+    "interviewTip": "Soporte offline.",
     "options": [
-      "Background script",
+      "Script de fondo (background)",
       "JS framework",
       "Browser thread",
       "Rendering engine"
     ]
   },
   "js-browser-17": {
-    "prompt": "What enables offline support?",
-    "explanation": "Core PWA feature.",
-    "interviewTip": "Ask about caching strategies.",
+    "prompt": "¿Qué permite el soporte offline?",
+    "explanation": "Característica core de las PWAs.",
+    "interviewTip": "Pregunta sobre estrategias de caching.",
     "options": [
       "Service Worker + Cache API",
       "localStorage",
       "Cookies",
-      "IndexedDB only"
+      "IndexedDB solo"
     ]
   },
   "js-browser-18": {
-    "prompt": "What is HTTP/2 advantage?",
-    "explanation": "Multiple streams over one connection.",
-    "interviewTip": "Improves performance.",
+    "prompt": "¿Cuál es la ventaja de HTTP/2?",
+    "explanation": "Múltiples streams sobre una sola conexión.",
+    "interviewTip": "Mejora el rendimiento.",
     "options": [
       "Multiplexing",
-      "More headers",
-      "More TCP connections",
-      "Slower parsing"
+      "Más headers",
+      "Más conexiones TCP",
+      "Parsing más lento"
     ]
   },
   "js-browser-19": {
-    "prompt": "Why minimize critical CSS?",
-    "explanation": "Speeds up rendering.",
-    "interviewTip": "Inline critical CSS.",
+    "prompt": "¿Por qué minimizar el CSS crítico?",
+    "explanation": "Acelera el renderizado.",
+    "interviewTip": "Incluye el CSS crítico inline.",
     "options": [
-      "Faster first paint",
-      "Better SEO",
-      "Less memory",
-      "Better caching"
+      "First paint más rápido",
+      "Mejor SEO",
+      "Menos memoria",
+      "Mejor cache"
     ]
   },
   "js-browser-20": {
-    "prompt": "What is First Contentful Paint?",
-    "explanation": "User-perceived performance.",
+    "prompt": "¿Qué es el First Contentful Paint?",
+    "explanation": "Rendimiento percibido por el usuario.",
     "interviewTip": "Web Vitals.",
     "options": [
-      "First visible content",
-      "Page fully loaded",
-      "JS executed",
-      "DOM ready"
+      "Primer contenido visible",
+      "Página cargada totalmente",
+      "JS ejecutado",
+      "DOM listo"
     ]
   },
   "js-browser-21": {
-    "prompt": "What is layout shift?",
-    "explanation": "Measured by CLS.",
-    "interviewTip": "Avoid dynamic content jumps.",
+    "prompt": "¿Qué es el layout shift?",
+    "explanation": "Medido por el CLS.",
+    "interviewTip": "Evita saltos dinámicos de contenido.",
     "options": [
-      "Unexpected UI movement",
-      "Slow rendering",
-      "Broken CSS",
-      "Async loading"
+      "Movimiento inesperado de la UI",
+      "Renderizado lento",
+      "CSS roto",
+      "Carga asíncrona"
     ]
   },
   "js-browser-22": {
-    "prompt": "Which API runs off main thread?",
-    "explanation": "True multithreading.",
-    "interviewTip": "Cannot access DOM.",
+    "prompt": "¿Qué API se ejecuta fuera del main thread?",
+    "explanation": "Multithreading real.",
+    "interviewTip": "No puede acceder al DOM.",
     "options": [
       "Web Workers",
       "Promises",
@@ -242,36 +217,31 @@
     ]
   },
   "js-browser-23": {
-    "prompt": "What is the JS heap?",
-    "explanation": "Used for dynamic allocations.",
-    "interviewTip": "Leaks live here.",
-    "options": [
-      "Memory for objects",
-      "Call stack",
-      "Task queue",
-      "DOM tree"
-    ]
+    "prompt": "¿Qué es el JS heap?",
+    "explanation": "Se usa para asignaciones dinámicas.",
+    "interviewTip": "Las fugas de memoria (leaks) viven aquí.",
+    "options": ["Memoria para objetos", "Call stack", "Task queue", "DOM tree"]
   },
   "js-browser-24": {
-    "prompt": "What causes forced synchronous layout?",
-    "explanation": "Triggers immediate reflow.",
-    "interviewTip": "Avoid layout thrashing.",
+    "prompt": "¿Qué causa un forced synchronous layout?",
+    "explanation": "Dispara un reflow inmediato.",
+    "interviewTip": "Evita el layout thrashing.",
     "options": [
-      "Reading layout after write",
-      "Async JS",
+      "Leer el layout después de escribir",
+      "JS asíncrono",
       "Promises",
       "Event listeners"
     ]
   },
   "js-browser-25": {
-    "prompt": "Best way to optimize rendering?",
-    "explanation": "Profiling first.",
-    "interviewTip": "Never guess.",
+    "prompt": "¿Mejor forma de optimizar el renderizado?",
+    "explanation": "Hacer profiling primero.",
+    "interviewTip": "Nunca adivines.",
     "options": [
-      "Measure with DevTools",
-      "Rewrite in WebAssembly",
-      "Avoid JS",
-      "Remove CSS"
+      "Medir con DevTools",
+      "Reescribir en WebAssembly",
+      "Evitar JS",
+      "Eliminar CSS"
     ]
   }
 }
