@@ -3,197 +3,147 @@
     "prompt": "Що буде виведено в консоль?",
     "explanation": "`var a` піднімається (hoisting) всередині функції, затінюючи зовнішню змінну `a`.",
     "interviewTip": "Класичне питання на поєднання підняття (hoisting) та затінення (shadowing).",
-    "options": [
-      "1",
-      "2",
-      "undefined",
-      "ReferenceError"
-    ]
+    "options": ["1", "2", "undefined", "ReferenceError"]
   },
   "js-scope-02": {
     "prompt": "Що таке блочна область видимості?",
     "explanation": "Змінні, оголошені через `let` та `const`, доступні лише всередині блоку `{}`.",
     "interviewTip": "Порівняйте це з функціональною областю видимості `var`.",
     "options": [
-      "Scope created by `{}` with let/const",
-      "Scope of a function",
-      "Scope of an object",
-      "Scope of a file"
+      "Область видимості, створена `{}` з let/const",
+      "Область видимості функції",
+      "Область видимості об'єкта",
+      "Область видимості файлу"
     ]
   },
   "js-scope-03": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "`x` існує лише всередині блоку, де вона була оголошена через let/const.",
     "interviewTip": "Перевірка дотримання правил блочної області видимості.",
-    "options": [
-      "10",
-      "undefined",
-      "ReferenceError",
-      "null"
-    ]
+    "options": ["10", "undefined", "ReferenceError", "null"]
   },
   "js-scope-04": {
     "prompt": "Що станеться?",
     "explanation": "`let` піднімається, але знаходиться в «тимчасовій мертвій зоні» (TDZ) до моменту ініціалізації.",
     "interviewTip": "Концепцію TDZ часто розуміють неправильно, тому це гарне питання.",
-    "options": [
-      "5",
-      "undefined",
-      "ReferenceError",
-      "TypeError"
-    ]
+    "options": ["5", "undefined", "ReferenceError", "TypeError"]
   },
   "js-scope-05": {
     "prompt": "Яка область видимості у змінної, оголошеної через var?",
     "explanation": "`var` ігнорує блоки `{}` і обмежена лише функцією або глобальним простором.",
     "interviewTip": "Це основна причина, чому було введено `let`.",
     "options": [
-      "Function scope",
-      "Block scope",
-      "Module scope only",
-      "Lexical scope"
+      "Область видимості функції (Function scope)",
+      "Блочна область видимості (Block scope)",
+      "Тільки область видимості модуля",
+      "Лексична область видимості"
     ]
   },
   "js-scope-06": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "`var` «витікає» за межі циклу for у зовнішню область видимості.",
     "interviewTip": "Класичний баг із областю видимості в циклах.",
-    "options": [
-      "2",
-      "3",
-      "undefined",
-      "ReferenceError"
-    ]
+    "options": ["2", "3", "undefined", "ReferenceError"]
   },
   "js-scope-07": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "`let` створює нову область видимості для кожної ітерації циклу.",
     "interviewTip": "Область видимості на кожній ітерації (per-iteration scope).",
-    "options": [
-      "2",
-      "3",
-      "undefined",
-      "ReferenceError"
-    ]
+    "options": ["2", "3", "undefined", "ReferenceError"]
   },
   "js-scope-08": {
     "prompt": "Що таке лексична область видимості?",
     "explanation": "Область видимості визначається місцем розташування коду в тексті програми під час написання.",
     "interviewTip": "JavaScript використовує саме лексичну (статичну) область видимості.",
     "options": [
-      "Scope determined by code location",
-      "Scope determined at runtime",
-      "Dynamic scope",
-      "Global scope only"
+      "Область, визначена розташуванням коду",
+      "Область, визначена під час виконання (runtime)",
+      "Динамічна область видимості",
+      "Тільки глобальна область видимості"
     ]
   },
   "js-scope-09": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Функція `foo` «запам'ятовує» свою лексичну область видимості в момент створення.",
     "interviewTip": "Різниця між лексичною та динамічною областями видимості.",
-    "options": [
-      "1",
-      "2",
-      "undefined",
-      "ReferenceError"
-    ]
+    "options": ["1", "2", "undefined", "ReferenceError"]
   },
   "js-scope-10": {
     "prompt": "Що таке замикання (closure)?",
     "explanation": "Це функція разом зі своєю лексичною областю видимості (змінними, що її оточують).",
     "interviewTip": "Одна з найважливіших концепцій у JavaScript.",
     "options": [
-      "Function + its lexical scope",
-      "Function inside another",
-      "Private variable",
-      "Recursive function"
+      "Функція + її лексична область видимості",
+      "Функція всередині іншої",
+      "Приватна змінна",
+      "Рекурсивна функція"
     ]
   },
   "js-scope-11": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Замикання підтримує змінну `a` «живою» в пам'яті навіть після виходу з функції.",
     "interviewTip": "Згадайте про утримання пам'яті замиканнями.",
-    "options": [
-      "1",
-      "undefined",
-      "ReferenceError",
-      "null"
-    ]
+    "options": ["1", "undefined", "ReferenceError", "null"]
   },
   "js-scope-12": {
     "prompt": "Що спричиняє витік глобальної змінної?",
     "explanation": "Без суворого режиму (strict mode) неоголошені змінні автоматично стають глобальними.",
     "interviewTip": "Завжди рекомендуйте використовувати strict mode або модулі.",
     "options": [
-      "Assigning to undeclared variable",
-      "Using let",
-      "Using strict mode",
-      "Using const"
+      "Присвоєння неоголошеній змінній",
+      "Використання let",
+      "Використання strict mode",
+      "Використання const"
     ]
   },
   "js-scope-13": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Суворий режим забороняє створення неявних глобальних змінних.",
     "interviewTip": "Важливість використання `use strict`.",
-    "options": [
-      "10",
-      "undefined",
-      "ReferenceError",
-      "TypeError"
-    ]
+    "options": ["10", "undefined", "ReferenceError", "TypeError"]
   },
   "js-scope-14": {
     "prompt": "Яка область видимості у змінних в ES-модулях?",
     "explanation": "Кожен модуль має власну ізольовану область видимості верхнього рівня.",
     "interviewTip": "Модулі запобігають забрудненню глобального простору імен.",
     "options": [
-      "Module scope",
-      "Global scope",
-      "Function scope",
-      "Block scope only"
+      "Область видимості модуля",
+      "Глобальна область видимості",
+      "Область видимості функції",
+      "Тільки блочна область видимості"
     ]
   },
   "js-scope-15": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Внутрішня змінна `a` має блочну область видимості та затінює зовнішню.",
     "interviewTip": "Ще один приклад затінення (shadowing).",
-    "options": [
-      "1",
-      "2",
-      "undefined",
-      "ReferenceError"
-    ]
+    "options": ["1", "2", "undefined", "ReferenceError"]
   },
   "js-scope-16": {
     "prompt": "Що таке затінення змінної (variable shadowing)?",
     "explanation": "Це ситуація, коли змінна у внутрішній області видимості має те саме ім'я, що й у зовнішній.",
     "interviewTip": "Затінення може погіршити читабельність коду.",
     "options": [
-      "Inner scope variable with same name",
-      "Overwriting global variable",
-      "Garbage collection",
-      "Hoisting"
+      "Змінна у внутрішній області з таким самим ім'ям",
+      "Перезапис глобальної змінної",
+      "Збирання сміття (Garbage collection)",
+      "Підняття (Hoisting)"
     ]
   },
   "js-scope-17": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "`const` працює за тими ж правилами області видимості, що й `let`.",
     "interviewTip": "Пам'ятайте: const — це незмінне посилання, а не незмінне значення.",
-    "options": [
-      "10",
-      "undefined",
-      "ReferenceError",
-      "null"
-    ]
+    "options": ["10", "undefined", "ReferenceError", "null"]
   },
   "js-scope-18": {
     "prompt": "Що представляє ланцюжок областей видимості (scope chain)?",
     "explanation": "Ланцюжок, за яким JS шукає ідентифікатор від внутрішньої області до глобальної.",
     "interviewTip": "Не плутайте з ланцюжком прототипів.",
     "options": [
-      "Hierarchy of lexical environments",
-      "Call stack",
-      "Prototype chain",
+      "Ієрархія лексичних оточень",
+      "Стек викликів (Call stack)",
+      "Ланцюжок прототипів",
       "Event loop"
     ]
   },
@@ -201,77 +151,57 @@
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Підняття (hoisting) відбувається всередині IIFE так само як у звичайній функції.",
     "interviewTip": "Дуже поширена пастка на співбесідах.",
-    "options": [
-      "1",
-      "2",
-      "undefined",
-      "ReferenceError"
-    ]
+    "options": ["1", "2", "undefined", "ReferenceError"]
   },
   "js-scope-20": {
     "prompt": "Що створює нову область видимості?",
     "explanation": "Функції, блоки `{}` (для let/const), модулі та блоки catch.",
     "interviewTip": "Будьте точними в поясненнях.",
-    "options": [
-      "Function",
-      "Block with let/const",
-      "Module",
-      "All of the above"
-    ]
+    "options": ["Функція", "Блок із let/const", "Модуль", "Усе перелічене"]
   },
   "js-scope-21": {
     "prompt": "Чому замикання корисні?",
     "explanation": "Вони дозволяють створювати приватні змінні та зберігати стан без глобальних об'єктів.",
     "interviewTip": "Поєднуйте відповідь із прикладами з реальних проектів.",
     "options": [
-      "Data encapsulation",
-      "Better performance",
-      "Avoid async",
-      "Prevent hoisting"
+      "Інкапсуляція даних",
+      "Краща продуктивність",
+      "Уникнення асинхронності",
+      "Запобігання підняттю (hoisting)"
     ]
   },
   "js-scope-22": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Замикання посилаються на саму змінну, а не на її копію на момент створення.",
     "interviewTip": "Важливий нюанс роботи замикань.",
-    "options": [
-      "10",
-      "20",
-      "undefined",
-      "ReferenceError"
-    ]
+    "options": ["10", "20", "undefined", "ReferenceError"]
   },
   "js-scope-23": {
     "prompt": "Що таке тимчасова мертва зона (Temporal Dead Zone)?",
     "explanation": "Час між початком області видимості та фактичною ініціалізацією змінної let/const.",
     "interviewTip": "Головна відмінність від поведінки `var`.",
     "options": [
-      "Time before let/const initialization",
-      "Async execution delay",
-      "Garbage collection phase",
-      "Event loop queue"
+      "Час до ініціалізації let/const",
+      "Затримка асинхронного виконання",
+      "Фаза збирання сміття",
+      "Черга Event loop"
     ]
   },
   "js-scope-24": {
     "prompt": "Що станеться, якщо повторно оголосити let в тій же області видимості?",
     "explanation": "JavaScript викине SyntaxError; повторне оголошення в одній області заборонено.",
     "interviewTip": "Це допомагає уникати випадкових перезаписів змінних.",
-    "options": [
-      "SyntaxError",
-      "undefined",
-      "Ignored",
-      "Overwritten"
-    ]
+    "options": ["SyntaxError", "undefined", "Ігнорується", "Перезаписується"]
   },
   "js-scope-25": {
     "prompt": "Чому глобальна область видимості вважається небезпечною?",
     "explanation": "Вона збільшує зв'язність коду (coupling) та ризик конфліктів імен.",
     "interviewTip": "Гарне питання на перевірку архітектурного мислення.",
     "options": [
-      "Name collisions",
-      "Memory leaks",
-      "Hard to test",
-      "All of the above"
+      "Конфлікти імен (collisions)",
+      "Витоки пам'яті",
+      "Складність тестування",
+      "Усе перелічене"
     ]
   }
 }

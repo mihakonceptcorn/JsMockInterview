@@ -4,10 +4,10 @@
     "explanation": "Примітиви зазвичай зберігаються безпосередньо в стеку (stack).",
     "interviewTip": "Об'єкти ж живуть у купі (heap).",
     "options": [
-      "Stack",
-      "Heap",
-      "Call queue",
-      "DOM tree"
+      "Стек (Stack)",
+      "Купа (Heap)",
+      "Черга викликів (Call queue)",
+      "Дерево DOM"
     ]
   },
   "js-mm-02": {
@@ -15,10 +15,10 @@
     "explanation": "Об'єкти розміщуються в купі (heap).",
     "interviewTip": "У стеку зберігаються лише посилання на ці об'єкти.",
     "options": [
-      "Heap",
-      "Stack",
-      "Call stack",
-      "Registers"
+      "Купа (Heap)",
+      "Стек (Stack)",
+      "Стек викликів (Call stack)",
+      "Регістри"
     ]
   },
   "js-mm-03": {
@@ -26,10 +26,10 @@
     "explanation": "Це процес автоматичного звільнення пам'яті, яка більше не використовується.",
     "interviewTip": "JavaScript — це мова з автоматичним керуванням пам'яттю.",
     "options": [
-      "Automatic memory cleanup",
-      "Manual deallocation",
-      "Heap compression",
-      "Stack reset"
+      "Автоматичне очищення пам'яті",
+      "Ручне звільнення (Manual deallocation)",
+      "Стиснення купи (Heap compression)",
+      "Скидання стека (Stack reset)"
     ]
   },
   "js-mm-04": {
@@ -38,20 +38,20 @@
     "interviewTip": "V8 використовує поколінневий збір сміття (Generational GC).",
     "options": [
       "Mark-and-sweep",
-      "Reference counting only",
-      "Manual GC",
-      "Stop-and-copy only"
+      "Тільки підрахунок посилань (Reference counting)",
+      "Ручний збір сміття (Manual GC)",
+      "Тільки Stop-and-copy"
     ]
   },
   "js-mm-05": {
     "prompt": "Коли об'єкт стає доступним для видалення збирачем сміття?",
-    "explanation": "Коли він стає недосяжним (unreachable) з кореневих об'єктів.",
+    "explanation": "Когда він стає недосяжним (unreachable) з кореневих об'єктів.",
     "interviewTip": "Виходу зміної з області видимості не завжди достатньо.",
     "options": [
-      "No reachable references",
-      "Out of scope variable",
-      "Null value",
-      "Low memory"
+      "Відсутні досяжні посилання",
+      "Змінна вийшла за область видимості",
+      "Значення null",
+      "Брак пам'яті"
     ]
   },
   "js-mm-06": {
@@ -59,10 +59,10 @@
     "explanation": "Це пам'ять, яка більше не потрібна застосунку, але залишається досяжною.",
     "interviewTip": "Часто виникає через некоректне використання замикань.",
     "options": [
-      "Unused memory not released",
-      "Stack overflow",
-      "Slow GC",
-      "Heap fragmentation"
+      "Невикористана пам'ять не звільняється",
+      "Переповнення стека (Stack overflow)",
+      "Повільний збір сміття (Slow GC)",
+      "Фрагментація купи"
     ]
   },
   "js-mm-07": {
@@ -70,10 +70,10 @@
     "explanation": "Від'єднані (detached) DOM-вузли, на які залишаються посилання в JS.",
     "interviewTip": "Завжди перевіряйте видалення обробників подій.",
     "options": [
-      "Detached DOM nodes",
-      "Local variables",
-      "Primitive values",
-      "Function parameters"
+      "Від'єднані DOM-вузли",
+      "Локальні змінні",
+      "Примітивні значення",
+      "Параметри функції"
     ]
   },
   "js-mm-08": {
@@ -81,10 +81,10 @@
     "explanation": "Глобальні змінні завжди досяжні, тому вони ніколи не видаляються GC.",
     "interviewTip": "Уникайте випадкового створення глобальних змінних.",
     "options": [
-      "They live for app lifetime",
-      "They slow down GC",
-      "They block rendering",
-      "They use stack memory"
+      "Вони існують протягом усього життя програми",
+      "Вони уповільнюють GC",
+      "Вони блокують рендеринг",
+      "Вони використовують пам'ять стека"
     ]
   },
   "js-mm-09": {
@@ -92,10 +92,10 @@
     "explanation": "GC обходить дерево об'єктів, позначаючи всі досяжні вузли.",
     "interviewTip": "Процес починається від коренів (roots).",
     "options": [
-      "Reachable objects are marked",
-      "Memory is freed",
-      "Heap is compacted",
-      "Stack is cleared"
+      "Позначаються досяжні об'єкти",
+      "Пам'ять звільняється",
+      "Купа ущільнюється (compacted)",
+      "Стек очищується"
     ]
   },
   "js-mm-10": {
@@ -103,10 +103,10 @@
     "explanation": "Це базові точки відліку: об'єкт window, стеки викликів, замикання.",
     "interviewTip": "З них починається перевірка досяжності пам'яті.",
     "options": [
-      "Global objects and stack references",
-      "Heap objects",
-      "DOM nodes",
-      "Timers"
+      "Глобальні об'єкти та посилання в стеку",
+      "Об'єкти в купі (Heap objects)",
+      "Вузли DOM",
+      "Таймери"
     ]
   },
   "js-mm-11": {
@@ -114,10 +114,10 @@
     "explanation": "Стратегія, де нові об'єкти перевіряються частіше, ніж старі.",
     "interviewTip": "Більшість об'єктів «помирають» молодими.",
     "options": [
-      "Objects grouped by age",
-      "GC by priority",
-      "Manual generations",
-      "Stack-based GC"
+      "Об'єкти згруповані за віком",
+      "Збір сміття за пріоритетом",
+      "Ручні покоління",
+      "Збір сміття на основі стека"
     ]
   },
   "js-mm-12": {
@@ -125,10 +125,10 @@
     "explanation": "Замикання може утримувати посилання на великі об'єкти з зовнішньої функції.",
     "interviewTip": "За потреби явно зануляйте (null) великі посилання.",
     "options": [
-      "Closure holding unused references",
-      "Function recursion",
-      "Stack overflow",
-      "Async execution"
+      "Замикання утримує невикористані посилання",
+      "Рекурсія функції",
+      "Переповнення стека",
+      "Асинхронне виконання"
     ]
   },
   "js-mm-13": {
@@ -136,10 +136,10 @@
     "explanation": "Сильні посилання (Strong references) утримують об'єкти в пам'яті.",
     "interviewTip": "На відміну від WeakMap, звичайний Map тримає ключі «сильно».",
     "options": [
-      "Strong references",
-      "Weak references",
-      "Null values",
-      "Primitives"
+      "Сильні посилання (Strong references)",
+      "Слабкі посилання (Weak references)",
+      "Значення null",
+      "Примітиви"
     ]
   },
   "js-mm-14": {
@@ -147,32 +147,27 @@
     "explanation": "Він тримає посилання на ключі-об'єкти «слабко», дозволяючи GC їх видаляти.",
     "interviewTip": "Ідеально підходить для кешування та приватних даних.",
     "options": [
-      "Avoid memory leaks",
-      "Faster access",
-      "More features",
-      "Serialization"
+      "Уникнення витоків пам'яті",
+      "Швидший доступ",
+      "Більше функцій",
+      "Серіалізація"
     ]
   },
   "js-mm-15": {
     "prompt": "Чи можуть ключі у WeakMap бути примітивами?",
     "explanation": "Ні, ключами обов'язково мають бути об'єкти.",
     "interviewTip": "Це ж правило стосується і WeakSet.",
-    "options": [
-      "No",
-      "Yes",
-      "Only strings",
-      "Only numbers"
-    ]
+    "options": ["Ні", "Так", "Тільки рядки", "Тільки числа"]
   },
   "js-mm-16": {
     "prompt": "Що таке фрагментація купи (heap fragmentation)?",
     "explanation": "Це наявність вільних проміжків пам'яті, що сповільнює нові розміщення.",
     "interviewTip": "Процес ущільнення (compaction) вирішує цю проблему.",
     "options": [
-      "Scattered free memory blocks",
-      "Stack corruption",
-      "Memory leak",
-      "Slow GC"
+      "Розкидані вільні блоки пам'яті",
+      "Пошкодження стека (Stack corruption)",
+      "Витік пам'яті",
+      "Повільний збір сміття"
     ]
   },
   "js-mm-17": {
@@ -180,10 +175,10 @@
     "explanation": "Це повна зупинка виконання JS-коду на час роботи збирача сміття.",
     "interviewTip": "Може спричиняти візуальні лаги (jank).",
     "options": [
-      "Pauses JS execution",
-      "Runs in background",
-      "Only for stack",
-      "Only for DOM"
+      "Призупиняє виконання JS",
+      "Працює у фоновому режимі",
+      "Тільки для стека",
+      "Тільки для DOM"
     ]
   },
   "js-mm-18": {
@@ -191,10 +186,10 @@
     "explanation": "Знімки купи (Heap snapshots) у Chrome DevTools.",
     "interviewTip": "Порівнюйте знімки до та після виконання підозрілих дій.",
     "options": [
-      "Chrome DevTools Memory tab",
+      "Вкладка Memory у Chrome DevTools",
       "Console.log",
-      "Network tab",
-      "Lighthouse only"
+      "Вкладка Network",
+      "Тільки Lighthouse"
     ]
   },
   "js-mm-19": {
@@ -202,9 +197,9 @@
     "explanation": "Створення великої кількості короткочасних об'єктів (GC churn).",
     "interviewTip": "Намагайтеся перевикористовувати об'єкти, де це можливо.",
     "options": [
-      "Frequent allocations",
-      "Async code",
-      "Promises",
+      "Часте виділення пам'яті (allocations)",
+      "Асинхронний код",
+      "Проміси (Promises)",
       "Event loop"
     ]
   },
@@ -213,10 +208,10 @@
     "explanation": "Техніка збереження та повторного використання об'єктів замість створення нових.",
     "interviewTip": "Використовуйте обережно, лише в критичних для швидкодії місцях.",
     "options": [
-      "Reusing allocated objects",
-      "Cloning objects",
-      "Freezing objects",
-      "Serializing objects"
+      "Повторне використання виділених об'єктів",
+      "Клонування об'єктів",
+      "Заморожування об'єктів",
+      "Серіалізація об'єктів"
     ]
   },
   "js-mm-21": {
@@ -224,10 +219,10 @@
     "explanation": "GC ніколи не зможе звільнити цю пам'ять, поки масив досяжний.",
     "interviewTip": "Завжди звільняйте посилання після використання.",
     "options": [
-      "Memory stays allocated",
-      "Slower loops",
-      "Stack overflow",
-      "Scope issues"
+      "Пам'ять залишається виділеною",
+      "Повільніші цикли",
+      "Переповнення стека",
+      "Проблеми з областю видимості"
     ]
   },
   "js-mm-22": {
@@ -235,32 +230,27 @@
     "explanation": "Воно лише видаляє посилання; рішення про видалення об'єкта приймає GC.",
     "interviewTip": "Поширена помилка вважати, що null негайно звільняє пам'ять.",
     "options": [
-      "Allows GC if no other refs exist",
-      "Immediately frees memory",
-      "Deletes object",
-      "Compacts heap"
+      "Дозволяє GC видалити об'єкт, якщо немає інших посилань",
+      "Негайно звільняє пам'ять",
+      "Видаляє об'єкт",
+      "Ущільнює купу"
     ]
   },
   "js-mm-23": {
     "prompt": "Який API дозволяє створювати слабкі посилання?",
     "explanation": "Клас WeakRef, введений у сучасних стандартах.",
     "interviewTip": "Використовуйте лише у крайніх випадках.",
-    "options": [
-      "WeakRef",
-      "Map",
-      "Set",
-      "Object"
-    ]
+    "options": ["WeakRef", "Map", "Set", "Object"]
   },
   "js-mm-24": {
     "prompt": "Чому використання WeakRef може бути небезпечним?",
     "explanation": "Через непередбачуваний життєвий цикл об'єкта (залежить від GC).",
     "interviewTip": "Це тема просунутого рівня для Senior розробників.",
     "options": [
-      "Object may disappear anytime",
-      "It leaks memory",
-      "It blocks GC",
-      "It crashes browser"
+      "Об'єкт може зникнути в будь-який момент",
+      "Це спричиняє витоки пам'яті",
+      "Це блокує роботу GC",
+      "Це призводить до збою браузера"
     ]
   },
   "js-mm-25": {
@@ -268,10 +258,10 @@
     "explanation": "Не намагайтеся вгадати — завжди використовуйте профілювання.",
     "interviewTip": "Це «золота» відповідь досвідченого розробника.",
     "options": [
-      "Measure before optimizing",
-      "Avoid objects",
-      "Disable GC",
-      "Use primitives only"
+      "Виміряти перед оптимізацією",
+      "Уникати об'єктів",
+      "Вимкнути GC",
+      "Використовувати тільки примітиви"
     ]
   }
 }

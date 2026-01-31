@@ -4,22 +4,17 @@
     "explanation": "Масиви — це впорядковані об'єкти з індексацією, що починається з нуля.",
     "interviewTip": "Внутрішньо масиви є об'єктами.",
     "options": [
-      "An ordered collection of values",
-      "A fixed-size list",
-      "A key-value store",
-      "A primitive type"
+      "Впорядкована колекція значень",
+      "Список фіксованого розміру",
+      "Сховище ключ-значення",
+      "Примітивний тип"
     ]
   },
   "js-arr-02": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Масиви — це тип об'єкта.",
     "interviewTip": "Використовуйте Array.isArray().",
-    "options": [
-      "array",
-      "object",
-      "undefined",
-      "list"
-    ]
+    "options": ["array", "object", "undefined", "list"]
   },
   "js-arr-03": {
     "prompt": "Як правильно перевірити, чи є значення масивом?",
@@ -36,231 +31,156 @@
     "prompt": "Який метод мутує (змінює) масив?",
     "explanation": "push змінює оригінальний масив.",
     "interviewTip": "Мутація проти незмінності (immutability).",
-    "options": [
-      "map",
-      "filter",
-      "slice",
-      "push"
-    ]
+    "options": ["map", "filter", "slice", "push"]
   },
   "js-arr-05": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Зменшення властивості length обрізає масив.",
     "interviewTip": "Властивість length доступна для запису.",
-    "options": [
-      "[1]",
-      "[1,2,3]",
-      "[]",
-      "Error"
-    ]
+    "options": ["[1]", "[1,2,3]", "[]", "Error"]
   },
   "js-arr-06": {
     "prompt": "Що робить метод `slice`?",
     "explanation": "slice не мутує оригінальний масив.",
     "interviewTip": "Часте запитання на порівняння зі splice.",
     "options": [
-      "Returns a new array",
-      "Mutates array",
-      "Deletes items",
-      "Sorts array"
+      "Повертає новий масив",
+      "Мутує масив",
+      "Видаляє елементи",
+      "Сортує масив"
     ]
   },
   "js-arr-07": {
     "prompt": "Який метод видаляє останній елемент?",
     "explanation": "pop видаляє останній елемент.",
     "interviewTip": "Цей метод мутує масив.",
-    "options": [
-      "shift",
-      "pop",
-      "splice",
-      "slice"
-    ]
+    "options": ["shift", "pop", "splice", "slice"]
   },
   "js-arr-08": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "map повертає новий масив.",
     "interviewTip": "Порівняння за посиланням (reference comparison).",
-    "options": [
-      "true",
-      "false",
-      "undefined",
-      "Error"
-    ]
+    "options": ["true", "false", "undefined", "Error"]
   },
   "js-arr-09": {
     "prompt": "Що робить метод `splice`?",
     "explanation": "splice мутує (змінює) оригінальний масив.",
     "interviewTip": "Часто плутають із методом slice.",
     "options": [
-      "Mutates array",
-      "Returns shallow copy",
-      "Does not affect original",
-      "Only removes items"
+      "Мутує масив",
+      "Повертає поверхневу копію",
+      "Не впливає на оригінал",
+      "Тільки видаляє елементи"
     ]
   },
   "js-arr-10": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Довжина масиву стає рівною найбільшому індексу + 1.",
     "interviewTip": "Розріджені (sparse) масиви.",
-    "options": [
-      "3",
-      "10",
-      "11",
-      "Error"
-    ]
+    "options": ["3", "10", "11", "Error"]
   },
   "js-arr-11": {
     "prompt": "Який метод створює поверхневу копію?",
     "explanation": "slice повертає новий масив.",
     "interviewTip": "Копія залишається поверхневою (shallow).",
-    "options": [
-      "slice",
-      "push",
-      "pop",
-      "shift"
-    ]
+    "options": ["slice", "push", "pop", "shift"]
   },
   "js-arr-12": {
     "prompt": "Що повертає `forEach`?",
     "explanation": "forEach завжди повертає undefined.",
     "interviewTip": "Не підтримує ланцюжки методів (chaining).",
-    "options": [
-      "New array",
-      "Original array",
-      "undefined",
-      "Boolean"
-    ]
+    "options": ["Новий масив", "Оригінальний масив", "undefined", "Boolean"]
   },
   "js-arr-13": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "includes перевіряє наявність значення в масиві.",
     "interviewTip": "Використовує алгоритм SameValueZero.",
-    "options": [
-      "true",
-      "false",
-      "undefined",
-      "Error"
-    ]
+    "options": ["true", "false", "undefined", "Error"]
   },
   "js-arr-14": {
     "prompt": "Який метод робить масив пласким (flatten)?",
     "explanation": "flat розгортає вкладені масиви.",
     "interviewTip": "Можна вказати глибину розгортання.",
-    "options": [
-      "flat",
-      "map",
-      "reduce",
-      "concat"
-    ]
+    "options": ["flat", "map", "reduce", "concat"]
   },
   "js-arr-15": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Масиви неявно перетворюються на рядки при операціях із ними.",
     "interviewTip": "Неявне приведення типів (coercion).",
-    "options": [
-      "[1,2,3,4,5]",
-      "1,2,34,5",
-      "1,2,34,5",
-      "Error"
-    ]
+    "options": ["[1,2,3,4,5]", "1,2,34,5", "1,2,34,5", "Error"]
   },
   "js-arr-16": {
     "prompt": "Який метод НЕ мутує масив?",
     "explanation": "filter повертає новий масив.",
     "interviewTip": "Пам'ятайте, що sort — мутує!",
-    "options": [
-      "sort",
-      "reverse",
-      "filter",
-      "splice"
-    ]
+    "options": ["sort", "reverse", "filter", "splice"]
   },
   "js-arr-17": {
     "prompt": "Що робить метод `reduce`?",
     "explanation": "reduce акумулює значення масиву в одне фінальне значення.",
     "interviewTip": "Надзвичайно потужний метод.",
     "options": [
-      "Accumulates values into one",
-      "Maps array",
-      "Filters array",
-      "Sorts array"
+      "Акумулює значення в одне",
+      "Трансформує масив (map)",
+      "Фільтрує масив",
+      "Сортує масив"
     ]
   },
   "js-arr-18": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Обидві змінні посилаються на один і той самий масив.",
     "interviewTip": "Посилання проти копіювання.",
-    "options": [
-      "3",
-      "4",
-      "Error",
-      "undefined"
-    ]
+    "options": ["3", "4", "Error", "undefined"]
   },
   "js-arr-19": {
     "prompt": "Що робить `Array.from`?",
     "explanation": "Перетворює масивоподібні об'єкти на справжні масиви.",
     "interviewTip": "Корисно для обробки NodeList.",
     "options": [
-      "Creates array from iterable",
-      "Clones array",
-      "Sorts array",
-      "Filters array"
+      "Створює масив з ітерованого об'єкта",
+      "Клонує масив",
+      "Сортує масив",
+      "Фільтрує масив"
     ]
   },
   "js-arr-20": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Довжина порожнього масиву дорівнює 0.",
     "interviewTip": "Базове, але поширене питання.",
-    "options": [
-      "0",
-      "undefined",
-      "null",
-      "Error"
-    ]
+    "options": ["0", "undefined", "null", "Error"]
   },
   "js-arr-21": {
     "prompt": "Що повертає `every`?",
     "explanation": "Перевіряє, чи всі елементи відповідають умові.",
     "interviewTip": "Припиняє виконання (short-circuits), як тільки знайде невідповідність.",
-    "options": [
-      "Boolean",
-      "Array",
-      "Number",
-      "Object"
-    ]
+    "options": ["Boolean", "Array", "Number", "Object"]
   },
   "js-arr-22": {
     "prompt": "Що робить метод `some`?",
     "explanation": "Повертає true, якщо хоча б один елемент відповідає умові.",
     "interviewTip": "Перериває виконання після першого знайденого збігу.",
     "options": [
-      "Checks if at least one element matches",
-      "Checks all elements",
-      "Filters array",
-      "Maps array"
+      "Перевіряє, чи хоча б один елемент відповідає умові",
+      "Перевіряє всі елементи",
+      "Фільтрує масив",
+      "Трансформує масив (map)"
     ]
   },
   "js-arr-23": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Розріджені масиви враховують порожні слоти.",
     "interviewTip": "Порожні слоти існують і займають місце в length.",
-    "options": [
-      "2",
-      "3",
-      "Error",
-      "undefined"
-    ]
+    "options": ["2", "3", "Error", "undefined"]
   },
   "js-arr-24": {
     "prompt": "Що робить метод `concat`?",
     "explanation": "concat створює новий масив без зміни оригінального.",
     "interviewTip": "Патерн незмінності (immutable pattern).",
     "options": [
-      "Returns new combined array",
-      "Mutates original array",
-      "Sorts array",
-      "Flattens deeply"
+      "Повертає новий об'єднаний масив",
+      "Мутує оригінальний масив",
+      "Сортує масив",
+      "Глибоко розгортає масив"
     ]
   },
   "js-arr-25": {
@@ -268,10 +188,10 @@
     "explanation": "Незмінність (immutability) допомагає React виявляти зміни для рендеру.",
     "interviewTip": "Ключова концепція React.",
     "options": [
-      "State updates may not trigger re-render",
-      "Arrays are slow",
-      "JS forbids it",
-      "Garbage collection"
+      "Оновлення стану може не викликати ререндер",
+      "Масиви працюють повільно",
+      "JS забороняє це",
+      "Збирання сміття (Garbage collection)"
     ]
   }
 }

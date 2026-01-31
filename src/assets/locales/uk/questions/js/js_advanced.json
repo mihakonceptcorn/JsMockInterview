@@ -3,89 +3,59 @@
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Змінна піднімається (hoisting), але не ініціалізується.",
     "interviewTip": "Підняття var проти let/const.",
-    "options": [
-      "undefined",
-      "5",
-      "ReferenceError",
-      "null"
-    ]
+    "options": ["undefined", "5", "ReferenceError", "null"]
   },
   "js-adv-02": {
     "prompt": "Що станеться?",
     "explanation": "Оголошення функцій (function declarations) піднімаються.",
     "interviewTip": "Різниця з функціональними виразами (function expressions).",
-    "options": [
-      "Works",
-      "ReferenceError",
-      "TypeError",
-      "undefined"
-    ]
+    "options": ["Працює", "ReferenceError", "TypeError", "undefined"]
   },
   "js-adv-03": {
     "prompt": "Що буде виведено?",
     "explanation": "Тимчасова мертва зона (Temporal Dead Zone).",
     "interviewTip": "Поведінка let/const.",
-    "options": [
-      "ReferenceError",
-      "undefined",
-      "1",
-      "null"
-    ]
+    "options": ["ReferenceError", "undefined", "1", "null"]
   },
   "js-adv-04": {
     "prompt": "Яким буде результат?",
     "explanation": "Замикання (closure) зберігає лексичну область видимості.",
     "interviewTip": "Замикання та пам'ять.",
-    "options": [
-      "2 3",
-      "1 2",
-      "NaN",
-      "Error"
-    ]
+    "options": ["2 3", "1 2", "NaN", "Error"]
   },
   "js-adv-05": {
     "prompt": "Що таке карування (currying)?",
     "explanation": "Карування = f(a,b) → f(a)(b).",
     "interviewTip": "Функціональні патерни.",
     "options": [
-      "Transforming function with multiple args into chained calls",
-      "Calling function immediately",
-      "Memoization",
-      "Binding context"
+      "Трансформація функції з багатьма аргументами в ланцюжок викликів",
+      "Негайний виклик функції",
+      "Мемоїзація",
+      "Прив'язка контексту"
     ]
   },
   "js-adv-06": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Карована функція.",
     "interviewTip": "Часткове застосування (partial application).",
-    "options": [
-      "5",
-      "23",
-      "NaN",
-      "Error"
-    ]
+    "options": ["5", "23", "NaN", "Error"]
   },
   "js-adv-07": {
     "prompt": "Головна різниця між debounce та throttle?",
     "explanation": "Debounce чекає, throttle обмежує частоту викликів.",
     "interviewTip": "Обробники scroll / resize.",
     "options": [
-      "Debounce delays, throttle limits frequency",
-      "They are the same",
-      "Throttle delays, debounce repeats",
-      "Only debounce exists"
+      "Debounce затримує, throttle обмежує частоту",
+      "Вони однакові",
+      "Throttle затримує, debounce повторює",
+      "Існує лише debounce"
     ]
   },
   "js-adv-08": {
     "prompt": "Що станеться?",
     "explanation": "Контекст `this` втрачено.",
     "interviewTip": "Прив'язка контексту (bind).",
-    "options": [
-      "undefined",
-      "1",
-      "Error",
-      "null"
-    ]
+    "options": ["undefined", "1", "Error", "null"]
   },
   "js-adv-09": {
     "prompt": "Як виправити попередню проблему?",
@@ -94,8 +64,8 @@
     "options": [
       "obj.foo.bind(obj)",
       "obj.foo()",
-      "call stack",
-      "use var"
+      "стек викликів (call stack)",
+      "використати var"
     ]
   },
   "js-adv-10": {
@@ -103,65 +73,50 @@
     "explanation": "Стрілкова функція не має власного this.",
     "interviewTip": "Обробники подій.",
     "options": [
-      "Lexical scope",
-      "Caller",
-      "Global object",
-      "Prototype"
+      "Лексична область видимості (Lexical scope)",
+      "Той, хто викликав (Caller)",
+      "Глобальний об'єкт",
+      "Прототип"
     ]
   },
   "js-adv-11": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "NaN має тип number.",
     "interviewTip": "Використовуйте Number.isNaN.",
-    "options": [
-      "number",
-      "NaN",
-      "undefined",
-      "object"
-    ]
+    "options": ["number", "NaN", "undefined", "object"]
   },
   "js-adv-12": {
     "prompt": "Що поверне цей вираз?",
     "explanation": "Object.is розрізняє -0 та 0.",
     "interviewTip": "Різниця з оператором ===.",
-    "options": [
-      "false",
-      "true",
-      "NaN",
-      "Error"
-    ]
+    "options": ["false", "true", "NaN", "Error"]
   },
   "js-adv-13": {
     "prompt": "Що таке мемоїзація?",
     "explanation": "Оптимізація продуктивності.",
     "interviewTip": "Чисті функції.",
     "options": [
-      "Caching function results",
-      "Delaying execution",
-      "Cloning objects",
-      "Binding this"
+      "Кешування результатів функції",
+      "Затримка виконання",
+      "Клонування об'єктів",
+      "Прив'язка this"
     ]
   },
   "js-adv-14": {
     "prompt": "Що станеться?",
     "explanation": "true перетворюється на 1, тому 1 < 3.",
     "interviewTip": "Приведення типів при порівнянні.",
-    "options": [
-      "true",
-      "false",
-      "NaN",
-      "Error"
-    ]
+    "options": ["true", "false", "NaN", "Error"]
   },
   "js-adv-15": {
     "prompt": "Що таке чиста функція?",
     "explanation": "Детермінована поведінка (однаковий результат для тих самих вхідних даних).",
     "interviewTip": "Функціональне програмування.",
     "options": [
-      "No side effects, same input → same output",
-      "Uses closures",
-      "Async only",
-      "Uses this"
+      "Без побічних ефектів, однаковий вхід → однаковий вихід",
+      "Використовує замикання",
+      "Тільки асинхронна",
+      "Використовує this"
     ]
   },
   "js-adv-16": {
@@ -169,10 +124,10 @@
     "explanation": "Тимчасова мертва зона (Temporal Dead Zone).",
     "interviewTip": "Поведінка let/const.",
     "options": [
-      "Access before initialization",
-      "Scope leakage",
-      "Garbage collection",
-      "Prototype chain"
+      "Доступ перед ініціалізацією",
+      "Витік області видимості",
+      "Збір сміття",
+      "Ланцюжок прототипів"
     ]
   },
   "js-adv-17": {
@@ -180,10 +135,10 @@
     "explanation": "Функціональні вирази (function expressions) не піднімаються.",
     "interviewTip": "Порядок виконання коду.",
     "options": [
-      "Function expression",
-      "Function declaration",
-      "var declaration",
-      "class declaration"
+      "Функціональний вираз (Function expression)",
+      "Оголошення функції (Function declaration)",
+      "Оголошення var",
+      "Оголошення класу"
     ]
   },
   "js-adv-18": {
@@ -191,10 +146,10 @@
     "explanation": "Обмеження частоти виконання.",
     "interviewTip": "Оптимізація UX.",
     "options": [
-      "Scroll / resize events",
-      "API retries",
-      "Form validation",
-      "Promises"
+      "Події Scroll / resize",
+      "Повторні спроби API",
+      "Валідація форм",
+      "Проміси (Promises)"
     ]
   },
   "js-adv-19": {
@@ -202,32 +157,27 @@
     "explanation": "bind повертає нову функцію.",
     "interviewTip": "Не викликає функцію миттєво.",
     "options": [
-      "New function",
-      "Executed function",
-      "Context object",
-      "Promise"
+      "Нова функція",
+      "Виконана функція",
+      "Об'єкт контексту",
+      "Проміс"
     ]
   },
   "js-adv-20": {
     "prompt": "Що станеться?",
     "explanation": "Стрілкова функція повертає undefined (якщо не вказано явне повернення).",
     "interviewTip": "Неявне повернення (implicit return).",
-    "options": [
-      "undefined",
-      "function",
-      "object",
-      "null"
-    ]
+    "options": ["undefined", "function", "object", "null"]
   },
   "js-adv-21": {
     "prompt": "Чому debounce корисний?",
     "explanation": "Зменшує кількість непотрібних запусків коду.",
     "interviewTip": "Поля пошуку (inputs).",
     "options": [
-      "Avoid excessive calls",
-      "Speed up loops",
-      "Block execution",
-      "Improve GC"
+      "Уникнення надмірних викликів",
+      "Прискорення циклів",
+      "Блокування виконання",
+      "Покращення збору сміття (GC)"
     ]
   },
   "js-adv-22": {
@@ -235,10 +185,10 @@
     "explanation": "Попереднє заповнення аргументів функції.",
     "interviewTip": "Різниця з каруванням.",
     "options": [
-      "Fixing some arguments",
-      "Calling function once",
-      "Currying only",
-      "Binding this"
+      "Фіксація деяких аргументів",
+      "Виклик функції один раз",
+      "Тільки карування",
+      "Прив'язка this"
     ]
   },
   "js-adv-23": {
@@ -246,10 +196,10 @@
     "explanation": "Мутація даних викликає побічні ефекти.",
     "interviewTip": "Функціональний дизайн.",
     "options": [
-      "Mutation",
-      "Pure calculation",
-      "Immutability",
-      "Currying"
+      "Мутація",
+      "Чисте обчислення",
+      "Незмінність (Immutability)",
+      "Карування"
     ]
   },
   "js-adv-24": {
@@ -257,10 +207,10 @@
     "explanation": "call викликає функцію негайно з заданим контекстом.",
     "interviewTip": "apply проти bind.",
     "options": [
-      "Invokes function with explicit this",
-      "Creates new function",
-      "Delays execution",
-      "Clones object"
+      "Викликає функцію з явним this",
+      "Створює нову функцію",
+      "Затримує виконання",
+      "Клонує об'єкт"
     ]
   },
   "js-adv-25": {
@@ -268,10 +218,10 @@
     "explanation": "Спосіб мислення важливіший за швидкість написання коду.",
     "interviewTip": "Настрій на співбесіді.",
     "options": [
-      "Explain reasoning first",
-      "Answer fast",
-      "Avoid edge cases",
-      "Guess output"
+      "Спочатку поясніть міркування",
+      "Відповідайте швидко",
+      "Уникайте граничних випадків",
+      "Вгадуйте результат"
     ]
   }
 }

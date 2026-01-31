@@ -3,143 +3,98 @@
     "prompt": "Що буде виведено в консоль?",
     "explanation": "У JavaScript функції є об'єктами першого класу, але оператор `typeof` повертає `function`.",
     "interviewTip": "Зауважте, що функції — це об'єкти, які можна викликати завдяки внутрішньому методу [[Call]].",
-    "options": [
-      "function",
-      "object",
-      "undefined",
-      "class"
-    ]
+    "options": ["function", "object", "undefined", "class"]
   },
   "js-fn-02": {
     "prompt": "Яким буде результат?",
     "explanation": "Оголошення функцій (function declarations) піднімаються (hoisting) разом із їхнім тілом.",
     "interviewTip": "Порівняйте це з функціональними виразами (function expressions).",
-    "options": [
-      "42",
-      "undefined",
-      "ReferenceError",
-      "TypeError"
-    ]
+    "options": ["42", "undefined", "ReferenceError", "TypeError"]
   },
   "js-fn-03": {
     "prompt": "Що станеться?",
     "explanation": "Змінна `bar` існує, але на момент виклику вона має значення undefined.",
     "interviewTip": "Функціональні вирази не піднімаються так, як оголошення функцій.",
-    "options": [
-      "1",
-      "undefined",
-      "TypeError",
-      "ReferenceError"
-    ]
+    "options": ["1", "undefined", "TypeError", "ReferenceError"]
   },
   "js-fn-04": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Круглі дужки дозволяють стрілковій функції неявно повертати об'єкт.",
     "interviewTip": "Поширена пастка при роботі зі стрілковими функціями.",
-    "options": [
-      "{ a: 1 }",
-      "undefined",
-      "SyntaxError",
-      "() => {}"
-    ]
+    "options": ["{ a: 1 }", "undefined", "SyntaxError", "() => {}"]
   },
   "js-fn-05": {
     "prompt": "Стрілкові функції відрізняються від звичайних тим, що вони…",
     "explanation": "Стрілкові функції беруть `this` із лексичного оточення (зовнішнього коду).",
     "interviewTip": "Чудове питання для перевірки розуміння контексту `this`.",
     "options": [
-      "have no own this",
-      "are always async",
-      "cannot return values",
-      "are hoisted"
+      "не мають власного this",
+      "завжди асинхронні",
+      "не можуть повертати значення",
+      "піднімаються (hoisted)"
     ]
   },
   "js-fn-06": {
     "prompt": "Що буде виведено?",
     "explanation": "Об'єкт `arguments` містить лише ті аргументи, які були фактично передані у функцію.",
     "interviewTip": "Згадайте, що стрілкові функції не мають власного об'єкта `arguments`.",
-    "options": [
-      "0",
-      "1",
-      "2",
-      "undefined"
-    ]
+    "options": ["0", "1", "2", "undefined"]
   },
   "js-fn-07": {
     "prompt": "Яким буде результат?",
     "explanation": "Параметри за замовчуванням застосовуються лише тоді, коли аргумент має значення `undefined`.",
     "interviewTip": "Це відрізняється від передачі значення `null`.",
-    "options": [
-      "10",
-      "undefined",
-      "null",
-      "ReferenceError"
-    ]
+    "options": ["10", "undefined", "null", "ReferenceError"]
   },
   "js-fn-08": {
     "prompt": "Що поверне ця функція?",
     "explanation": "Автоматичне вставлення крапки з комою (ASI) завершує інструкцію return передчасно.",
     "interviewTip": "Класичний «підступ» у JavaScript.",
-    "options": [
-      "{ a: 1 }",
-      "undefined",
-      "SyntaxError",
-      "null"
-    ]
+    "options": ["{ a: 1 }", "undefined", "SyntaxError", "null"]
   },
   "js-fn-09": {
     "prompt": "Що таке функція вищого порядку (higher-order function)?",
     "explanation": "Це функції, які приймають інші функції як аргументи або повертають їх.",
     "interviewTip": "Приклади: map, filter, reduce.",
     "options": [
-      "A function that takes or returns another function",
-      "A function defined inside another",
-      "An async function",
-      "A recursive function"
+      "Функція, що приймає або повертає іншу функцію",
+      "Функція, визначена всередині іншої",
+      "Асинхронна функція",
+      "Рекурсивна функція"
     ]
   },
   "js-fn-10": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "У суворому режимі (strict mode) значення `this` у звичайній функції дорівнює undefined.",
     "interviewTip": "Завжди уточнюйте, чи працює код у суворому режимі.",
-    "options": [
-      "window / global",
-      "undefined (strict mode)",
-      "foo",
-      "null"
-    ]
+    "options": ["window / global", "undefined (strict mode)", "foo", "null"]
   },
   "js-fn-11": {
     "prompt": "Що робить метод bind?",
     "explanation": "`bind` створює і повертає нову функцію з прив'язаним контекстом.",
     "interviewTip": "Пам'ятайте різницю: bind ≠ call ≠ apply.",
     "options": [
-      "Creates a new function with bound this",
-      "Immediately calls the function",
-      "Changes prototype",
-      "Freezes context"
+      "Створює нову функцію з прив'язаним this",
+      "Негайно викликає функцію",
+      "Змінює прототип (prototype)",
+      "Заморожує контекст"
     ]
   },
   "js-fn-12": {
     "prompt": "Що буде виведено?",
     "explanation": "Оператор `rest` (...) збирає всі залишкові аргументи в масив.",
     "interviewTip": "Порівняйте rest-параметри з об'єктом arguments.",
-    "options": [
-      "0",
-      "1",
-      "2",
-      "3"
-    ]
+    "options": ["0", "1", "2", "3"]
   },
   "js-fn-13": {
     "prompt": "Що станеться при спробі виклику?",
     "explanation": "Стрілкові функції не можна використовувати як конструктори (з оператором new).",
     "interviewTip": "Вони не мають внутрішнього методу [[Construct]].",
     "options": [
-      "Creates instance",
+      "Створює екземпляр (instance)",
       "TypeError",
       "undefined",
-      "Returns foo"
+      "Повертає foo"
     ]
   },
   "js-fn-14": {
@@ -147,32 +102,27 @@
     "explanation": "Рекурсія — це процес, при якому функція викликає саму себе.",
     "interviewTip": "Завжди згадуйте про базовий випадок (умову виходу), щоб уникнути переповнення стека.",
     "options": [
-      "Function calling itself",
-      "Function inside loop",
-      "Async execution",
-      "Closure usage"
+      "Функція, що викликає саму себе",
+      "Функція всередині циклу",
+      "Асинхронне виконання",
+      "Використання замикання"
     ]
   },
   "js-fn-15": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Замикання (closure) зберігає доступ до змінної x навіть після завершення роботи зовнішньої функції.",
     "interviewTip": "Замикання — це фундаментальна концепція JS.",
-    "options": [
-      "5",
-      "undefined",
-      "NaN",
-      "TypeError"
-    ]
+    "options": ["5", "undefined", "NaN", "TypeError"]
   },
   "js-fn-16": {
     "prompt": "Яке твердження про замикання є правильним?",
     "explanation": "Замикання посилаються на змінні із зовнішньої області видимості.",
     "interviewTip": "Поясніть вплив замикань на використання пам'яті.",
     "options": [
-      "They capture variables by reference",
-      "They copy values",
-      "They only work with const",
-      "They prevent GC"
+      "Вони захоплюють змінні за посиланням",
+      "Вони копіюють значення",
+      "Вони працюють лише з const",
+      "Вони запобігають збиранню сміття (GC)"
     ]
   },
   "js-fn-17": {
@@ -190,44 +140,34 @@
     "prompt": "Що буде виведено?",
     "explanation": "`arguments` — це масивоподібний об'єкт, а не справжній масив.",
     "interviewTip": "Він не має методів масиву, як-от map або filter.",
-    "options": [
-      "object",
-      "array",
-      "undefined",
-      "function"
-    ]
+    "options": ["object", "array", "undefined", "function"]
   },
   "js-fn-19": {
     "prompt": "Що таке хвостова рекурсія (tail recursion)?",
     "explanation": "Це вид рекурсії, де рекурсивний виклик є останньою дією у функції.",
     "interviewTip": "Більшість движків JS наразі не мають повної оптимізації хвостових викликів.",
     "options": [
-      "Recursive call as last operation",
-      "Infinite recursion",
-      "Async recursion",
-      "Recursion with closures"
+      "Рекурсивний виклик як остання операція",
+      "Нескінченна рекурсія",
+      "Асинхронна рекурсія",
+      "Рекурсія із замиканнями"
     ]
   },
   "js-fn-20": {
     "prompt": "Що виведе цей код?",
     "explanation": "Параметри за замовчуванням можуть посилатися на попередні параметри тієї ж функції.",
     "interviewTip": "Порядок оголошення параметрів має значення.",
-    "options": [
-      "5",
-      "undefined",
-      "null",
-      "ReferenceError"
-    ]
+    "options": ["5", "undefined", "null", "ReferenceError"]
   },
   "js-fn-21": {
     "prompt": "Що станеться, якщо функція не має інструкції return?",
     "explanation": "Така функція неявно повертає `undefined`.",
     "interviewTip": "Типова помилка початківців при написанні функцій.",
     "options": [
-      "Returns undefined",
-      "Returns null",
-      "Throws error",
-      "Returns 0"
+      "Повертає undefined",
+      "Повертає null",
+      "Викидає помилку (error)",
+      "Повертає 0"
     ]
   },
   "js-fn-22": {
@@ -235,10 +175,10 @@
     "explanation": "`call` негайно викликає функцію з заданим значенням `this` та аргументами.",
     "interviewTip": "Поясніть різницю між call, apply та bind.",
     "options": [
-      "Invokes function with explicit this",
-      "Creates new function",
-      "Binds forever",
-      "Clones function"
+      "Викликає функцію з явним this",
+      "Створює нову функцію",
+      "Прив'язує контекст назавжди",
+      "Клонує функцію"
     ]
   },
   "js-fn-23": {
@@ -246,32 +186,27 @@
     "explanation": "Властивість `fn.length` показує кількість очікуваних аргументів функції.",
     "interviewTip": "Це корисно при використанні патернів функціонального програмування.",
     "options": [
-      "Number of declared parameters",
-      "Number of calls",
-      "Execution time",
-      "Stack depth"
+      "Кількість оголошених параметрів",
+      "Кількість викликів",
+      "Час виконання",
+      "Глибина стека"
     ]
   },
   "js-fn-24": {
     "prompt": "Що буде виведено в консоль?",
     "explanation": "Звичайні функції мають властивість `prototype`, стрілкові — ні.",
     "interviewTip": "Стрілкові функції не призначені для створення об'єктів через прототипи.",
-    "options": [
-      "object",
-      "undefined",
-      "null",
-      "function"
-    ]
+    "options": ["object", "undefined", "null", "function"]
   },
   "js-fn-25": {
     "prompt": "Чому функції називають «громадянами першого класу»?",
     "explanation": "Оскільки з ними можна поводитися як зі звичайними значеннями (передавати, повертати, присвоювати).",
     "interviewTip": "Саме це робить можливим функціональне програмування в JS.",
     "options": [
-      "They can be passed, returned, assigned",
-      "They are fastest",
-      "They are hoisted",
-      "They are async"
+      "Їх можна передавати, повертати, присвоювати",
+      "Вони найшвидші",
+      "Вони піднімаються (hoisted)",
+      "Вони асинхронні"
     ]
   }
 }

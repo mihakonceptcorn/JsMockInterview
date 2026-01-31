@@ -4,32 +4,27 @@
     "explanation": "Спочатку HTML аналізується (парситься) і перетворюється на DOM.",
     "interviewTip": "Це початок критичного шляху рендерингу (CRP).",
     "options": [
-      "HTML parsing",
-      "CSS parsing",
-      "Layout",
-      "Paint"
+      "Парсинг HTML (HTML parsing)",
+      "Парсинг CSS (CSS parsing)",
+      "Компонування (Layout)",
+      "Малювання (Paint)"
     ]
   },
   "js-br-02": {
     "prompt": "Що створюється в результаті парсингу CSS?",
     "explanation": "CSSOM (CSS Object Model) представляє проаналізовані стилі CSS.",
     "interviewTip": "DOM + CSSOM = Render Tree (Дерево рендерингу).",
-    "options": [
-      "CSSOM",
-      "DOM",
-      "Render Tree",
-      "Layer Tree"
-    ]
+    "options": ["CSSOM", "DOM", "Render Tree", "Layer Tree"]
   },
   "js-br-03": {
     "prompt": "Що містить дерево рендерингу (Render Tree)?",
     "explanation": "Воно містить лише видимі елементи; приховані вузли виключаються.",
     "interviewTip": "Елементи з display: none пропускаються.",
     "options": [
-      "Visible nodes with styles",
-      "All DOM nodes",
-      "Only text nodes",
-      "Only layout info"
+      "Видимі вузли зі стилями",
+      "Усі вузли DOM",
+      "Тільки текстові вузли",
+      "Тільки інформацію про Layout"
     ]
   },
   "js-br-04": {
@@ -37,10 +32,10 @@
     "explanation": "Це крок, на якому браузер обчислює геометрію та положення кожного елемента.",
     "interviewTip": "Це дуже ресурсомістка операція.",
     "options": [
-      "Calculating element sizes and positions",
-      "Drawing pixels",
-      "Applying styles",
-      "Executing JS"
+      "Обчислення розмірів та положення елементів",
+      "Малювання пікселів",
+      "Застосування стилів",
+      "Виконання JS"
     ]
   },
   "js-br-05": {
@@ -48,10 +43,10 @@
     "explanation": "Будь-які зміни геометрії (розмір, положення) вимагають повторного виконання layout.",
     "interviewTip": "Уникайте «layout thrashing» (чергування читання та запису геометрії).",
     "options": [
-      "Changing width or height",
-      "Changing color",
-      "Changing opacity",
-      "Changing visibility"
+      "Зміна ширини (width) або висоти (height)",
+      "Зміна кольору",
+      "Зміна прозорості (opacity)",
+      "Зміна видимості (visibility)"
     ]
   },
   "js-br-06": {
@@ -59,32 +54,27 @@
     "explanation": "Оновлення лише візуальних аспектів елемента (наприклад, кольору), що не впливають на геометрію.",
     "interviewTip": "Ця операція швидша за reflow.",
     "options": [
-      "Redrawing pixels without layout",
-      "Recalculating layout",
-      "Rebuilding DOM",
-      "Running JS"
+      "Перемальовування пікселів без Layout",
+      "Перерахунок Layout",
+      "Перебудова DOM",
+      "Запуск JS"
     ]
   },
   "js-br-07": {
     "prompt": "Яка властивість CSS дозволяє уникнути reflow та repaint?",
     "explanation": "Трансформації (transform) обробляються лише на етапі компонування шарів (compositor).",
     "interviewTip": "Ключовий прийом для плавної анімації.",
-    "options": [
-      "transform",
-      "width",
-      "top",
-      "margin"
-    ]
+    "options": ["transform", "width", "top", "margin"]
   },
   "js-br-08": {
     "prompt": "Що таке композиція (compositing)?",
     "explanation": "Останній крок перед виведенням на екран, де шари об'єднуються.",
     "interviewTip": "Цей етап зазвичай прискорюється за допомогою GPU.",
     "options": [
-      "Combining layers into final image",
-      "Parsing CSS",
-      "Calculating layout",
-      "Executing JS"
+      "Об'єднання шарів у фінальне зображення",
+      "Парсинг CSS",
+      "Обчислення Layout",
+      "Виконання JS"
     ]
   },
   "js-br-09": {
@@ -92,10 +82,10 @@
     "explanation": "Властивості на кшталт transform та opacity, оскільки вони пропускають етапи layout та paint.",
     "interviewTip": "Дозволяє досягти 60 FPS для анімацій.",
     "options": [
-      "transform and opacity",
-      "width and height",
-      "top and left",
-      "margin and padding"
+      "transform та opacity",
+      "width та height",
+      "top та left",
+      "margin та padding"
     ]
   },
   "js-br-10": {
@@ -103,10 +93,10 @@
     "explanation": "Багаторазове примусове виконання синхронного макета всередині циклу.",
     "interviewTip": "Класична помилка продуктивності.",
     "options": [
-      "Reading layout after writing styles",
-      "Batching DOM updates",
-      "Using rAF",
-      "Using transforms"
+      "Читання Layout після запису стилів",
+      "Групування (batching) оновлень DOM",
+      "Використання rAF",
+      "Використання трансформацій (transforms)"
     ]
   },
   "js-br-11": {
@@ -114,10 +104,10 @@
     "explanation": "Виникає при читанні геометричних властивостей (наприклад, offsetHeight) одразу після їх зміни.",
     "interviewTip": "Уникайте читання геометрії одразу після запису.",
     "options": [
-      "Immediate layout recalculation",
-      "Deferred layout",
-      "Async rendering",
-      "GPU compositing"
+      "Негайний перерахунок макета",
+      "Відкладений макет (deferred layout)",
+      "Асинхронний рендеринг",
+      "Композиція на GPU"
     ]
   },
   "js-br-12": {
@@ -125,10 +115,10 @@
     "explanation": "Це колбек, який викликається безпосередньо перед наступним перемальовуванням кадру.",
     "interviewTip": "Використовуйте саме його для створення плавних анімацій.",
     "options": [
-      "Before next repaint",
-      "After repaint",
-      "As microtask",
-      "As macrotask"
+      "Перед наступним перемальовуванням (repaint)",
+      "Після перемальовування (repaint)",
+      "Як мікрозавдання (microtask)",
+      "Як макрозавдання (macrotask)"
     ]
   },
   "js-br-13": {
@@ -136,10 +126,10 @@
     "explanation": "Окрема поверхня, що використовується при композиції для оптимізації відмальовування.",
     "interviewTip": "Занадто велика кількість шарів може перевантажити пам'ять.",
     "options": [
-      "Element promoted for compositing",
-      "DOM node",
-      "CSS rule",
-      "JS object"
+      "Елемент, винесений для композиції",
+      "Вузол DOM",
+      "Правило CSS",
+      "Об'єкт JS"
     ]
   },
   "js-br-14": {
@@ -147,10 +137,10 @@
     "explanation": "Такі властивості як will-change підказують браузеру необхідність оптимізації.",
     "interviewTip": "Використовуйте will-change помірно.",
     "options": [
-      "transform or will-change",
-      "color change",
+      "transform або will-change",
+      "зміна кольору",
       "font-size",
-      "margin change"
+      "зміна margin"
     ]
   },
   "js-br-15": {
@@ -158,10 +148,10 @@
     "explanation": "Послідовність кроків від отримання HTML до появи перших пікселів на екрані.",
     "interviewTip": "Оптимізуйте його для покращення FCP.",
     "options": [
-      "Steps to first paint",
-      "JS execution order",
-      "Event loop cycle",
-      "Network waterfall"
+      "Кроки до першого малювання (First Paint)",
+      "Порядок виконання JS",
+      "Цикл Event Loop",
+      "Мережевий каскад (waterfall)"
     ]
   },
   "js-br-16": {
@@ -169,43 +159,33 @@
     "explanation": "Оскільки зовнішній CSS блокує рендеринг, вбудовування прискорює показ першого контенту.",
     "interviewTip": "Популярний метод оптимізації швидкості.",
     "options": [
-      "Avoid render blocking",
-      "Reduce bundle size",
-      "Improve caching",
-      "Reduce JS"
+      "Уникнення блокування рендерингу",
+      "Зменшення розміру бандла",
+      "Покращення кешування",
+      "Зменшення JS"
     ]
   },
   "js-br-17": {
     "prompt": "Яка метрика вимірює стабільність макета?",
     "explanation": "CLS (Cumulative Layout Shift) показує, як сильно елементи «стрибають» при завантаженні.",
     "interviewTip": "Одна з основних метрик Web Vitals.",
-    "options": [
-      "CLS",
-      "FCP",
-      "LCP",
-      "TTFB"
-    ]
+    "options": ["CLS", "FCP", "LCP", "TTFB"]
   },
   "js-br-18": {
     "prompt": "Яка метрика найкраще відображає продуктивність рендерингу?",
     "explanation": "LCP (Largest Contentful Paint) вимірює час завантаження найбільшого видимого елемента.",
     "interviewTip": "Метрика, орієнтована на досвід користувача.",
-    "options": [
-      "LCP",
-      "TTFB",
-      "DNS",
-      "CPU usage"
-    ]
+    "options": ["LCP", "TTFB", "DNS", "Використання CPU"]
   },
   "js-br-19": {
     "prompt": "Що блокує перше відмальовування (First Paint)?",
     "explanation": "CSS має бути повністю проаналізований, перш ніж браузер почне малювати.",
     "interviewTip": "Знову ж таки, працюйте над критичним CSS.",
     "options": [
-      "Render-blocking CSS",
-      "Images",
-      "Async JS",
-      "Fonts always"
+      "CSS, що блокує рендеринг",
+      "Зображення",
+      "Асинхронний JS",
+      "Шрифти (завжди)"
     ]
   },
   "js-br-20": {
@@ -213,10 +193,10 @@
     "explanation": "Вона підсвічує зони екрана, які перемальовуються в даний момент.",
     "interviewTip": "Допомагає виявити зайві операції малювання в інтерфейсі.",
     "options": [
-      "Debug repaint areas",
-      "Measure FPS",
-      "Detect leaks",
-      "Profile JS"
+      "Відлагодження областей перемальовування",
+      "Вимірювання FPS",
+      "Виявлення витоків",
+      "Профілювання JS"
     ]
   },
   "js-br-21": {
@@ -224,10 +204,10 @@
     "explanation": "Рендеринг зупиниться, оскільки браузер не зможе обробити наступний кадр.",
     "interviewTip": "Розбивайте важкі JS-завдання на частини (chunking).",
     "options": [
-      "Rendering pauses",
-      "CSS continues",
-      "Network stops",
-      "GPU crashes"
+      "Рендеринг зупиняється",
+      "CSS продовжує роботу",
+      "Мережа зупиняється",
+      "GPU виходить з ладу"
     ]
   },
   "js-br-22": {
@@ -235,10 +215,10 @@
     "explanation": "Вартість обчислення макета (layout) зростає пропорційно кількості вузлів.",
     "interviewTip": "Використовуйте віртуалізацію списків для великих даних.",
     "options": [
-      "Slower layout and paint",
-      "More JS errors",
-      "Network overhead",
-      "Memory leaks"
+      "Повільніший Layout та Paint",
+      "Більше помилок JS",
+      "Накладні витрати мережі",
+      "Витоки пам'яті"
     ]
   },
   "js-br-23": {
@@ -246,9 +226,9 @@
     "explanation": "Панель Performance у DevTools показує кадри, час малювання та скриптів.",
     "interviewTip": "Вміння читати «flame charts» — важлива навичка для розробника.",
     "options": [
-      "Chrome DevTools Performance tab",
-      "Console",
-      "Network tab",
+      "Вкладка Performance у Chrome DevTools",
+      "Консоль (Console)",
+      "Вкладка Network",
       "Lighthouse SEO"
     ]
   },
@@ -256,22 +236,17 @@
     "prompt": "Який бюджет часу на один кадр при 60 FPS?",
     "explanation": "Приблизно 16.6 мс (1000 мс / 60) на виконання JS та рендерингу.",
     "interviewTip": "Прагніть вкластися в цей ліміт для плавності.",
-    "options": [
-      "~16ms",
-      "~8ms",
-      "~32ms",
-      "~60ms"
-    ]
+    "options": ["~16ms", "~8ms", "~32ms", "~60ms"]
   },
   "js-br-25": {
     "prompt": "Золоте правило оптимізації рендерингу?",
     "explanation": "Оптимізація на основі реальних даних вимірювань, а не припущень.",
     "interviewTip": "Відповідь рівня Senior-розробника.",
     "options": [
-      "Measure, then optimize",
-      "Use GPU everywhere",
-      "Avoid CSS",
-      "Avoid DOM"
+      "Вимірювати, потім оптимізувати",
+      "Використовувати GPU скрізь",
+      "Уникати CSS",
+      "Уникати DOM"
     ]
   }
 }

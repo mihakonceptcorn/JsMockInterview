@@ -4,10 +4,10 @@
     "explanation": "Мікрозавдання (microtasks) виконуються перед наступним макрозавданням.",
     "interviewTip": "Надмірна кількість промісів може «заморити голодом» рендеринг (starvation).",
     "options": [
-      "Microtask queue",
-      "Macrotask queue",
-      "Animation frame queue",
-      "Idle queue"
+      "Черга мікрозавдань (Microtask queue)",
+      "Черга макрозавдань (Macrotask queue)",
+      "Черга кадрів анімації (Animation frame queue)",
+      "Черга бездіяльності (Idle queue)"
     ]
   },
   "js-el-adv-02": {
@@ -26,10 +26,10 @@
     "explanation": "Це спричинить «голодування» (starvation) макрозавдань та рендерингу.",
     "interviewTip": "Поширена пастка продуктивності.",
     "options": [
-      "Macrotasks are delayed",
-      "Browser crashes",
-      "Call stack overflows",
-      "Tasks are merged"
+      "Макрозавдання затримуються",
+      "Браузер аварійно завершує роботу",
+      "Переповнення стека викликів (Call stack overflow)",
+      "Завдання об'єднуються"
     ]
   },
   "js-el-adv-04": {
@@ -37,10 +37,10 @@
     "explanation": "Рендеринг зазвичай відбувається після того, як черга мікрозавдань порожня.",
     "interviewTip": "Ось чому важкі проміси можуть блокувати малювання (paint).",
     "options": [
-      "Between macrotasks",
-      "After each microtask",
-      "Before JS starts",
-      "Only on load"
+      "Між макрозавданнями",
+      "Після кожного мікрозавдання",
+      "Перед початком виконання JS",
+      "Тільки під час завантаження"
     ]
   },
   "js-el-adv-05": {
@@ -48,32 +48,27 @@
     "explanation": "Він запускається безпосередньо перед наступним перемальовуванням кадру.",
     "interviewTip": "Використовуйте його для плавних анімацій.",
     "options": [
-      "Before repaint",
-      "As a microtask",
-      "As a macrotask",
-      "In idle time"
+      "Перед перемальовуванням (repaint)",
+      "Як мікрозавдання",
+      "Як макрозавдання",
+      "У час бездіяльності (idle time)"
     ]
   },
   "js-el-adv-06": {
     "prompt": "Який колбек може ніколи не запуститися при великому навантаженні?",
     "explanation": "Колбеки requestIdleCallback виконуються лише тоді, коли браузер має вільний час.",
     "interviewTip": "Їх виконання не гарантоване.",
-    "options": [
-      "requestIdleCallback",
-      "Promise.then",
-      "setTimeout",
-      "rAF"
-    ]
+    "options": ["requestIdleCallback", "Promise.then", "setTimeout", "rAF"]
   },
   "js-el-adv-07": {
     "prompt": "Яку чергу використовує MutationObserver?",
     "explanation": "Він працює як мікрозавдання.",
-    "interviewTip": "Про це часто забувають на співбесідах.",
+    "interviewTip": "Про це часто забувають на співбесіді.",
     "options": [
-      "Microtask queue",
-      "Macrotask queue",
-      "Render queue",
-      "Idle queue"
+      "Черга мікрозавдань (Microtask queue)",
+      "Черга макрозавдань (Macrotask queue)",
+      "Черга рендерингу",
+      "Черга бездіяльності"
     ]
   },
   "js-el-adv-08": {
@@ -81,10 +76,10 @@
     "explanation": "Будь-яке довге завдання, що займає основний потік (Main Thread).",
     "interviewTip": "Розбивайте (chunk) довгі завдання на частини.",
     "options": [
-      "Long JS execution",
-      "Network request",
-      "CSS download",
-      "Image loading"
+      "Тривале виконання JS",
+      "Мережевий запит",
+      "Завантаження CSS",
+      "Завантаження зображень"
     ]
   },
   "js-el-adv-09": {
@@ -92,32 +87,27 @@
     "explanation": "Це завдання, виконання якого триває понад 50 мс.",
     "interviewTip": "Це напряму пов'язано з метрикою TBT (Total Blocking Time).",
     "options": [
-      "Task > 50ms",
-      "Task > 5ms",
-      "Async task",
-      "Microtask"
+      "Завдання > 50мс",
+      "Завдання > 5мс",
+      "Асинхронне завдання",
+      "Мікрозавдання"
     ]
   },
   "js-el-adv-10": {
     "prompt": "Який API допомагає розбивати довгі завдання?",
     "explanation": "requestIdleCallback дозволяє виконувати роботу в періоди бездіяльності.",
     "interviewTip": "Має обмежену підтримку в деяких браузерах.",
-    "options": [
-      "setTimeout",
-      "requestIdleCallback",
-      "Promise.then",
-      "eval"
-    ]
+    "options": ["setTimeout", "requestIdleCallback", "Promise.then", "eval"]
   },
   "js-el-adv-11": {
     "prompt": "Що відбувається одразу після завершення макрозавдання?",
     "explanation": "Event Loop спочатку повністю очищує чергу мікрозавдань.",
     "interviewTip": "Це ключовий етап циклу, який часто запитують.",
     "options": [
-      "Microtasks run",
-      "Rendering immediately",
-      "Next macrotask",
-      "Idle callbacks"
+      "Виконуються мікрозавдання",
+      "Негайний рендеринг",
+      "Наступне макрозавдання",
+      "Колбеки бездіяльності (idle callbacks)"
     ]
   },
   "js-el-adv-12": {
@@ -136,10 +126,10 @@
     "explanation": "Він потрапляє в чергу макрозавдань і підлягає обмеженню браузера (clamping).",
     "interviewTip": "Пам'ятайте про правило 4 мс для вкладених таймерів.",
     "options": [
-      "Minimum delay + queue",
-      "Blocked by GC",
-      "Network latency",
-      "Thread creation"
+      "Мінімальна затримка + черга",
+      "Заблоковано GC (збиральником сміття)",
+      "Затримка мережі",
+      "Створення потоку"
     ]
   },
   "js-el-adv-14": {
@@ -147,10 +137,10 @@
     "explanation": "Навантаження на основний потік іншими завданнями.",
     "interviewTip": "Пов'язано з метрикою INP (Interaction to Next Paint).",
     "options": [
-      "Heavy JS",
-      "CSS parsing",
-      "Image decoding",
-      "Font loading"
+      "Важкий JS",
+      "Парсинг CSS",
+      "Декодування зображень",
+      "Завантаження шрифтів"
     ]
   },
   "js-el-adv-15": {
@@ -158,31 +148,26 @@
     "explanation": "Розбиття великих обсягів роботи на дрібні частини (chunking).",
     "interviewTip": "Це називається кооперативним плануванням (cooperative scheduling).",
     "options": [
-      "Yield to event loop",
-      "Use promises",
-      "Use sync code",
-      "Disable microtasks"
+      "Віддати контроль Event Loop (Yield)",
+      "Використовувати проміси",
+      "Використовувати синхронний код",
+      "Вимкнути мікрозавдання"
     ]
   },
   "js-el-adv-16": {
     "prompt": "Що виконується поза Event Loop основного потоку?",
     "explanation": "Web Workers працюють в окремих потоках.",
     "interviewTip": "Вони не мають доступу до DOM.",
-    "options": [
-      "Web Worker",
-      "Promise",
-      "setTimeout",
-      "rAF"
-    ]
+    "options": ["Web Worker", "Promise", "setTimeout", "rAF"]
   },
   "js-el-adv-17": {
     "prompt": "Що таке кооперативне планування (cooperative scheduling)?",
     "explanation": "Це підхід, де JavaScript має явно «віддавати» (yield) контроль браузеру.",
     "interviewTip": "На відміну від витісняючої багатозадачності в ОС.",
     "options": [
-      "Manually yielding control",
-      "Browser scheduling",
-      "Preemptive threads",
+      "Ручна передача контролю (yielding)",
+      "Планування браузером",
+      "Витісняючі потоки",
       "Async/await"
     ]
   },
@@ -191,10 +176,10 @@
     "explanation": "Він призупиняє функцію і планує продовження як мікрозавдання.",
     "interviewTip": "Це синтаксичний цукор над промісами.",
     "options": [
-      "Splits function into microtasks",
-      "Blocks thread",
-      "Creates macrotask",
-      "Pauses browser"
+      "Розбиває функцію на мікрозавдання",
+      "Блокує потік",
+      "Створює макрозавдання",
+      "Призупиняє браузер"
     ]
   },
   "js-el-adv-19": {
@@ -202,9 +187,9 @@
     "explanation": "Мікрозавдання можуть затримати етап малювання.",
     "interviewTip": "Джерело дуже тонких багів продуктивності.",
     "options": [
-      "Microtasks",
+      "Мікрозавдання",
       "Console.log",
-      "Network latency",
+      "Мережева затримка",
       "LocalStorage"
     ]
   },
@@ -213,7 +198,7 @@
     "explanation": "TBT (Total Blocking Time) та FID (First Input Delay).",
     "interviewTip": "Важливо для інтерв'ю з продуктивності.",
     "options": [
-      "Total Blocking Time",
+      "Загальний час блокування (Total Blocking Time)",
       "CLS",
       "FCP",
       "LCP"
@@ -224,32 +209,27 @@
     "explanation": "Сторінка повністю зависне (стане неінтерактивною).",
     "interviewTip": "Класичне пояснення однопотокової природи JS.",
     "options": [
-      "UI freezes",
-      "GC stops",
-      "Browser reloads",
-      "Tasks reorder"
+      "Інтерфейс зависає (UI freezes)",
+      "GC зупиняється",
+      "Браузер перезавантажується",
+      "Завдання перевпорядковуються"
     ]
   },
   "js-el-adv-22": {
     "prompt": "Який колбек виконається першим?",
     "explanation": "Завжди мікрозавдання перед наступним макрозавданням.",
     "interviewTip": "Питання на порядок виконання дуже популярні.",
-    "options": [
-      "Promise.then",
-      "setTimeout 0",
-      "rAF",
-      "setInterval"
-    ]
+    "options": ["Promise.then", "setTimeout 0", "rAF", "setInterval"]
   },
   "js-el-adv-23": {
     "prompt": "Що таке пакетна обробка завдань (task batching)?",
     "explanation": "Групування оновлень для покращення швидкодії.",
     "interviewTip": "React використовує це для оновлення стейту.",
     "options": [
-      "Grouping work per frame",
-      "Parallel execution",
-      "Promise chaining",
-      "Thread pooling"
+      "Групування роботи на один кадр",
+      "Паралельне виконання",
+      "Ланцюжок промісів",
+      "Пул потоків (thread pooling)"
     ]
   },
   "js-el-adv-24": {
@@ -268,10 +248,10 @@
     "explanation": "Завжди починати з профілювання за допомогою Performance вкладки.",
     "interviewTip": "Відповідь рівня Senior розробника.",
     "options": [
-      "Measure first",
-      "Use more promises",
-      "Avoid async",
-      "Use setTimeout everywhere"
+      "Спочатку виміряти",
+      "Використовувати більше промісів",
+      "Уникати асинхронності",
+      "Використовувати setTimeout скрізь"
     ]
   }
 }

@@ -4,10 +4,10 @@
     "explanation": "Браузер рендерить інтерфейс (UI) та запускає движок JavaScript.",
     "interviewTip": "Важливо розуміти конвеєр рендерингу (rendering pipeline).",
     "options": [
-      "Render UI and execute JS",
-      "Compile JavaScript",
-      "Store databases",
-      "Manage servers"
+      "Рендеринг UI та виконання JS",
+      "Компіляція JavaScript",
+      "Зберігання баз даних",
+      "Управління серверами"
     ]
   },
   "js-browser-02": {
@@ -15,10 +15,10 @@
     "explanation": "HTML парситься (аналізується) і перетворюється на DOM.",
     "interviewTip": "Це частина критичного шляху рендерингу (Critical Render Path).",
     "options": [
-      "HTML parsing",
-      "CSS parsing",
-      "JS execution",
-      "Painting"
+      "Парсинг HTML",
+      "Парсинг CSS",
+      "Виконання JS",
+      "Малювання (Painting)"
     ]
   },
   "js-browser-03": {
@@ -26,10 +26,10 @@
     "explanation": "DOM (Document Object Model) — це деревоподібна структура вузлів документа.",
     "interviewTip": "JS взаємодіє зі сторінкою саме через маніпуляції з DOM.",
     "options": [
-      "Tree representation of HTML",
-      "JS runtime",
-      "CSS engine",
-      "Browser cache"
+      "Деревоподібне представлення HTML",
+      "Середовище виконання JS",
+      "Рушій CSS",
+      "Кеш браузера"
     ]
   },
   "js-browser-04": {
@@ -37,32 +37,27 @@
     "explanation": "CSSOM створюється на основі стилів CSS аналогічно до DOM.",
     "interviewTip": "DOM + CSSOM = Render Tree (Дерево рендерингу).",
     "options": [
-      "Parsed CSS tree",
-      "CSS file",
-      "DOM styles",
-      "Browser theme"
+      "Проаналізоване дерево CSS",
+      "Файл CSS",
+      "Стилі DOM",
+      "Тема браузера"
     ]
   },
   "js-browser-05": {
     "prompt": "Що блокує парсинг HTML?",
     "explanation": "Скрипти, що завантажуються синхронно, зупиняють процес парсингу.",
     "interviewTip": "Використовуйте атрибути defer або async для оптимізації.",
-    "options": [
-      "Synchronous JavaScript",
-      "Images",
-      "Fonts",
-      "Meta tags"
-    ]
+    "options": ["Синхронний JavaScript", "Зображення", "Шрифти", "Мета-теги"]
   },
   "js-browser-06": {
     "prompt": "Яка різниця між async та defer?",
     "explanation": "Defer зберігає черговість виконання скриптів, async — ні.",
     "interviewTip": "Класичне питання на співбесіді.",
     "options": [
-      "Async executes ASAP, defer after DOM",
-      "They are the same",
-      "Defer blocks parsing",
-      "Async waits for CSS"
+      "Async виконується якнайшвидше, defer — після DOM",
+      "Вони однакові",
+      "Defer блокує парсинг",
+      "Async чекає на CSS"
     ]
   },
   "js-browser-07": {
@@ -70,10 +65,10 @@
     "explanation": "Reflow — це процес перерахунку геометрії та положення елементів.",
     "interviewTip": "Це дуже ресурсомістка операція.",
     "options": [
-      "Layout recalculation",
-      "Repainting colors",
-      "JS execution",
-      "Garbage collection"
+      "Перерахунок макета (Layout)",
+      "Перемальовування кольорів",
+      "Виконання JS",
+      "Збирання сміття (Garbage collection)"
     ]
   },
   "js-browser-08": {
@@ -81,32 +76,27 @@
     "explanation": "Зміни, що впливають лише на вигляд (колір, видимість), але не на розміри.",
     "interviewTip": "Ця операція «дешевша» за reflow.",
     "options": [
-      "Visual-only changes",
-      "Layout changes",
-      "JS execution",
-      "Network requests"
+      "Тільки візуальні зміни",
+      "Зміни макета (Layout)",
+      "Виконання JS",
+      "Мережеві запити"
     ]
   },
   "js-browser-09": {
     "prompt": "Що таке Render Tree?",
     "explanation": "Це структура, що використовується для розрахунку макета та малювання.",
     "interviewTip": "Невидимі вузли (наприклад, display: none) не входять до нього.",
-    "options": [
-      "DOM + CSSOM",
-      "Only DOM",
-      "Only CSSOM",
-      "JS heap"
-    ]
+    "options": ["DOM + CSSOM", "Тільки DOM", "Тільки CSSOM", "Купа JS (heap)"]
   },
   "js-browser-10": {
     "prompt": "Що обробляє Event Loop у браузері?",
     "explanation": "Він керує черговістю виконання завдань (tasks).",
     "interviewTip": "Пам'ятайте про різницю між макро- та мікрозавданнями.",
     "options": [
-      "Async callbacks",
-      "Rendering only",
-      "Garbage collection",
-      "Networking"
+      "Асинхронні колбеки",
+      "Тільки рендеринг",
+      "Збирання сміття",
+      "Робота з мережею"
     ]
   },
   "js-browser-11": {
@@ -114,8 +104,8 @@
     "explanation": "Проміси (мікрозавдання) обробляються швидше за таймери.",
     "interviewTip": "Важливо для відлагодження асинхронних багів.",
     "options": [
-      "Microtask",
-      "Macrotask",
+      "Мікрозавдання (Microtask)",
+      "Макрозавдання (Macrotask)",
       "setTimeout",
       "requestIdleCallback"
     ]
@@ -125,10 +115,10 @@
     "explanation": "Політика, що обмежує доступ одного сайту до даних іншого.",
     "interviewTip": "CORS існує саме для того, щоб безпечно обходити це обмеження.",
     "options": [
-      "Security restriction",
-      "Caching rule",
-      "Rendering rule",
-      "Network optimization"
+      "Обмеження безпеки",
+      "Правило кешування",
+      "Правило рендерингу",
+      "Оптимізація мережі"
     ]
   },
   "js-browser-13": {
@@ -136,43 +126,33 @@
     "explanation": "Механізм, що дозволяє браузеру робити запити до іншого домену.",
     "interviewTip": "Налаштовується на стороні сервера.",
     "options": [
-      "Cross-Origin Resource Sharing",
-      "Client-Origin Request System",
-      "Cache-Oriented Response System",
-      "Cross-Object Rendering Style"
+      "Спільне використання ресурсів різних джерел",
+      "Система запитів клієнт-джерело",
+      "Система відповідей орієнтована на кеш",
+      "Стиль рендерингу крос-об'єктів"
     ]
   },
   "js-browser-14": {
     "prompt": "Яке сховище (storage) є синхронним?",
     "explanation": "LocalStorage та SessionStorage блокують основний потік.",
     "interviewTip": "Уникайте запису великих обсягів даних у них.",
-    "options": [
-      "localStorage",
-      "IndexedDB",
-      "Cache API",
-      "Cookies async"
-    ]
+    "options": ["localStorage", "IndexedDB", "Cache API", "Асинхронні Cookies"]
   },
   "js-browser-15": {
     "prompt": "Яке сховище краще для великих обсягів даних?",
     "explanation": "IndexedDB є асинхронним і має велику місткість.",
     "interviewTip": "Активно використовується в PWA.",
-    "options": [
-      "IndexedDB",
-      "localStorage",
-      "sessionStorage",
-      "Cookies"
-    ]
+    "options": ["IndexedDB", "localStorage", "sessionStorage", "Cookies"]
   },
   "js-browser-16": {
     "prompt": "Що таке Service Worker?",
     "explanation": "Скрипт, що працює у фоні та може перехоплювати мережеві запити.",
     "interviewTip": "Основа для підтримки офлайн-режиму.",
     "options": [
-      "Background script",
-      "JS framework",
-      "Browser thread",
-      "Rendering engine"
+      "Фоновий скрипт",
+      "Фреймворк JS",
+      "Потік браузера",
+      "Рушій рендерингу"
     ]
   },
   "js-browser-17": {
@@ -183,7 +163,7 @@
       "Service Worker + Cache API",
       "localStorage",
       "Cookies",
-      "IndexedDB only"
+      "Тільки IndexedDB"
     ]
   },
   "js-browser-18": {
@@ -191,10 +171,10 @@
     "explanation": "Дозволяє передавати кілька потоків даних через одне з'єднання.",
     "interviewTip": "Значно покращує швидкість завантаження ресурсів.",
     "options": [
-      "Multiplexing",
-      "More headers",
-      "More TCP connections",
-      "Slower parsing"
+      "Мультиплексування",
+      "Більше заголовків",
+      "Більше TCP з'єднань",
+      "Повільніший парсинг"
     ]
   },
   "js-browser-19": {
@@ -202,10 +182,10 @@
     "explanation": "Це прискорює перше відмальовування сторінки.",
     "interviewTip": "Критичний CSS часто вбудовують прямо в HTML (inline).",
     "options": [
-      "Faster first paint",
-      "Better SEO",
-      "Less memory",
-      "Better caching"
+      "Швидше перше малювання",
+      "Краще SEO",
+      "Менше пам'яті",
+      "Краще кешування"
     ]
   },
   "js-browser-20": {
@@ -213,10 +193,10 @@
     "explanation": "Метрика часу, коли користувач бачить перший контент на екрані.",
     "interviewTip": "Це частина Core Web Vitals.",
     "options": [
-      "First visible content",
-      "Page fully loaded",
-      "JS executed",
-      "DOM ready"
+      "Перший видимий контент",
+      "Сторінка повністю завантажена",
+      "JS виконано",
+      "DOM готовий"
     ]
   },
   "js-browser-21": {
@@ -224,10 +204,10 @@
     "explanation": "Неочікуваний рух елементів, що вимірюється метрикою CLS.",
     "interviewTip": "Уникайте стрибків контенту при динамічному завантаженні.",
     "options": [
-      "Unexpected UI movement",
-      "Slow rendering",
-      "Broken CSS",
-      "Async loading"
+      "Неочікуваний рух інтерфейсу",
+      "Повільний рендеринг",
+      "Зламаний CSS",
+      "Асинхронне завантаження"
     ]
   },
   "js-browser-22": {
@@ -246,10 +226,10 @@
     "explanation": "Область пам'яті для динамічного розміщення об'єктів.",
     "interviewTip": "Саме тут зазвичай виникають витоки пам'яті (memory leaks).",
     "options": [
-      "Memory for objects",
-      "Call stack",
-      "Task queue",
-      "DOM tree"
+      "Пам'ять для об'єктів",
+      "Стек викликів (Call stack)",
+      "Черга завдань",
+      "Дерево DOM"
     ]
   },
   "js-browser-24": {
@@ -257,10 +237,10 @@
     "explanation": "Звернення до геометричних властивостей (наприклад, offsetHeight) одразу після зміни стилів.",
     "interviewTip": "Уникайте « layout thrashing» (чергування читання та запису геометрії).",
     "options": [
-      "Reading layout after write",
-      "Async JS",
+      "Читання макета одразу після запису",
+      "Асинхронний JS",
       "Promises",
-      "Event listeners"
+      "Слухачі подій"
     ]
   },
   "js-browser-25": {
@@ -268,10 +248,10 @@
     "explanation": "Починати з профілювання (Profiling) у DevTools.",
     "interviewTip": "Ніколи не робіть припущень без вимірювань.",
     "options": [
-      "Measure with DevTools",
-      "Rewrite in WebAssembly",
-      "Avoid JS",
-      "Remove CSS"
+      "Вимірювання за допомогою DevTools",
+      "Переписування на WebAssembly",
+      "Уникнення JS",
+      "Видалення CSS"
     ]
   }
 }
