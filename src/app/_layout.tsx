@@ -57,7 +57,7 @@ export default function RootLayout() {
               name="stage"
               options={{
                 headerShown: true,
-                headerTitle: t('headers.stage'),
+                // headerTitle: t('headers.stage'),
                 headerStyle: {
                   backgroundColor: COLORS.bgBottom,
                 },
