@@ -4,10 +4,10 @@
     "explanation": "Значення Context можуть бути будь-якого типу JS. Передача об'єкта, що містить і стан, і функцію його встановлення (setter), є найпоширенішим патерном для глобального керування станом.",
     "interviewTip": "Завжди переконуйтеся, що об'єкт, який передається у 'value', мемоїзований (череp useMemo), якщо він визначений всередині компонента. Інакше створюватиметься нове посилання при кожному рендері.",
     "options": [
-      "You can't pass functions through Context.",
-      "Include the function in the object passed to the 'value' prop.",
-      "Use a separate 'FunctionProvider'.",
-      "Call the function directly in the Provider tags."
+      "Ви не можете передавати функції через Context.",
+      "Включити функцію в об'єкт, що передається в пропс 'value'.",
+      "Використовувати окремий 'FunctionProvider'.",
+      "Викликати функцію безпосередньо в тегах Provider."
     ]
   },
   "ca-10": {
@@ -15,10 +15,10 @@
     "explanation": "Об'єкт контексту сам по собі є лише дескриптором. Ви повинні використовувати хук 'useContext', щоб «витягнути» фактичне значення з цього контексту.",
     "interviewTip": "Уявіть об'єкт Context як «ключ», а 'useContext' — як «замок», який він відкриває.",
     "options": [
-      "theme must be a string.",
-      "You must call useContext(ThemeContext) to get the actual value.",
-      "The style prop is missing a semicolon.",
-      "Display must be capitalized."
+      "theme має бути рядком.",
+      "Ви повинні викликати useContext(ThemeContext), щоб отримати фактичне значення.",
+      "У пропсі style пропущена крапка з комою.",
+      "Display має бути написаний з великої літери."
     ]
   },
   "ca-11": {
@@ -26,10 +26,10 @@
     "explanation": "Розділення контекстів на кілька менших та мемоїзація — це дві найефективніші стратегії. Переміщення провайдера вище по дереву насправді збільшує кількість компонентів, на які може вплинути рендер.",
     "interviewTip": "Якщо 'React.memo' не допомагає, проблема, швидше за все, у самому значенні контексту, яке змінюється занадто часто.",
     "options": [
-      "Splitting a large context into multiple smaller contexts.",
-      "Using 'React.memo' on the consumer components.",
-      "Moving the Provider higher up in the tree.",
-      "Memoizing the 'value' prop of the Provider using 'useMemo'."
+      "Розділення великого контексту на кілька менших.",
+      "Використання 'React.memo' для компонентів-споживачів (consumers).",
+      "Переміщення Provider вище по дереву компонентів.",
+      "Мемоїзація пропса 'value' провайдера за допомогою 'useMemo'."
     ]
   },
   "ca-12": {
@@ -37,10 +37,10 @@
     "explanation": "Коли Provider зникає, хук шукає значення вище по дереву і, нічого не знайшовши, повертається до початкового значення за замовчуванням (default value).",
     "interviewTip": "Це гарантує «безпеку» компонента навіть під час динамічних змін макета.",
     "options": [
-      "The component will crash.",
-      "The component will revert to the default value defined in 'createContext'.",
-      "The component will maintain the last known value forever.",
-      "The component will automatically unmount as well."
+      "Компонент зламається (crash).",
+      "Компонент повернеться до значення за замовчуванням, визначеного в 'createContext'.",
+      "Компонент назавжди збереже останнє відоме значення.",
+      "Компонент також автоматично демонтується."
     ]
   }
 }

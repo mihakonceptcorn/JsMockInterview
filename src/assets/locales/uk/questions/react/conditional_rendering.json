@@ -6,8 +6,8 @@
     "options": [
       "Success!",
       "Loading...",
-      "Nothing",
-      "Both 'Success!' and 'Loading...'"
+      "Нічого",
+      "Обидва: 'Success!' та 'Loading...'"
     ]
   },
   "cr-02": {
@@ -15,21 +15,21 @@
     "explanation": "У JS вираз '0 && що завгодно' повертає 0. React не рендерить булеві значення, але він *рендерить* число 0.",
     "interviewTip": "Щоб уникнути цього, використовуйте явну перевірку на булеве значення: `{count > 0 && <p>Знайдено елементи</p>}` або тернарний оператор.",
     "options": [
-      "It renders nothing.",
-      "It renders the number 0 in the UI.",
-      "It crashes the app.",
-      "It renders '<p>Items found</p>'."
+      "Нічого не відрендериться.",
+      "В інтерфейсі відрендериться число 0.",
+      "Застосунок зламається (crash).",
+      "Відрендериться '<p>Items found</p>'."
     ]
   },
   "cr-03": {
     "prompt": "Як змусити React нічого не рендерити на основі умови?",
-    "explanation": "Повернення 'null' — це стандартний спосіб сказати React, щоб він не виводив результат для компонента або частини інтерфейсу.",
+    "explanation": "Повернення 'null' — це стандартний спосіб сказати React, щоб не виводив результат для компонента або частини інтерфейсу.",
     "interviewTip": "Повернення null все одно запускає хуки життєвого циклу компонента; воно просто не створює DOM-вузлів.",
     "options": [
-      "Return an empty string \"\".",
-      "Return null.",
-      "Return undefined.",
-      "All of the above."
+      "Повернути порожній рядок \"\".",
+      "Повернути null.",
+      "Повернути undefined.",
+      "Усі перелічені варіанти."
     ]
   },
   "cr-04": {
@@ -37,10 +37,10 @@
     "explanation": "У React немає директив на кшталт v-if. Він покладається на стандартну логіку JavaScript.",
     "interviewTip": "Для складних умов використання допоміжної функції або змінної поза межами інструкції return часто робить код чистішим.",
     "options": [
-      "Using a switch statement outside of the return.",
-      "Using a ternary operator inside curly braces.",
-      "Using a v-if attribute on a div.",
-      "Using logical && for 'if-this-then-that' logic."
+      "Використання інструкції switch поза return.",
+      "Використання тернарного оператора всередині фігурних дужок.",
+      "Використання атрибута v-if на div.",
+      "Використання логічного && для логіки 'якщо-це-то-те'."
     ]
   },
   "cr-05": {
@@ -48,10 +48,10 @@
     "explanation": "Це називається 'Early Return' (раннє повернення). Воно запобігає виконанню решти логіки компонента, якщо умова не виконана.",
     "interviewTip": "Ранні повернення чудово підходять для обробки станів завантаження або відсутності даних.",
     "options": [
-      "It renders 'Welcome, undefined' if there is no user.",
-      "It renders nothing if there is no user.",
-      "It crashes if there is no user.",
-      "It renders an empty h1."
+      "Відрендерить 'Welcome, undefined', якщо користувача немає.",
+      "Нічого не відрендерить, якщо користувача немає.",
+      "Застосунок зламається, якщо користувача немає.",
+      "Відрендерить порожній тег h1."
     ]
   },
   "cr-06": {
@@ -59,10 +59,10 @@
     "explanation": "Оператор || ідеально підходить для відображення тексту за замовчуванням або компонентів-заглушок, коли дані відсутні.",
     "interviewTip": "Пам'ятайте: якщо userName — це порожній рядок \"\", оператор || також спрацює і покаже запасний варіант.",
     "options": [
-      "To provide a fallback/default value if the first value is falsy.",
-      "To check if both values are true.",
-      "To hide the div if userName exists.",
-      "To loop through a list of names."
+      "Щоб надати fallback/значення за замовчуванням, якщо перше значення є falsy.",
+      "Щоб перевірити, чи обидва значення є true.",
+      "Щоб приховати div, якщо userName існує.",
+      "Щоб пройти циклом по списку імен."
     ]
   },
   "cr-07": {
@@ -70,10 +70,10 @@
     "explanation": "Тернарні оператори можна використовувати всередині значень атрибутів для умовного застосування CSS-класів або інших пропсів.",
     "interviewTip": "Це основний спосіб обробки динамічних стилів у базовому React.",
     "options": [
-      "A div with class 'admin-theme'.",
-      "A div with class 'user-theme'.",
-      "A syntax error.",
-      "A div with both classes."
+      "div з класом 'admin-theme'.",
+      "div з класом 'user-theme'.",
+      "Синтаксична помилка.",
+      "div з обома класами."
     ]
   },
   "cr-08": {
@@ -81,10 +81,10 @@
     "explanation": "JSX трансформується у виклики React.createElement(). Аргументами функції мають бути вирази (значення), а не інструкції (statements).",
     "interviewTip": "Вирази обчислюються в значення (як 2+2); інструкції виконують дію (як if або for).",
     "options": [
-      "React doesn't support them.",
-      "JSX is just a group of function calls, and you can't put statements inside an argument list.",
-      "It would make the Virtual DOM too slow.",
-      "Browsers don't support loops in HTML."
+      "React їх не підтримує.",
+      "JSX — це просто набір викликів функцій, а ви не можете помістити statements у список аргументів.",
+      "Це зробило б Virtual DOM занадто повільним.",
+      "Браузери не підтримують цикли всередині HTML."
     ]
   },
   "cr-09": {
@@ -93,20 +93,20 @@
     "interviewTip": "Завжди переконуйтеся, що ліва частина вашого && є справжнім булевим значенням, якщо хочете уникнути виводу цифри 0.",
     "options": [
       "<li>Show items</li>",
-      "An empty <ul>.",
-      "The number 0.",
-      "A list with a false value."
+      "Порожній <ul>.",
+      "Число 0.",
+      "Список із значенням false."
     ]
   },
-  "cr-10": {
+  "rtk-10": {
     "prompt": "Як обробити стани 'Завантаження', 'Помилка' та 'Дані' в одному компоненті?",
     "explanation": "Хоча вкладені тернарні оператори працюють, їх важко читати. Ранні повернення для станів помилки та завантаження виглядають набагато чистіше.",
     "interviewTip": "Патерн: `if (loading) return <Spinner />; if (error) return <Error />; return <Data />;`",
     "options": [
-      "By using nested ternary operators.",
-      "By returning different JSX blocks early based on status variables.",
-      "By using the useEffect hook to hide elements.",
-      "By creating three separate apps."
+      "За допомогою вкладених тернарних операторів.",
+      "Повертаючи різні блоки JSX за допомогою early returns на основі змінних статусу.",
+      "Використовуючи хук useEffect для приховування елементів.",
+      "Створивши три окремі застосунки."
     ]
   },
   "cr-11": {
@@ -114,10 +114,10 @@
     "explanation": "Це безпечніше, ніж ||, коли 0 є валідним значенням, яке ви хочете відобразити.",
     "interviewTip": "Використовуйте ??, якщо хочете розглядати 0 та порожні рядки як реальні дані, а не як відсутність значення.",
     "options": [
-      "It works like ||, but only triggers for null or undefined (not 0 or \"\").",
-      "It checks if two strings are equal.",
-      "It deletes the variable if it's null.",
-      "It is a shorthand for a ternary operator."
+      "Він працює як ||, але спрацьовує лише для null або undefined (не для 0 або \"\").",
+      "Він перевіряє, чи два рядки однакові.",
+      "Він видаляє змінну, якщо вона null.",
+      "Це скорочення для тернарного оператора."
     ]
   },
   "cr-12": {
@@ -125,10 +125,10 @@
     "explanation": "Хоча React ігнорує «чисті» булеві значення, перетворення їх на рядок змусить їх відобразитися на екрані.",
     "interviewTip": "Це корисний трюк для налагодження (debugging), щоб побачити стан булевих змінних прямо в інтерфейсі.",
     "options": [
-      "It renders nothing.",
-      "It renders 'false' as text.",
-      "It renders 'undefined'.",
-      "It crashes."
+      "Нічого не рендериться.",
+      "Рендериться 'false' як текст.",
+      "Рендериться 'undefined'.",
+      "Застосунок ламається."
     ]
   },
   "cr-13": {
@@ -136,10 +136,10 @@
     "explanation": "Розгортання порожнього об'єкта {} не додає жодних пропсів, тоді як розгортання об'єкта з ключами застосовує їх динамічно.",
     "interviewTip": "Це чистий спосіб передачі пропсів «тільки для адміністратора» або спеціальних конфігурацій.",
     "options": [
-      "The code above is correct.",
-      "You must pass props individually.",
-      "Spread cannot be used inside return.",
-      "isAdmin must be a string."
+      "Код вище є правильним.",
+      "Ви повинні передавати пропси індивідуально.",
+      "Spread не можна використовувати всередині return.",
+      "isAdmin має бути рядком."
     ]
   },
   "cr-14": {
@@ -147,10 +147,10 @@
     "explanation": "Демонтування — це повне знищення екземпляра компонента та очищення його стану.",
     "interviewTip": "Якщо вам потрібно зберегти стан «живим», підніміть його до батьківського компонента або приховайте компонент через CSS (display: none) замість видалення.",
     "options": [
-      "Its local state is destroyed.",
-      "Its useEffect cleanup function runs.",
-      "It stays in the Virtual DOM but is hidden in the real DOM.",
-      "Its state is preserved in the parent component."
+      "Його локальний стан (local state) знищується.",
+      "Запускається його функція очищення (cleanup function) у useEffect.",
+      "Він залишається у Virtual DOM, але прихований у real DOM.",
+      "Його стан зберігається в батьківському компоненті."
     ]
   },
   "cr-15": {
@@ -160,8 +160,8 @@
     "options": [
       "{isVisible && <LargeComponent />}",
       "<div style={{ display: isVisible ? 'block' : 'none' }}><LargeComponent /></div>",
-      "They are the same.",
-      "Using a separate route."
+      "Вони однакові за продуктивністю.",
+      "Використання окремого route."
     ]
   }
 }

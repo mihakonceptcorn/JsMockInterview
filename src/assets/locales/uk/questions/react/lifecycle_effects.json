@@ -4,10 +4,10 @@
     "explanation": "Без масиву залежностей useEffect запускається після кожного циклу рендерингу. Зазвичай цього уникають, щоб не створювати проблем із продуктивністю.",
     "interviewTip": "Завжди свідомо ставтеся до масиву залежностей, щоб уникнути нескінченних циклів.",
     "options": [
-      "Only when the component unmounts.",
-      "After every single render of the component.",
-      "Only after the first render (mount).",
-      "Only when the state changes."
+      "Тільки коли компонент демонтується (unmounts).",
+      "Після кожного окремого рендерингу компонента.",
+      "Тільки після першого рендерингу (mount).",
+      "Тільки коли змінюється стан (state)."
     ]
   },
   "le-02": {
@@ -15,10 +15,10 @@
     "explanation": "Порожній масив залежностей [] підказує React, що ефект не залежить від жодних значень із пропсів або стану, тому його ніколи не потрібно запускати повторно.",
     "interviewTip": "Навіть із порожнім масивом, у режимі 'Strict Mode' під час розробки в React 18, ефекти можуть запускатися двічі, щоб допомогти вам знайти помилки в очищенні.",
     "options": [
-      "Passing undefined.",
-      "Passing a null value.",
-      "Passing an empty array [].",
-      "Omitting the second argument."
+      "Передати undefined.",
+      "Передати значення null.",
+      "Передати порожній масив [].",
+      "Пропустити другий аргумент."
     ]
   },
   "le-03": {
@@ -26,10 +26,10 @@
     "explanation": "Функція очищення (cleanup function) необхідна для запобігання витокам пам'яті (наприклад, видалення інтервалів, слухачів подій або активних підписок на API).",
     "interviewTip": "Завжди очищуйте побічні ефекти, які продовжують існувати поза життєвим циклом компонента.",
     "options": [
-      "To initialize the next render.",
-      "To perform cleanup before the component unmounts or before the effect re-runs.",
-      "To trigger a re-render of the parent component.",
-      "To handle errors within the effect."
+      "Для ініціалізації наступного рендерингу.",
+      "Для виконання очищення перед демонтуванням компонента або перед повторним запуском ефекту.",
+      "Для запуску повторного рендерингу батьківського компонента.",
+      "Для обробки помилок всередині ефекту."
     ]
   },
   "le-04": {
@@ -37,10 +37,10 @@
     "explanation": "Обчислення значень на основі пропсів слід робити під час рендерингу (або через useMemo). Ефекти призначені саме для «побічних ефектів», які взаємодіють із чимось за межами екосистеми React.",
     "interviewTip": "Якщо ви можете обчислити щось під час рендерингу, вам не потрібен useEffect.",
     "options": [
-      "Updating the document title based on state.",
-      "Calculating a value from two props (e.g., fullName = firstName + lastName).",
-      "Fetching data from an external API.",
-      "Starting or stopping a timer/interval."
+      "Оновлення заголовка документа (document title) на основі стану.",
+      "Обчислення значення з двох пропсів (наприклад, fullName = firstName + lastName).",
+      "Отримання даних із зовнішнього API (fetching).",
+      "Запуск або зупинка таймера/інтервалу."
     ]
   },
   "le-05": {
@@ -48,10 +48,10 @@
     "explanation": "Рендеринг запустить ефект, ефект оновить стан, оновлення стану запустить рендеринг — і цей цикл повторюватиметься нескінченно.",
     "interviewTip": "Якщо під час розробки ви чуєте, як розганяються кулери вашого процесора, перевірте, чи не забули ви масив залежностей у useEffect, який викликає функцію встановлення стану.",
     "options": [
-      "The count will increment once and stop.",
-      "It will cause an infinite loop of re-renders.",
-      "React will throw an 'AutoLoopError'.",
-      "The UI will update smoothly at 60fps."
+      "Лічильник збільшиться один раз і зупиниться.",
+      "Це спричинить нескінченний цикл повторних рендерингів (infinite loop).",
+      "React видасть помилку 'AutoLoopError'.",
+      "Інтерфейс буде плавно оновлюватися при 60fps."
     ]
   },
   "le-06": {
@@ -59,32 +59,27 @@
     "explanation": "React виконує поверхневе порівняння (Object.is) для кожного елемента в масиві. Якщо будь-який елемент змінився між рендерами, ефект запускається знову.",
     "interviewTip": "Будьте обережні при передачі об'єктів або масивів у масив залежностей, оскільки нові посилання (references) викликатимуть ефект щоразу.",
     "options": [
-      "On every render.",
-      "Only when 'userId' changes (referential equality check).",
-      "Only when 'fetchData' is called manually.",
-      "On every click event."
+      "При кожному рендерингу.",
+      "Тільки коли змінюється 'userId' (перевірка рівності за посиланням).",
+      "Тільки коли 'fetchData' викликається вручну.",
+      "При кожній події кліку."
     ]
   },
   "le-07": {
     "prompt": "Що буде виведено в консоль, коли компонент демонтується (unmounts)?",
     "explanation": "Функція очищення (B) запускається лише тоді, коли компонент видаляється з DOM, якщо масив залежностей порожній.",
     "interviewTip": "Якби масив мав залежності, 'B' запускався б перед кожним повторним запуском 'A' ТА під час демонтування.",
-    "options": [
-      "A",
-      "B",
-      "A then B",
-      "None (console is cleared)"
-    ]
+    "options": ["A", "B", "Спочатку A, потім B", "Нічого (консоль очищається)"]
   },
   "le-08": {
     "prompt": "Як React обробляє кілька хуків useEffect в одному компоненті?",
     "explanation": "React покладається на порядок виклику хуків для підтримки стану. Вони виконуються послідовно після того, як результат рендерингу відобразиться на екрані.",
     "interviewTip": "Використовуйте кілька ефектів, щоб розділити непов'язану логіку (наприклад, один для отримання даних, інший для слухача подій).",
     "options": [
-      "It only executes the first one.",
-      "It executes them in the order they are defined.",
-      "It executes them in parallel (random order).",
-      "It merges them into a single effect."
+      "Виконується тільки перший з них.",
+      "Виконує їх у тому порядку, в якому вони визначені.",
+      "Виконує їх паралельно (у випадковому порядку).",
+      "Об'єднує їх в один єдиний ефект."
     ]
   },
   "le-09": {
@@ -92,10 +87,10 @@
     "explanation": "Якщо значення використовується всередині, але не вказане в залежностях, функція ефекту «пам'ятатиме» версію цього значення з моменту свого останнього створення, що призведе до багів.",
     "interviewTip": "'eslint-plugin-react-hooks' — ваш найкращий друг для автоматичного виявлення відсутніх залежностей.",
     "options": [
-      "To avoid stale closures where the effect uses old values from a previous render.",
-      "To prevent the component from unmounting.",
-      "To speed up the Virtual DOM diffing process.",
-      "It's just a linting suggestion, not strictly necessary."
+      "Щоб уникнути замикань на застарілих даних (stale closures), де ефект використовує старі значення з попереднього рендерингу.",
+      "Щоб запобігти демонтуванню компонента.",
+      "Щоб прискорити процес порівняння (diffing) у Virtual DOM.",
+      "Це просто пропозиція лінтера, а не сувора необхідність."
     ]
   },
   "le-10": {
@@ -103,21 +98,21 @@
     "explanation": "React спочатку очищує ефект попереднього рендеру, а потім застосовує новий, щоб побічні ефекти не накладалися один на одного.",
     "interviewTip": "Саме тому очищення підписки перед початком нової запобігає появі дублікатів слухачів подій.",
     "options": [
-      "New Effect runs -> Old Cleanup runs.",
-      "Old Cleanup runs -> New Effect runs.",
-      "They run at the same time.",
-      "The Cleanup only runs at unmount."
+      "Запускається новий ефект -> Запускається стара функція очищення.",
+      "Запускається стара функція очищення -> Запускається новий ефект.",
+      "Вони запускаються одночасно.",
+      "Очищення запускається тільки при демонтуванні."
     ]
   },
   "le-11": {
     "prompt": "Що станеться, якщо повернути рядок замість функції з useEffect?",
-    "explanation": "useEffect очікує, що результатом буде або функція (для очищення), або нічого (undefined). Повернення будь-чого іншого є помилкою.",
+    "explanation": "useEffect очікує, що результатом буде або функція (для очищення), або нічого (undefined). Повернення будьчого іншого є помилкою.",
     "interviewTip": "Повернення асинхронної функції — поширена помилка, оскільки асинхронні функції повертають Promise, а не функцію очищення.",
     "options": [
-      "React logs 'Cleanup' to the console.",
-      "React ignores it.",
-      "React will warn/error because it expects a function or undefined.",
-      "It becomes the new state."
+      "React виведе 'Cleanup' у консоль.",
+      "React проігнорує це.",
+      "React видасть попередження або помилку, оскільки очікує функцію або undefined.",
+      "Це стане новим станом (state)."
     ]
   },
   "le-12": {
@@ -136,10 +131,10 @@
     "explanation": "Ви не можете зробити сам колбек ефекту асинхронним, бо він поверне Promise замість функції очищення. Ви повинні визначити асинхронну функцію всередині ефекту.",
     "interviewTip": "Визначення функції всередині ефекту також полегшує обробку скасування (наприклад, через AbortController).",
     "options": [
-      "The code above is the correct way.",
-      "Make the whole effect async: useEffect(async () => ...).",
-      "Use .then() only, async/await is forbidden.",
-      "Call the async function outside the component."
+      "Наведений вище код — це правильний спосіб.",
+      "Зробити весь ефект асинхронним: useEffect(async () => ...).",
+      "Використовувати тільки .then(), async/await заборонено.",
+      "Викликати асинхронну функцію за межами компонента."
     ]
   },
   "le-14": {
@@ -147,10 +142,10 @@
     "explanation": "Монтування — це початок життя компонента в DOM.",
     "interviewTip": "useEffect із [] — найпоширеніший спосіб реалізації логіки 'onMount'.",
     "options": [
-      "When a component is being updated with new props.",
-      "When a component is being created and inserted into the DOM.",
-      "When a component is removed from the screen.",
-      "When the user clicks on the component."
+      "Коли компонент оновлюється новими пропсами.",
+      "Коли компонент створюється та вставляється в DOM.",
+      "Коли компонент видаляється з екрана.",
+      "Коли користувач натискає на компонент."
     ]
   },
   "le-15": {
@@ -158,10 +153,10 @@
     "explanation": "React використовує поверхневу рівність. Новий літерал об'єкта `{}` — це завжди нове посилання, навіть якщо властивості виглядають однаково.",
     "interviewTip": "Саме тому ми використовуємо розгортання: `setData({...data})`.",
     "options": [
-      "setData({ count: 0 }) // New object reference.",
-      "data.count = 1; setData(data); // Same object reference.",
-      "setData(prev => ({ ...prev, count: 1 })) // New object reference.",
-      "Calling setData with the same string value 'hello' if data was 'hello'."
+      "setData({ count: 0 }) // Нове посилання на об'єкт.",
+      "data.count = 1; setData(data); // Те саме посилання на об'єкт.",
+      "setData(prev => ({ ...prev, count: 1 })) // Нове посилання на об'єкт.",
+      "Виклик setData з тим самим рядковим значенням 'hello', якщо data було 'hello'."
     ]
   },
   "le-16": {
@@ -170,8 +165,8 @@
     "interviewTip": "Це гарантує, що «старий» світ очищено до того, як почнеться «новий».",
     "options": [
       "Effect",
-      "Cleanup then Effect",
-      "Effect then Cleanup",
+      "Спочатку Cleanup, потім Effect",
+      "Спочатку Effect, потім Cleanup",
       "Cleanup"
     ]
   },
@@ -180,10 +175,10 @@
     "explanation": "У JS `function a(){}` !== `function a(){}`, якщо вони створені в різних циклах рендерингу. Використовуйте `useCallback`, щоб зберегти стабільність посилань на функції.",
     "interviewTip": "Перенесення функції *всередину* useEffect часто є найпростішим виправленням.",
     "options": [
-      "Yes, functions never change.",
-      "No, functions are recreated on every render and will trigger the effect every time unless memoized.",
-      "Only if the function doesn't use state.",
-      "Yes, React ignores functions in dependencies."
+      "Так, функції ніколи не змінюються.",
+      "Ні, функції перестворюються при кожному рендерингу і будуть тригерити ефект щоразу, якщо їх не мемоїзувати.",
+      "Тільки якщо функція не використовує стан (state).",
+      "Так, React ігнорує функції в залежностях."
     ]
   }
 }

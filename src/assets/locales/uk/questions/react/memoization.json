@@ -4,10 +4,10 @@
     "explanation": "useMemo виконує функцію та запам'ятовує повернуте значення. useCallback повертає саму функцію, щоб її посилання залишалося стабільним між рендерами.",
     "interviewTip": "Запам'ятайте: useCallback(fn, deps) — це, по суті, те саме, що й useMemo(() => fn, deps).",
     "options": [
-      "useMemo is for Class components; useCallback is for Functional components.",
-      "useMemo caches the result of a function; useCallback caches the function definition itself.",
-      "useCallback is faster than useMemo.",
-      "useMemo triggers a re-render; useCallback prevents it."
+      "useMemo для класових компонентів; useCallback для функціональних.",
+      "useMemo кешує результат виконання функції; useCallback кешує саме визначення функції.",
+      "useCallback працює швидше за useMemo.",
+      "useMemo тригерить повторний рендеринг; useCallback запобігає йому."
     ]
   },
   "mem-02": {
@@ -15,10 +15,10 @@
     "explanation": "Оскільки 'count' не змінився, useMemo повертає закешоване значення і пропускає повторне виконання функції.",
     "interviewTip": "Це ідеально підходить для уникнення «важкої» логіки (наприклад, сортування великих масивів) при кожному рендері.",
     "options": [
-      "Once (only on the initial render).",
-      "Zero times.",
-      "On every single re-render.",
-      "Every time the parent component renders."
+      "Один раз (тільки під час початкового рендерингу).",
+      "Нуль разів.",
+      "При кожному окремому перерендерингу.",
+      "Щоразу, коли рендериться батьківський компонент."
     ]
   },
   "mem-03": {
@@ -26,10 +26,10 @@
     "explanation": "React.memo — це компонент вищого порядку (HOC), який виконує поверхневе порівняння пропсів. Якщо вони такі ж, як минулого разу, React пропускає рендеринг цього компонента.",
     "interviewTip": "За замовчуванням React перерендерить усіх дітей, коли рендериться батько. React.memo дозволяє відмовитися від цієї поведінки.",
     "options": [
-      "It automatically saves the component's state to a database.",
-      "It prevents the component from re-rendering if its props have not changed.",
-      "It makes the component invisible until it is fully loaded.",
-      "It allows the component to bypass the Virtual DOM."
+      "Автоматично зберігає стан компонента в базу даних.",
+      "Запобігає повторному рендерингу компонента, якщо його пропси не змінилися.",
+      "Робить компонент невидимим, поки він повністю не завантажиться.",
+      "Дозволяє компоненту працювати в обхід Virtual DOM."
     ]
   },
   "mem-04": {
@@ -37,10 +37,10 @@
     "explanation": "У JS `{} !== {}` та `()=>{} !== ()=>{} `. Вони створюють нові посилання при кожному рендері, через що React.memo вважає, що пропси змінилися.",
     "interviewTip": "Щоб виправити це, використовуйте useMemo для об'єктів та useCallback для функцій.",
     "options": [
-      "Passing a new object literal as a prop: <Child data={{}} />.",
-      "Passing a numeric prop: <Child count={5} />.",
-      "Passing an inline arrow function: <Child onClick={() => {}} />.",
-      "Passing a string prop: <Child name='Alice' />."
+      "Передача нового літерала об'єкта як пропса: <Child data={{}} />.",
+      "Передача числового пропса: <Child count={5} />.",
+      "Передача інлайнової стрілочної функції: <Child onClick={() => {}} />.",
+      "Передача рядкового пропса: <Child name='Alice' />."
     ]
   },
   "mem-05": {
@@ -48,10 +48,10 @@
     "explanation": "React використовує поверхневу рівність (Object.is) для пропсів та масивів залежностей. Якщо посилання змінюється, оптимізація не спрацьовує.",
     "interviewTip": "Ось чому стабільні посилання (через хуки) є основою продуктивності React.",
     "options": [
-      "When two variables have the same string name.",
-      "When React checks if two variables point to the exact same memory address.",
-      "When the HTML structure of two components matches.",
-      "When two components share the same key prop."
+      "Коли дві змінні мають однакові рядкові імена.",
+      "Коли React перевіряє, чи вказують дві змінні на одну й ту саму адресу в пам'яті.",
+      "Коли HTML-структура двох компонентів збігається.",
+      "Коли два компоненти мають однаковий пропс key."
     ]
   },
   "mem-06": {
@@ -59,10 +59,10 @@
     "explanation": "Порожній масив залежностей каже React ніколи не оновлювати посилання на функцію. Вона назавжди «запам'ятовує» версію 'text' з найпершого рендеру.",
     "interviewTip": "Завжди включайте кожне реактивне значення, що використовується всередині хука, до масиву залежностей.",
     "options": [
-      "It will cause an infinite loop.",
-      "It will always log the value of 'text' from the very first render (Stale Closure).",
-      "The component will crash.",
-      "useCallback cannot log to the console."
+      "Це спричинить нескінченний цикл.",
+      "Він завжди буде логувати значення 'text' з найпершого рендерингу (Stale Closure).",
+      "Компонент зламається (crash).",
+      "useCallback не може виводити дані в консоль."
     ]
   },
   "mem-07": {
@@ -70,10 +70,10 @@
     "explanation": "Мемоїзація має свою ціну (пам'ять та час на порівняння). Якщо логіка проста, витрати на роботу хука можуть бути більшими за користь.",
     "interviewTip": "Не оптимізуйте передчасно. Спочатку профілюйте додаток, щоб побачити, де насправді є вузькі місця.",
     "options": [
-      "In small components with simple logic.",
-      "When passing props to a memoized child component.",
-      "When performing expensive array filtering.",
-      "When the dependency array is very large."
+      "У малих компонентах із простою логікою.",
+      "При передачі пропсів мемоїзованому дочірньому компоненту.",
+      "При виконанні високовартісної фільтрації масивів.",
+      "Коли масив залежностей дуже великий."
     ]
   },
   "mem-08": {
@@ -81,10 +81,10 @@
     "explanation": "Навіть якщо значення однакові, `[1,2,3] !== [1,2,3]` у JS. Нове посилання ініціює перерендер.",
     "interviewTip": "Винесіть статичні дані за межі компонента або огорніть їх у useMemo.",
     "options": [
-      "MemoizedChild will not re-render because the array content is identical.",
-      "MemoizedChild will re-render because 'data' is a new array reference every time.",
-      "React will throw an error.",
-      "Only the first item in the list will re-render."
+      "MemoizedChild не буде перерендерено, бо вміст масиву ідентичний.",
+      "MemoizedChild буде перерендерено, бо 'data' — це нове посилання на масив кожного разу.",
+      "React видасть помилку.",
+      "Перерендериться тільки перший елемент у списку."
     ]
   },
   "mem-09": {
@@ -92,10 +92,10 @@
     "explanation": "За замовчуванням React.memo робить поверхневу перевірку. Ви можете надати власну функцію для глибокого порівняння або ігнорування конкретних пропсів.",
     "interviewTip": "Будьте обережні: глибоке порівняння може бути повільнішим, ніж сам перерендер!",
     "options": [
-      "It allows you to manually define the comparison logic for props.",
-      "It sets the time-to-live for the cache.",
-      "It allows you to pass a custom key to the component.",
-      "It lets you decide which state changes to ignore."
+      "Дозволяє вручну визначити логіку порівняння пропсів.",
+      "Встановлює час життя (time-to-live) для кешу.",
+      "Дозволяє передати кастомний key компоненту.",
+      "Дозволяє вирішити, які зміни стану ігнорувати."
     ]
   },
   "mem-10": {
@@ -103,9 +103,9 @@
     "explanation": "useEffect перезапускається, якщо посилання змінюється. Споживачі Context перерендериться, якщо значення провайдера (часто об'єкт) є новим посиланням.",
     "interviewTip": "Стабільність посилань — це «місток», який робить інші хуки ефективними.",
     "options": [
-      "useEffect (when functions/objects are in the dependency array).",
+      "useEffect (коли функції/об'єкти знаходяться в масиві залежностей).",
       "useState.",
-      "useContext (to avoid re-rendering all consumers).",
+      "useContext (щоб уникнути перерендерингу всіх споживачів).",
       "useRef."
     ]
   },
@@ -125,10 +125,10 @@
     "explanation": "Хуки повинні викликатися на верхньому рівні вашого компонента. Ви не можете вкладати хуки в useMemo, useEffect або будь-яку іншу функцію.",
     "interviewTip": "Це відповідає вимогам «Правил хуків» щодо порядку їх виклику.",
     "options": [
-      "It creates a local state for the memoized value.",
-      "It is invalid; hooks cannot be called inside useMemo.",
-      "It works only in React 18.",
-      "It returns a setter function."
+      "Це створює локальний стан для мемоїзованого значення.",
+      "Це невалідно; хуки не можна викликати всередині useMemo.",
+      "Це працює тільки в React 18.",
+      "Це повертає функцію-сеттер."
     ]
   }
 }

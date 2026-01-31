@@ -5,7 +5,7 @@
     "interviewTip": "Завжди передавайте числа у фігурних дужках, наприклад, age={25}, щоб гарантувати збереження числового типу даних.",
     "options": [
       "26",
-      "Error: Props are read-only",
+      "Помилка: Props доступні тільки для читання",
       "251",
       "undefined"
     ]
@@ -15,10 +15,10 @@
     "explanation": "React дотримується суворого правила незмінності (immutability) для пропсів, щоб забезпечити передбачуваність «Односпрямованого потоку даних» та полегшити відлагодження.",
     "interviewTip": "Ставтеся до пропсів як до «знімків» (snapshots) даних, наданих батьківським компонентом.",
     "options": [
-      "Props are immutable; a component should never modify its own props.",
-      "Props are mutable and can be used to store local component changes.",
-      "Props are only used to pass CSS classes to child elements.",
-      "Props can only be passed from a child to its parent."
+      "Props є immutable; компонент ніколи не повинен змінювати власні пропси.",
+      "Props є mutable і можуть використовуватися для збереження локальних змін компонента.",
+      "Props використовуються лише для передачі CSS-класів дочірнім елементам.",
+      "Props можна передавати тільки від дочірнього компонента до батьківського."
     ]
   },
   "pc-03": {
@@ -26,10 +26,10 @@
     "explanation": "'children' — це спеціальний пропс у React, який автоматично містить усе, що розміщено між відкриваючим та закриваючим тегами компонента.",
     "interviewTip": "Цей патерн відомий як 'Containment' (вміщення) або 'Composition' (композиція).",
     "options": [
-      "An empty div with the class 'container'.",
-      "A div containing a p tag with 'Hello World'.",
-      "The string 'children'.",
-      "Nothing, children is not a valid prop name."
+      "Порожній div із класом 'container'.",
+      "div, що містить тег p із текстом 'Hello World'.",
+      "Рядок 'children'.",
+      "Нічого, children — це невалідна назва для пропса."
     ]
   },
   "pc-04": {
@@ -37,10 +37,10 @@
     "explanation": "Значення за замовчуванням через деструктуризацію ES6 є сучасним стандартом. .defaultProps — це застарілий спосіб. Оператор АБО всередині JSX — це швидкий інлайновий варіант.",
     "interviewTip": "Для функціональних компонентів команда React сьогодні рекомендує використовувати саме деструктуризацію ES6.",
     "options": [
-      "Using ES6 destructuring defaults: function MyComponent({ name = 'Guest' }) { ... }",
-      "Using the .defaultProps property: MyComponent.defaultProps = { name: 'Guest' };",
-      "Defining a default inside the return statement: <h1>{props.name || 'Guest'}</h1>",
-      "Using the useState hook to set the prop value."
+      "Використання значень за замовчуванням у деструктуризації ES6: function MyComponent({ name = 'Guest' }) { ... }",
+      "Використання властивості .defaultProps: MyComponent.defaultProps = { name: 'Guest' };",
+      "Визначення значення за замовчуванням всередині return: <h1>{props.name || 'Guest'}</h1>",
+      "Використання хука useState для встановлення значення пропса."
     ]
   },
   "pc-05": {
@@ -48,10 +48,10 @@
     "explanation": "Батьки передають функції. Діти викликають ці функції, передаючи дані як аргументи. Цей патерн 'Events Up' (події вгору) зберігає односпрямований потік.",
     "interviewTip": "Це часто називають 'Lifting State Up' (підняття стану), коли дочірній елемент ініціює оновлення стану батька.",
     "options": [
-      "By modifying the props object directly.",
-      "By using a callback function passed down from the parent as a prop.",
-      "By emitting a custom DOM event using document.dispatchEvent.",
-      "By updating a global window variable."
+      "Шляхом прямої модифікації об'єкта props.",
+      "Використовуючи callback-функцію, передану від батька як пропс.",
+      "Шляхом генерації кастомної події DOM через document.dispatchEvent.",
+      "Шляхом оновлення глобальної змінної window."
     ]
   },
   "pc-06": {
@@ -59,10 +59,10 @@
     "explanation": "Прокидання пропсів ускладнює повторне використання компонентів, оскільки проміжні компоненти змушені обробляти дані, які їм насправді не потрібні.",
     "interviewTip": "Context API або бібліотеки керування станом (як Redux чи Zustand) є поширеними рішеннями для уникнення надмірного прокидання.",
     "options": [
-      "A technique to optimize the performance of props.",
-      "The process of passing props through several layers of components just to reach a deep child.",
-      "A way to automatically generate props using a loop.",
-      "The method used to validate prop types."
+      "Техніка для оптимізації продуктивності пропсів.",
+      "Процес передачі пропсів через кілька рівнів компонентів лише для того, щоб вони досягли глибоко вкладеного нащадка.",
+      "Спосіб автоматичної генерації пропсів за допомогою циклу.",
+      "Метод, що використовується для валідації типів пропсів."
     ]
   },
   "pc-07": {
@@ -70,10 +70,10 @@
     "explanation": "Посилання на функцію alertMsg передається як пропс. Коли натискається дочірня кнопка, вона виконує функцію за цим посиланням.",
     "interviewTip": "Це демонструє, як функціональні пропси слугують містком для комунікації між компонентами.",
     "options": [
-      "Nothing happens because onAction is not a native event.",
-      "The alert 'Hello!' is triggered.",
-      "An error: 'onAction is not a function'.",
-      "The button disappears."
+      "Нічого не станеться, бо onAction не є нативною подією.",
+      "Спрацює alert 'Hello!'.",
+      "Помилка: 'onAction is not a function'.",
+      "Кнопка зникне."
     ]
   },
   "pc-08": {
@@ -81,10 +81,10 @@
     "explanation": "Оператор розширення розгортає ключі об'єкта в окремі атрибути всередині JSX.",
     "interviewTip": "Хоча це зручно, надмірне використання spread-оператора може ускладнити розуміння того, від яких саме даних залежить компонент.",
     "options": [
-      "It passes a single prop named 'userData' containing the object.",
-      "It passes 'name' and 'age' as individual props to the UserProfile component.",
-      "It deletes the name and age properties after passing them.",
-      "It converts the object into a JSON string."
+      "Передає один пропс із назвою 'userData', що містить об'єкт.",
+      "Передає 'name' та 'age' як окремі індивідуальні пропси компоненту UserProfile.",
+      "Видаляє властивості name та age після їх передачі.",
+      "Перетворює об'єкт у рядок JSON."
     ]
   },
   "pc-09": {
@@ -92,32 +92,27 @@
     "explanation": "У той час як 'class' зарезервований для HTML-елементів у JSX (де потрібно використовувати className), для *власного* компонента це просто ключ в об'єкті. Проте це заплутує, і такого зазвичай уникають.",
     "interviewTip": "Будьте послідовними та використовуйте 'className' навіть для власних компонентів, щоб уникнути плутанини з нативними DOM-елементами.",
     "options": [
-      "React automatically converts it to 'className'.",
-      "It works like any other prop; you can access it via props.class.",
-      "The app crashes because 'class' is a reserved keyword in JS.",
-      "The prop is ignored and not passed."
+      "React автоматично конвертує його в 'className'.",
+      "Він працює як будь-який інший пропс; ви можете отримати до нього доступ через props.class.",
+      "Застосунок впаде, бо 'class' є зарезервованим словом у JS.",
+      "Пропс буде проігнорований і не передасться."
     ]
   },
   "pc-10": {
     "prompt": "Яким у наступному коді буде початкове значення 'isActive' у дочірньому компоненті?",
     "explanation": "У JSX, якщо пропс передається без значення, він за замовчуванням набуває булевого значення 'true'.",
     "interviewTip": "Це схоже на HTML-атрибути, такі як 'disabled' або 'required'.",
-    "options": [
-      "\"isActive\"",
-      "undefined",
-      "true",
-      "null"
-    ]
+    "options": ["\"isActive\"", "undefined", "true", "null"]
   },
   "pc-11": {
     "prompt": "Який найкращий спосіб передати кілька пов'язаних фрагментів даних (наприклад, ім'я, email, аватар)?",
     "explanation": "Передача одного об'єкта робить API компонента чистішим і легшим для оновлення, особливо якщо структура даних надходить безпосередньо з API.",
     "interviewTip": "Якщо компоненту потрібне лише одне маленьке поле з об'єкта, передача окремих пропсів може бути кращою для продуктивності та незалежності компонентів.",
     "options": [
-      "Pass them all as individual props.",
-      "Combine them into a single object prop (e.g., user={userObj}).",
-      "Both are valid, but an object prop is often cleaner for related data.",
-      "Global variables are better for this."
+      "Передати їх усі як окремі індивідуальні пропси.",
+      "Об'єднати їх в один об'єктний пропс (наприклад, user={userObj}).",
+      "Обидва варіанти валідні, але об'єктний пропс часто виглядає охайніше для пов'язаних даних.",
+      "Глобальні змінні краще підходять для цього."
     ]
   },
   "pc-12": {
@@ -125,10 +120,10 @@
     "explanation": "Це потужний патерн для створення «слотів» (Slots). Він дозволяє впроваджувати компоненти інтерфейсу в специфічні частини макета.",
     "interviewTip": "Часто цей спосіб кращий за глибоку вкладеність або складну умовну логіку всередині компонента.",
     "options": [
-      "No, props can only be primitive data types.",
-      "Yes, elements are JavaScript objects and can be passed as props.",
-      "Only via the children prop.",
-      "Only if you use the 'render' prefix."
+      "Ні, пропси можуть бути тільки примітивними типами даних.",
+      "Так, елементи є JavaScript-об'єктами і можуть передаватися як пропси.",
+      "Тільки через пропс children.",
+      "Тільки якщо ви використовуєте префікс 'render'."
     ]
   },
   "pc-13": {
@@ -137,9 +132,9 @@
     "interviewTip": "Якщо вам потрібно змінити дані, ці дані мають бути «Станом» (State), а не «Пропсами».",
     "options": [
       "\"Alice\"",
-      "TypeError (in strict mode) because props are read-only.",
+      "TypeError (у strict mode), оскільки пропси доступні тільки для читання.",
       "undefined",
-      "The parent's state will update to 'Alice'."
+      "Стан батьківського компонента оновиться на 'Alice'."
     ]
   },
   "pc-14": {
@@ -147,10 +142,10 @@
     "explanation": "Пропси — це просто JavaScript. Будь-що, що можна присвоїти змінній у JS, можна передати як пропс.",
     "interviewTip": "Ця гнучкість — причина того, чому React має таку високу здатність до композиції.",
     "options": [
-      "Functions",
-      "Objects and Arrays",
-      "Numbers and Booleans",
-      "Other JSX Elements"
+      "Функції",
+      "Об'єкти та масиви",
+      "Числа та булеві значення",
+      "Інші JSX-елементи"
     ]
   },
   "pc-15": {
@@ -158,10 +153,10 @@
     "explanation": "Фігурні дужки дозволяють вставити будь-який вираз JS. Результат виразу (true/false) — це те, що передається як значення пропса.",
     "interviewTip": "Це чистий спосіб обробки станів інтерфейсу безпосередньо в шаблоні.",
     "options": [
-      "The button is disabled if either isLoading or isError is true.",
-      "The button is disabled only if both are true.",
-      "The prop is ignored because it contains logic.",
-      "A syntax error."
+      "Кнопка заблокована (disabled), якщо isLoading або isError має значення true.",
+      "Кнопка заблокована тільки якщо обидва значення true.",
+      "Пропс ігнорується, бо містить логіку.",
+      "Синтаксична помилка."
     ]
   },
   "pc-16": {
@@ -170,9 +165,9 @@
     "interviewTip": "Деструктуризація є стандартом: const MyComponent = ({ name }) => { ... }",
     "options": [
       "this.props.name",
-      "From the first argument of the function.",
-      "Using the useProps() hook.",
-      "By importing it from React."
+      "З першого аргументу функції.",
+      "Використовуючи хук useProps().",
+      "Шляхом імпорту з React."
     ]
   },
   "pc-17": {
@@ -180,10 +175,10 @@
     "explanation": "Prop-Types дозволяє оголосити очікуваний тип (рядок, число тощо) для кожного пропса. React покаже попередження в консолі, якщо передано неправильний тип.",
     "interviewTip": "Хоча TypeScript значною мірою замінив Prop-Types у сучасних проектах, вона все ще широко використовується в існуючих кодових базах.",
     "options": [
-      "To speed up prop delivery.",
-      "To perform runtime type checking on props to catch bugs during development.",
-      "To convert props into JSON strings.",
-      "To automatically generate documentation."
+      "Для прискорення передачі пропсів.",
+      "Для перевірки типів пропсів під час виконання (runtime), щоб виявляти баги під час розробки.",
+      "Для перетворення пропсів у JSON-рядки.",
+      "Для автоматичної генерації документації."
     ]
   }
 }

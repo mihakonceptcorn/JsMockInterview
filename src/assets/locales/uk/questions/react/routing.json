@@ -3,12 +3,7 @@
     "prompt": "Який компонент використовується для визначення зв'язку між шляхом URL та компонентом React?",
     "explanation": "<Route> — це основний будівельний блок. Він рендерить свій елемент лише тоді, коли поточний URL збігається з пропсом 'path'.",
     "interviewTip": "У React Router v6 синтаксис змінився на <Route path='/...' element={<MyComponent />} />.",
-    "options": [
-      "<Link>",
-      "<BrowserRouter>",
-      "<Route>",
-      "<Switch>"
-    ]
+    "options": ["<Link>", "<BrowserRouter>", "<Route>", "<Switch>"]
   },
   "rt-02": {
     "prompt": "Як програмно перейти на нову сторінку у функціональному компоненті (наприклад, після відправки форми)?",
@@ -26,22 +21,17 @@
     "explanation": "Теги <a> змушують браузер оновити всю сторінку. Теги <Link> використовують History API для оновлення URL та перерендерингу лише необхідних компонентів.",
     "interviewTip": "Використання <a> для внутрішньої навігації руйнує досвід «односторінкового застосунку» (SPA) і скидає стан програми.",
     "options": [
-      "<a> tags are faster.",
-      "<Link> tags change the URL without triggering a full page reload.",
-      "<Link> tags only work for external websites.",
-      "There is no difference; <Link> is just an alias."
+      "Теги <a> швидші.",
+      "Теги <Link> змінюють URL без повного перезавантаження сторінки.",
+      "Теги <Link> працюють тільки для зовнішніх вебсайтів.",
+      "Різниці немає; <Link> — це просто псевдонім (alias)."
     ]
   },
   "rt-04": {
     "prompt": "Як отримати доступ до динамічних параметрів з URL (наприклад, 'id' у шляху '/users/:id')?",
     "explanation": "Хук 'useParams' повертає об'єкт із парами ключ/значення параметрів URL, визначених у шляху маршруту.",
     "interviewTip": "Завжди перевіряйте, щоб назва змінної при деструктуризації збігалася з назвою плейсхолдера в шляху Route.",
-    "options": [
-      "useQuery",
-      "useParams",
-      "useRouteMatch",
-      "useLocation"
-    ]
+    "options": ["useQuery", "useParams", "useRouteMatch", "useLocation"]
   },
   "rt-05": {
     "prompt": "Який із цих компонентів має огортати весь ваш застосунок для ввімкнення функціональності маршрутизації?",
@@ -59,32 +49,27 @@
     "explanation": "Outlet використовується в елементі батьківського маршруту, щоб вказати місце, де мають рендеритися елементи дочірніх маршрутів.",
     "interviewTip": "Це ключ до створення спільних макетів (наприклад, постійної бічної панелі або навбара).",
     "options": [
-      "To link to external CSS files.",
-      "To act as a placeholder for child routes in nested routing.",
-      "To display a 404 error page.",
-      "To redirect the user to the home page."
+      "Для підключення зовнішніх CSS-файлів.",
+      "Слугує плейсхолдером для дочірніх маршрутів у вкладеній маршрутизації (nested routing).",
+      "Для відображення сторінки помилки 404.",
+      "Для перенаправлення користувача на головну сторінку."
     ]
   },
   "rt-07": {
     "prompt": "Як визначити маршрут '404 Not Found' у React Router v6?",
     "explanation": "Шлях '*' (wildcard) діє як універсальний маркер, який відповідає будь-якому URL, що не збігся з попередніми маршрутами.",
     "interviewTip": "Розміщуйте маршрут із зірочкою в самому кінці вашого списку <Routes>.",
-    "options": [
-      "*",
-      "404",
-      "default",
-      "fallback"
-    ]
+    "options": ["*", "404", "default", "fallback"]
   },
   "rt-08": {
     "prompt": "Що повертає хук 'useLocation'?",
     "explanation": "useLocation надає доступ до об'єкта 'location', який корисний для відстеження переглядів сторінок або читання рядків запиту (?query=abc).",
     "interviewTip": "Ви можете використовувати 'location.state' для передачі прихованих даних між маршрутами, які не відображаються в URL.",
     "options": [
-      "The user's GPS coordinates.",
-      "A function to change the URL.",
-      "An object containing the current URL path, search queries, and state.",
-      "The component that is currently rendered."
+      "GPS-координати користувача.",
+      "Функцію для зміни URL.",
+      "Об'єкт, що містить поточний шлях URL, параметри пошуку (queries) та стан (state).",
+      "Компонент, який відрендерено в даний момент."
     ]
   },
   "rt-09": {
@@ -92,10 +77,10 @@
     "explanation": "useSearchParams — це зручний для React хук для керування рядками запиту. Ви також можете вручну розпарсити location.search.",
     "interviewTip": "Параметри запиту чудово підходять для станів інтерфейсу, якими можна поділитися через посилання, як-от фільтри або умови пошуку.",
     "options": [
-      "Using the 'useSearchParams' hook.",
-      "Using the 'URLSearchParams' web API with 'location.search'.",
-      "Using the 'useParams' hook.",
-      "By defining them in the <Route path='...'>."
+      "Використовуючи хук 'useSearchParams'.",
+      "Використовуючи веб-API 'URLSearchParams' разом із 'location.search'.",
+      "Використовуючи хук 'useParams'.",
+      "Визначаючи їх безпосередньо в <Route path='...'>."
     ]
   },
   "rt-10": {
@@ -103,22 +88,17 @@
     "explanation": "На відміну від v5, де обирався перший збіг (що вимагало 'exact'), v6 розумніша і автоматично обчислює найбільш специфічний збіг.",
     "interviewTip": "Це означає, що порядок маршрутів у v6 має менше значення, ніж у попередніх версіях.",
     "options": [
-      "React renders all matching components in a list.",
-      "The app crashes.",
-      "React Router uses a ranking system to pick the 'best' (most specific) match.",
-      "It only picks the first one it finds."
+      "React рендерить усі компоненти, що збіглися, у вигляді списку.",
+      "Застосунок ламається.",
+      "React Router використовує систему ранжування, щоб обрати «найкращий» (найбільш специфічний) збіг.",
+      "Він обирає тільки перший знайдений збіг."
     ]
   },
   "rt-11": {
     "prompt": "Як реалізувати перенаправлення (Redirect) після виходу користувача в v6?",
     "explanation": "Компонент <Navigate /> — це декларативний спосіб виконати перенаправлення під час рендерингу.",
     "interviewTip": "Використовуйте це для «захищених маршрутів» (Protected Routes), де ви перевіряєте автентифікацію перед показом сторінки.",
-    "options": [
-      "Redirect",
-      "Navigate",
-      "Link",
-      "Push"
-    ]
+    "options": ["Redirect", "Navigate", "Link", "Push"]
   },
   "rt-12": {
     "prompt": "Проаналізуйте код. Яким буде URL після натискання на 'Details'?",
@@ -128,7 +108,7 @@
       "/123",
       "/products/123",
       "/products/details/123",
-      "Error: 'to' must start with /"
+      "Помилка: 'to' має починатися з /"
     ]
   }
 }

@@ -4,10 +4,10 @@
     "explanation": "Виклик сетера стану повідомляє React, що дані змінилися, що ініціює повторний рендеринг для синхронізації інтерфейсу з новими даними.",
     "interviewTip": "Пам'ятайте, що оновлення стану є асинхронними та групуються (batched) задля підвищення продуктивності.",
     "options": [
-      "The browser window reloads to fetch new data.",
-      "The component and its children are scheduled to re-render.",
-      "The variable is updated, but the UI remains the same until a manual refresh.",
-      "The entire application state is reset to its initial values."
+      "Вікно браузера перезавантажується для отримання нових даних.",
+      "Компонент та його дочірні елементи стають у чергу на повторний рендеринг.",
+      "Змінна оновлюється, але UI залишається незмінним до ручного оновлення.",
+      "Увесь стан застосунку скидається до початкових значень."
     ]
   },
   "sb-02": {
@@ -25,22 +25,17 @@
     "prompt": "Яким буде значення 'count', відображене в інтерфейсі, після одного натискання кнопки?",
     "explanation": "Оскільки 'count' береться з області видимості поточного рендеру, усі три виклики бачать 'count' як 0. React групує їх, і результатом буде 0 + 1.",
     "interviewTip": "Це класичний приклад «застарілого замикання» (Stale Closure). Щоб виправити це, використовуйте функціональний патерн оновлення: setCount(prev => prev + 1).",
-    "options": [
-      "3",
-      "0",
-      "1",
-      "undefined"
-    ]
+    "options": ["3", "0", "1", "undefined"]
   },
   "sb-04": {
     "prompt": "Які з наведених тверджень щодо правил хуків (Rules of Hooks) є правильними?",
     "explanation": "Хуки повинні мати стабільний порядок виклику. Розміщення їх у циклах або умовах порушує здатність React правильно відстежувати стан.",
     "interviewTip": "Якщо вам потрібен хук за умовою, помістіть умову *всередину* хука (наприклад, у useEffect), а не огортайте нею сам хук.",
     "options": [
-      "Hooks must be called at the top level of the component.",
-      "Hooks can be called inside loops if the array length is constant.",
-      "Hooks can only be called from React functional components or custom hooks.",
-      "Hooks can be called inside 'if' statements if the condition is based on props."
+      "Хуки повинні викликатися тільки на верхньому рівні компонента.",
+      "Хуки можна викликати всередині циклів, якщо довжина масиву постійна.",
+      "Хуки можна викликати тільки з функціональних компонентів React або кастомних хуків.",
+      "Хуки можна викликати всередині інструкцій 'if', якщо умова базується на пропсах."
     ]
   },
   "sb-05": {
@@ -59,59 +54,49 @@
     "explanation": "Якщо ви передаєте початкове значення напряму, воно обчислюється при кожному рендері. Якщо ви передаєте функцію, React виконує її лише під час першого рендеру.",
     "interviewTip": "Використовуйте це для важких завдань, як-от парсинг великого JSON зі сховища або складні математичні обчислення.",
     "options": [
-      "It makes the state update asynchronously.",
-      "It ensures the function only runs once during the initial mount.",
-      "It automatically caches the result in localStorage.",
-      "It allows the state to be shared with other components."
+      "Це робить оновлення стану асинхронним.",
+      "Це гарантує, що функція запуститься лише один раз під час початкового монтування.",
+      "Це автоматично кешує результат у localStorage.",
+      "Це дозволяє ділитися станом з іншими компонентами."
     ]
   },
   "sb-07": {
     "prompt": "Як отримати доступ до значення поля введення в «керованому компоненті» (Controlled Component)?",
     "explanation": "Синтетичний об'єкт події 'e' у React містить властивість 'target', що вказує на DOM-елемент, який має властивість 'value'.",
     "interviewTip": "У керованих компонентах стан є «єдиним джерелом істини» для значення інпуту.",
-    "options": [
-      "e.target.value",
-      "e.value",
-      "text.current",
-      "this.input.value"
-    ]
+    "options": ["e.target.value", "e.value", "text.current", "this.input.value"]
   },
   "sb-08": {
     "prompt": "Що таке 'SyntheticEvent' у React?",
     "explanation": "React створює ці обгортки, щоб події поводилися ідентично в Chrome, Safari, Firefox та Edge.",
     "interviewTip": "Ви все одно можете отримати доступ до нативної події браузера через 'e.nativeEvent', якщо це абсолютно необхідно.",
     "options": [
-      "An event that is created by a library like Redux.",
-      "A cross-browser wrapper around the browser’s native event.",
-      "An event that doesn't actually exist in the DOM.",
-      "A way to simulate user clicks during automated testing."
+      "Подія, створена бібліотекою на кшталт Redux.",
+      "Кросбраузерна обгортка навколо нативної події браузера.",
+      "Подія, яка насправді не існує в DOM.",
+      "Спосіб симуляції кліків користувача під час автоматизованого тестування."
     ]
   },
   "sb-09": {
-    "prompt": "Що станеться, якщо ви оновите стан тим самим значенням, яке він має зараз?",
+    "prompt": "Що станеться, якщо ви оновлюєте стан тим самим значенням, яке він має зараз?",
     "explanation": "React використовує Object.is для порівняння нового стану зі старим. Якщо вони ідентичні, React уникає зайвої роботи з рендерингу.",
     "interviewTip": "Ось чому мутація масиву та виклик setState(тойСамийМасив) не працює — посилання ідентичне.",
     "options": [
-      "React will re-render exactly once more.",
-      "React will bail out and skip the re-render entirely.",
-      "The component will unmount and remount.",
-      "The app will throw an 'IdentityError'."
+      "React виконає рендеринг ще рівно один раз.",
+      "React скасує (bail out) і повністю пропустить повторний рендеринг.",
+      "Компонент буде демонтовано та змонтовано заново.",
+      "Застосунок видасть помилку 'IdentityError'."
     ]
   },
   "sb-10": {
     "prompt": "Проаналізуйте код. Що буде виведено в консоль після натискання кнопки?",
     "explanation": "Встановлення стану є асинхронним. Змінна 'val' належить до поточного кадру виконання і не зміниться до наступного рендеру.",
     "interviewTip": "Якщо вам потрібно виконати дію після оновлення стану, використовуйте хук 'useEffect'.",
-    "options": [
-      "20",
-      "10",
-      "undefined",
-      "null"
-    ]
+    "options": ["20", "10", "undefined", "null"]
   },
   "sb-11": {
     "prompt": "Які з цих способів є валідними для запуску функції при натисканні кнопки?",
-    "explanation": "Варіант А передає посилання. Варіант С створює анонімну функцію. Варіант D помилковий, бо він виконує функцію *під час* рендерингу.",
+    "explanation": "Варіант А передає посилання. Варіант С створює анонімну функцію. Варіант Д помилковий, бо він виконує функцію *під час* рендерингу.",
     "interviewTip": "Остерігайтеся запису 'onClick={handleClick()}'; це спричинить нескінченний цикл, якщо handleClick оновлює стан.",
     "options": [
       "onClick={handleClick}",
@@ -125,10 +110,10 @@
     "explanation": "Щоб запобігти витокам пам'яті та неочікуваній поведінці, ви повинні очищати побічні ефекти, як-от інтервали, коли компонент демонтується.",
     "interviewTip": "Це ключова частина керування життєвим циклом компонента.",
     "options": [
-      "Call deleteInterval() in the button click.",
-      "Use the cleanup function of a useEffect hook.",
-      "Set the interval variable to null.",
-      "React clears all intervals automatically on every render."
+      "Викликати deleteInterval() при кліку на кнопку.",
+      "Використовувати функцію очищення (cleanup) хука useEffect.",
+      "Встановити змінну інтервалу в null.",
+      "React автоматично очищує всі інтервали при кожному рендерингу."
     ]
   },
   "sb-13": {
@@ -136,10 +121,10 @@
     "explanation": "Коли двом сусіднім компонентам потрібно бути синхронізованими, ви переносити стан до їхнього спільного батька і передаєте його назад через пропси.",
     "interviewTip": "Це стандартний спосіб спільного використання стану без використання Context.",
     "options": [
-      "A way to make state globally available to all components.",
-      "Moving state to the closest common parent of components that need to share it.",
-      "Deleting state from a component to improve performance.",
-      "Using a library like Redux to handle state."
+      "Спосіб зробити стан глобально доступним для всіх компонентів.",
+      "Перенесення стану до найближчого спільного батька компонентів, яким потрібно ділитися даними.",
+      "Видалення стану з компонента для покращення продуктивності.",
+      "Використання бібліотеки на кшталт Redux для обробки стану."
     ]
   },
   "sb-14": {
@@ -147,10 +132,10 @@
     "explanation": "За замовчуванням HTML-форми перезавантажують сторінку. У React-додатках (SPA) ми запобігаємо цьому, щоб обробити відправку через JS.",
     "interviewTip": "Завжди пам'ятайте про це в обробниках форм, щоб не втратити стан вашої програми.",
     "options": [
-      "It stops the browser from reloading the page.",
-      "It clears the state of all input fields.",
-      "It validates the form data automatically.",
-      "It prevents the user from clicking the submit button twice."
+      "Це зупиняє браузер від перезавантаження сторінки.",
+      "Це очищує стан усіх полів введення.",
+      "Це автоматично валідує дані форми.",
+      "Це заважає користувачеві натиснути кнопку відправки двічі."
     ]
   },
   "sb-15": {
@@ -158,10 +143,10 @@
     "explanation": "Функціональні оновлення гарантують, що ви працюєте з найсвіжішим станом, навіть якщо в черзі є кілька оновлень.",
     "interviewTip": "Цей патерн є необхідним, коли оновлення стану ініціюються швидко (наприклад, в інтервалі або під час високочастотних подій).",
     "options": [
-      "Passing a function to the setter (Functional Update).",
-      "Passing the updated variable directly.",
-      "Using a global variable for the calculation.",
-      "Calling useState again."
+      "Передача функції в сетер (Functional Update).",
+      "Пряма передача оновленої змінної.",
+      "Використання глобальної змінної для обчислення.",
+      "Повторний виклик useState."
     ]
   },
   "sb-16": {
@@ -169,10 +154,10 @@
     "explanation": "Згідно з правилами хуків, вони повинні викликатися в самому верху вашої функції компонента.",
     "interviewTip": "React використовує порядок викликів, щоб зіставити стан із правильним екземпляром компонента.",
     "options": [
-      "Anywhere inside the function body.",
-      "Inside event handlers.",
-      "Only at the top level of the component function.",
-      "Inside the return statement."
+      "У будь-якому місці всередині тіла функції.",
+      "Всередині обробників подій.",
+      "Тільки на верхньому рівні функції компонента.",
+      "Всередині інструкції return."
     ]
   },
   "sb-17": {
@@ -180,10 +165,10 @@
     "explanation": "У некерованих компонентах дані форми обробляються самим DOM. Ви використовуєте 'useRef', щоб отримати значення, коли це потрібно.",
     "interviewTip": "Керованим компонентам зазвичай віддають перевагу для складних форм, тоді як некеровані підходять для простих одноразових полів.",
     "options": [
-      "A component that doesn't use state and relies on the DOM (via Refs) for data.",
-      "A component that has a bug causing it to re-render infinitely.",
-      "A component that doesn't accept any props.",
-      "A component that is not part of the Virtual DOM."
+      "Компонент, який не використовує стан і покладається на DOM (через Refs) для даних.",
+      "Компонент, що має баг, який спричиняє нескінченний рендеринг.",
+      "Компонент, який не приймає жодних пропсів.",
+      "Компонент, який не є частиною Virtual DOM."
     ]
   }
 }

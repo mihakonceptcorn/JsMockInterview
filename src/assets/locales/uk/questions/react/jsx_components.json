@@ -4,10 +4,10 @@
     "explanation": "React використовує регістр літер, щоб розрізняти нативні HTML-теги (рядки) та власні компоненти (функції/класи).",
     "interviewTip": "Завжди використовуйте PascalCase для назв компонентів (наприклад, MyComponent).",
     "options": [
-      "React will treat it as a standard HTML tag and fail to render the component logic.",
-      "React will automatically capitalize it during compilation.",
-      "The app will crash with a 'LowercaseError'.",
-      "It will work perfectly as long as the file name is capitalized."
+      "React сприйме його як стандартний HTML-тег і не зможе виконати логіку компонента.",
+      "React автоматично змінить першу літеру на велику під час компіляції.",
+      "Застосунок зламається з помилкою 'LowercaseError'.",
+      "Це працюватиме ідеально, поки ім'я файлу починається з великої літери."
     ]
   },
   "jc-02": {
@@ -15,10 +15,10 @@
     "explanation": "JSX повинен мати рівно один кореневий елемент. Ви не можете повернути кілька сусідніх тегів без спільної обгортки.",
     "interviewTip": "Це можна виправити за допомогою <div> або фрагмента (<>...</>).",
     "options": [
-      "It renders an h1 followed by a p tag.",
-      "It only renders the h1 tag.",
-      "A syntax error: 'Adjacent JSX elements must be wrapped in an enclosing tag'.",
-      "The p tag is nested inside the h1 tag."
+      "Відрендериться h1, а за ним тег p.",
+      "Відрендериться тільки тег h1.",
+      "Помилка синтаксису: 'Adjacent JSX elements must be wrapped in an enclosing tag'.",
+      "Тег p буде вкладено всередину тегу h1."
     ]
   },
   "jc-03": {
@@ -38,9 +38,9 @@
     "interviewTip": "Будьте обережні з 0; на відміну від false, React *буде* рендерити число 0.",
     "options": [
       "<div>false</div>",
-      "<div></div> (nothing inside)",
+      "<div></div> (всередині нічого)",
       "<div><button>Delete</button></div>",
-      "An error"
+      "Помилка"
     ]
   },
   "jc-05": {
@@ -48,10 +48,10 @@
     "explanation": "Фрагменти дозволяють дотримуватися правила «одного кореня», не засмічуючи HTML зайвими тегами <div>.",
     "interviewTip": "Фрагменти особливо корисні при роботі з CSS Flexbox або Grid, де зайві батьківські div-и можуть зламати макет.",
     "options": [
-      "To speed up the execution of JavaScript logic.",
-      "To group multiple elements without adding an extra node to the DOM tree.",
-      "To automatically generate CSS classes for children.",
-      "To protect components from being re-rendered."
+      "Для прискорення виконання логіки JavaScript.",
+      "Для групування кількох елементів без додавання зайвого вузла в DOM-дерево.",
+      "Для автоматичної генерації CSS-класів для дочірніх елементів.",
+      "Для захисту компонентів від зайвих рендерингів."
     ]
   },
   "jc-06": {
@@ -69,55 +69,40 @@
     "prompt": "Як написати коментар всередині шаблону JSX?",
     "explanation": "Коментарі в JSX мають бути огорнуті у фігурні дужки та використовувати синтаксис багаторядкових коментарів JavaScript.",
     "interviewTip": "Однорядкові коментарі // всередині дужок іноді можуть випадково закоментувати закриваючу дужку.",
-    "options": [
-      "",
-      "// Comment",
-      "{/* Comment */}",
-      "/* Comment */"
-    ]
+    "options": ["", "// Коментар", "{/* Коментар */}", "/* Коментар */"]
   },
   "jc-08": {
     "prompt": "Яким буде результат цього компонента?",
     "explanation": "React може рендерити масиви безпосередньо. Він просто об'єднує (конкатенує) елементи в інтерфейсі.",
     "interviewTip": "Зазвичай ви будете використовувати .map(), щоб огорнути кожен елемент у тег, наприклад <li>, щоб уникнути злипання тексту.",
     "options": [
-      "A list with 3 bullet points.",
-      "An error: 'Arrays are not valid as children'.",
-      "ABC (the items joined as a string).",
-      "A string representation: ['A', 'B', 'C']."
+      "Список із 3 маркерами (bullet points).",
+      "Помилка: 'Arrays are not valid as children'.",
+      "ABC (елементи об'єднані як рядок).",
+      "Рядкове представлення: ['A', 'B', 'C']."
     ]
   },
   "jc-09": {
     "prompt": "Який атрибут у JSX використовується замість стандартного HTML-атрибута 'for' для лейблів?",
     "explanation": "'for' є зарезервованим ключовим словом у JavaScript (для циклів), тому JSX використовує 'htmlFor' для уникнення конфліктів.",
     "interviewTip": "З цієї ж причини 'class' стає 'className'.",
-    "options": [
-      "labelFor",
-      "htmlFor",
-      "forID",
-      "className"
-    ]
+    "options": ["labelFor", "htmlFor", "forID", "className"]
   },
   "jc-10": {
     "prompt": "Що поверне наступний вираз?",
     "explanation": "Вирази всередині фігурних дужок обчислюються, і їхній результат рендериться.",
     "interviewTip": "Ви можете виконувати будь-які обчислення JS або викликати функції всередині цих дужок.",
-    "options": [
-      "An empty div.",
-      "\"10 + 20\"",
-      "30",
-      "undefined"
-    ]
+    "options": ["Порожній div.", "\"10 + 20\"", "30", "undefined"]
   },
   "jc-11": {
     "prompt": "Чому в JSX обов'язково закривати всі теги, навіть самозакриваючі, як-от <img> або <br>?",
     "explanation": "JSX — це не HTML, а розширення синтаксису, що слідує правилам XML, де кожен тег має бути закритим (наприклад, <br />).",
     "interviewTip": "Це поширена помилка для розробників, які переходять зі звичайного HTML на React.",
     "options": [
-      "Because JSX is based on XML/XHTML rules which require strict closing.",
-      "To make the code look more consistent.",
-      "It is a requirement of the CSS-in-JS engine.",
-      "Browsers will crash if tags aren't closed in JSX."
+      "Тому що JSX базується на правилах XML/XHTML, які вимагають суворого закриття.",
+      "Щоб зробити код візуально більш послідовним.",
+      "Це вимога CSS-in-JS двигунів.",
+      "Браузери впадуть, якщо теги в JSX не будуть закриті."
     ]
   },
   "jc-12": {
@@ -136,14 +121,14 @@
     "explanation": "Теги JSX трансформуються в об'єкти, які описують інтерфейс. Саме це покаже 'console.log'.",
     "interviewTip": "Ці об'єкти є будівельними блоками Virtual DOM.",
     "options": [
-      "The string \"<h1>Hello</h1>\".",
-      "A JavaScript object (React Element).",
-      "A real DOM node.",
+      "Рядок \"<h1>Hello</h1>\".",
+      "Об'єкт JavaScript (React Element).",
+      "Реальний DOM-вузол.",
       "undefined"
     ]
   },
   "jc-14": {
-    "prompt": "Як відрендерити рядок, що містить HTML, без його екранування?",
+    "prompt": "Як відрендеренити рядок, що містить HTML, без його екранування?",
     "explanation": "React за замовчуванням екранує всі рядки задля безпеки. 'dangerouslySetInnerHTML' — це свідомий спосіб рендерингу сирого HTML.",
     "interviewTip": "Назва нагадує, що це може відкрити ваш додаток для XSS-атак, якщо рядок походить із ненадійного джерела.",
     "options": [
@@ -158,10 +143,10 @@
     "explanation": "JavaScript припиняє виконання функції після ключового слова 'return'. Код під ним ніколи не виконається.",
     "interviewTip": "Завжди огортайте багаторядковий інтерфейс у круглі дужки, щоб гарантувати повернення всього блоку.",
     "options": [
-      "Variable 'name' cannot be used inside h1.",
-      "The p tag is unreachable because it comes after the return statement.",
-      "h1 and p must be inside a div.",
-      "The h1 is not closed."
+      "Змінну 'name' не можна використовувати всередині h1.",
+      "Тег p недосяжний, оскільки він іде після інструкції return.",
+      "h1 та p повинні бути всередині div.",
+      "Тег h1 не закритий."
     ]
   },
   "jc-16": {
@@ -169,26 +154,27 @@
     "explanation": "Дужки {} приймають лише вирази (expressions). Інструкції (statements), такі як 'if', 'for' та 'switch', не дозволені всередині JSX.",
     "interviewTip": "Саме тому тернарні оператори (умова ? а : б) такі популярні в React.",
     "options": [
-      "Yes, if it's inside curly braces.",
-      "No, you must use ternary operators or logical && because 'if' is a statement, not an expression.",
-      "Yes, but only in Class components.",
-      "Yes, if you use the 'v-if' attribute."
+      "Так, якщо він всередині фігурних дужок.",
+      "Ні, ви повинні використовувати тернарні оператори або логічне &&, бо 'if' — це statement, а не expression.",
+      "Так, але тільки в класових компонентах.",
+      "Так, якщо ви використовуєте атрибут 'v-if'."
     ]
   },
   "jc-17": {
     "prompt": "Що поверне перевірка 'typeof' для фрагмента?",
     "explanation": "React-фрагменти (та інші вбудовані типи, як-от Suspense або Profiler) є внутрішніми символами React (Symbols).",
     "interviewTip": "Фрагменти — це спеціальні «порожні» типи, які рендерер знає як обробляти без створення DOM-вузла.",
-    "options": [
-      "\"string\"",
-      "\"object\"",
-      "\"symbol\"",
-      "\"function\""
-    ]
+    "options": ["\"string\"", "\"object\"", "\"symbol\"", "\"function\""]
   },
   "js-18": {
     "prompt": "Який із цих варіантів є правильним для передачі булевого пропса 'isActive' як true?",
     "explanation": "Передача лише назви пропса за замовчуванням встановлює його в true. {true} — це також явний і правильний варіант.",
-    "interviewTip": "Більшість розробників віддають перевагу скороченню <Tab isActive /> для булевих прапорців."
+    "interviewTip": "Більшість розробників віддають перевагу скороченню <Tab isActive /> для булевих прапорців.",
+    "options": [
+      "<Tab isActive={true} />",
+      "<Tab isActive />",
+      "<Tab isActive=\"true\" />",
+      "<Tab isActive=(true) />"
+    ]
   }
 }

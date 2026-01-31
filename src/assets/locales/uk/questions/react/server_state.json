@@ -1,13 +1,13 @@
 {
   "ss-01": {
-    "prompt": "Яку основну проблему вирішує React Query порівняно з використанням useEffect для отримання даних?",
+    "prompt": "Яку основна проблему вирішує React Query порівняно з використанням useEffect для отримання даних?",
     "explanation": "Хоча useEffect може завантажувати дані, він не підтримує кешування або фонове оновлення. React Query керує життєвим циклом ваших серверних даних за вас.",
     "interviewTip": "Зауважте, що React Query розглядає «Серверний стан» (Server State) як щось, чим клієнт не володіє, а лише «позичає».",
     "options": [
-      "It makes the API requests run faster on the server.",
-      "It provides built-in caching and synchronization, preventing unnecessary duplicate network requests.",
-      "It replaces the need for any CSS in the application.",
-      "It allows React to connect directly to a SQL database."
+      "Він змушує API-запити працювати швидше на сервері.",
+      "Він забезпечує вбудоване кешування та синхронізацію, запобігаючи зайвим дубльованим мережевим запитам.",
+      "Він замінює потребу в будь-якому CSS у застосунку.",
+      "Він дозволяє React підключатися безпосередньо до бази даних SQL."
     ]
   },
   "ss-02": {
@@ -15,10 +15,10 @@
     "explanation": "Під час найпершого запиту (стан початкового завантаження) 'data' має значення undefined, поки проміс не буде виконано.",
     "interviewTip": "Якщо у вас є закешовані дані з попередньої сесії, 'isLoading' може бути false, тоді як 'isFetching' буде true.",
     "options": [
-      "The previous version of the data.",
-      "An empty array [].",
+      "Попередню версію даних.",
+      "Порожній масив [].",
       "undefined",
-      "A placeholder string 'Loading...'"
+      "Рядок-заглушку 'Loading...'"
     ]
   },
   "ss-03": {
@@ -26,10 +26,10 @@
     "explanation": "queryKey (зазвичай масив) підказує React Query, коли потрібно оновити дані. Якщо ключ змінюється (наприклад, ['user', id]), запит автоматично запускається знову.",
     "interviewTip": "Сприймайте queryKey як «масив залежностей» для ваших серверних даних.",
     "options": [
-      "It is the password used to access the API.",
-      "It acts as a unique identifier for the query to manage caching and dependency tracking.",
-      "It is the URL of the API endpoint.",
-      "It defines the order in which queries are executed."
+      "Це пароль, що використовується для доступу до API.",
+      "Він слугує унікальним ідентифікатором запиту для керування кешуванням та відстеження залежностей.",
+      "Це URL-адреса кінцевої точки (endpoint) API.",
+      "Він визначає порядок виконання запитів."
     ]
   },
   "ss-04": {
@@ -38,31 +38,26 @@
     "interviewTip": "Різниця між 'isLoading' та 'isFetching' — це поширене питання рівня Senior (початкове завантаження проти фонового оновлення).",
     "options": [
       "status (loading, error, success).",
-      "isFetching (is the request currently in flight?).",
-      "revalidate (a function to delete the cache).",
-      "error (the error object if the request fails)."
+      "isFetching (чи виконується запит у даний момент?).",
+      "revalidate (функція для видалення кешу).",
+      "error (об'єкт помилки, якщо запит не вдався)."
     ]
   },
   "ss-05": {
     "prompt": "Як виконувати «Мутації даних» (POST/PUT/DELETE) у React Query?",
     "explanation": "useMutation використовується для будь-яких побічних ефектів на стороні сервера. Він надає методи 'mutate' та 'mutateAsync' для ініціації виклику.",
     "interviewTip": "Завжди згадуйте про 'Invalidation' (інвалідацію) — після мутації ви зазвичай хочете повідомити React Query, що старі дані тепер є «застарілими».",
-    "options": [
-      "usePost",
-      "useAction",
-      "useMutation",
-      "useUpdate"
-    ]
+    "options": ["usePost", "useAction", "useMutation", "useUpdate"]
   },
   "ss-06": {
     "prompt": "Що робить метод 'queryClient.invalidateQueries'?",
     "explanation": "Це «магія» React Query. Після оновлення даних ви робите ключ недійсним, і інтерфейс автоматично оновлюється з новими значеннями з сервера.",
     "interviewTip": "Це також стандартний спосіб обробки запасних варіантів (fallbacks) при «оптимістичних оновленнях».",
     "options": [
-      "It deletes all data from the server.",
-      "It marks a specific query as 'stale' and triggers a background re-fetch if that query is currently in use.",
-      "It prevents the user from clicking the submit button.",
-      "It closes all active network connections."
+      "Він видаляє всі дані з сервера.",
+      "Він позначає конкретний запит як «застарілий» (stale) і запускає фонове оновлення, якщо цей запит зараз використовується.",
+      "Він заважає користувачеві натиснути кнопку відправки.",
+      "Він закриває всі активні мережеві з'єднання."
     ]
   },
   "ss-07": {
@@ -70,10 +65,10 @@
     "explanation": "За замовчуванням staleTime дорівнює 0, що означає, що дані вважаються застарілими миттєво. Встановлення більшого значення зменшує мережевий трафік для даних, які рідко змінюються.",
     "interviewTip": "Не плутайте 'staleTime' з 'gcTime' (раніше cacheTime). gcTime визначає, коли неактивні дані будуть повністю видалені з пам'яті.",
     "options": [
-      "The time it takes for a request to time out.",
-      "The duration for which the data is considered 'fresh' and won't trigger a background re-fetch.",
-      "The age of the user's browser.",
-      "The time the user spends on a single page."
+      "Час, через який запит вважається таким, що перевищив тайм-аут.",
+      "Тривалість, протягом якої дані вважаються «свіжими» і не потребують фонового оновлення.",
+      "Вік браузера користувача.",
+      "Час, який користувач проводить на одній сторінці."
     ]
   },
   "ss-08": {
@@ -81,10 +76,10 @@
     "explanation": "'queryFn' має бути функцією, яку React Query зможе викликати пізніше. Правильний синтаксис: `queryFn: () => fetchUser(id)`.",
     "interviewTip": "Це часта помилка, яка призводить до нескінченних циклів або виконання запиту не в тій фазі.",
     "options": [
-      "The queryKey must be a string.",
-      "fetchUser(id) executes immediately during render instead of being a function reference.",
-      "The id variable must be a string.",
-      "useQuery does not support IDs."
+      "queryKey має бути рядком.",
+      "fetchUser(id) виконується негайно під час рендерингу замість того, щоб бути посиланням на функцію.",
+      "Змінна id має бути рядком.",
+      "useQuery не підтримує ID."
     ]
   },
   "ss-09": {
@@ -92,10 +87,10 @@
     "explanation": "React Query має вбудовану «офлайн-підтримку» і автоматично призупиняє або відновлює запити залежно від статусу підключення браузера.",
     "interviewTip": "Ви можете налаштувати кількість спроб ('retry') та затримку між ними ('retryDelay') у глобальній конфігурації.",
     "options": [
-      "It crashes the application.",
-      "It automatically retries the query when the connection is restored.",
-      "It shows a blue screen of death.",
-      "It switches to a local SQL database."
+      "Це призводить до збою застосунку.",
+      "Він автоматично повторює запит, коли з'єднання відновлюється.",
+      "Він показує синій екран смерті.",
+      "Він перемикається на локальну базу даних SQL."
     ]
   },
   "ss-10": {
@@ -103,10 +98,10 @@
     "explanation": "Ви оновлюєте кеш вручну одразу після натискання кнопки 'Submit'. Якщо сервер повертає помилку, ви «відкочуєте» стан до попереднього.",
     "interviewTip": "Це робить ваш додаток візуально «миттєвим» навіть на повільних з'єднаннях.",
     "options": [
-      "A way to update the UI immediately before the server confirms the change.",
-      "A method to speed up the server response time.",
-      "A strategy to handle errors by assuming the best-case scenario.",
-      "A feature that only works with React 19."
+      "Спосіб оновити UI негайно, ще до того, як сервер підтвердить зміну.",
+      "Метод прискорення часу відповіді сервера.",
+      "Стратегія обробки помилок шляхом припущення найкращого сценарію.",
+      "Функція, яка працює тільки в React 19."
     ]
   },
   "ss-11": {
@@ -125,10 +120,10 @@
     "explanation": "Опція 'enabled' використовується для «залежних запитів» (очікування на userId) або ручних запусків.",
     "interviewTip": "Використовуйте це, щоб запобігти запуску запиту, поки у вас немає всіх необхідних даних (наприклад, ID з попереднього запиту).",
     "options": [
-      "The query is deleted.",
-      "The query is disabled and will only run if 'refetch' is called manually.",
-      "The query runs once and then stops.",
-      "The query only runs on the server."
+      "Запит видаляється.",
+      "Запит вимкнено; він запуститься лише якщо викликати 'refetch' вручну.",
+      "Запит запускається один раз і зупиняється.",
+      "Запит працює тільки на сервері."
     ]
   }
 }

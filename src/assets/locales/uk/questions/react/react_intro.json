@@ -4,10 +4,10 @@
     "explanation": "Virtual DOM — це легковажне представлення реального DOM. React використовує його для групування оновлень (batching) та мінімізації високовартісних прямих маніпуляцій із реальним DOM.",
     "interviewTip": "Використовуйте термін «Узгодження» (Reconciliation), коли описуєте, як React синхронізує Virtual та Real DOM.",
     "options": [
-      "It speeds up the internet connection between client and server.",
-      "It allows React to compute the most efficient way to update the real DOM.",
-      "It provides a way to store data in the browser's permanent storage.",
-      "It eliminates the need for JavaScript in modern browsers."
+      "Він прискорює інтернет-з'єднання між клієнтом і сервером.",
+      "Він дозволяє React обчислити найефективніший спосіб оновлення реального DOM.",
+      "Він забезпечує спосіб зберігання даних у постійному сховищі браузера.",
+      "Він усуває потребу в JavaScript у сучасних браузерах."
     ]
   },
   "ri-02": {
@@ -15,10 +15,10 @@
     "explanation": "У React ви оголошуєте бажаний стан інтерфейсу, а React сам керує переходами в DOM. Імперативне програмування передбачає ручне оновлення DOM для кожної зміни.",
     "interviewTip": "Декларативний код зазвичай легше відлагоджувати та розуміти, оскільки він більш передбачуваний.",
     "options": [
-      "Describing *what* the UI should look like for a given state.",
-      "Writing step-by-step instructions on *how* to change the DOM.",
-      "Using only Class-based components to define logic.",
-      "Manually selecting HTML elements using document.querySelector."
+      "Опис того, *як* має виглядати UI для певного стану.",
+      "Написання покрокових інструкцій про те, *як* змінити DOM.",
+      "Використання тільки класових компонентів для визначення логіки.",
+      "Ручний вибір HTML-елементів за допомогою document.querySelector."
     ]
   },
   "ri-03": {
@@ -26,10 +26,10 @@
     "explanation": "На відміну від фреймворків (як Angular), React не диктує жорстких правил. Вам потрібно самостійно обирати інструменти для навігації або запитів до API.",
     "interviewTip": "Ця гнучкість дозволяє командам підбирати найкращі рішення (best-in-class) під конкретні потреби проекту.",
     "options": [
-      "It is strictly focused on the 'View' layer of an application.",
-      "It does not come with built-in solutions for routing or global state management.",
-      "It is smaller in file size than any other JavaScript tool.",
-      "It cannot be used to build full-scale enterprise applications."
+      "Він зосереджений виключно на рівні 'View' (представлення) застосунку.",
+      "Він не має вбудованих рішень для маршрутизації (routing) або глобального керування станом.",
+      "Він менший за розміром файлу, ніж будь-який інший інструмент JavaScript.",
+      "Його не можна використовувати для створення повномасштабних корпоративних застосунків."
     ]
   },
   "ri-04": {
@@ -37,32 +37,27 @@
     "explanation": "JSX — це «синтаксичний цукор». Babel перетворює його на вкладені виклики React.createElement, які повертають звичайні об'єкти JS (React Elements).",
     "interviewTip": "Починаючи з React 17, новий механізм трансформації JSX робить це автоматично і не вимагає 'import React' у кожному файлі.",
     "options": [
-      "A string of HTML: \"<div id='root'>Hello</div>\"",
-      "A direct reference to a DOM node created by the browser.",
-      "A JavaScript object created via React.createElement().",
-      "A function that returns a Promise."
+      "Рядок HTML: \"<div id='root'>Hello</div>\"",
+      "Пряме посилання на DOM-вузол, створений браузером.",
+      "Об'єкт JavaScript, створений за допомогою React.createElement().",
+      "Функція, яка повертає Promise."
     ]
   },
   "ri-05": {
     "prompt": "Що виведе наступний код у консоль?",
     "explanation": "React-елементи позначені спеціальним символом ($$typeof) з міркувань безпеки, насамперед для запобігання XSS-атакам (міжсайтовий скриптинг).",
     "interviewTip": "Цей тег гарантує, що React рендерить лише ті об'єкти, які він створив сам.",
-    "options": [
-      "undefined",
-      "Symbol(react.element)",
-      "\"div\"",
-      "null"
-    ]
+    "options": ["undefined", "Symbol(react.element)", "\"div\"", "null"]
   },
   "ri-06": {
     "prompt": "Що таке «принцип єдиної відповідальності» (Single Responsibility Principle) у компонентах React?",
     "explanation": "Компоненти мають бути модульними та зосередженими на одній задачі. Якщо компонент стає занадто великим, його варто розділити на менші підкомпоненти.",
     "interviewTip": "Малі, фокусовані компоненти набагато легше тестувати та використовувати повторно.",
     "options": [
-      "A component should only be used once in the entire application.",
-      "A component should ideally do only one thing.",
-      "All state must be managed by a single 'root' component.",
-      "Every component must contain exactly one line of JSX."
+      "Компонент має використовуватися лише один раз у всьому застосунку.",
+      "Компонент в ідеалі повинен виконувати лише одну справу.",
+      "Увесь стан має керуватися єдиним 'кореневим' компонентом.",
+      "Кожен компонент має містити рівно один рядок JSX."
     ]
   },
   "ri-07": {
@@ -70,10 +65,10 @@
     "explanation": "React-компоненти повинні повертати один кореневий вузол. Це пов'язано з тим, що функція може повертати лише одне значення (одне дерево об'єктів).",
     "interviewTip": "Використовуйте фрагмент (<></>), щоб згрупувати елементи без додавання зайвого div-а в DOM.",
     "options": [
-      "The browser renders both headings side-by-side.",
-      "A syntax error: JSX must have one parent element.",
-      "Only 'Item 1' is rendered; 'Item 2' is ignored.",
-      "The second heading overwrites the first."
+      "Браузер рендерить обидва заголовки поруч.",
+      "Синтаксична помилка: JSX повинен мати один батьківський елемент.",
+      "Рендериться тільки 'Item 1'; 'Item 2' ігнорується.",
+      "Другий заголовок перезаписує перший."
     ]
   },
   "ri-08": {
@@ -81,10 +76,10 @@
     "explanation": "Babel бере сучасний код (JSX, ES6+) і перетворює його на версії JavaScript зі зворотною сумісністю, які можуть запускати всі браузери.",
     "interviewTip": "Vite та Create React App використовують Babel (або альтернативи, як SWC) під капотом.",
     "options": [
-      "A CSS-in-JS library.",
-      "A code linter that finds errors in logic.",
-      "A JavaScript compiler/transpiler that converts JSX into valid JS.",
-      "A database management system for React."
+      "Бібліотека CSS-in-JS.",
+      "Лінтер коду, який знаходить логічні помилки.",
+      "JavaScript-компілятор/транспілятор, який перетворює JSX у валідний JS.",
+      "Система керування базами даних для React."
     ]
   },
   "ri-09": {
@@ -92,10 +87,10 @@
     "explanation": "React не «стежить» за звичайною змінною 'likes'. Щоб ініціювати оновлення інтерфейсу, необхідно використовувати хук 'useState'.",
     "interviewTip": "Це фундаментальна концепція: зміна стану (State) = повторний рендеринг (Re-render).",
     "options": [
-      "The variable 'likes' is not declared with 'const'.",
-      "React doesn't track changes to local variables; it only re-renders on state or prop changes.",
-      "The button's onClick event is not written in lowercase.",
-      "Functions cannot be passed to the onClick attribute."
+      "Змінна 'likes' оголошена не через 'const'.",
+      "React не відстежує зміни локальних змінних; він перерендерить лише при зміні стану або пропсів.",
+      "Подія onClick кнопки написана маленькими літерами.",
+      "Функції не можна передавати в атрибут onClick."
     ]
   },
   "ri-10": {
@@ -103,10 +98,10 @@
     "explanation": "У React дочірні елементи отримують дані від батьків через пропси. Якщо дітям потрібно змінити стан батька, вони використовують колбеки, передані через ті самі пропси.",
     "interviewTip": "Цей потік «зверху вниз» робить стан програми набагато передбачуванішим і простішим для відлагодження.",
     "options": [
-      "Data flows only from the server to the client.",
-      "Data flows strictly from parent components down to child components.",
-      "State and props are updated simultaneously in both directions.",
-      "Users can only interact with the app in one direction (top-to-bottom)."
+      "Дані течуть тільки від сервера до клієнта.",
+      "Дані течуть суворо від батьківських компонентів вниз до дочірніх.",
+      "Стан і пропси оновлюються одночасно в обох напрямках.",
+      "Користувачі можуть взаємодіяти із застосунком лише в одному напрямку (зверху вниз)."
     ]
   },
   "ri-11": {
@@ -124,22 +119,17 @@
     "prompt": "Яким буде результат наступної перевірки 'typeof'?",
     "explanation": "Елементи JSX транспілюються у звичайні об'єкти JavaScript.",
     "interviewTip": "Оскільки вони є об'єктами, ви можете передавати їх як пропси, зберігати в змінних або поміщати в масиви.",
-    "options": [
-      "\"string\"",
-      "\"object\"",
-      "\"function\"",
-      "\"undefined\""
-    ]
+    "options": ["\"string\"", "\"object\"", "\"function\"", "\"undefined\""]
   },
   "ri-13": {
     "prompt": "Яка мета бібліотеки 'ReactDOM'?",
     "explanation": "React незалежний від платформи. ReactDOM — це специфічна «сполучна ланка», яка дозволяє React працювати у веббраузерах.",
     "interviewTip": "React Native використовує інший рендерер (нативний мобільний інтерфейс) замість ReactDOM.",
     "options": [
-      "To manage the component state and hooks.",
-      "To provide the logic for creating React components.",
-      "To render the React component tree into the actual browser DOM.",
-      "To communicate with a SQL database."
+      "Для керування станом компонентів та хуками.",
+      "Для надання логіки створення компонентів React.",
+      "Для рендерингу дерева компонентів React у реальний DOM браузера.",
+      "Для зв'язку з базою даних SQL."
     ]
   },
   "ri-14": {
@@ -147,10 +137,10 @@
     "explanation": "Через автоматичне вставлення крапки з комою (ASI), вираз return переривається. Ви повинні розмістити JSX на тому самому рядку або огорнути його в круглі дужки.",
     "interviewTip": "Завжди огортайте багаторядковий JSX у круглі дужки: return (...);",
     "options": [
-      "Return statements cannot be used in functional components.",
-      "The semicolon must be inside the tags.",
-      "JavaScript inserts an automatic semicolon after 'return', returning 'undefined' instead of the JSX.",
-      "<h1> tags require a className."
+      "Інструкції return не можна використовувати у функціональних компонентах.",
+      "Крапка з комою має бути всередині тегів.",
+      "JavaScript автоматично вставляє крапку з комою після 'return', повертаючи 'undefined' замість JSX.",
+      "Теги <h1> вимагають наявності className."
     ]
   },
   "ri-15": {
@@ -158,10 +148,10 @@
     "explanation": "React.createElement() використовує регістр першої літери: маленька літера означає нативний HTML, велика — змінну (компонент).",
     "interviewTip": "Якщо ви оголосили компонент як 'const myHeader = ...', використовуйте його як <MyHeader />, щоб він був розпізнаний.",
     "options": [
-      "HTML tags are blue, components are red.",
-      "Custom components must start with a capital letter; HTML tags start with lowercase.",
-      "Components must always use self-closing tags.",
-      "HTML tags must be wrapped in quotes."
+      "HTML-теги сині, компоненти — червоні.",
+      "Власні компоненти мають починатися з великої літери; HTML-теги — з маленької.",
+      "Компоненти мають завжди використовувати самозакривні теги.",
+      "HTML-теги мають бути огорнуті в лапки."
     ]
   },
   "ri-16": {
@@ -169,10 +159,10 @@
     "explanation": "Reconciliation — це процес порівняння (diffing), під час якого React обчислює мінімальний набір змін, необхідних для оновлення браузерного UI.",
     "interviewTip": "React припускає, що якщо тип компонента змінився, все дерево під ним потрібно перезібрати заново.",
     "options": [
-      "The process of converting CSS into JS objects.",
-      "The way React compares two Virtual DOM trees to see what changed.",
-      "A way to synchronize the frontend and the backend server.",
-      "The method for combining multiple Redux stores."
+      "Процес перетворення CSS в JS-об'єкти.",
+      "Спосіб, яким React порівнює два дерева Virtual DOM, щоб побачити зміни.",
+      "Спосіб синхронізації фронтенду та бекенд-сервера.",
+      "Метод поєднання кількох сторів Redux."
     ]
   },
   "ri-17": {
@@ -180,21 +170,16 @@
     "explanation": "Компонент ніколи не повинен змінювати свої пропси. Він має повертати однаковий JSX для того самого набору пропсів та стану.",
     "interviewTip": "Незмінність (immutability) — це ключ до оптимізацій продуктивності React (наприклад, React.memo).",
     "options": [
-      "To make the code look more professional.",
-      "To ensure that the component is predictable and doesn't mutate its inputs.",
-      "Because JavaScript doesn't allow changing function arguments.",
-      "To prevent the browser from caching the component."
+      "Щоб код виглядав професійніше.",
+      "Щоб забезпечити передбачуваність компонента та незмінність його вхідних даних.",
+      "Тому що JavaScript не дозволяє змінювати аргументи функцій.",
+      "Щоб запобігти кешуванню компонента браузером."
     ]
   },
   "ri-18": {
     "prompt": "Визначте динамічну частину цього JSX:",
     "explanation": "Фігурні дужки {} — це «вихід» у JavaScript, що дозволяє вставляти динамічні значення або логіку прямо в розмітку.",
     "interviewTip": "Ви навіть можете вставляти складну логіку, таку як map() або тернарні оператори, всередині цих дужок.",
-    "options": [
-      "className='main'",
-      "<h1>",
-      "{title}",
-      "const title"
-    ]
+    "options": ["className='main'", "<h1>", "{title}", "const title"]
   }
 }
