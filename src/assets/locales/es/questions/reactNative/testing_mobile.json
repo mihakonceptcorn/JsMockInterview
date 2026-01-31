@@ -1,30 +1,25 @@
 {
   "tm-01": {
-    "prompt": "Which testing framework is the default for React Native and handles the execution of unit tests?",
-    "explanation": "Jest is the standard test runner for React Native. It comes pre-configured with a 'react-native' preset that mocks the mobile environment.",
-    "interviewTip": "Mention that Jest's 'Snapshot Testing' is a popular but controversial way to catch unintended UI changes.",
-    "options": [
-      "Mocha",
-      "Jest",
-      "Detox",
-      "Cypress"
-    ]
+    "prompt": "¿Qué framework de testing es el predeterminado para React Native y se encarga de ejecutar las pruebas unitarias?",
+    "explanation": "Jest es el test runner estándar para React Native. Viene preconfigurado con un preset 'react-native' que simula el entorno móvil.",
+    "interviewTip": "Menciona que el 'Snapshot Testing' de Jest es una forma popular pero controvertida de detectar cambios de UI no deseados.",
+    "options": ["Mocha", "Jest", "Detox", "Cypress"]
   },
   "tm-02": {
-    "prompt": "What is the main philosophy of 'React Native Testing Library' (RNTL)?",
-    "explanation": "RNTL encourages testing *behavior* rather than *implementation*. If you refactor your code but the user still sees 'Submit', your tests should still pass.",
-    "interviewTip": "Avoid using 'enzyme' in modern React Native; RNTL is the community-standard replacement.",
+    "prompt": "¿Cuál es la filosofía principal de 'React Native Testing Library' (RNTL)?",
+    "explanation": "RNTL fomenta probar el *comportamiento* en lugar de la *implementación*. Si refactorizas tu código pero el usuario sigue viendo 'Submit', tus tests deberían seguir pasando.",
+    "interviewTip": "Evita usar 'enzyme' en React Native moderno; RNTL es el reemplazo estándar de la comunidad.",
     "options": [
-      "To test the internal state and private methods of a component.",
-      "To test components from the user's perspective (e.g., finding elements by text or accessibility labels).",
-      "To automatically fix bugs in the code.",
-      "To test the app's performance on a real device."
+      "Probar el estado interno y los métodos privados de un componente.",
+      "Probar los componentes desde la perspectiva del usuario (por ejemplo, encontrar elementos por texto o etiquetas de accesibilidad).",
+      "Arreglar automáticamente bugs en el código.",
+      "Probar el rendimiento de la app en un dispositivo real."
     ]
   },
   "tm-03": {
-    "prompt": "Analyze the code. How do you simulate a user typing into the 'Question' input in a test?",
-    "explanation": "In RNTL, 'fireEvent.changeText' is the specialized event for TextInput components that directly mimics the 'onChangeText' prop.",
-    "interviewTip": "Always use 'fireEvent.press' for buttons and 'fireEvent.changeText' for inputs.",
+    "prompt": "Analiza el código. ¿Cómo simulas que un usuario escribe en el input 'Question' en un test?",
+    "explanation": "En RNTL, 'fireEvent.changeText' es el evento especializado para componentes TextInput que imita directamente la prop 'onChangeText'.",
+    "interviewTip": "Usa siempre 'fireEvent.press' para botones y 'fireEvent.changeText' para inputs.",
     "options": [
       "fireEvent.changeText",
       "fireEvent.type",
@@ -33,80 +28,75 @@
     ]
   },
   "tm-04": {
-    "prompt": "What is 'Detox' used for in the React Native ecosystem?",
-    "explanation": "Detox runs your app in a real simulator and interacts with it like a user. It is called 'gray-box' because it synchronizes with the app's internal state to prevent flaky tests.",
-    "interviewTip": "Compare Detox to Cypress; it’s the closest mobile equivalent for full-flow automation.",
+    "prompt": "¿Para qué se utiliza 'Detox' en el ecosistema de React Native?",
+    "explanation": "Detox ejecuta tu app en un simulador real e interactúa con ella como un usuario. Se llama 'gray-box' porque se sincroniza con el estado interno de la app para evitar tests inestables.",
+    "interviewTip": "Compara Detox con Cypress; es el equivalente móvil más cercano para la automatización de flujos completos.",
     "options": [
-      "To clean up the node_modules folder.",
-      "For gray-box End-to-End (E2E) testing on real simulators/emulators.",
-      "To unit test individual utility functions.",
-      "To check the app's security vulnerabilities."
+      "Limpiar la carpeta node_modules.",
+      "Testing End-to-End (E2E) de tipo gray-box en simuladores/emuladores reales.",
+      "Probar unitariamente funciones utilitarias individuales.",
+      "Comprobar vulnerabilidades de seguridad de la app."
     ]
   },
   "tm-05": {
-    "prompt": "Why do you need to mock native modules (like 'react-native-reanimated' or 'AsyncStorage') in Jest?",
-    "explanation": "Jest runs in a Node environment, not a mobile OS. Native modules (C++/Java/Swift) don't exist there, so you must provide a JS 'mock' implementation.",
-    "interviewTip": "Most popular libraries (like React Navigation) provide their own Jest mocks that you can simply import in your 'jest.setup.js'.",
+    "prompt": "¿Por qué necesitas mockear módulos nativos (como 'react-native-reanimated' o 'AsyncStorage') en Jest?",
+    "explanation": "Jest se ejecuta en un entorno Node, no en un sistema operativo móvil. Los módulos nativos (C++/Java/Swift) no existen allí, por lo que debes proporcionar una implementación JS 'mock'.",
+    "interviewTip": "La mayoría de las librerías populares (como React Navigation) proporcionan sus propios mocks para Jest que puedes importar directamente en tu 'jest.setup.js'.",
     "options": [
-      "To make the tests run faster.",
-      "Because native code cannot run in the Node.js environment where Jest executes.",
-      "To reduce the size of the test files.",
-      "Jest only supports pure JavaScript."
+      "Para que los tests se ejecuten más rápido.",
+      "Porque el código nativo no puede ejecutarse en el entorno Node.js donde se ejecuta Jest.",
+      "Para reducir el tamaño de los archivos de test.",
+      "Jest solo soporta JavaScript puro."
     ]
   },
   "tm-06": {
-    "prompt": "Which of these are valid RNTL 'queries' for finding elements in your UI?",
-    "explanation": "getByText and getByTestId are the most common. queryBy... is used when you want to assert that an element *doesn't* exist (it returns null instead of throwing).",
-    "interviewTip": "Favor 'getByText' or 'getByLabelText' (accessibility) over 'getByTestId' whenever possible to ensure your app is accessible.",
-    "options": [
-      "getByText",
-      "getByTestId",
-      "queryByRole",
-      "findElementById"
-    ]
+    "prompt": "¿Cuáles de las siguientes son 'queries' válidas de RNTL para encontrar elementos en tu UI?",
+    "explanation": "getByText y getByTestId son las más comunes. queryBy... se usa cuando quieres comprobar que un elemento *no* existe (devuelve null en lugar de lanzar un error).",
+    "interviewTip": "Prefiere 'getByText' o 'getByLabelText' (accesibilidad) antes que 'getByTestId' siempre que sea posible para asegurar que tu app sea accesible.",
+    "options": ["getByText", "getByTestId", "queryByRole", "findElementById"]
   },
   "tm-07": {
-    "prompt": "What is the purpose of 'jest.useFakeTimers()'?",
-    "explanation": "If your Mock Interview app has a '3-second countdown' before a question, fake timers let you skip those 3 seconds instantly during a test.",
-    "interviewTip": "Don't forget to call 'jest.runAllTimers()' or 'jest.advanceTimersByTime()' after using this.",
+    "prompt": "¿Cuál es el propósito de 'jest.useFakeTimers()'?",
+    "explanation": "Si tu app de Mock Interview tiene una 'cuenta regresiva de 3 segundos' antes de una pregunta, los fake timers te permiten saltarte esos 3 segundos instantáneamente durante un test.",
+    "interviewTip": "No olvides llamar a 'jest.runAllTimers()' o 'jest.advanceTimersByTime()' después de usar esto.",
     "options": [
-      "To speed up the computer's clock.",
-      "To control and fast-forward time in tests that use setTimeout or setInterval (like a splash screen timer).",
-      "To record how long a test takes to run.",
-      "To schedule tests for a later date."
+      "Acelerar el reloj del computador.",
+      "Controlar y adelantar el tiempo en tests que usan setTimeout o setInterval (como un timer de splash screen).",
+      "Registrar cuánto tiempo tarda en ejecutarse un test.",
+      "Programar tests para una fecha posterior."
     ]
   },
   "tm-08": {
-    "prompt": "Analyze the Detox test snippet. What is it verifying?",
-    "explanation": "This is a typical E2E test. It checks the visibility of elements and performs actions (tap) to verify a multi-screen navigation flow.",
-    "interviewTip": "In Detox, 'by.id' refers to the 'testID' prop you add to your React Native components.",
+    "prompt": "Analiza el snippet de test de Detox. ¿Qué está verificando?",
+    "explanation": "Este es un test E2E típico. Comprueba la visibilidad de elementos y realiza acciones (tap) para verificar un flujo de navegación de múltiples pantallas.",
+    "interviewTip": "En Detox, 'by.id' se refiere a la prop 'testID' que agregas a tus componentes de React Native.",
     "options": [
-      "A unit test for the Start button.",
-      "A full user flow: seeing the welcome screen, clicking start, and arriving at the first question.",
-      "The performance of the screen transition.",
-      "If the server is responding to requests."
+      "Un test unitario para el botón Start.",
+      "Un flujo completo de usuario: ver la pantalla de bienvenida, hacer clic en start y llegar a la primera pregunta.",
+      "El rendimiento de la transición de pantalla.",
+      "Si el servidor está respondiendo a las solicitudes."
     ]
   },
   "tm-09": {
-    "prompt": "How do you test a component that uses a hook from a library (like 'useNavigation') without crashing?",
-    "explanation": "Just like in your app, hooks often need their context. Wrapping your test component in a 'Wrapper' (like a NavigationContainer or Redux Provider) is the standard fix.",
-    "interviewTip": "You can create a custom 'render' function that automatically wraps every component in all necessary providers.",
+    "prompt": "¿Cómo pruebas un componente que usa un hook de una librería (como 'useNavigation') sin que falle?",
+    "explanation": "Al igual que en tu app, los hooks a menudo necesitan su contexto. Envolver tu componente de test en un 'Wrapper' (como NavigationContainer o un Provider de Redux) es la solución estándar.",
+    "interviewTip": "Puedes crear una función 'render' personalizada que envuelva automáticamente cada componente en todos los providers necesarios.",
     "options": [
-      "Wrap the component in the library's Provider (e.g., NavigationContainer) inside the test.",
-      "You cannot test components with hooks.",
-      "Delete the hook before running the test.",
-      "Move the hook to a different file."
+      "Envolver el componente en el Provider de la librería (por ejemplo, NavigationContainer) dentro del test.",
+      "No se pueden testear componentes con hooks.",
+      "Eliminar el hook antes de ejecutar el test.",
+      "Mover el hook a otro archivo."
     ]
   },
   "tm-10": {
-    "prompt": "What does 'coverage' represent in a Jest report?",
-    "explanation": "Coverage helps you identify 'dark spots' in your code that haven't been tested yet.",
-    "interviewTip": "Warning: 100% coverage doesn't mean your app is bug-free; it just means every line was executed once.",
+    "prompt": "¿Qué representa 'coverage' en un reporte de Jest?",
+    "explanation": "Coverage te ayuda a identificar 'zonas oscuras' en tu código que aún no han sido testeadas.",
+    "interviewTip": "Advertencia: 100% de coverage no significa que tu app esté libre de bugs; solo significa que cada línea se ejecutó al menos una vez.",
     "options": [
-      "The number of users who have downloaded the app.",
-      "The percentage of your source code (lines, branches, functions) that was executed during the tests.",
-      "The amount of memory the app uses.",
-      "The physical area where the app works."
+      "El número de usuarios que han descargado la app.",
+      "El porcentaje de tu código fuente (líneas, ramas, funciones) que fue ejecutado durante los tests.",
+      "La cantidad de memoria que usa la app.",
+      "El área física donde funciona la app."
     ]
   }
 }

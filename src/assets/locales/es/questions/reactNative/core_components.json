@@ -1,30 +1,25 @@
 {
   "rn-core-01": {
-    "prompt": "Which component is the most fundamental building block for UI, acting as a container that supports layout with Flexbox?",
-    "explanation": "The <View> component maps directly to the native equivalent (UIView on iOS, android.view on Android) and is used for layout and styling.",
-    "interviewTip": "Think of <View> as the <div> of React Native.",
-    "options": [
-      "<Container>",
-      "<View>",
-      "<Section>",
-      "<Div>"
-    ]
+    "prompt": "¿Qué component es el building block más fundamental para la UI, actuando como un contenedor que soporta el layout con Flexbox?",
+    "explanation": "El component <View> se mapea directamente al equivalente nativo (UIView en iOS, android.view en Android) y se utiliza para el layout y el styling.",
+    "interviewTip": "Piensa en <View> como el <div> de React Native.",
+    "options": ["<Container>", "<View>", "<Section>", "<Div>"]
   },
   "rn-core-02": {
-    "prompt": "What will happen if you try to render raw text outside of a <Text> component?",
-    "explanation": "Unlike the web where text can exist inside a <div>, React Native requires all text to be explicitly wrapped in a <Text> component.",
-    "interviewTip": "This is a very common beginner mistake when transitioning from Web to Mobile.",
+    "prompt": "¿Qué sucederá si intentas renderizar raw text fuera de un component <Text>?",
+    "explanation": "A diferencia de la web donde el texto puede existir dentro de un <div>, React Native requiere que todo el texto esté envuelto explícitamente en un component <Text>.",
+    "interviewTip": "Este es un error de principiante muy común al hacer la transición de Web a Mobile.",
     "options": [
-      "It renders correctly as a child of the View.",
-      "It will throw an error: 'Text strings must be rendered within a <Text> component'.",
-      "It renders but cannot be styled.",
-      "React Native automatically wraps it in a <Text> tag."
+      "Se renderiza correctamente como un child del View.",
+      "Lanzará un error: 'Text strings must be rendered within a <Text> component'.",
+      "Se renderiza pero no se le puede aplicar styling.",
+      "React Native lo envuelve automáticamente en un tag <Text>."
     ]
   },
   "rn-core-03": {
-    "prompt": "How do you display a remote image from a URL in React Native?",
-    "explanation": "Remote images require an object with a 'uri' property. Local images use the 'require' function.",
-    "interviewTip": "Remember that remote images in React Native do not have an automatic size; you MUST specify width and height in the styles or they won't show up.",
+    "prompt": "¿Cómo se muestra una remote image desde una URL en React Native?",
+    "explanation": "Las remote images requieren un object con una property 'uri'. Las local images usan la function 'require'.",
+    "interviewTip": "Recuerda que las remote images en React Native no tienen un tamaño automático; DEBES especificar width y height en los styles o no se mostrarán.",
     "options": [
       "{ require('./path/to/img.png') }",
       "{ 'https://example.com/logo.png' }",
@@ -33,86 +28,76 @@
     ]
   },
   "rn-core-04": {
-    "prompt": "What is the primary purpose of the 'StyleSheet.create' method?",
-    "explanation": "StyleSheet.create sends the style object through the bridge only once, rather than recreating it on every render, which is more efficient.",
-    "interviewTip": "It also provides validation, throwing errors if you use invalid CSS properties that React Native doesn't support.",
+    "prompt": "¿Cuál es el propósito principal del método 'StyleSheet.create'?",
+    "explanation": "StyleSheet.create envía el style object a través del bridge solo una vez, en lugar de recrearlo en cada render, lo cual es más eficiente.",
+    "interviewTip": "También proporciona validación, lanzando errores si usas CSS properties inválidas que React Native no soporta.",
     "options": [
-      "To allow the use of CSS files (.css) in React Native.",
-      "To provide a centralized and potentially more performant way to define styles outside the render loop.",
-      "To automatically convert pixels to percentages.",
-      "To encrypt the styles for security."
+      "Para permitir el uso de archivos CSS (.css) en React Native.",
+      "Para proporcionar una forma centralizada y potencialmente más performante de definir styles fuera del render loop.",
+      "Para convertir automáticamente píxeles a porcentajes.",
+      "Para encriptar los styles por seguridad."
     ]
   },
   "rn-core-05": {
-    "prompt": "Which component should you use if you need a container that allows the user to swipe through content that is larger than the screen?",
-    "explanation": "A <View> has no scrolling capabilities. For basic scrolling of a small amount of content, <ScrollView> is the correct choice.",
-    "interviewTip": "For large lists of data, <ScrollView> is inefficient because it renders all children at once. Use <FlatList> instead for performance.",
-    "options": [
-      "<View>",
-      "<SwipeView>",
-      "<ScrollView>",
-      "<ListView>"
-    ]
+    "prompt": "¿Qué component deberías usar si necesitas un contenedor que permita al usuario hacer swipe a través de contenido que es más grande que la pantalla?",
+    "explanation": "Un <View> no tiene capacidades de scrolling. Para un scrolling básico de una pequeña cantidad de contenido, <ScrollView> es la elección correcta.",
+    "interviewTip": "Para large lists de datos, <ScrollView> es ineficiente porque renderiza todos los children a la vez. Usa <FlatList> en su lugar por performance.",
+    "options": ["<View>", "<SwipeView>", "<ScrollView>", "<ListView>"]
   },
   "rn-core-06": {
-    "prompt": "Which of the following properties are valid for the <Text> component in React Native?",
-    "explanation": "The <Text> component is surprisingly powerful, supporting truncation, native touch events, and copy-paste selection.",
-    "interviewTip": "Nested <Text> components inherit styles from their parents, which is different from how <View> inheritance works.",
+    "prompt": "¿Cuál de las siguientes properties son válidas para el component <Text> en React Native?",
+    "explanation": "El component <Text> es sorprendentemente potente, soportando truncamiento, native touch events y selección para copy-paste.",
+    "interviewTip": "Los components <Text> anidados heredan styles de sus parents, lo cual es diferente a cómo funciona la herencia en <View>.",
     "options": [
-      "numberOfLines (to truncate text)",
-      "onPress (to handle clicks directly on text)",
-      "selectable (to allow the user to copy-paste)",
-      "href (to link to a website)"
+      "numberOfLines (para truncar texto)",
+      "onPress (para manejar clicks directamente en el texto)",
+      "selectable (para permitir al usuario hacer copy-paste)",
+      "href (para enlazar a un sitio web)"
     ]
   },
   "rn-core-07": {
-    "prompt": "How do you handle local assets (like a logo) in an <Image> component?",
-    "explanation": "The 'require' syntax allows the packager to bundle the image metadata (width, height, path) during build time.",
-    "interviewTip": "Unlike remote images, local images usually don't need explicit width/height to appear, though it's still good practice to set them.",
+    "prompt": "¿Cómo manejas local assets (como un logo) en un component <Image>?",
+    "explanation": "La sintaxis 'require' permite que el packager empaquete los metadata de la imagen (width, height, path) durante el build time.",
+    "interviewTip": "A diferencia de las remote images, las local images usualmente no necesitan width/height explícitos para aparecer, aunque sigue siendo una buena práctica definirlos.",
     "options": [
-      "This is the correct way for local assets.",
-      "Local assets must also use the { uri: ... } syntax.",
-      "You must import the image as a default export first.",
-      "React Native only supports remote images."
+      "Esta es la forma correcta para local assets.",
+      "Los local assets también deben usar la sintaxis { uri: ... }.",
+      "Primero debes importar la imagen como un default export.",
+      "React Native solo soporta remote images."
     ]
   },
   "rn-core-08": {
-    "prompt": "What is the difference between <View> and <SafeAreaView>?",
-    "explanation": "SafeAreaView is essential for iOS devices with notches to ensure content isn't hidden behind system UI elements.",
-    "interviewTip": "In modern development, many developers use the 'react-native-safe-area-context' library for even better control over safe areas.",
+    "prompt": "¿Cuál es la diferencia entre <View> y <SafeAreaView>?",
+    "explanation": "SafeAreaView es esencial para dispositivos iOS con notches para asegurar que el contenido no quede oculto detrás de elementos de la UI del sistema.",
+    "interviewTip": "En el desarrollo moderno, muchos desarrolladores usan la librería 'react-native-safe-area-context' para un mejor control sobre las safe areas.",
     "options": [
-      "<SafeAreaView> is faster than <View>.",
-      "<SafeAreaView> automatically adds padding to avoid 'notches', status bars, and home indicators on modern devices.",
-      "<SafeAreaView> only works on Android.",
-      "<View> is only for web, <SafeAreaView> is for mobile."
+      "<SafeAreaView> es más rápido que <View>.",
+      "<SafeAreaView> añade automáticamente padding para evitar 'notches', status bars y home indicators en dispositivos modernos.",
+      "<SafeAreaView> solo funciona en Android.",
+      "<View> es solo para web, <SafeAreaView> es para mobile."
     ]
   },
   "rn-core-09": {
-    "prompt": "What is the result of applying 'flexDirection' to a <View> in React Native?",
-    "explanation": "In standard Web CSS, the default is 'row'. In React Native, the default is 'column' to better suit vertical mobile screens.",
-    "interviewTip": "This is one of the most frequent 'gotchas' for web developers moving to React Native.",
+    "prompt": "¿Cuál es el resultado de aplicar 'flexDirection' a una <View> en React Native?",
+    "explanation": "En el Web CSS estándar, el default es 'row'. En React Native, el default es 'column' para adaptarse mejor a las pantallas verticales de los móviles.",
+    "interviewTip": "Este es uno de los 'gotchas' más frecuentes para los desarrolladores web que se pasan a React Native.",
     "options": [
-      "The default is 'row'.",
-      "The default is 'column'.",
-      "It has no default; it must be specified.",
-      "It only works on ScrollView."
+      "El default es 'row'.",
+      "El default es 'column'.",
+      "No tiene default; debe ser especificado.",
+      "Solo funciona en ScrollView."
     ]
   },
   "rn-core-10": {
-    "prompt": "Which component is used to collect text input from the user?",
-    "explanation": "TextInput is the core component for keyboard input. It supports various keyboard types (numeric, email) and secure text entry for passwords.",
-    "interviewTip": "Always handle the 'onChangeText' prop (which gives the string directly) rather than 'onChange' (which gives an event object).",
-    "options": [
-      "<Input>",
-      "<TextField>",
-      "<TextInput>",
-      "<EditView>"
-    ]
+    "prompt": "¿Qué component se utiliza para recolectar text input del usuario?",
+    "explanation": "TextInput es el component core para keyboard input. Soporta varios tipos de teclado (numeric, email) y secure text entry para contraseñas.",
+    "interviewTip": "Maneja siempre la prop 'onChangeText' (que entrega el string directamente) en lugar de 'onChange' (que entrega un event object).",
+    "options": ["<Input>", "<TextField>", "<TextInput>", "<EditView>"]
   },
   "rn-core-11": {
-    "prompt": "How do you apply multiple style objects to a single component?",
-    "explanation": "React Native's 'style' prop accepts an array of objects. The last object in the array takes precedence (overwrites previous ones).",
-    "interviewTip": "This is perfect for conditional styling: style={[styles.box, isActive && styles.activeBox]}.",
+    "prompt": "¿Cómo aplicas múltiples style objects a un solo component?",
+    "explanation": "La prop 'style' de React Native acepta un array de objects. El último object en el array tiene precedencia (sobreescribe a los anteriores).",
+    "interviewTip": "Esto es perfecto para conditional styling: style={[styles.box, isActive && styles.activeBox]}.",
     "options": [
       "[styles.base, styles.active]",
       "{ styles.base, styles.active }",
@@ -121,58 +106,58 @@
     ]
   },
   "rn-core-12": {
-    "prompt": "What is the purpose of the <ActivityIndicator /> component?",
-    "explanation": "It's a built-in component that displays a native loading spinner (UIActivityIndicator on iOS, ProgressBar on Android).",
-    "interviewTip": "You can customize its size ('small' or 'large') and color.",
+    "prompt": "¿Cuál es el propósito del component <ActivityIndicator />?",
+    "explanation": "Es un component incorporado que muestra un native loading spinner (UIActivityIndicator en iOS, ProgressBar en Android).",
+    "interviewTip": "Puedes personalizar su size ('small' o 'large') y color.",
     "options": [
-      "To show the battery percentage.",
-      "To display a circular loading spinner.",
-      "To track user activity for analytics.",
-      "To show a progress bar."
+      "Para mostrar el porcentaje de batería.",
+      "Para mostrar un loading spinner circular.",
+      "Para rastrear la actividad del usuario para analytics.",
+      "Para mostrar una progress bar."
     ]
   },
   "rn-core-13": {
-    "prompt": "Which of these are valid 'resizeMode' values for an <Image> component?",
-    "explanation": "resizeMode determines how the image should be scaled when the frame doesn't match the image aspect ratio.",
-    "interviewTip": "'cover' is the default and usually what you want for full-bleed backgrounds.",
+    "prompt": "¿Cuáles de estos son valores válidos de 'resizeMode' para un component <Image>?",
+    "explanation": "resizeMode determina cómo debe escalarse la imagen cuando el frame no coincide con el aspect ratio de la imagen.",
+    "interviewTip": "'cover' es el default y usualmente lo que quieres para backgrounds de pantalla completa.",
     "options": [
-      "cover (scale to fill, might crop)",
-      "contain (scale to fit, no cropping)",
-      "stretch (scale independently, might distort)",
-      "fit (only works on Android)"
+      "cover (escala para llenar, puede recortar)",
+      "contain (escala para ajustar, sin recorte)",
+      "stretch (escala independientemente, puede distorsionar)",
+      "fit (solo funciona en Android)"
     ]
   },
   "rn-core-14": {
-    "prompt": "Why is it important to use 'key' in a list of components rendered inside a ScrollView?",
-    "explanation": "Just like React on the Web, the reconciliation algorithm uses keys to track the identity of elements in an array.",
-    "interviewTip": "Using the array index as a key is generally discouraged if the order of items can change.",
+    "prompt": "¿Por qué es importante usar 'key' en una lista de components renderizados dentro de un ScrollView?",
+    "explanation": "Al igual que en React para la Web, el reconciliation algorithm usa keys para rastrear la identidad de los elementos en un array.",
+    "interviewTip": "Generalmente se desaconseja usar el array index como key si el orden de los items puede cambiar.",
     "options": [
-      "To style each item individually.",
-      "To help React identify which items have changed, been added, or removed for efficient re-rendering.",
-      "To enable smooth scrolling.",
-      "Keys are not needed in ScrollView, only in FlatList."
+      "Para aplicar styling a cada item individualmente.",
+      "Para ayudar a React a identificar qué items han cambiado, han sido añadidos o eliminados para un re-rendering eficiente.",
+      "Para permitir un smooth scrolling.",
+      "Las keys no son necesarias en ScrollView, solo en FlatList."
     ]
   },
   "rn-core-15": {
-    "prompt": "What does the 'contentContainerStyle' prop do on a <ScrollView>?",
-    "explanation": "If you apply padding to a ScrollView's 'style' prop, the content will be cut off. You must use 'contentContainerStyle' to add padding to the scrollable area itself.",
-    "interviewTip": "This is the most common way to add 'breathing room' at the bottom of a scrollable list.",
+    "prompt": "¿Qué hace la prop 'contentContainerStyle' en un <ScrollView>?",
+    "explanation": "Si aplicas padding a la prop 'style' de un ScrollView, el contenido se cortará. Debes usar 'contentContainerStyle' para añadir padding al área scrollable en sí misma.",
+    "interviewTip": "Esta es la forma más común de añadir 'aire' al final de una lista con scroll.",
     "options": [
-      "It styles the outer wrapper of the scroll view.",
-      "It styles the inner component that wraps all the children (used for padding/alignment).",
-      "It changes the color of the scroll bar.",
-      "It is used for the background color only."
+      "Aplica styling al wrapper exterior del scroll view.",
+      "Aplica styling al component interno que envuelve a todos los children (usado para padding/alignment).",
+      "Cambia el color de la scroll bar.",
+      "Se usa solo para el background color."
     ]
   },
   "rn-core-16": {
-    "prompt": "What will the following code render on the screen?",
-    "explanation": "By default, Views have 'alignItems: stretch', so it will take up the full width of its parent and act as a 1-pixel high line.",
-    "interviewTip": "This is a common way to create custom border-like separators between list items.",
+    "prompt": "¿Qué renderizará el siguiente código en la pantalla?",
+    "explanation": "Por defecto, las Views tienen 'alignItems: stretch', así que ocupará todo el ancho de su parent y actuará como una línea de 1 píxel de alto.",
+    "interviewTip": "Esta es una forma común de crear separators personalizados tipo borde entre items de una lista.",
     "options": [
-      "A black box.",
-      "A horizontal black line (separator).",
-      "Nothing, because it has no width.",
-      "An error."
+      "Una caja negra.",
+      "Una línea negra horizontal (separator).",
+      "Nada, porque no tiene width.",
+      "Un error."
     ]
   }
 }

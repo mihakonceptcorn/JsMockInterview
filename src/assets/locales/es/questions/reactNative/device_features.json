@@ -1,19 +1,19 @@
 {
   "hf-01": {
-    "prompt": "What is the mandatory first step before accessing any hardware feature like the Camera or Location in a production app?",
-    "explanation": "Modern OS (iOS and Android) require apps to explicitly ask the user for permission. Attempting to use a sensor without permission will cause a crash or a silent fail.",
-    "interviewTip": "Distinguish between 'Ask once' and 'Always allowed' permissions, especially for Location.",
+    "prompt": "¿Cuál es el primer paso obligatorio antes de acceder a cualquier hardware feature como la Camera o Location en una app de producción?",
+    "explanation": "Los OS modernos (iOS y Android) requieren que las apps soliciten explícitamente permiso al usuario. Intentar usar un sensor sin permiso causará un crash o un fallo silencioso.",
+    "interviewTip": "Distingue entre permisos de 'Ask once' (preguntar una vez) y 'Always allowed' (siempre permitido), especialmente para Location.",
     "options": [
-      "Import the 'Hardware' module.",
-      "Request and verify the user's permission at runtime.",
-      "Turn on the sensor in the device settings manually.",
-      "Check if the device has enough battery."
+      "Importar el módulo 'Hardware'.",
+      "Solicitar y verificar el permiso del usuario en runtime.",
+      "Encender el sensor en los settings del dispositivo manualmente.",
+      "Verificar si el dispositivo tiene suficiente batería."
     ]
   },
   "hf-02": {
-    "prompt": "In Expo, which library is the standard for accessing the device's camera?",
-    "explanation": "expo-camera provides a high-level component that handles the viewfinder, taking photos, and recording videos.",
-    "interviewTip": "Mention that for highly advanced needs (like frame processors for AI), 'react-native-vision-camera' is often used in the CLI workflow.",
+    "prompt": "En Expo, ¿qué librería es el estándar para acceder a la cámara del dispositivo?",
+    "explanation": "expo-camera proporciona un component de alto nivel que maneja el viewfinder, la captura de fotos y la grabación de videos.",
+    "interviewTip": "Menciona que para necesidades muy avanzadas (como frame processors para AI), se suele usar 'react-native-vision-camera' en el CLI workflow.",
     "options": [
       "expo-video",
       "expo-camera",
@@ -22,20 +22,20 @@
     ]
   },
   "hf-03": {
-    "prompt": "How do you handle the difference between 'Foreground' and 'Background' location permissions on Android?",
-    "explanation": "To protect privacy, Android 10+ requires users to specifically grant 'Allow all the time' for background access.",
-    "interviewTip": "Always follow the 'Principle of Least Privilege'—only ask for background access if it is critical to the app's core function.",
+    "prompt": "¿Cómo manejas la diferencia entre los permisos de location en 'Foreground' y 'Background' en Android?",
+    "explanation": "Para proteger la privacidad, Android 10+ requiere que los usuarios otorguen específicamente 'Allow all the time' para el acceso en background.",
+    "interviewTip": "Sigue siempre el 'Principio de Menor Privilegio': solo pide acceso en background si es crítico para la función principal de la app.",
     "options": [
-      "They are the same permission.",
-      "Foreground allows tracking while the app is open; Background requires an extra, separate permission and strict Google Play review.",
-      "Background location is only available on iOS.",
-      "You only need to set a flag in the JavaScript code."
+      "Son el mismo permiso.",
+      "Foreground permite el rastreo mientras la app está abierta; Background requiere un permiso extra y separado, además de una revisión estricta de Google Play.",
+      "Background location solo está disponible en iOS.",
+      "Solo necesitas configurar un flag en el JavaScript code."
     ]
   },
   "hf-04": {
-    "prompt": "Which library is used to implement FaceID or Fingerprint authentication in React Native?",
-    "explanation": "expo-local-authentication (and react-native-local-auth for CLI) provides a unified API to trigger the device's native biometric prompt.",
-    "interviewTip": "Always check 'hasHardwareAsync()' and 'isEnrolledAsync()' before showing the 'Login with FaceID' button.",
+    "prompt": "¿Qué librería se usa para implementar FaceID o Fingerprint authentication en React Native?",
+    "explanation": "expo-local-authentication (y react-native-local-auth para CLI) proporciona una API unificada para disparar el prompt biométrico nativo del dispositivo.",
+    "interviewTip": "Verifica siempre 'hasHardwareAsync()' e 'isEnrolledAsync()' antes de mostrar el botón de 'Login con FaceID'.",
     "options": [
       "react-native-fingerprint",
       "expo-local-authentication",
@@ -44,69 +44,69 @@
     ]
   },
   "hf-05": {
-    "prompt": "Analyze the code. What happens if the user denies the permission?",
-    "explanation": "To prevent 'permission spamming,' iOS only shows the system dialog once. If the status is 'denied,' you must programmatically link to Settings using 'Linking.openSettings()'.",
-    "interviewTip": "This is a critical UX detail for apps that rely on hardware.",
+    "prompt": "Analiza el código. ¿Qué sucede si el usuario deniega el permiso?",
+    "explanation": "Para evitar el 'permission spamming', iOS solo muestra el diálogo del sistema una vez. Si el status es 'denied', debes redirigir programáticamente a los Settings usando 'Linking.openSettings()'.",
+    "interviewTip": "Este es un detalle de UX crítico para apps que dependen del hardware.",
     "options": [
-      "The app will automatically ask again the next time this code runs.",
-      "On iOS, the system prompt will only appear once; after that, you must guide the user to the device Settings app.",
-      "The app will crash.",
-      "The alert will be blocked by the system."
+      "La app volverá a preguntar automáticamente la próxima vez que se ejecute el código.",
+      "En iOS, el system prompt solo aparecerá una vez; después de eso, debes guiar al usuario a la app de Settings del dispositivo.",
+      "La app lanzará un crash.",
+      "La alerta será bloqueada por el sistema."
     ]
   },
   "hf-06": {
-    "prompt": "What is 'Geofencing'?",
-    "explanation": "Geofencing allows apps to be notified by the OS when the user crosses a coordinate radius, even if the app isn't actively running.",
-    "interviewTip": "This is very efficient for battery life compared to constantly polling the user's location.",
+    "prompt": "¿Qué es el 'Geofencing'?",
+    "explanation": "El Geofencing permite que las apps sean notificadas por el OS cuando el usuario cruza un radio de coordenadas, incluso si la app no se está ejecutando activamente.",
+    "interviewTip": "Esto es muy eficiente para la vida de la batería en comparación con estar consultando (polling) constantemente la ubicación del usuario.",
     "options": [
-      "A way to encrypt GPS data.",
-      "Triggering an action (like a notification) when a device enters or leaves a specific geographical boundary.",
-      "Measuring the altitude of the device.",
-      "Using Bluetooth to find nearby devices."
+      "Una forma de encriptar datos GPS.",
+      "Disparar una acción (como una notificación) cuando un dispositivo entra o sale de un límite geográfico específico.",
+      "Medir la altitud del dispositivo.",
+      "Usar Bluetooth para encontrar dispositivos cercanos."
     ]
   },
   "hf-07": {
-    "prompt": "Where must you declare the 'reason' for requesting a permission (e.g., CameraUsageDescription) for iOS?",
-    "explanation": "iOS requires a 'Purpose String' in the Info.plist. In Expo, you define these in the 'plugins' section of app.json and they are injected into the plist during build.",
-    "interviewTip": "If you don't provide a clear, user-friendly reason, Apple will reject your app during review.",
+    "prompt": "¿Dónde debes declarar la 'razón' para solicitar un permiso (ej. CameraUsageDescription) en iOS?",
+    "explanation": "iOS requiere una 'Purpose String' en el Info.plist. En Expo, estas se definen en la sección de 'plugins' del app.json y se inyectan en el plist durante el build.",
+    "interviewTip": "Si no proporcionas una razón clara y amigable para el usuario, Apple rechazará tu app durante la revisión.",
     "options": [
-      "In the package.json file.",
-      "In the Info.plist file.",
-      "Directly in the JavaScript code.",
-      "In the app.json / expo config."
+      "En el archivo package.json.",
+      "En el archivo Info.plist.",
+      "Directamente en el JavaScript code.",
+      "En el app.json / expo config."
     ]
   },
   "hf-08": {
-    "prompt": "What does the 'Accelerometer' sensor measure?",
-    "explanation": "Accelerometers are used for shake detection, step counting, and controlling games by tilting the phone.",
-    "interviewTip": "Mention that sensors like this produce data at high frequencies, so it's important to use a 'Subscription' model and clean it up in 'useEffect'.",
+    "prompt": "¿Qué mide el sensor 'Accelerometer'?",
+    "explanation": "Los acelerómetros se usan para la detección de sacudidas (shake detection), conteo de pasos y control de juegos al inclinar el teléfono.",
+    "interviewTip": "Menciona que sensores como este producen datos a frecuencias altas, por lo que es importante usar un modelo de 'Subscription' y limpiarlo en el 'useEffect'.",
     "options": [
-      "The compass heading.",
-      "The change in velocity (acceleration) along three axes (X, Y, Z).",
-      "The distance to the nearest object.",
-      "The brightness of the screen."
+      "El rumbo de la brújula.",
+      "El cambio en la velocidad (aceleración) a lo largo de tres ejes (X, Y, Z).",
+      "La distancia al objeto más cercano.",
+      "El brillo de la pantalla."
     ]
   },
   "hf-09": {
-    "prompt": "How do you check if an Android device has a physical 'Back' button or is using gesture navigation?",
-    "explanation": "The BackHandler module lets you listen to the hardware back button press and prevent it or customize its behavior.",
-    "interviewTip": "This is an Android-only concern; iOS users expect a 'Back' button in the navigation header or a swipe-back gesture.",
+    "prompt": "¿Cómo verificas si un dispositivo Android tiene un botón físico de 'Back' o si usa navegación por gestos?",
+    "explanation": "El módulo BackHandler permite escuchar la pulsación del botón de retroceso del hardware y prevenirlo o personalizar su comportamiento.",
+    "interviewTip": "Esta es una preocupación exclusiva de Android; los usuarios de iOS esperan un botón 'Back' en el navigation header o un gesto de swipe-back.",
     "options": [
-      "Using the BackHandler module.",
-      "Using the DeviceInfo library.",
-      "This is handled automatically by the OS; you don't need to check.",
-      "Checking the screen height."
+      "Usando el módulo BackHandler.",
+      "Usando la librería DeviceInfo.",
+      "El OS lo maneja automáticamente; no necesitas verificarlo.",
+      "Verificando el alto de la pantalla."
     ]
   },
   "hf-10": {
-    "prompt": "What is 'Linking' used for in hardware access?",
-    "explanation": "The Linking module is the bridge to other apps. For example, `Linking.openURL('tel:123456')` triggers the native dialer.",
-    "interviewTip": "Use 'Linking.canOpenURL' first to ensure the device has a handler for that specific link (like an email client).",
+    "prompt": "¿Para qué se usa 'Linking' en el acceso a hardware?",
+    "explanation": "El módulo Linking es el puente hacia otras apps. Por ejemplo, `Linking.openURL('tel:123456')` dispara el dialer nativo.",
+    "interviewTip": "Usa primero 'Linking.canOpenURL' para asegurar que el dispositivo tenga un handler para ese link específico (como un cliente de email).",
     "options": [
-      "To connect to a Wi-Fi network.",
-      "To open other apps, websites, or system settings (e.g., tel: or mailto:).",
-      "To link the Camera to the Image component.",
-      "To download assets."
+      "Para conectarse a una red Wi-Fi.",
+      "Para abrir otras apps, sitios web o system settings (ej. tel: o mailto:).",
+      "Para vincular la Camera al component Image.",
+      "Para descargar assets."
     ]
   }
 }

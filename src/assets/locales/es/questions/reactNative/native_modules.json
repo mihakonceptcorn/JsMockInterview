@@ -1,112 +1,112 @@
 {
   "nm-01": {
-    "prompt": "In the legacy architecture, what is the role of 'RCTBridgeModule' on iOS?",
-    "explanation": "To expose a native class to JS, it must implement the RCTBridgeModule protocol and use the RCT_EXPORT_MODULE macro.",
-    "interviewTip": "Remember that data passed through this bridge must be serialized into JSON, which can be a bottleneck.",
+    "prompt": "En la arquitectura legada, ¿cuál es el rol de 'RCTBridgeModule' en iOS?",
+    "explanation": "Para exponer una clase nativa a JS, esta debe implementar el protocolo RCTBridgeModule y usar la macro RCT_EXPORT_MODULE.",
+    "interviewTip": "Recuerda que los datos pasados a través de este bridge deben serializarse en JSON, lo que puede ser un cuello de botella.",
     "options": [
-      "It is a JavaScript class that defines UI components.",
-      "It is a protocol that an Objective-C/Swift class must adopt to be accessible from JavaScript.",
-      "It is a tool that compiles JS into machine code.",
-      "It is the main entry point for the App Store."
+      "Es una clase de JavaScript que define components de UI.",
+      "Es un protocolo que una clase de Objective-C/Swift debe adoptar para ser accesible desde JavaScript.",
+      "Es una herramienta que compila JS en machine code.",
+      "Es el punto de entrada principal para el App Store."
     ]
   },
   "nm-02": {
-    "prompt": "What is the primary technical improvement of 'Turbo Modules' over the legacy Native Modules?",
-    "explanation": "Legacy modules are all initialized at app launch, slowing down startup. Turbo Modules are loaded on demand and allow synchronous calls via JSI (JavaScript Interface).",
-    "interviewTip": "If an interviewer asks about app startup performance, mention 'Lazy Loading' of Turbo Modules.",
+    "prompt": "¿Cuál es la principal mejora técnica de los 'Turbo Modules' sobre los Native Modules legados?",
+    "explanation": "Los módulos legados se inicializan todos al arrancar la app, ralentizando el inicio. Los Turbo Modules se cargan on demand y permiten llamadas síncronas a través de JSI (JavaScript Interface).",
+    "interviewTip": "Si un entrevistador pregunta sobre el performance del inicio de la app, menciona el 'Lazy Loading' de los Turbo Modules.",
     "options": [
-      "They are written in Python instead of Java.",
-      "They are loaded lazily (only when needed) and use JSI for direct communication.",
-      "They automatically upload data to the cloud.",
-      "They do not require any native code."
+      "Están escritos en Python en lugar de Java.",
+      "Se cargan de forma perezosa (solo cuando se necesitan) y usan JSI para comunicación directa.",
+      "Suben datos automáticamente a la cloud.",
+      "No requieren ningún native code."
     ]
   },
   "nm-03": {
-    "prompt": "Analyze the Android native code. What is the purpose of the @ReactMethod annotation?",
-    "explanation": "Without this annotation, the method remains invisible to the React Native bridge, even if the class itself is exported.",
-    "interviewTip": "Only methods marked with @ReactMethod can be triggered via 'NativeModules.ModuleName.methodName()'.",
+    "prompt": "Analiza el código nativo de Android. ¿Cuál es el propósito de la anotación @ReactMethod?",
+    "explanation": "Sin esta anotación, el método permanece invisible para el bridge de React Native, incluso si la clase misma está exportada.",
+    "interviewTip": "Solo los métodos marcados con @ReactMethod pueden dispararse vía 'NativeModules.ModuleName.methodName()'.",
     "options": [
-      "It marks the method as private to the native class.",
-      "It exports the method so it can be called from JavaScript code.",
-      "It tells the Android OS to run this in the background.",
-      "It encrypts the parameters."
+      "Marca el método como privado para la clase nativa.",
+      "Exporta el método para que pueda ser llamado desde el JavaScript code.",
+      "Le indica al Android OS que ejecute esto en el background.",
+      "Encripta los parámetros."
     ]
   },
   "nm-04": {
-    "prompt": "How does JavaScript communicate with the native side in the New Architecture without serialization?",
-    "explanation": "JSI allows the JavaScript engine (Hermes) to hold a reference to a C++ object, enabling direct, synchronous method calls instead of passing JSON messages.",
-    "interviewTip": "JSI is what makes 'Reanimated' so fast—it allows the UI to update without waiting for the bridge.",
+    "prompt": "¿Cómo se comunica JavaScript con el lado nativo en la New Architecture sin serialización?",
+    "explanation": "JSI permite que el JavaScript engine (Hermes) mantenga una referencia a un C++ object, habilitando llamadas a métodos directas y síncronas en lugar de pasar mensajes JSON.",
+    "interviewTip": "JSI es lo que hace que 'Reanimated' sea tan rápido: permite que la UI se actualice sin esperar al bridge.",
     "options": [
-      "Via the Bridge queue.",
-      "Using JSI (JavaScript Interface) to hold C++ references to native objects.",
-      "By writing files to the disk.",
-      "Using WebSockets."
+      "A través de la Bridge queue.",
+      "Usando JSI (JavaScript Interface) para mantener referencias C++ a objetos nativos.",
+      "Escribiendo archivos en el disco.",
+      "Usando WebSockets."
     ]
   },
   "nm-05": {
-    "prompt": "What is the purpose of 'Codegen' in the New Architecture?",
-    "explanation": "Codegen ensures type safety between JS and Native code. It creates the 'glue' code automatically so you don't have to write C++ boilerplate manually.",
-    "interviewTip": "Codegen helps prevent runtime crashes caused by sending the wrong data types across the JS-Native boundary.",
+    "prompt": "¿Cuál es el propósito de 'Codegen' en la New Architecture?",
+    "explanation": "Codegen garantiza la seguridad de tipos (type safety) entre el código JS y el nativo. Crea el código 'pegamento' (glue code) automáticamente para que no tengas que escribir boilerplate de C++ manualmente.",
+    "interviewTip": "Codegen ayuda a prevenir runtime crashes causados por enviar tipos de datos incorrectos a través de la frontera JS-Nativo.",
     "options": [
-      "To write the UI for you using AI.",
-      "To generate the native interface code (C++ / Java / Obj-C) based on your TypeScript/Flow definitions.",
-      "To minify the JS bundle.",
-      "To verify npm package versions."
+      "Escribir la UI por ti usando AI.",
+      "Generar el código de interfaz nativa (C++ / Java / Obj-C) basado en tus definiciones de TypeScript/Flow.",
+      "Minificar el JS bundle.",
+      "Verificar las versiones de los paquetes de npm."
     ]
   },
   "nm-06": {
-    "prompt": "Which of these are valid ways to send data from Native back to JavaScript?",
-    "explanation": "Callbacks and Promises are for responses to specific calls. Events (EventEmitter) are for native actions the JS didn't trigger, like a GPS location update.",
-    "interviewTip": "Always remember to remove event listeners in 'useEffect' cleanup to avoid memory leaks.",
+    "prompt": "¿Cuáles de estas son formas válidas de enviar datos desde el lado Nativo de vuelta a JavaScript?",
+    "explanation": "Los Callbacks y Promises son para respuestas a llamadas específicas. Los eventos (EventEmitter) son para acciones nativas que el JS no disparó, como una actualización de ubicación GPS.",
+    "interviewTip": "Recuerda siempre eliminar los event listeners en la limpieza (cleanup) de 'useEffect' para evitar memory leaks.",
     "options": [
-      "Using a Callback (one-time response).",
-      "Using Promises (one-time response, modern).",
-      "Using DeviceEventEmitter (for streaming events).",
-      "Directly modifying the JS variable from Java."
+      "Usando un Callback (respuesta única).",
+      "Usando Promises (respuesta única, moderno).",
+      "Usando DeviceEventEmitter (para streaming de eventos).",
+      "Modificando directamente la variable JS desde Java."
     ]
   },
   "nm-07": {
-    "prompt": "What is a 'Native UI Component' (as opposed to a Native Module)?",
-    "explanation": "While Native Modules provide 'logic', Native UI Components provide 'views'. You use 'requireNativeComponent' to bring them into your JSX.",
-    "interviewTip": "If you need a very complex UI element that doesn't exist in RN, you build a 'ViewManager' on the native side.",
+    "prompt": "¿Qué es un 'Native UI Component' (a diferencia de un Native Module)?",
+    "explanation": "Mientras que los Native Modules proporcionan 'lógica', los Native UI Components proporcionan 'views'. Usas 'requireNativeComponent' para traerlos a tu JSX.",
+    "interviewTip": "Si necesitas un elemento de UI muy complejo que no existe en RN, construyes un 'ViewManager' en el lado nativo.",
     "options": [
-      "A piece of logic like an API fetcher.",
-      "An actual native view (like a specialized Video Player or Map) that is rendered as a React component.",
-      "A button provided by the OS.",
-      "A local storage database."
+      "Una pieza de lógica como un API fetcher.",
+      "Una vista nativa real (como un Video Player especializado o un Mapa) que se renderiza como un React component.",
+      "Un botón proporcionado por el OS.",
+      "Una base de datos de almacenamiento local."
     ]
   },
   "nm-08": {
-    "prompt": "Identify the issue in this iOS native method:",
-    "explanation": "Legacy bridge methods are asynchronous and return 'void'. To get a result back to JS, you must pass an RCTResponseSenderBlock or an RCTPromiseResolveBlock.",
-    "interviewTip": "In the New Architecture with JSI, you actually *can* return values synchronously.",
+    "prompt": "Identifica el problema en este método nativo de iOS:",
+    "explanation": "Los métodos del bridge legado son asíncronos y devuelven 'void'. Para devolver un resultado a JS, debes pasar un RCTResponseSenderBlock o un RCTPromiseResolveBlock.",
+    "interviewTip": "En la New Architecture con JSI, realmente *puedes* devolver valores de forma síncrona.",
     "options": [
-      "The types must be 'NSInteger'.",
-      "Native methods on the bridge cannot return values directly; they must use callbacks or promises.",
-      "The method name is too short.",
-      "There is no issue."
+      "Los tipos deben ser 'NSInteger'.",
+      "Los métodos nativos en el bridge no pueden devolver valores directamente; deben usar callbacks o promises.",
+      "El nombre del método es demasiado corto.",
+      "No hay ningún problema."
     ]
   },
   "nm-09": {
-    "prompt": "What does the 'RCT_EXPORT_MODULE()' macro do?",
-    "explanation": "Without this macro, React Native's bridge won't know the class exists at runtime.",
-    "interviewTip": "You can pass an optional name to the macro (e.g., RCT_EXPORT_MODULE(MyCustomName)) to change how it appears in JS.",
+    "prompt": "¿Qué hace la macro 'RCT_EXPORT_MODULE()'?",
+    "explanation": "Sin esta macro, el bridge de React Native no sabrá que la clase existe en tiempo de ejecución.",
+    "interviewTip": "Puedes pasar un nombre opcional a la macro (ej. RCT_EXPORT_MODULE(MyCustomName)) para cambiar cómo aparece en JS.",
     "options": [
-      "It compiles the class into a binary.",
-      "It registers the class with React Native so it can be accessed via NativeModules in JS.",
-      "It exports the class to the App Store.",
-      "It makes the class a singleton."
+      "Compila la clase en un binario.",
+      "Registra la clase con React Native para que sea accesible vía NativeModules en JS.",
+      "Exporta la clase al App Store.",
+      "Convierte la clase en un singleton."
     ]
   },
   "nm-10": {
-    "prompt": "What is 'Fabric' in the New Architecture and how does it differ from the legacy renderer?",
-    "explanation": "The legacy renderer used an asynchronous bridge to send UI updates. Fabric uses JSI to communicate synchronously with the native UI thread, enabling features like priority-based rendering and layout animations.",
-    "interviewTip": "Fabric is the 'React 18 Concurrent Mode' equivalent for the native side—it allows React Native to interrupt and prioritize UI updates.",
+    "prompt": "¿Qué es 'Fabric' en la New Architecture y en qué se diferencia del renderizador legado?",
+    "explanation": "El renderizador legado usaba un bridge asíncrono para enviar actualizaciones de UI. Fabric usa JSI para comunicarse síncronamente con el native UI thread, permitiendo características como priority-based rendering y layout animations.",
+    "interviewTip": "Fabric es el equivalente al 'Concurrent Mode de React 18' para el lado nativo: permite que React Native interrumpa y priorice las actualizaciones de UI.",
     "options": [
-      "Fabric is a new CSS framework for React Native.",
-      "Fabric is the new synchronous rendering system that replaces the asynchronous UIManager, allowing for better performance and concurrent rendering.",
-      "Fabric is a tool for deploying apps to the cloud.",
-      "Fabric is a database for storing native modules."
+      "Fabric es un nuevo framework de CSS para React Native.",
+      "Fabric es el nuevo sistema de renderizado síncrono que reemplaza al UIManager asíncrono, permitiendo mejor performance y concurrent rendering.",
+      "Fabric es una herramienta para desplegar apps a la cloud.",
+      "Fabric es una base de datos para almacenar módulos nativos."
     ]
   }
 }

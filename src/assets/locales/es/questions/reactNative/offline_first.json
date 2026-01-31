@@ -1,8 +1,8 @@
 {
   "of-01": {
-    "prompt": "Which library is the industry standard for detecting network connectivity status in React Native?",
-    "explanation": "NetInfo provides information about the connection type (wifi, cellular) and whether the device is actually connected to the internet.",
-    "interviewTip": "Always subscribe to the listener rather than just checking a one-time value, so your UI can react instantly when the user goes offline.",
+    "prompt": "¿Qué librería es el estándar de la industria para detectar el estado de conectividad de red en React Native?",
+    "explanation": "NetInfo proporciona información sobre el tipo de conexión (wifi, celular) y si el dispositivo está realmente conectado a internet.",
+    "interviewTip": "Suscríbete siempre al listener en lugar de solo hacer una verificación única, para que tu UI reaccione instantáneamente cuando el usuario pierda la conexión.",
     "options": [
       "react-native-connectivity",
       "@react-native-community/netinfo",
@@ -11,53 +11,53 @@
     ]
   },
   "of-02": {
-    "prompt": "What is 'Optimistic UI' in the context of an offline-first app?",
-    "explanation": "Optimistic UI makes the app feel 'instant.' If the network request fails later, the app 'rolls back' the change and informs the user.",
-    "interviewTip": "This is a core feature of libraries like TanStack (React) Query.",
+    "prompt": "¿Qué es la 'Optimistic UI' en el contexto de una app offline-first?",
+    "explanation": "La Optimistic UI hace que la app se sienta 'instantánea'. Si la network request falla más tarde, la app 'revierte' el cambio e informa al usuario.",
+    "interviewTip": "Esta es una característica principal de librerías como TanStack (React) Query.",
     "options": [
-      "A UI that only works when the user is happy.",
-      "Immediately updating the UI to show a successful action (like liking a post) before the server confirms it.",
-      "A design that uses bright, positive colors.",
-      "Assuming the user will never go offline."
+      "Una UI que solo funciona cuando el usuario está feliz.",
+      "Actualizar inmediatamente la UI para mostrar una acción exitosa (como dar like a un post) antes de que el servidor lo confirme.",
+      "Un diseño que utiliza colores brillantes y positivos.",
+      "Asumir que el usuario nunca perderá la conexión."
     ]
   },
   "of-03": {
-    "prompt": "Analyze the code. How does this React Query configuration handle being offline?",
-    "explanation": "In 'offlineFirst' mode, queries will run the queryFn but will also successfully return data from the cache if available, even without a connection.",
-    "interviewTip": "Pair this with a 'Persister' to save the cache to MMKV or AsyncStorage for true offline persistence across restarts.",
+    "prompt": "Analiza el código. ¿Cómo maneja esta configuración de React Query el estar offline?",
+    "explanation": "En modo 'offlineFirst', las queries ejecutarán la queryFn pero también devolverán con éxito los datos del cache si están disponibles, incluso sin conexión.",
+    "interviewTip": "Combina esto con un 'Persister' para guardar el cache en MMKV o AsyncStorage para una verdadera persistencia offline tras reiniciar la app.",
     "options": [
-      "It deletes the data if there is no internet.",
-      "It fetches data from the server first, then the cache.",
-      "It serves data from the cache immediately and only attempts to fetch if the data is stale.",
-      "It prevents the app from opening without a connection."
+      "Elimina los datos si no hay internet.",
+      "Obtiene los datos del servidor primero, luego del cache.",
+      "Sirve los datos del cache inmediatamente y solo intenta obtener nuevos datos si los actuales están stale (obsoletos).",
+      "Evita que la app se abra sin conexión."
     ]
   },
   "of-04": {
-    "prompt": "What is the role of a 'Sync Queue' in an offline-first architecture?",
-    "explanation": "A sync queue ensures that user progress isn't lost. When the app detects 'isConnected: true', it processes the pending actions in the order they were created.",
-    "interviewTip": "Libraries like 'redux-persist' combined with 'redux-offline' were early pioneers of this pattern.",
+    "prompt": "¿Cuál es el rol de una 'Sync Queue' en una arquitectura offline-first?",
+    "explanation": "Una sync queue asegura que el progreso del usuario no se pierda. Cuando la app detecta 'isConnected: true', procesa las acciones pendientes en el orden en que fueron creadas.",
+    "interviewTip": "Librerías como 'redux-persist' combinadas con 'redux-offline' fueron pioneras en este patrón.",
     "options": [
-      "To speed up the app's animations.",
-      "To store user actions (like 'Submit Quiz') while offline and replay them once the connection is restored.",
-      "To manage the order of images in a gallery.",
-      "To check for app updates in the store."
+      "Acelerar las animaciones de la app.",
+      "Almacenar acciones del usuario (como 'Enviar Quiz') mientras está offline y ejecutarlas una vez que se restaure la conexión.",
+      "Gestionar el orden de las imágenes en una galería.",
+      "Verificar actualizaciones de la app en la tienda."
     ]
   },
   "of-05": {
-    "prompt": "Which of these are common challenges when implementing Offline-First?",
-    "explanation": "Conflict resolution is the hardest part—deciding 'who wins' if a user edits the same data on two devices while one was offline.",
-    "interviewTip": "Mention 'Last Write Wins' or 'CRDTs' (Conflict-free Replicated Data Types) as advanced strategies for resolution.",
+    "prompt": "¿Cuáles de estos son desafíos comunes al implementar Offline-First?",
+    "explanation": "La resolución de conflictos es la parte más difícil: decidir 'quién gana' si un usuario edita los mismos datos en dos dispositivos mientras uno estaba offline.",
+    "interviewTip": "Menciona 'Last Write Wins' (el último en escribir gana) o 'CRDTs' (Conflict-free Replicated Data Types) como estrategias avanzadas de resolución.",
     "options": [
-      "Conflict Resolution (Server data vs. Local data changes).",
-      "Managing Cache Invalidation (ensuring data isn't too old).",
-      "Handling large binary assets like video.",
-      "Increasing the device's battery capacity."
+      "Resolución de conflictos (datos del servidor vs. cambios locales).",
+      "Gestión de invalidación de cache (asegurar que los datos no sean demasiado antiguos).",
+      "Manejo de assets binarios grandes como video.",
+      "Aumentar la capacidad de la batería del dispositivo."
     ]
   },
   "of-06": {
-    "prompt": "How do you detect if a specific network request failed specifically because of a lack of internet?",
-    "explanation": "state.isConnected returns a boolean indicating if the device has a network connection (though it doesn't always guarantee internet access).",
-    "interviewTip": "Use `state.isInternetReachable` for a more accurate check that the Google/Apple servers can actually be reached.",
+    "prompt": "¿Cómo detectas si una network request específica falló precisamente por falta de internet?",
+    "explanation": "state.isConnected devuelve un boolean que indica si el dispositivo tiene una conexión de red (aunque no siempre garantiza el acceso a internet).",
+    "interviewTip": "Usa `state.isInternetReachable` para una verificación más precisa de que los servidores de Google/Apple son realmente alcanzables.",
     "options": [
       "state.connected",
       "state.isConnected",
@@ -66,47 +66,42 @@
     ]
   },
   "of-07": {
-    "prompt": "What is 'Rehydration' in the context of state management?",
-    "explanation": "When the app opens, it reads the saved JSON from AsyncStorage/MMKV and 'fills' the state, so the user sees their data before any network calls happen.",
-    "interviewTip": "Always show a loading splash screen until the rehydration is complete to avoid 'layout shift'.",
+    "prompt": "¿Qué es la 'Rehydration' en el contexto de gestión de estado?",
+    "explanation": "Cuando la app se abre, lee el JSON guardado en AsyncStorage/MMKV y 'rellena' el estado, para que el usuario vea sus datos antes de que ocurra cualquier llamada de red.",
+    "interviewTip": "Muestra siempre una loading splash screen hasta que la rehydration se complete para evitar saltos de diseño (layout shift).",
     "options": [
-      "Cleaning up the memory after a crash.",
-      "The process of loading the persisted state from storage back into the app's memory (e.g., Redux or Zustand) on startup.",
-      "Updating the app to the latest version.",
-      "Connecting the app to a new database."
+      "Limpiar la memoria después de un crash.",
+      "El proceso de cargar el estado persistido desde el almacenamiento a la memoria de la app (ej. Redux o Zustand) al iniciar.",
+      "Actualizar la app a la versión más reciente.",
+      "Conectar la app a una nueva base de datos."
     ]
   },
   "of-08": {
-    "prompt": "Why is 'MMKV' often preferred over 'AsyncStorage' for offline-first apps?",
-    "explanation": "Because MMKV is synchronous, you can read the state instantly during the initial render, making the 'offline' experience feel much smoother.",
-    "interviewTip": "AsyncStorage requires 'await', which always forces at least one 'empty' render cycle.",
+    "prompt": "¿Por qué se suele preferir 'MMKV' sobre 'AsyncStorage' para apps offline-first?",
+    "explanation": "Debido a que MMKV es síncrono, puedes leer el estado instantáneamente durante el renderizado inicial, haciendo que la experiencia 'offline' se sienta mucho más fluida.",
+    "interviewTip": "AsyncStorage requiere 'await', lo que siempre fuerza al menos un ciclo de renderizado 'vacío'.",
     "options": [
-      "It has a better UI.",
-      "It allows for synchronous reads, which prevents 'flickering' of UI state during rehydration.",
-      "It is owned by Facebook.",
-      "It supports video files natively."
+      "Tiene una mejor UI.",
+      "Permite lecturas síncronas, lo que evita el 'parpadeo' del estado de la UI durante la rehydration.",
+      "Es propiedad de Facebook.",
+      "Soporta archivos de video nativamente."
     ]
   },
   "of-09": {
-    "prompt": "What is the best strategy for handling image caching in an offline-first app?",
-    "explanation": "Libraries like 'react-native-fast-image' provide automatic disk caching with cache invalidation strategies, making offline image loading seamless.",
-    "interviewTip": "Mention that you should set cache priorities (low/normal/high) based on image importance to manage disk space efficiently.",
+    "prompt": "¿Cuál es la mejor estrategia para manejar el cache de imágenes en una app offline-first?",
+    "explanation": "Librerías como 'react-native-fast-image' proporcionan disk caching automático con estrategias de invalidación de cache, logrando una carga de imágenes offline sin interrupciones.",
+    "interviewTip": "Menciona que debes establecer prioridades de cache (baja/normal/alta) según la importancia de la imagen para gestionar el espacio en disco eficientemente.",
     "options": [
-      "Store all images in AsyncStorage as base64 strings.",
-      "Use a library like 'react-native-fast-image' with disk caching enabled to automatically cache network images.",
-      "Download all images at app startup.",
-      "Images cannot be cached in React Native."
+      "Guardar todas las imágenes en AsyncStorage como strings base64.",
+      "Usar una librería como 'react-native-fast-image' con disk caching habilitado para cachear automáticamente imágenes de red.",
+      "Descargar todas las imágenes al iniciar la app.",
+      "Las imágenes no se pueden cachear en React Native."
     ]
   },
   "of-10": {
-    "prompt": "How do you implement a retry mechanism for failed network requests in an offline-first architecture?",
-    "explanation": "Setting 'retry: 3' means the mutation will automatically retry up to 3 times with exponential backoff before giving up. This is perfect for transient network errors.",
-    "interviewTip": "For critical operations like payments, you might want to persist failed mutations to a queue and retry them when the app restarts.",
-    "options": [
-      "false",
-      "true",
-      "3",
-      "Infinity"
-    ]
+    "prompt": "¿Cómo implementas un mecanismo de reintento (retry) para network requests fallidas en una arquitectura offline-first?",
+    "explanation": "Configurar 'retry: 3' significa que la mutación reintentará automáticamente hasta 3 veces con un backoff exponencial antes de rendirse. Es perfecto para errores de red transitorios.",
+    "interviewTip": "Para operaciones críticas como pagos, podrías querer persistir las mutaciones fallidas en una cola y reintentarlas cuando la app se reinicie.",
+    "options": ["false", "true", "3", "Infinity"]
   }
 }

@@ -1,96 +1,86 @@
 {
   "rn-env-01": {
-    "prompt": "What is the primary difference between the 'Bridge' (Old Architecture) and 'JSI' (New Architecture)?",
-    "explanation": "The legacy Bridge requires data to be serialized to JSON and sent across an asynchronous queue. JSI (JavaScript Interface) allows JS to hold references to C++ host objects, enabling direct, synchronous calls.",
-    "interviewTip": "Mention that JSI is the foundation for the New Architecture (Fabric and TurboModules).",
+    "prompt": "¿Cuál es la diferencia principal entre el 'Bridge' (Old Architecture) y 'JSI' (New Architecture)?",
+    "explanation": "El Bridge heredado requiere que los datos se serialicen en JSON y se envíen a través de una cola asíncrona. JSI (JavaScript Interface) permite que JS mantenga referencias a host objects en C++, habilitando llamadas directas y sincrónicas.",
+    "interviewTip": "Menciona que JSI es la base de la New Architecture (Fabric y TurboModules).",
     "options": [
-      "JSI allows synchronous communication between JS and Native, while the Bridge is asynchronous and serialized.",
-      "The Bridge is faster because it uses JSON for all data transfer.",
-      "JSI requires Expo, while the Bridge works only with React Native CLI.",
-      "The Bridge uses Java exclusively, while JSI uses Swift."
+      "JSI permite comunicación sincrónica entre JS y Native, mientras que el Bridge es asíncrono y serializado.",
+      "El Bridge es más rápido porque usa JSON para toda la transferencia de datos.",
+      "JSI requiere Expo, mientras que el Bridge funciona solo con React Native CLI.",
+      "El Bridge usa Java exclusivamente, mientras que JSI usa Swift."
     ]
   },
   "rn-env-02": {
-    "prompt": "Which layout engine does React Native use to calculate positions and sizes of components?",
-    "explanation": "Yoga is a cross-platform layout engine developed by Meta that implements Flexbox for native mobile screens.",
-    "interviewTip": "Yoga is written in C++ and is what translates your 'flex: 1' styles into actual pixel coordinates on iOS and Android.",
-    "options": [
-      "WebKit",
-      "Gecko",
-      "Yoga",
-      "Flexbox-Native"
-    ]
+    "prompt": "¿Qué motor de layout utiliza React Native para calcular posiciones y tamaños de los componentes?",
+    "explanation": "Yoga es un motor de layout multiplataforma desarrollado por Meta que implementa Flexbox para pantallas móviles nativas.",
+    "interviewTip": "Yoga está escrito en C++ y es lo que traduce tus estilos 'flex: 1' en coordenadas reales de píxeles en iOS y Android.",
+    "options": ["WebKit", "Gecko", "Yoga", "Flexbox-Native"]
   },
   "rn-env-03": {
-    "prompt": "What does the 'Hermes' engine do for a React Native application?",
-    "explanation": "Hermes is a small, lightweight JS engine. It uses bytecode pre-compilation (AOT) to make app launches significantly faster.",
-    "interviewTip": "Starting with React Native 0.70, Hermes is the default engine for all new projects.",
+    "prompt": "¿Qué hace el engine 'Hermes' para una aplicación React Native?",
+    "explanation": "Hermes es un engine de JS pequeño y liviano. Utiliza precompilación a bytecode (AOT) para hacer que el arranque de la app sea significativamente más rápido.",
+    "interviewTip": "A partir de React Native 0.70, Hermes es el engine predeterminado para todos los proyectos nuevos.",
     "options": [
-      "It manages the connection to the Google Play Store.",
-      "It is a JavaScript engine optimized for mobile to improve start-up time and reduce app size.",
-      "It handles all image caching and local storage.",
-      "It is a UI library that replaces core components."
+      "Gestiona la conexión con Google Play Store.",
+      "Es un engine de JavaScript optimizado para mobile que mejora el tiempo de inicio y reduce el tamaño de la app.",
+      "Maneja todo el cacheo de imágenes y el almacenamiento local.",
+      "Es una librería de UI que reemplaza los componentes core."
     ]
   },
   "rn-env-04": {
-    "prompt": "What will be the result of this code when running in a React Native environment?",
-    "explanation": "Core components like View are JavaScript components (usually functions or objects) that act as wrappers for native UI elements.",
-    "interviewTip": "In the end, these components tell the native side to render a 'UIView' on iOS or an 'android.view' on Android.",
+    "prompt": "¿Cuál será el resultado de este código al ejecutarse en un entorno React Native?",
+    "explanation": "Los componentes core como View son componentes JavaScript (generalmente funciones u objetos) que actúan como wrappers de elementos de UI nativos.",
+    "interviewTip": "Al final, estos componentes indican al lado nativo que renderice un 'UIView' en iOS o un 'android.view' en Android.",
     "options": [
       "\"string\"",
-      "\"function\" (or \"object\" depending on RN version internal implementation)",
+      "\"function\" (o \"object\" dependiendo de la implementación interna de la versión de RN)",
       "\"undefined\"",
       "\"native-element\""
     ]
   },
   "rn-env-05": {
-    "prompt": "Which of the following are benefits of using 'Expo' over 'React Native CLI'?",
-    "explanation": "Expo simplifies development by abstracting away the complex native code, though the CLI is still preferred if you need custom native module modifications that Expo doesn't support.",
-    "interviewTip": "Expo is no longer 'just for beginners'; with 'Development Builds,' it is now powerful enough for professional enterprise apps.",
+    "prompt": "¿Cuáles de las siguientes son ventajas de usar 'Expo' sobre 'React Native CLI'?",
+    "explanation": "Expo simplifica el desarrollo al abstraer el código nativo complejo, aunque el CLI sigue siendo preferido si necesitas modificaciones personalizadas de Native Modules que Expo no soporta.",
+    "interviewTip": "Expo ya no es 'solo para principiantes'; con 'Development Builds', ahora es lo suficientemente potente para apps empresariales profesionales.",
     "options": [
-      "Managed workflow: handles native configurations and certificates automatically.",
-      "Direct access to modify AppDelegate.m and MainApplication.java without workarounds.",
-      "Easier testing on physical devices via the Expo Go app.",
-      "EAS (Expo Application Services) for cloud builds and submissions."
+      "Managed workflow: maneja automáticamente las configuraciones nativas y los certificados.",
+      "Acceso directo para modificar AppDelegate.m y MainApplication.java sin soluciones alternativas.",
+      "Testing más fácil en dispositivos físicos mediante la app Expo Go.",
+      "EAS (Expo Application Services) para builds y envíos en la nube."
     ]
   },
   "rn-env-06": {
-    "prompt": "What is the 'Metro' bundler in React Native?",
-    "explanation": "Metro is similar to Webpack for the web. It resolves dependencies and bundles your code for the mobile environment.",
-    "interviewTip": "Metro is what powers Hot Module Replacement (HMR) / Fast Refresh during development.",
+    "prompt": "¿Qué es el bundler 'Metro' en React Native?",
+    "explanation": "Metro es similar a Webpack para la web. Resuelve dependencias y empaqueta tu código para el entorno mobile.",
+    "interviewTip": "Metro es lo que impulsa Hot Module Replacement (HMR) / Fast Refresh durante el desarrollo.",
     "options": [
-      "A tool that compiles Java code into APKs.",
-      "The JavaScript bundler that takes all your JS files and combines them into a single bundle for the app.",
-      "A debugging tool used to inspect the UI tree.",
-      "The part of the architecture that handles push notifications."
+      "Una herramienta que compila código Java en APKs.",
+      "El bundler de JavaScript que toma todos tus archivos JS y los combina en un solo bundle para la app.",
+      "Una herramienta de debugging usada para inspeccionar el árbol de UI.",
+      "La parte de la arquitectura que maneja push notifications."
     ]
   },
   "rn-env-07": {
-    "prompt": "In the New Architecture, what replaces the 'UIManager'?",
-    "explanation": "Fabric is the new rendering system. It is more efficient because it allows the UI to be updated synchronously and improves interop with host views.",
-    "interviewTip": "Fabric is to Rendering what TurboModules are to Native Logic.",
-    "options": [
-      "TurboModules",
-      "Fabric",
-      "Hermes",
-      "Metro"
-    ]
+    "prompt": "En la New Architecture, ¿qué reemplaza a 'UIManager'?",
+    "explanation": "Fabric es el nuevo sistema de rendering. Es más eficiente porque permite que la UI se actualice de forma sincrónica y mejora la interoperabilidad con host views.",
+    "interviewTip": "Fabric es al Rendering lo que TurboModules son a la lógica Native.",
+    "options": ["TurboModules", "Fabric", "Hermes", "Metro"]
   },
   "rn-env-08": {
-    "prompt": "What is the purpose of 'npx react-native run-ios'?",
-    "explanation": "This command triggers the build process (via Xcode tools) and pushes the application to the iOS target.",
-    "interviewTip": "You must have Xcode installed on a macOS machine for this command to work.",
+    "prompt": "¿Cuál es el propósito de 'npx react-native run-ios'?",
+    "explanation": "Este comando inicia el proceso de build (a través de herramientas de Xcode) y despliega la aplicación en el target iOS.",
+    "interviewTip": "Debes tener Xcode instalado en una máquina macOS para que este comando funcione.",
     "options": [
-      "To install dependencies from npm.",
-      "To build and launch the iOS application on a simulator or device.",
-      "To minify the JavaScript bundle.",
-      "To generate a new project from a template."
+      "Instalar dependencias desde npm.",
+      "Construir y lanzar la aplicación iOS en un simulador o dispositivo.",
+      "Minificar el bundle de JavaScript.",
+      "Generar un nuevo proyecto a partir de un template."
     ]
   },
   "rn-env-09": {
-    "prompt": "Identify the three main threads in a standard React Native app (Bridge architecture):",
-    "explanation": "The UI thread handles native view rendering; the JS thread runs the logic; and the Shadow thread calculates the layout (Yoga) before sending it to the UI thread.",
-    "interviewTip": "If the JS thread is blocked by heavy logic, the UI remains responsive (animations might still work), but user interactions like button clicks won't process.",
+    "prompt": "Identifica los tres threads principales en una app React Native estándar (arquitectura Bridge):",
+    "explanation": "El UI thread maneja el rendering de vistas nativas; el JS thread ejecuta la lógica; y el Shadow thread calcula el layout (Yoga) antes de enviarlo al UI thread.",
+    "interviewTip": "Si el JS thread se bloquea por lógica pesada, la UI permanece responsiva (las animaciones pueden seguir funcionando), pero las interacciones del usuario como clicks no se procesarán.",
     "options": [
       "Main Thread (UI Thread)",
       "Database Thread",
@@ -99,31 +89,31 @@
     ]
   },
   "rn-env-10": {
-    "prompt": "What will happen if you run this code in a standard React Native component?",
-    "explanation": "React Native does not use the browser's DOM. You must use native primitives like <View> and <Text>.",
-    "interviewTip": "There is no 'div', 'span', or 'p' in React Native; everything text-related must be inside a <Text> component.",
+    "prompt": "¿Qué sucederá si ejecutas este código en un componente React Native estándar?",
+    "explanation": "React Native no utiliza el DOM del navegador. Debes usar primitivas nativas como <View> y <Text>.",
+    "interviewTip": "No existe 'div', 'span' o 'p' en React Native; todo lo relacionado con texto debe estar dentro de un componente <Text>.",
     "options": [
-      "It works because RN supports all HTML tags.",
-      "It throws an error because 'div' is not a valid component in React Native.",
-      "It renders as a View automatically.",
-      "It only works on the Web version of React Native."
+      "Funciona porque RN soporta todas las etiquetas HTML.",
+      "Lanza un error porque 'div' no es un componente válido en React Native.",
+      "Se renderiza automáticamente como una View.",
+      "Solo funciona en la versión Web de React Native."
     ]
   },
   "rn-env-11": {
-    "prompt": "What is 'Autolinking' in React Native?",
-    "explanation": "Previously, you had to run 'react-native link'. Now, the CLI detects native modules in your node_modules and links them during build time.",
-    "interviewTip": "For iOS, you still need to run 'pod install' after adding a library to finalize the autolinking.",
+    "prompt": "¿Qué es 'Autolinking' en React Native?",
+    "explanation": "Antes debías ejecutar 'react-native link'. Ahora, el CLI detecta los native modules en node_modules y los vincula automáticamente durante el build.",
+    "interviewTip": "Para iOS, aún necesitas ejecutar 'pod install' después de agregar una librería para finalizar el autolinking.",
     "options": [
-      "A feature that automatically updates your npm packages.",
-      "A mechanism that automatically links native dependencies to your iOS/Android projects without manual steps.",
-      "A way to link two different screens in navigation.",
-      "An AI tool for writing boilerplate code."
+      "Una funcionalidad que actualiza automáticamente tus paquetes npm.",
+      "Un mecanismo que vincula automáticamente dependencias nativas a tus proyectos iOS/Android sin pasos manuales.",
+      "Una forma de enlazar dos pantallas diferentes en la navegación.",
+      "Una herramienta de IA para escribir boilerplate code."
     ]
   },
   "rn-env-12": {
-    "prompt": "What is the entry point for native configuration in an Android React Native project?",
-    "explanation": "The AndroidManifest.xml is where you define permissions, activities, and app metadata for the Android OS.",
-    "interviewTip": "Knowing where these native files are (android/app/src/main/...) is essential for configuring things like deep links or camera permissions.",
+    "prompt": "¿Cuál es el punto de entrada para la configuración nativa en un proyecto Android React Native?",
+    "explanation": "AndroidManifest.xml es donde defines permisos, activities y metadata de la app para el sistema operativo Android.",
+    "interviewTip": "Saber dónde están estos archivos nativos (android/app/src/main/...) es esencial para configurar cosas como deep links o permisos de cámara.",
     "options": [
       "AppDelegate.m",
       "AndroidManifest.xml",
@@ -132,20 +122,20 @@
     ]
   },
   "rn-env-13": {
-    "prompt": "In React Native, how is a 'TurboModule' different from a standard Native Module?",
-    "explanation": "Standard modules are initialized on app startup even if not used. TurboModules are only loaded when required and communicate directly via JSI.",
-    "interviewTip": "This is a key part of the New Architecture aimed at improving app startup performance.",
+    "prompt": "En React Native, ¿en qué se diferencia un 'TurboModule' de un Native Module estándar?",
+    "explanation": "Los módulos estándar se inicializan al iniciar la app incluso si no se usan. Los TurboModules solo se cargan cuando se requieren y se comunican directamente vía JSI.",
+    "interviewTip": "Esta es una parte clave de la New Architecture orientada a mejorar el rendimiento del arranque de la app.",
     "options": [
-      "TurboModules are written in JavaScript, while Native Modules are written in Java.",
-      "TurboModules are loaded lazily and use JSI for faster, synchronous communication.",
-      "TurboModules only work on iOS.",
-      "TurboModules are the old way of writing native code."
+      "Los TurboModules están escritos en JavaScript, mientras que los Native Modules están escritos en Java.",
+      "Los TurboModules se cargan de forma lazy y usan JSI para una comunicación más rápida y sincrónica.",
+      "Los TurboModules solo funcionan en iOS.",
+      "Los TurboModules son la forma antigua de escribir código nativo."
     ]
   },
   "rn-env-14": {
-    "prompt": "What command is used to start the Metro bundler manually?",
-    "explanation": "This starts the local server that provides the JS bundle and assets to your running app during development.",
-    "interviewTip": "If you get a 'Could not connect to development server' error, checking if this process is running is your first step.",
+    "prompt": "¿Qué comando se utiliza para iniciar manualmente el bundler Metro?",
+    "explanation": "Esto inicia el servidor local que provee el bundle de JS y los assets a tu app en ejecución durante el desarrollo.",
+    "interviewTip": "Si recibes un error 'Could not connect to development server', verificar si este proceso está corriendo es tu primer paso.",
     "options": [
       "npm build",
       "npx react-native start",
@@ -154,47 +144,47 @@
     ]
   },
   "rn-env-15": {
-    "prompt": "Which of these is a valid way to specify a version of React Native in a project?",
-    "explanation": "The React Native version is managed like any other npm package in the package.json file.",
-    "interviewTip": "Upgrading React Native versions often requires the 'React Native Upgrade Helper' tool because of changes in the underlying native files.",
+    "prompt": "¿Cuál de estas es una forma válida de especificar una versión de React Native en un proyecto?",
+    "explanation": "La versión de React Native se gestiona como cualquier otro paquete npm en el archivo package.json.",
+    "interviewTip": "Actualizar versiones de React Native a menudo requiere la herramienta 'React Native Upgrade Helper' debido a cambios en los archivos nativos subyacentes.",
     "options": [
-      "The code above is correct.",
-      "Versions are specified in the 'native-config.json' file.",
-      "You set the version in the Xcode project settings only.",
-      "React Native versions are managed by the Hermes engine."
+      "El código anterior es correcto.",
+      "Las versiones se especifican en el archivo 'native-config.json'.",
+      "Configuras la versión solo en los ajustes del proyecto Xcode.",
+      "Las versiones de React Native son gestionadas por el engine Hermes."
     ]
   },
   "rn-env-16": {
-    "prompt": "What does the 'Shadow Tree' represent?",
-    "explanation": "The Shadow Tree is where React Native stores the layout information (flex, margin, padding) so Yoga can work its magic.",
-    "interviewTip": "In the New Architecture, the Shadow Tree is immutable and managed in C++ for better performance.",
+    "prompt": "¿Qué representa el 'Shadow Tree'?",
+    "explanation": "El Shadow Tree es donde React Native almacena la información de layout (flex, margin, padding) para que Yoga haga su magia.",
+    "interviewTip": "En la New Architecture, el Shadow Tree es inmutable y se gestiona en C++ para un mejor rendimiento.",
     "options": [
-      "A hidden copy of the DOM.",
-      "A tree structure used by Yoga to calculate the layout before translating it to native views.",
-      "The list of all deleted components.",
-      "A security layer that protects the JS thread."
+      "Una copia oculta del DOM.",
+      "Una estructura en árbol utilizada por Yoga para calcular el layout antes de traducirlo a vistas nativas.",
+      "La lista de todos los componentes eliminados.",
+      "Una capa de seguridad que protege el JS thread."
     ]
   },
   "rn-env-17": {
-    "prompt": "How do you enable the New Architecture in a modern React Native project (iOS)?",
-    "explanation": "For most current versions, you must explicitly enable it during the pod installation process for iOS or in gradle.properties for Android.",
-    "interviewTip": "Be aware that some third-party libraries might not be compatible with the New Architecture yet.",
+    "prompt": "¿Cómo habilitas la New Architecture en un proyecto React Native moderno (iOS)?",
+    "explanation": "En la mayoría de las versiones actuales, debes habilitarla explícitamente durante el proceso de instalación de pods para iOS o en gradle.properties para Android.",
+    "interviewTip": "Ten en cuenta que algunas librerías de terceros pueden no ser compatibles aún con la New Architecture.",
     "options": [
-      "Changing a setting in the Expo dashboard.",
-      "Running 'bundle exec pod install' with the ENV flag 'RCT_NEW_ARCH_ENABLED=1'.",
-      "It is always enabled and cannot be turned off.",
-      "By deleting the Bridge.js file."
+      "Cambiando una configuración en el dashboard de Expo.",
+      "Ejecutando 'bundle exec pod install' con la variable de entorno 'RCT_NEW_ARCH_ENABLED=1'.",
+      "Siempre está habilitada y no se puede desactivar.",
+      "Eliminando el archivo Bridge.js."
     ]
   },
   "rn-env-18": {
-    "prompt": "What happens when 'Fast Refresh' is triggered?",
-    "explanation": "Fast Refresh combines 'hot reloading' and 'live reloading' to provide a seamless update experience without losing the component's state if possible.",
-    "interviewTip": "If you modify a file that exports something other than a React component, Fast Refresh may perform a full reload to be safe.",
+    "prompt": "¿Qué sucede cuando se activa 'Fast Refresh'?",
+    "explanation": "Fast Refresh combina 'hot reloading' y 'live reloading' para proporcionar una experiencia de actualización fluida sin perder el estado del componente cuando es posible.",
+    "interviewTip": "Si modificas un archivo que exporta algo distinto a un componente React, Fast Refresh puede realizar un reload completo por seguridad.",
     "options": [
-      "The whole app reloads and all state is lost.",
-      "React Native tries to update only the modified components while preserving their state.",
-      "The native code (Java/Swift) is recompiled.",
-      "The device vibrates to indicate an update."
+      "Toda la app se recarga y se pierde todo el estado.",
+      "React Native intenta actualizar solo los componentes modificados preservando su estado.",
+      "El código nativo (Java/Swift) se recompila.",
+      "El dispositivo vibra para indicar una actualización."
     ]
   }
 }

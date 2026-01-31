@@ -1,112 +1,92 @@
 {
   "ra-01": {
-    "prompt": "What is a 'Worklet' in the context of React Native Reanimated?",
-    "explanation": "Worklets are the core of Reanimated. They allow JavaScript code to be executed synchronously on the UI thread, bypassing the asynchronous bridge for immediate UI updates.",
-    "interviewTip": "Mention that Reanimated 2+ uses a separate JS VM on the UI thread to execute these worklets.",
+    "prompt": "¿Qué es un 'Worklet' en el contexto de React Native Reanimated?",
+    "explanation": "Los worklets son el núcleo de Reanimated. Permiten que el código JavaScript se ejecute de forma sincrónica en el UI thread, evitando el bridge asíncrono para actualizaciones inmediatas de la UI.",
+    "interviewTip": "Menciona que Reanimated 2+ utiliza una VM de JavaScript separada en el UI thread para ejecutar estos worklets.",
     "options": [
-      "A background task for fetching API data.",
-      "A small JavaScript function marked with the 'worklet' directive that runs on the UI thread.",
-      "A UI component that only works on Android.",
-      "A debugging tool for measuring frame rates."
+      "Una tarea en segundo plano para obtener datos de una API.",
+      "Una pequeña función JavaScript marcada con la directiva 'worklet' que se ejecuta en el UI thread.",
+      "Un componente de UI que solo funciona en Android.",
+      "Una herramienta de depuración para medir frame rates."
     ]
   },
   "ra-02": {
-    "prompt": "Which hook is used to create a mutable value that can be shared between the JS thread and the UI thread?",
-    "explanation": "useSharedValue is the Reanimated version of state. When you change its '.value' property, it automatically triggers animations or updates style objects on the UI thread.",
-    "interviewTip": "Unlike useState, changing a shared value does not trigger a React component re-render on the main JS thread.",
-    "options": [
-      "useRef",
-      "useState",
-      "useSharedValue",
-      "useDerivedValue"
-    ]
+    "prompt": "¿Qué hook se utiliza para crear un valor mutable que puede compartirse entre el JS thread y el UI thread?",
+    "explanation": "useSharedValue es la versión de state de Reanimated. Cuando cambias su propiedad '.value', se activan automáticamente animaciones o actualizaciones de estilos en el UI thread.",
+    "interviewTip": "A diferencia de useState, cambiar un shared value no provoca un re-render del componente React en el JS thread principal.",
+    "options": ["useRef", "useState", "useSharedValue", "useDerivedValue"]
   },
   "ra-03": {
-    "prompt": "Analyze the code. What is the correct way to apply the shared value to a component's style?",
-    "explanation": "useAnimatedStyle returns a style object that 'listens' to shared values. Whenever the shared value changes, the UI thread updates the view without a bridge round-trip.",
-    "interviewTip": "Always ensure the component is an 'Animated' version (e.g., Animated.View) from the reanimated library.",
-    "options": [
-      "useCallback",
-      "useMemo",
-      "useAnimatedStyle",
-      "useUIStyle"
-    ]
+    "prompt": "Analiza el código. ¿Cuál es la forma correcta de aplicar un shared value al estilo de un componente?",
+    "explanation": "useAnimatedStyle devuelve un objeto de estilos que \"escucha\" los shared values. Cada vez que el shared value cambia, el UI thread actualiza la vista sin un viaje de ida y vuelta por el bridge.",
+    "interviewTip": "Asegúrate siempre de que el componente sea una versión 'Animated' (por ejemplo, Animated.View) de la librería reanimated.",
+    "options": ["useCallback", "useMemo", "useAnimatedStyle", "useUIStyle"]
   },
   "ra-04": {
-    "prompt": "How do you smoothly animate a shared value to a new position using a spring physics model?",
-    "explanation": "withSpring is a 'wrapper' function that describes how the transition to the new value should look. It uses spring physics (stiffness, damping) instead of time.",
-    "interviewTip": "Unlike the standard Animated API, Reanimated allows you to set the new value directly: `val.value = withSpring(target)`.",
-    "options": [
-      "withSpring",
-      "withTiming",
-      "withPhysics",
-      "withTransition"
-    ]
+    "prompt": "¿Cómo animas suavemente un shared value a una nueva posición usando un modelo de física de resorte?",
+    "explanation": "withSpring es una función 'wrapper' que describe cómo debe verse la transición al nuevo valor. Utiliza física de resortes (stiffness, damping) en lugar de tiempo.",
+    "interviewTip": "A diferencia de la API Animated estándar, Reanimated te permite asignar el nuevo valor directamente: `val.value = withSpring(target)`.",
+    "options": ["withSpring", "withTiming", "withPhysics", "withTransition"]
   },
   "ra-05": {
-    "prompt": "What is the purpose of 'useDerivedValue'?",
-    "explanation": "useDerivedValue creates a read-only shared value that automatically updates whenever the dependencies inside its worklet change.",
-    "interviewTip": "Think of this as the 'useMemo' of the UI thread.",
+    "prompt": "¿Cuál es el propósito de 'useDerivedValue'?",
+    "explanation": "useDerivedValue crea un shared value de solo lectura que se actualiza automáticamente cuando cambian las dependencias dentro de su worklet.",
+    "interviewTip": "Piénsalo como el 'useMemo' del UI thread.",
     "options": [
-      "To calculate a new shared value based on other shared values (e.g., rotation based on scroll position).",
-      "To convert a shared value into a React state.",
-      "To delay an animation.",
-      "To fetch data from a server during an animation."
+      "Calcular un nuevo shared value basado en otros shared values (por ejemplo, rotación basada en la posición de scroll).",
+      "Convertir un shared value en un estado de React.",
+      "Retrasar una animación.",
+      "Obtener datos de un servidor durante una animación."
     ]
   },
   "ra-06": {
-    "prompt": "Which of these features were introduced in Reanimated 3?",
-    "explanation": "Reanimated 3 focused heavily on compatibility with the New Architecture and robust Shared Element Transitions between navigation screens.",
-    "interviewTip": "Shared Element Transitions make apps feel extremely high-end, similar to the App Store or Instagram.",
+    "prompt": "¿Cuáles de estas características se introdujeron en Reanimated 3?",
+    "explanation": "Reanimated 3 se centró fuertemente en la compatibilidad con la New Architecture y en Shared Element Transitions robustas entre pantallas de navegación.",
+    "interviewTip": "Las Shared Element Transitions hacen que las apps se sientan de muy alta calidad, similares a App Store o Instagram.",
     "options": [
-      "Shared Element Transitions (animating a component from one screen to another).",
-      "Support for the Bridge architecture.",
-      "Layout Animations (Entry/Exit/Layout transitions).",
-      "Improved support for the New Architecture (Fabric)."
+      "Shared Element Transitions (animar un componente de una pantalla a otra).",
+      "Soporte para la arquitectura Bridge.",
+      "Layout Animations (transiciones de Entry/Exit/Layout).",
+      "Mejor soporte para la New Architecture (Fabric)."
     ]
   },
   "ra-07": {
-    "prompt": "How do you run a piece of JavaScript code on the main JS thread after an animation finishes on the UI thread?",
-    "explanation": "Since the completion callback runs on the UI thread, you must use runOnJS to 'call back' to the JavaScript thread for things like alerts or state updates.",
-    "interviewTip": "Failing to use runOnJS inside a worklet when calling a JS function will cause a crash.",
-    "options": [
-      "runOnJS",
-      "dispatchToJS",
-      "callMainThread",
-      "useMainThread"
-    ]
+    "prompt": "¿Cómo ejecutas un fragmento de código JavaScript en el JS thread principal después de que una animación finaliza en el UI thread?",
+    "explanation": "Dado que el callback de finalización se ejecuta en el UI thread, debes usar runOnJS para \"volver a llamar\" al JS thread para acciones como alertas o actualizaciones de estado.",
+    "interviewTip": "No usar runOnJS dentro de un worklet al llamar una función JS provocará un crash.",
+    "options": ["runOnJS", "dispatchToJS", "callMainThread", "useMainThread"]
   },
   "ra-08": {
-    "prompt": "What are 'Layout Animations' in Reanimated?",
-    "explanation": "Layout animations provide a simple way to animate mounting/unmounting and layout shifts without managing complex shared values manually.",
-    "interviewTip": "Use `Layout.springify()` to make list item shifts look bouncy and natural.",
+    "prompt": "¿Qué son las 'Layout Animations' en Reanimated?",
+    "explanation": "Las layout animations proporcionan una forma simple de animar el montaje/desmontaje y los cambios de layout sin gestionar shared values complejos manualmente.",
+    "interviewTip": "Usa `Layout.springify()` para que los movimientos de los elementos de una lista se vean elásticos y naturales.",
     "options": [
-      "A way to manually calculate the size of a View.",
-      "Declarative animations that trigger automatically when a component enters the DOM, leaves, or changes position.",
-      "A method to group components into a grid.",
-      "Animations that only work on the Web."
+      "Una forma de calcular manualmente el tamaño de una View.",
+      "Animaciones declarativas que se activan automáticamente cuando un componente entra al DOM, sale o cambia de posición.",
+      "Un método para agrupar componentes en una cuadrícula.",
+      "Animaciones que solo funcionan en la Web."
     ]
   },
   "ra-09": {
-    "prompt": "What is the function of 'interpolateColor' in Reanimated?",
-    "explanation": "Similar to standard interpolation, but specifically optimized for the UI thread to handle color transitions smoothly.",
-    "interviewTip": "This is perfect for changing a header color from white to transparent as the user scrolls.",
+    "prompt": "¿Cuál es la función de 'interpolateColor' en Reanimated?",
+    "explanation": "Similar a la interpolación estándar, pero específicamente optimizada para el UI thread para manejar transiciones de color de forma fluida.",
+    "interviewTip": "Esto es perfecto para cambiar el color de un header de blanco a transparente a medida que el usuario hace scroll.",
     "options": [
-      "To change the contrast of an image.",
-      "To smoothly transition between two or more hex/rgb color strings based on a shared value.",
-      "To generate a random color.",
-      "To check if a color is accessible."
+      "Cambiar el contraste de una imagen.",
+      "Transicionar suavemente entre dos o más strings de color hex/rgb basándose en un shared value.",
+      "Generar un color aleatorio.",
+      "Comprobar si un color es accesible."
     ]
   },
   "ra-10": {
-    "prompt": "Why is 'useAnimatedGestureHandler' (v2) or using gestures with Reanimated (v3) better than standard touch events?",
-    "explanation": "By linking Gesture Handler with Reanimated, the 'translation' data from a finger swipe can update a shared value and move a View entirely on the UI thread.",
-    "interviewTip": "This is the key to building 60/120 FPS 'pull-to-dismiss' or 'swipe-to-delete' interactions.",
+    "prompt": "¿Por qué 'useAnimatedGestureHandler' (v2) o el uso de gestos con Reanimated (v3) es mejor que los eventos táctiles estándar?",
+    "explanation": "Al vincular Gesture Handler con Reanimated, los datos de 'translation' de un gesto pueden actualizar un shared value y mover una View completamente en el UI thread.",
+    "interviewTip": "Esta es la clave para construir interacciones tipo 'pull-to-dismiss' o 'swipe-to-delete' a 60/120 FPS.",
     "options": [
-      "It supports more fingers.",
-      "It allows the gesture data to drive animations directly on the UI thread with zero lag.",
-      "It automatically prevents all scrolling.",
-      "It is only available on iOS."
+      "Soporta más dedos.",
+      "Permite que los datos del gesto controlen las animaciones directamente en el UI thread sin lag.",
+      "Previene automáticamente todo el scrolling.",
+      "Solo está disponible en iOS."
     ]
   }
 }

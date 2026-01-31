@@ -1,74 +1,74 @@
 {
   "dep-01": {
-    "prompt": "What is 'Fastlane' in the context of React Native deployment?",
-    "explanation": "Fastlane automates the tedious parts of iOS and Android deployment. You can define a 'Lane' that builds the app, signs it with certificates, and uploads it to TestFlight or Google Play.",
-    "interviewTip": "Fastlane is usually used within CI/CD pipelines (like GitHub Actions) to avoid manual uploads from a developer's laptop.",
+    "prompt": "¿Qué es 'Fastlane' en el contexto del deployment de React Native?",
+    "explanation": "Fastlane automatiza las partes tediosas del deployment de iOS y Android. Puedes definir una 'Lane' que compile la app, la firme con certificados y la suba a TestFlight o Google Play.",
+    "interviewTip": "Fastlane se usa usualmente dentro de CI/CD pipelines (como GitHub Actions) para evitar subidas manuales desde la laptop del desarrollador.",
     "options": [
-      "A library that makes the JavaScript code run faster.",
-      "An open-source automation tool that handles tasks like generating screenshots and submitting builds to the stores.",
-      "A specialized hosting service for mobile assets.",
-      "A feature in Chrome DevTools for mobile debugging."
+      "Una librería que hace que el JavaScript code se ejecute más rápido.",
+      "Una herramienta de automatización open-source que maneja tareas como generar screenshots y enviar builds a las tiendas.",
+      "Un servicio de hosting especializado para mobile assets.",
+      "Una feature en Chrome DevTools para mobile debugging."
     ]
   },
   "dep-02": {
-    "prompt": "What is 'CodePush' (App Center) primarily used for?",
-    "explanation": "CodePush allows you to fix bugs or update UI instantly by 'pushing' a new JS bundle to users. It bypasses the 24-48 hour store review process.",
-    "interviewTip": "Remember: CodePush *cannot* be used for changes that involve new native modules or changes to the AppDelegate/MainApplication files.",
+    "prompt": "¿Para qué se utiliza principalmente 'CodePush' (App Center)?",
+    "explanation": "CodePush te permite corregir bugs o actualizar la UI instantáneamente al hacer 'push' de un nuevo JS bundle a los usuarios. Evita el proceso de revisión de la tienda de 24-48 horas.",
+    "interviewTip": "Recuerda: CodePush *no* puede usarse para cambios que involucren nuevos native modules o cambios en los archivos AppDelegate/MainApplication.",
     "options": [
-      "To push new native code (Java/Swift) to devices instantly.",
-      "To update the JavaScript bundle and assets of an app without requiring a new store submission.",
-      "To push notifications to users.",
-      "To force-quit the app remotely."
+      "Para hacer push de nuevo native code (Java/Swift) a los dispositivos al instante.",
+      "Para actualizar el JavaScript bundle y los assets de una app sin requerir un nuevo envío a la tienda.",
+      "Para enviar push notifications a los usuarios.",
+      "Para forzar el cierre de la app de forma remota."
     ]
   },
   "dep-03": {
-    "prompt": "In the Expo ecosystem, what does 'EAS Build' provide?",
-    "explanation": "EAS (Expo Application Services) Build takes your project and compiles it on Expo's servers. This is huge for developers who don't have a Mac but need to build an iOS app.",
-    "interviewTip": "EAS works with both 'Managed' and 'Bare' React Native projects.",
+    "prompt": "En el ecosistema de Expo, ¿qué proporciona 'EAS Build'?",
+    "explanation": "EAS (Expo Application Services) Build toma tu proyecto y lo compila en los servidores de Expo. Esto es fundamental para desarrolladores que no tienen una Mac pero necesitan compilar una app de iOS.",
+    "interviewTip": "EAS funciona tanto con proyectos 'Managed' como 'Bare' de React Native.",
     "options": [
-      "A way to build your app's binary (IPA/APK) in the cloud without needing a local macOS/Android environment.",
-      "A tool for writing CSS more efficiently.",
-      "A local debugger for Expo Go.",
-      "An AI assistant for fixing build errors."
+      "Una forma de compilar el binary de tu app (IPA/APK) en la cloud sin necesitar un entorno local de macOS/Android.",
+      "Una herramienta para escribir CSS de forma más eficiente.",
+      "Un debugger local para Expo Go.",
+      "Un asistente de AI para corregir build errors."
     ]
   },
   "dep-04": {
-    "prompt": "Analyze the 'eas.json' snippet. What happens when you run 'eas build --profile preview'?",
-    "explanation": "The 'internal' distribution and 'apk' build type are perfect for sharing a testable file with your team via a link, avoiding the store entirely.",
-    "interviewTip": "Android uses .aab (Android App Bundle) for the Play Store, but .apk is needed for direct installation on devices.",
+    "prompt": "Analiza el snippet de 'eas.json'. ¿Qué sucede cuando ejecutas 'eas build --profile preview'?",
+    "explanation": "La distribución 'internal' y el build type 'apk' son perfectos para compartir un archivo de prueba con tu equipo mediante un link, evitando la tienda por completo.",
+    "interviewTip": "Android usa .aab (Android App Bundle) para la Play Store, pero se necesita un .apk para la instalación directa en dispositivos.",
     "options": [
-      "It builds a production-ready app for the Play Store.",
-      "It builds an APK file that can be shared directly with testers (side-loading) instead of an AAB.",
-      "It only runs the app in the browser.",
-      "It deletes the previous build."
+      "Compila una app lista para producción para la Play Store.",
+      "Compila un archivo APK que puede compartirse directamente con testers (side-loading) en lugar de un AAB.",
+      "Solo ejecuta la app en el navegador.",
+      "Elimina el build anterior."
     ]
   },
   "dep-05": {
-    "prompt": "Which of these are required to sign a production iOS app for the App Store?",
-    "explanation": "iOS code signing is a three-part system: the Certificate (Who you are), the App ID (What the app is), and the Provisioning Profile (The bridge between the two).",
-    "interviewTip": "Managing these is often the biggest pain point in mobile dev. Tools like 'fastlane match' help share these across a dev team.",
+    "prompt": "¿Cuáles de estos son necesarios para firmar una app de producción de iOS para el App Store?",
+    "explanation": "El code signing de iOS es un sistema de tres partes: el Certificate (quién eres), el App ID (qué es la app) y el Provisioning Profile (el puente entre ambos).",
+    "interviewTip": "Gestionar esto suele ser el mayor punto de dolor en mobile dev. Herramientas como 'fastlane match' ayudan a compartir estos archivos en un equipo de desarrollo.",
     "options": [
-      "A Distribution Certificate.",
-      "An App ID (Bundle ID).",
-      "A Provisioning Profile.",
-      "A Google Service Account JSON."
+      "Un Distribution Certificate.",
+      "Un App ID (Bundle ID).",
+      "Un Provisioning Profile.",
+      "Un Google Service Account JSON."
     ]
   },
   "dep-06": {
-    "prompt": "What is 'Over-the-Air' (OTA) updating?",
-    "explanation": "OTA updates (via Expo Updates or CodePush) are the mobile equivalent of 'refreshing the browser' on the web.",
-    "interviewTip": "Note: Apple's rules allow OTA updates as long as you aren't significantly changing the 'primary purpose' of the app.",
+    "prompt": "¿Qué es una actualización 'Over-the-Air' (OTA)?",
+    "explanation": "Las actualizaciones OTA (vía Expo Updates o CodePush) son el equivalente móvil a 'refrescar el navegador' en la web.",
+    "interviewTip": "Nota: Las reglas de Apple permiten actualizaciones OTA siempre y cuando no cambies significativamente el 'propósito principal' de la app.",
     "options": [
-      "Updating the device's firmware.",
-      "The general term for updating an app's logic (JS/Assets) directly via the internet, bypassing the app store stores.",
-      "Charging the phone wirelessly while updating.",
-      "A way to fix hardware issues remotely."
+      "Actualizar el firmware del dispositivo.",
+      "El término general para actualizar la lógica de la app (JS/Assets) directamente vía internet, omitiendo las tiendas de aplicaciones.",
+      "Cargar el teléfono de forma inalámbrica mientras se actualiza.",
+      "Una forma de arreglar problemas de hardware remotamente."
     ]
   },
   "dep-07": {
-    "prompt": "Which file in an Android project contains the 'versionCode' and 'versionName'?",
-    "explanation": "In Android, the app-level build.gradle is the source of truth for versioning. versionCode is an integer (for the store), versionName is the string (for users).",
-    "interviewTip": "Every time you submit to the Play Store, the 'versionCode' MUST be higher than the last one.",
+    "prompt": "¿Qué archivo en un proyecto de Android contiene el 'versionCode' y el 'versionName'?",
+    "explanation": "En Android, el build.gradle a nivel de app es la fuente de verdad para el versionado. versionCode es un integer (para la tienda), versionName es el string (para los usuarios).",
+    "interviewTip": "Cada vez que envíes a la Play Store, el 'versionCode' DEBE ser mayor que el anterior.",
     "options": [
       "AndroidManifest.xml",
       "build.gradle (app level)",
@@ -77,36 +77,36 @@
     ]
   },
   "dep-08": {
-    "prompt": "What is 'Semantic Versioning' (SemVer) as applied to mobile apps?",
-    "explanation": "Major: Breaking changes. Minor: New features. Patch: Bug fixes. This is the standard for almost all software, including React Native apps.",
-    "interviewTip": "For mobile, a Major change often indicates a required store update due to native changes.",
+    "prompt": "¿Qué es el 'Semantic Versioning' (SemVer) aplicado a apps móviles?",
+    "explanation": "Major: cambios que rompen la compatibilidad. Minor: nuevas funcionalidades. Patch: corrección de errores. Este es el estándar para casi todo el software, incluyendo apps de React Native.",
+    "interviewTip": "En mobile, un cambio Major a menudo indica una actualización obligatoria en la tienda debido a cambios nativos.",
     "options": [
-      "Giving apps names based on colors.",
-      "A system of versioning using Major.Minor.Patch (e.g., 2.1.0).",
-      "A way to encrypt the build number.",
-      "Using only prime numbers for versions."
+      "Dar nombres a las apps basados en colores.",
+      "Un sistema de versionado que usa Major.Minor.Patch (ej., 2.1.0).",
+      "Una forma de encriptar el build number.",
+      "Usar solo números primos para las versiones."
     ]
   },
   "dep-09": {
-    "prompt": "What is the role of a 'Keystore' in Android deployment?",
-    "explanation": "If you lose your production Keystore, you cannot update your app on the Play Store anymore. It is critical to keep it backed up and secure.",
-    "interviewTip": "Google Play App Signing now allows Google to manage the key for you, which is a safer modern alternative.",
+    "prompt": "¿Cuál es el rol de un 'Keystore' en el deployment de Android?",
+    "explanation": "Si pierdes tu Keystore de producción, no podrás actualizar tu app en la Play Store nunca más. Es crítico mantener una copia de seguridad y guardarlo de forma segura.",
+    "interviewTip": "Google Play App Signing ahora permite que Google gestione la key por ti, lo cual es una alternativa moderna más segura.",
     "options": [
-      "To store the app's local database.",
-      "A binary file that contains the private key used to digitally sign your APK/AAB for the Play Store.",
-      "A list of all users who bought the app.",
-      "To manage the app's internal styles."
+      "Almacenar la base de datos local de la app.",
+      "Un archivo binario que contiene la private key usada para firmar digitalmente tu APK/AAB para la Play Store.",
+      "Una lista de todos los usuarios que compraron la app.",
+      "Gestionar los styles internos de la app."
     ]
   },
   "dep-10": {
-    "prompt": "How do you handle different environments (Development, Staging, Production) in React Native?",
-    "explanation": "Environment variables allow you to switch between a local dev server and a production API without touching the source code.",
-    "interviewTip": "Never commit sensitive API keys or secrets directly into your .env files if they will be committed to a public repo.",
+    "prompt": "¿Cómo manejas diferentes entornos (Development, Staging, Production) en React Native?",
+    "explanation": "Las environment variables te permiten cambiar entre un servidor de dev local y una API de producción sin tocar el source code.",
+    "interviewTip": "Nunca hagas commit de API keys sensibles o secretos directamente en tus archivos .env si se van a subir a un repositorio público.",
     "options": [
-      "By manually changing the API URL before every build.",
-      "Using '.env' files with a library like 'react-native-config' or 'expo-constants'.",
-      "By creating three different GitHub accounts.",
-      "React Native handles this automatically based on the time of day."
+      "Cambiando manualmente la URL de la API antes de cada build.",
+      "Usando archivos '.env' con una librería como 'react-native-config' o 'expo-constants'.",
+      "Creando tres cuentas de GitHub diferentes.",
+      "React Native lo maneja automáticamente basándose en la hora del día."
     ]
   }
 }

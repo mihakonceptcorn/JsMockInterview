@@ -1,30 +1,30 @@
 {
   "ia-01": {
-    "prompt": "How do you provide different image resolutions for different screen densities in React Native (e.g., Retina displays)?",
-    "explanation": "If you have 'logo.png', 'logo@2x.png', and 'logo@3x.png', React Native will automatically pick the best one for the device's screen density.",
-    "interviewTip": "This ensures images look crisp without downloading unnecessarily large files on lower-end devices.",
+    "prompt": "¿Cómo proporcionas diferentes resoluciones de imagen para distintas densidades de pantalla en React Native (ej. pantallas Retina)?",
+    "explanation": "Si tienes 'logo.png', 'logo@2x.png' y 'logo@3x.png', React Native seleccionará automáticamente la mejor opción según la densidad de pantalla del dispositivo.",
+    "interviewTip": "Esto asegura que las imágenes se vean nítidas sin descargar archivos innecesariamente grandes en dispositivos de gama baja.",
     "options": [
-      "React Native automatically resizes one large image.",
-      "By naming files with @2x and @3x suffixes (e.g., logo@2x.png).",
-      "By using a 'resolution' prop on the Image component.",
-      "It is only possible via the native Android/iOS folders."
+      "React Native redimensiona automáticamente una sola imagen grande.",
+      "Nombrando los archivos con los sufijos @2x y @3x (ej. logo@2x.png).",
+      "Usando una prop 'resolution' en el component Image.",
+      "Solo es posible a través de las carpetas nativas de Android/iOS."
     ]
   },
   "ia-02": {
-    "prompt": "What happens if you omit the 'width' and 'height' styles for a remote (network) image?",
-    "explanation": "Unlike local images (require), React Native does not know the dimensions of a network image until it is downloaded. You MUST specify size styles.",
-    "interviewTip": "Always provide dimensions or a flex value to remote images to avoid invisible components.",
+    "prompt": "¿Qué sucede si omites los styles de 'width' y 'height' en una remote image (de red)?",
+    "explanation": "A diferencia de las local images (require), React Native no conoce las dimensiones de una imagen de red hasta que se descarga. DEBES especificar styles de tamaño.",
+    "interviewTip": "Proporciona siempre dimensiones o un valor de flex a las remote images para evitar que el component sea invisible.",
     "options": [
-      "The image takes up the full screen.",
-      "The image will not render (it will have 0 width and 0 height).",
-      "It automatically calculates the size based on the aspect ratio.",
-      "It defaults to 100x100 pixels."
+      "La imagen ocupa toda la pantalla.",
+      "La imagen no se renderizará (tendrá 0 width y 0 height).",
+      "Calcula automáticamente el tamaño basándose en el aspect ratio.",
+      "Por defecto es 100x100 píxeles."
     ]
   },
   "ia-03": {
-    "prompt": "Which library is considered the industry standard for advanced image caching and performance in React Native?",
-    "explanation": "FastImage replaces the standard Image component, offering better caching, priority loading, and GIF support using native SDWebImage (iOS) and Glide (Android).",
-    "interviewTip": "Mention FastImage when asked about 'image flickering' or performance issues in long lists like FlatList.",
+    "prompt": "¿Qué librería es considerada el estándar de la industria para el caching avanzado de imágenes y performance en React Native?",
+    "explanation": "FastImage reemplaza al component Image estándar, ofreciendo mejor caching, carga prioritaria y soporte para GIFs usando nativamente SDWebImage (iOS) y Glide (Android).",
+    "interviewTip": "Menciona FastImage cuando te pregunten sobre 'parpadeo de imágenes' (flickering) o problemas de performance en listas largas como FlatList.",
     "options": [
       "react-native-image-cache",
       "react-native-fast-image",
@@ -33,31 +33,31 @@
     ]
   },
   "ia-04": {
-    "prompt": "How do you render an SVG file in a standard React Native project?",
-    "explanation": "SVGs are not native UI elements in mobile OS. You need the 'react-native-svg' library (and often 'react-native-svg-transformer') to render them.",
-    "interviewTip": "Using SVGs is preferred for icons because they stay sharp at any size and reduce bundle weight.",
+    "prompt": "¿Cómo renderizas un archivo SVG en un proyecto estándar de React Native?",
+    "explanation": "Los SVGs no son elementos de UI nativos en los OS móviles. Necesitas la librería 'react-native-svg' (y a menudo 'react-native-svg-transformer') para renderizarlos.",
+    "interviewTip": "Se prefiere el uso de SVGs para iconos porque mantienen la nitidez en cualquier tamaño y reducen el peso del bundle.",
     "options": [
-      "Use the core <Svg> component.",
-      "React Native does not support SVGs out of the box; you need 'react-native-svg'.",
-      "Treat it like a normal image: <Image source={require('./icon.svg')} />.",
-      "Convert the SVG to a Base64 string."
+      "Usa el component <Svg> del core.",
+      "React Native no soporta SVGs nativamente; necesitas 'react-native-svg'.",
+      "Trátalo como una imagen normal: <Image source={require('./icon.svg')} />.",
+      "Convierte el SVG a un Base64 string."
     ]
   },
   "ia-05": {
-    "prompt": "What is the purpose of the 'defaultSource' prop on the Image component?",
-    "explanation": "It improves UX by showing a local 'loading' or 'avatar-placeholder' image instead of a blank space while the network request finishes.",
-    "interviewTip": "Note that 'defaultSource' is only supported on iOS. For Android, you usually manage this with state.",
+    "prompt": "¿Cuál es el propósito de la prop 'defaultSource' en el component Image?",
+    "explanation": "Mejora la UX al mostrar una imagen local de 'carga' o un 'placeholder de avatar' en lugar de un espacio en blanco mientras termina la network request.",
+    "interviewTip": "Ten en cuenta que 'defaultSource' solo está soportado en iOS. Para Android, usualmente se gestiona esto mediante el state.",
     "options": [
-      "To set the primary image URL.",
-      "To show a placeholder image (static asset) while the main network image is loading.",
-      "To define the image's Alt text.",
-      "To set a background color."
+      "Establecer la URL de la imagen principal.",
+      "Mostrar una imagen de placeholder (asset estático) mientras se carga la imagen de red principal.",
+      "Definir el Alt text de la imagen.",
+      "Establecer un color de fondo."
     ]
   },
   "ia-06": {
-    "prompt": "Which component should you use to display a background image that contains other components as children?",
-    "explanation": "ImageBackground is a wrapper that has the same props as Image but allows you to nest children inside it.",
-    "interviewTip": "It's effectively a <View> with an absolute-positioned <Image> behind it.",
+    "prompt": "¿Qué component deberías usar para mostrar una imagen de fondo que contenga otros components como children?",
+    "explanation": "ImageBackground es un wrapper que tiene las mismas props que Image pero permite anidar children dentro de él.",
+    "interviewTip": "Es efectivamente una <View> con una <Image> posicionada de forma absoluta detrás.",
     "options": [
       "<View background={image}>",
       "<ImageBackground>",
@@ -66,31 +66,31 @@
     ]
   },
   "ia-07": {
-    "prompt": "What is 'Base64' image rendering?",
-    "explanation": "Base64 allows you to pass the actual binary data of the image as a string. It's useful for small icons or images fetched from a local database.",
-    "interviewTip": "Avoid using Base64 for large images, as it increases memory usage and slows down the JS thread.",
+    "prompt": "¿Qué es el renderizado de imágenes en 'Base64'?",
+    "explanation": "Base64 permite pasar los datos binarios reales de la imagen como un string. Es útil para iconos pequeños o imágenes obtenidas de una base de datos local.",
+    "interviewTip": "Evita usar Base64 para imágenes grandes, ya que aumenta el uso de memoria y ralentiza el JS thread.",
     "options": [
-      "An image format that only works on Android.",
-      "A way to embed image data directly into the string, avoiding an extra network request.",
-      "A high-compression format for 4K images.",
-      "A method to encrypt images."
+      "Un formato de imagen que solo funciona en Android.",
+      "Una forma de embeber los datos de la imagen directamente en el string, evitando una network request extra.",
+      "Un formato de alta compresión para imágenes 4K.",
+      "Un método para encriptar imágenes."
     ]
   },
   "ia-08": {
-    "prompt": "How do you handle images that need to be tinted (e.g., making a black icon blue)?",
-    "explanation": "The 'tintColor' style property changes the color of all non-transparent pixels to the specified color.",
-    "interviewTip": "This is great for icons, allowing you to use one PNG asset for multiple themes (Light/Dark).",
+    "prompt": "¿Cómo manejas imágenes que necesitan ser tintadas (ej. convertir un icono negro en azul)?",
+    "explanation": "La property de style 'tintColor' cambia el color de todos los píxeles no transparentes al color especificado.",
+    "interviewTip": "Esto es ideal para iconos, permitiéndote usar un solo asset PNG para múltiples temas (Light/Dark).",
     "options": [
-      "Edit the image in Photoshop.",
-      "Use the 'tintColor' style property.",
-      "Use 'overlayColor'.",
-      "Change the 'opacity'."
+      "Editar la imagen en Photoshop.",
+      "Usar la property de style 'tintColor'.",
+      "Usar 'overlayColor'.",
+      "Cambiar la 'opacity'."
     ]
   },
   "ia-09": {
-    "prompt": "In Expo, which library is used for high-performance image handling that mimics the 'FastImage' functionality?",
-    "explanation": "'expo-image' is a high-performance component designed for speed, supporting blurhash (placeholders) and smooth transitions.",
-    "interviewTip": "It is currently the recommended way to handle images in the Expo ecosystem.",
+    "prompt": "En Expo, ¿qué librería se usa para el manejo de imágenes de alto rendimiento que imita la funcionalidad de 'FastImage'?",
+    "explanation": "'expo-image' es un component de alto rendimiento diseñado para la velocidad, con soporte para blurhash (placeholders) y transiciones suaves.",
+    "interviewTip": "Actualmente es la forma recomendada de manejar imágenes en el ecosistema de Expo.",
     "options": [
       "expo-fast-image",
       "expo-image",
@@ -99,58 +99,53 @@
     ]
   },
   "ia-10": {
-    "prompt": "Which of the following are valid image formats supported by React Native?",
-    "explanation": "While PNG, JPG, and GIF are universally supported, SVG requires a library. WebP is excellent for performance but requires extra care on older iOS versions.",
-    "interviewTip": "Mention WebP as a way to reduce app size while maintaining high quality.",
+    "prompt": "¿Cuáles de los siguientes son formatos de imagen válidos soportados por React Native?",
+    "explanation": "Aunque PNG, JPG y GIF tienen soporte universal, SVG requiere una librería. WebP es excelente para la performance pero requiere cuidado extra en versiones antiguas de iOS.",
+    "interviewTip": "Menciona WebP como una forma de reducir el tamaño de la app manteniendo una alta calidad.",
     "options": [
-      "PNG and JPG",
+      "PNG y JPG",
       "GIF",
-      "WebP (supported natively on Android, needs setup on iOS)",
-      "SVG (natively)"
+      "WebP (soportado nativamente en Android, requiere configuración en iOS)",
+      "SVG (nativamente)"
     ]
   },
   "ia-11": {
-    "prompt": "What is the result of using 'resizeMode: \"contain\"'?",
-    "explanation": "'contain' ensures the whole image is visible within the frame, which may leave empty space (letterboxing).",
-    "interviewTip": "Use 'contain' for logos and 'cover' for background photos.",
+    "prompt": "¿Cuál es el resultado de usar 'resizeMode: \"contain\"'?",
+    "explanation": "'contain' asegura que toda la imagen sea visible dentro del frame, lo que puede dejar espacios vacíos (letterboxing).",
+    "interviewTip": "Usa 'contain' para logos y 'cover' para fotos de fondo.",
     "options": [
-      "The image covers the entire container, potentially cropping the edges.",
-      "The image is scaled to fit inside the container while maintaining its aspect ratio, without cropping.",
-      "The image is stretched to fill the container, ignoring aspect ratio.",
-      "The image is repeated as a pattern."
+      "La imagen cubre todo el contenedor, recortando potencialmente los bordes.",
+      "La imagen se escala para ajustarse dentro del contenedor manteniendo su aspect ratio, sin recortar.",
+      "La imagen se estira para llenar el contenedor, ignorando el aspect ratio.",
+      "La imagen se repite como un patrón (pattern)."
     ]
   },
   "ia-12": {
-    "prompt": "How can you pre-load a remote image before showing it to the user?",
-    "explanation": "Image.prefetch(url) downloads the image to the local disk cache so it displays instantly when the component later mounts.",
-    "interviewTip": "This is perfect for pre-loading the next image in a gallery or a user's profile picture during login.",
-    "options": [
-      "cache",
-      "prefetch",
-      "load",
-      "download"
-    ]
+    "prompt": "¿Cómo puedes pre-cargar una remote image antes de mostrársela al usuario?",
+    "explanation": "Image.prefetch(url) descarga la imagen al cache del disco local para que se muestre instantáneamente cuando el component se monte más tarde.",
+    "interviewTip": "Esto es perfecto para pre-cargar la siguiente imagen en una galería o la foto de perfil del usuario durante el login.",
+    "options": ["cache", "prefetch", "load", "download"]
   },
   "ia-13": {
-    "prompt": "Why might an image disappear or 'flicker' when a FlatList scrolls?",
-    "explanation": "Standard Image components often re-fetch or re-decode images when they scroll back into view. Using a library with a better cache helps fix this.",
-    "interviewTip": "This is the 'smoking gun' for needing react-native-fast-image or expo-image.",
+    "prompt": "¿Por qué podría una imagen desaparecer o 'parpadear' cuando una FlatList hace scroll?",
+    "explanation": "Los components Image estándar a menudo vuelven a descargar o decodificar las imágenes cuando vuelven a aparecer en pantalla. Usar una librería con mejor cache ayuda a solucionar esto.",
+    "interviewTip": "Esta es la 'prueba irrefutable' de que necesitas react-native-fast-image o expo-image.",
     "options": [
-      "The JS thread is too fast.",
-      "The component is being unmounted and the default Image component isn't caching efficiently.",
-      "The image file size is too small.",
-      "You are using the wrong resizeMode."
+      "El JS thread es demasiado rápido.",
+      "El component se está desmontando y el component Image por defecto no está haciendo cache eficientemente.",
+      "El tamaño del archivo de imagen es demasiado pequeño.",
+      "Estás usando el resizeMode equivocado."
     ]
   },
   "ia-14": {
-    "prompt": "What is a 'BlurHash'?",
-    "explanation": "Blurhash allows you to show a beautiful, colorful blurred placeholder while the high-res image is still downloading.",
-    "interviewTip": "It significantly improves the 'Perceived Performance' of your app.",
+    "prompt": "¿Qué es un 'BlurHash'?",
+    "explanation": "Blurhash permite mostrar un placeholder borroso, colorido y estético mientras la imagen de alta resolución aún se está descargando.",
+    "interviewTip": "Mejora significativamente el 'Performance Percibido' de tu app.",
     "options": [
-      "A way to encrypt an image.",
-      "A compact string representation of a placeholder that looks like a blurred version of the image.",
-      "A bug in the rendering engine.",
-      "A type of image compression."
+      "Una forma de encriptar una imagen.",
+      "Una representación compacta en string de un placeholder que parece una versión borrosa de la imagen.",
+      "Un bug en el motor de renderizado.",
+      "Un tipo de compresión de imagen."
     ]
   }
 }

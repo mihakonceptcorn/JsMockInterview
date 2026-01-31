@@ -1,63 +1,43 @@
 {
   "rn-flex-01": {
-    "prompt": "What is the default 'flexDirection' for a View in React Native?",
-    "explanation": "On the web, the default is 'row'. In React Native, it is 'column' to better align with the vertical nature of mobile devices.",
-    "interviewTip": "Always verify the direction before debugging alignment, as 'justifyContent' and 'alignItems' swap roles depending on this property.",
-    "options": [
-      "row",
-      "row-reverse",
-      "column",
-      "column-reverse"
-    ]
+    "prompt": "¿Cuál es el 'flexDirection' por defecto para una View en React Native?",
+    "explanation": "En la web, el default es 'row'. En React Native, es 'column' para alinearse mejor con la naturaleza vertical de los dispositivos móviles.",
+    "interviewTip": "Verifica siempre la dirección antes de debuguear el alineamiento, ya que 'justifyContent' y 'alignItems' intercambian roles dependiendo de esta property.",
+    "options": ["row", "row-reverse", "column", "column-reverse"]
   },
   "rn-flex-02": {
-    "prompt": "Which property aligns children along the 'Main Axis'?",
-    "explanation": "justifyContent defines how children are distributed along the primary axis (defined by flexDirection).",
-    "interviewTip": "Common values include 'center', 'space-between', and 'space-around'.",
-    "options": [
-      "alignContent",
-      "justifyContent",
-      "alignItems",
-      "selfAlign"
-    ]
+    "prompt": "¿Qué property alinea a los children a lo largo del 'Main Axis'?",
+    "explanation": "justifyContent define cómo se distribuyen los children a lo largo del eje primario (definido por flexDirection).",
+    "interviewTip": "Los valores comunes incluyen 'center', 'space-between' y 'space-around'.",
+    "options": ["alignContent", "justifyContent", "alignItems", "selfAlign"]
   },
   "rn-flex-03": {
-    "prompt": "What will be the size of these two boxes?",
-    "explanation": "Flex values are proportional. Total flex is 1 + 3 = 4. Red is 1/4 (25%) and Blue is 3/4 (75%).",
-    "interviewTip": "In React Native, 'flex: 1' on a single child tells it to fill all available space in its parent.",
+    "prompt": "¿Cuál será el tamaño de estas dos cajas?",
+    "explanation": "Los valores de Flex son proporcionales. El total de flex es 1 + 3 = 4. Rojo es 1/4 (25%) y Azul es 3/4 (75%).",
+    "interviewTip": "En React Native, 'flex: 1' en un solo child le indica que llene todo el espacio disponible en su parent.",
     "options": [
-      "Red takes 25% height, Blue takes 75% height.",
-      "Red takes 50% height, Blue takes 50% height.",
-      "Red takes 1/3 height, Blue takes 2/3 height.",
-      "Both will have 0 height because no width was specified."
+      "Rojo toma el 25% del height, Azul toma el 75% del height.",
+      "Rojo toma el 50% del height, Azul toma el 50% del height.",
+      "Rojo toma 1/3 del height, Azul toma 2/3 del height.",
+      "Ambos tendrán 0 height porque no se especificó width."
     ]
   },
   "rn-flex-04": {
-    "prompt": "Which property allows an individual child to deviate from the 'alignItems' set by its parent?",
-    "explanation": "alignSelf allows you to override the parent's alignment for a specific element.",
-    "interviewTip": "This is very useful for centering one specific item in a list that is otherwise stretched.",
-    "options": [
-      "alignItem",
-      "justifySelf",
-      "alignSelf",
-      "flexSelf"
-    ]
+    "prompt": "¿Qué property permite a un child individual desviarse del 'alignItems' establecido por su parent?",
+    "explanation": "alignSelf te permite sobrescribir el alineamiento del parent para un elemento específico.",
+    "interviewTip": "Esto es muy útil para centrar un item específico en una lista que, de otro modo, está estirada (stretch).",
+    "options": ["alignItem", "justifySelf", "alignSelf", "flexSelf"]
   },
   "rn-flex-05": {
-    "prompt": "In React Native, what is the default value for 'alignItems'?",
-    "explanation": "By default, children are 'stretched' to fill the secondary axis of their parent unless a specific width/height is provided.",
-    "interviewTip": "If your child component is 'disappearing', it might be because you set flexDirection: 'row' and the default 'stretch' is trying to find a height it doesn't have.",
-    "options": [
-      "center",
-      "flex-start",
-      "stretch",
-      "baseline"
-    ]
+    "prompt": "En React Native, ¿cuál es el valor por defecto para 'alignItems'?",
+    "explanation": "Por defecto, los children se estiran ('stretch') para llenar el eje secundario de su parent, a menos que se proporcione un width/height específico.",
+    "interviewTip": "Si tu child component está 'desapareciendo', podría ser porque configuraste flexDirection: 'row' y el 'stretch' por defecto intenta encontrar un height que no tiene.",
+    "options": ["center", "flex-start", "stretch", "baseline"]
   },
   "rn-flex-06": {
-    "prompt": "How do you center a child both horizontally and vertically inside a standard View?",
-    "explanation": "Using 'center' for both justifyContent (main axis) and alignItems (cross axis) centers the content perfectly.",
-    "interviewTip": "Ensure the parent has 'flex: 1' or a specific size, or there will be no space to center within.",
+    "prompt": "¿Cómo centras un child tanto horizontal como verticalmente dentro de una View estándar?",
+    "explanation": "Usar 'center' tanto para justifyContent (eje principal) como para alignItems (eje secundario) centra el contenido perfectamente.",
+    "interviewTip": "Asegúrate de que el parent tenga 'flex: 1' o un tamaño específico, o no habrá espacio para centrar dentro.",
     "options": [
       "flexDirection, alignContent",
       "justifyContent, alignItems",
@@ -66,75 +46,70 @@
     ]
   },
   "rn-flex-07": {
-    "prompt": "What is the result of using 'flex: -1' in React Native?",
-    "explanation": "A negative flex value allows a component to shrink when the content overflows the parent, but it won't take up extra space otherwise.",
-    "interviewTip": "This is rarely used but helpful for handling dynamic text in tight headers.",
+    "prompt": "¿Cuál es el resultado de usar 'flex: -1' en React Native?",
+    "explanation": "Un valor de flex negativo permite que un component se encoja cuando el contenido desborda (overflow) al parent, pero no tomará espacio extra de lo contrario.",
+    "interviewTip": "Esto se usa raramente, pero es útil para manejar texto dinámico en headers ajustados.",
     "options": [
-      "The component is hidden.",
-      "The component shrinks to its minimum size if there is an overflow, but doesn't grow.",
-      "It works the same as 'flex: 1'.",
-      "It causes an error."
+      "El component se oculta.",
+      "El component se encoge a su tamaño mínimo si hay un overflow, pero no crece.",
+      "Funciona igual que 'flex: 1'.",
+      "Causa un error."
     ]
   },
   "rn-flex-08": {
-    "prompt": "Which property should you use to add space between items in a Flex container without using margins?",
-    "explanation": "Modern React Native versions support the 'gap' property (as well as rowGap and columnGap), which adds space specifically between items.",
-    "interviewTip": "Using 'gap' is much cleaner than applying margin to every child and then removing it from the last one.",
-    "options": [
-      "spacing",
-      "item-padding",
-      "gap",
-      "grid-gap"
-    ]
+    "prompt": "¿Qué property deberías usar para añadir espacio entre items en un Flex container sin usar márgenes?",
+    "explanation": "Las versiones modernas de React Native soportan la property 'gap' (así como rowGap y columnGap), que añade espacio específicamente entre los items.",
+    "interviewTip": "Usar 'gap' es mucho más limpio que aplicar margin a cada child y luego quitarlo del último.",
+    "options": ["spacing", "item-padding", "gap", "grid-gap"]
   },
   "rn-flex-09": {
-    "prompt": "Analyze this code. Where will the 'Box' be located?",
-    "explanation": "flex-end for row direction puts it at the right; flex-end for cross-axis puts it at the bottom.",
-    "interviewTip": "Always visualize the 'L' shape of the axis: Main axis (X) and Cross axis (Y) for row direction.",
+    "prompt": "Analiza este código. ¿Dónde se ubicará la 'Box'?",
+    "explanation": "flex-end para la dirección row la coloca a la derecha; flex-end para el eje secundario la coloca abajo.",
+    "interviewTip": "Visualiza siempre la forma en 'L' de los ejes: Eje Principal (X) y Eje Secundario (Y) para la dirección row.",
     "options": [
-      "Top-right corner",
-      "Top-left corner",
-      "Bottom-right corner",
-      "Bottom-left corner"
+      "Esquina superior derecha",
+      "Esquina superior izquierda",
+      "Esquina inferior derecha",
+      "Esquina inferior izquierda"
     ]
   },
   "rn-flex-10": {
-    "prompt": "Does React Native support 'z-index' for overlapping elements?",
-    "explanation": "React Native supports zIndex. However, if multiple elements have the same zIndex, the one defined later in the JSX appears on top.",
-    "interviewTip": "On Android, sometimes 'elevation' is needed alongside zIndex for shadow-related overlapping issues.",
+    "prompt": "¿Soporta React Native 'z-index' para elementos superpuestos?",
+    "explanation": "React Native soporta zIndex. Sin embargo, si varios elementos tienen el mismo zIndex, el que se define más tarde en el JSX aparece encima.",
+    "interviewTip": "En Android, a veces se necesita 'elevation' junto con zIndex para problemas de superposición relacionados con sombras.",
     "options": [
-      "No, you must change the order of components in the JSX.",
-      "Yes, it works exactly like the web.",
-      "Only on Android.",
-      "Only on iOS."
+      "No, debes cambiar el orden de los components en el JSX.",
+      "Sí, funciona exactamente igual que en la web.",
+      "Solo en Android.",
+      "Solo en iOS."
     ]
   },
   "rn-flex-11": {
-    "prompt": "Which of the following are valid units for 'width' and 'height' in React Native styles?",
-    "explanation": "React Native primarily uses unitless numbers (logical pixels) and percentage strings. rem/em/vh/vw are not natively supported.",
-    "interviewTip": "To get screen-based units (like vw/vh), use the 'Dimensions' or 'useWindowDimensions' API.",
+    "prompt": "¿Cuáles de las siguientes son unidades válidas para 'width' y 'height' en los styles de React Native?",
+    "explanation": "React Native usa principalmente números sin unidad (píxeles lógicos) y strings de porcentaje. rem/em/vh/vw no están soportados de forma nativa.",
+    "interviewTip": "Para obtener unidades basadas en la pantalla (como vw/vh), usa la API 'Dimensions' o el hook 'useWindowDimensions'.",
     "options": [
-      "Numbers (representing logical pixels)",
-      "Percentages (e.g., '50%')",
-      "rem or em units",
-      "vh or vw units"
+      "Números (que representan píxeles lógicos)",
+      "Porcentajes (ej., '50%')",
+      "Unidades rem o em",
+      "Unidades vh o vw"
     ]
   },
   "rn-flex-12": {
-    "prompt": "What is 'flexBasis' used for?",
-    "explanation": "flexBasis determines the default size of an item before the remaining space is distributed via flexGrow or flexShrink.",
-    "interviewTip": "If flexDirection is 'column', flexBasis acts like 'height'. If 'row', it acts like 'width'.",
+    "prompt": "¿Para qué se utiliza 'flexBasis'?",
+    "explanation": "flexBasis determina el tamaño por defecto de un item antes de que el espacio restante se distribuya vía flexGrow o flexShrink.",
+    "interviewTip": "Si flexDirection es 'column', flexBasis actúa como 'height'. Si es 'row', actúa como 'width'.",
     "options": [
-      "To set the final size of the component after all growth is done.",
-      "To set the initial size of the component before any extra space is distributed.",
-      "To define the background color of the flex container.",
-      "To set the minimum width."
+      "Para establecer el tamaño final del component después de que todo el crecimiento termine.",
+      "Para establecer el tamaño inicial del component antes de que se distribuya cualquier espacio extra.",
+      "Para definir el color de fondo del flex container.",
+      "Para establecer el ancho mínimo."
     ]
   },
   "rn-flex-13": {
-    "prompt": "How do you make a View wrap its children into multiple lines if they exceed the container width?",
-    "explanation": "By default, flex containers are 'nowrap'. Setting 'flexWrap: wrap' allows items to move to the next line.",
-    "interviewTip": "This is essential for creating 'tag cloud' layouts or photo grids.",
+    "prompt": "¿Cómo haces que una View envuelva a sus children en varias líneas si exceden el ancho del contenedor?",
+    "explanation": "Por defecto, los flex containers son 'nowrap'. Configurar 'flexWrap: wrap' permite que los items pasen a la siguiente línea.",
+    "interviewTip": "Esto es esencial para crear layouts de 'nubes de etiquetas' (tag clouds) o cuadrículas de fotos.",
     "options": [
       "flexDirection: 'multiline'",
       "flexWrap: 'wrap'",
@@ -143,47 +118,42 @@
     ]
   },
   "rn-flex-14": {
-    "prompt": "What is the 'Shadow Thread' responsible for?",
-    "explanation": "The Shadow Thread is where React Native calculates the mathematical layout of your components using Yoga before sending it to the UI Thread.",
-    "interviewTip": "Knowing this helps you understand that style changes in JS have a specific path through threads before appearing on screen.",
+    "prompt": "¿De qué es responsable el 'Shadow Thread'?",
+    "explanation": "El Shadow Thread es donde React Native calcula el layout matemático de tus components usando Yoga antes de enviarlo al UI Thread.",
+    "interviewTip": "Saber esto te ayuda a entender que los cambios de style en JS tienen un camino específico a través de los threads antes de aparecer en pantalla.",
     "options": [
-      "Calculating shadows and borders.",
-      "Running the Yoga engine to calculate the layout of the UI.",
-      "Protecting the app from hacking.",
-      "Handling background API calls."
+      "Calcular sombras y bordes.",
+      "Ejecutar el motor Yoga para calcular el layout de la UI.",
+      "Proteger la app de hackeos.",
+      "Manejar llamadas a la API en background."
     ]
   },
   "rn-flex-15": {
-    "prompt": "How do you get the width of the physical screen in React Native?",
-    "explanation": "The Dimensions API (or the useWindowDimensions hook) provides the width and height of the current window/screen.",
-    "interviewTip": "Prefer 'useWindowDimensions' because it automatically updates if the screen rotates or the window size changes (on tablets/web).",
-    "options": [
-      "Screen",
-      "Dimensions",
-      "Device",
-      "Layout"
-    ]
+    "prompt": "¿Cómo obtienes el ancho de la pantalla física en React Native?",
+    "explanation": "La API Dimensions (o el hook useWindowDimensions) proporciona el width y height de la ventana/pantalla actual.",
+    "interviewTip": "Prefiere 'useWindowDimensions' porque se actualiza automáticamente si la pantalla rota o el tamaño de la ventana cambia (en tablets/web).",
+    "options": ["Screen", "Dimensions", "Device", "Layout"]
   },
   "rn-flex-16": {
-    "prompt": "What does 'aspectRatio' do in a Style object?",
-    "explanation": "If you set 'aspectRatio: 1', the component will always be a square, even if only the width is defined.",
-    "interviewTip": "This is incredibly useful for images and video containers where you want them to be responsive but maintain a 16:9 or 4:3 look.",
+    "prompt": "¿Qué hace 'aspectRatio' en un Style object?",
+    "explanation": "Si configuras 'aspectRatio: 1', el component siempre será un cuadrado, incluso si solo se define el width.",
+    "interviewTip": "Esto es increíblemente útil para imágenes y contenedores de video donde quieres que sean responsivos pero mantengan un aspecto de 16:9 o 4:3.",
     "options": [
-      "It sets the opacity of the image.",
-      "It forces the component to maintain a specific width-to-height ratio.",
-      "It is used only for video playback.",
-      "It rounds the corners of the View."
+      "Establece la opacidad de la imagen.",
+      "Fuerza al component a mantener una relación específica entre ancho y alto.",
+      "Se usa solo para reproducción de video.",
+      "Redondea las esquinas de la View."
     ]
   },
   "rn-flex-17": {
-    "prompt": "Identify the error in this Style object:",
-    "explanation": "React Native does not implement the full CSS spec. Properties like float, clear, and block/inline display do not exist.",
-    "interviewTip": "If you need a side-by-side layout, always use 'flexDirection: row'.",
+    "prompt": "Identifica el error en este Style object:",
+    "explanation": "React Native no implementa toda la especificación CSS. Properties como float, clear y display block/inline no existen.",
+    "interviewTip": "Si necesitas un layout de lado a lado, usa siempre 'flexDirection: row'.",
     "options": [
-      "flex cannot be 1.",
-      "React Native doesn't support 'float' or 'display: block' (everything is flex by default).",
-      "StyleSheet.create is deprecated.",
-      "There is no error."
+      "flex no puede ser 1.",
+      "React Native no soporta 'float' ni 'display: block' (todo es flex por defecto).",
+      "StyleSheet.create está deprecated.",
+      "No hay error."
     ]
   }
 }

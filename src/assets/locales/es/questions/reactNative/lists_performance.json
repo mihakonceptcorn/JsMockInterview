@@ -1,118 +1,113 @@
 {
   "lp-01": {
-    "prompt": "Why is <FlatList> more performant than <ScrollView> for long lists of data?",
-    "explanation": "FlatList lazily renders items as they are about to appear and unmounts items that move far off-screen, saving significant memory.",
-    "interviewTip": "This concept is called 'Windowing' or 'Virtualization'.",
+    "prompt": "¿Por qué <FlatList> es más performante que <ScrollView> para listas largas de datos?",
+    "explanation": "FlatList realiza un renderizado lazy de los items justo cuando están a punto de aparecer y desmonta los items que se alejan de la pantalla, ahorrando mucha memoria.",
+    "interviewTip": "Este concepto se conoce como 'Windowing' o 'Virtualización'.",
     "options": [
-      "It uses a faster C++ implementation for the scroll bar.",
-      "It only renders the items currently visible on the screen and recycles views.",
-      "It compresses images inside the list automatically.",
-      "It runs on the Shadow Thread instead of the JS Thread."
+      "Usa una implementación de C++ más rápida para la barra de scroll.",
+      "Solo renderiza los items visibles actualmente en pantalla y recicla las views.",
+      "Comprime automáticamente las imágenes dentro de la lista.",
+      "Se ejecuta en el Shadow Thread en lugar del JS Thread."
     ]
   },
   "lp-02": {
-    "prompt": "Which prop is required in <FlatList> to tell it what to render for each item in the data array?",
-    "explanation": "The renderItem prop takes a function that receives an object (usually destructured as { item, index }) and returns a JSX element.",
-    "interviewTip": "To keep performance high, define the renderItem function outside of your component or wrap it in useCallback.",
-    "options": [
-      "renderItem",
-      "component",
-      "ItemTemplate",
-      "rowRenderer"
-    ]
+    "prompt": "¿Qué prop es obligatoria en <FlatList> para indicarle qué renderizar por cada item en el array de datos?",
+    "explanation": "La prop renderItem recibe una función que obtiene un object (usualmente desestructurado como { item, index }) y retorna un elemento JSX.",
+    "interviewTip": "Para mantener el rendimiento alto, define la función renderItem fuera de tu component o envuélvela en un useCallback.",
+    "options": ["renderItem", "component", "ItemTemplate", "rowRenderer"]
   },
   "lp-03": {
-    "prompt": "What is the purpose of the 'keyExtractor' prop?",
-    "explanation": "By default, FlatList looks for an 'id' or 'key' property. If your data uses different names (like 'uuid'), you must use keyExtractor.",
-    "interviewTip": "Always provide a unique string as a key. Avoid using the index if the data can be reordered or filtered.",
+    "prompt": "¿Cuál es el propósito de la prop 'keyExtractor'?",
+    "explanation": "Por defecto, FlatList busca una property 'id' o 'key'. Si tus datos usan nombres diferentes (como 'uuid'), debes usar keyExtractor.",
+    "interviewTip": "Proporciona siempre un string único como key. Evita usar el index si los datos pueden reordenarse o filtrarse.",
     "options": [
-      "To encrypt the data for security.",
-      "To provide a unique ID for each item so React can track changes and re-render efficiently.",
-      "To sort the list based on the key.",
-      "To link the list to a database."
+      "Encriptar los datos por seguridad.",
+      "Proporcionar un ID único para cada item para que React rastree cambios y haga re-render de forma eficiente.",
+      "Ordenar la lista basándose en la key.",
+      "Vincular la lista a una base de datos."
     ]
   },
   "lp-04": {
-    "prompt": "How do you render a header that scrolls along with the list items?",
-    "explanation": "Using ListHeaderComponent ensures the header stays part of the list's scrollable area without breaking the virtualization logic.",
-    "interviewTip": "Never wrap a FlatList inside a ScrollView of the same orientation; it breaks virtualization and causes performance warnings.",
+    "prompt": "¿Cómo renderizas un header que haga scroll junto con los items de la lista?",
+    "explanation": "Usar ListHeaderComponent asegura que el header se mantenga como parte del área scrollable de la lista sin romper la lógica de virtualización.",
+    "interviewTip": "Nunca envuelvas una FlatList dentro de un ScrollView con la misma orientación; esto rompe la virtualización y causa advertencias de performance.",
     "options": [
-      "Place the header inside a View above the FlatList.",
-      "Use the 'ListHeaderComponent' prop.",
-      "Wrap the FlatList in a ScrollView.",
-      "Put the header in the first item of the data array."
+      "Colocar el header dentro de una View arriba de la FlatList.",
+      "Usar la prop 'ListHeaderComponent'.",
+      "Envolver la FlatList en un ScrollView.",
+      "Poner el header en el primer item del array de datos."
     ]
   },
   "lp-05": {
-    "prompt": "Which component should you use to render grouped data (e.g., a contact list organized by the first letter of the name)?",
-    "explanation": "SectionList is designed specifically for data divided into logical sections, each with its own header.",
-    "interviewTip": "SectionList data must be an array of objects, where each object has a 'data' array (e.g., { title: 'A', data: ['Alice', 'Aaron'] }).",
+    "prompt": "¿Qué component deberías usar para renderizar datos agrupados (ej. una lista de contactos organizada por la letra inicial)?",
+    "explanation": "SectionList está diseñada específicamente para datos divididos en secciones lógicas, cada una con su propio header.",
+    "interviewTip": "Los datos de SectionList deben ser un array de objects, donde cada object tiene un array 'data' (ej. { title: 'A', data: ['Alice', 'Aaron'] }).",
     "options": [
       "GroupedList",
       "SectionList",
-      "FlatList with nested Maps",
+      "FlatList con Maps anidados",
       "CategoryView"
     ]
   },
   "lp-06": {
-    "prompt": "What does the 'getItemLayout' prop optimize?",
-    "explanation": "By providing the exact dimensions of items ahead of time, FlatList doesn't have to calculate them on the fly as you scroll, making it much smoother.",
-    "interviewTip": "This is a 'pro' optimization for lists with hundreds of items where every item has a constant height.",
+    "prompt": "¿Qué optimiza la prop 'getItemLayout'?",
+    "explanation": "Al proporcionar las dimensiones exactas de los items de antemano, FlatList no tiene que calcularlas al vuelo mientras haces scroll, lo que lo hace mucho más fluido.",
+    "interviewTip": "Esta es una optimización avanzada para listas con cientos de items donde cada item tiene un alto constante.",
     "options": [
-      "It allows the list to skip measurement of items if they have a fixed height/width.",
-      "It defines the Flexbox layout of the row.",
-      "It automatically calculates the font size of the text.",
-      "It handles the spacing between items."
+      "Permite que la lista omita la medición de los items si tienen un height/width fijo.",
+      "Define el layout Flexbox de la fila.",
+      "Calcula automáticamente el tamaño de fuente del texto.",
+      "Maneja el espaciado entre los items."
     ]
   },
   "lp-07": {
-    "prompt": "Analyze the code. What will happen if the user reaches the bottom of the list?",
-    "explanation": "onEndReachedThreshold is a value from 0 to 1 representing how close to the bottom (as a fraction of the list length) the user must be to trigger the event.",
-    "interviewTip": "This is how 'Infinite Scroll' is implemented in mobile apps.",
+    "prompt": "Analiza el código. ¿Qué pasará si el usuario llega al final de la lista?",
+    "explanation": "onEndReachedThreshold es un valor de 0 a 1 que representa qué tan cerca del final (como fracción de la longitud de la lista) debe estar el usuario para disparar el evento.",
+    "interviewTip": "Así es como se implementa el 'Infinite Scroll' en las apps móviles.",
     "options": [
-      "The list will stop scrolling.",
-      "loadMoreData will be called when the user is within 50% of the end of the list content.",
-      "loadMoreData will be called only when the user hits the exact pixel at the bottom.",
-      "The list will restart from the top."
+      "La lista dejará de hacer scroll.",
+      "Se llamará a loadMoreData cuando el usuario esté dentro del 50% del final del contenido de la lista.",
+      "Solo se llamará a loadMoreData cuando el usuario toque el píxel exacto del final.",
+      "La lista se reiniciará desde arriba."
     ]
   },
   "lp-08": {
-    "prompt": "How do you add a separator line between items without adding it to the top or bottom of the list?",
-    "explanation": "ItemSeparatorComponent renders a component between every item, but excludes the very top and very bottom of the list.",
-    "interviewTip": "This is cleaner than using margins or borders because it handles the 'edges' of the list automatically.",
+    "prompt": "¿Cómo añades una línea separadora entre items sin añadirla al principio o al final de la lista?",
+    "explanation": "ItemSeparatorComponent renderiza un component entre cada item, pero lo excluye del extremo superior e inferior de la lista.",
+    "interviewTip": "Esto es más limpio que usar márgenes o bordes porque maneja los bordes de la lista automáticamente.",
     "options": [
-      "Add a border to every item.",
-      "Use the 'ItemSeparatorComponent' prop.",
-      "Add a line inside the renderItem function.",
-      "Use the 'gap' style on the FlatList."
+      "Añadir un borde a cada item.",
+      "Usar la prop 'ItemSeparatorComponent'.",
+      "Añadir una línea dentro de la función renderItem.",
+      "Usar el style 'gap' en la FlatList."
     ]
   },
   "lp-09": {
-    "prompt": "Which of these props can help improve performance on a very slow FlatList?",
-    "explanation": "All these props fine-tune the virtualization engine. For example, a smaller windowSize reduces memory but might show more 'blank' spaces during fast scrolling.",
-    "interviewTip": "Always start with defaults. Only tweak these if you notice visible lag or high memory usage.",
+    "prompt": "¿Cuál de estas props puede ayudar a mejorar el rendimiento en una FlatList muy lenta?",
+    "explanation": "Todas estas props ajustan el motor de virtualización. Por ejemplo, un windowSize pequeño reduce la memoria pero podría mostrar más espacios 'en blanco' durante un scroll rápido.",
+    "interviewTip": "Empieza siempre con los valores por defecto. Solo ajústalos si notas lag visible o un alto uso de memoria.",
     "options": [
-      "initialNumToRender (how many items to load initially)",
-      "windowSize (how many pages of items to keep in memory)",
-      "removeClippedSubviews (unmounts views off-screen)",
-      "maxToRenderPerBatch (limits items rendered per scroll increment)"
+      "initialNumToRender (cuántos items cargar inicialmente)",
+      "windowSize (cuántas páginas de items mantener en memoria)",
+      "removeClippedSubviews (desmonta las views fuera de pantalla)",
+      "maxToRenderPerBatch (limita los items renderizados por incremento de scroll)"
     ]
   },
   "lp-10": {
-    "prompt": "What is the 'extraData' prop used for in a FlatList?",
-    "explanation": "FlatList is a PureComponent. It only re-renders if the 'data' prop reference changes. If your items depend on a global 'theme' or 'selectedID', you must pass that to extraData.",
-    "interviewTip": "If your list isn't updating when you change a single item's selected state, you probably forgot extraData.",
+    "prompt": "¿Para qué se usa la prop 'extraData' en una FlatList?",
+    "explanation": "FlatList es un PureComponent. Solo hace re-render si la referencia de la prop 'data' cambia. Si tus items dependen de un 'theme' global o un 'selectedID', debes pasarlo a extraData.",
+    "interviewTip": "Si tu lista no se actualiza al cambiar el estado de selección de un solo item, probablemente olvidaste extraData.",
     "options": [
-      "To pass metadata to the database.",
-      "To tell the FlatList to re-render when a piece of state *outside* the 'data' array changes.",
-      "To add more items to the end of the list.",
-      "To style the empty list state."
+      "Para pasar metadata a la base de datos.",
+      "Para indicarle a la FlatList que haga re-render cuando un estado *fuera* del array 'data' cambie.",
+      "Para añadir más items al final de la lista.",
+      "Para dar estilo al estado de lista vacía."
     ]
   },
   "lp-11": {
-    "prompt": "How do you implement 'Pull to Refresh' in a FlatList?",
-    "explanation": "refreshing (boolean) shows the spinner; onRefresh (function) is the callback where you fetch new data.",
-    "interviewTip": "This provides the native 'bounce and spin' experience users expect on mobile.",
+    "prompt": "¿Cómo implementas 'Pull to Refresh' en una FlatList?",
+    "explanation": "refreshing (boolean) muestra el spinner; onRefresh (function) es el callback donde obtienes los nuevos datos.",
+    "interviewTip": "Esto proporciona la experiencia nativa de 'rebote y giro' que los usuarios esperan en el móvil.",
     "options": [
       "loading, onReload",
       "isFetching, onFetch",
@@ -121,36 +116,31 @@
     ]
   },
   "lp-12": {
-    "prompt": "What happens if you don't provide a unique key to list items?",
-    "explanation": "React uses keys to optimize DOM/Native UI updates. Using the index can cause 'state' to stick to the wrong items if the list changes.",
-    "interviewTip": "In an interview, explain that stable keys prevent expensive re-mounts.",
+    "prompt": "¿Qué sucede si no proporcionas una key única a los items de la lista?",
+    "explanation": "React usa las keys para optimizar las actualizaciones de la UI nativa. Usar el index puede causar que el 'state' se asocie a los items incorrectos si la lista cambia.",
+    "interviewTip": "En una entrevista, explica que las keys estables evitan re-montajes costosos.",
     "options": [
-      "The app will crash immediately.",
-      "React will show a warning and use the index as a key, which might lead to performance bugs.",
-      "The list will be empty.",
-      "The items will be rendered in random order."
+      "La app se cerrará (crash) inmediatamente.",
+      "React mostrará una advertencia y usará el index como key, lo que puede causar bugs de rendimiento.",
+      "La lista estará vacía.",
+      "Los items se renderizarán en orden aleatorio."
     ]
   },
   "lp-13": {
-    "prompt": "Which prop allows you to render the list in multiple columns (e.g., a grid)?",
-    "explanation": "numColumns={2} will automatically arrange items in two columns. This requires your items to have a flexible width or matching fixed width.",
-    "interviewTip": "Note that you cannot change numColumns on the fly; the component must remount for this to change.",
-    "options": [
-      "columnCount",
-      "numColumns",
-      "gridEnabled",
-      "flexWrap"
-    ]
+    "prompt": "¿Qué prop te permite renderizar la lista en múltiples columnas (ej. una cuadrícula)?",
+    "explanation": "numColumns={2} organizará automáticamente los items en dos columnas. Esto requiere que tus items tengan un ancho flexible o un ancho fijo que encaje.",
+    "interviewTip": "Ten en cuenta que no puedes cambiar numColumns al vuelo; el component debe desmontarse y volver a montarse para que esto cambie.",
+    "options": ["columnCount", "numColumns", "gridEnabled", "flexWrap"]
   },
   "lp-14": {
-    "prompt": "What is the 'ListEmptyComponent' used for?",
-    "explanation": "It's a convenient prop to handle the empty state without using extra ternary operators in your JSX.",
-    "interviewTip": "It makes your component code much cleaner.",
+    "prompt": "¿Para qué se usa el 'ListEmptyComponent'?",
+    "explanation": "Es una prop conveniente para manejar el estado vacío sin usar operadores ternarios extra en tu JSX.",
+    "interviewTip": "Hace que el código de tu component sea mucho más limpio.",
     "options": [
-      "To delete all data from the list.",
-      "To render a specific UI (like a 'No results found' message) when the data array is empty.",
-      "To style the background of the list.",
-      "To hide the list entirely."
+      "Para borrar todos los datos de la lista.",
+      "Para renderizar una UI específica (como un mensaje de 'No se encontraron resultados') cuando el array de datos está vacío.",
+      "Para dar estilo al fondo de la lista.",
+      "Para ocultar la lista por completo."
     ]
   }
 }

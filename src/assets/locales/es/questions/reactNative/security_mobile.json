@@ -1,112 +1,112 @@
 {
   "sec-01": {
-    "prompt": "What is 'SSL Pinning' and why is it used in React Native apps?",
-    "explanation": "Even with HTTPS, an attacker can sometimes force a device to trust a fake certificate. SSL Pinning ensures the app rejects any certificate that doesn't match the 'pinned' one from your server.",
-    "interviewTip": "Mention libraries like 'react-native-ssl-pinning' or 'TrustKit'. Warning: If your server certificate expires and you haven't updated the app, it will stop working!",
+    "prompt": "¿Qué es el 'SSL Pinning' y por qué se utiliza en aplicaciones React Native?",
+    "explanation": "Incluso con HTTPS, un atacante a veces puede forzar a un dispositivo a confiar en un certificado falso. El SSL Pinning garantiza que la app rechace cualquier certificado que no coincida con el certificado 'anclado' de tu servidor.",
+    "interviewTip": "Menciona librerías como 'react-native-ssl-pinning' o 'TrustKit'. Advertencia: si el certificado de tu servidor expira y no has actualizado la app, ¡dejará de funcionar!",
     "options": [
-      "A way to pin the app's icon to the home screen.",
-      "A technique to prevent Man-in-the-Middle (MITM) attacks by ensuring the app only trusts a specific, pre-defined server certificate.",
-      "A method to encrypt the JavaScript bundle.",
-      "A feature that keeps the user logged in forever."
+      "Una forma de fijar el ícono de la app en la pantalla de inicio.",
+      "Una técnica para prevenir ataques Man-in-the-Middle (MITM) asegurando que la app solo confíe en un certificado de servidor específico y predefinido.",
+      "Un método para cifrar el bundle de JavaScript.",
+      "Una función que mantiene al usuario conectado para siempre."
     ]
   },
   "sec-02": {
-    "prompt": "How should sensitive keys (like API secrets) be stored in a React Native app?",
-    "explanation": "Standard storage (AsyncStorage/MMKV) is unencrypted. The Keychain/Keystore provides hardware-level encryption designed specifically for secrets.",
-    "interviewTip": "A great answer includes: 'I use .env files for build-time configuration, but device-specific secrets go into the Secure Keychain'.",
+    "prompt": "¿Cómo deben almacenarse las claves sensibles (como secretos de API) en una app React Native?",
+    "explanation": "El almacenamiento estándar (AsyncStorage/MMKV) no está cifrado. El Keychain/Keystore proporciona cifrado a nivel de hardware diseñado específicamente para secretos.",
+    "interviewTip": "Una gran respuesta incluye: 'Uso archivos .env para configuración en tiempo de build, pero los secretos específicos del dispositivo van en el Secure Keychain'.",
     "options": [
-      "Hardcoded in a 'constants.js' file.",
-      "Stored in the 'package.json' for easy access.",
-      "In the iOS Keychain or Android Keystore using a library like 'react-native-keychain'.",
-      "In the component's local state."
+      "Codificadas directamente en un archivo 'constants.js'.",
+      "Almacenadas en el 'package.json' para un acceso fácil.",
+      "En el iOS Keychain o Android Keystore usando una librería como 'react-native-keychain'.",
+      "En el estado local del componente."
     ]
   },
   "sec-03": {
-    "prompt": "What is the purpose of 'Jailbreak' or 'Root' detection in mobile apps?",
-    "explanation": "On a rooted/jailbroken device, attackers can bypass sandbox restrictions and read your app's private data or intercept memory. Banks and high-security apps often block access on these devices.",
-    "interviewTip": "Use 'react-native-jail-monkey' or 'expo-device' to check if the device environment is untrusted.",
+    "prompt": "¿Cuál es el propósito de la detección de 'Jailbreak' o 'Root' en apps móviles?",
+    "explanation": "En un dispositivo con root o jailbreak, los atacantes pueden eludir las restricciones del sandbox y leer los datos privados de tu app o interceptar la memoria. Los bancos y apps de alta seguridad a menudo bloquean el acceso en estos dispositivos.",
+    "interviewTip": "Usa 'react-native-jail-monkey' o 'expo-device' para verificar si el entorno del dispositivo no es confiable.",
     "options": [
-      "To speed up the app on modified devices.",
-      "To identify if the device's security layers have been compromised, allowing the app to disable sensitive features (like payments).",
-      "To automatically update the OS.",
-      "To allow the user to bypass the App Store."
+      "Acelerar la app en dispositivos modificados.",
+      "Identificar si las capas de seguridad del dispositivo han sido comprometidas, permitiendo que la app desactive funciones sensibles (como pagos).",
+      "Actualizar automáticamente el sistema operativo.",
+      "Permitir que el usuario evite la App Store."
     ]
   },
   "sec-04": {
-    "prompt": "Analyze the Android config. What does 'minifyEnabled true' and 'proguardFiles' do?",
-    "explanation": "Proguard/R8 shrinks the code and renames classes/methods to nonsense names (e.g., 'a', 'b', 'c'), making the native binary difficult to read.",
-    "interviewTip": "Always enable this for release builds. It's the first line of defense against decompilers.",
+    "prompt": "Analiza la configuración de Android. ¿Qué hacen 'minifyEnabled true' y 'proguardFiles'?",
+    "explanation": "Proguard/R8 reduce el código y renombra clases/métodos con nombres sin sentido (por ejemplo, 'a', 'b', 'c'), haciendo que el binario nativo sea difícil de leer.",
+    "interviewTip": "Actívalo siempre para builds de release. Es la primera línea de defensa contra los decompiladores.",
     "options": [
-      "It makes the app's font sizes smaller.",
-      "It obfuscates the code and removes unused code, making it much harder for hackers to reverse-engineer your Java/Kotlin logic.",
-      "It encrypts the user's photos.",
-      "It enables faster debugging on Android."
+      "Hace que los tamaños de fuente de la app sean más pequeños.",
+      "Ofusca el código y elimina código no utilizado, haciendo mucho más difícil que los hackers realicen ingeniería inversa de tu lógica Java/Kotlin.",
+      "Cifra las fotos del usuario.",
+      "Habilita una depuración más rápida en Android."
     ]
   },
   "sec-05": {
-    "prompt": "Why is it dangerous to use 'console.log' in a production React Native build?",
-    "explanation": "Logging doesn't just show in your terminal; it's broadcasted to the device's system log. Production builds should have logs stripped out.",
-    "interviewTip": "Use 'babel-plugin-transform-remove-console' to automatically strip all logs during the production build process.",
+    "prompt": "¿Por qué es peligroso usar 'console.log' en un build de producción de React Native?",
+    "explanation": "Los logs no solo se muestran en tu terminal; se transmiten al log del sistema del dispositivo. Los builds de producción deberían eliminar los logs.",
+    "interviewTip": "Usa 'babel-plugin-transform-remove-console' para eliminar automáticamente todos los logs durante el proceso de build de producción.",
     "options": [
-      "It makes the app's UI look ugly.",
-      "Logs are accessible via system tools (like logcat or Xcode) and can leak sensitive data (tokens, user info) to anyone with the device.",
-      "It causes the app to be rejected by the App Store automatically.",
-      "It drains the battery extremely fast."
+      "Hace que la UI de la app se vea fea.",
+      "Los logs son accesibles mediante herramientas del sistema (como logcat o Xcode) y pueden filtrar datos sensibles (tokens, información del usuario) a cualquiera con acceso al dispositivo.",
+      "Hace que la app sea rechazada automáticamente por la App Store.",
+      "Consume la batería extremadamente rápido."
     ]
   },
   "sec-06": {
-    "prompt": "Which of these are valid methods to secure the JavaScript bundle itself?",
-    "explanation": "Hermes provides 'security through compilation.' Obfuscators add an extra layer of complexity to the logic itself.",
-    "interviewTip": "Explain that no JS code is 100% 'hidden,' but these steps make it significantly more expensive for an attacker to decode.",
+    "prompt": "¿Cuáles de estos son métodos válidos para asegurar el bundle de JavaScript?",
+    "explanation": "Hermes proporciona 'seguridad mediante compilación'. Los ofuscadores añaden una capa extra de complejidad a la lógica.",
+    "interviewTip": "Explica que ningún código JS está 100% 'oculto', pero estos pasos hacen que sea significativamente más costoso para un atacante descifrarlo.",
     "options": [
-      "Using 'JSC' instead of 'Hermes'.",
-      "Using Hermes (it compiles JS to bytecode, which is harder to read than plain text).",
-      "Using an obfuscator like 'javascript-obfuscator' before bundling.",
-      "Renaming the .js file to .png."
+      "Usar 'JSC' en lugar de 'Hermes'.",
+      "Usar Hermes (compila JS a bytecode, que es más difícil de leer que texto plano).",
+      "Usar un ofuscador como 'javascript-obfuscator' antes del bundling.",
+      "Renombrar el archivo .js a .png."
     ]
   },
   "sec-07": {
-    "prompt": "What is 'Deep Link Hijacking'?",
-    "explanation": "URL schemes (myapp://) are not exclusive. To prevent hijacking, you should use 'Universal Links' (iOS) or 'App Links' (Android), which use a verified website domain to prove ownership.",
-    "interviewTip": "Always prefer HTTPS-based 'Universal Links' over custom URI schemes for authentication flows.",
+    "prompt": "¿Qué es el 'Deep Link Hijacking'?",
+    "explanation": "Los esquemas de URL (myapp://) no son exclusivos. Para prevenir el secuestro, debes usar 'Universal Links' (iOS) o 'App Links' (Android), que utilizan un dominio web verificado para demostrar la propiedad.",
+    "interviewTip": "Prefiere siempre los 'Universal Links' basados en HTTPS en lugar de esquemas URI personalizados para flujos de autenticación.",
     "options": [
-      "When a website links to the wrong page.",
-      "When a malicious app registers the same URL scheme as your app (e.g., myapp://) to intercept sensitive data sent via links.",
-      "When the internet goes down during a navigation event.",
-      "When the user clicks a link too many times."
+      "Cuando un sitio web enlaza a la página incorrecta.",
+      "Cuando una app maliciosa registra el mismo esquema de URL que tu app (por ejemplo, myapp://) para interceptar datos sensibles enviados mediante enlaces.",
+      "Cuando se cae internet durante un evento de navegación.",
+      "Cuando el usuario hace clic en un enlace demasiadas veces."
     ]
   },
   "sec-08": {
-    "prompt": "What is the security risk of using 'allowFileAccess' or 'javaScriptEnabled' in a WebView?",
-    "explanation": "WebViews are essentially mini-browsers. If you load untrusted URLs with full permissions enabled, you risk giving that site access to the app's internal sandbox.",
-    "interviewTip": "Only enable the specific features you need, and always use 'originWhitelist' to restrict which domains the WebView can visit.",
+    "prompt": "¿Cuál es el riesgo de seguridad de usar 'allowFileAccess' o 'javaScriptEnabled' en un WebView?",
+    "explanation": "Los WebViews son esencialmente mini-navegadores. Si cargas URLs no confiables con permisos completos habilitados, corres el riesgo de dar a ese sitio acceso al sandbox interno de la app.",
+    "interviewTip": "Habilita solo las funciones específicas que necesitas y usa siempre 'originWhitelist' para restringir qué dominios puede visitar el WebView.",
     "options": [
-      "The app will run out of memory.",
-      "It can open the door to Cross-Site Scripting (XSS) attacks where malicious web content accesses local device files.",
-      "The WebView will render too slowly.",
-      "The user will be able to see the source code of the app."
+      "La app se quedará sin memoria.",
+      "Puede abrir la puerta a ataques Cross-Site Scripting (XSS) donde contenido web malicioso accede a archivos locales del dispositivo.",
+      "El WebView se renderizará demasiado lento.",
+      "El usuario podrá ver el código fuente de la app."
     ]
   },
   "sec-09": {
-    "prompt": "How do you implement biometric authentication (Face ID / Touch ID) in React Native?",
-    "explanation": "These libraries provide a cross-platform API to check if biometrics are available and to prompt the user for authentication.",
-    "interviewTip": "Always have a fallback to PIN/password authentication in case biometrics fail or aren't available on the device.",
+    "prompt": "¿Cómo implementas autenticación biométrica (Face ID / Touch ID) en React Native?",
+    "explanation": "Estas librerías proporcionan una API multiplataforma para verificar si la biometría está disponible y solicitar la autenticación del usuario.",
+    "interviewTip": "Ten siempre un fallback a autenticación por PIN/contraseña en caso de que la biometría falle o no esté disponible en el dispositivo.",
     "options": [
-      "It's built into React Native by default.",
-      "Use a library like 'react-native-biometrics' or 'expo-local-authentication' to access the device's biometric sensors.",
-      "You must write native Swift/Kotlin code for each platform.",
-      "Biometric authentication is not possible in React Native."
+      "Está integrada en React Native por defecto.",
+      "Usa una librería como 'react-native-biometrics' o 'expo-local-authentication' para acceder a los sensores biométricos del dispositivo.",
+      "Debes escribir código nativo en Swift/Kotlin para cada plataforma.",
+      "La autenticación biométrica no es posible en React Native."
     ]
   },
   "sec-10": {
-    "prompt": "What is the recommended way to encrypt sensitive data before storing it locally?",
-    "explanation": "Base64 is encoding, not encryption—it can be easily reversed. AES-256 is a strong encryption standard that requires a key to decrypt the data.",
-    "interviewTip": "Store the encryption key in the Keychain/Keystore, never hardcode it in your JavaScript bundle.",
+    "prompt": "¿Cuál es la forma recomendada de cifrar datos sensibles antes de almacenarlos localmente?",
+    "explanation": "Base64 es codificación, no cifrado; puede revertirse fácilmente. AES-256 es un estándar de cifrado fuerte que requiere una clave para descifrar los datos.",
+    "interviewTip": "Almacena la clave de cifrado en el Keychain/Keystore, nunca la codifiques directamente en tu bundle de JavaScript.",
     "options": [
-      "Use Base64 encoding.",
-      "Use a library like 'react-native-aes-crypto' to encrypt data with AES-256 before saving to AsyncStorage/MMKV.",
-      "Store data in plain text but hide the file.",
-      "Encryption is not needed for mobile apps."
+      "Usar codificación Base64.",
+      "Usar una librería como 'react-native-aes-crypto' para cifrar datos con AES-256 antes de guardarlos en AsyncStorage/MMKV.",
+      "Almacenar los datos en texto plano pero ocultar el archivo.",
+      "El cifrado no es necesario para apps móviles."
     ]
   }
 }

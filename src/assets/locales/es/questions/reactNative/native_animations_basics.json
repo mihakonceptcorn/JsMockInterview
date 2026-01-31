@@ -1,41 +1,31 @@
 {
   "ab-01": {
-    "prompt": "Which component type must you use to make a standard View animatable with the Animated API?",
-    "explanation": "Standard components cannot handle Animated values directly. You must use the 'Animated' versions: View, Text, Image, and ScrollView.",
-    "interviewTip": "If you have a custom component, you can wrap it using 'Animated.createAnimatedComponent(MyComponent)'.",
-    "options": [
-      "<View>",
-      "<Animated.View>",
-      "<Motion.View>",
-      "<View.Animated>"
-    ]
+    "prompt": "¿Qué tipo de component debes usar para que una View estándar sea animable con la Animated API?",
+    "explanation": "Los components estándar no pueden manejar valores de Animated directamente. Debes usar las versiones 'Animated': View, Text, Image y ScrollView.",
+    "interviewTip": "Si tienes un component personalizado, puedes envolverlo usando 'Animated.createAnimatedComponent(MyComponent)'.",
+    "options": ["<View>", "<Animated.View>", "<Motion.View>", "<View.Animated>"]
   },
   "ab-02": {
-    "prompt": "What is the primary benefit of setting 'useNativeDriver: true' in an animation config?",
-    "explanation": "By sending the animation definition to the native side once, the native thread can update the UI independently of the JavaScript event loop.",
-    "interviewTip": "Remember that 'useNativeDriver' only works with non-layout properties like 'opacity' and 'transform'.",
+    "prompt": "¿Cuál es el beneficio principal de configurar 'useNativeDriver: true' en una animación?",
+    "explanation": "Al enviar la definición de la animación al lado nativo una sola vez, el native thread puede actualizar la UI de forma independiente del event loop de JavaScript.",
+    "interviewTip": "Recuerda que 'useNativeDriver' solo funciona con properties que no afecten al layout, como 'opacity' y 'transform'.",
     "options": [
-      "It makes the JavaScript code shorter.",
-      "It offloads the animation execution to the native UI thread, preventing lag even if the JS thread is busy.",
-      "It allows the animation to work on the web.",
-      "It automatically calculates the interpolation values."
+      "Hace que el código JavaScript sea más corto.",
+      "Delega la ejecución de la animación al native UI thread, evitando lag incluso si el JS thread está ocupado.",
+      "Permite que la animación funcione en la web.",
+      "Calcula automáticamente los valores de interpolación."
     ]
   },
   "ab-03": {
-    "prompt": "How do you map a value that goes from 0 to 1 to a property that goes from 0 to 360 degrees?",
-    "explanation": "Interpolation allows you to map an input range to an output range, including strings like colors or degrees.",
-    "interviewTip": "Interpolation is a core concept in the Animated API for creating complex, multi-property animations from a single value.",
-    "options": [
-      "transform",
-      "map",
-      "interpolate",
-      "extrapolate"
-    ]
+    "prompt": "¿Cómo mapeas un valor que va de 0 a 1 a una property que va de 0 a 360 grados?",
+    "explanation": "La interpolación permite mapear un rango de entrada a un rango de salida, incluyendo strings como colores o grados.",
+    "interviewTip": "La interpolación es un concepto core en la Animated API para crear animaciones complejas de múltiples properties a partir de un solo valor.",
+    "options": ["transform", "map", "interpolate", "extrapolate"]
   },
   "ab-04": {
-    "prompt": "Which method is used to create a spring-based animation that mimics physical movement?",
-    "explanation": "Animated.spring() provides a more natural feel by using physics parameters like 'friction', 'tension', 'bounciness', or 'stiffness' instead of a fixed duration.",
-    "interviewTip": "Springs are generally preferred for UI interactions (like button presses or modas) because they feel more 'organic' to users.",
+    "prompt": "¿Qué método se utiliza para crear una animación basada en resortes (springs) que imite el movimiento físico?",
+    "explanation": "Animated.spring() proporciona una sensación más natural al usar parámetros físicos como 'friction', 'tension', 'bounciness' o 'stiffness' en lugar de una duración fija.",
+    "interviewTip": "Los springs suelen preferirse para interacciones de UI (como presionar botones o modales) porque se sienten más 'orgánicos' para los usuarios.",
     "options": [
       "Animated.timing()",
       "Animated.decay()",
@@ -44,20 +34,15 @@
     ]
   },
   "ab-05": {
-    "prompt": "What is the correct way to initialize an animated value in a functional component to ensure it persists across renders?",
-    "explanation": "useRef ensures that the Animated.Value instance is created once and doesn't get reset when the component re-renders.",
-    "interviewTip": "Initializing in 'useRef' is the standard pattern for functional components to avoid memory leaks and state resets.",
-    "options": [
-      "useState",
-      "useMemo",
-      "useRef",
-      "useEffect"
-    ]
+    "prompt": "¿Cuál es la forma correcta de inicializar un animated value en un functional component para asegurar que persista entre renders?",
+    "explanation": "useRef asegura que la instancia de Animated.Value se cree una sola vez y no se resetee cuando el component se vuelve a renderizar.",
+    "interviewTip": "Inicializar en 'useRef' es el patrón estándar para functional components para evitar memory leaks y reseteos de estado.",
+    "options": ["useState", "useMemo", "useRef", "useEffect"]
   },
   "ab-06": {
-    "prompt": "How do you run multiple animations at the exact same time?",
-    "explanation": "Animated.parallel starts an array of animations simultaneously.",
-    "interviewTip": "Use this when you want an element to fade in and scale up at once.",
+    "prompt": "¿Cómo ejecutas múltiples animaciones exactamente al mismo tiempo?",
+    "explanation": "Animated.parallel inicia un array de animaciones de forma simultánea.",
+    "interviewTip": "Usa esto cuando quieras que un elemento haga un fade-in y aumente su escala al mismo tiempo.",
     "options": [
       "Animated.sequence([])",
       "Animated.parallel([])",
@@ -66,91 +51,81 @@
     ]
   },
   "ab-07": {
-    "prompt": "What does 'Animated.sequence([])' do?",
-    "explanation": "Sequence ensures that the next animation in the array doesn't start until the previous one completes successfully.",
-    "interviewTip": "This is great for multi-step 'onboarding' animations or complex UI transitions.",
+    "prompt": "¿Qué hace 'Animated.sequence([])'?",
+    "explanation": "Sequence asegura que la siguiente animación en el array no comience hasta que la anterior se haya completado con éxito.",
+    "interviewTip": "Esto es excelente para animaciones de 'onboarding' de varios pasos o transiciones de UI complejas.",
     "options": [
-      "Starts animations one after another, waiting for each to finish.",
-      "Starts all animations at once.",
-      "Repeats the animation in a loop.",
-      "Randomizes the order of animations."
+      "Inicia las animaciones una tras otra, esperando a que cada una termine.",
+      "Inicia todas las animaciones a la vez.",
+      "Repite la animación en un bucle.",
+      "Aleatoriza el orden de las animaciones."
     ]
   },
   "ab-08": {
-    "prompt": "How do you start an animation once it is defined?",
-    "explanation": "Animations in React Native are declarative. They don't run until you explicitly call the '.start()' method.",
-    "interviewTip": "You can pass a callback to .start(({ finished }) => { ... }) to handle logic after the animation ends.",
-    "options": [
-      "play",
-      "begin",
-      "start",
-      "run"
-    ]
+    "prompt": "¿Cómo inicias una animación una vez que está definida?",
+    "explanation": "Las animaciones en React Native son declarativas. No se ejecutan hasta que llamas explícitamente al método '.start()'.",
+    "interviewTip": "Puedes pasar un callback a .start(({ finished }) => { ... }) para manejar lógica después de que la animación termine.",
+    "options": ["play", "begin", "start", "run"]
   },
   "ab-09": {
-    "prompt": "Which of these style properties CANNOT be used with 'useNativeDriver: true'?",
-    "explanation": "As of current stable versions, the native driver primarily supports 'transform' and 'opacity'. Layout properties (width, height, flex) and some color properties typically require the JS thread.",
-    "interviewTip": "If you need to animate layout properties smoothly, look into the 'LayoutAnimation' API or 'Reanimated'.",
-    "options": [
-      "opacity",
-      "scale",
-      "backgroundColor",
-      "translateX"
-    ]
+    "prompt": "¿Cuál de estas style properties NO se puede usar con 'useNativeDriver: true'?",
+    "explanation": "En las versiones estables actuales, el driver nativo soporta principalmente 'transform' y 'opacity'. Las layout properties (width, height, flex) suelen requerir el JS thread.",
+    "interviewTip": "Si necesitas animar layout properties de forma fluida, busca la API 'LayoutAnimation' o 'Reanimated'.",
+    "options": ["opacity", "scale", "backgroundColor", "translateX"]
   },
   "ab-10": {
-    "prompt": "What is 'Animated.event' primarily used for?",
-    "explanation": "Animated.event allows for ultra-smooth interactions, like a header that shrinks as you scroll, by binding the 'contentOffset' of a ScrollView to an Animated value.",
-    "interviewTip": "This is the most efficient way to link user gestures to UI changes.",
+    "prompt": "¿Para qué se usa principalmente 'Animated.event'?",
+    "explanation": "Animated.event permite interacciones ultra fluidas, como un header que se encoge al hacer scroll, vinculando el 'contentOffset' de un ScrollView a un Animated value.",
+    "interviewTip": "Esta es la forma más eficiente de vincular gestos del usuario con cambios en la UI.",
     "options": [
-      "To trigger a function when an animation finishes.",
-      "To map native events (like scroll or pan) directly to an Animated Value without going through the JS thread.",
-      "To listen for device orientation changes.",
-      "To create custom touch events."
+      "Para disparar una función cuando una animación termina.",
+      "Para mapear eventos nativos (como scroll o pan) directamente a un Animated Value sin pasar por el JS thread.",
+      "Para escuchar cambios de orientación del dispositivo.",
+      "Para crear touch events personalizados."
     ]
   },
   "ab-11": {
-    "prompt": "How do you create an animation that loops indefinitely?",
-    "explanation": "Animated.loop() takes an animation and restarts it every time it reaches the end.",
-    "interviewTip": "You can use this for 'pulse' effects on buttons or loading indicators.",
+    "prompt": "¿Cómo creas una animación que se repita indefinidamente?",
+    "explanation": "Animated.loop() toma una animación y la reinicia cada vez que llega al final.",
+    "interviewTip": "Puedes usar esto para efectos de 'pulso' en botones o indicadores de carga.",
     "options": [
       "Animated.repeat()",
       "Animated.loop()",
       "Animated.forever()",
-      "Calling .start() inside the completion callback."
+      "Llamando a .start() dentro del callback de finalización."
     ]
   },
   "ab-12": {
-    "prompt": "What is the 'LayoutAnimation' API used for?",
-    "explanation": "LayoutAnimation is a 'fire-and-forget' API. You call it before updating state, and the native side handles the transition of all layout changes smoothly.",
-    "interviewTip": "It’s very powerful but offers less granular control than the Animated API.",
+    "prompt": "¿Para qué se utiliza la API 'LayoutAnimation'?",
+    "explanation": "LayoutAnimation es una API de tipo 'dispara y olvida'. La llamas antes de actualizar el estado y el lado nativo maneja la transición de todos los cambios de layout suavemente.",
+    "interviewTip": "Es muy potente pero ofrece menos control granular que la API Animated.",
     "options": [
-      "To animate individual components like a fade-in.",
-      "To automatically animate any change to the layout (flex, width, height) in the next render cycle.",
-      "To handle complex 3D transforms.",
-      "To manage the z-index transitions."
+      "Para animar componentes individuales como un fade-in.",
+      "Para animar automáticamente cualquier cambio en el layout (flex, width, height) en el siguiente ciclo de renderizado.",
+      "Para manejar transformaciones 3D complejas.",
+      "Para gestionar las transiciones de z-index."
     ]
   },
   "ab-13": {
-    "prompt": "Analyze the code. What will happen to the box after 2 seconds?",
-    "explanation": "toValue: 0 for an opacity property results in the element becoming completely transparent.",
-    "interviewTip": "Always ensure your initial value matches the intended starting point (e.g., new Animated.Value(1) for a fade-out).",
+    "prompt": "Analiza el código. ¿Qué le pasará a la caja después de 2 segundos?",
+    "explanation": "toValue: 0 para una property de opacity resulta en que el elemento se vuelva completamente transparente.",
+    "interviewTip": "Asegúrate siempre de que tu valor inicial coincida con el punto de partida deseado (ej. new Animated.Value(1) para un fade-out).",
     "options": [
-      "It will become fully opaque.",
-      "It will disappear (fade out).",
-      "It will move 2000 pixels to the left.",
-      "The box will change its color to black."
+      "Se volverá totalmente opaca.",
+      "Desaparecerá (fade out).",
+      "Se moverá 2000 píxeles a la izquierda.",
+      "La caja cambiará su color a negro."
     ]
   },
   "ab-14": {
-    "prompt": "What happens to an animation if the component unmounts while the animation is running?",
-    "explanation": "While RN is generally stable, not stopping animations on unmount can occasionally lead to 'updating state on unmounted component' warnings or memory issues.",
-    "interviewTip": "In 'useEffect' cleanups, you should stop active animations if they are tied to local state.",
+    "prompt": "¿Qué sucede con una animación si el component se desmonta mientras la animación se está ejecutando?",
+    "explanation": "Aunque RN es generalmente estable, no detener las animaciones al desmontar puede ocasionalmente causar advertencias de 'actualización de estado en component desmontado' o problemas de memoria.",
+    "interviewTip": "En las limpiezas (cleanups) de 'useEffect', deberías detener las animaciones activas si están vinculadas al estado local.",
     "options": [
-      "It continues in the background.",
-      "React Native handles the cleanup automatically, but it's good practice to call .stop() manually.",
-      "The app will crash.",
-      "The phone will vibrate."
+      "Continúa ejecutándose en segundo plano.",
+      "React Native maneja la limpieza automáticamente, pero es una buena práctica llamar a .stop() manualmente.",
+      "La app se cerrará (crash).",
+      "El teléfono vibrará."
     ]
   }
 }

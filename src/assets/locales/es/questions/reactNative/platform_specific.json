@@ -1,74 +1,64 @@
 {
   "ps-01": {
-    "prompt": "Which built-in module is used to detect the operating system at runtime within your JavaScript code?",
-    "explanation": "The 'Platform' module provides a 'Platform.OS' property which returns either 'ios' or 'android'.",
-    "interviewTip": "You can also use 'Platform.Version' to check the specific API level of the device.",
-    "options": [
-      "Device",
-      "OS",
-      "Platform",
-      "System"
-    ]
+    "prompt": "¿Qué built-in module se utiliza para detectar el sistema operativo en runtime dentro de tu JavaScript code?",
+    "explanation": "El módulo 'Platform' proporciona una property 'Platform.OS' que devuelve 'ios' o 'android'.",
+    "interviewTip": "También puedes usar 'Platform.Version' para verificar el nivel de API específico del dispositivo.",
+    "options": ["Device", "OS", "Platform", "System"]
   },
   "ps-02": {
-    "prompt": "How do you apply different styles for iOS and Android using the Platform.select method?",
-    "explanation": "Platform.select takes an object where keys are platforms and returns the value for the platform the app is currently running on.",
-    "interviewTip": "This is much cleaner than using multiple ternary operators (Platform.OS === 'ios' ? ... : ...).",
-    "options": [
-      "paddingTop",
-      "marginTop",
-      "safeArea",
-      "topOffset"
-    ]
+    "prompt": "¿Cómo aplicas diferentes estilos para iOS y Android usando el método Platform.select?",
+    "explanation": "Platform.select recibe un object donde las keys son las plataformas y devuelve el valor correspondiente a la plataforma en la que se ejecuta la app.",
+    "interviewTip": "Esto es mucho más limpio que usar múltiples operadores ternarios (Platform.OS === 'ios' ? ... : ...).",
+    "options": ["paddingTop", "marginTop", "safeArea", "topOffset"]
   },
   "ps-03": {
-    "prompt": "What is the naming convention for creating separate files for iOS and Android that React Native will automatically pick up?",
-    "explanation": "React Native's packager (Metro) detects the platform-specific extension and imports the correct file automatically when you 'import Header from \"./Header\"'.",
-    "interviewTip": "This is the best pattern for complex components that require completely different native implementations.",
+    "prompt": "¿Cuál es la convención de nomenclatura para crear archivos separados para iOS y Android que React Native detectará automáticamente?",
+    "explanation": "El packager de React Native (Metro) detecta la extensión específica de la plataforma e importa el archivo correcto automáticamente cuando haces 'import Header from \"./Header\"'.",
+    "interviewTip": "Este es el mejor patrón para components complejos que requieren implementaciones nativas completamente diferentes.",
     "options": [
-      "Header.ios.js and Header.android.js",
-      "ios/Header.js and android/Header.js",
-      "Header(ios).js and Header(android).js",
-      "Header_ios.js and Header_android.js"
+      "Header.ios.js y Header.android.js",
+      "ios/Header.js y android/Header.js",
+      "Header(ios).js y Header(android).js",
+      "Header_ios.js y Header_android.js"
     ]
   },
   "ps-04": {
-    "prompt": "Which of these are valid ways to handle platform-specific differences in React Native?",
-    "explanation": "React Native provides OS detection, the select utility, and file-level splitting. There is no built-in <NativeTarget> component.",
-    "interviewTip": "Mention that file extensions are best for large logic differences, while Platform.select is best for minor style tweaks.",
+    "prompt": "¿Cuáles de estas son formas válidas de manejar las diferencias entre plataformas en React Native?",
+    "explanation": "React Native proporciona detección de OS, la utilidad select y división a nivel de archivos. No existe un component <NativeTarget> integrado.",
+    "interviewTip": "Menciona que las extensiones de archivo son mejores para grandes diferencias de lógica, mientras que Platform.select es ideal para pequeños ajustes de estilo.",
     "options": [
-      "Using the Platform.OS conditional.",
-      "Using the Platform.select() method.",
-      "Using platform-specific file extensions (.ios.js / .android.js).",
-      "Using the <NativeTarget> wrapper component."
+      "Usar el condicional Platform.OS.",
+      "Usar el método Platform.select().",
+      "Usar extensiones de archivo específicas (.ios.js / .android.js).",
+      "Usar el wrapper component <NativeTarget>."
     ]
   },
   "ps-05": {
-    "prompt": "How do you check if the current Android device has a specific API level (e.g., API 30)?",
-    "explanation": "For Android, Platform.Version returns the integer API level (e.g., 30, 31). For iOS, it returns a string of the system version (e.g., '17.2').",
-    "interviewTip": "Always remember to check the OS first, because '30' (number) and '17.2' (string) are compared differently in JS.",
+    "prompt": "¿Cómo verificas si el dispositivo Android actual tiene un nivel de API específico (ej. API 30)?",
+    "explanation": "Para Android, Platform.Version devuelve el nivel de API como un integer (ej. 30, 31). Para iOS, devuelve un string de la versión del sistema (ej. '17.2').",
+    "interviewTip": "Recuerda siempre verificar primero el OS, porque '30' (número) y '17.2' (string) se comparan de forma distinta en JS.",
     "options": [
-      "This is the correct way.",
-      "Use Platform.API_LEVEL.",
-      "Use DeviceInfo.getApiLevel().",
-      "Android API levels are not accessible via Platform."
+      "Esta es la forma correcta.",
+      "Usar Platform.API_LEVEL.",
+      "Usar DeviceInfo.getApiLevel().",
+      "Los niveles de API de Android no son accesibles vía Platform."
     ]
   },
   "ps-06": {
-    "prompt": "What does the 'Platform.isPad' property return?",
-    "explanation": "Platform.isPad is a boolean specifically for iOS to distinguish between iPhone and iPad layouts.",
-    "interviewTip": "For a cross-platform tablet check, you usually need to check the screen width using Dimensions.",
+    "prompt": "¿Qué devuelve la property 'Platform.isPad'?",
+    "explanation": "Platform.isPad es un boolean específico para iOS para distinguir entre layouts de iPhone y iPad.",
+    "interviewTip": "Para una verificación de tablet cross-platform, usualmente necesitas revisar el ancho de pantalla usando Dimensions.",
     "options": [
-      "True if the app is running on a tablet (Android or iOS).",
-      "True if the app is running on an Apple iPad.",
-      "A string identifying the tablet manufacturer.",
-      "True if the device has a stylus connected."
+      "True si la app se ejecuta en una tablet (Android o iOS).",
+      "True si la app se ejecuta en un Apple iPad.",
+      "Un string que identifica al fabricante de la tablet.",
+      "True si el dispositivo tiene un stylus conectado."
     ]
   },
   "ps-07": {
-    "prompt": "Which property in the Platform module is used to check if the app is running in a TV environment (like Apple TV or Android TV)?",
-    "explanation": "Platform.isTV is a boolean that helps you adjust navigation logic for focus-based (remote control) interfaces.",
-    "interviewTip": "TV apps require 'focusable' components, which is a different paradigm than touch.",
+    "prompt": "¿Qué property en el módulo Platform se usa para verificar si la app se ejecuta en un entorno de TV (como Apple TV o Android TV)?",
+    "explanation": "Platform.isTV es un boolean que te ayuda a ajustar la lógica de navegación para interfaces basadas en foco (control remoto).",
+    "interviewTip": "Las apps de TV requieren components 'focusable', que es un paradigma diferente al touch.",
     "options": [
       "Platform.isTV",
       "Platform.TV_MODE",
@@ -77,36 +67,36 @@
     ]
   },
   "ps-08": {
-    "prompt": "Analyze the code. What will the 'elevation' property do on an iOS device?",
-    "explanation": "Android uses 'elevation' for shadows (Material Design), while iOS uses 'shadowColor', 'shadowOffset', 'shadowOpacity', and 'shadowRadius'.",
-    "interviewTip": "To get consistent shadows on both, you must define both sets of properties or use a library like 'react-native-shadow-2'.",
+    "prompt": "Analiza el código. ¿Qué hará la property 'elevation' en un dispositivo iOS?",
+    "explanation": "Android usa 'elevation' para las sombras (Material Design), mientras que iOS usa 'shadowColor', 'shadowOffset', 'shadowOpacity' y 'shadowRadius'.",
+    "interviewTip": "Para obtener sombras consistentes en ambos, debes definir ambos sets de properties o usar una librería como 'react-native-shadow-2'.",
     "options": [
-      "It will create a shadow on iOS.",
-      "It will be ignored because 'elevation' is an Android-only property.",
-      "It will cause an error on iOS.",
-      "It will change the z-index of the card."
+      "Creará una sombra en iOS.",
+      "Será ignorada porque 'elevation' es una property exclusiva de Android.",
+      "Causará un error en iOS.",
+      "Cambiará el z-index de la tarjeta."
     ]
   },
   "ps-09": {
-    "prompt": "How do you define a component that only renders on the web when using 'React Native for Web'?",
-    "explanation": "Metro and Webpack can be configured to recognize '.web.js' extensions for web-specific implementations.",
-    "interviewTip": "This allows you to use standard <div> and <a> tags for the web version while using View/Text for mobile.",
+    "prompt": "¿Cómo defines un component que solo se renderice en la web cuando usas 'React Native for Web'?",
+    "explanation": "Metro y Webpack pueden configurarse para reconocer extensiones '.web.js' para implementaciones específicas de navegador.",
+    "interviewTip": "Esto te permite usar tags estándar como <div> y <a> para la versión web mientras usas View/Text para mobile.",
     "options": [
       "MyComponent.web.js",
       "MyComponent.browser.js",
       "MyComponent.html.js",
-      "MyComponent.js and check Platform.OS === 'web'"
+      "MyComponent.js y verificar Platform.OS === 'web'"
     ]
   },
   "ps-10": {
-    "prompt": "What is the purpose of 'Platform.select' for default values?",
-    "explanation": "The 'default' key acts as a fallback for any platform not explicitly listed in the object.",
-    "interviewTip": "This is great for maintaining future compatibility with platforms like 'macos' or 'windows'.",
+    "prompt": "¿Cuál es el propósito de 'Platform.select' para valores por defecto?",
+    "explanation": "La key 'default' actúa como un fallback para cualquier plataforma que no esté listada explícitamente en el object.",
+    "interviewTip": "Esto es excelente para mantener la compatibilidad futura con plataformas como 'macos' o 'windows'.",
     "options": [
-      "It selects 'Hello World' if the OS is not iOS or Android (e.g., Web/Windows).",
-      "It causes an error if a platform is missing.",
-      "It randomly picks one of the options.",
-      "The 'default' key is not supported."
+      "Selecciona 'Hello World' si el OS no es iOS ni Android (ej. Web/Windows).",
+      "Causa un error si falta una plataforma.",
+      "Elige una de las opciones al azar.",
+      "La key 'default' no está soportada."
     ]
   }
 }
