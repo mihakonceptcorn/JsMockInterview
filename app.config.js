@@ -18,12 +18,12 @@ export default {
     slug: 'js-mock-interview',
     version: '1.0.0',
     orientation: 'portrait',
-    icon: './assets/jsmi-icon.png',
+    icon: './assets/icon.png',
     backgroundColor: '#10203B',
     userInterfaceStyle: 'dark',
     newArchEnabled: false,
     splash: {
-      image: './assets/jsmi-icon.png',
+      image: './assets/icon.png',
       resizeMode: 'contain',
       backgroundColor: '#ffffff',
     },
@@ -33,7 +33,7 @@ export default {
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: './assets/jsmi-icon.png',
+        foregroundImage: './assets/icon.png',
         backgroundColor: '#ffffff',
       },
       edgeToEdgeEnabled: true,
@@ -59,6 +59,7 @@ export default {
             targetSdkVersion: 35,
             minSdkVersion: 24,
             buildToolsVersion: '35.0.0',
+            enableProguardInReleaseBuilds: true,
             extraPropertiesGradle: {
               'android.jetpack.compose.version': '1.7.5',
             },

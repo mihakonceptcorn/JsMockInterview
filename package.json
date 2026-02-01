@@ -12,6 +12,7 @@
     "generate:questions": "node scripts/generate-questions-merged.js"
   },
   "dependencies": {
+    "@expo/prebuild-config": "~9.0.0",
     "@expo/vector-icons": "^14.1.0",
     "@react-native-async-storage/async-storage": "2.1.2",
     "@react-native-google-signin/google-signin": "^16.1.1",
