@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
@@ -33,31 +33,21 @@ const Stage = () => {
   const [isResult, setIsResult] = useState(false);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [time, setTime] = useState(0);
-  const [countdown, setCountdown] = useState(30);
-  const [isLoading, setIsLoading] = useState(true);
+  const [countdown, setCountdown] = useState(15);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
 
   useEffect(() => {
-    const loadData = async () => {
-      setIsLoading(true);
-      const key = `${section}/${id}`;
-      const questionsData = dataMap[key as DataKey] as any;
+    const key = `${section}/${id}`;
+    const questionsData = dataMap[key as DataKey] as any;
 
-      if (questionsData?.default) {
-        const shuffled = [...questionsData.default].sort(
-          () => 0.5 - Math.random()
-        );
-        setQuestions(shuffled.slice(0, 10));
-      }
-
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 500);
-    };
-
-    loadData();
+    if (questionsData?.default) {
+      const shuffled = [...questionsData.default].sort(
+        () => 0.5 - Math.random()
+      );
+      setQuestions(shuffled.slice(0, 10));
+    }
 
     timerRef.current = setInterval(() => {
       setTime((prev) => prev + 1000);
@@ -72,7 +62,7 @@ const Stage = () => {
     let interval: NodeJS.Timeout;
 
     if (mode === 'interview' && !isResult && questions.length > 0) {
-      setCountdown(30);
+      setCountdown(15);
 
       interval = setInterval(() => {
         setCountdown((prev) => {
@@ -103,8 +93,8 @@ const Stage = () => {
   };
 
   const getCountdownColor = () => {
-    if (countdown > 20) return COLORS.success;
-    if (countdown > 10) return '#FFD700';
+    if (countdown > 10) return COLORS.success;
+    if (countdown > 5) return '#FFD700';
     return COLORS.danger;
   };
 
@@ -115,67 +105,61 @@ const Stage = () => {
       <View style={{ flex: 1 }}>
         <Stack.Screen options={{ title: displayTitle }} />
 
-        {isLoading ? (
-          <View style={styles.loaderContainer}>
-            <ActivityIndicator size="large" color={COLORS.accent} />
-          </View>
-        ) : (
-          questions.length > 0 && (
-            <>
-              {!isResult ? (
-                <>
-                  <View style={styles.progressContainer}>
-                    <View style={styles.timerContainer}>
-                      {mode === 'interview' ? (
-                        <>
-                          <Text
-                            style={[
-                              styles.countdownText,
-                              { color: getCountdownColor() },
-                            ]}
-                          >
-                            {t('stage:ends_in')}:
-                          </Text>
-                          <Text
-                            style={[
-                              styles.countdownText,
-                              { color: getCountdownColor() },
-                            ]}
-                          >
-                            {countdown}
-                          </Text>
-                        </>
-                      ) : (
-                        <Text style={styles.timerText}>
-                          {t('stage:time')}: {formatTime(time)}
+        {questions.length > 0 && (
+          <>
+            {!isResult ? (
+              <>
+                <View style={styles.progressContainer}>
+                  <View style={styles.timerContainer}>
+                    {mode === 'interview' ? (
+                      <>
+                        <Text
+                          style={[
+                            styles.countdownText,
+                            { color: getCountdownColor() },
+                          ]}
+                        >
+                          {t('stage:ends_in')}:
                         </Text>
-                      )}
-                    </View>
-                    <ProgressionBar
-                      title={`${t('stage:questions')}: ${questionIndex + 1}/${questions.length}`}
-                      progress={(questionIndex + 1) / questions.length}
-                    />
+                        <Text
+                          style={[
+                            styles.countdownText,
+                            { color: getCountdownColor() },
+                          ]}
+                        >
+                          {countdown}
+                        </Text>
+                      </>
+                    ) : (
+                      <Text style={styles.timerText}>
+                        {t('stage:time')}: {formatTime(time)}
+                      </Text>
+                    )}
                   </View>
-
-                  <PlayStageItem
-                    item={questions[questionIndex]}
-                    mode={mode === 'interview' ? 'interview' : 'practice'}
-                    onNextPressed={onNextPressed}
+                  <ProgressionBar
+                    title={`${t('stage:questions')}: ${questionIndex + 1}/${questions.length}`}
+                    progress={(questionIndex + 1) / questions.length}
                   />
-                </>
-              ) : (
-                <StageResult
-                  stageId={id as string}
-                  score={correctAnswersCount}
-                  total={questions.length}
-                  title={displayTitle}
-                  time={time}
-                  mode={mode as 'practice' | 'interview'}
-                  onPress={() => router.replace('/')}
+                </View>
+
+                <PlayStageItem
+                  item={questions[questionIndex]}
+                  mode={mode === 'interview' ? 'interview' : 'practice'}
+                  onNextPressed={onNextPressed}
                 />
-              )}
-            </>
-          )
+              </>
+            ) : (
+              <StageResult
+                stageId={id as string}
+                score={correctAnswersCount}
+                total={questions.length}
+                title={displayTitle}
+                time={time}
+                mode={mode as 'practice' | 'interview'}
+                onPress={() => router.replace('/')}
+              />
+            )}
+          </>
         )}
       </View>
     </BackgroundLayout>
@@ -186,11 +170,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     color: '#fff',
-  },
-  loaderContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   progressContainer: {
     height: s(50),
