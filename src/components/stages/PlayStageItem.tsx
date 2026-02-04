@@ -1,5 +1,11 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react';
+import {
+  ActivityIndicator,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CodeHighlighter from 'react-native-code-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -38,6 +44,17 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const [isAnswerShown, setIsAnswerShown] = useState(false);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
+  const [isCodeLoading, setIsCodeLoading] = useState(false);
+
+  useEffect(() => {
+    if (item.code) {
+      setIsCodeLoading(true);
+      const timer = setTimeout(() => {
+        setIsCodeLoading(false);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [item.id, item.code]);
 
   const onSelectOption = (index: number) => {
     setSelectedOptions((prev) => {
@@ -101,15 +118,20 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                   {t(`${item.id}.prompt`)}
                 </Text>
                 <View style={styles.codeContainerWrapper}>
-                  {item.code && (
-                    <CodeHighlighter
-                      hljsStyle={a11yDark}
-                      containerStyle={styles.codeContainerStyle}
-                      language="JavaScript"
-                    >
-                      {item.code}
-                    </CodeHighlighter>
-                  )}
+                  {item.code &&
+                    (isCodeLoading ? (
+                      <View style={styles.codeLoader}>
+                        <ActivityIndicator color={COLORS.primary} />
+                      </View>
+                    ) : (
+                      <CodeHighlighter
+                        hljsStyle={a11yDark}
+                        containerStyle={styles.codeContainerStyle}
+                        language="JavaScript"
+                      >
+                        {item.code}
+                      </CodeHighlighter>
+                    ))}
                 </View>
                 <Text style={styles.questionType}>
                   {item.type === 'single'
@@ -244,6 +266,12 @@ const styles = StyleSheet.create({
     minWidth: '100%',
     backgroundColor: COLORS.bgTop,
     flexShrink: 1,
+  },
+  codeLoader: {
+    padding: s(30),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLORS.bgTop,
   },
   prompt: {
     fontSize: s(20),
