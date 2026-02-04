@@ -33,7 +33,7 @@ const Stage = () => {
   const [isResult, setIsResult] = useState(false);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [time, setTime] = useState(0);
-  const [countdown, setCountdown] = useState(15);
+  const [countdown, setCountdown] = useState(30);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
@@ -62,7 +62,7 @@ const Stage = () => {
     let interval: NodeJS.Timeout;
 
     if (mode === 'interview' && !isResult && questions.length > 0) {
-      setCountdown(15);
+      setCountdown(30);
 
       interval = setInterval(() => {
         setCountdown((prev) => {
@@ -93,8 +93,8 @@ const Stage = () => {
   };
 
   const getCountdownColor = () => {
-    if (countdown > 10) return COLORS.success;
-    if (countdown > 5) return '#FFD700';
+    if (countdown > 20) return COLORS.success;
+    if (countdown > 10) return '#FFD700';
     return COLORS.danger;
   };
 
