@@ -41,6 +41,10 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
 
   const onSelectOption = (index: number) => {
     setSelectedOptions((prev) => {
+      if (item.type === 'single') {
+        return [index];
+      }
+
       if (prev.includes(index)) {
         return prev.filter((option) => option !== index);
       } else {
