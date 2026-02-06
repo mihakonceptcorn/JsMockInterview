@@ -8,7 +8,7 @@ import { store, persistor } from '@/store';
 import { AuthProvider } from '@/context/AuthContext';
 import { FontAwesome, Ionicons, Feather, Entypo } from '@expo/vector-icons';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { useTranslation } from 'react-i18next';
 import '@/config/i18n';
 
@@ -46,7 +46,7 @@ export default function RootLayout() {
     <AuthProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <StatusBar barStyle="light-content" />
+          <StatusBar style="light" translucent={false} />
           <Stack
             screenOptions={{
               headerShown: false,
