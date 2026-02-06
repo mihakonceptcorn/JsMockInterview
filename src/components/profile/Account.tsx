@@ -64,12 +64,15 @@ const Account = () => {
       [
         {
           text: t('account.cancel'),
-          onPress: () => { },
+          onPress: () => {},
           style: 'cancel',
         },
         {
           text: t('account.logout'),
-          onPress: () => logout(),
+          onPress: () => {
+            logout();
+            Purchases.logOut();
+          },
           style: 'destructive',
         },
       ]
@@ -186,8 +189,9 @@ const Account = () => {
                   </Text>
 
                   <AppButton
-                    title={`${t('account.premium_banner.button')}${price ? ` — ${price}` : ''
-                      }`}
+                    title={`${t('account.premium_banner.button')}${
+                      price ? ` — ${price}` : ''
+                    }`}
                     onPress={() => setIsPurchasePopupVisible(true)}
                     height={vs(30)}
                   />
