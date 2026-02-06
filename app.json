@@ -29,7 +29,8 @@
       "permissions": [
         "android.permission.INTERNET",
         "com.android.vending.BILLING"
-      ]
+      ],
+      "softwareKeyboardLayoutMode": "resize"
     },
     "web": {
       "favicon": "./assets/favicon.png"

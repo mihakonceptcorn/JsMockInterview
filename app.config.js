@@ -40,6 +40,7 @@ export default {
       predictiveBackGestureEnabled: false,
       googleServicesFile: './google-services.json',
       package: 'com.mihakonceptcorn.jsmockinterview',
+      softwareKeyboardLayoutMode: 'resize',
     },
     web: {
       favicon: './assets/favicon.png',
