@@ -1,5 +1,11 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
-import React, { useEffect, useRef, useState } from 'react';
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import jsStages from '@/data/js/js.stages.json';
 import reactStages from '@/data/react/react.stages.json';
@@ -7,7 +13,7 @@ import reactNativeStages from '@/data/reactNative/reactNative.stages.json';
 import vueStages from '@/data/vue/vue.stages.json';
 import { s, vs } from 'react-native-size-matters';
 import SelectStageItem from './SelectStageItem';
-import { useRouter } from 'expo-router';
+import { useRouter, useFocusEffect } from 'expo-router';
 import AppButton from '@/components/ui/AppButton';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '@/theme/colors';
@@ -22,6 +28,7 @@ const SelectStage = () => {
   const [selectedStageId, setSelectedStageId] = useState('');
   const [selectedStageTitle, setSelectedStageTitle] = useState('');
   const [isPurchasePopupVisible, setIsPurchasePopupVisible] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   const isPro = useSelector((state: RootState) => state.user.isPro);
   const [isLocked, setIsLocked] = useState(!isPro);
@@ -45,16 +52,20 @@ const SelectStage = () => {
   };
 
   const onStartStage = (mode: 'practice' | 'interview') => {
-    if (selectedStageId) {
-      router.push({
-        pathname: '/stage',
-        params: {
-          id: selectedStageId,
-          mode: mode,
-          section: framework,
-          title: selectedStageTitle,
-        },
-      });
+    if (selectedStageId && !isNavigating) {
+      setIsNavigating(true);
+
+      setTimeout(() => {
+        router.push({
+          pathname: '/stage',
+          params: {
+            id: selectedStageId,
+            mode: mode,
+            section: framework,
+            title: selectedStageTitle,
+          },
+        });
+      }, 50);
     }
   };
 
@@ -71,6 +82,12 @@ const SelectStage = () => {
 
     return Math.round((correctAnswers / totalQuestions) * 100);
   };
+
+  useFocusEffect(
+    useCallback(() => {
+      setIsNavigating(false);
+    }, [])
+  );
 
   useEffect(() => {
     if (flatListRef.current) {
@@ -94,6 +111,11 @@ const SelectStage = () => {
 
   return (
     <>
+      {isNavigating && (
+        <View style={styles.loaderContainer}>
+          <ActivityIndicator size="large" color={COLORS.accent} />
+        </View>
+      )}
       <View style={styles.container}>
         <LinearGradient
           colors={['#0B1F36', '#102C4C']}
@@ -200,5 +222,12 @@ const styles = StyleSheet.create({
   buttonSecondaryText: {
     textAlign: 'center',
     fontSize: 16,
+  },
+  loaderContainer: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
   },
 });

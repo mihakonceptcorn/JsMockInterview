@@ -50,7 +50,9 @@ const Stage = () => {
   useEffect(() => {
     const interactionTask = InteractionManager.runAfterInteractions(() => {
       const key = `${section}/${id}`;
-      const questionsData = dataMap[key as DataKey] as any;
+      const loadData = dataMap[key as DataKey];
+      const questionsData =
+        typeof loadData === 'function' ? loadData() : (loadData as any);
 
       if (questionsData?.default) {
         const shuffled = [...questionsData.default].sort(
