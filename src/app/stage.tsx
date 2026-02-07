@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  ActivityIndicator,
+  InteractionManager,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
@@ -31,6 +37,7 @@ const Stage = () => {
   const { t } = useTranslation(['stage', 'common']);
   const { id, mode, section, title } = useLocalSearchParams();
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [isResult, setIsResult] = useState(false);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
@@ -41,21 +48,25 @@ const Stage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const key = `${section}/${id}`;
-    const questionsData = dataMap[key as DataKey] as any;
+    const interactionTask = InteractionManager.runAfterInteractions(() => {
+      const key = `${section}/${id}`;
+      const questionsData = dataMap[key as DataKey] as any;
 
-    if (questionsData?.default) {
-      const shuffled = [...questionsData.default].sort(
-        () => 0.5 - Math.random()
-      );
-      setQuestions(shuffled.slice(0, 10));
-    }
+      if (questionsData?.default) {
+        const shuffled = [...questionsData.default].sort(
+          () => 0.5 - Math.random()
+        );
+        setQuestions(shuffled.slice(0, 10));
+      }
+      setIsLoading(false);
+    });
 
     timerRef.current = setInterval(() => {
       setTime((prev) => prev + 1000);
     }, 1000);
 
     return () => {
+      interactionTask.cancel();
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, [id, section]);
@@ -112,61 +123,69 @@ const Stage = () => {
       >
         <Stack.Screen options={{ title: displayTitle }} />
 
-        {questions.length > 0 && (
-          <>
-            {!isResult ? (
-              <>
-                <View style={styles.progressContainer}>
-                  <View style={styles.timerContainer}>
-                    {mode === 'interview' ? (
-                      <>
-                        <Text
-                          style={[
-                            styles.countdownText,
-                            { color: getCountdownColor() },
-                          ]}
-                        >
-                          {t('stage:ends_in')}:
+        {isLoading ? (
+          <View
+            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+          >
+            <ActivityIndicator size="large" color={COLORS.accent} />
+          </View>
+        ) : (
+          questions.length > 0 && (
+            <>
+              {!isResult ? (
+                <>
+                  <View style={styles.progressContainer}>
+                    <View style={styles.timerContainer}>
+                      {mode === 'interview' ? (
+                        <>
+                          <Text
+                            style={[
+                              styles.countdownText,
+                              { color: getCountdownColor() },
+                            ]}
+                          >
+                            {t('stage:ends_in')}:
+                          </Text>
+                          <Text
+                            style={[
+                              styles.countdownText,
+                              { color: getCountdownColor() },
+                            ]}
+                          >
+                            {countdown}
+                          </Text>
+                        </>
+                      ) : (
+                        <Text style={styles.timerText}>
+                          {t('stage:time')}: {formatTime(time)}
                         </Text>
-                        <Text
-                          style={[
-                            styles.countdownText,
-                            { color: getCountdownColor() },
-                          ]}
-                        >
-                          {countdown}
-                        </Text>
-                      </>
-                    ) : (
-                      <Text style={styles.timerText}>
-                        {t('stage:time')}: {formatTime(time)}
-                      </Text>
-                    )}
+                      )}
+                    </View>
+                    <ProgressionBar
+                      title={`${t('stage:questions')}: ${questionIndex + 1}/${questions.length}`}
+                      progress={(questionIndex + 1) / questions.length}
+                    />
                   </View>
-                  <ProgressionBar
-                    title={`${t('stage:questions')}: ${questionIndex + 1}/${questions.length}`}
-                    progress={(questionIndex + 1) / questions.length}
-                  />
-                </View>
 
-                <PlayStageItem
-                  item={questions[questionIndex]}
-                  mode={mode === 'interview' ? 'interview' : 'practice'}
-                  onNextPressed={onNextPressed}
+                  <PlayStageItem
+                    item={questions[questionIndex]}
+                    mode={mode === 'interview' ? 'interview' : 'practice'}
+                    onNextPressed={onNextPressed}
+                  />
+                </>
+              ) : (
+                <StageResult
+                  stageId={id as string}
+                  score={correctAnswersCount}
+                  total={questions.length}
+                  title={displayTitle}
+                  time={time}
+                  mode={mode as 'practice' | 'interview'}
+                  onPress={() => router.replace('/')}
                 />
-              </>
-            ) : (
-              <StageResult
-                stageId={id as string}
-                score={correctAnswersCount}
-                total={questions.length}
-                title={displayTitle}
-                time={time}
-                mode={mode as 'practice' | 'interview'}
-                onPress={() => router.replace('/')}
-              />
-            )}
-          </>
+              )}
+            </>
+          )
         )}
       </View>
     </BackgroundLayout>
