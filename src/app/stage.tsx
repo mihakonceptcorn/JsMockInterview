@@ -10,6 +10,7 @@ import StageResult from '@/components/stages/StageResult';
 import { BackgroundLayout } from '@/components/layout/BackgroundLayout';
 import { COLORS } from '@/theme/colors';
 import { formatTime } from '@/helpers/formatTime';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type DataKey = keyof typeof dataMap;
 
@@ -26,6 +27,7 @@ interface Question {
 }
 
 const Stage = () => {
+  const insets = useSafeAreaInsets();
   const { t } = useTranslation(['stage', 'common']);
   const { id, mode, section, title } = useLocalSearchParams();
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -102,7 +104,12 @@ const Stage = () => {
 
   return (
     <BackgroundLayout>
-      <View style={{ flex: 1 }}>
+      <View
+        style={{
+          flex: 1,
+          paddingBottom: insets.bottom > 0 ? insets.bottom : vs(20),
+        }}
+      >
         <Stack.Screen options={{ title: displayTitle }} />
 
         {questions.length > 0 && (
