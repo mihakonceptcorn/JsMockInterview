@@ -28,7 +28,14 @@ const ProgressionBar: FC<ProgressionBarProps> = ({
 
   return (
     <View style={styles.barContainer}>
-      <Text style={styles.title}>{title}</Text>
+      <Text
+        numberOfLines={1}
+        adjustsFontSizeToFit
+        minimumFontScale={0.5}
+        style={styles.title}
+      >
+        {title}
+      </Text>
       <View style={styles.bar}>
         <Bar progress={progress} width={null} height={vs(8)} color={color} />
       </View>
