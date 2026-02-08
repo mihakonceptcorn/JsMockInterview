@@ -4,7 +4,6 @@
       "id": "lh-01",
       "stageId": "lifecycle_hooks",
       "type": "single",
-      "prompt": "Which lifecycle hook is the best place to perform an API call to fetch initial data for a component?",
       "options": [
         "onBeforeMount",
         "onMounted",
@@ -13,15 +12,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "While you can initiate calls in setup(), onMounted ensures the component is already in the DOM. In Vue 3 Composition API, logic is often placed in setup/onMounted.",
-      "interviewTip": "In SSR (Server-Side Rendering), onMounted does not run on the server, which is important for avoiding browser-only API errors."
+      ]
     },
     {
       "id": "lh-02",
       "stageId": "lifecycle_hooks",
       "type": "single",
-      "prompt": "Analyze the code. What will be the output in the console when the component first loads?",
       "code": "<script setup>\nimport { onMounted } from 'vue';\n\nconsole.log('A');\n\nonMounted(() => {\n  console.log('B');\n});\n\nconsole.log('C');\n</script>",
       "options": [
         "A, B, C",
@@ -31,15 +27,12 @@
       ],
       "correct": [
         2
-      ],
-      "explanation": "The setup code (script setup) runs immediately. onMounted is a callback that waits until the component is mounted to the DOM, making it asynchronous relative to the script execution.",
-      "interviewTip": "Understanding the execution order of 'setup' vs 'hooks' is a common junior-to-mid level interview check."
+      ]
     },
     {
       "id": "lh-03",
       "stageId": "lifecycle_hooks",
       "type": "single",
-      "prompt": "Which hook is triggered specifically after a reactive data change causes the Virtual DOM to re-render and patch the physical DOM?",
       "options": [
         "onUpdated",
         "onBeforeUpdate",
@@ -48,15 +41,12 @@
       ],
       "correct": [
         0
-      ],
-      "explanation": "onUpdated is called after the DOM has been patched. It is useful for DOM-dependent logic that must react to state changes.",
-      "interviewTip": "Warning: Avoid changing state inside onUpdated, as it can lead to an infinite re-render loop."
+      ]
     },
     {
       "id": "lh-04",
       "stageId": "lifecycle_hooks",
       "type": "single",
-      "prompt": "Analyze the code. What is the correct way to clean up a timer to prevent memory leaks?",
       "code": "<script setup>\nimport { onUnmounted } from 'vue';\nconst timer = setInterval(() => { ... }, 1000);\n\n________(() => {\n  clearInterval(timer);\n});\n</script>",
       "options": [
         "onBeforeUnmount",
@@ -66,15 +56,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "onUnmounted is the ideal place to clean up side effects like intervals, event listeners, or manual DOM observers when the component is removed.",
-      "interviewTip": "Always mention 'cleaning up global event listeners' (like window.addEventListener) when asked about onUnmounted."
+      ]
     },
     {
       "id": "lh-05",
       "stageId": "lifecycle_hooks",
       "type": "single",
-      "prompt": "For a component wrapped in <KeepAlive>, which hook triggers every time the component is brought back into view?",
       "options": [
         "onMounted",
         "onActivated",
@@ -83,15 +70,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "KeepAlive components are cached and not unmounted. Therefore, onMounted only runs once. onActivated runs every time the cached component is inserted into the DOM.",
-      "interviewTip": "KeepAlive is frequently used for tabbed interfaces to preserve user input or scroll position."
+      ]
     },
     {
       "id": "lh-06",
       "stageId": "lifecycle_hooks",
       "type": "multiple",
-      "prompt": "Which of these hooks are only used for debugging and performance tracking in development mode?",
       "options": [
         "onRenderTracked",
         "onRenderTriggered",
@@ -101,15 +85,12 @@
       "correct": [
         0,
         1
-      ],
-      "explanation": "onRenderTracked and onRenderTriggered allow you to inspect which dependency is causing a component to re-render. They do not run in production.",
-      "interviewTip": "These are 'advanced' hooks. Knowing them shows you have experience optimizing complex Vue apps."
+      ]
     },
     {
       "id": "lh-07",
       "stageId": "lifecycle_hooks",
       "type": "single",
-      "prompt": "Why can't you access 'Template Refs' (elements marked with ref=\"...\") inside the 'setup()' body directly?",
       "options": [
         "Because setup() runs before the DOM is even created.",
         "Because template refs are only for Vue 2.",
@@ -118,15 +99,12 @@
       ],
       "correct": [
         0
-      ],
-      "explanation": "Setup executes before the component is mounted. The DOM elements don't exist yet, so the ref will be null. You must wait for onMounted to access them.",
-      "interviewTip": "This is why onMounted is mandatory for third-party library initialization (like Chart.js or D3.js) that requires a DOM node."
+      ]
     },
     {
       "id": "lh-08",
       "stageId": "lifecycle_hooks",
       "type": "single",
-      "prompt": "In the Composition API, where should you place the logic that was previously in the 'beforeCreate' and 'created' hooks of the Options API?",
       "options": [
         "Inside onBeforeMount",
         "Directly in the setup() function or <script setup>",
@@ -135,15 +113,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "Since setup() runs at the same time as the creation phase, there's no need for explicit beforeCreate/created hooks in the Composition API.",
-      "interviewTip": "This simplifies the component logic significantly compared to the Options API."
+      ]
     },
     {
       "id": "lh-09",
       "stageId": "lifecycle_hooks",
       "type": "single",
-      "prompt": "Which lifecycle hook is called after the component has been mounted to the DOM?",
       "options": [
         "onBeforeMount",
         "onMounted",
@@ -152,15 +127,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "onMounted is called after the component's template has been rendered and inserted into the DOM. This is where you can safely access DOM elements.",
-      "interviewTip": "Use onMounted for DOM manipulation, third-party library initialization, or API calls that need the component to be visible."
+      ]
     },
     {
       "id": "lh-10",
       "stageId": "lifecycle_hooks",
       "type": "single",
-      "prompt": "What is the Composition API equivalent of the Options API `beforeDestroy` hook?",
       "options": [
         "onBeforeDestroy",
         "onBeforeUnmount",
@@ -169,9 +141,7 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "Vue 3 renamed beforeDestroy to beforeUnmount and destroyed to unmounted to better reflect what actually happens.",
-      "interviewTip": "Use onBeforeUnmount or onUnmounted to clean up timers, event listeners, or subscriptions."
+      ]
     }
   ]
 }

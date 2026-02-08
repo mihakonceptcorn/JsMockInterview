@@ -18,14 +18,14 @@ export default {
     slug: 'js-mock-interview',
     version: '1.0.0',
     orientation: 'portrait',
-    icon: './assets/jsmi-icon.png',
+    icon: './assets/icon.png',
     backgroundColor: '#10203B',
     userInterfaceStyle: 'dark',
     newArchEnabled: false,
     splash: {
-      image: './assets/jsmi-icon.png',
+      image: './assets/icon.png',
       resizeMode: 'contain',
-      backgroundColor: '#ffffff',
+      backgroundColor: '#071426',
     },
     ios: {
       supportsTablet: true,
@@ -33,13 +33,14 @@ export default {
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: './assets/jsmi-icon.png',
+        foregroundImage: './assets/icon.png',
         backgroundColor: '#ffffff',
       },
       edgeToEdgeEnabled: true,
       predictiveBackGestureEnabled: false,
       googleServicesFile: './google-services.json',
       package: 'com.mihakonceptcorn.jsmockinterview',
+      softwareKeyboardLayoutMode: 'resize',
     },
     web: {
       favicon: './assets/favicon.png',
@@ -59,6 +60,7 @@ export default {
             targetSdkVersion: 35,
             minSdkVersion: 24,
             buildToolsVersion: '35.0.0',
+            enableProguardInReleaseBuilds: true,
             extraPropertiesGradle: {
               'android.jetpack.compose.version': '1.7.5',
             },

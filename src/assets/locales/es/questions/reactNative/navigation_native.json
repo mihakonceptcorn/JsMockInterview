@@ -1,0 +1,126 @@
+{
+  "nav-01": {
+    "prompt": "¿Qué navigator deberías usar para una transición estándar de 'push/pop' donde una nueva pantalla se desliza sobre la anterior?",
+    "explanation": "Stack Navigator proporciona una forma para que tu app transicione entre pantallas donde cada nueva pantalla se coloca encima de un stack (pila).",
+    "interviewTip": "En el React Navigation moderno, usa '@react-navigation/native-stack' para un mejor performance, ya que utiliza primitivos nativos del OS.",
+    "options": [
+      "Tab Navigator",
+      "Stack Navigator",
+      "Drawer Navigator",
+      "Switch Navigator"
+    ]
+  },
+  "nav-02": {
+    "prompt": "¿Cómo navegas a una pantalla específica llamada 'Details' y pasas un parámetro 'itemId'?",
+    "explanation": "La función 'navigate' es la forma más común de moverse entre pantallas. El segundo argumento es un object que contiene los 'params'.",
+    "interviewTip": "Nota la diferencia: 'navigate' volverá a una pantalla existente en el stack, mientras que 'push' siempre añadirá una nueva instancia incluso si es la misma pantalla.",
+    "options": ["push", "navigate", "jumpTo", "goTo"]
+  },
+  "nav-03": {
+    "prompt": "¿Cómo recuperas el parámetro 'itemId' en el component de la pantalla 'Details'?",
+    "explanation": "Cada screen component en un navigator recibe una prop 'route' que contiene información sobre la ruta actual, incluyendo los 'params'.",
+    "interviewTip": "También puedes usar el hook 'useRoute' para acceder a esta información en cualquier lugar del árbol de componentes.",
+    "options": ["navigation", "route", "params", "props"]
+  },
+  "nav-04": {
+    "prompt": "¿Cuál es el propósito del component <NavigationContainer>?",
+    "explanation": "NavigationContainer debe envolver toda la estructura de tu aplicación. Gestiona el estado de navegación y maneja el deep linking.",
+    "interviewTip": "Solo deberías tener un NavigationContainer en toda tu app.",
+    "options": [
+      "Actúa como un wrapper para toda la app para gestionar el estado de navegación y vincular tu app al entorno del dispositivo.",
+      "Se usa para crear un menú lateral.",
+      "Maneja automáticamente las llamadas a la API entre pantallas.",
+      "Solo es necesario para la navegación por Tabs."
+    ]
+  },
+  "nav-05": {
+    "prompt": "¿Qué hook se utiliza para realizar una acción de 'go back' (volver atrás) programáticamente?",
+    "explanation": "useNavigation proporciona acceso al objeto de navegación dentro de cualquier component anidado, permitiendo acciones como 'goBack' o 'navigate'.",
+    "interviewTip": "Esto es mucho más limpio que pasar la prop de navegación manualmente a través de varias capas de componentes.",
+    "options": ["useRoute", "useNavigation", "useHistory", "useStack"]
+  },
+  "nav-06": {
+    "prompt": "¿Cuáles de los siguientes son tipos comunes de navigators en el ecosistema de React Navigation?",
+    "explanation": "React Navigation proporciona paquetes específicos para Stack, Tabs y Drawers. Los modales se manejan típicamente como un modo de 'presentation' dentro de un Stack.",
+    "interviewTip": "Menciona 'createNativeStackNavigator' específicamente por sus beneficios de performance en iOS y Android.",
+    "options": [
+      "createNativeStackNavigator",
+      "createBottomTabNavigator",
+      "createDrawerNavigator",
+      "createModalNavigator"
+    ]
+  },
+  "nav-07": {
+    "prompt": "¿Qué hace 'navigation.replace(\"Home\")'?",
+    "explanation": "Replace es útil para flujos de login; una vez que el usuario se autentica, reemplazas la pantalla de Login con Home para que no puedan 'volver atrás' al formulario de login.",
+    "interviewTip": "Usa esto para prevenir bucles infinitos de retroceso en el historial de tu app.",
+    "options": [
+      "Añade 'Home' encima de la pantalla actual.",
+      "Elimina la pantalla actual del stack y añade 'Home' en su lugar.",
+      "Refresca la pantalla actual.",
+      "Cierra la app y vuelve a abrir la pantalla Home."
+    ]
+  },
+  "nav-08": {
+    "prompt": "¿Cómo cambias el título de una pantalla en el header de navegación?",
+    "explanation": "La prop 'options' (específicamente el campo 'title') controla cómo aparece la pantalla en la UI del navigator (texto del header, etiqueta de la pestaña).",
+    "interviewTip": "También puedes configurar esto dinámicamente desde el component usando 'navigation.setOptions'.",
+    "options": ["header", "label", "title", "name"]
+  },
+  "nav-09": {
+    "prompt": "¿Qué es el 'Deep Linking' en el contexto de la navegación móvil?",
+    "explanation": "El deep linking permite que fuentes externas (sitios web, emails, notificaciones) disparen la navegación hacia una pantalla anidada específica dentro de tu app.",
+    "interviewTip": "Implementar deep linking requiere configurar un objeto 'linking' y pasarlo al <NavigationContainer>.",
+    "options": [
+      "Vincular la app a una base de datos profunda.",
+      "Una forma de abrir una pantalla específica en tu app usando una URL (ej. myapp://details/42).",
+      "Un método para vincular dos componentes profundamente en el árbol.",
+      "Conectar la app al sistema de archivos del dispositivo."
+    ]
+  },
+  "nav-10": {
+    "prompt": "¿Cómo detectas cuándo una pantalla ha entrado en foco (se vuelve visible para el usuario)?",
+    "explanation": "Dado que las pantallas en un stack permanecen 'montadas' incluso cuando están ocultas, el useEffect estándar no se dispara al volver a una pantalla. 'useFocusEffect' es la solución de React Navigation.",
+    "interviewTip": "Esto es esencial para refrescar datos cuando un usuario navega de vuelta a una pantalla.",
+    "options": [
+      "Usando useEffect sin dependencias.",
+      "Usando el hook 'useFocusEffect' o el event listener de 'focus'.",
+      "Verificando window.isVisible.",
+      "React Native lo maneja automáticamente con la prop 'onFocus'."
+    ]
+  },
+  "nav-11": {
+    "prompt": "¿Qué sucede si llamas a 'navigation.popToTop()'?",
+    "explanation": "Este es un método de conveniencia en los Stack navigators para 'resetear' instantáneamente el historial de navegación y volver a la pantalla inicial.",
+    "interviewTip": "Se usa comúnmente para botones de 'Inicio' o al terminar un proceso de checkout de varios pasos.",
+    "options": [
+      "Recarga la pantalla actual.",
+      "Vuelve atrás una pantalla.",
+      "Elimina todas las pantallas del stack excepto la primera (la raíz).",
+      "Lleva al usuario a la pantalla de inicio del teléfono."
+    ]
+  },
+  "nav-12": {
+    "prompt": "¿Cómo ocultas el header para una pantalla específica?",
+    "explanation": "headerShown: false es la opción estándar para eliminar la barra de navegación por defecto de esa pantalla específica.",
+    "interviewTip": "Podrías hacer esto si estás construyendo un header personalizado o para una splash screen.",
+    "options": ["headerShown", "hideHeader", "noHeader", "displayHeader"]
+  },
+  "nav-13": {
+    "prompt": "¿Qué es el 'Tab Nesting' (anidamiento)?",
+    "explanation": "El anidamiento permite tener una Bottom Tab bar global, pero cada pestaña puede tener su propio historial de navegación independiente (ej. Home -> Product Details).",
+    "interviewTip": "Ten cuidado con el anidamiento profundo; puede hacer que el estado de navegación sea complejo y difícil de debuguear.",
+    "options": [
+      "Poner un Stack Navigator dentro de una pestaña de un Tab Navigator.",
+      "Poner dos Tab Navigators en la misma pantalla.",
+      "Crear múltiples contenedores de navegación.",
+      "Usar Tabs solo en iOS."
+    ]
+  },
+  "nav-14": {
+    "prompt": "¿Qué prop te permite personalizar el icono en un Bottom Tab Navigator?",
+    "explanation": "tabBarIcon es una función que retorna un component (usualmente un icono) para ser mostrado en la barra de pestañas.",
+    "interviewTip": "La función recibe { focused, color, size } como argumentos para ayudarte a dar estilo al estado activo vs inactivo.",
+    "options": ["tabIcon", "tabBarIcon", "iconName", "renderIcon"]
+  }
+}

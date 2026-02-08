@@ -4,321 +4,361 @@
       "id": "js-adv-01",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "console.log(a);\nvar a = 5;",
-      "options": ["undefined", "5", "ReferenceError", "null"],
-      "correct": [0],
-      "explanation": "Variable is hoisted but not initialized.",
-      "interviewTip": "var hoisting vs let/const."
+      "options": [
+        "undefined",
+        "5",
+        "ReferenceError",
+        "null"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-02",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What happens?",
       "code": "foo();\nfunction foo() {}",
-      "options": ["Works", "ReferenceError", "TypeError", "undefined"],
-      "correct": [0],
-      "explanation": "Function declarations are hoisted.",
-      "interviewTip": "Diff vs function expressions."
+      "options": [
+        "Works",
+        "ReferenceError",
+        "TypeError",
+        "undefined"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-03",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What is logged?",
       "code": "console.log(b);\nlet b = 1;",
-      "options": ["ReferenceError", "undefined", "1", "null"],
-      "correct": [0],
-      "explanation": "Temporal Dead Zone.",
-      "interviewTip": "let/const behavior."
+      "options": [
+        "ReferenceError",
+        "undefined",
+        "1",
+        "null"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-04",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What will this output?",
       "code": "function x() {\n  let a = 1;\n  return function () { a++; return a; }\n}\nconst f = x();\nconsole.log(f(), f());",
-      "options": ["2 3", "1 2", "NaN", "Error"],
-      "correct": [0],
-      "explanation": "Closure preserves lexical scope.",
-      "interviewTip": "Closures & memory."
+      "options": [
+        "2 3",
+        "1 2",
+        "NaN",
+        "Error"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-05",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What is currying?",
       "options": [
         "Transforming function with multiple args into chained calls",
         "Calling function immediately",
         "Memoization",
         "Binding context"
       ],
-      "correct": [0],
-      "explanation": "Currying = f(a,b) → f(a)(b).",
-      "interviewTip": "Functional patterns."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-06",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "const add = a => b => a + b;\nconsole.log(add(2)(3));",
-      "options": ["5", "23", "NaN", "Error"],
-      "correct": [0],
-      "explanation": "Curried function.",
-      "interviewTip": "Partial application."
+      "options": [
+        "5",
+        "23",
+        "NaN",
+        "Error"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-07",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "Main difference between debounce and throttle?",
       "options": [
         "Debounce delays, throttle limits frequency",
         "They are the same",
         "Throttle delays, debounce repeats",
         "Only debounce exists"
       ],
-      "correct": [0],
-      "explanation": "Debounce waits, throttle limits calls.",
-      "interviewTip": "Scroll / resize handlers."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-08",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What happens?",
       "code": "const obj = {\n  a: 1,\n  foo() { return this.a }\n}\nconst f = obj.foo;\nconsole.log(f());",
-      "options": ["undefined", "1", "Error", "null"],
-      "correct": [0],
-      "explanation": "`this` is lost.",
-      "interviewTip": "Bind context."
+      "options": [
+        "undefined",
+        "1",
+        "Error",
+        "null"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-09",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "How to fix previous issue?",
-      "options": ["obj.foo.bind(obj)", "obj.foo()", "call stack", "use var"],
-      "correct": [0],
-      "explanation": "bind fixes context.",
-      "interviewTip": "call/apply/bind."
+      "options": [
+        "obj.foo.bind(obj)",
+        "obj.foo()",
+        "call stack",
+        "use var"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-10",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "Arrow function this refers to?",
-      "options": ["Lexical scope", "Caller", "Global object", "Prototype"],
-      "correct": [0],
-      "explanation": "Arrow has no own this.",
-      "interviewTip": "Event handlers."
+      "options": [
+        "Lexical scope",
+        "Caller",
+        "Global object",
+        "Prototype"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-11",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "console.log(typeof NaN);",
-      "options": ["number", "NaN", "undefined", "object"],
-      "correct": [0],
-      "explanation": "NaN is number.",
-      "interviewTip": "Use Number.isNaN."
+      "options": [
+        "number",
+        "NaN",
+        "undefined",
+        "object"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-12",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What does this return?",
       "code": "Object.is(-0, 0)",
-      "options": ["false", "true", "NaN", "Error"],
-      "correct": [0],
-      "explanation": "Object.is distinguishes -0 and 0.",
-      "interviewTip": "Difference vs ===."
+      "options": [
+        "false",
+        "true",
+        "NaN",
+        "Error"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-13",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What is memoization?",
       "options": [
         "Caching function results",
         "Delaying execution",
         "Cloning objects",
         "Binding this"
       ],
-      "correct": [0],
-      "explanation": "Performance optimization.",
-      "interviewTip": "Pure functions."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-14",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What happens?",
       "code": "console.log(1 < 2 < 3);",
-      "options": ["true", "false", "NaN", "Error"],
-      "correct": [0],
-      "explanation": "true → 1 < 3.",
-      "interviewTip": "Comparison coercion."
+      "options": [
+        "true",
+        "false",
+        "NaN",
+        "Error"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-15",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What is a pure function?",
       "options": [
         "No side effects, same input → same output",
         "Uses closures",
         "Async only",
         "Uses this"
       ],
-      "correct": [0],
-      "explanation": "Deterministic behavior.",
-      "interviewTip": "Functional programming."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-16",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What does TDZ mean?",
       "options": [
         "Access before initialization",
         "Scope leakage",
         "Garbage collection",
         "Prototype chain"
       ],
-      "correct": [0],
-      "explanation": "Temporal Dead Zone.",
-      "interviewTip": "let/const."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-17",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "Which is NOT hoisted?",
       "options": [
         "Function expression",
         "Function declaration",
         "var declaration",
         "class declaration"
       ],
-      "correct": [0],
-      "explanation": "Function expressions are not hoisted.",
-      "interviewTip": "Execution order."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-18",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What is throttling best for?",
       "options": [
         "Scroll / resize events",
         "API retries",
         "Form validation",
         "Promises"
       ],
-      "correct": [0],
-      "explanation": "Limit execution frequency.",
-      "interviewTip": "UX optimization."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-19",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What does bind return?",
       "options": [
         "New function",
         "Executed function",
         "Context object",
         "Promise"
       ],
-      "correct": [0],
-      "explanation": "bind returns a new function.",
-      "interviewTip": "Does not execute."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-20",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What happens?",
       "code": "console.log(typeof (() => {})());",
-      "options": ["undefined", "function", "object", "null"],
-      "correct": [0],
-      "explanation": "Arrow returns undefined.",
-      "interviewTip": "Implicit return."
+      "options": [
+        "undefined",
+        "function",
+        "object",
+        "null"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-21",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "Why debounce is useful?",
       "options": [
         "Avoid excessive calls",
         "Speed up loops",
         "Block execution",
         "Improve GC"
       ],
-      "correct": [0],
-      "explanation": "Reduces unnecessary executions.",
-      "interviewTip": "Search inputs."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-22",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What is partial application?",
       "options": [
         "Fixing some arguments",
         "Calling function once",
         "Currying only",
         "Binding this"
       ],
-      "correct": [0],
-      "explanation": "Pre-filling arguments.",
-      "interviewTip": "Diff vs currying."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-23",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "Which breaks referential transparency?",
-      "options": ["Mutation", "Pure calculation", "Immutability", "Currying"],
-      "correct": [0],
-      "explanation": "Mutation causes side effects.",
-      "interviewTip": "Functional design."
+      "options": [
+        "Mutation",
+        "Pure calculation",
+        "Immutability",
+        "Currying"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-24",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "What does call do?",
       "options": [
         "Invokes function with explicit this",
         "Creates new function",
         "Delays execution",
         "Clones object"
       ],
-      "correct": [0],
-      "explanation": "call invokes immediately.",
-      "interviewTip": "apply vs bind."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-adv-25",
       "stageId": "js_advanced",
       "type": "single",
-      "prompt": "Senior-level advice?",
       "options": [
         "Explain reasoning first",
         "Answer fast",
         "Avoid edge cases",
         "Guess output"
       ],
-      "correct": [0],
-      "explanation": "Thinking matters more than speed.",
-      "interviewTip": "Interview mindset."
+      "correct": [
+        0
+      ]
     }
   ]
 }

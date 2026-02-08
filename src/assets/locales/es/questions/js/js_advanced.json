@@ -1,0 +1,212 @@
+{
+  "js-adv-01": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "La variable sufre hoisting pero no está inicializada.",
+    "interviewTip": "var hoisting vs let/const.",
+    "options": ["undefined", "5", "ReferenceError", "null"]
+  },
+  "js-adv-02": {
+    "prompt": "¿Qué sucede?",
+    "explanation": "Las function declarations sufren hoisting.",
+    "interviewTip": "Diferencia con function expressions.",
+    "options": ["Works", "ReferenceError", "TypeError", "undefined"]
+  },
+  "js-adv-03": {
+    "prompt": "¿Qué se muestra en el log?",
+    "explanation": "Temporal Dead Zone.",
+    "interviewTip": "Comportamiento de let/const.",
+    "options": ["ReferenceError", "undefined", "1", "null"]
+  },
+  "js-adv-04": {
+    "prompt": "¿Cuál será el output de esto?",
+    "explanation": "El closure preserva el lexical scope.",
+    "interviewTip": "Closures y memoria.",
+    "options": ["2 3", "1 2", "NaN", "Error"]
+  },
+  "js-adv-05": {
+    "prompt": "¿Qué es currying?",
+    "explanation": "Currying = f(a,b) → f(a)(b).",
+    "interviewTip": "Patrones de functional programming.",
+    "options": [
+      "Transformar una función con múltiples argumentos en llamadas encadenadas",
+      "Llamar a una función inmediatamente",
+      "Memoization",
+      "Binding context"
+    ]
+  },
+  "js-adv-06": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Función con currying.",
+    "interviewTip": "Partial application.",
+    "options": ["5", "23", "NaN", "Error"]
+  },
+  "js-adv-07": {
+    "prompt": "¿Cuál es la principal diferencia entre debounce y throttle?",
+    "explanation": "Debounce espera, throttle limita las llamadas.",
+    "interviewTip": "Manejadores de scroll / resize.",
+    "options": [
+      "Debounce retrasa, throttle limita la frecuencia",
+      "Son lo mismo",
+      "Throttle retrasa, debounce repite",
+      "Solo existe debounce"
+    ]
+  },
+  "js-adv-08": {
+    "prompt": "¿Qué sucede?",
+    "explanation": "El context de `this` se pierde.",
+    "interviewTip": "Bind context.",
+    "options": ["undefined", "1", "Error", "null"]
+  },
+  "js-adv-09": {
+    "prompt": "¿Cómo solucionar el problema anterior?",
+    "explanation": "bind corrige el context.",
+    "interviewTip": "call/apply/bind.",
+    "options": ["obj.foo.bind(obj)", "obj.foo()", "call stack", "usar var"]
+  },
+  "js-adv-10": {
+    "prompt": "¿A qué se refiere `this` en una arrow function?",
+    "explanation": "La arrow function no tiene su propio `this`.",
+    "interviewTip": "Event handlers.",
+    "options": ["Lexical scope", "Caller", "Global object", "Prototype"]
+  },
+  "js-adv-11": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "NaN es un number.",
+    "interviewTip": "Usar Number.isNaN.",
+    "options": ["number", "NaN", "undefined", "object"]
+  },
+  "js-adv-12": {
+    "prompt": "¿Qué devuelve esto?",
+    "explanation": "Object.is distingue entre -0 y 0.",
+    "interviewTip": "Diferencia con ===.",
+    "options": ["false", "true", "NaN", "Error"]
+  },
+  "js-adv-13": {
+    "prompt": "¿Qué es memoization?",
+    "explanation": "Optimización de performance.",
+    "interviewTip": "Pure functions.",
+    "options": [
+      "Cachear resultados de funciones",
+      "Retrasar la ejecución",
+      "Clonar objetos",
+      "Binding this"
+    ]
+  },
+  "js-adv-14": {
+    "prompt": "¿Qué sucede?",
+    "explanation": "true → 1 < 3.",
+    "interviewTip": "Coerción en comparaciones.",
+    "options": ["true", "false", "NaN", "Error"]
+  },
+  "js-adv-15": {
+    "prompt": "¿Qué es una pure function?",
+    "explanation": "Comportamiento determinista.",
+    "interviewTip": "Functional programming.",
+    "options": [
+      "Sin side effects, mismo input → mismo output",
+      "Usa closures",
+      "Solo async",
+      "Usa this"
+    ]
+  },
+  "js-adv-16": {
+    "prompt": "¿Qué significa TDZ?",
+    "explanation": "Temporal Dead Zone.",
+    "interviewTip": "let/const.",
+    "options": [
+      "Acceso antes de la inicialización",
+      "Scope leakage",
+      "Garbage collection",
+      "Prototype chain"
+    ]
+  },
+  "js-adv-17": {
+    "prompt": "¿Cuál NO sufre hoisting?",
+    "explanation": "Las function expressions no sufren hoisting.",
+    "interviewTip": "Orden de ejecución.",
+    "options": [
+      "Function expression",
+      "Function declaration",
+      "var declaration",
+      "class declaration"
+    ]
+  },
+  "js-adv-18": {
+    "prompt": "¿Para qué es mejor el throttling?",
+    "explanation": "Limitar la frecuencia de ejecución.",
+    "interviewTip": "Optimización de UX.",
+    "options": [
+      "Eventos de scroll / resize",
+      "Reintentos de API",
+      "Validación de formularios",
+      "Promises"
+    ]
+  },
+  "js-adv-19": {
+    "prompt": "¿Qué devuelve bind?",
+    "explanation": "bind devuelve una nueva función.",
+    "interviewTip": "No ejecuta la función.",
+    "options": [
+      "New function",
+      "Executed function",
+      "Context object",
+      "Promise"
+    ]
+  },
+  "js-adv-20": {
+    "prompt": "¿Qué sucede?",
+    "explanation": "La arrow function devuelve undefined.",
+    "interviewTip": "Implicit return.",
+    "options": ["undefined", "function", "object", "null"]
+  },
+  "js-adv-21": {
+    "prompt": "¿Por qué es útil el debounce?",
+    "explanation": "Reduce ejecuciones innecesarias.",
+    "interviewTip": "Inputs de búsqueda.",
+    "options": [
+      "Evitar llamadas excesivas",
+      "Acelerar loops",
+      "Bloquear la ejecución",
+      "Mejorar GC"
+    ]
+  },
+  "js-adv-22": {
+    "prompt": "¿Qué es partial application?",
+    "explanation": "Pre-completar argumentos.",
+    "interviewTip": "Diferencia vs currying.",
+    "options": [
+      "Fijar algunos argumentos",
+      "Llamar a la función una vez",
+      "Solo currying",
+      "Binding this"
+    ]
+  },
+  "js-adv-23": {
+    "prompt": "¿Qué rompe la referential transparency?",
+    "explanation": "La mutation causa side effects.",
+    "interviewTip": "Diseño funcional.",
+    "options": ["Mutation", "Pure calculation", "Immutability", "Currying"]
+  },
+  "js-adv-24": {
+    "prompt": "¿Qué hace call?",
+    "explanation": "call invoca la función inmediatamente.",
+    "interviewTip": "apply vs bind.",
+    "options": [
+      "Invoca la función con un this explícito",
+      "Crea una nueva función",
+      "Retrasa la ejecución",
+      "Clona un objeto"
+    ]
+  },
+  "js-adv-25": {
+    "prompt": "¿Consejo de nivel Senior?",
+    "explanation": "El razonamiento importa más que la velocidad.",
+    "interviewTip": "Mentalidad en entrevistas.",
+    "options": [
+      "Explicar el razonamiento primero",
+      "Responder rápido",
+      "Evitar edge cases",
+      "Adivinar el output"
+    ]
+  }
+}

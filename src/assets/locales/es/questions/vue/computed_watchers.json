@@ -1,0 +1,107 @@
+{
+  "cw-01": {
+    "prompt": "¿Cuál es la ventaja principal de usar una propiedad 'computed' sobre un 'method' regular en un template?",
+    "explanation": "El almacenamiento en caché es la característica clave. Si tienes un cálculo costoso en una propiedad computed, solo se ejecutará una vez y reutilizará ese resultado hasta que cambien sus datos de origen. Los methods se ejecutan cada vez que el componente se vuelve a renderizar.",
+    "interviewTip": "Usa computed para transformación de datos (getters) y methods para manejo de eventos o acciones.",
+    "options": [
+      "Las propiedades computed pueden aceptar argumentos.",
+      "Las propiedades computed se almacenan en caché basándose en sus dependencias reactivas y solo se reevalúan cuando esas dependencias cambian.",
+      "Las propiedades computed se ejecutan de forma asíncrona.",
+      "Las propiedades computed son la única forma de usar matemáticas en templates."
+    ]
+  },
+  "cw-02": {
+    "prompt": "Analiza el código. ¿Cuántas veces se registrará 'Calculating...' si el componente se vuelve a renderizar 5 veces, pero 'count' nunca cambia?",
+    "explanation": "Debido al almacenamiento en caché, la función computed solo se ejecuta una vez. Mientras 'count' sea el mismo, Vue devuelve el valor almacenado inmediatamente.",
+    "interviewTip": "Las propiedades computed son 'perezosas'. Si no se usan en un template u otro efecto, ¡ni siquiera se ejecutan una vez!",
+    "options": [
+      "5 veces",
+      "1 vez (en el acceso inicial)",
+      "0 veces",
+      "Cada vez que se accede al template"
+    ]
+  },
+  "cw-03": {
+    "prompt": "¿Cuándo debes usar un 'watcher' (watch) en lugar de una propiedad 'computed'?",
+    "explanation": "Las propiedades computed deben ser 'puras' (sin efectos secundarios) y devolver un valor. Los watchers están diseñados para ejecutar lógica (como guardar en localStorage o buscar datos) cuando un valor cambia.",
+    "interviewTip": "Regla general: Computed = Getters; Watchers = Efectos Secundarios.",
+    "options": [
+      "Cuando necesitas cambiar la clase CSS de un elemento.",
+      "Cuando necesitas realizar 'efectos secundarios' como una llamada API o manipulación manual del DOM en respuesta a un cambio de datos.",
+      "Cuando quieres unir dos strings.",
+      "Cuando necesitas devolver un valor al template."
+    ]
+  },
+  "cw-04": {
+    "prompt": "¿Cómo haces que un watcher se active inmediatamente al crear el componente, en lugar de esperar al primer cambio?",
+    "explanation": "La opción 'immediate: true' fuerza al callback del watcher a ejecutarse una vez con el valor inicial justo cuando se inicializa el watcher.",
+    "interviewTip": "Esto es muy útil para obtener datos basados en una prop tan pronto como el componente se monta.",
+    "options": ["lazy", "deep", "immediate", "flush"]
+  },
+  "cw-05": {
+    "prompt": "¿Qué hace la opción 'deep: true' en un watcher?",
+    "explanation": "Por defecto, los watchers solo rastrean cambios 'superficiales' (la referencia del objeto). 'deep' recorre recursivamente el objeto para capturar cambios en sub-propiedades.",
+    "interviewTip": "Advertencia: Observar profundamente objetos grandes puede ser muy costoso para el rendimiento.",
+    "options": [
+      "Hace que el watcher se ejecute en un hilo separado.",
+      "Permite al watcher rastrear cambios dentro de objetos o arrays anidados.",
+      "Asegura que el watcher sea lo último en ejecutarse en el ciclo de vida.",
+      "Previene que el componente sea destruido."
+    ]
+  },
+  "cw-06": {
+    "prompt": "Analiza el código. ¿Por qué el watcher NO se está activando cuando 'user.name' cambia?",
+    "explanation": "Al observar un 'ref' que contiene un objeto, el watcher solo se activa si se reemplaza el objeto completo. Los cambios en propiedades internas se ignoran a menos que se use 'deep' o observes un getter: `() => user.value.name`.",
+    "interviewTip": "En Vue 3, observar un objeto 'reactive' automáticamente crea un watcher profundo, pero observar un 'ref' no.",
+    "options": [
+      "Los watchers no pueden observar objetos.",
+      "El watcher solo está observando la referencia del objeto, no sus propiedades internas (necesita 'deep: true').",
+      "El watcher debe observar 'user.value.name' directamente.",
+      "Al console.log le faltan comillas."
+    ]
+  },
+  "cw-07": {
+    "prompt": "¿Cuáles de estas son formas válidas de crear una propiedad 'Computed Escribible' (getter y setter)?",
+    "explanation": "Aunque la mayoría de las propiedades computed son getters, puedes proporcionar un setter para manejar actualizaciones (por ejemplo, analizar un string 'fullName' en 'firstName' y 'lastName').",
+    "interviewTip": "Las propiedades computed escribibles son excelentes para envolver la gestión de estado (como Pinia) en un v-model limpio.",
+    "options": [
+      "Pasando un objeto con funciones 'get' y 'set' a computed().",
+      "Definiendo dos propiedades computed separadas con el mismo nombre.",
+      "Usando v-model directamente en una propiedad computed regular.",
+      "Las propiedades computed son estrictamente de solo lectura y no pueden ser escribibles."
+    ]
+  },
+  "cw-08": {
+    "prompt": "¿Cuál es la diferencia entre 'watch' y 'watchEffect'?",
+    "explanation": "watchEffect es más conciso porque no listas dependencias; las 'descubre' durante la ejecución. Sin embargo, 'watch' es más preciso y te da acceso a 'oldValue'.",
+    "interviewTip": "Usa 'watch' si necesitas el valor anterior; usa 'watchEffect' para un rastreo de dependencias más simple.",
+    "options": [
+      "watchEffect es solo para Vue 2.",
+      "watchEffect rastrea automáticamente todas las propiedades reactivas usadas dentro de su función, mientras que 'watch' requiere que declares explícitamente la fuente.",
+      "watch es más rápido que watchEffect.",
+      "watchEffect no puede detenerse."
+    ]
+  },
+  "cw-09": {
+    "prompt": "¿Cuál es la diferencia entre una propiedad computed y un method en Vue?",
+    "explanation": "Las propiedades computed solo se reevalúan cuando cambian sus dependencias. Los methods se ejecutan en cada render, haciéndolos menos eficientes para operaciones costosas.",
+    "interviewTip": "Usa computed para estado derivado, methods para acciones o cuando necesitas pasar argumentos.",
+    "options": [
+      "No hay diferencia.",
+      "Las propiedades computed se almacenan en caché basándose en sus dependencias reactivas; los methods se llaman cada vez.",
+      "Los methods son más rápidos que las propiedades computed.",
+      "Las propiedades computed solo pueden devolver strings."
+    ]
+  },
+  "cw-10": {
+    "prompt": "¿Cuándo debes usar un watcher con la opción `immediate: true`?",
+    "explanation": "Por defecto, los watchers solo se ejecutan cuando el valor observado cambia. `immediate: true` hace que el callback se ejecute una vez inmediatamente con el valor actual.",
+    "interviewTip": "Esto es útil para inicializar datos basados en props o realizar llamadas API iniciales.",
+    "options": [
+      "Cuando quieres que el watcher se ejecute inmediatamente al crear el componente, antes del primer cambio de datos.",
+      "Cuando quieres que el watcher se ejecute más rápido.",
+      "Cuando quieres observar múltiples propiedades.",
+      "Cuando quieres evitar que el watcher se ejecute."
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "sp-01": {
+    "prompt": "¿Qué librería es el reemplazo estándar recomendado por la comunidad para el core obsoleto 'AsyncStorage'?",
+    "explanation": "AsyncStorage fue movido fuera del core de React Native al repositorio de la comunidad para permitir actualizaciones y mantenimiento más rápidos.",
+    "interviewTip": "Especifica siempre que AsyncStorage es 'asíncrono' y 'no cifrado', lo que lo hace inadecuado para secretos sensibles.",
+    "options": [
+      "react-native-local-storage",
+      "@react-native-async-storage/async-storage",
+      "react-native-db",
+      "expo-persistence"
+    ]
+  },
+  "sp-02": {
+    "prompt": "¿Cuál es la principal ventaja arquitectónica de 'react-native-mmkv' frente a 'AsyncStorage'?",
+    "explanation": "MMKV utiliza la JavaScript Interface (JSI) para permitir que el hilo JS lea y escriba datos directamente desde memoria C++ sin la sobrecarga del bridge JSON.",
+    "interviewTip": "MMKV se considera actualmente el almacenamiento key-value más rápido para React Native, a menudo entre 10 y 30 veces más rápido que AsyncStorage.",
+    "options": [
+      "Utiliza un sistema de respaldo basado en la nube.",
+      "Proporciona acceso síncrono a los datos mediante JSI, haciéndolo significativamente más rápido.",
+      "Solo funciona en Android, lo que lo hace más estable allí.",
+      "Comprime automáticamente todos los datos en archivos ZIP."
+    ]
+  },
+  "sp-03": {
+    "prompt": "¿Cómo guardas correctamente un objeto (no un string) en AsyncStorage?",
+    "explanation": "AsyncStorage solo puede almacenar strings. Para guardar objetos o arrays, primero debes serializarlos a un string JSON.",
+    "interviewTip": "No olvides que `getItem` también requerirá `JSON.parse` para convertirlo de nuevo en un objeto.",
+    "options": [
+      "user",
+      "JSON.stringify(user)",
+      "user.toString()",
+      "serialize(user)"
+    ]
+  },
+  "sp-04": {
+    "prompt": "¿Cuál es el lugar más seguro para almacenar el Authentication Token de un usuario o datos biométricos?",
+    "explanation": "Keychain y Keystore proporcionan cifrado a nivel de hardware que persiste incluso si la app se elimina o el dispositivo se respalda. Los key-value stores como AsyncStorage no son seguros.",
+    "interviewTip": "Menciona 'Key-Value storage para preferencias, Keychain para secretos' como una buena práctica de seguridad.",
+    "options": [
+      "AsyncStorage (está oculto de otras apps).",
+      "MMKV (está en memoria).",
+      "iOS Keychain / Android Keystore (mediante librerías como react-native-keychain).",
+      "En un archivo local .txt."
+    ]
+  },
+  "sp-05": {
+    "prompt": "Analiza el código. ¿Cuál será el valor de 'name' después de estas llamadas?",
+    "explanation": "AsyncStorage está basado en Promises. Debido a que se usa 'await', el código espera a que el storage devuelva el string 'John'.",
+    "interviewTip": "Si olvidas 'await', la constante 'name' será una Promise, que se evalúa como 'true' en una condición, causando bugs.",
+    "options": ["\"John\"", "undefined", "null", "Un objeto Promise"]
+  },
+  "sp-06": {
+    "prompt": "¿Cuáles de las siguientes son razones válidas para usar 'SQLite' en lugar de 'AsyncStorage'?",
+    "explanation": "SQLite es una base de datos relacional completa. Para simples pares key-value como preferencias de tema, es excesivo comparado con AsyncStorage o MMKV.",
+    "interviewTip": "WatermelonDB o Realm son alternativas de alto nivel populares que usan SQLite o sus propios engines internamente.",
+    "options": [
+      "La app necesita realizar consultas relacionales complejas (SQL).",
+      "La app necesita almacenar una gran cantidad de datos estructurados (miles de filas).",
+      "La app necesita almacenar un simple flag booleano para 'Dark Mode'.",
+      "La app requiere transacciones para garantizar la integridad de los datos."
+    ]
+  },
+  "sp-07": {
+    "prompt": "¿Qué hace 'multiSet' en AsyncStorage?",
+    "explanation": "Las operaciones en batch son más eficientes que llamar a setItem múltiples veces, ya que reducen el número de viajes a través del bridge.",
+    "interviewTip": "Usa siempre 'multiSet' o 'multiGet' cuando trabajes con grupos de datos relacionados para mejorar el rendimiento.",
+    "options": [
+      "Establece una sola key con múltiples valores.",
+      "Permite guardar múltiples pares key-value en una sola operación batch.",
+      "Sincroniza datos entre múltiples dispositivos.",
+      "Se usa para establecer datos en múltiples bases de datos."
+    ]
+  },
+  "sp-08": {
+    "prompt": "En Expo, ¿cuál es la librería de almacenamiento seguro por defecto?",
+    "explanation": "expo-secure-store proporciona una forma de cifrar y almacenar de manera segura pares key-value localmente en el dispositivo.",
+    "interviewTip": "Ten en cuenta que SecureStore tiene un límite de 2048 bytes por valor, por lo que es estrictamente para secretos pequeños.",
+    "options": [
+      "expo-async-storage",
+      "expo-secure-store",
+      "expo-keychain",
+      "expo-safe-data"
+    ]
+  },
+  "sp-09": {
+    "prompt": "¿Cuál es el límite de almacenamiento típico de AsyncStorage en Android?",
+    "explanation": "Por defecto, Android limita AsyncStorage a 6MB. Para datos más grandes, debes incrementarlo en `MainApplication.java` o `gradle.properties`.",
+    "interviewTip": "Si tu app se bloquea al guardar JSONs grandes en Android, este límite probablemente sea la causa.",
+    "options": [
+      "Ilimitado.",
+      "6MB (por defecto, se puede aumentar).",
+      "1GB.",
+      "50MB."
+    ]
+  },
+  "sp-10": {
+    "prompt": "¿Qué librería es una base de datos 'Offline-first' que se sincroniza con un servidor y se usa a menudo con React Native?",
+    "explanation": "Realm es una base de datos orientada a objetos que es mucho más rápida que SQLite y proporciona funciones de sincronización nativas.",
+    "interviewTip": "Menciona Realm si la entrevista se centra en apps complejas que deben funcionar perfectamente sin conexión a internet.",
+    "options": ["Redux-Persist", "Realm (MongoDB)", "Axios-Cache", "Fast-DB"]
+  }
+}

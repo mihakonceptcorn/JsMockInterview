@@ -1,0 +1,107 @@
+{
+  "as-01": {
+    "prompt": "¿Qué función se utiliza para definir un componente que se carga de forma diferida (lazy) desde el servidor solo cuando se renderiza?",
+    "explanation": "defineAsyncComponent acepta una función loader que devuelve una Promise (normalmente un import dinámico). Vue maneja automáticamente la lógica de carga.",
+    "interviewTip": "Menciona que esta es una técnica clave para reducir el 'Initial Bundle Size' de tu aplicación.",
+    "options": [
+      "defineLazyComponent",
+      "defineAsyncComponent",
+      "importAsync",
+      "createAsyncComponent"
+    ]
+  },
+  "as-02": {
+    "prompt": "Analiza el código. ¿Qué ocurrirá mientras se está descargando 'AdminPanel'?",
+    "explanation": "Por defecto, un componente asíncrono no muestra nada durante la carga. Puedes proporcionar la opción 'loadingComponent' en defineAsyncComponent o envolver el uso en una etiqueta <Suspense>.",
+    "interviewTip": "Usar un skeleton loader como 'loadingComponent' ofrece una UX mucho mejor que un espacio en blanco.",
+    "options": [
+      "Vue se caerá (crash).",
+      "La pantalla permanecerá en blanco hasta que termine.",
+      "No se renderizará nada a menos que se configure un componente de carga o se use Suspense.",
+      "Toda la aplicación pausa su ejecución."
+    ]
+  },
+  "as-03": {
+    "prompt": "¿Cuáles son los dos 'slots' que proporciona el componente <Suspense>?",
+    "explanation": "El slot #default contiene el contenido que puede tardar en cargarse, y el slot #fallback contiene lo que se muestra mientras tanto (por ejemplo, un spinner).",
+    "interviewTip": "Ten en cuenta que, a partir de Vue 3.x, <Suspense> sigue siendo técnicamente una funcionalidad 'experimental', aunque se usa ampliamente.",
+    "options": [
+      "header y footer",
+      "default y fallback",
+      "loading y complete",
+      "async y sync"
+    ]
+  },
+  "as-04": {
+    "prompt": "Analiza el código. ¿Qué hace que este componente sea 'asíncrono' y capaz de activar un límite <Suspense>?",
+    "explanation": "En Vue 3, si un <script setup> contiene un 'await' de nivel superior, el componente se convierte automáticamente en una 'async dependency' y debe estar envuelto en <Suspense> por su padre.",
+    "interviewTip": "Esta es una forma muy elegante de manejar la obtención de datos, ya que no necesitas un ref de estado 'loading' dentro del componente.",
+    "options": [
+      "El uso de la API 'fetch'.",
+      "Usar 'await' de nivel superior dentro de <script setup>.",
+      "La etiqueta script no tiene el atributo 'async'.",
+      "No es asíncrono; bloqueará el hilo."
+    ]
+  },
+  "as-05": {
+    "prompt": "¿Cómo manejas los errores (como fallo de red) cuando un componente asíncrono no logra cargarse?",
+    "explanation": "Aunque defineAsyncComponent tiene la opción 'errorComponent', la forma estándar de capturar errores de dependencias asíncronas en el árbol es el hook onErrorCaptured.",
+    "interviewTip": "También puedes usar el slot 'error' si tu proyecto utiliza un wrapper especializado, pero onErrorCaptured es la solución oficial global/padre.",
+    "options": [
+      "Usando el hook 'onError' en defineAsyncComponent.",
+      "Envolviendo el componente en una etiqueta <ErrorBoundary> (legacy).",
+      "Usando el lifecycle hook 'onErrorCaptured' en un componente padre.",
+      "Vue maneja automáticamente todos los errores de red reintentando."
+    ]
+  },
+  "as-06": {
+    "prompt": "¿Cuáles de estas son opciones válidas al configurar 'defineAsyncComponent'?",
+    "explanation": "delay evita el 'flickering' en conexiones rápidas. timeout evita que los usuarios esperen indefinidamente. suspensible (por defecto: true) permite que el componente controle el estado Suspense del padre.",
+    "interviewTip": "Establece 'delay: 0' si quieres que el spinner de carga aparezca inmediatamente, incluso en cargas rápidas.",
+    "options": [
+      "delay (ms antes de mostrar el componente de carga)",
+      "timeout (ms antes de mostrar el componente de error)",
+      "suspensible (si debe comunicarse con un Suspense padre)",
+      "retry (número de veces que intentará cargar)"
+    ]
+  },
+  "as-07": {
+    "prompt": "¿Puede <Suspense> manejar varios componentes asíncronos anidados simultáneamente?",
+    "explanation": "Suspense está diseñado para coordinar múltiples dependencias asíncronas. El fallback permanece visible hasta que todo el árbol de componentes asíncronos debajo esté listo.",
+    "interviewTip": "Esto evita efectos de 'pop-in' donde diferentes partes de una página se cargan en momentos distintos.",
+    "options": [
+      "No, solo un componente a la vez.",
+      "Sí, esperará a que todas las dependencias asíncronas anidadas se resuelvan antes de mostrar el slot default.",
+      "Sí, pero los muestra uno por uno.",
+      "Solo si están dentro del mismo archivo."
+    ]
+  },
+  "as-08": {
+    "prompt": "¿Cuál es el propósito de la función 'retry' del callback onError en defineAsyncComponent?",
+    "explanation": "El callback 'retry' te permite intentar recargar el componente, lo cual es útil para manejar problemas temporales de red.",
+    "interviewTip": "Esta es una característica muy de nivel 'Senior' que puedes mencionar para construir aplicaciones resilientes.",
+    "options": ["retry", "reload", "fetch", "restart"]
+  },
+  "acs-09": {
+    "prompt": "¿Cómo defines un componente asíncrono en Vue 3?",
+    "explanation": "defineAsyncComponent acepta una función loader que devuelve una Promise que resuelve con la definición del componente, permitiendo code splitting.",
+    "interviewTip": "Puedes proporcionar opciones de loading, error, delay y timeout para mejorar la experiencia de usuario.",
+    "options": [
+      "Usar la palabra clave async en la definición del componente.",
+      "Usar defineAsyncComponent() con una función loader.",
+      "Usar import() directamente en el template.",
+      "Los componentes asíncronos no están soportados en Vue 3."
+    ]
+  },
+  "acs-10": {
+    "prompt": "¿Cuál es el propósito del componente <Suspense>?",
+    "explanation": "Suspense te permite mostrar un estado de carga mientras los componentes asíncronos o un setup() asíncrono se están resolviendo, mejorando la experiencia del usuario.",
+    "interviewTip": "Suspense sigue siendo experimental en Vue 3, pero es una funcionalidad central para patrones de obtención de datos asíncronos.",
+    "options": [
+      "Suspender las interacciones del usuario.",
+      "Manejar dependencias asíncronas en el árbol de componentes y mostrar contenido fallback mientras se espera.",
+      "Cargar archivos CSS de forma diferida.",
+      "Pausar permanentemente el renderizado de componentes."
+    ]
+  }
+}

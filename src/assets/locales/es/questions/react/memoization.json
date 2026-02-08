@@ -1,0 +1,134 @@
+{
+  "mem-01": {
+    "prompt": "¿Cuál es la diferencia principal entre useMemo y useCallback?",
+    "explanation": "useMemo ejecuta una función y recuerda el valor retornado. useCallback devuelve la función misma para que su referencia permanezca estable entre renderizados.",
+    "interviewTip": "Recuerda: useCallback(fn, deps) es esencialmente lo mismo que useMemo(() => fn, deps).",
+    "options": [
+      "useMemo es para componentes de clase; useCallback es para componentes funcionales.",
+      "useMemo cachea el resultado de una función; useCallback cachea la definición de la función misma.",
+      "useCallback es más rápido que useMemo.",
+      "useMemo dispara un re-renderizado; useCallback lo previene."
+    ]
+  },
+  "mem-02": {
+    "prompt": "Analiza el código. ¿Cuántas veces se registrará 'Calculating...' si el componente se vuelve a renderizar pero 'count' permanece igual?",
+    "explanation": "Debido a que 'count' no ha cambiado, useMemo devuelve el valor cacheado y evita ejecutar la función de nuevo.",
+    "interviewTip": "Esto es perfecto para evitar lógica 'pesada' (como ordenar arrays grandes) en cada renderizado.",
+    "options": [
+      "Una vez (solo en el renderizado inicial).",
+      "Cero veces.",
+      "En cada re-renderizado.",
+      "Cada vez que el componente padre se renderice."
+    ]
+  },
+  "mem-03": {
+    "prompt": "¿Qué hace React.memo cuando envuelve a un componente?",
+    "explanation": "React.memo es un Higher Order Component que realiza una comparación superficial (shallow comparison) de las props. Si son iguales a las de la última vez, React evita renderizar ese componente.",
+    "interviewTip": "Por defecto, React re-renderiza a todos los hijos cuando un padre se renderiza. React.memo permite 'optar por no participar' en este comportamiento.",
+    "options": [
+      "Guarda automáticamente el estado del componente en una base de datos.",
+      "Evita que el componente se vuelva a renderizar si sus props no han cambiado.",
+      "Hace que el componente sea invisible hasta que esté completamente cargado.",
+      "Permite que el componente ignore el Virtual DOM."
+    ]
+  },
+  "mem-04": {
+    "prompt": "¿Cuál de estos escenarios puede romper la memoización (causando un re-renderizado inesperado)?",
+    "explanation": "En JS, `{} !== {}` y `()=>{} !== ()=>{} `. Estos crean nuevas referencias en cada renderizado, lo que hace que React.memo piense que las props han cambiado.",
+    "interviewTip": "Para solucionar esto, usa useMemo para el objeto y useCallback para la función.",
+    "options": [
+      "Pasar un nuevo objeto literal como prop: <Child data={{}} />.",
+      "Pasar una prop numérica: <Child count={5} />.",
+      "Pasar una función de flecha inline: <Child onClick={() => {}} />.",
+      "Pasar una prop de tipo string: <Child name='Alice' />."
+    ]
+  },
+  "mem-05": {
+    "prompt": "¿Qué es la 'Igualdad Referencial' en el contexto de la optimización de React?",
+    "explanation": "React usa igualdad superficial (Object.is) para las props y los arrays de dependencias. Si la referencia cambia, la optimización falla.",
+    "interviewTip": "Por esto, las referencias estables (vía hooks) son la base del rendimiento en React.",
+    "options": [
+      "Cuando dos variables tienen el mismo nombre de string.",
+      "Cuando React verifica si dos variables apuntan exactamente a la misma dirección de memoria.",
+      "Cuando la estructura HTML de dos componentes coincide.",
+      "Cuando dos componentes comparten la misma prop key."
+    ]
+  },
+  "mem-06": {
+    "prompt": "¿Por qué el siguiente 'useCallback' es problemático?",
+    "explanation": "El array de dependencias vacío le dice a React que nunca actualice la referencia de la función. Esta 'recordará' la versión de 'text' del primer renderizado para siempre.",
+    "interviewTip": "Incluye siempre cada valor reactivo usado dentro del hook en el array de dependencias.",
+    "options": [
+      "Causará un bucle infinito.",
+      "Siempre registrará el valor de 'text' del primer renderizado (Stale Closure).",
+      "El componente colapsará.",
+      "useCallback no puede registrar mensajes en la consola."
+    ]
+  },
+  "mem-07": {
+    "prompt": "¿Cuándo NO deberías usar useMemo o useCallback?",
+    "explanation": "La memoización tiene su propio coste (memoria y tiempo de comparación). Si la lógica es barata, el gasto del hook podría ser mayor que el beneficio.",
+    "interviewTip": "No optimices prematuramente. Analiza tu app primero para ver dónde están los cuellos de botella reales.",
+    "options": [
+      "En componentes pequeños con lógica simple.",
+      "Al pasar props a un componente hijo ya memoizado.",
+      "Al realizar un filtrado de array costoso.",
+      "Cuando el array de dependencias es muy grande."
+    ]
+  },
+  "mem-08": {
+    "prompt": "Identifica el resultado de este componente después de un re-renderizado:",
+    "explanation": "Aunque los valores sean iguales, `[1,2,3] !== [1,2,3]` en JS. Una nueva referencia dispara el re-renderizado.",
+    "interviewTip": "Mueve los datos estáticos fuera del componente o envuélvelos en useMemo.",
+    "options": [
+      "MemoizedChild no se re-renderizará porque el contenido del array es idéntico.",
+      "MemoizedChild se re-renderizará porque 'data' es una nueva referencia de array cada vez.",
+      "React lanzará un error.",
+      "Solo el primer elemento de la lista se re-renderizará."
+    ]
+  },
+  "mem-09": {
+    "prompt": "¿Qué te permite hacer el segundo argumento de React.memo(Component, arePropsEqual)?",
+    "explanation": "Por defecto, React.memo hace una verificación superficial. Puedes proporcionar una función personalizada para hacer una verificación profunda o ignorar props específicas.",
+    "interviewTip": "¡Cuidado!: ¡las comparaciones profundas pueden ser más lentas que el re-renderizado mismo!",
+    "options": [
+      "Permite definir manualmente la lógica de comparación para las props.",
+      "Establece el tiempo de vida (TTL) para la caché.",
+      "Permite pasar una key personalizada al componente.",
+      "Permite decidir qué cambios de estado ignorar."
+    ]
+  },
+  "mem-10": {
+    "prompt": "¿Cuáles de estos hooks dependen de la estabilidad referencial para funcionar eficazmente?",
+    "explanation": "useEffect se vuelve a ejecutar si una referencia cambia. Los consumidores de Context se re-renderizan si el valor del provider (a menudo un objeto) es una nueva referencia.",
+    "interviewTip": "La estabilidad referencial es el 'puente' que hace que otros hooks sean eficientes.",
+    "options": [
+      "useEffect (cuando hay funciones/objetos en el array de dependencias).",
+      "useState.",
+      "useContext (para evitar re-renderizar a todos los consumidores).",
+      "useRef."
+    ]
+  },
+  "mem-11": {
+    "prompt": "¿Cómo memoizas un cálculo costoso que depende de 'a' y 'b'?",
+    "explanation": "useMemo toma una función 'create' que devuelve el valor que deseas cachear.",
+    "interviewTip": "La función dentro de useMemo debe ser 'pura'; no debería tener efectos secundarios.",
+    "options": [
+      "const val = useMemo(calculate(a, b), [a, b]);",
+      "const val = useMemo(() => calculate(a, b), [a, b]);",
+      "const val = useCallback(() => calculate(a, b), [a, b]);",
+      "const val = React.memo(calculate(a, b));"
+    ]
+  },
+  "mem-12": {
+    "prompt": "¿Cuál es el resultado de usar un hook dentro de useMemo?",
+    "explanation": "Los hooks deben llamarse en el nivel superior de tu componente. No puedes anidar hooks dentro de useMemo, useEffect o cualquier otra función.",
+    "interviewTip": "Esto sigue los requisitos de orden de llamada de las 'Reglas de los Hooks'.",
+    "options": [
+      "Crea un estado local para el valor memoizado.",
+      "Es inválido; los hooks no pueden llamarse dentro de useMemo.",
+      "Solo funciona en React 18.",
+      "Devuelve una función setter."
+    ]
+  }
+}

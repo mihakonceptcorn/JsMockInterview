@@ -2,6 +2,17 @@
   "ends_in": "Ends in",
   "time": "Time",
   "questions": "Questions",
+  "play": {
+    "choose_single": "Choose the correct answer",
+    "choose_multiple": "Choose all correct answers",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "correct_label": "Correct:",
+    "explanation_label": "Explanation:",
+    "interview_tip_label": "Interview Tip:",
+    "check_answer": "Check Answer",
+    "next_question": "Next Question"
+  },
   "results": {
     "title": "Stage Complete",
     "score": "Score",

@@ -1,0 +1,107 @@
+{
+  "clr-01": {
+    "prompt": "¿Cuál es la principal diferencia arquitectónica entre 'v-if' y 'v-show'?",
+    "explanation": "v-if es renderizado condicional 'real' porque asegura que los event listeners y componentes hijos dentro del bloque condicional sean destruidos y recreados apropiadamente. v-show es mucho más simple—el elemento siempre permanece en el DOM.",
+    "interviewTip": "Usa v-if para condiciones que rara vez cambian en tiempo de ejecución; usa v-show si necesitas alternar algo muy frecuentemente (como una pestaña o un tooltip).",
+    "options": [
+      "v-if es para componentes, v-show es para etiquetas HTML.",
+      "v-if renderiza/destruye condicionalmente el elemento en el DOM; v-show solo alterna la propiedad CSS 'display'.",
+      "v-if es más rápido para alternancia frecuente.",
+      "v-show solo está disponible en Vue 2."
+    ]
+  },
+  "clr-02": {
+    "prompt": "Analiza el código. ¿Qué sucederá si 'items' es un array vacío []?",
+    "explanation": "v-else debe seguir a un v-if o v-else-if. No puede usarse con v-for. Para manejar listas vacías, debes usar v-if=\"items.length === 0\" en un elemento separado.",
+    "interviewTip": "Este es un error común. v-for no tiene un bloque 'else' incorporado.",
+    "options": [
+      "Renderizará 'No items found'.",
+      "No renderizará nada.",
+      "Causará un error de compilación del template.",
+      "Renderizará un <li> vacío."
+    ]
+  },
+  "clr-03": {
+    "prompt": "¿Por qué se recomienda fuertemente proporcionar siempre un ':key' único al usar 'v-for'?",
+    "explanation": "Sin keys, Vue usa un algoritmo que minimiza el movimiento de elementos e intenta parchear/reutilizar elementos en el lugar. Esto puede llevar a bugs con el estado de formularios o animaciones.",
+    "interviewTip": "Nunca uses 'index' como key si la lista puede ser reordenada, filtrada, o si los elementos pueden ser eliminados. Usa IDs únicos de tus datos.",
+    "options": [
+      "Para decirle a Vue qué estilos CSS aplicar.",
+      "Para ayudar al Virtual DOM de Vue a rastrear qué elementos han cambiado, sido agregados o eliminados para un parcheado eficiente.",
+      "Para ordenar la lista automáticamente.",
+      "Las keys son requeridas por el navegador para renderizar listas."
+    ]
+  },
+  "clr-04": {
+    "prompt": "Analiza el código. En Vue 3, ¿qué directiva tiene mayor prioridad cuando se usa en el mismo elemento?",
+    "explanation": "En Vue 3, v-if tiene una prioridad mayor que v-for. Esto significa que v-if no tiene acceso a las variables del scope de v-for, y el código anterior probablemente lanzará un error porque 'item' no está definido cuando v-if se ejecuta.",
+    "interviewTip": "En Vue 2, la prioridad era al revés. Independientemente de la versión, debes evitar usar ambas en el mismo elemento. Envuelve la lista en un <template v-for> o usa una propiedad computed para filtrar la lista de antemano.",
+    "options": [
+      "v-if",
+      "v-for",
+      "Tienen igual prioridad.",
+      "El orden en que están escritas determina la prioridad."
+    ]
+  },
+  "clr-05": {
+    "prompt": "¿Cómo renderizas un bloque de múltiples elementos sin agregar un div envolvente extra al DOM?",
+    "explanation": "La etiqueta <template> actúa como un envoltorio invisible. Te permite usar directivas como v-if o v-for en un grupo de elementos sin afectar la estructura HTML final.",
+    "interviewTip": "Esto es perfecto para mantener tu árbol DOM plano y limpio.",
+    "options": ["div", "template", "block", "fragment"]
+  },
+  "clr-06": {
+    "prompt": "¿Cuáles de estas son formas válidas de iterar usando v-for?",
+    "explanation": "Vue es bastante flexible. Puedes iterar sobre arrays, objetos (value, key, index), e incluso rangos enteros (1 a N). La iteración de strings es técnicamente posible pero rara vez se usa en la práctica.",
+    "interviewTip": "Al iterar sobre un objeto, el orden se basa en el orden de enumeración de Object.keys(), que puede variar entre navegadores.",
+    "options": [
+      "v-for=\"n in 10\" (Iterando sobre un rango)",
+      "v-for=\"(value, key) in myObject\" (Iterando sobre propiedades de objeto)",
+      "v-for=\"item in items\" (Iterando sobre un array)",
+      "v-for=\"char in 'Hello'\" (Iterando sobre un string)"
+    ]
+  },
+  "clr-07": {
+    "prompt": "Analiza el código. ¿Cuál es la forma más eficiente de filtrar esta lista en una aplicación de producción?",
+    "explanation": "Filtrar con una propiedad computed es el mejor enfoque. Es más legible, y debido al almacenamiento en caché, el filtro solo se ejecuta cuando la lista 'users' realmente cambia.",
+    "interviewTip": "Las propiedades computed para listas filtradas también hacen que la lógica de tu componente sea más fácil de testear unitariamente.",
+    "options": [
+      "Mantenerlo como está; Vue lo maneja eficientemente.",
+      "Usar una propiedad computed para pre-filtrar el array 'users'.",
+      "Usar un method llamado dentro del template para filtrar.",
+      "Filtrar la lista en el hook mounted y guardarla en un nuevo ref."
+    ]
+  },
+  "clr-08": {
+    "prompt": "¿Qué sucede si dos elementos en una lista v-for tienen el mismo ':key'?",
+    "explanation": "Las keys duplicadas confunden el proceso de reconciliación del Virtual DOM. Vue te advertirá en la consola, y puedes ver elementos 'parpadeando' o mostrando el estado incorrecto cuando la lista cambia.",
+    "interviewTip": "Siempre asegúrate de que las keys sean verdaderamente únicas dentro de la lista.",
+    "options": [
+      "Vue generará automáticamente una nueva key para uno de ellos.",
+      "Causará una advertencia en tiempo de ejecución y probablemente llevará a bugs impredecibles de actualización del DOM.",
+      "La aplicación se cerrará inmediatamente.",
+      "Solo se renderizará el primer elemento."
+    ]
+  },
+  "clr-09": {
+    "prompt": "¿Cuál es la diferencia entre v-if y v-show?",
+    "explanation": "v-if tiene un mayor costo de alternancia (destruye/recrea elementos), mientras que v-show tiene un mayor costo de renderizado inicial (renderiza todo pero oculta con CSS).",
+    "interviewTip": "Usa v-if para alternancias infrecuentes, v-show para alternancias frecuentes.",
+    "options": [
+      "v-if elimina el elemento del DOM; v-show alterna la propiedad CSS display.",
+      "v-show es más rápido que v-if.",
+      "v-if solo funciona con componentes.",
+      "No hay diferencia."
+    ]
+  },
+  "clr-10": {
+    "prompt": "¿Por qué debes evitar usar v-if y v-for en el mismo elemento?",
+    "explanation": "En Vue 3, v-for tiene mayor prioridad, por lo que v-if se ejecutará en cada iteración. Esto es ineficiente. Usa una propiedad computed o envuelve con una etiqueta template en su lugar.",
+    "interviewTip": "Esta es una pregunta común de entrevista sobre mejores prácticas de Vue y rendimiento.",
+    "options": [
+      "Causa un error de sintaxis.",
+      "v-for tiene mayor prioridad que v-if en Vue 3, lo que puede llevar a comportamiento inesperado y problemas de rendimiento.",
+      "Hace el código más difícil de leer.",
+      "Vue optimiza automáticamente este patrón."
+    ]
+  }
+}

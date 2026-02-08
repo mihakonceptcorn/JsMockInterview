@@ -1,0 +1,107 @@
+{
+  "of-01": {
+    "prompt": "¿Qué librería es el estándar de la industria para detectar el estado de conectividad de red en React Native?",
+    "explanation": "NetInfo proporciona información sobre el tipo de conexión (wifi, celular) y si el dispositivo está realmente conectado a internet.",
+    "interviewTip": "Suscríbete siempre al listener en lugar de solo hacer una verificación única, para que tu UI reaccione instantáneamente cuando el usuario pierda la conexión.",
+    "options": [
+      "react-native-connectivity",
+      "@react-native-community/netinfo",
+      "react-native-offline-check",
+      "expo-network-status"
+    ]
+  },
+  "of-02": {
+    "prompt": "¿Qué es la 'Optimistic UI' en el contexto de una app offline-first?",
+    "explanation": "La Optimistic UI hace que la app se sienta 'instantánea'. Si la network request falla más tarde, la app 'revierte' el cambio e informa al usuario.",
+    "interviewTip": "Esta es una característica principal de librerías como TanStack (React) Query.",
+    "options": [
+      "Una UI que solo funciona cuando el usuario está feliz.",
+      "Actualizar inmediatamente la UI para mostrar una acción exitosa (como dar like a un post) antes de que el servidor lo confirme.",
+      "Un diseño que utiliza colores brillantes y positivos.",
+      "Asumir que el usuario nunca perderá la conexión."
+    ]
+  },
+  "of-03": {
+    "prompt": "Analiza el código. ¿Cómo maneja esta configuración de React Query el estar offline?",
+    "explanation": "En modo 'offlineFirst', las queries ejecutarán la queryFn pero también devolverán con éxito los datos del cache si están disponibles, incluso sin conexión.",
+    "interviewTip": "Combina esto con un 'Persister' para guardar el cache en MMKV o AsyncStorage para una verdadera persistencia offline tras reiniciar la app.",
+    "options": [
+      "Elimina los datos si no hay internet.",
+      "Obtiene los datos del servidor primero, luego del cache.",
+      "Sirve los datos del cache inmediatamente y solo intenta obtener nuevos datos si los actuales están stale (obsoletos).",
+      "Evita que la app se abra sin conexión."
+    ]
+  },
+  "of-04": {
+    "prompt": "¿Cuál es el rol de una 'Sync Queue' en una arquitectura offline-first?",
+    "explanation": "Una sync queue asegura que el progreso del usuario no se pierda. Cuando la app detecta 'isConnected: true', procesa las acciones pendientes en el orden en que fueron creadas.",
+    "interviewTip": "Librerías como 'redux-persist' combinadas con 'redux-offline' fueron pioneras en este patrón.",
+    "options": [
+      "Acelerar las animaciones de la app.",
+      "Almacenar acciones del usuario (como 'Enviar Quiz') mientras está offline y ejecutarlas una vez que se restaure la conexión.",
+      "Gestionar el orden de las imágenes en una galería.",
+      "Verificar actualizaciones de la app en la tienda."
+    ]
+  },
+  "of-05": {
+    "prompt": "¿Cuáles de estos son desafíos comunes al implementar Offline-First?",
+    "explanation": "La resolución de conflictos es la parte más difícil: decidir 'quién gana' si un usuario edita los mismos datos en dos dispositivos mientras uno estaba offline.",
+    "interviewTip": "Menciona 'Last Write Wins' (el último en escribir gana) o 'CRDTs' (Conflict-free Replicated Data Types) como estrategias avanzadas de resolución.",
+    "options": [
+      "Resolución de conflictos (datos del servidor vs. cambios locales).",
+      "Gestión de invalidación de cache (asegurar que los datos no sean demasiado antiguos).",
+      "Manejo de assets binarios grandes como video.",
+      "Aumentar la capacidad de la batería del dispositivo."
+    ]
+  },
+  "of-06": {
+    "prompt": "¿Cómo detectas si una network request específica falló precisamente por falta de internet?",
+    "explanation": "state.isConnected devuelve un boolean que indica si el dispositivo tiene una conexión de red (aunque no siempre garantiza el acceso a internet).",
+    "interviewTip": "Usa `state.isInternetReachable` para una verificación más precisa de que los servidores de Google/Apple son realmente alcanzables.",
+    "options": [
+      "state.connected",
+      "state.isConnected",
+      "state.online",
+      "state.hasInternet"
+    ]
+  },
+  "of-07": {
+    "prompt": "¿Qué es la 'Rehydration' en el contexto de gestión de estado?",
+    "explanation": "Cuando la app se abre, lee el JSON guardado en AsyncStorage/MMKV y 'rellena' el estado, para que el usuario vea sus datos antes de que ocurra cualquier llamada de red.",
+    "interviewTip": "Muestra siempre una loading splash screen hasta que la rehydration se complete para evitar saltos de diseño (layout shift).",
+    "options": [
+      "Limpiar la memoria después de un crash.",
+      "El proceso de cargar el estado persistido desde el almacenamiento a la memoria de la app (ej. Redux o Zustand) al iniciar.",
+      "Actualizar la app a la versión más reciente.",
+      "Conectar la app a una nueva base de datos."
+    ]
+  },
+  "of-08": {
+    "prompt": "¿Por qué se suele preferir 'MMKV' sobre 'AsyncStorage' para apps offline-first?",
+    "explanation": "Debido a que MMKV es síncrono, puedes leer el estado instantáneamente durante el renderizado inicial, haciendo que la experiencia 'offline' se sienta mucho más fluida.",
+    "interviewTip": "AsyncStorage requiere 'await', lo que siempre fuerza al menos un ciclo de renderizado 'vacío'.",
+    "options": [
+      "Tiene una mejor UI.",
+      "Permite lecturas síncronas, lo que evita el 'parpadeo' del estado de la UI durante la rehydration.",
+      "Es propiedad de Facebook.",
+      "Soporta archivos de video nativamente."
+    ]
+  },
+  "of-09": {
+    "prompt": "¿Cuál es la mejor estrategia para manejar el cache de imágenes en una app offline-first?",
+    "explanation": "Librerías como 'react-native-fast-image' proporcionan disk caching automático con estrategias de invalidación de cache, logrando una carga de imágenes offline sin interrupciones.",
+    "interviewTip": "Menciona que debes establecer prioridades de cache (baja/normal/alta) según la importancia de la imagen para gestionar el espacio en disco eficientemente.",
+    "options": [
+      "Guardar todas las imágenes en AsyncStorage como strings base64.",
+      "Usar una librería como 'react-native-fast-image' con disk caching habilitado para cachear automáticamente imágenes de red.",
+      "Descargar todas las imágenes al iniciar la app.",
+      "Las imágenes no se pueden cachear en React Native."
+    ]
+  },
+  "of-10": {
+    "prompt": "¿Cómo implementas un mecanismo de reintento (retry) para network requests fallidas en una arquitectura offline-first?",
+    "explanation": "Configurar 'retry: 3' significa que la mutación reintentará automáticamente hasta 3 veces con un backoff exponencial antes de rendirse. Es perfecto para errores de red transitorios.",
+    "interviewTip": "Para operaciones críticas como pagos, podrías querer persistir las mutaciones fallidas en una cola y reintentarlas cuando la app se reinicie.",
+    "options": ["false", "true", "3", "Infinity"]
+  }
+}

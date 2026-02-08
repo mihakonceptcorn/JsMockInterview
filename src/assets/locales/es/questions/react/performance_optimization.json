@@ -1,0 +1,134 @@
+{
+  "po-01": {
+    "prompt": "¿Cuál es el propósito principal de 'React.lazy' y 'Suspense'?",
+    "explanation": "React.lazy te permite renderizar un import dinámico como un componente regular. Suspense proporciona una UI de respaldo (como un spinner) mientras ese componente se está cargando.",
+    "interviewTip": "Esto reduce el tamaño del bundle inicial, lo que mejora la métrica 'Time to Interactive'.",
+    "options": [
+      "Hacer que el algoritmo de diffing del Virtual DOM sea más rápido.",
+      "Implementar code-splitting cargando componentes solo cuando son necesarios.",
+      "Minificar automáticamente los archivos CSS.",
+      "Cachear respuestas de API en la memoria del navegador."
+    ]
+  },
+  "po-02": {
+    "prompt": "Analiza el código. ¿Qué sucede con 'HugeComponent' cuando la app se carga por primera vez?",
+    "explanation": "Al usar import() dinámico, la herramienta de construcción (como Webpack o Vite) crea un chunk separado para este componente que se descarga por la red solo cuando es necesario.",
+    "interviewTip": "El lazy loading es ideal para componentes que no son visibles inmediatamente, como Modales o Rutas separadas.",
+    "options": [
+      "Se descarga inmediatamente como parte del bundle principal.",
+      "Solo se descarga cuando el componente App se renderiza.",
+      "Es ignorado por el navegador.",
+      "Se renderiza únicamente en el servidor."
+    ]
+  },
+  "po-03": {
+    "prompt": "¿Cuáles de estas son formas efectivas de identificar cuellos de botella de rendimiento en una app de React?",
+    "explanation": "El Profiler muestra qué componentes se renderizaron y por qué. 'Highlight updates' da feedback visual sobre los re-renders, y la pestaña Network ayuda a identificar código excesivo.",
+    "interviewTip": "El 'Flamegraph' del Profiler ayuda a localizar exactamente qué componente en un árbol profundo está causando lag.",
+    "options": [
+      "Usar la pestaña 'Profiler' en las React Developer Tools.",
+      "Activar 'Highlight updates' en la configuración de React DevTools.",
+      "Revisar la pestaña 'Network' para ver los tamaños de los bundles.",
+      "Aumentar la velocidad de la CPU de la máquina de desarrollo."
+    ]
+  },
+  "po-04": {
+    "prompt": "¿Para qué se utiliza el 'Windowing' (o Virtualización)?",
+    "explanation": "Si tienes 10,000 elementos, renderizarlos todos crea más de 10,000 nodos en el DOM, lo que ralentiza el navegador. El Windowing mantiene el DOM pequeño (ej., solo 20 nodos).",
+    "interviewTip": "Menciona librerías como 'react-window' o 'react-virtualized' como el estándar de la industria para esto.",
+    "options": [
+      "Para permitir que la app se ejecute en múltiples ventanas del navegador.",
+      "Para renderizar solo los elementos de una lista larga que son visibles actualmente en pantalla.",
+      "Para crear un fondo transparente para la UI.",
+      "Para manejar ventanas emergentes (pop-ups) en el navegador."
+    ]
+  },
+  "po-05": {
+    "prompt": "¿Qué sucede con el rendimiento si defines un componente dentro del cuerpo de otro componente?",
+    "explanation": "Debido a que la función del componente se recrea, React lo ve como un tipo completamente nuevo cada vez. Esto destruye todo el estado del hijo y fuerza un desmontaje y montaje (remount) completo.",
+    "interviewTip": "Define siempre tus componentes fuera de la función principal o en archivos separados.",
+    "options": [
+      "Es más rápido porque el scope es más pequeño.",
+      "Es extremadamente ineficiente porque 'Child' se redefine como un componente nuevo en cada render del 'Parent'.",
+      "React optimiza esto automáticamente.",
+      "Solo está permitido en React 19."
+    ]
+  },
+  "po-06": {
+    "prompt": "¿Qué es 'Throttling' y 'Debouncing' en el contexto de eventos de React?",
+    "explanation": "Debouncing espera a que haya una pausa en la actividad (ej., al escribir), mientras que Throttling limita las llamadas a una vez cada X milisegundos (ej., al hacer scroll).",
+    "interviewTip": "Usa 'lodash.debounce' o utilidades similares para evitar 100 llamadas a una API mientras el usuario escribe una sola palabra.",
+    "options": [
+      "Métodos para encriptar la entrada del usuario.",
+      "Técnicas para limitar qué tan seguido se ejecuta una función (como una búsqueda en API o redimensionar ventana).",
+      "Formas de acelerar las animaciones CSS.",
+      "Herramientas para eliminar variables de estado no utilizadas."
+    ]
+  },
+  "po-07": {
+    "prompt": "¿Cómo ayuda la 'Transition API' (useTransition) con el rendimiento en React 18+?",
+    "explanation": "startTransition le dice a React que una actualización (como filtrar una lista masiva) puede ser interrumpida por tareas más urgentes como escribir o hacer clic.",
+    "interviewTip": "Usa 'useTransition' para evitar que la UI se 'congele' durante tareas de renderizado pesado.",
+    "options": [
+      "Añade transiciones CSS entre páginas.",
+      "Permite marcar ciertas actualizaciones de estado como 'no urgentes', manteniendo la UI receptiva.",
+      "Comprime imágenes automáticamente.",
+      "Fuerza al navegador a usar más RAM."
+    ]
+  },
+  "po-08": {
+    "prompt": "¿Cuál es el beneficio de mover el estado hacia un componente hijo?",
+    "explanation": "Esto se llama 'Localizar el Estado'. Si solo el Modal necesita saber si está abierto, mantén ese estado ahí para evitar renderizar toda la App cada vez que cambie.",
+    "interviewTip": "Antes de usar useMemo, verifica siempre si puedes simplemente reestructurar tu árbol de componentes para evitar re-renders.",
+    "options": [
+      "Aumenta la complejidad de la app.",
+      "Limita los re-renders solo a ese componente hijo en lugar de a todo el árbol padre.",
+      "Hace que los datos sean accesibles para todos los componentes.",
+      "No hay beneficio de rendimiento."
+    ]
+  },
+  "po-09": {
+    "prompt": "¿Por qué usar el 'index' como key es malo para el rendimiento en una lista dinámica?",
+    "explanation": "Si la lista se reordena, el elemento en el índice 0 cambia, pero la key '0' permanece. React piensa que el contenido cambió en lugar de que el elemento se movió.",
+    "interviewTip": "Keys estables (como IDs) permiten a React simplemente 'mover' nodos del DOM en lugar de recrearlos.",
+    "options": [
+      "El navegador tarda demasiado en leer los números.",
+      "Confunde al algoritmo de diffing de React durante el reordenamiento, causando actualizaciones de DOM incorrectas y renders desperdiciados.",
+      "Las keys deben ser strings, no números.",
+      "Los índices no están soportados en React 18."
+    ]
+  },
+  "po-10": {
+    "prompt": "¿Qué hace el hook 'useDeferredValue'?",
+    "explanation": "Similar a useTransition, pero para valores. Te da una versión 'diferida' de un valor que se 'retrasa' respecto a la actualización urgente, manteniendo la UI fluida.",
+    "interviewTip": "Perfecto para un input de búsqueda donde el input se actualiza al instante, pero la lista de resultados se actúa un poco después.",
+    "options": [
+      "Retrasa el renderizado de un valor hasta el día siguiente.",
+      "Permite diferir la actualización de una parte de la UI que tarda mucho en renderizarse.",
+      "Cachea el valor en una cookie.",
+      "Evita que el valor cambie alguna vez."
+    ]
+  },
+  "po-11": {
+    "prompt": "¿Cuál de estos patrones puede causar fugas de memoria (memory leaks) en React?",
+    "explanation": "Cuando un componente se desmonta, elementos globales como timers y event listeners permanecen en memoria a menos que los detengas manualmente.",
+    "interviewTip": "¡Usa siempre la función de retorno en useEffect para limpiar tus efectos!",
+    "options": [
+      "Iniciar un setInterval y no limpiarlo en la función de cleanup.",
+      "Usar demasiadas declaraciones console.log.",
+      "Añadir un event listener al objeto window sin eliminarlo.",
+      "Declarar demasiadas variables."
+    ]
+  },
+  "po-12": {
+    "prompt": "¿Cuál es el resultado de usar 'funciones inline' como props para un componente envuelto en 'React.memo'?",
+    "explanation": "React.memo usa comparación superficial. `() => {} !== () => {}`, por lo que la verificación de memoización falla.",
+    "interviewTip": "Combina 'React.memo' con 'useCallback' en la función del padre para que la optimización funcione.",
+    "options": [
+      "El botón nunca se re-renderizará.",
+      "El botón se re-renderizará en cada render del padre porque la función es una referencia nueva cada vez.",
+      "React ignorará la función.",
+      "La función será automáticamente memoizada."
+    ]
+  }
+}

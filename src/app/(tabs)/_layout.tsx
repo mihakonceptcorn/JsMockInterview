@@ -3,9 +3,12 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { COLORS } from '@/theme/colors';
 import { s, vs, ms } from 'react-native-size-matters';
 import { useTranslation } from 'react-i18next';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function TabsLayout() {
   const { t } = useTranslation('common');
+  const insets = useSafeAreaInsets();
+
   return (
     <Tabs
       screenOptions={{
@@ -23,7 +26,8 @@ export default function TabsLayout() {
         tabBarStyle: {
           backgroundColor: COLORS.bgBottom,
           borderTopWidth: 0,
-          height: s(60),
+          height: s(60) + insets.bottom,
+          paddingBottom: insets.bottom > 0 ? insets.bottom / 2 : 0,
         },
         tabBarActiveTintColor: COLORS.accent,
         tabBarInactiveTintColor: COLORS.textSecondary,

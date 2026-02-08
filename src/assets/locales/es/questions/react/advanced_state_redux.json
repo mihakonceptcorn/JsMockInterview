@@ -1,0 +1,124 @@
+{
+  "rtk-01": {
+    "prompt": "¿Cuál es el propósito principal de un 'Slice' en Redux Toolkit?",
+    "explanation": "`createSlice` genera automáticamente `action creators` y `action types` basados en los `reducers` que proporciones, reduciendo drásticamente el `boilerplate code`.",
+    "interviewTip": "En el Redux legado, tenías que escribir `actions` y `reducers` en archivos separados. Los `Slices` lo hacen modular y conciso.",
+    "options": [
+      "Dividir la UI en componentes más pequeños.",
+      "Agrupar el `initial state`, `reducers` y `actions` para una funcionalidad específica en un solo lugar.",
+      "Dividir la base de datos en múltiples tablas.",
+      "Manejar llamadas a `API` exclusivamente."
+    ]
+  },
+  "rtk-02": {
+    "prompt": "¿Cómo permite Redux Toolkit 'mutar' el `state` de forma segura dentro de un `reducer`?",
+    "explanation": "RTK utiliza `Immer`, que rastrea los cambios en un `draft state` y produce un nuevo objeto de `state` inmutable por ti.",
+    "interviewTip": "Este es un beneficio clave: obtienes la simplicidad de la sintaxis de mutación con la seguridad de la inmutabilidad.",
+    "options": [
+      "Utiliza un compilador especial que cambia el código a CSS.",
+      "Utiliza la librería `Immer` internamente para convertir las 'mutaciones' en actualizaciones inmutables.",
+      "Realmente muta el `global state`, pero a React no le importa.",
+      "Solo funciona si usas la palabra clave 'mutable'."
+    ]
+  },
+  "rtk-03": {
+    "prompt": "¿Qué `hook` se utiliza para extraer datos del `Redux store state`?",
+    "explanation": "`useSelector` recibe una `selector function` que obtiene todo el `store state` y devuelve la parte específica que necesitas.",
+    "interviewTip": "`useSelector` también crea una suscripción al `store` y vuelve a renderizar el componente cuando los datos seleccionados cambian.",
+    "options": ["useStore", "useDispatch", "useSelector", "useContext"]
+  },
+  "rtk-04": {
+    "prompt": "¿Cuál es la forma correcta de activar un cambio de `state` desde un componente?",
+    "explanation": "El `hook` `useDispatch` devuelve la función `dispatch` del `Redux store`. La llamas con un `action object` para activar un `reducer`.",
+    "interviewTip": "Hacer `dispatch` es la *única* forma de activar un cambio de `state` en Redux, siguiendo el principio de 'Single Source of Truth'.",
+    "options": ["trigger", "dispatch", "send", "action"]
+  },
+  "rtk-05": {
+    "prompt": "¿Cuáles son los principios fundamentales de Redux?",
+    "explanation": "Redux se basa en la predictibilidad. El `global state` se almacena en un único árbol, y los `reducers` deben ser `pure functions` que reciben `(state, action)` y devuelven un nuevo `state`.",
+    "interviewTip": "La predictibilidad hace posible funciones como el 'Time Travel Debugging'.",
+    "options": [
+      "Single source of truth (un solo `store`).",
+      "El `state` es de solo lectura (cambios solo a través de `actions`).",
+      "El `state` puede ser modificado por cualquier componente directamente.",
+      "Los cambios se realizan con `pure functions` (`reducers`)."
+    ]
+  },
+  "rtk-06": {
+    "prompt": "¿Para qué se utiliza 'createAsyncThunk' en Redux Toolkit?",
+    "explanation": "`createAsyncThunk` genera `promise lifecycle action types` (`pending`, `fulfilled`, `rejected`) y maneja la lógica de `dispatching` por ti.",
+    "interviewTip": "Maneja los resultados de un `thunk` en la sección `extraReducers` de tu `slice`.",
+    "options": [
+      "Para sincronizar el `state` con `localStorage`.",
+      "Para manejar lógica asíncrona como peticiones a `API`.",
+      "Para crear animaciones de UI personalizadas.",
+      "Para combinar múltiples `slices` en uno solo."
+    ]
+  },
+  "rtk-07": {
+    "prompt": "¿Dónde se combinan todos los `slices` para crear el `global store`?",
+    "explanation": "`configureStore` simplifica la configuración del `store`. Agrega automáticamente la extensión `Redux DevTools` y el `middleware` `thunk`.",
+    "interviewTip": "`configureStore` es el reemplazo de RTK para la función heredada `createStore`.",
+    "options": [
+      "Dentro del archivo App.js.",
+      "Usando la función `configureStore`.",
+      "Dentro de un `custom hook`.",
+      "En el archivo index.html."
+    ]
+  },
+  "rtk-08": {
+    "prompt": "¿Qué sucede si un `reducer` no es una 'pure function' (por ejemplo, si usa Math.random() o llama a una API)?",
+    "explanation": "Los `reducers` deben ser deterministas. Dado el mismo `state` y `action`, siempre deben devolver el mismo resultado. Los `side effects` pertenecen a los `thunks` o al `middleware`.",
+    "interviewTip": "Reducers = 'Lógica/Cálculo'; Thunks = 'Side Effects/Trabajo asíncrono'.",
+    "options": [
+      "El código fallará al compilar.",
+      "Los cambios de `state` se vuelven impredecibles y las herramientas de depuración como `DevTools` dejarán de funcionar.",
+      "React arreglará automáticamente la función.",
+      "Redux ejecutará la función en un hilo separado."
+    ]
+  },
+  "rtk-09": {
+    "prompt": "¿Cómo se accede al 'payload' de una `action` dentro de un `reducer`?",
+    "explanation": "En Redux Toolkit, los datos enviados con una `action` se colocan automáticamente en la propiedad `payload` del objeto `action`.",
+    "interviewTip": "Ejemplo de llamada: `dispatch(incrementByAmount(10))` resulta en que `action.payload` sea 10.",
+    "options": [
+      "action.data",
+      "action.payload",
+      "action.value",
+      "action.params"
+    ]
+  },
+  "rtk-10": {
+    "prompt": "¿Cuál es el propósito del componente <Provider> en Redux?",
+    "explanation": "Al igual que la Context API, el `Provider` de Redux utiliza el mecanismo de contexto de React para pasar el `store` a `hooks` como `useSelector`.",
+    "interviewTip": "Usualmente, envuelves el `<Provider>` alrededor del `<App />` en tu archivo de entrada principal (index.js).",
+    "options": [
+      "Para obtener datos del servidor.",
+      "Para envolver la aplicación de React y hacer que el `Redux store` esté disponible para todos los componentes.",
+      "Para encriptar el `state` antes de guardarlo.",
+      "Para gestionar el `local state` del componente."
+    ]
+  },
+  "rtk-11": {
+    "prompt": "¿Cuáles de estos son beneficios de usar Redux DevTools?",
+    "explanation": "`DevTools` proporciona un panel visual para ver exactamente cómo las `actions` cambian el `state`, facilitando mucho la depuración.",
+    "interviewTip": "Es una de las razones más fuertes para elegir Redux en aplicaciones complejas.",
+    "options": [
+      "Inspeccionar el historial de cada `action` enviada.",
+      "Editar el `state` en tiempo real para probar cambios en la UI.",
+      "Escribir automáticamente CSS para tus componentes.",
+      "Viajar en el tiempo (`time-travel`) a estados anteriores."
+    ]
+  },
+  "rtk-12": {
+    "prompt": "Identifica el error en este uso de `selector`:",
+    "explanation": "Considera siempre el `initial state`. Si los datos aún no se han cargado, acceder a un índice de una lista vacía o `undefined` lanzará un error.",
+    "interviewTip": "Usa `optional chaining`: `state.users?.[0]`.",
+    "options": [
+      "Los `selectors` deben definirse en un archivo separado.",
+      "Si `state.users` es `undefined` (por ejemplo, durante la carga), la aplicación fallará.",
+      "useSelector no puede acceder a `arrays`.",
+      "El valor de retorno debe ser un `string`."
+    ]
+  }
+}

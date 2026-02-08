@@ -1,0 +1,102 @@
+{
+  "vca-01": {
+    "prompt": "¿Cuál es la principal diferencia técnica entre 'ref' y 'reactive' en Vue 3?",
+    "explanation": "ref envuelve cualquier valor en un objeto con una propiedad .value. reactive usa Proxies directamente en un objeto y no funciona con primitivos como strings o booleanos.",
+    "interviewTip": "En caso de duda, usa 'ref'. Es más consistente y deja claro cuándo estás trabajando con datos reactivos versus variables simples.",
+    "options": [
+      "ref es solo para strings, mientras que reactive es para números.",
+      "ref puede tomar valores primitivos (como 0 o true) y objetos, mientras que reactive solo acepta objetos.",
+      "reactive es más rápido que ref.",
+      "ref funciona en el lado del servidor, reactive solo en el cliente."
+    ]
+  },
+  "vca-02": {
+    "prompt": "Analiza el código. ¿Qué sucederá con la reactividad cuando 'user' sea desestructurado?",
+    "explanation": "Desestructurar un objeto reactivo es como copiar una propiedad. Para preservar la reactividad al desestructurar, debes usar 'toRefs(user)'.",
+    "interviewTip": "Esta es una pregunta frecuente en entrevistas. Usa 'toRefs' o 'toRef' para desempacar de forma segura objetos reactivos en refs individuales.",
+    "options": [
+      "La variable 'name' se actualizará a 'John'.",
+      "La variable 'name' permanecerá como 'Alex' porque desestructurar objetos reactivos rompe el enlace de reactividad.",
+      "Vue lanzará una advertencia sobre desestructuración insegura.",
+      "La reactividad se preserva si usas 'let' en lugar de 'const'."
+    ]
+  },
+  "vca-03": {
+    "prompt": "¿Qué macro del compilador se usa en <script setup> para hacer que componentes, props y variables estén automáticamente disponibles en el template?",
+    "explanation": "<script setup> es una transformación en tiempo de compilación que simplifica la Composition API eliminando la necesidad de devolver manualmente todo desde una función setup().",
+    "interviewTip": "Menciona que <script setup> conduce a un mejor rendimiento en tiempo de ejecución y bundles de código más pequeños.",
+    "options": [
+      "defineComponent",
+      "setup()",
+      "<script setup> (es la característica en sí misma)",
+      "export default"
+    ]
+  },
+  "vca-04": {
+    "prompt": "Analiza el código. ¿Cómo debes actualizar el valor de un 'ref' en el bloque script?",
+    "explanation": "En el bloque script, debes acceder a la propiedad '.value' para leer o escribir en un ref. En el template, Vue lo desenvuelve automáticamente por ti.",
+    "interviewTip": "Perder el '.value' es el bug #1 para desarrolladores que se mueven de Options API a Composition API.",
+    "options": ["count", "count.value", "count()", "this.count"]
+  },
+  "vca-05": {
+    "prompt": "¿Cuál es el propósito de la función 'shallowRef()'?",
+    "explanation": "shallowRef es una optimización de rendimiento. Es útil cuando tienes objetos grandes o instancias de bibliotecas de terceros donde solo te importa reemplazar el objeto completo, no rastrear cada clave anidada.",
+    "interviewTip": "Menciona esto cuando te pregunten cómo optimizar el rendimiento para conjuntos de datos grandes que no necesitan reactividad profunda.",
+    "options": [
+      "Para crear un ref que solo funciona para un render.",
+      "Para crear un ref donde solo la propiedad '.value' es reactiva, pero las propiedades internas del objeto no son rastreadas.",
+      "Para crear un ref con menor uso de memoria para números.",
+      "Para hacer un ref de solo lectura."
+    ]
+  },
+  "vca-06": {
+    "prompt": "¿Cuáles de estas son razones válidas para preferir la Composition API sobre la Options API en proyectos grandes?",
+    "explanation": "La Composition API está diseñada para escalabilidad. La Options API a menudo conduce a código 'fragmentado' donde la lógica para una característica está dispersa entre data, computed y methods.",
+    "interviewTip": "Una gran palabra clave para usar es 'Preocupaciones Lógicas'—la Composition API agrupa código por lo que *hace*, no por lo que *es*.",
+    "options": [
+      "Más fácil extraer y reutilizar lógica mediante 'Composables'.",
+      "Mejor inferencia de tipos y soporte de TypeScript.",
+      "Agrupa código por preocupación lógica (por ejemplo, 'Lógica de búsqueda' junta) en lugar de por tipo de opción.",
+      "Elimina completamente la necesidad del Virtual DOM."
+    ]
+  },
+  "vca-07": {
+    "prompt": "¿Cómo proporcionas un valor predeterminado a las props al usar 'defineProps' en <script setup> con TypeScript?",
+    "explanation": "Cuando usas declaraciones solo de tipo en defineProps, usas el macro del compilador 'withDefaults' para establecer valores predeterminados.",
+    "interviewTip": "Esta es la forma más 'profesional' de manejar props en un proyecto Vue 3 basado en TypeScript.",
+    "options": [
+      "withDefaults(defineProps, { msg: 'hello' })",
+      "defineProps({ msg: { default: 'hello' } })",
+      "defineProps<Props>({ msg: 'hello' })",
+      "assignProps({ msg: 'hello' })"
+    ]
+  },
+  "vca-08": {
+    "prompt": "¿Qué hace 'unref()'?",
+    "explanation": "unref es una utilidad para escribir funciones flexibles. Es abreviatura de: `isRef(val) ? val.value : val`.",
+    "interviewTip": "Esto es muy útil dentro de 'Composables' donde una entrada podría ser un ref o un valor simple.",
+    "options": [
+      "Elimina la reactividad de un objeto permanentemente.",
+      "Devuelve el valor interno si el argumento es un ref, de lo contrario devuelve el argumento mismo.",
+      "Convierte un objeto reactivo en un ref.",
+      "Fuerza a un componente a renderizarse nuevamente."
+    ]
+  },
+  "vca-09": {
+    "prompt": "¿Cómo proporcionas e inyectas dependencias en la Composition API?",
+    "explanation": "provide() e inject() te permiten pasar datos hacia abajo en el árbol de componentes sin props. Este es el sistema de inyección de dependencias de Vue.",
+    "interviewTip": "Menciona que inject() puede tomar un valor predeterminado como segundo argumento, y que los valores proporcionados no son reactivos a menos que los hagas explícitamente así.",
+    "options": ["useInject", "inject", "getProvided", "consume"]
+  },
+  "vca-10": {
+    "prompt": "¿Para qué se usa 'effectScope()' en Vue 3?",
+    "explanation": "effectScope() es una API avanzada que te permite controlar manualmente cuándo se crean y destruyen los efectos (watchers, computed, etc.). Esto es útil para autores de plugins y composables avanzados.",
+    "interviewTip": "Mencionar effectScope muestra un conocimiento profundo del sistema de reactividad de Vue y rara vez se pregunta en entrevistas junior.",
+    "options": [
+      "Para limitar el alcance de los estilos CSS.",
+      "Para crear un scope que puede recolectar y disponer de efectos reactivos juntos, útil para limpieza en composables.",
+      "Para mejorar el rendimiento de las propiedades computadas.",
+      "Para definir el alcance de las variables del template."
+    ]
+  }
+}

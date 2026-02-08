@@ -1,0 +1,163 @@
+{
+  "rn-core-01": {
+    "prompt": "¿Qué component es el building block más fundamental para la UI, actuando como un contenedor que soporta el layout con Flexbox?",
+    "explanation": "El component <View> se mapea directamente al equivalente nativo (UIView en iOS, android.view en Android) y se utiliza para el layout y el styling.",
+    "interviewTip": "Piensa en <View> como el <div> de React Native.",
+    "options": ["<Container>", "<View>", "<Section>", "<Div>"]
+  },
+  "rn-core-02": {
+    "prompt": "¿Qué sucederá si intentas renderizar raw text fuera de un component <Text>?",
+    "explanation": "A diferencia de la web donde el texto puede existir dentro de un <div>, React Native requiere que todo el texto esté envuelto explícitamente en un component <Text>.",
+    "interviewTip": "Este es un error de principiante muy común al hacer la transición de Web a Mobile.",
+    "options": [
+      "Se renderiza correctamente como un child del View.",
+      "Lanzará un error: 'Text strings must be rendered within a <Text> component'.",
+      "Se renderiza pero no se le puede aplicar styling.",
+      "React Native lo envuelve automáticamente en un tag <Text>."
+    ]
+  },
+  "rn-core-03": {
+    "prompt": "¿Cómo se muestra una remote image desde una URL en React Native?",
+    "explanation": "Las remote images requieren un object con una property 'uri'. Las local images usan la function 'require'.",
+    "interviewTip": "Recuerda que las remote images en React Native no tienen un tamaño automático; DEBES especificar width y height en los styles o no se mostrarán.",
+    "options": [
+      "{ require('./path/to/img.png') }",
+      "{ 'https://example.com/logo.png' }",
+      "{ uri: 'https://example.com/logo.png' }",
+      "\"https://example.com/logo.png\""
+    ]
+  },
+  "rn-core-04": {
+    "prompt": "¿Cuál es el propósito principal del método 'StyleSheet.create'?",
+    "explanation": "StyleSheet.create envía el style object a través del bridge solo una vez, en lugar de recrearlo en cada render, lo cual es más eficiente.",
+    "interviewTip": "También proporciona validación, lanzando errores si usas CSS properties inválidas que React Native no soporta.",
+    "options": [
+      "Para permitir el uso de archivos CSS (.css) en React Native.",
+      "Para proporcionar una forma centralizada y potencialmente más performante de definir styles fuera del render loop.",
+      "Para convertir automáticamente píxeles a porcentajes.",
+      "Para encriptar los styles por seguridad."
+    ]
+  },
+  "rn-core-05": {
+    "prompt": "¿Qué component deberías usar si necesitas un contenedor que permita al usuario hacer swipe a través de contenido que es más grande que la pantalla?",
+    "explanation": "Un <View> no tiene capacidades de scrolling. Para un scrolling básico de una pequeña cantidad de contenido, <ScrollView> es la elección correcta.",
+    "interviewTip": "Para large lists de datos, <ScrollView> es ineficiente porque renderiza todos los children a la vez. Usa <FlatList> en su lugar por performance.",
+    "options": ["<View>", "<SwipeView>", "<ScrollView>", "<ListView>"]
+  },
+  "rn-core-06": {
+    "prompt": "¿Cuál de las siguientes properties son válidas para el component <Text> en React Native?",
+    "explanation": "El component <Text> es sorprendentemente potente, soportando truncamiento, native touch events y selección para copy-paste.",
+    "interviewTip": "Los components <Text> anidados heredan styles de sus parents, lo cual es diferente a cómo funciona la herencia en <View>.",
+    "options": [
+      "numberOfLines (para truncar texto)",
+      "onPress (para manejar clicks directamente en el texto)",
+      "selectable (para permitir al usuario hacer copy-paste)",
+      "href (para enlazar a un sitio web)"
+    ]
+  },
+  "rn-core-07": {
+    "prompt": "¿Cómo manejas local assets (como un logo) en un component <Image>?",
+    "explanation": "La sintaxis 'require' permite que el packager empaquete los metadata de la imagen (width, height, path) durante el build time.",
+    "interviewTip": "A diferencia de las remote images, las local images usualmente no necesitan width/height explícitos para aparecer, aunque sigue siendo una buena práctica definirlos.",
+    "options": [
+      "Esta es la forma correcta para local assets.",
+      "Los local assets también deben usar la sintaxis { uri: ... }.",
+      "Primero debes importar la imagen como un default export.",
+      "React Native solo soporta remote images."
+    ]
+  },
+  "rn-core-08": {
+    "prompt": "¿Cuál es la diferencia entre <View> y <SafeAreaView>?",
+    "explanation": "SafeAreaView es esencial para dispositivos iOS con notches para asegurar que el contenido no quede oculto detrás de elementos de la UI del sistema.",
+    "interviewTip": "En el desarrollo moderno, muchos desarrolladores usan la librería 'react-native-safe-area-context' para un mejor control sobre las safe areas.",
+    "options": [
+      "<SafeAreaView> es más rápido que <View>.",
+      "<SafeAreaView> añade automáticamente padding para evitar 'notches', status bars y home indicators en dispositivos modernos.",
+      "<SafeAreaView> solo funciona en Android.",
+      "<View> es solo para web, <SafeAreaView> es para mobile."
+    ]
+  },
+  "rn-core-09": {
+    "prompt": "¿Cuál es el resultado de aplicar 'flexDirection' a una <View> en React Native?",
+    "explanation": "En el Web CSS estándar, el default es 'row'. En React Native, el default es 'column' para adaptarse mejor a las pantallas verticales de los móviles.",
+    "interviewTip": "Este es uno de los 'gotchas' más frecuentes para los desarrolladores web que se pasan a React Native.",
+    "options": [
+      "El default es 'row'.",
+      "El default es 'column'.",
+      "No tiene default; debe ser especificado.",
+      "Solo funciona en ScrollView."
+    ]
+  },
+  "rn-core-10": {
+    "prompt": "¿Qué component se utiliza para recolectar text input del usuario?",
+    "explanation": "TextInput es el component core para keyboard input. Soporta varios tipos de teclado (numeric, email) y secure text entry para contraseñas.",
+    "interviewTip": "Maneja siempre la prop 'onChangeText' (que entrega el string directamente) en lugar de 'onChange' (que entrega un event object).",
+    "options": ["<Input>", "<TextField>", "<TextInput>", "<EditView>"]
+  },
+  "rn-core-11": {
+    "prompt": "¿Cómo aplicas múltiples style objects a un solo component?",
+    "explanation": "La prop 'style' de React Native acepta un array de objects. El último object en el array tiene precedencia (sobreescribe a los anteriores).",
+    "interviewTip": "Esto es perfecto para conditional styling: style={[styles.box, isActive && styles.activeBox]}.",
+    "options": [
+      "[styles.base, styles.active]",
+      "{ styles.base, styles.active }",
+      "styles.base + styles.active",
+      "Object.assign(styles.base, styles.active)"
+    ]
+  },
+  "rn-core-12": {
+    "prompt": "¿Cuál es el propósito del component <ActivityIndicator />?",
+    "explanation": "Es un component incorporado que muestra un native loading spinner (UIActivityIndicator en iOS, ProgressBar en Android).",
+    "interviewTip": "Puedes personalizar su size ('small' o 'large') y color.",
+    "options": [
+      "Para mostrar el porcentaje de batería.",
+      "Para mostrar un loading spinner circular.",
+      "Para rastrear la actividad del usuario para analytics.",
+      "Para mostrar una progress bar."
+    ]
+  },
+  "rn-core-13": {
+    "prompt": "¿Cuáles de estos son valores válidos de 'resizeMode' para un component <Image>?",
+    "explanation": "resizeMode determina cómo debe escalarse la imagen cuando el frame no coincide con el aspect ratio de la imagen.",
+    "interviewTip": "'cover' es el default y usualmente lo que quieres para backgrounds de pantalla completa.",
+    "options": [
+      "cover (escala para llenar, puede recortar)",
+      "contain (escala para ajustar, sin recorte)",
+      "stretch (escala independientemente, puede distorsionar)",
+      "fit (solo funciona en Android)"
+    ]
+  },
+  "rn-core-14": {
+    "prompt": "¿Por qué es importante usar 'key' en una lista de components renderizados dentro de un ScrollView?",
+    "explanation": "Al igual que en React para la Web, el reconciliation algorithm usa keys para rastrear la identidad de los elementos en un array.",
+    "interviewTip": "Generalmente se desaconseja usar el array index como key si el orden de los items puede cambiar.",
+    "options": [
+      "Para aplicar styling a cada item individualmente.",
+      "Para ayudar a React a identificar qué items han cambiado, han sido añadidos o eliminados para un re-rendering eficiente.",
+      "Para permitir un smooth scrolling.",
+      "Las keys no son necesarias en ScrollView, solo en FlatList."
+    ]
+  },
+  "rn-core-15": {
+    "prompt": "¿Qué hace la prop 'contentContainerStyle' en un <ScrollView>?",
+    "explanation": "Si aplicas padding a la prop 'style' de un ScrollView, el contenido se cortará. Debes usar 'contentContainerStyle' para añadir padding al área scrollable en sí misma.",
+    "interviewTip": "Esta es la forma más común de añadir 'aire' al final de una lista con scroll.",
+    "options": [
+      "Aplica styling al wrapper exterior del scroll view.",
+      "Aplica styling al component interno que envuelve a todos los children (usado para padding/alignment).",
+      "Cambia el color de la scroll bar.",
+      "Se usa solo para el background color."
+    ]
+  },
+  "rn-core-16": {
+    "prompt": "¿Qué renderizará el siguiente código en la pantalla?",
+    "explanation": "Por defecto, las Views tienen 'alignItems: stretch', así que ocupará todo el ancho de su parent y actuará como una línea de 1 píxel de alto.",
+    "interviewTip": "Esta es una forma común de crear separators personalizados tipo borde entre items de una lista.",
+    "options": [
+      "Una caja negra.",
+      "Una línea negra horizontal (separator).",
+      "Nada, porque no tiene width.",
+      "Un error."
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "tm-01": {
+    "prompt": "¿Qué framework de testing es el predeterminado para React Native y se encarga de ejecutar las pruebas unitarias?",
+    "explanation": "Jest es el test runner estándar para React Native. Viene preconfigurado con un preset 'react-native' que simula el entorno móvil.",
+    "interviewTip": "Menciona que el 'Snapshot Testing' de Jest es una forma popular pero controvertida de detectar cambios de UI no deseados.",
+    "options": ["Mocha", "Jest", "Detox", "Cypress"]
+  },
+  "tm-02": {
+    "prompt": "¿Cuál es la filosofía principal de 'React Native Testing Library' (RNTL)?",
+    "explanation": "RNTL fomenta probar el *comportamiento* en lugar de la *implementación*. Si refactorizas tu código pero el usuario sigue viendo 'Submit', tus tests deberían seguir pasando.",
+    "interviewTip": "Evita usar 'enzyme' en React Native moderno; RNTL es el reemplazo estándar de la comunidad.",
+    "options": [
+      "Probar el estado interno y los métodos privados de un componente.",
+      "Probar los componentes desde la perspectiva del usuario (por ejemplo, encontrar elementos por texto o etiquetas de accesibilidad).",
+      "Arreglar automáticamente bugs en el código.",
+      "Probar el rendimiento de la app en un dispositivo real."
+    ]
+  },
+  "tm-03": {
+    "prompt": "Analiza el código. ¿Cómo simulas que un usuario escribe en el input 'Question' en un test?",
+    "explanation": "En RNTL, 'fireEvent.changeText' es el evento especializado para componentes TextInput que imita directamente la prop 'onChangeText'.",
+    "interviewTip": "Usa siempre 'fireEvent.press' para botones y 'fireEvent.changeText' para inputs.",
+    "options": [
+      "fireEvent.changeText",
+      "fireEvent.type",
+      "fireEvent.input",
+      "userEvent.type"
+    ]
+  },
+  "tm-04": {
+    "prompt": "¿Para qué se utiliza 'Detox' en el ecosistema de React Native?",
+    "explanation": "Detox ejecuta tu app en un simulador real e interactúa con ella como un usuario. Se llama 'gray-box' porque se sincroniza con el estado interno de la app para evitar tests inestables.",
+    "interviewTip": "Compara Detox con Cypress; es el equivalente móvil más cercano para la automatización de flujos completos.",
+    "options": [
+      "Limpiar la carpeta node_modules.",
+      "Testing End-to-End (E2E) de tipo gray-box en simuladores/emuladores reales.",
+      "Probar unitariamente funciones utilitarias individuales.",
+      "Comprobar vulnerabilidades de seguridad de la app."
+    ]
+  },
+  "tm-05": {
+    "prompt": "¿Por qué necesitas mockear módulos nativos (como 'react-native-reanimated' o 'AsyncStorage') en Jest?",
+    "explanation": "Jest se ejecuta en un entorno Node, no en un sistema operativo móvil. Los módulos nativos (C++/Java/Swift) no existen allí, por lo que debes proporcionar una implementación JS 'mock'.",
+    "interviewTip": "La mayoría de las librerías populares (como React Navigation) proporcionan sus propios mocks para Jest que puedes importar directamente en tu 'jest.setup.js'.",
+    "options": [
+      "Para que los tests se ejecuten más rápido.",
+      "Porque el código nativo no puede ejecutarse en el entorno Node.js donde se ejecuta Jest.",
+      "Para reducir el tamaño de los archivos de test.",
+      "Jest solo soporta JavaScript puro."
+    ]
+  },
+  "tm-06": {
+    "prompt": "¿Cuáles de las siguientes son 'queries' válidas de RNTL para encontrar elementos en tu UI?",
+    "explanation": "getByText y getByTestId son las más comunes. queryBy... se usa cuando quieres comprobar que un elemento *no* existe (devuelve null en lugar de lanzar un error).",
+    "interviewTip": "Prefiere 'getByText' o 'getByLabelText' (accesibilidad) antes que 'getByTestId' siempre que sea posible para asegurar que tu app sea accesible.",
+    "options": ["getByText", "getByTestId", "queryByRole", "findElementById"]
+  },
+  "tm-07": {
+    "prompt": "¿Cuál es el propósito de 'jest.useFakeTimers()'?",
+    "explanation": "Si tu app de Mock Interview tiene una 'cuenta regresiva de 3 segundos' antes de una pregunta, los fake timers te permiten saltarte esos 3 segundos instantáneamente durante un test.",
+    "interviewTip": "No olvides llamar a 'jest.runAllTimers()' o 'jest.advanceTimersByTime()' después de usar esto.",
+    "options": [
+      "Acelerar el reloj del computador.",
+      "Controlar y adelantar el tiempo en tests que usan setTimeout o setInterval (como un timer de splash screen).",
+      "Registrar cuánto tiempo tarda en ejecutarse un test.",
+      "Programar tests para una fecha posterior."
+    ]
+  },
+  "tm-08": {
+    "prompt": "Analiza el snippet de test de Detox. ¿Qué está verificando?",
+    "explanation": "Este es un test E2E típico. Comprueba la visibilidad de elementos y realiza acciones (tap) para verificar un flujo de navegación de múltiples pantallas.",
+    "interviewTip": "En Detox, 'by.id' se refiere a la prop 'testID' que agregas a tus componentes de React Native.",
+    "options": [
+      "Un test unitario para el botón Start.",
+      "Un flujo completo de usuario: ver la pantalla de bienvenida, hacer clic en start y llegar a la primera pregunta.",
+      "El rendimiento de la transición de pantalla.",
+      "Si el servidor está respondiendo a las solicitudes."
+    ]
+  },
+  "tm-09": {
+    "prompt": "¿Cómo pruebas un componente que usa un hook de una librería (como 'useNavigation') sin que falle?",
+    "explanation": "Al igual que en tu app, los hooks a menudo necesitan su contexto. Envolver tu componente de test en un 'Wrapper' (como NavigationContainer o un Provider de Redux) es la solución estándar.",
+    "interviewTip": "Puedes crear una función 'render' personalizada que envuelva automáticamente cada componente en todos los providers necesarios.",
+    "options": [
+      "Envolver el componente en el Provider de la librería (por ejemplo, NavigationContainer) dentro del test.",
+      "No se pueden testear componentes con hooks.",
+      "Eliminar el hook antes de ejecutar el test.",
+      "Mover el hook a otro archivo."
+    ]
+  },
+  "tm-10": {
+    "prompt": "¿Qué representa 'coverage' en un reporte de Jest?",
+    "explanation": "Coverage te ayuda a identificar 'zonas oscuras' en tu código que aún no han sido testeadas.",
+    "interviewTip": "Advertencia: 100% de coverage no significa que tu app esté libre de bugs; solo significa que cada línea se ejecutó al menos una vez.",
+    "options": [
+      "El número de usuarios que han descargado la app.",
+      "El porcentaje de tu código fuente (líneas, ramas, funciones) que fue ejecutado durante los tests.",
+      "La cantidad de memoria que usa la app.",
+      "El área física donde funciona la app."
+    ]
+  }
+}

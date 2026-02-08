@@ -1,0 +1,217 @@
+{
+  "js-err-01": {
+    "prompt": "¿Qué es un objeto Error en JavaScript?",
+    "explanation": "Los objetos Error contienen un mensaje y el stack trace.",
+    "interviewTip": "Se utilizan para el manejo de excepciones.",
+    "options": [
+      "Un objeto que representa un error en tiempo de ejecución",
+      "Una construcción sintáctica",
+      "Un rechazo de promise",
+      "Un mensaje de consola"
+    ]
+  },
+  "js-err-02": {
+    "prompt": "¿Qué error ocurre en el tiempo de parseo?",
+    "explanation": "El SyntaxError ocurre antes de la ejecución.",
+    "interviewTip": "El código no llegará a ejecutarse en absoluto.",
+    "options": ["SyntaxError", "ReferenceError", "TypeError", "RangeError"]
+  },
+  "js-err-03": {
+    "prompt": "¿Qué excepción se lanzará?",
+    "explanation": "Acceder a una variable no declarada.",
+    "interviewTip": "Diferente de una variable con valor undefined.",
+    "options": ["ReferenceError", "TypeError", "SyntaxError", "undefined"]
+  },
+  "js-err-04": {
+    "prompt": "¿Cuándo ocurre un TypeError?",
+    "explanation": "Al llamar a algo que no es función o acceder a propiedades de valores inválidos.",
+    "interviewTip": "Error de tiempo de ejecución muy común.",
+    "options": [
+      "Operación inválida sobre un valor",
+      "Sintaxis inválida",
+      "Valor fuera de rango",
+      "Falta una variable"
+    ]
+  },
+  "js-err-05": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Un JSON inválido lanza un SyntaxError.",
+    "interviewTip": "Valida siempre el JSON.",
+    "options": ["SyntaxError", "TypeError", "ReferenceError", "Error"]
+  },
+  "js-err-06": {
+    "prompt": "¿Qué captura el bloque try/catch?",
+    "explanation": "Solo errores síncronos en tiempo de ejecución.",
+    "interviewTip": "Async requiere await o .catch.",
+    "options": [
+      "Errores de tiempo de ejecución",
+      "Errores de sintaxis",
+      "Errores asíncronos automáticamente",
+      "Errores de compilación"
+    ]
+  },
+  "js-err-07": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los errores asíncronos no son capturados por un catch síncrono.",
+    "interviewTip": "Trampa clásica de asincronía.",
+    "options": ["Nada", "caught", "Error", "Unhandled"]
+  },
+  "js-err-08": {
+    "prompt": "¿Cómo capturar errores asíncronos con async/await?",
+    "explanation": "Await lanza la excepción dentro del try/catch.",
+    "interviewTip": "Patrón preferido.",
+    "options": ["try/catch", "solo .then", "window.onerror", "finally"]
+  },
+  "js-err-09": {
+    "prompt": "¿Para qué se usa finally?",
+    "explanation": "Se ejecuta sin importar el resultado.",
+    "interviewTip": "Útil para cerrar recursos.",
+    "options": [
+      "Lógica de limpieza (cleanup)",
+      "Manejo de errores",
+      "Retornar valores",
+      "Capturar errores"
+    ]
+  },
+  "js-err-10": {
+    "prompt": "¿Qué hace la palabra clave `throw`?",
+    "explanation": "Interrumpe la ejecución normal.",
+    "interviewTip": "Puede lanzar cualquier valor.",
+    "options": [
+      "Lanza una excepción",
+      "Registra un error en el log",
+      "Detiene el programa para siempre",
+      "Retorna un valor"
+    ]
+  },
+  "js-err-11": {
+    "prompt": "¿Qué deberías lanzar idealmente?",
+    "explanation": "Los objetos Error incluyen el stack trace.",
+    "interviewTip": "Mejor práctica.",
+    "options": ["Objetos Error", "Strings", "Numbers", "Booleans"]
+  },
+  "js-err-12": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "La propiedad message contiene el texto del error.",
+    "interviewTip": "Accede a campos útiles.",
+    "options": ["fail", "Error", "undefined", "null"]
+  },
+  "js-err-13": {
+    "prompt": "¿Qué es un ReferenceError?",
+    "explanation": "Variable no encontrada en el scope.",
+    "interviewTip": "Fuente común de bugs.",
+    "options": [
+      "Acceder a una variable no declarada",
+      "Llamar a una función inválida",
+      "Sintaxis inválida",
+      "Falta de memoria"
+    ]
+  },
+  "js-err-14": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Llamar a un método sobre null.",
+    "interviewTip": "TypeError es muy frecuente.",
+    "options": ["true", "false", "undefined", "Error"]
+  },
+  "js-err-15": {
+    "prompt": "¿Cómo crear un error personalizado?",
+    "explanation": "Extiende la clase Error.",
+    "interviewTip": "Preserva el nombre y el stack.",
+    "options": [
+      "class MyError extends Error {}",
+      "throw {}",
+      "throw new Object()",
+      "Error.create()"
+    ]
+  },
+  "js-err-16": {
+    "prompt": "¿Qué contiene Error.stack?",
+    "explanation": "Útil para el debugging.",
+    "interviewTip": "No está estandarizado pero es común.",
+    "options": [
+      "Traza de la pila de llamadas",
+      "Mensaje de error",
+      "Tipo de error",
+      "Tiempo de ejecución"
+    ]
+  },
+  "js-err-17": {
+    "prompt": "¿Qué es un unhandled promise rejection?",
+    "explanation": "Provoca advertencias o cierres inesperados.",
+    "interviewTip": "Maneja siempre los rechazos.",
+    "options": [
+      "Promise rechazada sin un catch",
+      "Error de sintaxis",
+      "Timeout asíncrono",
+      "Promise cancelada"
+    ]
+  },
+  "js-err-18": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Se pasa el valor rechazado.",
+    "interviewTip": "Se puede rechazar con cualquier valor.",
+    "options": ["err", "Error", "undefined", "null"]
+  },
+  "js-err-19": {
+    "prompt": "¿Qué devuelve `catch`?",
+    "explanation": "Permite el encadenamiento.",
+    "interviewTip": "La cadena de promises continúa.",
+    "options": ["Una nueva Promise", "La misma Promise", "Undefined", "Error"]
+  },
+  "js-err-20": {
+    "prompt": "¿Qué sucede si lanzas un error dentro de un catch?",
+    "explanation": "El error se propaga.",
+    "interviewTip": "Patrón de re-lanzamiento (re-throw).",
+    "options": [
+      "La Promise se rechaza de nuevo",
+      "El error es silenciado",
+      "La ejecución continúa",
+      "Se ignora"
+    ]
+  },
+  "js-err-21": {
+    "prompt": "¿Qué es un RangeError?",
+    "explanation": "Ej. longitud de array inválida.",
+    "interviewTip": "Es menos común.",
+    "options": [
+      "Valor fuera del rango permitido",
+      "Variable incorrecta",
+      "Sintaxis inválida",
+      "Error asíncrono"
+    ]
+  },
+  "js-err-22": {
+    "prompt": "¿Puede try/catch capturar errores de JSON.parse?",
+    "explanation": "JSON.parse lanza excepciones de forma síncrona.",
+    "interviewTip": "Envuelve la lógica de parseo.",
+    "options": ["Sí", "No", "Solo asíncronos", "Solo síncronos"]
+  },
+  "js-err-23": {
+    "prompt": "¿Cuál es la mejor práctica para los errores?",
+    "explanation": "Los errores deben ser explícitos.",
+    "interviewTip": "Mentalidad de producción.",
+    "options": [
+      "Falla rápido y registra logs claros",
+      "Ignora los errores",
+      "Retorna null",
+      "Usa solo console.log"
+    ]
+  },
+  "js-err-24": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Se puede lanzar cualquier valor.",
+    "interviewTip": "Pero no hagas esto.",
+    "options": ["string", "object", "error", "undefined"]
+  },
+  "js-err-25": {
+    "prompt": "¿Por qué preferir objetos Error sobre strings?",
+    "explanation": "Los errores llevan más contexto.",
+    "interviewTip": "Respuesta de oro en entrevistas.",
+    "options": [
+      "Stack trace y consistencia",
+      "Sintaxis más corta",
+      "Rendimiento",
+      "Requerido por JS"
+    ]
+  }
+}

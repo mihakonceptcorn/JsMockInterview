@@ -4,323 +4,363 @@
       "id": "js-scope-01",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "var a = 1;\nfunction foo() {\n  console.log(a);\n  var a = 2;\n}\nfoo();",
-      "options": ["1", "2", "undefined", "ReferenceError"],
-      "correct": [2],
-      "explanation": "`var a` is hoisted inside the function, shadowing the outer `a`.",
-      "interviewTip": "Classic hoisting + shadowing question."
+      "options": [
+        "1",
+        "2",
+        "undefined",
+        "ReferenceError"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "js-scope-02",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What is block scope?",
       "options": [
         "Scope created by `{}` with let/const",
         "Scope of a function",
         "Scope of an object",
         "Scope of a file"
       ],
-      "correct": [0],
-      "explanation": "`let` and `const` are block-scoped.",
-      "interviewTip": "Contrast with `var`."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-03",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "if (true) {\n  let x = 10;\n}\nconsole.log(x);",
-      "options": ["10", "undefined", "ReferenceError", "null"],
-      "correct": [2],
-      "explanation": "`x` exists only inside the block.",
-      "interviewTip": "Block scope enforcement."
+      "options": [
+        "10",
+        "undefined",
+        "ReferenceError",
+        "null"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "js-scope-04",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What happens?",
       "code": "console.log(a);\nlet a = 5;",
-      "options": ["5", "undefined", "ReferenceError", "TypeError"],
-      "correct": [2],
-      "explanation": "`let` is hoisted but in the Temporal Dead Zone.",
-      "interviewTip": "TDZ is often misunderstood."
+      "options": [
+        "5",
+        "undefined",
+        "ReferenceError",
+        "TypeError"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "js-scope-05",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What is the scope of a variable declared with var?",
       "options": [
         "Function scope",
         "Block scope",
         "Module scope only",
         "Lexical scope"
       ],
-      "correct": [0],
-      "explanation": "`var` ignores block scope.",
-      "interviewTip": "Reason why `let` was introduced."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-06",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "for (var i = 0; i < 3; i++) {}\nconsole.log(i);",
-      "options": ["2", "3", "undefined", "ReferenceError"],
-      "correct": [1],
-      "explanation": "`var` leaks out of the loop.",
-      "interviewTip": "Loop scoping bug."
+      "options": [
+        "2",
+        "3",
+        "undefined",
+        "ReferenceError"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "js-scope-07",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "for (let i = 0; i < 3; i++) {}\nconsole.log(i);",
-      "options": ["2", "3", "undefined", "ReferenceError"],
-      "correct": [3],
-      "explanation": "`let` is block-scoped.",
-      "interviewTip": "Per-iteration scope."
+      "options": [
+        "2",
+        "3",
+        "undefined",
+        "ReferenceError"
+      ],
+      "correct": [
+        3
+      ]
     },
     {
       "id": "js-scope-08",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What is lexical scope?",
       "options": [
         "Scope determined by code location",
         "Scope determined at runtime",
         "Dynamic scope",
         "Global scope only"
       ],
-      "correct": [0],
-      "explanation": "Scope is fixed at definition time.",
-      "interviewTip": "JS is lexically scoped."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-09",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "let a = 1;\nfunction foo() {\n  console.log(a);\n}\nfunction bar() {\n  let a = 2;\n  foo();\n}\nbar();",
-      "options": ["1", "2", "undefined", "ReferenceError"],
-      "correct": [0],
-      "explanation": "`foo` closes over the outer lexical scope.",
-      "interviewTip": "Lexical vs dynamic scope."
+      "options": [
+        "1",
+        "2",
+        "undefined",
+        "ReferenceError"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-10",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What is a closure?",
       "options": [
         "Function + its lexical scope",
         "Function inside another",
         "Private variable",
         "Recursive function"
       ],
-      "correct": [0],
-      "explanation": "Closures preserve access to outer variables.",
-      "interviewTip": "One of the most important JS concepts."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-11",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "function foo() {\n  let a = 1;\n  return function () {\n    console.log(a);\n  };\n}\nfoo()();",
-      "options": ["1", "undefined", "ReferenceError", "null"],
-      "correct": [0],
-      "explanation": "Closure keeps `a` alive.",
-      "interviewTip": "Memory retention."
+      "options": [
+        "1",
+        "undefined",
+        "ReferenceError",
+        "null"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-12",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What causes a global variable leak?",
       "options": [
         "Assigning to undeclared variable",
         "Using let",
         "Using strict mode",
         "Using const"
       ],
-      "correct": [0],
-      "explanation": "Without strict mode, undeclared vars become global.",
-      "interviewTip": "Always use strict mode or modules."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-13",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "'use strict';\nfoo = 10;\nconsole.log(foo);",
-      "options": ["10", "undefined", "ReferenceError", "TypeError"],
-      "correct": [2],
-      "explanation": "Strict mode forbids implicit globals.",
-      "interviewTip": "Why strict mode matters."
+      "options": [
+        "10",
+        "undefined",
+        "ReferenceError",
+        "TypeError"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "js-scope-14",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What is the scope of variables in ES modules?",
       "options": [
         "Module scope",
         "Global scope",
         "Function scope",
         "Block scope only"
       ],
-      "correct": [0],
-      "explanation": "Each module has its own top-level scope.",
-      "interviewTip": "Modules prevent global pollution."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-15",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "let a = 1;\n{\n  let a = 2;\n}\nconsole.log(a);",
-      "options": ["1", "2", "undefined", "ReferenceError"],
-      "correct": [0],
-      "explanation": "Inner `a` is block-scoped.",
-      "interviewTip": "Shadowing example."
+      "options": [
+        "1",
+        "2",
+        "undefined",
+        "ReferenceError"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-16",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What is variable shadowing?",
       "options": [
         "Inner scope variable with same name",
         "Overwriting global variable",
         "Garbage collection",
         "Hoisting"
       ],
-      "correct": [0],
-      "explanation": "Inner variable hides outer one.",
-      "interviewTip": "Can reduce readability."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-17",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "const x = 10;\nfunction foo() {\n  console.log(x);\n}\nfoo();",
-      "options": ["10", "undefined", "ReferenceError", "null"],
-      "correct": [0],
-      "explanation": "`const` works like `let` in scope rules.",
-      "interviewTip": "const ≠ immutable binding."
+      "options": [
+        "10",
+        "undefined",
+        "ReferenceError",
+        "null"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-18",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What does the scope chain represent?",
       "options": [
         "Hierarchy of lexical environments",
         "Call stack",
         "Prototype chain",
         "Event loop"
       ],
-      "correct": [0],
-      "explanation": "Scope chain resolves identifiers.",
-      "interviewTip": "Not the same as prototype chain."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-19",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "var a = 1;\n(function () {\n  console.log(a);\n  var a = 2;\n})();",
-      "options": ["1", "2", "undefined", "ReferenceError"],
-      "correct": [2],
-      "explanation": "Hoisting inside IIFE.",
-      "interviewTip": "Very common interview trap."
+      "options": [
+        "1",
+        "2",
+        "undefined",
+        "ReferenceError"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "js-scope-20",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What creates a new scope?",
       "options": [
         "Function",
         "Block with let/const",
         "Module",
         "All of the above"
       ],
-      "correct": [3],
-      "explanation": "All listed constructs create scope.",
-      "interviewTip": "Be precise when explaining."
+      "correct": [
+        3
+      ]
     },
     {
       "id": "js-scope-21",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "Why are closures useful?",
       "options": [
         "Data encapsulation",
         "Better performance",
         "Avoid async",
         "Prevent hoisting"
       ],
-      "correct": [0],
-      "explanation": "Closures enable private state.",
-      "interviewTip": "Connect to real-world examples."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-22",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "let x = 10;\nfunction foo() {\n  console.log(x);\n}\nx = 20;\nfoo();",
-      "options": ["10", "20", "undefined", "ReferenceError"],
-      "correct": [1],
-      "explanation": "Closures reference variables, not values.",
-      "interviewTip": "Important closure nuance."
+      "options": [
+        "10",
+        "20",
+        "undefined",
+        "ReferenceError"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "js-scope-23",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What is the Temporal Dead Zone?",
       "options": [
         "Time before let/const initialization",
         "Async execution delay",
         "Garbage collection phase",
         "Event loop queue"
       ],
-      "correct": [0],
-      "explanation": "Access before initialization throws error.",
-      "interviewTip": "Key difference from var."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-24",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "What happens if you redeclare let in same scope?",
-      "options": ["SyntaxError", "undefined", "Ignored", "Overwritten"],
-      "correct": [0],
-      "explanation": "`let` cannot be redeclared in same scope.",
-      "interviewTip": "Helps prevent bugs."
+      "options": [
+        "SyntaxError",
+        "undefined",
+        "Ignored",
+        "Overwritten"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-scope-25",
       "stageId": "js_scope",
       "type": "single",
-      "prompt": "Why is global scope dangerous?",
       "options": [
         "Name collisions",
         "Memory leaks",
         "Hard to test",
         "All of the above"
       ],
-      "correct": [3],
-      "explanation": "Global scope increases coupling and bugs.",
-      "interviewTip": "Good architectural question."
+      "correct": [
+        3
+      ]
     }
   ]
 }

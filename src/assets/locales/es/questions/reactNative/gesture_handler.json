@@ -1,0 +1,107 @@
+{
+  "gh-01": {
+    "prompt": "¿Por qué se prefiere 'React Native Gesture Handler' sobre el 'PanResponder' integrado?",
+    "explanation": "RNGH interactúa directamente con el sistema de reconocimiento de gestos nativo de la plataforma, lo que significa que los touch events no tienen que viajar al JS thread para ser procesados.",
+    "interviewTip": "Menciona siempre el 'determinismo' y la 'capacidad de respuesta' al comparar RNGH con PanResponder.",
+    "options": [
+      "Utiliza menos batería.",
+      "Se ejecuta en el native thread, evitando el cuello de botella del 'bridge' para lograr gestos fluidos a 60fps.",
+      "Está escrito en JavaScript puro y es más fácil de debuguear.",
+      "Solo funciona con Expo."
+    ]
+  },
+  "gh-02": {
+    "prompt": "¿Qué component debe envolver toda tu app para habilitar la funcionalidad de Gesture Handler?",
+    "explanation": "Para asegurar que los gestos se capturen correctamente, especialmente en Android, debes envolver tu entry point (usualmente App.js) en un <GestureHandlerRootView>.",
+    "interviewTip": "Omitir este wrapper es la razón más común por la que los gestos fallan silenciosamente al intentar dispararse.",
+    "options": [
+      "<GestureContainer>",
+      "<GestureHandlerRootView>",
+      "<TouchProvider>",
+      "<NativeGestureWrapper>"
+    ]
+  },
+  "gh-03": {
+    "prompt": "¿Qué hará este código cuando el usuario arrastre su dedo por la pantalla?",
+    "explanation": "En un Pan gesture, 'translationX' y 'translationY' representan la distancia que el dedo se ha movido desde que comenzó el gesto.",
+    "interviewTip": "Contrasta 'translation' (movimiento relativo al inicio) con 'absolutePosition' (coordenada relativa al parent).",
+    "options": [
+      "Rastrea la distancia horizontal movida desde el punto de inicio.",
+      "Rastrea el número total de dedos en la pantalla.",
+      "Registra la coordenada X absoluta relativa a la pantalla.",
+      "Solo funciona si el usuario hace double-tap."
+    ]
+  },
+  "gh-04": {
+    "prompt": "¿Qué gesture handler está diseñado específicamente para una sola pulsación rápida?",
+    "explanation": "Gesture.Tap() se usa para touch events discretos. Puedes configurarlo para requerir múltiples taps (ej. double-tap para dar like).",
+    "interviewTip": "Se prefiere Tap sobre Pressable cuando necesitas coordinarlo con otros gestos como Pinch o Pan.",
+    "options": [
+      "Gesture.LongPress()",
+      "Gesture.Tap()",
+      "Gesture.Fling()",
+      "Gesture.Click()"
+    ]
+  },
+  "gh-05": {
+    "prompt": "¿Cómo permites que dos gestos funcionen al mismo tiempo (ej. hacer pinch y rotar simultáneamente)?",
+    "explanation": "Gesture.Simultaneous() permite que todos los gestos proporcionados permanezcan activos juntos.",
+    "interviewTip": "Esto es esencial para interfaces complejas como un 'Editor de Imágenes' donde los usuarios esperan libertad multi-touch.",
+    "options": [
+      "El código anterior es correcto.",
+      "Usa Gesture.Parallel(pinch, rotate).",
+      "Usa Gesture.Exclusive(pinch, rotate).",
+      "Los gestos no pueden ejecutarse simultáneamente."
+    ]
+  },
+  "gh-06": {
+    "prompt": "¿Cuál es el propósito de 'Gesture.Exclusive'?",
+    "explanation": "Exclusive da prioridad al primer gesto. Si se detecta un double-tap, evita que el single-tap se dispare.",
+    "interviewTip": "Así es como se resuelven los conflictos entre áreas de contacto que se superponen.",
+    "options": [
+      "Para hacer que un gesto funcione solo en iOS.",
+      "Para establecer una prioridad donde solo un gesto puede 'ganar' (ej. favorecer un double-tap sobre un single-tap).",
+      "Para evitar que el ScrollView padre haga scroll.",
+      "Para desactivar todos los demás botones de la pantalla."
+    ]
+  },
+  "gh-07": {
+    "prompt": "¿Qué callback de evento se ejecuta cuando el usuario levanta el dedo de la pantalla?",
+    "explanation": "onFinalize se ejecuta independientemente de si el gesto terminó con éxito o fue cancelado. onEnd solo se ejecuta si el gesto fue exitoso.",
+    "interviewTip": "Usa onFinalize para 'resetear' el estado de tu UI y asegurar que no se quede trabada si el gesto se interrumpe.",
+    "options": ["onBegin", "onStart", "onEnd", "onFinalize"]
+  },
+  "gh-08": {
+    "prompt": "¿Cuáles de estos son tipos de gestos integrados (built-in) válidos en RNGH?",
+    "explanation": "Pinch, Rotation y Fling son gestos táctiles. 'Shake' es un evento de movimiento del dispositivo, no manejado por Gesture Handler.",
+    "interviewTip": "Menciona 'Fling' como una forma optimizada de manejar interacciones de 'Swipe to delete'.",
+    "options": [
+      "Pinch (zoom con dos dedos)",
+      "Rotation (rotar con dos dedos)",
+      "Fling (swipe rápido en una dirección específica)",
+      "Shake (movimiento físico del dispositivo)"
+    ]
+  },
+  "gh-09": {
+    "prompt": "¿Qué hace la prop 'simultaneousHandlers' en la API legada?",
+    "explanation": "Sin esto, un ScrollView 'robaría' el touch event tan pronto como detecte movimiento. simultaneousHandlers permite que ambos cooperen.",
+    "interviewTip": "Esto es crucial para drawers o bottom sheets que contienen contenido con scroll.",
+    "options": [
+      "Acelera el JS thread.",
+      "Permite que un component reconozca un gesto mientras un parent específico (como un ScrollView) también está activo.",
+      "Permite que dos usuarios diferentes toquen la pantalla.",
+      "Convierte toques en clicks de mouse."
+    ]
+  },
+  "gh-10": {
+    "prompt": "En la nueva API 'Gesture' (v2), ¿cómo adjuntas el gesto a una View?",
+    "explanation": "El GestureDetector es el wrapper que sirve de puente entre la definición del gesto y un component de UI específico.",
+    "interviewTip": "Recuerda que GestureDetector solo puede tener UN child.",
+    "options": [
+      "El código anterior es correcto.",
+      "Pasándolo a la prop 'onGesture' de la View.",
+      "Usando el hook 'useGesture'.",
+      "Envolviendo la View en un <PanHandler>."
+    ]
+  }
+}

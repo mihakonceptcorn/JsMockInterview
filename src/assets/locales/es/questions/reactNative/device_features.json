@@ -1,0 +1,112 @@
+{
+  "hf-01": {
+    "prompt": "¿Cuál es el primer paso obligatorio antes de acceder a cualquier hardware feature como la Camera o Location en una app de producción?",
+    "explanation": "Los OS modernos (iOS y Android) requieren que las apps soliciten explícitamente permiso al usuario. Intentar usar un sensor sin permiso causará un crash o un fallo silencioso.",
+    "interviewTip": "Distingue entre permisos de 'Ask once' (preguntar una vez) y 'Always allowed' (siempre permitido), especialmente para Location.",
+    "options": [
+      "Importar el módulo 'Hardware'.",
+      "Solicitar y verificar el permiso del usuario en runtime.",
+      "Encender el sensor en los settings del dispositivo manualmente.",
+      "Verificar si el dispositivo tiene suficiente batería."
+    ]
+  },
+  "hf-02": {
+    "prompt": "En Expo, ¿qué librería es el estándar para acceder a la cámara del dispositivo?",
+    "explanation": "expo-camera proporciona un component de alto nivel que maneja el viewfinder, la captura de fotos y la grabación de videos.",
+    "interviewTip": "Menciona que para necesidades muy avanzadas (como frame processors para AI), se suele usar 'react-native-vision-camera' en el CLI workflow.",
+    "options": [
+      "expo-video",
+      "expo-camera",
+      "expo-media-capture",
+      "react-native-vision-camera"
+    ]
+  },
+  "hf-03": {
+    "prompt": "¿Cómo manejas la diferencia entre los permisos de location en 'Foreground' y 'Background' en Android?",
+    "explanation": "Para proteger la privacidad, Android 10+ requiere que los usuarios otorguen específicamente 'Allow all the time' para el acceso en background.",
+    "interviewTip": "Sigue siempre el 'Principio de Menor Privilegio': solo pide acceso en background si es crítico para la función principal de la app.",
+    "options": [
+      "Son el mismo permiso.",
+      "Foreground permite el rastreo mientras la app está abierta; Background requiere un permiso extra y separado, además de una revisión estricta de Google Play.",
+      "Background location solo está disponible en iOS.",
+      "Solo necesitas configurar un flag en el JavaScript code."
+    ]
+  },
+  "hf-04": {
+    "prompt": "¿Qué librería se usa para implementar FaceID o Fingerprint authentication en React Native?",
+    "explanation": "expo-local-authentication (y react-native-local-auth para CLI) proporciona una API unificada para disparar el prompt biométrico nativo del dispositivo.",
+    "interviewTip": "Verifica siempre 'hasHardwareAsync()' e 'isEnrolledAsync()' antes de mostrar el botón de 'Login con FaceID'.",
+    "options": [
+      "react-native-fingerprint",
+      "expo-local-authentication",
+      "react-native-biometrics-unlock",
+      "expo-face-id"
+    ]
+  },
+  "hf-05": {
+    "prompt": "Analiza el código. ¿Qué sucede si el usuario deniega el permiso?",
+    "explanation": "Para evitar el 'permission spamming', iOS solo muestra el diálogo del sistema una vez. Si el status es 'denied', debes redirigir programáticamente a los Settings usando 'Linking.openSettings()'.",
+    "interviewTip": "Este es un detalle de UX crítico para apps que dependen del hardware.",
+    "options": [
+      "La app volverá a preguntar automáticamente la próxima vez que se ejecute el código.",
+      "En iOS, el system prompt solo aparecerá una vez; después de eso, debes guiar al usuario a la app de Settings del dispositivo.",
+      "La app lanzará un crash.",
+      "La alerta será bloqueada por el sistema."
+    ]
+  },
+  "hf-06": {
+    "prompt": "¿Qué es el 'Geofencing'?",
+    "explanation": "El Geofencing permite que las apps sean notificadas por el OS cuando el usuario cruza un radio de coordenadas, incluso si la app no se está ejecutando activamente.",
+    "interviewTip": "Esto es muy eficiente para la vida de la batería en comparación con estar consultando (polling) constantemente la ubicación del usuario.",
+    "options": [
+      "Una forma de encriptar datos GPS.",
+      "Disparar una acción (como una notificación) cuando un dispositivo entra o sale de un límite geográfico específico.",
+      "Medir la altitud del dispositivo.",
+      "Usar Bluetooth para encontrar dispositivos cercanos."
+    ]
+  },
+  "hf-07": {
+    "prompt": "¿Dónde debes declarar la 'razón' para solicitar un permiso (ej. CameraUsageDescription) en iOS?",
+    "explanation": "iOS requiere una 'Purpose String' en el Info.plist. En Expo, estas se definen en la sección de 'plugins' del app.json y se inyectan en el plist durante el build.",
+    "interviewTip": "Si no proporcionas una razón clara y amigable para el usuario, Apple rechazará tu app durante la revisión.",
+    "options": [
+      "En el archivo package.json.",
+      "En el archivo Info.plist.",
+      "Directamente en el JavaScript code.",
+      "En el app.json / expo config."
+    ]
+  },
+  "hf-08": {
+    "prompt": "¿Qué mide el sensor 'Accelerometer'?",
+    "explanation": "Los acelerómetros se usan para la detección de sacudidas (shake detection), conteo de pasos y control de juegos al inclinar el teléfono.",
+    "interviewTip": "Menciona que sensores como este producen datos a frecuencias altas, por lo que es importante usar un modelo de 'Subscription' y limpiarlo en el 'useEffect'.",
+    "options": [
+      "El rumbo de la brújula.",
+      "El cambio en la velocidad (aceleración) a lo largo de tres ejes (X, Y, Z).",
+      "La distancia al objeto más cercano.",
+      "El brillo de la pantalla."
+    ]
+  },
+  "hf-09": {
+    "prompt": "¿Cómo verificas si un dispositivo Android tiene un botón físico de 'Back' o si usa navegación por gestos?",
+    "explanation": "El módulo BackHandler permite escuchar la pulsación del botón de retroceso del hardware y prevenirlo o personalizar su comportamiento.",
+    "interviewTip": "Esta es una preocupación exclusiva de Android; los usuarios de iOS esperan un botón 'Back' en el navigation header o un gesto de swipe-back.",
+    "options": [
+      "Usando el módulo BackHandler.",
+      "Usando la librería DeviceInfo.",
+      "El OS lo maneja automáticamente; no necesitas verificarlo.",
+      "Verificando el alto de la pantalla."
+    ]
+  },
+  "hf-10": {
+    "prompt": "¿Para qué se usa 'Linking' en el acceso a hardware?",
+    "explanation": "El módulo Linking es el puente hacia otras apps. Por ejemplo, `Linking.openURL('tel:123456')` dispara el dialer nativo.",
+    "interviewTip": "Usa primero 'Linking.canOpenURL' para asegurar que el dispositivo tenga un handler para ese link específico (como un cliente de email).",
+    "options": [
+      "Para conectarse a una red Wi-Fi.",
+      "Para abrir otras apps, sitios web o system settings (ej. tel: o mailto:).",
+      "Para vincular la Camera al component Image.",
+      "Para descargar assets."
+    ]
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "ts-01": {
+    "prompt": "¿Qué directiva se usa para actualizar reactivamente un atributo HTML, como 'src' o 'disabled'?",
+    "explanation": "v-bind (abreviatura ':') se usa para vincular un atributo a una expresión. Por ejemplo, :disabled='isPending' aplicará el atributo disabled si isPending es truthy.",
+    "interviewTip": "En Vue 3.4+, puedes usar la abreviatura :id en lugar de :id='id' si el nombre del atributo coincide con el nombre de la variable.",
+    "options": ["v-on", "v-model", "v-bind", "v-attr"]
+  },
+  "ts-02": {
+    "prompt": "Analiza el código. ¿Qué se renderizará en el navegador?",
+    "explanation": "v-html actualiza el innerHTML del elemento con el string proporcionado. Usa esto con precaución ya que puede llevar a ataques XSS.",
+    "interviewTip": "Siempre advierte sobre XSS al discutir v-html; úsalo solo con contenido de confianza.",
+    "options": [
+      "El string literal: <span style=\"color: red\">Hello</span>",
+      "Un span rojo diciendo 'Hello'",
+      "Un div vacío (por razones de seguridad)",
+      "La palabra 'Hello' en texto negro predeterminado"
+    ]
+  },
+  "ts-03": {
+    "prompt": "¿Cuál es la diferencia entre {{ message }} y v-text=\"message\"?",
+    "explanation": "La interpolación (Mustaches) te permite mezclar texto y variables como 'Hello {{ name }}'. v-text sobrescribirá todo dentro de la etiqueta con el valor de la variable.",
+    "interviewTip": "Los Mustaches son preferidos por legibilidad, mientras que v-text rara vez se usa a menos que quieras evitar 'Flash of Uncompiled Template' (aunque v-cloak es mejor para eso).",
+    "options": [
+      "v-text es más rápido que la interpolación.",
+      "{{ }} permite reemplazo parcial de contenido; v-text reemplaza todo el textContent del elemento.",
+      "v-text soporta etiquetas HTML; {{ }} no.",
+      "No hay diferencia; son exactamente lo mismo."
+    ]
+  },
+  "ts-04": {
+    "prompt": "¿Cómo escuchas eventos del DOM (como un click) y ejecutas JavaScript cuando se activan?",
+    "explanation": "v-on (abreviatura '@') es la directiva para event listeners. Puede llamar a un método o ejecutar una expresión inline.",
+    "interviewTip": "Menciona modificadores de eventos como @click.prevent o @click.stop para manejar lógica común de eventos de forma declarativa.",
+    "options": [
+      "v-bind:click",
+      "v-on:click",
+      "v-model:click",
+      "v-trigger:click"
+    ]
+  },
+  "ts-05": {
+    "prompt": "¿Qué directiva crea un enlace de datos bidireccional en elementos form input, textarea y select?",
+    "explanation": "v-model es 'azúcar sintáctico' que combina v-bind (para establecer el valor) y v-on (para escuchar cambios de input).",
+    "interviewTip": "En Vue 3, puedes tener múltiples v-models en un solo componente personalizado (por ejemplo, v-model:first-name y v-model:last-name).",
+    "options": ["v-bind", "v-sync", "v-model", "v-on"]
+  },
+  "ts-06": {
+    "prompt": "¿Cuáles de las siguientes directivas se usan para optimizar el rendimiento omitiendo re-renderizados o compilación?",
+    "explanation": "v-once y v-memo son para rendimiento en tiempo de ejecución. v-pre es para rendimiento en tiempo de compilación, permitiéndote mostrar etiquetas mustache en bruto sin que Vue las procese.",
+    "interviewTip": "v-memo es una característica poderosa de Vue 3.2+ específicamente para optimizar listas grandes con v-for.",
+    "options": [
+      "v-once (renderiza el elemento solo una vez y omite actualizaciones futuras)",
+      "v-pre (omite la compilación para este elemento y sus hijos)",
+      "v-memo (memoriza un sub-árbol del template basándose en dependencias)",
+      "v-static (fuerza al componente a nunca cambiar)"
+    ]
+  },
+  "ts-07": {
+    "prompt": "Analiza el código. ¿Qué pasará con el valor del input después de hacer clic en el botón?",
+    "explanation": "El modificador .number automáticamente hace typecast del string del input a un número usando parseFloat().",
+    "interviewTip": "Modificadores como .trim y .lazy también son vitales para refinar el comportamiento de entrada del usuario sin lógica JS extra.",
+    "options": ["string", "number", "undefined", "NaN"]
+  },
+  "ts-08": {
+    "prompt": "¿Cuál es el resultado de usar una expresión JavaScript dentro de mustaches, como {{ number + 1 }}?",
+    "explanation": "Vue soporta expresiones JavaScript completas dentro de enlaces de datos, pero deben ser expresiones únicas (sin declaraciones o control de flujo).",
+    "interviewTip": "Aunque las expresiones son poderosas, mantenlas simples. Si la lógica se vuelve compleja, muévela a una propiedad 'computed'.",
+    "options": [
+      "Lanzará un error; solo se permiten nombres de variables.",
+      "Evaluará la expresión y renderizará el resultado.",
+      "Renderizará la expresión como un string.",
+      "Solo funciona dentro de v-bind."
+    ]
+  },
+  "ts-09": {
+    "prompt": "¿Cuál es el propósito de la directiva 'v-cloak'?",
+    "explanation": "v-cloak permanece en el elemento hasta que la instancia de Vue termina de compilar. Típicamente la emparejas con CSS como [v-cloak] { display: none } para ocultar etiquetas mustache durante la carga de la página.",
+    "interviewTip": "Esto es principalmente útil para HTML renderizado en servidor donde el template es visible antes de que Vue hidrate.",
+    "options": [
+      "Para ocultar elementos hasta que Vue haya terminado de compilar, previniendo el flash de template sin compilar (FOUC).",
+      "Para encriptar el contenido del template.",
+      "Para hacer el elemento invisible permanentemente.",
+      "Para mejorar el rendimiento de renderizado."
+    ]
+  },
+  "ts-10": {
+    "prompt": "¿Cómo vinculas dinámicamente un argumento de directiva en Vue 3?",
+    "explanation": "Los argumentos dinámicos de directivas (introducidos en Vue 2.6+) te permiten usar una expresión JavaScript como argumento de directiva envolviéndola en corchetes.",
+    "interviewTip": "Esto es útil para crear componentes genéricos que pueden vincularse a diferentes eventos o atributos basados en props.",
+    "options": [
+      "Esta sintaxis es inválida.",
+      "Usa corchetes alrededor del nombre del argumento para hacerlo dinámico.",
+      "Usa llaves: v-on:{eventName}",
+      "Usa paréntesis: v-on:(eventName)"
+    ]
+  }
+}

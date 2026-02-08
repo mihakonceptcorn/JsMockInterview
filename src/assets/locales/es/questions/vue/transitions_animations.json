@@ -1,0 +1,102 @@
+{
+  "ta-01": {
+    "prompt": "¿Cuál es el rol principal del componente incorporado <Transition>?",
+    "explanation": "<Transition> no anima cosas por sí mismo; detecta cuando un elemento es agregado/eliminado y agrega clases como '-enter-from' y '-enter-active' para que tu CSS pueda hacer el trabajo.",
+    "interviewTip": "Menciona que <Transition> solo funciona en un solo elemento o componente. Para listas, debes usar <TransitionGroup>.",
+    "options": [
+      "Para acelerar la tasa de frames de toda la aplicación.",
+      "Para aplicar automáticamente clases CSS a un elemento en etapas específicas de su entrada o salida del DOM.",
+      "Para convertir CSS en código JavaScript.",
+      "Para prevenir que el usuario haga clic en botones durante una actualización."
+    ]
+  },
+  "ta-02": {
+    "prompt": "Analiza las clases CSS a continuación. ¿Qué clase define el estado 'objetivo' (el resultado final) de un elemento que entra?",
+    "explanation": "Las seis clases de transición son: enter-from, enter-active, enter-to, leave-from, leave-active, y leave-to.",
+    "interviewTip": "Si no proporcionas un atributo 'name' a la transición, las clases por defecto son 'v-enter-from', etc.",
+    "options": ["enter-to", "enter-final", "enter-end", "enter-done"]
+  },
+  "ta-03": {
+    "prompt": "¿Cómo manejas animaciones para una lista de elementos generados por 'v-for'?",
+    "explanation": "<TransitionGroup> renderiza un elemento real (por defecto no hay elemento en Vue 3, pero puede especificarse) y maneja el movimiento de elementos mientras la lista se reordena.",
+    "interviewTip": "Los elementos dentro de un <TransitionGroup> DEBEN tener un :key único para que las animaciones funcionen.",
+    "options": [
+      "Envuelve el v-for en un <Transition> regular.",
+      "Envuelve el v-for en un componente <TransitionGroup>.",
+      "Las animaciones no están soportadas para listas.",
+      "Usa v-animate en cada elemento."
+    ]
+  },
+  "ta-04": {
+    "prompt": "Analiza el código. ¿Qué hace el atributo 'mode'?",
+    "explanation": "Sin 'out-in', ambos componentes estarían en el DOM al mismo tiempo durante la transición, a menudo causando 'saltos' de diseño.",
+    "interviewTip": "El modo 'out-in' es casi siempre preferido para transiciones suaves de página o componente.",
+    "options": [
+      "Hace que la animación se ejecute dos veces.",
+      "Asegura que el componente actual termine su animación 'leave' antes de que el nuevo componente comience su animación 'enter'.",
+      "Fuerza la animación a ejecutarse en el hilo de fondo.",
+      "Aleatoriza el efecto de transición."
+    ]
+  },
+  "ta-05": {
+    "prompt": "¿Cómo puedes activar una transición cuando un componente se monta por primera vez, incluso sin un cambio de estado?",
+    "explanation": "El atributo 'appear' le dice a Vue que aplique las clases de transición de entrada tan pronto como el elemento se renderiza por primera vez.",
+    "interviewTip": "Esto es genial para secciones 'hero' o animaciones de entrada para una landing page.",
+    "options": [
+      "Usa el atributo 'appear' en el componente <Transition>.",
+      "Usa v-if=\"true\".",
+      "Las transiciones solo funcionan en actualizaciones, no en el montaje inicial.",
+      "Llama a transition.start() en onMounted."
+    ]
+  },
+  "ta-06": {
+    "prompt": "¿Cuáles de estos son 'JavaScript Hooks' válidos proporcionados por el componente <Transition> para animaciones complejas (por ejemplo, usando GSAP)?",
+    "explanation": "Vue proporciona hooks JS como @before-enter, @enter, y @leave para que puedas usar bibliotecas como GreenSock (GSAP) o Anime.js en lugar de CSS.",
+    "interviewTip": "Al usar hooks JS, es mejor agregar :css='false' para decirle a Vue que omita la detección de CSS para un impulso de rendimiento.",
+    "options": ["@before-enter", "@enter", "@after-leave", "@on-animating"]
+  },
+  "ta-07": {
+    "prompt": "¿Cuál es el propósito de la clase 'v-move' en TransitionGroup?",
+    "explanation": "Mientras las clases enter/leave manejan aparecer/desaparecer, 'v-move' (o '[name]-move') usa la técnica FLIP para deslizar suavemente elementos a sus nuevas posiciones.",
+    "interviewTip": "Así es como obtienes esos efectos suaves de 'barajado' en listas.",
+    "options": [
+      "Para permitir al usuario arrastrar y soltar elementos.",
+      "Para animar el cambio de posición de elementos cuando la lista se reordena (por ejemplo, mediante ordenación).",
+      "Para mover el componente a un nodo DOM diferente.",
+      "Para eliminar el elemento de la lista."
+    ]
+  },
+  "ta-08": {
+    "prompt": "Analiza el código. ¿Qué está mal con esta configuración de animación?",
+    "explanation": "Un <Transition> solo anima un hijo único. Si tienes múltiples elementos alternando, necesitan keys únicas para que Vue pueda rastrear cuál es cuál, o debes usar un solo componente con :is.",
+    "interviewTip": "Siempre usa keys únicas al hacer transición entre dos elementos diferentes del mismo tipo de etiqueta.",
+    "options": [
+      "Un Transition solo puede tener un elemento hijo a la vez.",
+      "Los divs faltan keys.",
+      "Ambas de las anteriores.",
+      "Nada está mal."
+    ]
+  },
+  "ta-09": {
+    "prompt": "¿Qué clases CSS aplica Vue durante una transición?",
+    "explanation": "Vue aplica estas 6 clases en diferentes etapas de la transición, permitiéndote definir transiciones o animaciones CSS.",
+    "interviewTip": "Puedes personalizar el prefijo estableciendo el atributo name en <Transition>.",
+    "options": [
+      "Solo .fade-in y .fade-out",
+      "v-enter-from, v-enter-active, v-enter-to, v-leave-from, v-leave-active, v-leave-to",
+      "Solo .transition-start y .transition-end",
+      "Vue no aplica ninguna clase."
+    ]
+  },
+  "ta-10": {
+    "prompt": "¿Cómo animas una lista de elementos en Vue?",
+    "explanation": "<TransitionGroup> aplica transiciones a múltiples elementos renderizados con v-for, incluyendo transiciones enter, leave y move.",
+    "interviewTip": "Siempre proporciona keys únicas para los hijos de TransitionGroup para un seguimiento adecuado de animación.",
+    "options": [
+      "Usa <Transition> para cada elemento.",
+      "Usa el componente <TransitionGroup>.",
+      "Usa v-for con :key.",
+      "Las animaciones no están soportadas para listas."
+    ]
+  }
+}

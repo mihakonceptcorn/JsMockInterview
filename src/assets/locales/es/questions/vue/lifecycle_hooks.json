@@ -1,0 +1,77 @@
+{
+  "lh-01": {
+    "prompt": "¿Qué hook de ciclo de vida es el mejor lugar para realizar una llamada API para obtener datos iniciales para un componente?",
+    "explanation": "Aunque puedes iniciar llamadas en setup(), onMounted asegura que el componente ya esté en el DOM. En la Composition API de Vue 3, la lógica a menudo se coloca en setup/onMounted.",
+    "interviewTip": "En SSR (Server-Side Rendering), onMounted no se ejecuta en el servidor, lo cual es importante para evitar errores de API solo del navegador.",
+    "options": ["onBeforeMount", "onMounted", "onCreated", "onBeforeUpdate"]
+  },
+  "lh-02": {
+    "prompt": "Analiza el código. ¿Cuál será la salida en la consola cuando el componente se cargue por primera vez?",
+    "explanation": "El código setup (script setup) se ejecuta inmediatamente. onMounted es un callback que espera hasta que el componente esté montado en el DOM, haciéndolo asíncrono en relación con la ejecución del script.",
+    "interviewTip": "Entender el orden de ejecución de 'setup' vs 'hooks' es una verificación común en entrevistas de nivel junior a intermedio.",
+    "options": ["A, B, C", "B, A, C", "A, C, B", "C, B, A"]
+  },
+  "lh-03": {
+    "prompt": "¿Qué hook se activa específicamente después de que un cambio de datos reactivos cause que el Virtual DOM se vuelva a renderizar y parchee el DOM físico?",
+    "explanation": "onUpdated se llama después de que el DOM ha sido parcheado. Es útil para lógica dependiente del DOM que debe reaccionar a cambios de estado.",
+    "interviewTip": "Advertencia: Evita cambiar el estado dentro de onUpdated, ya que puede llevar a un bucle infinito de re-renderizado.",
+    "options": ["onUpdated", "onBeforeUpdate", "onRenderTracked", "onMounted"]
+  },
+  "lh-04": {
+    "prompt": "Analiza el código. ¿Cuál es la forma correcta de limpiar un temporizador para prevenir fugas de memoria?",
+    "explanation": "onUnmounted es el lugar ideal para limpiar efectos secundarios como intervalos, event listeners u observadores manuales del DOM cuando el componente es eliminado.",
+    "interviewTip": "Siempre menciona 'limpiar event listeners globales' (como window.addEventListener) cuando te pregunten sobre onUnmounted.",
+    "options": ["onBeforeUnmount", "onUnmounted", "onDestroy", "onClose"]
+  },
+  "lh-05": {
+    "prompt": "Para un componente envuelto en <KeepAlive>, ¿qué hook se activa cada vez que el componente vuelve a estar visible?",
+    "explanation": "Los componentes KeepAlive están en caché y no se desmontan. Por lo tanto, onMounted solo se ejecuta una vez. onActivated se ejecuta cada vez que el componente en caché se inserta en el DOM.",
+    "interviewTip": "KeepAlive se usa frecuentemente para interfaces con pestañas para preservar la entrada del usuario o la posición de scroll.",
+    "options": ["onMounted", "onActivated", "onDeactivated", "onReMounted"]
+  },
+  "lh-06": {
+    "prompt": "¿Cuáles de estos hooks solo se usan para depuración y seguimiento de rendimiento en modo desarrollo?",
+    "explanation": "onRenderTracked y onRenderTriggered te permiten inspeccionar qué dependencia está causando que un componente se vuelva a renderizar. No se ejecutan en producción.",
+    "interviewTip": "Estos son hooks 'avanzados'. Conocerlos demuestra que tienes experiencia optimizando aplicaciones Vue complejas.",
+    "options": [
+      "onRenderTracked",
+      "onRenderTriggered",
+      "onMounted",
+      "onErrorCaptured"
+    ]
+  },
+  "lh-07": {
+    "prompt": "¿Por qué no puedes acceder a 'Template Refs' (elementos marcados con ref=\"...\") dentro del cuerpo de 'setup()' directamente?",
+    "explanation": "Setup se ejecuta antes de que el componente sea montado. Los elementos del DOM aún no existen, por lo que el ref será null. Debes esperar a onMounted para acceder a ellos.",
+    "interviewTip": "Por esto onMounted es obligatorio para la inicialización de bibliotecas de terceros (como Chart.js o D3.js) que requieren un nodo del DOM.",
+    "options": [
+      "Porque setup() se ejecuta antes de que el DOM sea creado.",
+      "Porque los template refs son solo para Vue 2.",
+      "Porque debes usar document.getElementById en su lugar.",
+      "Porque los refs son privados por defecto."
+    ]
+  },
+  "lh-08": {
+    "prompt": "En la Composition API, ¿dónde debes colocar la lógica que anteriormente estaba en los hooks 'beforeCreate' y 'created' de la Options API?",
+    "explanation": "Ya que setup() se ejecuta al mismo tiempo que la fase de creación, no hay necesidad de hooks explícitos beforeCreate/created en la Composition API.",
+    "interviewTip": "Esto simplifica significativamente la lógica del componente en comparación con la Options API.",
+    "options": [
+      "Dentro de onBeforeMount",
+      "Directamente en la función setup() o <script setup>",
+      "Dentro de onMounted",
+      "La Composition API no soporta estas etapas"
+    ]
+  },
+  "lh-09": {
+    "prompt": "¿Qué hook de ciclo de vida se llama después de que el componente ha sido montado en el DOM?",
+    "explanation": "onMounted se llama después de que el template del componente ha sido renderizado e insertado en el DOM. Aquí es donde puedes acceder de forma segura a los elementos del DOM.",
+    "interviewTip": "Usa onMounted para manipulación del DOM, inicialización de bibliotecas de terceros, o llamadas API que necesitan que el componente sea visible.",
+    "options": ["onBeforeMount", "onMounted", "onCreated", "onUpdated"]
+  },
+  "lh-10": {
+    "prompt": "¿Cuál es el equivalente en la Composition API del hook `beforeDestroy` de la Options API?",
+    "explanation": "Vue 3 renombró beforeDestroy a beforeUnmount y destroyed a unmounted para reflejar mejor lo que realmente sucede.",
+    "interviewTip": "Usa onBeforeUnmount u onUnmounted para limpiar temporizadores, event listeners o suscripciones.",
+    "options": ["onBeforeDestroy", "onBeforeUnmount", "onDestroy", "onCleanup"]
+  }
+}

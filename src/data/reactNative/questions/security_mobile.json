@@ -4,7 +4,6 @@
       "id": "sec-01",
       "stageId": "security_mobile",
       "type": "single",
-      "prompt": "What is 'SSL Pinning' and why is it used in React Native apps?",
       "options": [
         "A way to pin the app's icon to the home screen.",
         "A technique to prevent Man-in-the-Middle (MITM) attacks by ensuring the app only trusts a specific, pre-defined server certificate.",
@@ -13,15 +12,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "Even with HTTPS, an attacker can sometimes force a device to trust a fake certificate. SSL Pinning ensures the app rejects any certificate that doesn't match the 'pinned' one from your server.",
-      "interviewTip": "Mention libraries like 'react-native-ssl-pinning' or 'TrustKit'. Warning: If your server certificate expires and you haven't updated the app, it will stop working!"
+      ]
     },
     {
       "id": "sec-02",
       "stageId": "security_mobile",
       "type": "single",
-      "prompt": "How should sensitive keys (like API secrets) be stored in a React Native app?",
       "options": [
         "Hardcoded in a 'constants.js' file.",
         "Stored in the 'package.json' for easy access.",
@@ -30,15 +26,12 @@
       ],
       "correct": [
         2
-      ],
-      "explanation": "Standard storage (AsyncStorage/MMKV) is unencrypted. The Keychain/Keystore provides hardware-level encryption designed specifically for secrets.",
-      "interviewTip": "A great answer includes: 'I use .env files for build-time configuration, but device-specific secrets go into the Secure Keychain'."
+      ]
     },
     {
       "id": "sec-03",
       "stageId": "security_mobile",
       "type": "single",
-      "prompt": "What is the purpose of 'Jailbreak' or 'Root' detection in mobile apps?",
       "options": [
         "To speed up the app on modified devices.",
         "To identify if the device's security layers have been compromised, allowing the app to disable sensitive features (like payments).",
@@ -47,15 +40,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "On a rooted/jailbroken device, attackers can bypass sandbox restrictions and read your app's private data or intercept memory. Banks and high-security apps often block access on these devices.",
-      "interviewTip": "Use 'react-native-jail-monkey' or 'expo-device' to check if the device environment is untrusted."
+      ]
     },
     {
       "id": "sec-04",
       "stageId": "security_mobile",
       "type": "single",
-      "prompt": "Analyze the Android config. What does 'minifyEnabled true' and 'proguardFiles' do?",
       "code": "buildTypes {\n    release {\n        minifyEnabled true\n        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'\n    }\n}",
       "options": [
         "It makes the app's font sizes smaller.",
@@ -65,15 +55,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "Proguard/R8 shrinks the code and renames classes/methods to nonsense names (e.g., 'a', 'b', 'c'), making the native binary difficult to read.",
-      "interviewTip": "Always enable this for release builds. It's the first line of defense against decompilers."
+      ]
     },
     {
       "id": "sec-05",
       "stageId": "security_mobile",
       "type": "single",
-      "prompt": "Why is it dangerous to use 'console.log' in a production React Native build?",
       "options": [
         "It makes the app's UI look ugly.",
         "Logs are accessible via system tools (like logcat or Xcode) and can leak sensitive data (tokens, user info) to anyone with the device.",
@@ -82,15 +69,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "Logging doesn't just show in your terminal; it's broadcasted to the device's system log. Production builds should have logs stripped out.",
-      "interviewTip": "Use 'babel-plugin-transform-remove-console' to automatically strip all logs during the production build process."
+      ]
     },
     {
       "id": "sec-06",
       "stageId": "security_mobile",
       "type": "multiple",
-      "prompt": "Which of these are valid methods to secure the JavaScript bundle itself?",
       "options": [
         "Using 'JSC' instead of 'Hermes'.",
         "Using Hermes (it compiles JS to bytecode, which is harder to read than plain text).",
@@ -100,15 +84,12 @@
       "correct": [
         1,
         2
-      ],
-      "explanation": "Hermes provides 'security through compilation.' Obfuscators add an extra layer of complexity to the logic itself.",
-      "interviewTip": "Explain that no JS code is 100% 'hidden,' but these steps make it significantly more expensive for an attacker to decode."
+      ]
     },
     {
       "id": "sec-07",
       "stageId": "security_mobile",
       "type": "single",
-      "prompt": "What is 'Deep Link Hijacking'?",
       "options": [
         "When a website links to the wrong page.",
         "When a malicious app registers the same URL scheme as your app (e.g., myapp://) to intercept sensitive data sent via links.",
@@ -117,15 +98,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "URL schemes (myapp://) are not exclusive. To prevent hijacking, you should use 'Universal Links' (iOS) or 'App Links' (Android), which use a verified website domain to prove ownership.",
-      "interviewTip": "Always prefer HTTPS-based 'Universal Links' over custom URI schemes for authentication flows."
+      ]
     },
     {
       "id": "sec-08",
       "stageId": "security_mobile",
       "type": "single",
-      "prompt": "What is the security risk of using 'allowFileAccess' or 'javaScriptEnabled' in a WebView?",
       "options": [
         "The app will run out of memory.",
         "It can open the door to Cross-Site Scripting (XSS) attacks where malicious web content accesses local device files.",
@@ -134,15 +112,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "WebViews are essentially mini-browsers. If you load untrusted URLs with full permissions enabled, you risk giving that site access to the app's internal sandbox.",
-      "interviewTip": "Only enable the specific features you need, and always use 'originWhitelist' to restrict which domains the WebView can visit."
+      ]
     },
     {
       "id": "sec-09",
       "stageId": "security_mobile",
       "type": "single",
-      "prompt": "How do you implement biometric authentication (Face ID / Touch ID) in React Native?",
       "options": [
         "It's built into React Native by default.",
         "Use a library like 'react-native-biometrics' or 'expo-local-authentication' to access the device's biometric sensors.",
@@ -151,15 +126,12 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "These libraries provide a cross-platform API to check if biometrics are available and to prompt the user for authentication.",
-      "interviewTip": "Always have a fallback to PIN/password authentication in case biometrics fail or aren't available on the device."
+      ]
     },
     {
       "id": "sec-10",
       "stageId": "security_mobile",
       "type": "single",
-      "prompt": "What is the recommended way to encrypt sensitive data before storing it locally?",
       "options": [
         "Use Base64 encoding.",
         "Use a library like 'react-native-aes-crypto' to encrypt data with AES-256 before saving to AsyncStorage/MMKV.",
@@ -168,9 +140,7 @@
       ],
       "correct": [
         1
-      ],
-      "explanation": "Base64 is encoding, not encryption—it can be easily reversed. AES-256 is a strong encryption standard that requires a key to decrypt the data.",
-      "interviewTip": "Store the encryption key in the Keychain/Keystore, never hardcode it in your JavaScript bundle."
+      ]
     }
   ]
 }

@@ -1,0 +1,180 @@
+{
+  "jc-01": {
+    "prompt": "¿Qué sucede si defines un componente de React con la primera letra en minúscula (ej., function myHeader())?",
+    "explanation": "React utiliza la capitalización para distinguir entre etiquetas HTML nativas (strings) y componentes personalizados (funciones/clases).",
+    "interviewTip": "Sigue siempre la convención PascalCase para los nombres de los componentes (ej., MyComponent).",
+    "options": [
+      "React lo tratará como una etiqueta HTML estándar y no ejecutará la lógica del componente.",
+      "React lo capitalizará automáticamente durante la compilación.",
+      "La aplicación colapsará con un 'LowercaseError'.",
+      "Funcionará perfectamente siempre que el nombre del archivo esté capitalizado."
+    ]
+  },
+  "jc-02": {
+    "prompt": "¿Cuál es el resultado del siguiente código de componente?",
+    "explanation": "JSX debe tener exactamente un elemento raíz. No puedes devolver múltiples etiquetas adyacentes sin un envoltorio.",
+    "interviewTip": "Puedes solucionar esto usando un <div> o un Fragment (<>...</>).",
+    "options": [
+      "Renderiza un h1 seguido de una etiqueta p.",
+      "Solo renderiza la etiqueta h1.",
+      "Un error de sintaxis: 'Adjacent JSX elements must be wrapped in an enclosing tag'.",
+      "La etiqueta p se anida dentro de la etiqueta h1."
+    ]
+  },
+  "jc-03": {
+    "prompt": "¿Cómo se pasa una variable de JavaScript como atributo en JSX?",
+    "explanation": "Para pasar una variable como prop o atributo, debes usar llaves sin comillas.",
+    "interviewTip": "Si pones comillas alrededor de las llaves, React lo tratará todo como un string literal.",
+    "options": [
+      "<a href='{myUrl}'>Link</a>",
+      "<a href={myUrl}>Link</a>",
+      "<a href=(myUrl)>Link</a>",
+      "<a href=\"myUrl\">Link</a>"
+    ]
+  },
+  "jc-04": {
+    "prompt": "¿Qué renderizará el siguiente fragmento de código?",
+    "explanation": "React no renderiza booleanos, null ni undefined. Como isAdmin es false, el operador && se detiene y no se muestra nada.",
+    "interviewTip": "Ten cuidado con el 0; a diferencia de false, React *sí* renderizará el número 0.",
+    "options": [
+      "<div>false</div>",
+      "<div></div> (nada dentro)",
+      "<div><button>Delete</button></div>",
+      "Un error"
+    ]
+  },
+  "jc-05": {
+    "prompt": "¿Cuál es el propósito de usar React Fragments (<> ... </>)?",
+    "explanation": "Los Fragments permiten cumplir con la regla del 'elemento raíz único' sin llenar el HTML de etiquetas <div> innecesarias.",
+    "interviewTip": "Los Fragments son especialmente útiles al trabajar con CSS Flexbox o Grid, donde los divs padres extra pueden romper el diseño.",
+    "options": [
+      "Acelerar la ejecución de la lógica de JavaScript.",
+      "Agrupar múltiples elementos sin añadir un nodo extra al árbol del DOM.",
+      "Generar automáticamente clases CSS para los hijos.",
+      "Proteger a los componentes de ser re-renderizados."
+    ]
+  },
+  "jc-06": {
+    "prompt": "¿Cuáles de estas son formas válidas de aplicar estilos inline en JSX?",
+    "explanation": "Los estilos inline deben ser objetos. Puedes usar camelCase (fontSize) o kebab-case entre comillas ('background-color').",
+    "interviewTip": "Las llaves dobles {{ }} representan un objeto JS dentro de una expresión JSX.",
+    "options": [
+      "style={{ color: 'red', fontSize: '20px' }}",
+      "style='color: red;'",
+      "style={{ 'background-color': 'blue' }}",
+      "style={myStyleObject}"
+    ]
+  },
+  "jc-07": {
+    "prompt": "¿Cómo se escribe un comentario dentro de una plantilla JSX?",
+    "explanation": "Los comentarios en JSX deben estar envueltos en llaves y usar la sintaxis de comentarios multilínea de JavaScript.",
+    "interviewTip": "Los comentarios de una sola línea // dentro de llaves a veces pueden comentar accidentalmente la llave de cierre.",
+    "options": ["", "// Comment", "{/* Comment */}", "/* Comment */"]
+  },
+  "jc-08": {
+    "prompt": "¿Cuál es el resultado de este componente?",
+    "explanation": "React puede renderizar arrays directamente. Simplemente concatena los elementos en la UI.",
+    "interviewTip": "Normalmente, usarás .map() para envolver cada ítem en una etiqueta como <li> para evitar este comportamiento de texto unido.",
+    "options": [
+      "Una lista con 3 puntos (bullets).",
+      "Un error: 'Arrays are not valid as children'.",
+      "ABC (los ítems unidos como un string).",
+      "Una representación de string: ['A', 'B', 'C']."
+    ]
+  },
+  "jc-09": {
+    "prompt": "En JSX, ¿qué atributo se usa en lugar del estándar HTML 'for' para las etiquetas label?",
+    "explanation": "'for' es una palabra reservada en JavaScript (usada en bucles), por lo que JSX usa 'htmlFor' para evitar conflictos.",
+    "interviewTip": "Esta es la misma razón por la que 'class' se convierte en 'className'.",
+    "options": ["labelFor", "htmlFor", "forID", "className"]
+  },
+  "jc-10": {
+    "prompt": "¿Qué devuelve lo siguiente?",
+    "explanation": "Las expresiones dentro de las llaves se evalúan y el resultado se renderiza.",
+    "interviewTip": "Puedes realizar cualquier cálculo de JS o llamar a funciones dentro de estas llaves.",
+    "options": ["Un div vacío.", "\"10 + 20\"", "30", "undefined"]
+  },
+  "jc-11": {
+    "prompt": "¿Por qué se deben cerrar todas las etiquetas en JSX, incluso las que se cierran solas como <img> o <br>?",
+    "explanation": "JSX no es HTML; es una extensión de sintaxis que sigue las reglas de XML donde cada etiqueta debe cerrarse (ej., <br />).",
+    "interviewTip": "Este es un error común para los desarrolladores que pasan de HTML puro a React.",
+    "options": [
+      "Porque JSX se basa en reglas XML/XHTML que requieren un cierre estricto.",
+      "Para que el código se vea más consistente.",
+      "Es un requisito del motor CSS-in-JS.",
+      "Los navegadores colapsarán si las etiquetas no se cierran en JSX."
+    ]
+  },
+  "jc-12": {
+    "prompt": "¿Cuáles de las siguientes son formas válidas de renderizar 'nada' desde un componente?",
+    "explanation": "Retornar null, false o undefined le indica a React que no renderice ninguna UI. Un div vacío renderiza un nodo real en el DOM.",
+    "interviewTip": "return null es el estándar de la industria para 'ocultar condicionalmente' un componente.",
+    "options": [
+      "return null;",
+      "return false;",
+      "return <div></div>;",
+      "return undefined;"
+    ]
+  },
+  "jc-13": {
+    "prompt": "¿Cuál es el resultado del console.log en este componente?",
+    "explanation": "Las etiquetas JSX se transforman en objetos que describen la UI. Esto es lo que mostrará 'console.log'.",
+    "interviewTip": "Estos objetos son los bloques de construcción del Virtual DOM.",
+    "options": [
+      "El string \"<h1>Hello</h1>\".",
+      "Un objeto JavaScript (React Element).",
+      "Un nodo real del DOM.",
+      "undefined"
+    ]
+  },
+  "jc-14": {
+    "prompt": "¿Cómo se renderiza un string que contiene HTML sin que sea escapado?",
+    "explanation": "React escapa todos los strings por defecto por seguridad. 'dangerouslySetInnerHTML' es la forma intencionada de renderizar HTML puro.",
+    "interviewTip": "El nombre es un recordatorio de que esto puede exponer tu app a ataques XSS si el string proviene de una fuente no confiable.",
+    "options": [
+      "<div>{htmlStr}</div>",
+      "<div>{{htmlStr}}</div>",
+      "<div dangerouslySetInnerHTML={{ __html: htmlStr }} />",
+      "<div renderAsHtml={htmlStr} />"
+    ]
+  },
+  "jc-15": {
+    "prompt": "¿Qué está mal en el siguiente componente?",
+    "explanation": "JavaScript detiene la ejecución de una función después de la palabra clave 'return'. El código debajo es código muerto.",
+    "interviewTip": "Envuelve siempre la UI multilínea en paréntesis para asegurar que todo el bloque sea retornado.",
+    "options": [
+      "La variable 'name' no puede usarse dentro de h1.",
+      "La etiqueta p es inalcanzable porque viene después de la sentencia return.",
+      "h1 y p deben estar dentro de un div.",
+      "El h1 no está cerrado."
+    ]
+  },
+  "jc-16": {
+    "prompt": "¿Puedes usar una sentencia 'if' de JavaScript directamente dentro de un bloque JSX?",
+    "explanation": "Las llaves {} solo aceptan expresiones. Las sentencias como 'if', 'for' y 'switch' no están permitidas dentro de JSX.",
+    "interviewTip": "Esta es la razón por la cual los ternarios (condición ? a : b) son tan populares en React.",
+    "options": [
+      "Sí, si está dentro de llaves.",
+      "No, debes usar operadores ternarios o el lógico && porque 'if' es una sentencia, no una expresión.",
+      "Sí, pero solo en componentes de clase.",
+      "Sí, si usas el atributo 'v-if'."
+    ]
+  },
+  "jc-17": {
+    "prompt": "¿Qué devuelve el chequeo 'typeof' para un Fragment?",
+    "explanation": "Los React Fragments (y otros tipos integrados como Suspense o Profiler) son Symbols internos de React.",
+    "interviewTip": "Los Fragments son tipos 'vacíos' especiales que el renderizador sabe cómo manejar sin necesidad de un nodo en el DOM.",
+    "options": ["\"string\"", "\"object\"", "\"symbol\"", "\"function\""]
+  },
+  "jc-18": {
+    "prompt": "¿Cuál de estas es la forma correcta de pasar una prop booleana 'isActive' como true?",
+    "explanation": "Pasar solo el nombre de la prop por defecto es true. {true} también es explícito y correcto.",
+    "interviewTip": "La mayoría de los desarrolladores prefieren la abreviatura <Tab isActive /> para flags booleanos.",
+    "options": [
+      "<Tab isActive='true' />",
+      "<Tab isActive={true} />",
+      "<Tab isActive />",
+      "Tanto B como C son correctas."
+    ]
+  }
+}

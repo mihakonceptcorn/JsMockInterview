@@ -1,0 +1,107 @@
+{
+  "perf-01": {
+    "prompt": "¿Qué engine de JavaScript es ahora el predeterminado para React Native porque ofrece un TTI (Time To Interactive) más rápido y tamaños de APK más pequeños?",
+    "explanation": "Hermes está optimizado específicamente para mobile. Utiliza compilación Ahead-of-Time (AOT) para convertir JS en bytecode durante el proceso de build, en lugar de hacerlo en runtime.",
+    "interviewTip": "Menciona que Hermes también ayuda a reducir el 'Memory Footprint' de la app, lo cual es vital para dispositivos Android de gama baja.",
+    "options": ["V8", "JavaScriptCore (JSC)", "Hermes", "SpiderMonkey"]
+  },
+  "perf-02": {
+    "prompt": "¿Qué es 'FlashList' (de Shopify) y por qué se usa a menudo en lugar de 'FlatList'?",
+    "explanation": "FlatList desmonta los elementos fuera de pantalla. FlashList recicla las vistas nativas subyacentes y simplemente intercambia los datos, lo cual es mucho más rápido para el dispositivo.",
+    "interviewTip": "FlashList afirma ser entre '5x y 10x más rápido' que FlatList. Es una excelente mención para discusiones de performance a nivel Senior.",
+    "options": [
+      "Es una versión de FlatList que solo funciona con imágenes.",
+      "Es un componente de lista altamente optimizado que recicla celdas (Views) en lugar de desmontarlas, lo que resulta en un FPS significativamente mayor.",
+      "Es una lista que solo se renderiza una vez y nunca se actualiza.",
+      "Es un plugin de pago para React Native."
+    ]
+  },
+  "perf-03": {
+    "prompt": "Analiza el código. ¿Por qué es probable que esta lista tenga lag durante el scroll rápido?",
+    "explanation": "Las funciones definidas dentro del cuerpo del componente se recrean en cada render. Además, lógica pesada como 'expensiveFormat' dentro de renderItem bloquea el JS thread durante el scroll.",
+    "interviewTip": "Solución: mover renderItem fuera del componente o envolverlo en 'useCallback', y memoizar el formateo costoso.",
+    "options": [
+      "Porque renderItem está definido dentro del componente y 'expensiveFormat' se ejecuta en cada render.",
+      "Porque FlatList no soporta componentes Text.",
+      "Porque la prop data es demasiado grande.",
+      "Porque las imágenes con 'uri' siempre son lentas."
+    ]
+  },
+  "perf-04": {
+    "prompt": "¿Cuál es el propósito del método 'InteractionManager.runAfterInteractions'?",
+    "explanation": "Esto asegura que una tarea pesada no robe ciclos de CPU a una animación, evitando 'jank' o frames perdidos.",
+    "interviewTip": "Es perfecto para obtener datos justo después de una transición de pantalla sin que la transición se sienta lenta.",
+    "options": [
+      "Acelerar las solicitudes de red.",
+      "Retrasar tareas de larga duración (como procesamiento de datos) hasta que las animaciones o transiciones de navegación hayan terminado.",
+      "Comprobar si el usuario está tocando la pantalla.",
+      "Reiniciar el JS thread."
+    ]
+  },
+  "perf-05": {
+    "prompt": "¿Cuáles de estas herramientas se usan comúnmente para perfilar y depurar performance en una app React Native?",
+    "explanation": "Flipper y React DevTools son estándar para el profiling de JS/Bridge. Xcode Instruments (y Android Studio Profiler) se necesitan para inspeccionar memoria y uso de CPU nativos.",
+    "interviewTip": "Flipper es una elección de nivel 'Senior': permite inspeccionar el bridge traffic, el layout y la base de datos en un solo lugar.",
+    "options": [
+      "Flipper (con los plugins LeakCanary y Profiler).",
+      "React DevTools (pestaña Profiler).",
+      "Xcode Instruments (para performance nativa en iOS).",
+      "Chrome Task Manager."
+    ]
+  },
+  "perf-06": {
+    "prompt": "¿Cómo puedes detectar si tu JS thread está sobrecargado en un dispositivo real?",
+    "explanation": "El overlay de 'Perf Monitor' muestra el frame rate de ambos threads. Si la UI está a 60 FPS pero JS a 10 FPS, tu lógica está bloqueando la app.",
+    "interviewTip": "Las caídas de JS FPS suelen significar demasiados re-renders o cálculos pesados; las caídas de UI FPS indican que la jerarquía de Views es demasiado profunda o compleja.",
+    "options": [
+      "La app se cerrará automáticamente.",
+      "Comprobando el 'Perf Monitor' en el Developer Menu para ver el JS FPS y el UI FPS.",
+      "El teléfono comenzará a calentarse.",
+      "La velocidad de internet disminuirá."
+    ]
+  },
+  "perf-07": {
+    "prompt": "¿Qué es la optimización de 'Inline function' en el contexto del performance en RN?",
+    "explanation": "Una arrow function inline crea una nueva referencia en cada render. Si el botón está envuelto en 'React.memo', igual se re-renderizará porque la prop 'onPress' cambió de referencia.",
+    "interviewTip": "Esta es la causa más común de 'Wasted Renders' en listas grandes.",
+    "options": [
+      "Usar useCallback evita que el componente hijo se re-renderice innecesariamente si está memoizado.",
+      "Las inline functions son más rápidas de escribir.",
+      "Las inline functions son optimizadas automáticamente por Hermes.",
+      "No hay diferencia de performance."
+    ]
+  },
+  "perf-08": {
+    "prompt": "¿Por qué deberías evitar un anidamiento profundo de componentes View?",
+    "explanation": "Cada nivel de anidamiento añade trabajo al engine de layout Yoga. Aplanar la estructura de la UI mejora la velocidad del render inicial y de las actualizaciones.",
+    "interviewTip": "Si tienes 10 Views anidados solo para margins/padding, intenta combinarlos en menos componentes.",
+    "options": [
+      "Hace que el código sea más difícil de leer.",
+      "Incrementa la complejidad de los cálculos de layout del Shadow Tree (Yoga), ralentizando el UI thread.",
+      "Limita la cantidad de colores que puedes usar.",
+      "No está permitido en la App Store."
+    ]
+  },
+  "perf-09": {
+    "prompt": "¿Cuál es el beneficio de usar 'RAM bundles' (Random Access Modules) en React Native?",
+    "explanation": "Los RAM bundles dividen el JavaScript en módulos indexados. La app carga primero los módulos de arranque y luego carga otros módulos a medida que se necesitan durante la navegación.",
+    "interviewTip": "Esto es particularmente útil para apps grandes con muchas pantallas. Menciona la configuración del 'Metro bundler' para habilitarlo.",
+    "options": [
+      "Incrementan la capacidad de RAM del dispositivo.",
+      "Permiten que la app cargue módulos JavaScript bajo demanda en lugar de cargar todo el bundle al inicio, reduciendo el TTI (Time To Interactive).",
+      "Comprimen imágenes automáticamente.",
+      "Solo están disponibles en iOS."
+    ]
+  },
+  "perf-10": {
+    "prompt": "¿Cómo mejora el performance la New Architecture en comparación con la arquitectura heredada?",
+    "explanation": "La New Architecture (JSI + Fabric + Turbo Modules) elimina el cuello de botella de la serialización JSON y permite que React se comunique directamente con código nativo, habilitando características como layout sincrónico y rendering basado en prioridades.",
+    "interviewTip": "Menciona que esto acerca mucho más el performance de React Native al de apps totalmente nativas, especialmente en interacciones de UI complejas.",
+    "options": [
+      "Usa más memoria para cachear todo.",
+      "Elimina el bridge asíncrono, usa JSI para llamadas nativas sincrónicas y habilita rendering concurrente con Fabric.",
+      "Elimina todas las animaciones.",
+      "Solo funciona en Android."
+    ]
+  }
+}

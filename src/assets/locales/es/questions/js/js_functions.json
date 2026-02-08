@@ -1,0 +1,207 @@
+{
+  "js-fn-01": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "En JavaScript, las funciones son first-class objects, pero `typeof` devuelve `function`.",
+    "interviewTip": "Menciona que las funciones son objetos invocables con un [[Call]] interno.",
+    "options": ["function", "object", "undefined", "class"]
+  },
+  "js-fn-02": {
+    "prompt": "¿Cuál es el output?",
+    "explanation": "Las function declarations sufren hoisting junto con su cuerpo.",
+    "interviewTip": "Contrasta esto con las function expressions.",
+    "options": ["42", "undefined", "ReferenceError", "TypeError"]
+  },
+  "js-fn-03": {
+    "prompt": "¿Qué sucede?",
+    "explanation": "`bar` existe debido al hoisting, pero es undefined al momento de la llamada.",
+    "interviewTip": "Las function expressions no sufren hoisting como las declaraciones.",
+    "options": ["1", "undefined", "TypeError", "ReferenceError"]
+  },
+  "js-fn-04": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los paréntesis permiten el retorno implícito de un objeto en una arrow function.",
+    "interviewTip": "Trampa común de las arrow functions.",
+    "options": ["{ a: 1 }", "undefined", "SyntaxError", "() => {}"]
+  },
+  "js-fn-05": {
+    "prompt": "Las arrow funciones se diferencian de las funciones regulares porque...",
+    "explanation": "Las arrow functions capturan `this` del lexical scope.",
+    "interviewTip": "Excelente pregunta para evaluar el entendimiento de `this`.",
+    "options": [
+      "no tienen su propio this",
+      "siempre son asíncronas",
+      "no pueden retornar valores",
+      "sufren hoisting"
+    ]
+  },
+  "js-fn-06": {
+    "prompt": "¿Qué se muestra en el log?",
+    "explanation": "`arguments` contiene solo los argumentos pasados a la función.",
+    "interviewTip": "Menciona que las arrow functions no tienen el objeto `arguments`.",
+    "options": ["0", "1", "2", "undefined"]
+  },
+  "js-fn-07": {
+    "prompt": "¿Cuál será el output?",
+    "explanation": "Los default parameters se aplican cuando el argumento es `undefined`.",
+    "interviewTip": "Es diferente a pasar `null`.",
+    "options": ["10", "undefined", "null", "ReferenceError"]
+  },
+  "js-fn-08": {
+    "prompt": "¿Qué devuelve esto?",
+    "explanation": "La inserción automática de punto y coma (ASI) termina el return prematuramente.",
+    "interviewTip": "Un 'gotcha' clásico de JavaScript.",
+    "options": ["{ a: 1 }", "undefined", "SyntaxError", "null"]
+  },
+  "js-fn-09": {
+    "prompt": "¿Qué es una higher-order function?",
+    "explanation": "Las higher-order functions operan sobre otras funciones.",
+    "interviewTip": "Ejemplos: map, filter, reduce.",
+    "options": [
+      "Una función que recibe o retorna otra función",
+      "Una función definida dentro de otra",
+      "Una función asíncrona",
+      "Una función recursiva"
+    ]
+  },
+  "js-fn-10": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "En strict mode, `this` es undefined en llamadas a funciones globales.",
+    "interviewTip": "Pregunta siempre sobre el comportamiento en strict mode.",
+    "options": ["window / global", "undefined (strict mode)", "foo", "null"]
+  },
+  "js-fn-11": {
+    "prompt": "¿Qué hace bind?",
+    "explanation": "`bind` devuelve una nueva función.",
+    "interviewTip": "bind ≠ call ≠ apply.",
+    "options": [
+      "Crea una nueva función vinculada a un this específico",
+      "Llama a la función inmediatamente",
+      "Cambia el prototype",
+      "Congela el contexto"
+    ]
+  },
+  "js-fn-12": {
+    "prompt": "¿Qué se muestra en el log?",
+    "explanation": "El operador `rest` recolecta los argumentos restantes.",
+    "interviewTip": "Rest vs arguments.",
+    "options": ["0", "1", "2", "3"]
+  },
+  "js-fn-13": {
+    "prompt": "¿Qué sucederá?",
+    "explanation": "Las arrow functions no pueden usarse como constructores.",
+    "interviewTip": "No tienen el método interno [[Construct]].",
+    "options": ["Crea una instancia", "TypeError", "undefined", "Retorna foo"]
+  },
+  "js-fn-14": {
+    "prompt": "¿Qué es la recursión?",
+    "explanation": "La recursión es cuando una función se invoca a sí misma.",
+    "interviewTip": "Menciona siempre el caso base (base case).",
+    "options": [
+      "Una función llamándose a sí misma",
+      "Una función dentro de un bucle",
+      "Ejecución asíncrona",
+      "Uso de closures"
+    ]
+  },
+  "js-fn-15": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "El closure preserva el valor de la variable x.",
+    "interviewTip": "Los closures son un concepto central de JS.",
+    "options": ["5", "undefined", "NaN", "TypeError"]
+  },
+  "js-fn-16": {
+    "prompt": "¿Qué es cierto sobre los closures?",
+    "explanation": "Los closures mantienen una referencia a las variables del scope externo.",
+    "interviewTip": "Explica las implicaciones en la memoria.",
+    "options": [
+      "Capturan variables por referencia",
+      "Copian los valores",
+      "Solo funcionan con const",
+      "Evitan el Garbage Collector"
+    ]
+  },
+  "js-fn-17": {
+    "prompt": "¿Qué significa IIFE?",
+    "explanation": "Una IIFE se ejecuta inmediatamente después de ser definida.",
+    "interviewTip": "Se usa para el aislamiento de scope.",
+    "options": [
+      "Immediately Invoked Function Expression",
+      "Internal Indexed Function Execution",
+      "Inline Interface Function Element",
+      "Immediate Internal Function Eval"
+    ]
+  },
+  "js-fn-18": {
+    "prompt": "¿Qué se muestra en el log?",
+    "explanation": "`arguments` es un objeto array-like.",
+    "interviewTip": "No es un array real.",
+    "options": ["object", "array", "undefined", "function"]
+  },
+  "js-fn-19": {
+    "prompt": "¿Qué es la tail recursion?",
+    "explanation": "La tail call optimization permite reutilizar el stack.",
+    "interviewTip": "No está ampliamente optimizada en todos los motores de JS.",
+    "options": [
+      "Llamada recursiva como última operación",
+      "Recursión infinita",
+      "Recursión asíncrona",
+      "Recursión con closures"
+    ]
+  },
+  "js-fn-20": {
+    "prompt": "¿Qué muestra este log?",
+    "explanation": "Los default params pueden referenciar parámetros previos.",
+    "interviewTip": "El orden de los parámetros importa.",
+    "options": ["5", "undefined", "null", "ReferenceError"]
+  },
+  "js-fn-21": {
+    "prompt": "¿Qué pasa si una función no tiene return?",
+    "explanation": "El retorno implícito es undefined.",
+    "interviewTip": "Error común de principiantes.",
+    "options": [
+      "Retorna undefined",
+      "Retorna null",
+      "Lanza un error",
+      "Retorna 0"
+    ]
+  },
+  "js-fn-22": {
+    "prompt": "¿Qué hace call?",
+    "explanation": "`call` invoca la función inmediatamente.",
+    "interviewTip": "Diferencia entre call/apply/bind.",
+    "options": [
+      "Invoca la función con un this explícito",
+      "Crea una nueva función",
+      "Vincula permanentemente",
+      "Clona la función"
+    ]
+  },
+  "js-fn-23": {
+    "prompt": "¿Qué es la aridad (arity) de una función?",
+    "explanation": "`fn.length` muestra la aridad.",
+    "interviewTip": "Útil para patrones de programación funcional.",
+    "options": [
+      "Número de parámetros declarados",
+      "Número de llamadas",
+      "Tiempo de ejecución",
+      "Profundidad del stack"
+    ]
+  },
+  "js-fn-24": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Las funciones tienen una propiedad prototype.",
+    "interviewTip": "Las arrow functions no la tienen.",
+    "options": ["object", "undefined", "null", "function"]
+  },
+  "js-fn-25": {
+    "prompt": "¿Por qué las funciones se llaman 'first-class citizens'?",
+    "explanation": "Las funciones se comportan como valores regulares.",
+    "interviewTip": "Esto permite la programación funcional.",
+    "options": [
+      "Pueden ser pasadas, retornadas y asignadas",
+      "Son las más rápidas",
+      "Sufren hoisting",
+      "Son asíncronas"
+    ]
+  }
+}

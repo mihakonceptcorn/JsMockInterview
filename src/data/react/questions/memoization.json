@@ -4,22 +4,20 @@
       "id": "mem-01",
       "stageId": "memoization",
       "type": "single",
-      "prompt": "What is the primary difference between useMemo and useCallback?",
       "options": [
         "useMemo is for Class components; useCallback is for Functional components.",
         "useMemo caches the result of a function; useCallback caches the function definition itself.",
         "useCallback is faster than useMemo.",
         "useMemo triggers a re-render; useCallback prevents it."
       ],
-      "correct": [1],
-      "explanation": "useMemo executes a function and remembers the returned value. useCallback returns the function itself so its reference remains stable between renders.",
-      "interviewTip": "Remember: useCallback(fn, deps) is essentially the same as useMemo(() => fn, deps)."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "mem-02",
       "stageId": "memoization",
       "type": "single",
-      "prompt": "Analyze the code. How many times will 'Calculating...' be logged if the component re-renders but 'count' stays the same?",
       "code": "const value = useMemo(() => {\n  console.log('Calculating...');\n  return count * 2;\n}, [count]);",
       "options": [
         "Once (only on the initial render).",
@@ -27,60 +25,57 @@
         "On every single re-render.",
         "Every time the parent component renders."
       ],
-      "correct": [0],
-      "explanation": "Because 'count' hasn't changed, useMemo returns the cached value and skips executing the function again.",
-      "interviewTip": "This is perfect for avoiding 'heavy' logic (like sorting large arrays) on every render."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "mem-03",
       "stageId": "memoization",
       "type": "single",
-      "prompt": "What does React.memo do when wrapped around a component?",
       "options": [
         "It automatically saves the component's state to a database.",
         "It prevents the component from re-rendering if its props have not changed.",
         "It makes the component invisible until it is fully loaded.",
         "It allows the component to bypass the Virtual DOM."
       ],
-      "correct": [1],
-      "explanation": "React.memo is a Higher Order Component that performs a shallow comparison of props. If they are the same as last time, React skips rendering that component.",
-      "interviewTip": "By default, React re-renders all children when a parent renders. React.memo 'opts-out' of this behavior."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "mem-04",
       "stageId": "memoization",
       "type": "multiple",
-      "prompt": "Which of these scenarios can break memoization (causing an unexpected re-render)?",
       "options": [
         "Passing a new object literal as a prop: <Child data={{}} />.",
         "Passing a numeric prop: <Child count={5} />.",
         "Passing an inline arrow function: <Child onClick={() => {}} />.",
         "Passing a string prop: <Child name='Alice' />."
       ],
-      "correct": [0, 2],
-      "explanation": "In JS, `{} !== {}` and `()=>{} !== ()=>{} `. These create new references on every render, which makes React.memo think the props have changed.",
-      "interviewTip": "To fix this, use useMemo for the object and useCallback for the function."
+      "correct": [
+        0,
+        2
+      ]
     },
     {
       "id": "mem-05",
       "stageId": "memoization",
       "type": "single",
-      "prompt": "What is 'Referential Equality' in the context of React optimization?",
       "options": [
         "When two variables have the same string name.",
         "When React checks if two variables point to the exact same memory address.",
         "When the HTML structure of two components matches.",
         "When two components share the same key prop."
       ],
-      "correct": [1],
-      "explanation": "React uses shallow equality (Object.is) for props and dependency arrays. If the reference changes, the optimization fails.",
-      "interviewTip": "This is why stable references (via hooks) are the foundation of React performance."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "mem-06",
       "stageId": "memoization",
       "type": "single",
-      "prompt": "Why is the following 'useCallback' problematic?",
       "code": "const handleClick = useCallback(() => {\n  console.log(text);\n}, []); // Missing 'text' in dependencies",
       "options": [
         "It will cause an infinite loop.",
@@ -88,30 +83,28 @@
         "The component will crash.",
         "useCallback cannot log to the console."
       ],
-      "correct": [1],
-      "explanation": "The empty dependency array tells React to never update the function reference. It 'remembers' the version of 'text' from render #1 forever.",
-      "interviewTip": "Always include every reactive value used inside the hook in the dependency array."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "mem-07",
       "stageId": "memoization",
       "type": "single",
-      "prompt": "When should you NOT use useMemo or useCallback?",
       "options": [
         "In small components with simple logic.",
         "When passing props to a memoized child component.",
         "When performing expensive array filtering.",
         "When the dependency array is very large."
       ],
-      "correct": [0],
-      "explanation": "Memoization has its own cost (memory and comparison time). If the logic is cheap, the overhead of the hook might be greater than the benefit.",
-      "interviewTip": "Don't optimize prematurely. Profile your app first to see where the actual bottlenecks are."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "mem-08",
       "stageId": "memoization",
       "type": "single",
-      "prompt": "Identify the output of this component after a re-render:",
       "code": "function Parent() {\n  const [count, setCount] = useState(0);\n  const data = [1, 2, 3]; // No useMemo\n  return <MemoizedChild list={data} />;\n}",
       "options": [
         "MemoizedChild will not re-render because the array content is identical.",
@@ -119,60 +112,57 @@
         "React will throw an error.",
         "Only the first item in the list will re-render."
       ],
-      "correct": [1],
-      "explanation": "Even though the values are the same, `[1,2,3] !== [1,2,3]` in JS. A new reference triggers the re-render.",
-      "interviewTip": "Move static data outside the component or wrap it in useMemo."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "mem-09",
       "stageId": "memoization",
       "type": "single",
-      "prompt": "What does the second argument of React.memo(Component, arePropsEqual) allow you to do?",
       "options": [
         "It allows you to manually define the comparison logic for props.",
         "It sets the time-to-live for the cache.",
         "It allows you to pass a custom key to the component.",
         "It lets you decide which state changes to ignore."
       ],
-      "correct": [0],
-      "explanation": "By default, React.memo does a shallow check. You can provide a custom function to do a deep check or ignore specific props.",
-      "interviewTip": "Be careful: deep comparisons can be slower than the actual re-render!"
+      "correct": [
+        0
+      ]
     },
     {
       "id": "mem-10",
       "stageId": "memoization",
       "type": "multiple",
-      "prompt": "Which of these hooks depend on referential stability to work effectively?",
       "options": [
         "useEffect (when functions/objects are in the dependency array).",
         "useState.",
         "useContext (to avoid re-rendering all consumers).",
         "useRef."
       ],
-      "correct": [0, 2],
-      "explanation": "useEffect re-runs if a reference changes. Context consumers re-render if the provider value (often an object) is a new reference.",
-      "interviewTip": "Referential stability is the 'bridge' that makes other hooks efficient."
+      "correct": [
+        0,
+        2
+      ]
     },
     {
       "id": "mem-11",
       "stageId": "memoization",
       "type": "single",
-      "prompt": "How do you memoize an expensive calculation that depends on 'a' and 'b'?",
       "options": [
         "const val = useMemo(calculate(a, b), [a, b]);",
         "const val = useMemo(() => calculate(a, b), [a, b]);",
         "const val = useCallback(() => calculate(a, b), [a, b]);",
         "const val = React.memo(calculate(a, b));"
       ],
-      "correct": [1],
-      "explanation": "useMemo takes a 'create' function that returns the value you want to cache.",
-      "interviewTip": "The function inside useMemo should be 'pure'—it shouldn't have side effects."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "mem-12",
       "stageId": "memoization",
       "type": "single",
-      "prompt": "What is the result of using a hook inside useMemo?",
       "code": "const val = useMemo(() => useState(0), []);",
       "options": [
         "It creates a local state for the memoized value.",
@@ -180,9 +170,9 @@
         "It works only in React 18.",
         "It returns a setter function."
       ],
-      "correct": [1],
-      "explanation": "Hooks must be called at the top level of your component. You cannot nest hooks inside useMemo, useEffect, or any other function.",
-      "interviewTip": "This follows the 'Rules of Hooks' call order requirements."
+      "correct": [
+        1
+      ]
     }
   ]
 }

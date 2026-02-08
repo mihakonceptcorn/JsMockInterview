@@ -1,0 +1,112 @@
+{
+  "pn-01": {
+    "prompt": "¿Cuál es la diferencia principal entre una 'Local Notification' y una 'Remote Push Notification'?",
+    "explanation": "Las local notifications (como una alarma o un temporizador) permanecen en el dispositivo. Las remote notifications son disparadas por un servidor externo para volver a atraer al usuario.",
+    "interviewTip": "Para tu app de Mock Interview, una notificación 'Local' sería perfecta para un recordatorio de práctica para mañana.",
+    "options": [
+      "Las local notifications requieren internet; las Remote no.",
+      "Las local notifications son programadas por la propia app en el dispositivo; las Remote se envían desde un servidor vía APNs o FCM.",
+      "Las remote notifications solo funcionan cuando la app está abierta.",
+      "Las local notifications son solo para Android."
+    ]
+  },
+  "pn-02": {
+    "prompt": "¿Qué servicio utiliza React Native para entregar notificaciones a dispositivos iOS, incluso cuando se usa Firebase?",
+    "explanation": "Incluso si usas Firebase, Google eventualmente tiene que entregar el mensaje al APNs de Apple para llegar a un iPhone.",
+    "interviewTip": "Esta es la razón por la que sigues necesitando una Apple Developer Account y certificados .p8 incluso cuando usas Firebase.",
+    "options": [
+      "GCM (Google Cloud Messaging)",
+      "APNs (Apple Push Notification service)",
+      "iCloud Sync",
+      "WNS (Windows Notification Service)"
+    ]
+  },
+  "pn-03": {
+    "prompt": "¿Qué es un 'FCM Token'?",
+    "explanation": "Tu servidor envía mensajes a este token. Si el usuario desinstala y reinstala la app, el token usualmente cambia.",
+    "interviewTip": "Envía siempre el token a tu base de datos en el backend durante el inicio de la app o el login.",
+    "options": [
+      "Una contraseña para la consola de Firebase.",
+      "Un identificador único para una instancia de app específica en un dispositivo concreto, usado por el servidor para dirigirse a ese usuario.",
+      "Un fragmento de código que encripta el mensaje.",
+      "El correo electrónico del usuario."
+    ]
+  },
+  "pn-04": {
+    "prompt": "¿Cómo manejas el click en una notificación cuando la app está completamente cerrada (Quit state)?",
+    "explanation": "getInitialNotification es una verificación única que devuelve los datos de la notificación si la app fue lanzada al tocar dicha notificación.",
+    "interviewTip": "Este es el lugar más común donde comienza la lógica de 'Deep Linking' después de que un usuario toca un push.",
+    "options": [
+      "getInitialNotification",
+      "onNotificationOpenedApp",
+      "setBackgroundMessageHandler",
+      "popNotification"
+    ]
+  },
+  "pn-05": {
+    "prompt": "¿Cuál es el propósito de los 'Notification Channels' en Android?",
+    "explanation": "Android 8.0+ requiere canales. Sin un ID de canal válido, las notificaciones no se mostrarán en dispositivos Android modernos.",
+    "interviewTip": "En iOS, este concepto no existe; los usuarios solo pueden activar o desactivar las notificaciones para toda la app.",
+    "options": [
+      "Transmitir contenido de video dentro de la notificación.",
+      "Permitir que los usuarios personalicen la importancia y el sonido para diferentes categorías de notificaciones (ej. Chat vs. Marketing).",
+      "Aumentar la velocidad de entrega.",
+      "Omitir el modo 'No molestar'."
+    ]
+  },
+  "pn-06": {
+    "prompt": "¿Qué sucede cuando se recibe una notificación 'Silent' (solo datos)?",
+    "explanation": "Las silent notifications llevan un payload de datos sin 'title' ni 'body'. Se usan para despertar a la app y descargar contenido nuevo silenciosamente.",
+    "interviewTip": "Ten cuidado: tanto iOS como Android limitan cuántos silent pushes puedes enviar para prevenir el drenaje de batería.",
+    "options": [
+      "El teléfono vibra pero no muestra texto.",
+      "No muestra una alerta de UI pero dispara una background task en la app para sincronizar datos.",
+      "La notificación se elimina inmediatamente.",
+      "Solo funciona si la pantalla está encendida."
+    ]
+  },
+  "pn-07": {
+    "prompt": "¿Cuáles de estos son requisitos para habilitar las Push Notifications en iOS?",
+    "explanation": "iOS es muy estricto. Necesitas todas estas configuraciones y un dispositivo real para probar el flujo completo desde el servidor hasta el terminal.",
+    "interviewTip": "Las versiones más recientes de Xcode/Simuladores han añadido soporte limitado, pero un dispositivo físico sigue siendo el estándar de la industria para pruebas.",
+    "options": [
+      "Push Notifications Capability habilitada en Xcode.",
+      "Background Modes (Remote notifications) habilitado en Xcode.",
+      "Un dispositivo físico (los Simuladores no soportan remote push por defecto).",
+      "Una Auth Key .p8 o Certificado .p12 válido."
+    ]
+  },
+  "pn-08": {
+    "prompt": "¿Cuál es el rol de 'setBackgroundMessageHandler' en React Native Firebase?",
+    "explanation": "Este manejador se ejecuta en su propia tarea especializada fuera de tu árbol principal de componentes de React.",
+    "interviewTip": "Mantén esta función 'pura' y evita usar hooks o lógica de UI compleja dentro de ella.",
+    "options": [
+      "Cambiar el fondo de pantalla del teléfono.",
+      "Manejar mensajes entrantes de solo datos cuando la app está en background o cerrada (quit).",
+      "Reproducir un sonido personalizado.",
+      "Guardar el mensaje en AsyncStorage."
+    ]
+  },
+  "pn-09": {
+    "prompt": "¿Qué es el 'Notification Overloading'?",
+    "explanation": "Este es un término de UX. Las notificaciones irrelevantes y de alta frecuencia son la razón número 1 del abandono (churn) de una app.",
+    "interviewTip": "Menciona la 'Personalización de Notificaciones' y el 'Límite de Frecuencia' (Frequency Capping) como soluciones a este problema.",
+    "options": [
+      "Enviar demasiadas notificaciones, provocando que los usuarios las desactiven o desinstalen la app.",
+      "Cuando el texto de la notificación es demasiado largo para la pantalla.",
+      "Un bug que hace que aparezca la misma notificación dos veces.",
+      "Usar demasiadas imágenes en una notificación."
+    ]
+  },
+  "pn-10": {
+    "prompt": "¿Cómo solicitas permisos de notificación al usuario en React Native?",
+    "explanation": "requestPermission() devuelve el estado de autorización (authorized, denied, provisional). En iOS, esto dispara el diálogo de permiso del sistema.",
+    "interviewTip": "Verifica siempre el estado actual del permiso antes de solicitarlo para evitar molestar a los usuarios con avisos repetidos. En Android 13+, también necesitas solicitar el permiso de runtime POST_NOTIFICATIONS.",
+    "options": [
+      "getPermission",
+      "requestPermission",
+      "askForNotifications",
+      "enablePush"
+    ]
+  }
+}

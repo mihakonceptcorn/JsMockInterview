@@ -1,0 +1,151 @@
+{
+  "rd-01": {
+    "prompt": "¿Cuál es el propósito principal del hook 'useRef' en React?",
+    "explanation": "useRef devuelve un objeto de JavaScript plano que persiste durante toda la vida del componente. Cambiar la propiedad .current no dispara un re-renderizado.",
+    "interviewTip": "Piensa en useRef como una 'caja' que puede contener cualquier valor, pero lo más común es que contenga un elemento del DOM.",
+    "options": [
+      "Disparar un re-renderizado cada vez que el valor cambia.",
+      "Almacenar un valor mutable que persiste entre renderizados sin causar un re-renderizado.",
+      "Validar los tipos de props pasados a un componente.",
+      "Crear un estado global accesible por todos los componentes."
+    ]
+  },
+  "rd-02": {
+    "prompt": "¿Cómo se accede a un nodo del DOM usando una ref en un componente funcional?",
+    "explanation": "Cuando pasas una ref a un elemento JSX, React establece la propiedad '.current' de ese objeto ref al nodo del DOM correspondiente.",
+    "interviewTip": "Verifica siempre si inputRef.current existe antes de llamar a métodos en él para evitar errores de null.",
+    "options": [
+      "inputRef.focus()",
+      "inputRef.current.focus()",
+      "inputRef.value.focus()",
+      "document.getElementById('input').focus()"
+    ]
+  },
+  "rd-03": {
+    "prompt": "¿Qué sucede con el valor almacenado en 'useRef' cuando el componente se vuelve a renderizar?",
+    "explanation": "A diferencia de las variables locales, que se recrean en cada renderizado, React mantiene los valores de useRef a lo largo del ciclo de vida del componente.",
+    "interviewTip": "Esto hace que las refs sean perfectas para almacenar temporizadores, IDs de intervalos o valores anteriores de props.",
+    "options": [
+      "Se restablece al valor inicial proporcionado en useRef(initial).",
+      "Se preserva y se mantiene exactamente como estaba antes del renderizado.",
+      "Se limpia y se vuelve null.",
+      "Causa un bucle de renderizado infinito."
+    ]
+  },
+  "rd-04": {
+    "prompt": "¿En qué escenarios es apropiado usar una Ref?",
+    "explanation": "Si algo se puede hacer de forma 'declarativa' con el estado, usa el estado. Usa refs solo para acciones 'imperativas' como enfocar o medir elementos.",
+    "interviewTip": "La documentación de React llama a las refs una 'vía de escape' (escape hatch); úsalas solo cuando el estado no sea suficiente.",
+    "options": [
+      "Gestionar el enfoque (focus), selección de texto o reproducción de medios.",
+      "Almacenar el texto actual de un campo de entrada para mostrarlo en la UI.",
+      "Integración con librerías de terceros que manipulan el DOM.",
+      "Disparar una animación que depende de cambios de estado."
+    ]
+  },
+  "rd-05": {
+    "prompt": "¿Cuál es el propósito de 'forwardRef'?",
+    "explanation": "Por defecto, no puedes pasar una prop 'ref' a un componente funcional. forwardRef 'reenvía' la ref desde el padre hacia un elemento específico en el hijo.",
+    "interviewTip": "Este es un patrón común para componentes de sistemas de diseño como Inputs o Botones.",
+    "options": [
+      "Permitir que un componente padre acceda a una ref del DOM dentro de un componente hijo.",
+      "Acelerar el renderizado de los componentes funcionales.",
+      "Evitar que un componente se vuelva a renderizar cuando cambian las props.",
+      "Enfocar automáticamente el primer input en un componente."
+    ]
+  },
+  "rd-06": {
+    "prompt": "¿Cuándo actualiza React la propiedad 'ref.current'?",
+    "explanation": "React asigna el nodo del DOM a .current cuando el componente se monta y lo establece en null cuando se desmonta.",
+    "interviewTip": "Debido a este tiempo de ejecución, solo debes acceder a las refs del DOM dentro de useEffect o en manejadores de eventos.",
+    "options": [
+      "Durante la fase de renderizado.",
+      "Antes de que se creen los elementos del DOM.",
+      "Después de que el componente se confirma en pantalla (durante el montaje/actualización).",
+      "Solo cuando el desarrollador llama a ref.update()."
+    ]
+  },
+  "rd-07": {
+    "prompt": "¿Cuál es el resultado del siguiente código después de hacer clic en 'Log'?",
+    "explanation": "Cada vez que el componente se renderiza, el contador aumenta. Al ser una ref, persiste, pero no *dispara* un renderizado por sí misma.",
+    "interviewTip": "Esta es una excelente forma de rastrear cuántas veces se está re-renderizando un componente para depurar el rendimiento.",
+    "options": [
+      "Siempre registrará 0.",
+      "Registrará el número de veces que el componente se ha renderizado.",
+      "Causará un error de 'Max depth exceeded'.",
+      "El texto del botón cambiará al valor del contador."
+    ]
+  },
+  "rd-08": {
+    "prompt": "¿Cómo se almacena correctamente el ID de un intervalo en un componente funcional?",
+    "explanation": "Una variable local se restablecería en cada renderizado. useState dispararía un re-renderizado al establecer el ID. useRef es el punto medio perfecto.",
+    "interviewTip": "Limpia siempre tus intervalos en la función de limpieza de useEffect para evitar fugas de memoria.",
+    "options": [
+      "Usando una variable local: let timer = setInterval(...)",
+      "Usando useState: const [timer, setTimer] = useState(...)",
+      "Usando useRef como se muestra en el código.",
+      "Los intervalos no están soportados en componentes funcionales."
+    ]
+  },
+  "rd-09": {
+    "prompt": "¿Puedes usar 'useRef' para almacenar un valor que no sea un elemento del DOM?",
+    "explanation": "useRef es esencialmente un contenedor genérico para cualquier valor mutable que quieras mantener entre renderizados.",
+    "interviewTip": "Esto se usa a menudo para almacenar 'previousProps' para lógica de comparación.",
+    "options": [
+      "No, es solo para elementos HTML.",
+      "Sí, puede almacenar cualquier valor de JavaScript (strings, objetos, funciones).",
+      "Solo si el valor es un número.",
+      "Solo si usas el hook useMemo en su lugar."
+    ]
+  },
+  "rd-10": {
+    "prompt": "¿Cuál es la diferencia entre 'useRef' y 'createRef'?",
+    "explanation": "En componentes funcionales, createRef perdería su valor en cada re-renderizado. useRef está diseñado para 'engancharse' al almacenamiento persistente de React.",
+    "interviewTip": "Si usas createRef dentro de un componente funcional, se restablecerá cada vez que la función se ejecute.",
+    "options": [
+      "createRef se usa principalmente en componentes de clase.",
+      "useRef siempre devuelve el mismo objeto; createRef crea un objeto nuevo en cada renderizado.",
+      "createRef es más rápido que useRef.",
+      "useRef solo funciona con nodos del DOM."
+    ]
+  },
+  "rd-11": {
+    "prompt": "Identifica el problema en este código:",
+    "explanation": "Durante el primer renderizado, el DOM aún no se ha creado, por lo que myRef.current es undefined/null. Solo debes acceder a él en un useEffect o un evento.",
+    "interviewTip": "Este es un error muy común de tipo 'TypeError: Cannot read property of null'.",
+    "options": [
+      "A la etiqueta div le falta una key.",
+      "myRef.current es null durante el primer renderizado, lo que provoca un colapso.",
+      "useRef no puede acceder a innerText.",
+      "Las refs deben inicializarse con un string."
+    ]
+  },
+  "rd-12": {
+    "prompt": "¿Cómo manejas múltiples refs en una lista generada por .map()?",
+    "explanation": "No puedes llamar a hooks dentro de bucles. En su lugar, crea una única ref hacia un array o un Map y asigna cada elemento a un índice/clave.",
+    "interviewTip": "Patrón: `<li ref={el => (itemsRef.current[i] = el)} />` (esto se llama callback ref).",
+    "options": [
+      "Crear un array de refs usando un único useRef([]).",
+      "Llamar a useRef dentro del callback de .map().",
+      "Pasar el índice como nombre de la ref: ref={index}.",
+      "React no soporta múltiples refs en un bucle."
+    ]
+  },
+  "rd-13": {
+    "prompt": "¿Qué hace 'useImperativeHandle'?",
+    "explanation": "Usado junto con forwardRef, permite ocultar el nodo real del DOM y, en su lugar, exponer solo métodos específicos (como .focus() o .scrollTo()) al padre.",
+    "interviewTip": "Esto es útil para la encapsulación: no permitas que el padre manipule las partes internas del hijo.",
+    "options": [
+      "Hace que el componente renderice más rápido.",
+      "Permite que un componente hijo personalice el valor de la instancia que se expone a un padre mediante una ref.",
+      "Fuerza a React a actualizar el DOM inmediatamente.",
+      "Reemplaza al hook useState para formularios complejos."
+    ]
+  },
+  "rd-14": {
+    "prompt": "¿Qué se imprimirá en la consola?",
+    "explanation": "A diferencia de las actualizaciones de estado que son asíncronas, las actualizaciones de ref.current ocurren al instante. El valor incrementado está disponible inmediatamente.",
+    "interviewTip": "Esta es una distinción clave: el Estado es para datos de los que depende la UI; las Refs son para datos que la UI *no* renderiza directamente.",
+    "options": ["0", "1", "El valor anterior del contador.", "undefined"]
+  }
+}

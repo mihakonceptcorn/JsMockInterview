@@ -1,0 +1,212 @@
+{
+  "js-scope-01": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`var a` sufre hoisting dentro de la función, sombreando (shadowing) la `a` externa.",
+    "interviewTip": "Pregunta clásica que combina hoisting y shadowing.",
+    "options": ["1", "2", "undefined", "ReferenceError"]
+  },
+  "js-scope-02": {
+    "prompt": "¿Qué es el block scope (alcance de bloque)?",
+    "explanation": "`let` y `const` tienen alcance de bloque.",
+    "interviewTip": "Contrasta esto con el comportamiento de `var`.",
+    "options": [
+      "Scope creado por `{}` con let/const",
+      "Scope de una función",
+      "Scope de un objeto",
+      "Scope de un archivo"
+    ]
+  },
+  "js-scope-03": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`x` existe solo dentro del bloque.",
+    "interviewTip": "Aplicación estricta del block scope.",
+    "options": ["10", "undefined", "ReferenceError", "null"]
+  },
+  "js-scope-04": {
+    "prompt": "¿Qué sucede?",
+    "explanation": "`let` sufre hoisting pero se encuentra en la Temporal Dead Zone.",
+    "interviewTip": "La TDZ es un concepto que a menudo se malinterpreta.",
+    "options": ["5", "undefined", "ReferenceError", "TypeError"]
+  },
+  "js-scope-05": {
+    "prompt": "¿Cuál es el alcance de una variable declarada con var?",
+    "explanation": "`var` ignora el alcance de bloque.",
+    "interviewTip": "Razón principal por la que se introdujo `let`.",
+    "options": [
+      "Function scope",
+      "Block scope",
+      "Solo module scope",
+      "Lexical scope"
+    ]
+  },
+  "js-scope-06": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`var` se filtra fuera del bucle (loop).",
+    "interviewTip": "Bug común de scoping en bucles.",
+    "options": ["2", "3", "undefined", "ReferenceError"]
+  },
+  "js-scope-07": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`let` tiene alcance de bloque.",
+    "interviewTip": "Alcance por cada iteración.",
+    "options": ["2", "3", "undefined", "ReferenceError"]
+  },
+  "js-scope-08": {
+    "prompt": "¿Qué es el lexical scope (alcance léxico)?",
+    "explanation": "El alcance se fija en el momento de la definición del código.",
+    "interviewTip": "JS utiliza un modelo de lexical scope.",
+    "options": [
+      "Alcance determinado por la ubicación en el código",
+      "Alcance determinado en tiempo de ejecución",
+      "Alcance dinámico",
+      "Solo alcance global"
+    ]
+  },
+  "js-scope-09": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`foo` se cierra sobre el alcance léxico externo.",
+    "interviewTip": "Diferencia entre lexical scope y dynamic scope.",
+    "options": ["1", "2", "undefined", "ReferenceError"]
+  },
+  "js-scope-10": {
+    "prompt": "¿Qué es un closure (clausura)?",
+    "explanation": "Los closures preservan el acceso a las variables externas.",
+    "interviewTip": "Uno de los conceptos más importantes de JavaScript.",
+    "options": [
+      "Función + su alcance léxico",
+      "Una función dentro de otra",
+      "Variable privada",
+      "Función recursiva"
+    ]
+  },
+  "js-scope-11": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "El closure mantiene viva la variable `a`.",
+    "interviewTip": "Retención de memoria.",
+    "options": ["1", "undefined", "ReferenceError", "null"]
+  },
+  "js-scope-12": {
+    "prompt": "¿Qué causa una filtración (leak) a la variable global?",
+    "explanation": "Sin strict mode, las variables no declaradas se vuelven globales.",
+    "interviewTip": "Usa siempre strict mode o módulos.",
+    "options": [
+      "Asignar valor a una variable no declarada",
+      "Usar let",
+      "Usar strict mode",
+      "Usar const"
+    ]
+  },
+  "js-scope-13": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "El strict mode prohíbe las globales implícitas.",
+    "interviewTip": "Por qué es importante el strict mode.",
+    "options": ["10", "undefined", "ReferenceError", "TypeError"]
+  },
+  "js-scope-14": {
+    "prompt": "¿Cuál es el alcance de las variables en los ES modules?",
+    "explanation": "Cada módulo tiene su propio alcance de nivel superior.",
+    "interviewTip": "Los módulos evitan la contaminación del scope global.",
+    "options": [
+      "Module scope",
+      "Global scope",
+      "Function scope",
+      "Solo block scope"
+    ]
+  },
+  "js-scope-15": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "La `a` interna tiene alcance de bloque.",
+    "interviewTip": "Ejemplo de sombreado (shadowing).",
+    "options": ["1", "2", "undefined", "ReferenceError"]
+  },
+  "js-scope-16": {
+    "prompt": "¿Qué es el variable shadowing?",
+    "explanation": "Una variable interna oculta a una externa.",
+    "interviewTip": "Puede reducir la legibilidad del código.",
+    "options": [
+      "Variable en scope interno con el mismo nombre",
+      "Sobrescribir una variable global",
+      "Garbage collection",
+      "Hoisting"
+    ]
+  },
+  "js-scope-17": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "`const` funciona igual que `let` en las reglas de alcance.",
+    "interviewTip": "const ≠ binding inmutable.",
+    "options": ["10", "undefined", "ReferenceError", "null"]
+  },
+  "js-scope-18": {
+    "prompt": "¿Qué representa la scope chain (cadena de alcance)?",
+    "explanation": "La scope chain resuelve los identificadores.",
+    "interviewTip": "No es lo mismo que la cadena de prototipos.",
+    "options": [
+      "Jerarquía de entornos léxicos",
+      "Call stack",
+      "Cadena de prototipos",
+      "Event loop"
+    ]
+  },
+  "js-scope-19": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Hoisting dentro de una IIFE.",
+    "interviewTip": "Trampa de entrevista muy común.",
+    "options": ["1", "2", "undefined", "ReferenceError"]
+  },
+  "js-scope-20": {
+    "prompt": "¿Qué crea un nuevo alcance (scope)?",
+    "explanation": "Todas las construcciones listadas crean un scope.",
+    "interviewTip": "Sé preciso al explicarlo.",
+    "options": [
+      "Función",
+      "Bloque con let/const",
+      "Módulo",
+      "Todas las anteriores"
+    ]
+  },
+  "js-scope-21": {
+    "prompt": "¿Por qué son útiles los closures?",
+    "explanation": "Los closures permiten estados privados.",
+    "interviewTip": "Conéctalo con ejemplos del mundo real.",
+    "options": [
+      "Encapsulación de datos",
+      "Mejor rendimiento",
+      "Evitar asincronía",
+      "Prevenir hoisting"
+    ]
+  },
+  "js-scope-22": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Los closures referencian variables, no valores.",
+    "interviewTip": "Matiz importante de los closures.",
+    "options": ["10", "20", "undefined", "ReferenceError"]
+  },
+  "js-scope-23": {
+    "prompt": "¿Qué es la Temporal Dead Zone (Zona Muerta Temporal)?",
+    "explanation": "Acceder antes de la inicialización lanza un error.",
+    "interviewTip": "Diferencia clave con var.",
+    "options": [
+      "Tiempo antes de la inicialización de let/const",
+      "Retraso de ejecución asíncrona",
+      "Fase del Garbage Collector",
+      "Cola del event loop"
+    ]
+  },
+  "js-scope-24": {
+    "prompt": "¿Qué pasa si vuelves a declarar let en el mismo alcance?",
+    "explanation": "`let` no puede redeclararse en el mismo alcance.",
+    "interviewTip": "Ayuda a prevenir errores de lógica.",
+    "options": ["SyntaxError", "undefined", "Ignorado", "Sobrescrito"]
+  },
+  "js-scope-25": {
+    "prompt": "¿Por qué es peligroso el alcance global?",
+    "explanation": "El alcance global aumenta el acoplamiento y los errores.",
+    "interviewTip": "Buena pregunta de arquitectura.",
+    "options": [
+      "Colisiones de nombres",
+      "Fugas de memoria",
+      "Dificultad para testear",
+      "Todas las anteriores"
+    ]
+  }
+}

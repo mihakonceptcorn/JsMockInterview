@@ -1,0 +1,107 @@
+{
+  "ssr-01": {
+    "prompt": "¿Qué es 'Hydration' en el contexto de Vue SSR?",
+    "explanation": "El servidor envía HTML 'muerto' por velocidad. Hydration es cuando Vue se ejecuta en el navegador, coincide el HTML con el Virtual DOM, y adjunta event listeners para hacer la página 'viva'.",
+    "interviewTip": "Si el HTML del servidor no coincide con lo que el cliente genera, obtienes un error de 'Hydration Mismatch'—un dolor de cabeza común de SSR.",
+    "options": [
+      "El proceso de descargar los archivos CSS.",
+      "El proceso donde Vue del lado del cliente se hace cargo del HTML estático enviado por el servidor y lo hace interactivo.",
+      "Limpiar el caché del servidor después de cada solicitud.",
+      "Una forma de comprimir archivos JavaScript para una entrega más rápida."
+    ]
+  },
+  "ssr-02": {
+    "prompt": "Analiza el código de Nuxt 3. ¿Cuál es el propósito de esta función incorporada?",
+    "explanation": "useFetch es inteligente: obtiene los datos en el servidor, los serializa en el payload HTML, y el cliente los recoge de allí sin hacer una segunda solicitud de red.",
+    "interviewTip": "Esta 'Extracción de Payload' es por qué las aplicaciones Nuxt se sienten mucho más rápidas y más integradas que las configuraciones SSR personalizadas.",
+    "options": [
+      "Es un wrapper estándar de fetch del navegador.",
+      "Es un composable amigable con SSR que previene la doble obtención de datos (una vez en el servidor, una vez en el cliente).",
+      "Solo funciona en modo desarrollo.",
+      "Encripta la respuesta de la API por seguridad."
+    ]
+  },
+  "ssr-03": {
+    "prompt": "¿Qué directorio de Nuxt.js se usa para generar automáticamente rutas basadas en nombres de archivo?",
+    "explanation": "Nuxt usa enrutamiento basado en sistema de archivos. Un archivo en `pages/about.vue` automáticamente se convierte en la ruta `/about`. No se necesita configuración manual del router.",
+    "interviewTip": "Para rutas dinámicas en Nuxt 3, usas corchetes, como `pages/quiz/[id].vue`.",
+    "options": ["routes/", "pages/", "views/", "screens/"]
+  },
+  "ssr-04": {
+    "prompt": "Analiza el código. ¿Dónde aparecerá este log en un entorno Nuxt SSR?",
+    "explanation": "El código de script setup en SSR se ejecuta en el servidor para generar el HTML y luego nuevamente en el cliente para hidratar la aplicación.",
+    "interviewTip": "¡Ten cuidado! El código que usa globales solo del navegador como `window` o `localStorage` se bloqueará en el servidor a menos que esté envuelto en una verificación o un hook como `onMounted`.",
+    "options": [
+      "Solo en la consola del navegador.",
+      "Solo en la terminal del servidor.",
+      "Tanto en la terminal del servidor (durante el renderizado) como en la consola del navegador (durante la hidratación).",
+      "Solo en las Nuxt DevTools."
+    ]
+  },
+  "ssr-05": {
+    "prompt": "¿Qué es 'Static Site Generation' (SSG) en Nuxt?",
+    "explanation": "SSG (mediante `nuxt generate`) crea una carpeta de archivos HTML que pueden alojarse en un CDN (como Vercel o Netlify). Es la forma más rápida y segura de servir contenido.",
+    "interviewTip": "Nuxt 3 soporta 'Hybrid Rendering', permitiéndote elegir SSR para algunas rutas y SSG para otras.",
+    "options": [
+      "Renderizar la página cada vez que un usuario la visita.",
+      "Pre-renderizar cada página de la aplicación en archivos HTML estáticos en tiempo de build.",
+      "Una forma de deshabilitar JavaScript por completo.",
+      "Usar solo CSS estático sin ningún JS."
+    ]
+  },
+  "ssr-06": {
+    "prompt": "¿Cuáles de estas son formas válidas de manejar metadatos SEO en un componente Nuxt 3?",
+    "explanation": "Nuxt 3 proporciona múltiples formas de gestionar el `<head>`. `useSeoMeta` es el más eficiente y type-safe para etiquetas de compartir en redes sociales.",
+    "interviewTip": "Como Nuxt renderiza HTML en el servidor, estas etiquetas son visibles para los bots de motores de búsqueda inmediatamente.",
+    "options": [
+      "useHead({ title: 'My Quiz' })",
+      "useSeoMeta({ description: 'Practice JS' })",
+      "<Title>My Quiz</Title> (componente incorporado)",
+      "Agregar una etiqueta <meta> manualmente en el index.html"
+    ]
+  },
+  "ssr-07": {
+    "prompt": "Analiza el código del componente. ¿Cuál es el comportamiento de <ClientOnly>?",
+    "explanation": "Algunos componentes (como los que usan D3 o Canvas) simplemente no pueden ejecutarse en el servidor. <ClientOnly> previene errores del lado del servidor y desajustes de hidratación.",
+    "interviewTip": "También puedes proporcionar un slot de 'placeholder' para mostrar un estado de carga en el servidor.",
+    "options": [
+      "Oculta el gráfico de los usuarios.",
+      "Le dice a Nuxt que omita renderizar este componente en el servidor y solo lo renderice en el navegador.",
+      "Optimiza el gráfico para dispositivos móviles.",
+      "Previene que el gráfico use recursos de red."
+    ]
+  },
+  "ssr-08": {
+    "prompt": "¿Cuál es el rol de 'Nitro' en el ecosistema de Nuxt 3?",
+    "explanation": "Nitro es el potente backend del servidor para Nuxt. Habilita características como rutas API y permite que la aplicación se despliegue en cualquier lugar desde un servidor tradicional hasta Cloudflare Workers.",
+    "interviewTip": "Mencionar Nitro muestra que entiendes que Nuxt es un framework 'Full-Stack', no solo una biblioteca frontend.",
+    "options": [
+      "El motor CSS para Nuxt.",
+      "El motor del servidor que permite que Nuxt se ejecute en cualquier proveedor (Node.js, Serverless, Edge Workers).",
+      "La herramienta de optimización de imágenes.",
+      "El framework de pruebas unitarias para Nuxt."
+    ]
+  },
+  "ssrn-09": {
+    "prompt": "¿Cuál es el principal beneficio de Server-Side Rendering (SSR) en Vue?",
+    "explanation": "SSR renderiza la aplicación Vue en el servidor, enviando HTML completamente formado al cliente, lo que mejora el rendimiento percibido y el SEO.",
+    "interviewTip": "SSR viene con compromisos como mayor carga del servidor y complejidad. Considera Static Site Generation (SSG) para sitios con mucho contenido.",
+    "options": [
+      "Interactividad más rápida del lado del cliente.",
+      "Mejor SEO y carga inicial de página más rápida al enviar HTML pre-renderizado al navegador.",
+      "Tamaños de bundle más pequeños.",
+      "División automática de código."
+    ]
+  },
+  "ssrn-10": {
+    "prompt": "¿Qué es Nuxt.js?",
+    "explanation": "Nuxt simplifica el desarrollo de Vue al proporcionar convenciones, enrutamiento automático, soporte SSR/SSG, y un ecosistema rico de módulos.",
+    "interviewTip": "Nuxt 3 está construido sobre Vue 3 y Vite, ofreciendo un rendimiento significativamente mejor que Nuxt 2.",
+    "options": [
+      "Una biblioteca de componentes Vue.",
+      "Un meta-framework para Vue que proporciona SSR, SSG, enrutamiento y otras características listas para usar.",
+      "Un preprocesador CSS.",
+      "Un framework de testing."
+    ]
+  }
+}

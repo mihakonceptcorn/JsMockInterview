@@ -1,0 +1,184 @@
+{
+  "rl-01": {
+    "prompt": "¿Cuál es el propósito principal de la prop 'key' al renderizar una lista en React?",
+    "explanation": "Las keys actúan como identidades estables para los elementos entre renderizados. Sin ellas, React podría volver a renderizar innecesariamente toda la lista o identificar erróneamente qué elemento es cuál durante las actualizaciones.",
+    "interviewTip": "Las keys deben ser únicas entre hermanos y estables (que no cambien en cada renderizado).",
+    "options": [
+      "Proporcionar un nombre de clase CSS para el elemento de la lista.",
+      "Ayudar a React a identificar qué elementos han cambiado, se han añadido o se han eliminado.",
+      "Determinar el orden de los elementos en el DOM.",
+      "Ordenar automáticamente el array de datos."
+    ]
+  },
+  "rl-02": {
+    "prompt": "¿Qué método de JavaScript se utiliza más comúnmente para transformar un array de datos en una lista de componentes de React?",
+    "explanation": "El método .map() es ideal porque devuelve un nuevo array de la misma longitud, permitiéndote envolver cada elemento de datos en JSX.",
+    "interviewTip": "Recuerda que .forEach() devuelve undefined y no renderizará nada en JSX.",
+    "options": ["forEach", "filter", "map", "reduce"]
+  },
+  "rl-03": {
+    "prompt": "¿Cuál es una posible desventaja de usar el 'index' del array como key?",
+    "explanation": "Si la lista cambia de orden, el índice permanece igual para una posición incluso si el contenido se mueve. Esto confunde la gestión del estado de React para esos componentes.",
+    "interviewTip": "Solo usa el índice como key si la lista es estática (nunca cambia, se filtra o se ordena).",
+    "options": [
+      "Provoca un error de sintaxis en la consola del navegador.",
+      "Puede provocar errores en la UI y problemas de rendimiento si la lista se reordena o filtra.",
+      "Evita que el componente reciba props.",
+      "Hace que la aplicación sea incompatible con navegadores móviles."
+    ]
+  },
+  "rl-04": {
+    "prompt": "Analiza el código de abajo. ¿Qué pasará si dos elementos tienen el mismo ID?",
+    "explanation": "React requiere que las keys sean únicas entre hermanos. Las keys duplicadas causan un comportamiento impredecible durante las actualizaciones, y React te advertirá en desarrollo.",
+    "interviewTip": "Si tus datos carecen de IDs únicos, puedes combinar campos (como item.type + item.id) para crear un string único.",
+    "options": [
+      "React solo renderizará el primer elemento.",
+      "La aplicación colapsará inmediatamente.",
+      "React mostrará una advertencia en la consola sobre keys duplicadas.",
+      "Los elementos se fusionarán en un solo <li>."
+    ]
+  },
+  "rl-05": {
+    "prompt": "¿Dónde exactamente debe colocarse la prop 'key' al renderizar una lista de componentes personalizados?",
+    "explanation": "La key siempre debe aplicarse al elemento más externo devuelto por la función map para que React pueda rastrear el elemento en la colección.",
+    "interviewTip": "Si envuelves tu componente en un <div> o un Fragment dentro del map, la key va en ese envoltorio.",
+    "options": [
+      "Dentro de la etiqueta <ul>.",
+      "En el elemento raíz dentro del callback de .map().",
+      "Dentro de la etiqueta <h1> dentro del componente UserCard.",
+      "Las keys solo son necesarias para etiquetas HTML estándar como <li>."
+    ]
+  },
+  "rl-06": {
+    "prompt": "¿Cuáles de las siguientes son fuentes recomendadas para una prop 'key'?",
+    "explanation": "Las keys deben ser estables. Los números aleatorios o los timestamps cambian en cada renderizado, lo que provoca que toda la lista se desmonte y se vuelva a montar, destruyendo el estado y el rendimiento.",
+    "interviewTip": "Los IDs estables y únicos son el estándar de oro para las keys de React.",
+    "options": [
+      "IDs de una base de datos (ej., UUID o clave primaria).",
+      "El resultado de Math.random().",
+      "Una propiedad única como un 'slug' o 'username'.",
+      "El timestamp actual (Date.now())."
+    ]
+  },
+  "rl-07": {
+    "prompt": "¿Cómo renderizas una lista si no quieres una etiqueta envoltorio adicional como <div> o <li>?",
+    "explanation": "La sintaxis abreviada <> no admite la prop 'key'. Al mapear múltiples elementos sin un envoltorio, debes usar <React.Fragment key={...}>.",
+    "interviewTip": "Este es uno de los pocos casos donde la sintaxis de Fragment de forma larga es obligatoria.",
+    "options": [
+      "Usar la sintaxis abreviada de Fragment <>...</>.",
+      "Usar la sintaxis completa <React.Fragment> con una key.",
+      "Debes usar un <div>; no hay otra manera.",
+      "Devolver un array de elementos directamente."
+    ]
+  },
+  "rl-08": {
+    "prompt": "¿Cuál es el resultado de la siguiente lógica de renderizado?",
+    "explanation": "React permite mezclar contenido dinámico (arrays) con JSX estático. Simplemente los renderizará en el orden en que aparecen.",
+    "interviewTip": "Esto es útil para añadir un elemento 'Crear nuevo' o 'Cargar más' al final de una lista dinámica.",
+    "options": [
+      "Una lista con A, B y luego 'Extra'.",
+      "Un error: No se pueden mezclar elementos mapeados con elementos estáticos.",
+      "Solo se renderizará 'Extra'.",
+      "Una lista con 'Extra' y luego A, B."
+    ]
+  },
+  "rl-09": {
+    "prompt": "¿Qué hace React cuando detecta un cambio de key para un componente (ej., la key 1 pasa a ser la key 2)?",
+    "explanation": "Cambiar una key le indica a React que la identidad del componente ha cambiado. Destruye la instancia antigua (incluyendo su estado local) y crea una nueva.",
+    "interviewTip": "Puedes cambiar intencionadamente una key para 'resetear' un componente (como un formulario) a su estado inicial.",
+    "options": [
+      "Actualiza las props del componente existente.",
+      "Desmonta el componente antiguo y monta uno completamente nuevo.",
+      "Ignora el cambio para ahorrar rendimiento.",
+      "Renderiza solo los hijos de ese componente."
+    ]
+  },
+  "rl-10": {
+    "prompt": "¿Es posible usar un objeto como key?",
+    "explanation": "React convierte las keys a strings internamente. Usar un objeto resultará en el string '[object Object]' para todos los elementos, haciendo que no sean únicos.",
+    "interviewTip": "Elige siempre un valor primitivo (string/número) para tu key.",
+    "options": [
+      "Sí, React convertirá el objeto a string automáticamente.",
+      "No, las keys deben ser strings o números.",
+      "Solo si el objeto tiene un método toString().",
+      "Sí, pero solo en React 18+."
+    ]
+  },
+  "rl-11": {
+    "prompt": "¿Qué pasará si no proporcionas ninguna key al mapear?",
+    "explanation": "React usará por defecto el índice del array como key si no se proporciona ninguna, pero registrará una advertencia para alertarte de posibles problemas de rendimiento y errores.",
+    "interviewTip": "Las advertencias en la consola a menudo se pasan por alto; revisa siempre tus logs durante el desarrollo.",
+    "options": [
+      "La aplicación colapsa con un 'KeyMissingError'.",
+      "React renderiza correctamente pero muestra una advertencia en la consola.",
+      "React usa un número aleatorio como key automáticamente.",
+      "El navegador ocultará los elementos de la lista."
+    ]
+  },
+  "rl-12": {
+    "prompt": "¿Cuál de los siguientes escenarios requiere absolutamente una key única?",
+    "explanation": "Ordenar y eliminar elementos son operaciones donde el algoritmo de diffing de React depende en gran medida de las keys para evitar errores de estado.",
+    "interviewTip": "Si la lista puede ser manipulada por el usuario, una key estable es obligatoria.",
+    "options": [
+      "Una lista de artículos de noticias que se pueden ordenar por fecha.",
+      "Una lista de campos de entrada donde los usuarios pueden añadir o eliminar filas.",
+      "Un menú de navegación estático con 3 enlaces que nunca cambian.",
+      "Una lista de mensajes de chat donde se añaden nuevos al final."
+    ]
+  },
+  "rl-13": {
+    "prompt": "¿Cómo renderizas una lista en orden inverso usando .map()?",
+    "explanation": "Dado que .reverse() muta el array original, primero expandimos los datos en un nuevo array `[...data]`, luego invertimos y mapeamos.",
+    "interviewTip": "Mantén siempre tus transformaciones de datos de forma 'inmutable' para evitar efectos secundarios.",
+    "options": [
+      "La lógica anterior es correcta.",
+      "React tiene una directiva v-for-reverse.",
+      "Debes usar un bucle for en su lugar.",
+      "Invertir los elementos del DOM usando CSS."
+    ]
+  },
+  "rl-14": {
+    "prompt": "¿Cuál es la forma más eficiente de renderizar una lista muy larga (ej., 10,000 elementos)?",
+    "explanation": "El Windowing solo renderiza los elementos visibles actualmente en el viewport, reduciendo significativamente el número de nodos del DOM.",
+    "interviewTip": "Menciona librerías como 'react-window' o 'react-virtualized' para este propósito.",
+    "options": [
+      "Función .map() estándar.",
+      "Una técnica llamada 'Windowing' o 'Virtualización'.",
+      "Usar un bucle while para mayor velocidad.",
+      "Hook useList() de React."
+    ]
+  },
+  "rl-15": {
+    "prompt": "En el siguiente fragmento, ¿por qué 'Math.random()' es una mala elección para una key?",
+    "explanation": "Cada vez que el componente se vuelve a renderizar, se genera una nueva key aleatoria. React piensa que es un elemento nuevo y lo recrea desde cero.",
+    "interviewTip": "Una key debe permanecer igual para el mismo elemento entre renderizados para ser útil.",
+    "options": [
+      "Es demasiado lento de calcular.",
+      "No es un string.",
+      "Provoca que el componente se recree en cada renderizado, perdiendo el enfoque y el estado.",
+      "React solo permite números enteros para las keys."
+    ]
+  },
+  "rl-16": {
+    "prompt": "¿Cómo filtras una lista antes de renderizarla?",
+    "explanation": "El encadenamiento de métodos (filtrar y luego mapear) es la forma estándar y más legible de manejar el renderizado condicional de listas.",
+    "interviewTip": "Para listas grandes, podrías envolver esta lógica en useMemo para evitar recalcular en cada renderizado.",
+    "options": [
+      "La lógica anterior es correcta.",
+      "React usa un 'v-if' dentro del 'v-for'.",
+      "No puedes filtrar datos dentro de la sentencia return.",
+      "Usar un useEffect separado para filtrar."
+    ]
+  },
+  "rl-17": {
+    "prompt": "Si un elemento de la lista tiene un estado (como un interruptor), ¿qué sucede con ese estado si el elemento se elimina del array?",
+    "explanation": "El estado está ligado a la instancia del componente en el árbol del DOM. Cuando un elemento se elimina del array, su componente se desmonta y su estado se borra.",
+    "interviewTip": "Si los datos deben sobrevivir a la eliminación de una lista, deben almacenarse en el estado del padre o en un store global.",
+    "options": [
+      "El estado se mueve al siguiente elemento de la lista.",
+      "El estado se destruye permanentemente cuando el componente se desmonta.",
+      "El estado se guarda en el componente padre.",
+      "React lanza un 'StateOrphanWarning'."
+    ]
+  }
+}

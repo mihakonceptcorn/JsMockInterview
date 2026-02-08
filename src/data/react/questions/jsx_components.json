@@ -4,22 +4,20 @@
       "id": "jc-01",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "What happens if you define a React component with a lowercase first letter (e.g., function myHeader())?",
       "options": [
         "React will treat it as a standard HTML tag and fail to render the component logic.",
         "React will automatically capitalize it during compilation.",
         "The app will crash with a 'LowercaseError'.",
         "It will work perfectly as long as the file name is capitalized."
       ],
-      "correct": [0],
-      "explanation": "React uses capitalization to distinguish between native HTML tags (strings) and custom components (functions/classes).",
-      "interviewTip": "Always follow PascalCase for component names (e.g., MyComponent)."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "jc-02",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "What is the result of the following component code?",
       "code": "function App() {\n  return (\n    <h1>Title</h1>\n    <p>Description</p>\n  );\n}",
       "options": [
         "It renders an h1 followed by a p tag.",
@@ -27,15 +25,14 @@
         "A syntax error: 'Adjacent JSX elements must be wrapped in an enclosing tag'.",
         "The p tag is nested inside the h1 tag."
       ],
-      "correct": [2],
-      "explanation": "JSX must have exactly one root element. You cannot return multiple adjacent tags without a wrapper.",
-      "interviewTip": "You can fix this using a <div> or a Fragment (<>...</>)."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "jc-03",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "How do you pass a JavaScript variable as an attribute in JSX?",
       "code": "const myUrl = 'https://react.dev';",
       "options": [
         "<a href='{myUrl}'>Link</a>",
@@ -43,15 +40,14 @@
         "<a href=(myUrl)>Link</a>",
         "<a href=\"myUrl\">Link</a>"
       ],
-      "correct": [1],
-      "explanation": "To pass a variable as a prop or attribute, you must use curly braces without quotes.",
-      "interviewTip": "If you put quotes around the braces, React will treat the whole thing as a literal string."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "jc-04",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "What will be rendered by the following code snippet?",
       "code": "function User() {\n  const isAdmin = false;\n  return <div>{isAdmin && <button>Delete</button>}</div>;\n}",
       "options": [
         "<div>false</div>",
@@ -59,56 +55,59 @@
         "<div><button>Delete</button></div>",
         "An error"
       ],
-      "correct": [1],
-      "explanation": "React does not render booleans, null, or undefined. Since isAdmin is false, the && operator stops, and nothing is displayed.",
-      "interviewTip": "Be careful with 0; unlike false, React *will* render the number 0."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "jc-05",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "What is the purpose of using React Fragments (<> ... </>)?",
       "options": [
         "To speed up the execution of JavaScript logic.",
         "To group multiple elements without adding an extra node to the DOM tree.",
         "To automatically generate CSS classes for children.",
         "To protect components from being re-rendered."
       ],
-      "correct": [1],
-      "explanation": "Fragments allow you to satisfy the 'single root' rule without bloating the HTML with unnecessary <div> tags.",
-      "interviewTip": "Fragments are especially useful when working with CSS Flexbox or Grid where extra parent divs can break the layout."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "jc-06",
       "stageId": "jsx_components",
       "type": "multiple",
-      "prompt": "Which of these are valid ways to apply inline styles in JSX?",
       "options": [
         "style={{ color: 'red', fontSize: '20px' }}",
         "style='color: red;'",
         "style={{ 'background-color': 'blue' }}",
         "style={myStyleObject}"
       ],
-      "correct": [0, 2, 3],
-      "explanation": "Inline styles must be objects. You can use camelCase (fontSize) or quoted kebab-case ('background-color').",
-      "interviewTip": "The double curly braces {{ }} represent a JS object inside a JSX expression."
+      "correct": [
+        0,
+        2,
+        3
+      ]
     },
     {
       "id": "jc-07",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "How do you write a comment inside a JSX template?",
       "code": "return (\n  <div>\n    {/* Comment here */}\n    <h1>Hello</h1>\n  </div>\n);",
-      "options": ["", "// Comment", "{/* Comment */}", "/* Comment */"],
-      "correct": [2],
-      "explanation": "JSX comments must be wrapped in curly braces and use the JavaScript multi-line comment syntax.",
-      "interviewTip": "Single line // comments inside braces can sometimes accidentally comment out the closing brace."
+      "options": [
+        "",
+        "// Comment",
+        "{/* Comment */}",
+        "/* Comment */"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "jc-08",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "What is the output of this component?",
       "code": "function List() {\n  const items = ['A', 'B', 'C'];\n  return <div>{items}</div>;\n}",
       "options": [
         "A list with 3 bullet points.",
@@ -116,66 +115,73 @@
         "ABC (the items joined as a string).",
         "A string representation: ['A', 'B', 'C']."
       ],
-      "correct": [2],
-      "explanation": "React can render arrays directly. It simply concatenates the elements in the UI.",
-      "interviewTip": "Usually, you'll use .map() to wrap each item in a tag like <li> to avoid this joined-text behavior."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "jc-09",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "In JSX, which attribute is used instead of the standard HTML 'for' for labels?",
-      "options": ["labelFor", "htmlFor", "forID", "className"],
-      "correct": [1],
-      "explanation": "'for' is a reserved keyword in JavaScript (used in loops), so JSX uses 'htmlFor' to avoid conflicts.",
-      "interviewTip": "This is the same reason why 'class' becomes 'className'."
+      "options": [
+        "labelFor",
+        "htmlFor",
+        "forID",
+        "className"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "jc-10",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "What does the following return?",
       "code": "function App() {\n  return <div>{10 + 20}</div>;\n}",
-      "options": ["An empty div.", "\"10 + 20\"", "30", "undefined"],
-      "correct": [2],
-      "explanation": "Expressions inside curly braces are evaluated and the result is rendered.",
-      "interviewTip": "You can perform any JS calculation or call functions inside these braces."
+      "options": [
+        "An empty div.",
+        "\"10 + 20\"",
+        "30",
+        "undefined"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "jc-11",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "Why must you close all tags in JSX, even self-closing ones like <img> or <br>?",
       "options": [
         "Because JSX is based on XML/XHTML rules which require strict closing.",
         "To make the code look more consistent.",
         "It is a requirement of the CSS-in-JS engine.",
         "Browsers will crash if tags aren't closed in JSX."
       ],
-      "correct": [0],
-      "explanation": "JSX is not HTML; it is a syntax extension that follows XML rules where every tag must be closed (e.g., <br />).",
-      "interviewTip": "This is a common 'gotcha' for developers moving from plain HTML to React."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "jc-12",
       "stageId": "jsx_components",
       "type": "multiple",
-      "prompt": "Which of the following are valid ways to render 'nothing' from a component?",
       "options": [
         "return null;",
         "return false;",
         "return <div></div>;",
         "return undefined;"
       ],
-      "correct": [0, 1, 3],
-      "explanation": "Returning null, false, or undefined tells React not to render any UI. An empty div renders an actual DOM node.",
-      "interviewTip": "return null is the industry standard for 'conditionally hiding' a component."
+      "correct": [
+        0,
+        1,
+        3
+      ]
     },
     {
       "id": "jc-13",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "What is the result of the console log in this component?",
       "code": "const Header = () => <h1>Hello</h1>;\nfunction App() {\n  console.log(<Header />);\n  return <Header />;\n}",
       "options": [
         "The string \"<h1>Hello</h1>\".",
@@ -183,15 +189,14 @@
         "A real DOM node.",
         "undefined"
       ],
-      "correct": [1],
-      "explanation": "JSX tags are transformed into objects that describe the UI. This is what 'console.log' will show.",
-      "interviewTip": "These objects are the building blocks of the Virtual DOM."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "jc-14",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "How do you render a string that contains HTML without escaping it?",
       "code": "const htmlStr = '<b>Bold</b>';",
       "options": [
         "<div>{htmlStr}</div>",
@@ -199,15 +204,14 @@
         "<div dangerouslySetInnerHTML={{ __html: htmlStr }} />",
         "<div renderAsHtml={htmlStr} />"
       ],
-      "correct": [2],
-      "explanation": "React escapes all strings by default for security. 'dangerouslySetInnerHTML' is the intentional way to render raw HTML.",
-      "interviewTip": "The name is a reminder that this can expose your app to XSS attacks if the string comes from an untrusted source."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "jc-15",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "What is wrong with the following component?",
       "code": "function Profile() {\n  const name = 'Bob';\n  return <h1>{ name }</h1>;\n  <p>Bio</p>\n}",
       "options": [
         "Variable 'name' cannot be used inside h1.",
@@ -215,50 +219,52 @@
         "h1 and p must be inside a div.",
         "The h1 is not closed."
       ],
-      "correct": [1],
-      "explanation": "JavaScript stops executing a function after the 'return' keyword. The code below it is dead code.",
-      "interviewTip": "Always wrap multi-line UI in parentheses to ensure the whole block is returned."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "jc-16",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "Can you use a JavaScript 'if' statement directly inside a JSX block?",
       "options": [
         "Yes, if it's inside curly braces.",
         "No, you must use ternary operators or logical && because 'if' is a statement, not an expression.",
         "Yes, but only in Class components.",
         "Yes, if you use the 'v-if' attribute."
       ],
-      "correct": [1],
-      "explanation": "Braces {} only accept expressions. Statements like 'if', 'for', and 'switch' are not allowed inside JSX.",
-      "interviewTip": "This is why ternaries (condition ? a : b) are so popular in React."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "jc-17",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "What does the 'typeof' check return for a Fragment?",
       "code": "import { Fragment } from 'react';\nconsole.log(typeof Fragment);",
-      "options": ["\"string\"", "\"object\"", "\"symbol\"", "\"function\""],
-      "correct": [2],
-      "explanation": "React Fragments (and other built-in types like Suspense or Profiler) are internal React Symbols.",
-      "interviewTip": "Fragments are special 'empty' types that the renderer knows how to handle without a DOM node."
+      "options": [
+        "\"string\"",
+        "\"object\"",
+        "\"symbol\"",
+        "\"function\""
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "jc-18",
       "stageId": "jsx_components",
       "type": "single",
-      "prompt": "Which of these is the correct way to pass a boolean prop 'isActive' as true?",
       "options": [
         "<Tab isActive='true' />",
         "<Tab isActive={true} />",
         "<Tab isActive />",
         "Both B and C are correct."
       ],
-      "correct": [3],
-      "explanation": "Passing a prop name alone defaults to true. {true} is also explicit and correct.",
-      "interviewTip": "Most developers prefer the shorthand <Tab isActive /> for boolean flags."
+      "correct": [
+        3
+      ]
     }
   ]
 }

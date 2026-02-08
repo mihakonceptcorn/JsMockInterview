@@ -1,0 +1,232 @@
+{
+  "js-async-01": {
+    "prompt": "¿Qué es la programación asíncrona en JavaScript?",
+    "explanation": "El código async permite operaciones non-blocking.",
+    "interviewTip": "JS es single-threaded pero async.",
+    "options": [
+      "Código que se ejecuta sin bloquear el main thread",
+      "Ejecución multithreaded",
+      "Ejecución paralela de todas las funciones",
+      "Synchronous callbacks"
+    ]
+  },
+  "js-async-02": {
+    "prompt": "¿Qué API se utiliza para manejar tareas async?",
+    "explanation": "El Event Loop coordina la ejecución async.",
+    "interviewTip": "Tema crítico en entrevistas.",
+    "options": ["Event Loop", "Call Stack", "Heap", "Compiler"]
+  },
+  "js-async-03": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "setTimeout es async.",
+    "interviewTip": "Comportamiento de macro-task.",
+    "options": ["1 2 3", "1 3 2", "2 1 3", "3 2 1"]
+  },
+  "js-async-04": {
+    "prompt": "¿Qué es una Promise?",
+    "explanation": "Una Promise representa un valor futuro.",
+    "interviewTip": "Pending / fulfilled / rejected.",
+    "options": [
+      "Un objeto que representa una eventual completitud",
+      "Un callback",
+      "Un thread",
+      "Un timer"
+    ]
+  },
+  "js-async-05": {
+    "prompt": "¿Qué estado NO tiene una Promise?",
+    "explanation": "`resolved` es un término informal.",
+    "interviewTip": "La terminología precisa importa.",
+    "options": ["pending", "fulfilled", "rejected", "resolved"]
+  },
+  "js-async-06": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Las microtasks se ejecutan después del código sync.",
+    "interviewTip": "Microtask queue.",
+    "options": ["1 2", "2 1", "undefined", "Error"]
+  },
+  "js-async-07": {
+    "prompt": "¿Qué es async/await?",
+    "explanation": "Construido sobre las Promises.",
+    "interviewTip": "Sigue siendo async.",
+    "options": [
+      "Syntax sugar sobre Promises",
+      "Nuevo modelo de threading",
+      "Reemplazo de callbacks",
+      "Código blocking"
+    ]
+  },
+  "js-async-08": {
+    "prompt": "¿Qué hace `await`?",
+    "explanation": "Pausa solo la función async actual.",
+    "interviewTip": "No bloquea el event loop.",
+    "options": [
+      "Pausa la ejecución de la función async",
+      "Bloquea el thread completo",
+      "Detiene el programa",
+      "Resuelve la Promise de forma síncrona"
+    ]
+  },
+  "js-async-09": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Las funciones async devuelven Promises.",
+    "interviewTip": "El return es envuelto (wrapped).",
+    "options": ["5", "Promise", "undefined", "Error"]
+  },
+  "js-async-10": {
+    "prompt": "¿Qué se ejecuta primero?",
+    "explanation": "Las microtasks tienen mayor prioridad.",
+    "interviewTip": "Promise.then vs setTimeout.",
+    "options": ["Microtasks", "Macrotasks", "Rendering", "Timers"]
+  },
+  "js-async-11": {
+    "prompt": "¿Qué hace `Promise.all`?",
+    "explanation": "Rechaza si cualquier promise falla.",
+    "interviewTip": "Fail-fast.",
+    "options": [
+      "Se resuelve cuando todas las promises se resuelven",
+      "Se resuelve cuando la primera se resuelve",
+      "Rechaza por timeout",
+      "Se ejecuta secuencialmente"
+    ]
+  },
+  "js-async-12": {
+    "prompt": "¿Qué hace `Promise.race`?",
+    "explanation": "La primera en asentarse (settled) gana.",
+    "interviewTip": "Útil para timeouts.",
+    "options": [
+      "Se resuelve/rechaza con la primera en asentarse",
+      "Espera a todas",
+      "Se ejecuta secuencialmente",
+      "Cancela las demás"
+    ]
+  },
+  "js-async-13": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Await lanza una excepción al rechazar.",
+    "interviewTip": "Usar try/catch.",
+    "options": ["err", "after", "undefined", "Error"]
+  },
+  "js-async-14": {
+    "prompt": "¿Cómo manejar errores en async/await?",
+    "explanation": "try/catch captura promises rechazadas.",
+    "interviewTip": "Manejo de errores local.",
+    "options": ["try/catch", ".then", "sentencia if", "solo finally"]
+  },
+  "js-async-15": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "Microtasks antes que macrotasks.",
+    "interviewTip": "Pregunta clásica de entrevista.",
+    "options": [
+      "start end promise timeout",
+      "start promise end timeout",
+      "start end timeout promise",
+      "promise start end timeout"
+    ]
+  },
+  "js-async-16": {
+    "prompt": "¿Qué hace `finally`?",
+    "explanation": "Se ejecuta tras resolver o rechazar.",
+    "interviewTip": "Sin acceso al resultado.",
+    "options": [
+      "Se ejecuta sin importar el resultado de la promise",
+      "Captura errores",
+      "Cancela la promise",
+      "Devuelve un valor"
+    ]
+  },
+  "js-async-17": {
+    "prompt": "¿Qué es el callback hell?",
+    "explanation": "Difícil de leer y mantener.",
+    "interviewTip": "Las Promises lo solucionan.",
+    "options": [
+      "Callbacks profundamente anidados",
+      "Promise chaining",
+      "Uso de async/await",
+      "Bug del event loop"
+    ]
+  },
+  "js-async-18": {
+    "prompt": "¿Qué hace `await Promise.all([...])`?",
+    "explanation": "Las Promises comienzan inmediatamente.",
+    "interviewTip": "Optimización de performance.",
+    "options": [
+      "Ejecuta promises en paralelo",
+      "Ejecuta secuencialmente",
+      "Bloquea el thread",
+      "Cancela las promises más lentas"
+    ]
+  },
+  "js-async-19": {
+    "prompt": "¿Por qué evitar `await` dentro de bucles?",
+    "explanation": "Usa Promise.all en su lugar.",
+    "interviewTip": "Problema común de performance.",
+    "options": [
+      "Causa ejecución secuencial",
+      "Syntax error",
+      "Memory leak",
+      "Bucle infinito"
+    ]
+  },
+  "js-async-20": {
+    "prompt": "¿Qué se mostrará en el log?",
+    "explanation": "La Promise es aplanada (flattened).",
+    "interviewTip": "Resolución de Promise.",
+    "options": ["1", "Promise", "undefined", "Error"]
+  },
+  "js-async-21": {
+    "prompt": "¿Qué es una macrotask?",
+    "explanation": "Programada vía task queue.",
+    "interviewTip": "Prioridad más baja que las microtasks.",
+    "options": [
+      "setTimeout, setInterval",
+      "Promise.then",
+      "Microtask",
+      "Call stack"
+    ]
+  },
+  "js-async-22": {
+    "prompt": "¿Qué pasa si una Promise rechaza y no hay catch?",
+    "explanation": "Provoca warnings/errores.",
+    "interviewTip": "Maneja siempre los rejections.",
+    "options": [
+      "Unhandled rejection",
+      "Fallo silencioso",
+      "El programa se detiene",
+      "Ignorado"
+    ]
+  },
+  "js-async-23": {
+    "prompt": "¿Qué hace `queueMicrotask`?",
+    "explanation": "Se ejecuta antes de la siguiente macrotask.",
+    "interviewTip": "Tema avanzado.",
+    "options": [
+      "Programa una microtask",
+      "Programa una macrotask",
+      "Bloquea la ejecución",
+      "Crea una promise"
+    ]
+  },
+  "js-async-24": {
+    "prompt": "¿Por qué el código async es difícil de debuguear?",
+    "explanation": "El flujo async es más difícil de rastrear.",
+    "interviewTip": "Usa async stack traces.",
+    "options": [
+      "El orden de ejecución no es lineal",
+      "JS no tiene debugger",
+      "Las Promises ocultan errores",
+      "Single thread"
+    ]
+  },
+  "js-async-25": {
+    "prompt": "¿Mejor práctica para código async?",
+    "explanation": "Legible y mantenible.",
+    "interviewTip": "Enfoque para producción.",
+    "options": [
+      "Usar async/await + try/catch",
+      "Callbacks anidados",
+      "Ignorar errores",
+      "Bloquear el thread"
+    ]
+  }
+}

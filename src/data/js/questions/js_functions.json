@@ -4,320 +4,365 @@
       "id": "js-fn-01",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "function foo() {}\nconsole.log(typeof foo);",
-      "options": ["function", "object", "undefined", "class"],
-      "correct": [0],
-      "explanation": "In JavaScript, functions are first-class objects but `typeof` returns `function`.",
-      "interviewTip": "Mention that functions are callable objects with internal [[Call]]."
+      "options": [
+        "function",
+        "object",
+        "undefined",
+        "class"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-02",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What is the output?",
       "code": "console.log(foo());\nfunction foo() { return 42; }",
-      "options": ["42", "undefined", "ReferenceError", "TypeError"],
-      "correct": [0],
-      "explanation": "Function declarations are hoisted with their body.",
-      "interviewTip": "Contrast with function expressions."
+      "options": [
+        "42",
+        "undefined",
+        "ReferenceError",
+        "TypeError"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-03",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What happens?",
       "code": "console.log(bar());\nconst bar = function () { return 1; };",
-      "options": ["1", "undefined", "TypeError", "ReferenceError"],
-      "correct": [2],
-      "explanation": "`bar` exists but is undefined at call time.",
-      "interviewTip": "Function expressions are not hoisted like declarations."
+      "options": [
+        "1",
+        "undefined",
+        "TypeError",
+        "ReferenceError"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "js-fn-04",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "const fn = () => ({ a: 1 });\nconsole.log(fn());",
-      "options": ["{ a: 1 }", "undefined", "SyntaxError", "() => {}"],
-      "correct": [0],
-      "explanation": "Parentheses allow implicit return of an object.",
-      "interviewTip": "Common arrow function pitfall."
+      "options": [
+        "{ a: 1 }",
+        "undefined",
+        "SyntaxError",
+        "() => {}"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-05",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "Arrow functions differ from regular functions because they…",
       "options": [
         "have no own this",
         "are always async",
         "cannot return values",
         "are hoisted"
       ],
-      "correct": [0],
-      "explanation": "Arrow functions capture `this` from lexical scope.",
-      "interviewTip": "Great question to test understanding of `this`."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-06",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What is logged?",
       "code": "function foo(a, b) {\n  console.log(arguments.length);\n}\nfoo(1);",
-      "options": ["0", "1", "2", "undefined"],
-      "correct": [1],
-      "explanation": "`arguments` contains passed arguments only.",
-      "interviewTip": "Mention that arrow functions don’t have `arguments`."
+      "options": [
+        "0",
+        "1",
+        "2",
+        "undefined"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "js-fn-07",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What will this output?",
       "code": "function foo(a = 10) {\n  return a;\n}\nconsole.log(foo(undefined));",
-      "options": ["10", "undefined", "null", "ReferenceError"],
-      "correct": [0],
-      "explanation": "Default parameters apply when argument is `undefined`.",
-      "interviewTip": "Different from passing `null`."
+      "options": [
+        "10",
+        "undefined",
+        "null",
+        "ReferenceError"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-08",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What does this return?",
       "code": "function foo() {\n  return\n  {\n    a: 1\n  };\n}\nconsole.log(foo());",
-      "options": ["{ a: 1 }", "undefined", "SyntaxError", "null"],
-      "correct": [1],
-      "explanation": "Automatic semicolon insertion ends the return.",
-      "interviewTip": "Classic JS gotcha."
+      "options": [
+        "{ a: 1 }",
+        "undefined",
+        "SyntaxError",
+        "null"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "js-fn-09",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What is a higher-order function?",
       "options": [
         "A function that takes or returns another function",
         "A function defined inside another",
         "An async function",
         "A recursive function"
       ],
-      "correct": [0],
-      "explanation": "Higher-order functions operate on other functions.",
-      "interviewTip": "Examples: map, filter, reduce."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-10",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "function foo() {\n  console.log(this);\n}\nfoo();",
-      "options": ["window / global", "undefined (strict mode)", "foo", "null"],
-      "correct": [1],
-      "explanation": "In strict mode, `this` is undefined.",
-      "interviewTip": "Always ask about strict mode."
+      "options": [
+        "window / global",
+        "undefined (strict mode)",
+        "foo",
+        "null"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "js-fn-11",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What does bind do?",
       "options": [
         "Creates a new function with bound this",
         "Immediately calls the function",
         "Changes prototype",
         "Freezes context"
       ],
-      "correct": [0],
-      "explanation": "`bind` returns a new function.",
-      "interviewTip": "bind ≠ call ≠ apply."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-12",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What is logged?",
       "code": "function foo(a, ...rest) {\n  console.log(rest.length);\n}\nfoo(1, 2, 3);",
-      "options": ["0", "1", "2", "3"],
-      "correct": [2],
-      "explanation": "`rest` collects remaining arguments.",
-      "interviewTip": "Rest vs arguments."
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "js-fn-13",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What will happen?",
       "code": "const foo = () => {};\nnew foo();",
-      "options": ["Creates instance", "TypeError", "undefined", "Returns foo"],
-      "correct": [1],
-      "explanation": "Arrow functions cannot be used as constructors.",
-      "interviewTip": "No [[Construct]] method."
+      "options": [
+        "Creates instance",
+        "TypeError",
+        "undefined",
+        "Returns foo"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "js-fn-14",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What is recursion?",
       "options": [
         "Function calling itself",
         "Function inside loop",
         "Async execution",
         "Closure usage"
       ],
-      "correct": [0],
-      "explanation": "Recursion is self-invocation.",
-      "interviewTip": "Always mention base case."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-15",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "function foo(x) {\n  return function(y) {\n    return x + y;\n  }\n}\nconsole.log(foo(2)(3));",
-      "options": ["5", "undefined", "NaN", "TypeError"],
-      "correct": [0],
-      "explanation": "Closure preserves x.",
-      "interviewTip": "Closures are core JS concept."
+      "options": [
+        "5",
+        "undefined",
+        "NaN",
+        "TypeError"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-16",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "Which is true about closures?",
       "options": [
         "They capture variables by reference",
         "They copy values",
         "They only work with const",
         "They prevent GC"
       ],
-      "correct": [0],
-      "explanation": "Closures reference outer scope variables.",
-      "interviewTip": "Explain memory implications."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-17",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What does IIFE stand for?",
       "options": [
         "Immediately Invoked Function Expression",
         "Internal Indexed Function Execution",
         "Inline Interface Function Element",
         "Immediate Internal Function Eval"
       ],
-      "correct": [0],
-      "explanation": "IIFE executes immediately after definition.",
-      "interviewTip": "Used for scope isolation."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-18",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What is logged?",
       "code": "(function() {\n  console.log(typeof arguments);\n})();",
-      "options": ["object", "array", "undefined", "function"],
-      "correct": [0],
-      "explanation": "`arguments` is array-like object.",
-      "interviewTip": "Not a real array."
+      "options": [
+        "object",
+        "array",
+        "undefined",
+        "function"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-19",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What is tail recursion?",
       "options": [
         "Recursive call as last operation",
         "Infinite recursion",
         "Async recursion",
         "Recursion with closures"
       ],
-      "correct": [0],
-      "explanation": "Tail call optimization can reuse stack.",
-      "interviewTip": "Not widely optimized in JS engines."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-20",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What does this log?",
       "code": "function foo(a, b = a) {\n  console.log(b);\n}\nfoo(5);",
-      "options": ["5", "undefined", "null", "ReferenceError"],
-      "correct": [0],
-      "explanation": "Default params can reference previous params.",
-      "interviewTip": "Order matters."
+      "options": [
+        "5",
+        "undefined",
+        "null",
+        "ReferenceError"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-21",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What happens if a function has no return?",
       "options": [
         "Returns undefined",
         "Returns null",
         "Throws error",
         "Returns 0"
       ],
-      "correct": [0],
-      "explanation": "Implicit return is undefined.",
-      "interviewTip": "Common beginner mistake."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-22",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What does call do?",
       "options": [
         "Invokes function with explicit this",
         "Creates new function",
         "Binds forever",
         "Clones function"
       ],
-      "correct": [0],
-      "explanation": "`call` invokes immediately.",
-      "interviewTip": "Difference between call/apply/bind."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-23",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What is function arity?",
       "options": [
         "Number of declared parameters",
         "Number of calls",
         "Execution time",
         "Stack depth"
       ],
-      "correct": [0],
-      "explanation": "`fn.length` shows arity.",
-      "interviewTip": "Useful for functional patterns."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-24",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "function foo() {}\nconsole.log(foo.prototype);",
-      "options": ["object", "undefined", "null", "function"],
-      "correct": [0],
-      "explanation": "Functions have a prototype property.",
-      "interviewTip": "Arrow functions don’t."
+      "options": [
+        "object",
+        "undefined",
+        "null",
+        "function"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-fn-25",
       "stageId": "js_functions",
       "type": "single",
-      "prompt": "Why are functions called first-class citizens?",
       "options": [
         "They can be passed, returned, assigned",
         "They are fastest",
         "They are hoisted",
         "They are async"
       ],
-      "correct": [0],
-      "explanation": "Functions behave like regular values.",
-      "interviewTip": "This enables functional programming."
+      "correct": [
+        0
+      ]
     }
   ]
 }

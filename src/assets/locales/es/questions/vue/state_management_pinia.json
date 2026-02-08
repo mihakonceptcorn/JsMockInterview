@@ -1,0 +1,102 @@
+{
+  "pi-01": {
+    "prompt": "¿Por qué se prefiere Pinia sobre Vuex para aplicaciones Vue 3?",
+    "explanation": "Pinia simplifica la gestión de estado eliminando las mutations. Simplemente actualizas el estado directamente o mediante actions. También ofrece excelente autocompletado de TypeScript por defecto.",
+    "interviewTip": "Menciona que Pinia es modular por diseño; a diferencia del único store gigante de Vuex, Pinia fomenta la creación de múltiples stores pequeños y enfocados.",
+    "options": [
+      "Es la única forma de usar CSS en Vue.",
+      "Es más ligero, tiene mejor soporte de TypeScript, y elimina la necesidad de 'mutations' (haciendo el código menos verboso).",
+      "Permite la manipulación directa del DOM.",
+      "Está integrado nativamente en el navegador."
+    ]
+  },
+  "pi-02": {
+    "prompt": "Analiza el código. ¿Qué sucederá si desestructuras el estado del store directamente en un componente?",
+    "explanation": "Al igual que con los objetos reactivos, desestructurar un store de Pinia rompe la reactividad. Para mantener el enlace, debes usar 'storeToRefs(store)'.",
+    "interviewTip": "Este es un 'gotcha' frecuente. Usa 'storeToRefs' para state y getters, pero puedes desestructurar actions (funciones) normalmente.",
+    "options": [
+      "La variable 'score' se actualizará automáticamente en el template.",
+      "La variable 'score' perderá reactividad y permanecerá en el valor inicial.",
+      "Vue lanzará un 'ReferenceError'.",
+      "El store se reiniciará a cero."
+    ]
+  },
+  "pi-03": {
+    "prompt": "En Pinia, ¿cuál es el equivalente de una propiedad 'Computed' para un store?",
+    "explanation": "Los Getters son exactamente como las propiedades computed para el estado del store. Se almacenan en caché y solo se recalculan cuando sus dependencias cambian.",
+    "interviewTip": "Los Getters también pueden devolver una función que acepta argumentos (aunque estos no se almacenan en caché).",
+    "options": ["State", "Actions", "Getters", "Plugins"]
+  },
+  "pi-04": {
+    "prompt": "¿Cómo reinicia un store a su estado inicial en Pinia?",
+    "explanation": "El método $reset() es una utilidad integrada que revierte todo el estado del store a los valores definidos en el objeto de estado inicial.",
+    "interviewTip": "Ten en cuenta que $reset() solo funciona en 'Option Stores'. Si usas 'Setup Stores' (sintaxis de función), tienes que implementar tu propia lógica de reinicio.",
+    "options": [
+      "store.clear()",
+      "store.$reset()",
+      "store.state = null",
+      "store.refresh()"
+    ]
+  },
+  "pi-05": {
+    "prompt": "Analiza el código. ¿Dónde debe colocarse una llamada API (como obtener preguntas de quiz) en un store de Pinia?",
+    "explanation": "Las Actions son donde vive la lógica y los efectos secundarios (como llamadas API). A diferencia de Vuex, las actions de Pinia pueden ser asíncronas y actualizar el estado directamente.",
+    "interviewTip": "En una entrevista, destaca que las actions reemplazan tanto 'actions' como 'mutations' de Vuex, simplificando la arquitectura.",
+    "options": ["getters", "actions", "mutations", "effects"]
+  },
+  "pi-06": {
+    "prompt": "¿Cuáles de estas son formas válidas de actualizar múltiples propiedades de estado a la vez en Pinia?",
+    "explanation": "Pinia es flexible. Las actualizaciones individuales están bien, pero $patch es más eficiente para agrupar cambios y permite lógica compleja dentro de la versión de función de $patch.",
+    "interviewTip": "$patch es útil cuando quieres agrupar múltiples cambios en una sola entrada para la línea de tiempo de DevTools.",
+    "options": [
+      "Actualizándolas una por una: store.a = 1; store.b = 2;",
+      "Usando store.$patch({ a: 1, b: 2 })",
+      "Usando store.$patch((state) => { state.a = 1; state.b = 2; })",
+      "Llamando a una función mutation"
+    ]
+  },
+  "pi-07": {
+    "prompt": "¿Cuál es el propósito de 'defineStore'?",
+    "explanation": "defineStore crea un hook (como useUserStore) que los componentes pueden llamar para acceder a la instancia del store.",
+    "interviewTip": "Siempre menciona que el primer argumento es un 'id' único usado para DevTools e identificación del store.",
+    "options": [
+      "Para conectar la aplicación a una base de datos.",
+      "Para definir un nuevo store y su estructura lógica (state, getters, actions).",
+      "Para compilar el CSS del componente.",
+      "Para registrar la aplicación en el navegador."
+    ]
+  },
+  "pi-08": {
+    "prompt": "¿Cómo escuchas cambios de estado globalmente (por ejemplo, para logging o persistencia) en Pinia?",
+    "explanation": "$subscribe() se activa cada vez que el estado cambia. A menudo se usa para sincronizar el estado del store con LocalStorage.",
+    "interviewTip": "Muchos desarrolladores usan el 'pinia-plugin-persistedstate' en lugar de escribir suscripciones manuales para almacenamiento.",
+    "options": [
+      "Usando un watch en todo el store.",
+      "Usando el método store.$subscribe().",
+      "Usando un setInterval regular.",
+      "Pinia no soporta suscripciones globales."
+    ]
+  },
+  "smp-09": {
+    "prompt": "¿Qué es Pinia y en qué difiere de Vuex?",
+    "explanation": "Pinia elimina conceptos como mutations y modules, proporciona mejor inferencia de TypeScript, y tiene una API más intuitiva con stores.",
+    "interviewTip": "Pinia es ahora la solución de gestión de estado recomendada para aplicaciones Vue 3.",
+    "options": [
+      "Pinia es un framework CSS.",
+      "Pinia es la biblioteca oficial de gestión de estado de Vue 3, ofreciendo mejor soporte de TypeScript y una API más simple que Vuex.",
+      "Pinia es más lento que Vuex.",
+      "Pinia solo funciona con Vue 2."
+    ]
+  },
+  "smp-10": {
+    "prompt": "¿Cómo defines un store en Pinia?",
+    "explanation": "defineStore acepta un ID y ya sea un objeto de opciones (como Options API) o una función setup (como Composition API).",
+    "interviewTip": "La sintaxis de setup store es más flexible y se alinea con los patrones de Composition API.",
+    "options": [
+      "Usa createStore()",
+      "Usa defineStore() con un ID único y state/getters/actions.",
+      "Usa new Store()",
+      "Usa useState()"
+    ]
+  }
+}

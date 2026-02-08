@@ -1,0 +1,102 @@
+{
+  "tv-01": {
+    "prompt": "¿Qué herramienta es recomendada actualmente por el equipo de Vue como el test runner principal, reemplazando a Jest en la mayoría de las configuraciones modernas?",
+    "explanation": "Vitest está construido sobre Vite. Es extremadamente rápido, comparte la misma configuración que tu entorno de desarrollo, y tiene una API compatible con Jest.",
+    "interviewTip": "Destaca el 'Hot Module Replacement' (HMR) de Vitest para tests, lo que hace que el ciclo de TDD (Test Driven Development) se sienta mucho más rápido.",
+    "options": ["Mocha", "Vitest", "Cypress", "Jasmine"]
+  },
+  "tv-02": {
+    "prompt": "¿Cuál es la diferencia entre 'mount' y 'shallowMount' en Vue Test Utils?",
+    "explanation": "shallowMount es ideal para pruebas unitarias porque aísla el componente de sus hijos, asegurando que un bug en un componente hijo no cause que falle la prueba del padre.",
+    "interviewTip": "Usa 'mount' para pruebas de integración y 'shallowMount' para pruebas unitarias puras de la lógica de un solo componente.",
+    "options": [
+      "mount es para Vue 3, shallowMount es para Vue 2.",
+      "mount renderiza el componente y todos sus hijos; shallowMount renderiza solo el componente, haciendo stub de todos los componentes hijos.",
+      "shallowMount es solo para probar CSS.",
+      "mount es más rápido que shallowMount."
+    ]
+  },
+  "tv-03": {
+    "prompt": "Analiza el código. ¿Cómo simulas que un usuario hace clic en un botón en una prueba de Vitest?",
+    "explanation": "El método 'trigger' simula un evento del DOM. Como Vue actualiza el DOM de forma asíncrona, debes 'await' el trigger para asegurar que el DOM se haya actualizado antes de hacer aserciones.",
+    "interviewTip": "Siempre await 'trigger' y 'setValue' para evitar pruebas inestables causadas por el renderizado asíncrono de Vue.",
+    "options": [
+      "button.click()",
+      "button.trigger('click')",
+      "button.emit('click')",
+      "button.fire('click')"
+    ]
+  },
+  "tv-04": {
+    "prompt": "Analiza el código. ¿Cómo verificas que un componente emitió un evento específico?",
+    "explanation": "wrapper.emitted() devuelve un objeto que contiene todos los eventos emitidos por el componente y los argumentos pasados con ellos.",
+    "interviewTip": "Puedes verificar los argumentos así: expect(wrapper.emitted().myEvent[0]).toEqual(['expectedData']).",
+    "options": [
+      "emitted().myEvent",
+      "events('myEvent')",
+      "fired('myEvent')",
+      "getEvent('myEvent')"
+    ]
+  },
+  "tv-05": {
+    "prompt": "¿Cómo pruebas un componente que depende de un plugin global como 'Pinia' o 'Vue Router'?",
+    "explanation": "Vue Test Utils te permite proporcionar 'mocks' o 'stubs' para características globales usando la propiedad 'global' en el segundo argumento de mount().",
+    "interviewTip": "Para Pinia, es mejor usar 'createTestingPinia()', que automáticamente hace mock de todas tus actions.",
+    "options": [
+      "No puedes probar estos componentes.",
+      "Pasando un array 'global.plugins' en las opciones de montaje.",
+      "Importando el router real en el archivo de prueba.",
+      "Codificando los datos dentro del componente."
+    ]
+  },
+  "tv-06": {
+    "prompt": "¿Cuáles de estas son formas válidas de encontrar un elemento usando 'find' o 'get' de Vue Test Utils?",
+    "explanation": "find() soporta selectores CSS y definiciones de componentes. Es una buena práctica usar 'data-testid' para pruebas para desacoplarlas de clases CSS o estructura HTML.",
+    "interviewTip": "Explica que 'get' lanza un error si el elemento no se encuentra, mientras que 'find' devuelve un wrapper vacío, haciendo 'get' más seguro para aserciones.",
+    "options": [
+      "wrapper.find('.my-class')",
+      "wrapper.findComponent(MyChildComponent)",
+      "wrapper.find({ ref: 'myRef' })",
+      "wrapper.find('[data-testid=\"submit\"]')"
+    ]
+  },
+  "tv-07": {
+    "prompt": "¿Qué es 'Snapshot Testing' en Vitest?",
+    "explanation": "Los snapshots capturan regresión en la estructura HTML. Si cambias un nombre de clase, el snapshot fallará, forzándote a verificar si el cambio fue intencional.",
+    "interviewTip": "Advierte que los snapshots pueden ser 'frágiles' si tu UI cambia frecuentemente; úsalos con moderación para componentes estables.",
+    "options": [
+      "Tomar una captura de pantalla de la UI de la aplicación.",
+      "Comparar la salida HTML renderizada de un componente contra una versión 'maestra' previamente guardada para detectar cambios inesperados.",
+      "Probar la velocidad de la aplicación.",
+      "Una forma de almacenar contraseñas de usuarios."
+    ]
+  },
+  "tv-08": {
+    "prompt": "¿Cómo pruebas código que usa 'nextTick()'?",
+    "explanation": "Como nextTick devuelve una promesa, hacer await en tu prueba asegura que estás inspeccionando el DOM después de que Vue haya completado su ciclo de actualización reactiva.",
+    "interviewTip": "Esto es crucial para probar componentes que cambian su estructura DOM basándose en un cambio de estado reactivo.",
+    "options": [
+      "Usando un bucle while.",
+      "Haciendo await de 'nextTick()' dentro de tu función de prueba.",
+      "Vitest maneja nextTick automáticamente.",
+      "Debes usar un setTimeout de 1000ms."
+    ]
+  },
+  "tv-09": {
+    "prompt": "¿Cuál es la biblioteca de testing recomendada para componentes Vue 3?",
+    "explanation": "Vue Test Utils es la biblioteca oficial de utilidades de testing para Vue, proporcionando métodos para montar componentes e interactuar con ellos en pruebas.",
+    "interviewTip": "Combina Vue Test Utils con Jest o Vitest para una solución completa de testing.",
+    "options": ["Enzyme", "Vue Test Utils", "React Testing Library", "Jasmine"]
+  },
+  "tv-10": {
+    "prompt": "¿Cuál es la diferencia entre montaje superficial y montaje completo en Vue Test Utils?",
+    "explanation": "El montaje superficial (shallowMount) es útil para probar unitariamente un componente de forma aislada, mientras que el montaje completo (mount) es mejor para pruebas de integración.",
+    "interviewTip": "Vue Test Utils v2 (para Vue 3) recomienda usar mount más frecuentemente ya que el montaje superficial puede ocultar problemas de integración.",
+    "options": [
+      "El montaje superficial renderiza solo el componente, haciendo stub de los componentes hijos; el montaje completo renderiza todo el árbol de componentes.",
+      "El montaje superficial es más rápido pero menos preciso.",
+      "El montaje completo está deprecado.",
+      "No hay diferencia."
+    ]
+  }
+}

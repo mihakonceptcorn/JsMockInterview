@@ -13,6 +13,7 @@ import {
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'expo-router';
 import GoogleSignIn from '@/components/auth/GoogleSignIn';
+import Purchases from 'react-native-purchases';
 
 const LoginScreen = () => {
   const { t } = useTranslation('auth');
@@ -25,13 +26,22 @@ const LoginScreen = () => {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert(t('login.errors.login_failed_title'), t('login.errors.fill_fields'));
+      Alert.alert(
+        t('login.errors.login_failed_title'),
+        t('login.errors.fill_fields')
+      );
       return;
     }
 
     setLoading(true);
     try {
-      await login(email.trim(), password);
+      const userCredential = await login(email.trim(), password);
+      const user = userCredential?.user;
+
+      if (user) {
+        await Purchases.logIn(user.uid);
+      }
+
       router.replace('/profile');
     } catch (error: any) {
       let errorMessage = t('login.errors.general_error');
@@ -54,24 +64,34 @@ const LoginScreen = () => {
 
   const handleResetPassword = () => {
     if (!email) {
-      Alert.alert(t('login.errors.login_failed_title'), t('login.errors.reset_email_missing'));
+      Alert.alert(
+        t('login.errors.login_failed_title'),
+        t('login.errors.reset_email_missing')
+      );
       return;
     }
 
-    Alert.alert(t('login.reset_password_title'), t('login.reset_password_confirm', { email }), [
-      { text: t('common:cancel'), style: 'cancel' },
-      {
-        text: t('common:send'),
-        onPress: async () => {
-          try {
-            await resetPassword(email.trim());
-            Alert.alert(t('common:success'), t('login.reset_password_success'));
-          } catch (error: any) {
-            Alert.alert(t('common:error'), t('login.reset_password_error'));
-          }
+    Alert.alert(
+      t('login.reset_password_title'),
+      t('login.reset_password_confirm', { email }),
+      [
+        { text: t('common:cancel'), style: 'cancel' },
+        {
+          text: t('common:send'),
+          onPress: async () => {
+            try {
+              await resetPassword(email.trim());
+              Alert.alert(
+                t('common:success'),
+                t('login.reset_password_success')
+              );
+            } catch (error: any) {
+              Alert.alert(t('common:error'), t('login.reset_password_error'));
+            }
+          },
         },
-      },
-    ]);
+      ]
+    );
   };
 
   return (

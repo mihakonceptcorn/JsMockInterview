@@ -1,0 +1,185 @@
+{
+  "ri-01": {
+    "prompt": "¿Cuál es el beneficio arquitectónico principal del Virtual DOM?",
+    "explanation": "El Virtual DOM es una representación ligera del DOM real. React lo utiliza para agrupar actualizaciones y minimizar las costosas manipulaciones directas del DOM.",
+    "interviewTip": "Utiliza el término 'Reconciliación' (Reconciliation) al describir cómo React sincroniza el Virtual DOM y el DOM real.",
+    "options": [
+      "Acelera la conexión a internet entre el cliente y el servidor.",
+      "Permite a React calcular la forma más eficiente de actualizar el DOM real.",
+      "Proporciona una forma de almacenar datos en el almacenamiento permanente del navegador.",
+      "Elimina la necesidad de JavaScript en los navegadores modernos."
+    ]
+  },
+  "ri-02": {
+    "prompt": "¿Cuál de las siguientes opciones describe mejor la programación 'Declarativa' en React?",
+    "explanation": "En React, tú declaras el estado deseado de la UI y React se encarga de las transiciones reales del DOM. La programación imperativa implica actualizaciones manuales del DOM.",
+    "interviewTip": "El código declarativo es generalmente más fácil de depurar y razonar porque es más predecible.",
+    "options": [
+      "Describir *qué* aspecto debe tener la UI para un estado dado.",
+      "Escribir instrucciones paso a paso sobre *cómo* cambiar el DOM.",
+      "Usar solo componentes basados en clases para definir la lógica.",
+      "Seleccionar manualmente elementos HTML usando document.querySelector."
+    ]
+  },
+  "ri-03": {
+    "prompt": "¿Por qué a menudo se clasifica a React como una 'Librería' en lugar de un 'Framework'?",
+    "explanation": "A diferencia de los frameworks (como Angular), React no es dogmático. Debes elegir herramientas externas para aspectos como la navegación y la obtención de datos.",
+    "interviewTip": "Esta flexibilidad permite a los equipos elegir las mejores herramientas para sus necesidades específicas.",
+    "options": [
+      "Está estrictamente enfocado en la capa de 'Vista' de una aplicación.",
+      "No viene con soluciones integradas para el enrutamiento o la gestión del estado global.",
+      "Tiene un tamaño de archivo menor que cualquier otra herramienta de JavaScript.",
+      "No se puede utilizar para crear aplicaciones empresariales a gran escala."
+    ]
+  },
+  "ri-04": {
+    "prompt": "¿Qué representa realmente este código JSX después de ser compilado por Babel?",
+    "explanation": "JSX es 'azúcar sintáctica'. Babel lo transforma en llamadas anidadas a React.createElement, que devuelven objetos JS planos (Elementos de React).",
+    "interviewTip": "Desde React 17, la 'nueva transformación de JSX' maneja esto automáticamente sin requerir 'import React' en cada archivo.",
+    "options": [
+      "Un string de HTML: \"<div id='root'>Hello</div>\"",
+      "Una referencia directa a un nodo del DOM creado por el navegador.",
+      "Un objeto JavaScript creado mediante React.createElement().",
+      "Una función que devuelve una Promesa."
+    ]
+  },
+  "ri-05": {
+    "prompt": "¿Qué mostrará el siguiente código en la consola?",
+    "explanation": "Los elementos de React están etiquetados con un Symbol específico ($$typeof) por razones de seguridad, principalmente para prevenir ataques XSS (Cross-Site Scripting).",
+    "interviewTip": "Esta etiqueta asegura que React solo renderice objetos que él mismo ha creado.",
+    "options": ["undefined", "Symbol(react.element)", "\"div\"", "null"]
+  },
+  "ri-06": {
+    "prompt": "¿Qué es el 'Principio de Responsabilidad Única' en los componentes de React?",
+    "explanation": "Los componentes deben ser modulares y enfocados. Si un componente crece demasiado, debe descomponerse en subcomponentes más pequeños.",
+    "interviewTip": "Los componentes pequeños y enfocados son mucho más fáciles de probar y reutilizar.",
+    "options": [
+      "Un componente solo debe usarse una vez en toda la aplicación.",
+      "Un componente idealmente debería hacer solo una cosa.",
+      "Todo el estado debe ser gestionado por un único componente 'raíz'.",
+      "Cada componente debe contener exactamente una línea de JSX."
+    ]
+  },
+  "ri-07": {
+    "prompt": "¿Qué sucede si intentas renderizar el siguiente componente?",
+    "explanation": "Los componentes de React deben devolver un único nodo raíz. Esto se debe a que una función solo puede devolver un valor (un árbol de objetos).",
+    "interviewTip": "Usa un Fragment (<></>) para agrupar elementos sin añadir un div envoltorio al DOM.",
+    "options": [
+      "El navegador renderiza ambos encabezados uno al lado del otro.",
+      "Un error de sintaxis: JSX debe tener un elemento padre único.",
+      "Solo se renderiza 'Item 1'; 'Item 2' es ignorado.",
+      "El segundo encabezado sobrescribe al primero."
+    ]
+  },
+  "ri-08": {
+    "prompt": "En el contexto del ecosistema de React, ¿qué es 'Babel'?",
+    "explanation": "Babel toma código moderno (JSX, ES6+) y lo convierte en versiones de JavaScript compatibles con versiones anteriores que todos los navegadores pueden ejecutar.",
+    "interviewTip": "Vite y Create React App utilizan Babel (o alternativas como SWC) internamente.",
+    "options": [
+      "Una librería de CSS-in-JS.",
+      "Un linter de código que busca errores en la lógica.",
+      "Un compilador/transpilador de JavaScript que convierte JSX en JS válido.",
+      "Un sistema de gestión de bases de datos para React."
+    ]
+  },
+  "ri-09": {
+    "prompt": "Analiza el código de abajo. ¿Por qué no se actualizará la UI cuando el usuario haga clic?",
+    "explanation": "React no está 'observando' la variable 'likes'. Para disparar una actualización de la UI, debes usar el hook 'useState'.",
+    "interviewTip": "Este es un concepto fundamental: Cambio de estado = Re-renderizado.",
+    "options": [
+      "La variable 'likes' no está declarada con 'const'.",
+      "React no rastrea cambios en variables locales; solo se re-renderiza ante cambios en el estado o las props.",
+      "El evento onClick del botón no está escrito en minúsculas.",
+      "No se pueden pasar funciones al atributo onClick."
+    ]
+  },
+  "ri-10": {
+    "prompt": "¿Qué significa el 'flujo de datos unidireccional' en React?",
+    "explanation": "En React, los hijos reciben datos de los padres a través de las props. Si los hijos necesitan cambiar el estado del padre, utilizan funciones callback pasadas como props.",
+    "interviewTip": "Este flujo 'de arriba hacia abajo' hace que el estado de la aplicación sea mucho más fácil de predecir y depurar.",
+    "options": [
+      "Los datos fluyen solo del servidor al cliente.",
+      "Los datos fluyen estrictamente desde los componentes padres hacia los componentes hijos.",
+      "El estado y las props se activan simultáneamente en ambas direcciones.",
+      "Los usuarios solo pueden interactuar con la aplicación en una dirección (de arriba a abajo)."
+    ]
+  },
+  "ri-11": {
+    "prompt": "¿Cuáles de estas son formas válidas de renderizar un 'Fragment' en React?",
+    "explanation": "Las tres son válidas, siendo <>...</> la abreviatura más concisa.",
+    "interviewTip": "Recuerda que solo <React.Fragment> (la sintaxis completa) puede aceptar una prop 'key'.",
+    "options": [
+      "<React.Fragment>...</React.Fragment>",
+      "<Fragment>...</Fragment>",
+      "<>...</>",
+      "<div fragment>...</div>"
+    ]
+  },
+  "ri-12": {
+    "prompt": "¿Cuál es el resultado de la siguiente comprobación 'typeof'?",
+    "explanation": "Los elementos JSX se transpilan en objetos JavaScript planos.",
+    "interviewTip": "Como son objetos, puedes pasarlos como props, almacenarlos en variables o ponerlos en arrays.",
+    "options": ["\"string\"", "\"object\"", "\"function\"", "\"undefined\""]
+  },
+  "ri-13": {
+    "prompt": "¿Cuál es el propósito de la librería 'ReactDOM'?",
+    "explanation": "React es independiente de la plataforma. ReactDOM es el 'pegamento' específico que permite que React funcione con los navegadores web.",
+    "interviewTip": "React Native utiliza un renderizador diferente (la UI nativa del móvil) en lugar de ReactDOM.",
+    "options": [
+      "Gestionar el estado del componente y los hooks.",
+      "Proporcionar la lógica para crear componentes de React.",
+      "Renderizar el árbol de componentes de React en el DOM real del navegador.",
+      "Comunicarse con una base de datos SQL."
+    ]
+  },
+  "ri-14": {
+    "prompt": "¿Qué hay de malo en esta sentencia return?",
+    "explanation": "Debido a la Inserción Automática de Punto y Coma (ASI), el return se corta. Debes colocar el JSX en la misma línea o envolverlo entre paréntesis.",
+    "interviewTip": "Envuelve siempre el JSX multilínea entre paréntesis: return (...);",
+    "options": [
+      "Las sentencias return no pueden usarse en componentes funcionales.",
+      "El punto y coma debe estar dentro de las etiquetas.",
+      "JavaScript inserta un punto y coma automático después de 'return', devolviendo 'undefined' en lugar del JSX.",
+      "Las etiquetas <h1> requieren un className."
+    ]
+  },
+  "ri-15": {
+    "prompt": "¿Cómo distingue React entre una etiqueta HTML y un componente personalizado en JSX?",
+    "explanation": "React.createElement() utiliza el caso de la primera letra para decidir si debe renderizar un string (HTML nativo) o una variable (componente).",
+    "interviewTip": "Si defines un componente como 'const myHeader = ...', úsalo como <MyHeader /> para asegurar que sea reconocido.",
+    "options": [
+      "Las etiquetas HTML son azules, los componentes son rojos.",
+      "Los componentes personalizados deben empezar con mayúscula; las etiquetas HTML empiezan con minúscula.",
+      "Los componentes siempre deben usar etiquetas de autocierre.",
+      "Las etiquetas HTML deben estar envueltas entre comillas."
+    ]
+  },
+  "ri-16": {
+    "prompt": "¿Qué es el algoritmo de 'Reconciliación' (Reconciliation)?",
+    "explanation": "La reconciliación es el proceso de 'diffing' donde React calcula el conjunto mínimo de cambios necesarios para actualizar la UI del navegador.",
+    "interviewTip": "React asume que si el tipo de un componente cambia, todo el árbol debajo de él debe ser reconstruido.",
+    "options": [
+      "El proceso de convertir CSS en objetos JS.",
+      "La forma en que React compara dos árboles del Virtual DOM para ver qué ha cambiado.",
+      "Una forma de sincronizar el frontend y el servidor backend.",
+      "El método para combinar múltiples stores de Redux."
+    ]
+  },
+  "ri-17": {
+    "prompt": "¿Por qué los componentes deberían ser funciones 'puras' respecto a sus props?",
+    "explanation": "Un componente nunca debe modificar sus props. Debe devolver el mismo JSX para el mismo conjunto de props y estado.",
+    "interviewTip": "La inmutabilidad es clave para las optimizaciones de rendimiento de React (como React.memo).",
+    "options": [
+      "Para que el código parezca más profesional.",
+      "Para asegurar que el componente sea predecible y no mute sus entradas.",
+      "Porque JavaScript no permite cambiar los argumentos de una función.",
+      "Para evitar que el navegador cachee el componente."
+    ]
+  },
+  "ri-18": {
+    "prompt": "Identifica la parte dinámica de este JSX:",
+    "explanation": "Las llaves {} son la vía de escape hacia JavaScript, permitiéndote incrustar valores dinámicos o lógica.",
+    "interviewTip": "Incluso puedes poner lógica compleja como map() o ternarios dentro de estas llaves.",
+    "options": ["className='main'", "<h1>", "{title}", "const title"]
+  }
+}

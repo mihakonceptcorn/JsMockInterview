@@ -1,0 +1,167 @@
+{
+  "cr-01": {
+    "prompt": "¿Qué se renderizará si 'isLoaded' es false?",
+    "explanation": "El `ternary operator` es la forma más común de realizar un `conditional rendering` de tipo 'esto-o-aquello' en JSX.",
+    "interviewTip": "Se prefieren los ternarios sobre las sentencias `if-else` dentro de JSX porque son `expressions`.",
+    "options": [
+      "Success!",
+      "Loading...",
+      "Nothing",
+      "Tanto 'Success!' como 'Loading...'"
+    ]
+  },
+  "cr-02": {
+    "prompt": "¿Cuál es un posible 'gotcha' al usar el operador && con un número 0?",
+    "explanation": "En JS, '0 && anything' evalúa a 0. React no renderiza booleanos, pero *sí* renderiza el número 0.",
+    "interviewTip": "Para evitar esto, usa una comprobación booleana: `{count > 0 && <p>Items found</p>}` o un ternario.",
+    "options": [
+      "No renderiza nada.",
+      "Renderiza el número 0 en la UI.",
+      "Hace que la app colapse.",
+      "Renderiza '<p>Items found</p>'."
+    ]
+  },
+  "cr-03": {
+    "prompt": "¿Cómo renderizas absolutamente nada basado en una condición?",
+    "explanation": "Retornar `null` es la forma estándar de decirle a React que no produzca ninguna salida para un componente o parte de la UI.",
+    "interviewTip": "Retornar `null` sigue activando los `lifecycle hooks` del componente; simplemente no produce nodos en el DOM.",
+    "options": [
+      "Retornar un string vacío \"\".",
+      "Retornar null.",
+      "Retornar undefined.",
+      "Todas las anteriores."
+    ]
+  },
+  "cr-04": {
+    "prompt": "¿Cuáles de estas son formas válidas de renderizar JSX condicionalmente?",
+    "explanation": "React no tiene directivas como v-if. Se apoya en la lógica estándar de JS.",
+    "interviewTip": "Para condiciones complejas, usar una `helper function` o una variable fuera del `return statement` suele ser más limpio.",
+    "options": [
+      "Usar una sentencia `switch` fuera del `return`.",
+      "Usar un `ternary operator` dentro de llaves.",
+      "Usar un atributo v-if en un div.",
+      "Usar un `logical &&` para la lógica de 'si-esto-entonces-aquello'."
+    ]
+  },
+  "cr-05": {
+    "prompt": "¿Cuál es el resultado del siguiente componente?",
+    "explanation": "Esto se llama un 'Early Return'. Evita que el resto de la lógica del componente se ejecute si no se cumple una condición.",
+    "interviewTip": "Los `early returns` son excelentes para manejar estados de carga (`loading states`) o datos faltantes.",
+    "options": [
+      "Renderiza 'Welcome, undefined' si no hay usuario.",
+      "No renderiza nada si no hay usuario.",
+      "Colapsa si no hay usuario.",
+      "Renderiza un h1 vacío."
+    ]
+  },
+  "cr-06": {
+    "prompt": "¿Para qué se utiliza el operador 'Logical OR' (||) en el renderizado condicional?",
+    "explanation": "El operador || es perfecto para mostrar texto por defecto o componentes cuando faltan datos.",
+    "interviewTip": "Recuerda que si `userName` es un string vacío \"\", también activará el `fallback`.",
+    "options": [
+      "Para proporcionar un valor de respaldo (`fallback/default`) si el primer valor es `falsy`.",
+      "Para comprobar si ambos valores son true.",
+      "Para ocultar el div si `userName` existe.",
+      "Para iterar a través de una lista de nombres."
+    ]
+  },
+  "cr-07": {
+    "prompt": "Identifica la salida de este código:",
+    "explanation": "Los `ternary operators` pueden usarse dentro de los valores de los atributos para aplicar condicionalmente clases de CSS u otras `props`.",
+    "interviewTip": "Esta es la forma principal de manejar estilos dinámicos en React básico.",
+    "options": [
+      "Un div con la clase 'admin-theme'.",
+      "Un div con la clase 'user-theme'.",
+      "Un error de sintaxis.",
+      "Un div con ambas clases."
+    ]
+  },
+  "cr-08": {
+    "prompt": "¿Por qué no puedes usar un bucle 'for' o una sentencia 'if' directamente dentro del return de JSX?",
+    "explanation": "JSX se transforma en llamadas a `React.createElement()`. Los argumentos de una función deben ser `expressions` (valores), no `statements`.",
+    "interviewTip": "Las `expressions` evalúan a un valor (como 2+2); las `statements` realizan una acción (como if/for).",
+    "options": [
+      "React no los soporta.",
+      "JSX es solo un grupo de llamadas a funciones, y no puedes poner `statements` dentro de una lista de argumentos.",
+      "Haría que el Virtual DOM fuera demasiado lento.",
+      "Los navegadores no soportan bucles dentro de HTML."
+    ]
+  },
+  "cr-09": {
+    "prompt": "¿Qué se renderizará aquí?",
+    "explanation": "Dado que `items.length` es 0, la expresión evalúa a 0. Sin embargo, en este caso específico, `0 && ...` es false, y React no renderiza nada (a menos que sea el número 0 directamente).",
+    "interviewTip": "Asegúrate siempre de que el lado izquierdo de tu `&&` sea un booleano real si quieres estar seguro.",
+    "options": [
+      "<li>Show items</li>",
+      "Un <ul> vacío.",
+      "El número 0.",
+      "Una lista con un valor false."
+    ]
+  },
+  "cr-10": {
+    "prompt": "¿Cómo manejas los estados de 'Loading', 'Error' y 'Data' en un único return de componente?",
+    "explanation": "Aunque los ternarios anidados funcionan, son difíciles de leer. Los `early returns` para estados de error y carga son mucho más limpios.",
+    "interviewTip": "Patrón: `if (loading) return <Spinner />; if (error) return <Error />; return <Data />;`",
+    "options": [
+      "Usando operadores ternarios anidados.",
+      "Retornando diferentes bloques de JSX prematuramente basados en variables de estado.",
+      "Usando el `hook` `useEffect` para ocultar elementos.",
+      "Creando tres aplicaciones separadas."
+    ]
+  },
+  "cr-11": {
+    "prompt": "¿Cuál es el propósito del operador 'Nullish Coalescing' (??) en React?",
+    "explanation": "Esto es más seguro que || cuando el 0 es un valor válido que deseas mostrar.",
+    "interviewTip": "Usa ?? cuando quieras tratar el 0 y los strings vacíos como 'datos'.",
+    "options": [
+      "Funciona como ||, pero solo se activa para null o undefined (no para 0 o \"\").",
+      "Comprueba si dos strings son iguales.",
+      "Elimina la variable si es null.",
+      "Es una abreviatura para un operador ternario."
+    ]
+  },
+  "cr-12": {
+    "prompt": "Analiza la salida:",
+    "explanation": "Aunque React ignora los booleanos puros, convertirlos a un string forzará su renderizado.",
+    "interviewTip": "Este es un truco de depuración útil para ver estados booleanos en la UI.",
+    "options": [
+      "No renderiza nada.",
+      "Renderiza 'false' como texto.",
+      "Renderiza 'undefined'.",
+      "Colapsa."
+    ]
+  },
+  "cr-13": {
+    "prompt": "¿Cómo aplicas múltiples `props` condicionalmente usando el `spread operator`?",
+    "explanation": "Hacer `spread` de un objeto vacío {} no añade `props`, mientras que hacerlo de un objeto con claves las aplica dinámicamente.",
+    "interviewTip": "Esta es una forma limpia de manejar `props` de tipo 'Solo para administradores' o especiales.",
+    "options": [
+      "El código anterior es correcto.",
+      "Debes pasar las `props` individualmente.",
+      "No se puede usar `spread` dentro del `return`.",
+      "isAdmin debe ser un string."
+    ]
+  },
+  "cr-14": {
+    "prompt": "¿Qué sucede cuando un componente se desmonta (`unmounts`) porque ya no se está renderizando condicionalmente?",
+    "explanation": "El desmontaje es una destrucción completa de la instancia del componente.",
+    "interviewTip": "Si necesitas mantener el estado vivo, elévalo (`lift state`) al padre o el componente con CSS (`display: none`) en su lugar.",
+    "options": [
+      "Su `local state` se destruye.",
+      "Se ejecuta su función de limpieza (`cleanup function`) de `useEffect`.",
+      "Permanece en el Virtual DOM pero se oculta en el DOM real.",
+      "Su estado se preserva en el componente padre."
+    ]
+  },
+  "cr-15": {
+    "prompt": "¿Qué componente es mejor para el rendimiento cuando se alterna con mucha frecuencia?",
+    "explanation": "El renderizado condicional (&&) destruye/recrea el componente. El 'display' de CSS lo mantiene en el DOM, haciendo que la alternancia sea más rápida a costa de la memoria inicial.",
+    "interviewTip": "Usa la ocultación por CSS para componentes con una lógica de montaje (`mount`) costosa que cambien de estado a menudo.",
+    "options": [
+      "{isVisible && <LargeComponent />}",
+      "<div style={{ display: isVisible ? 'block' : 'none' }}><LargeComponent /></div>",
+      "Son lo mismo.",
+      "Usar una ruta separada."
+    ]
+  }
+}

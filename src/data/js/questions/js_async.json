@@ -4,181 +4,206 @@
       "id": "js-async-01",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What is asynchronous programming in JavaScript?",
       "options": [
         "Code that runs without blocking the main thread",
         "Multithreaded execution",
         "Parallel execution of all functions",
         "Synchronous callbacks"
       ],
-      "correct": [0],
-      "explanation": "Async code allows non-blocking operations.",
-      "interviewTip": "JS is single-threaded but async."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-02",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "Which API is used to handle async tasks?",
-      "options": ["Event Loop", "Call Stack", "Heap", "Compiler"],
-      "correct": [0],
-      "explanation": "Event Loop coordinates async execution.",
-      "interviewTip": "Critical interview topic."
+      "options": [
+        "Event Loop",
+        "Call Stack",
+        "Heap",
+        "Compiler"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-03",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "console.log(1);\nsetTimeout(() => console.log(2));\nconsole.log(3);",
-      "options": ["1 2 3", "1 3 2", "2 1 3", "3 2 1"],
-      "correct": [1],
-      "explanation": "setTimeout is async.",
-      "interviewTip": "Macro-task behavior."
+      "options": [
+        "1 2 3",
+        "1 3 2",
+        "2 1 3",
+        "3 2 1"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "js-async-04",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What is a Promise?",
       "options": [
         "An object representing eventual completion",
         "A callback",
         "A thread",
         "A timer"
       ],
-      "correct": [0],
-      "explanation": "Promise represents future value.",
-      "interviewTip": "Pending / fulfilled / rejected."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-05",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "Which state does a Promise NOT have?",
-      "options": ["pending", "fulfilled", "rejected", "resolved"],
-      "correct": [3],
-      "explanation": "`resolved` is informal term.",
-      "interviewTip": "Precise terminology matters."
+      "options": [
+        "pending",
+        "fulfilled",
+        "rejected",
+        "resolved"
+      ],
+      "correct": [
+        3
+      ]
     },
     {
       "id": "js-async-06",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "Promise.resolve().then(() => console.log(1));\nconsole.log(2);",
-      "options": ["1 2", "2 1", "undefined", "Error"],
-      "correct": [1],
-      "explanation": "Microtasks run after sync code.",
-      "interviewTip": "Microtask queue."
+      "options": [
+        "1 2",
+        "2 1",
+        "undefined",
+        "Error"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "js-async-07",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What is async/await?",
       "options": [
         "Syntax sugar over Promises",
         "New threading model",
         "Callback replacement",
         "Blocking code"
       ],
-      "correct": [0],
-      "explanation": "Built on top of Promises.",
-      "interviewTip": "Still async."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-08",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What does `await` do?",
       "options": [
         "Pauses async function execution",
         "Blocks entire thread",
         "Stops program",
         "Resolves Promise synchronously"
       ],
-      "correct": [0],
-      "explanation": "Pauses only current async function.",
-      "interviewTip": "Does not block event loop."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-09",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "async function test() {\n  return 5;\n}\ntest().then(console.log);",
-      "options": ["5", "Promise", "undefined", "Error"],
-      "correct": [0],
-      "explanation": "Async functions return Promises.",
-      "interviewTip": "Return is wrapped."
+      "options": [
+        "5",
+        "Promise",
+        "undefined",
+        "Error"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-10",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "Which runs first?",
-      "options": ["Microtasks", "Macrotasks", "Rendering", "Timers"],
-      "correct": [0],
-      "explanation": "Microtasks have higher priority.",
-      "interviewTip": "Promise.then vs setTimeout."
+      "options": [
+        "Microtasks",
+        "Macrotasks",
+        "Rendering",
+        "Timers"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-11",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What does `Promise.all` do?",
       "options": [
         "Resolves when all promises resolve",
         "Resolves when first resolves",
         "Rejects on timeout",
         "Runs sequentially"
       ],
-      "correct": [0],
-      "explanation": "Rejects if any promise rejects.",
-      "interviewTip": "Fail-fast."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-12",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What does `Promise.race` do?",
       "options": [
         "Resolves/rejects with first settled",
         "Waits for all",
         "Executes sequentially",
         "Cancels others"
       ],
-      "correct": [0],
-      "explanation": "First settled wins.",
-      "interviewTip": "Useful for timeouts."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-13",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "async function f() {\n  await Promise.reject('err');\n  console.log('after');\n}\nf().catch(console.log);",
-      "options": ["err", "after", "undefined", "Error"],
-      "correct": [0],
-      "explanation": "Await throws on rejection.",
-      "interviewTip": "Use try/catch."
+      "options": [
+        "err",
+        "after",
+        "undefined",
+        "Error"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-14",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "How to handle errors in async/await?",
-      "options": ["try/catch", ".then", "if statement", "finally only"],
-      "correct": [0],
-      "explanation": "try/catch catches rejected promises.",
-      "interviewTip": "Local error handling."
+      "options": [
+        "try/catch",
+        ".then",
+        "if statement",
+        "finally only"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-15",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "console.log('start');\nsetTimeout(() => console.log('timeout'));\nPromise.resolve().then(() => console.log('promise'));\nconsole.log('end');",
       "options": [
         "start end promise timeout",
@@ -186,155 +211,150 @@
         "start end timeout promise",
         "promise start end timeout"
       ],
-      "correct": [0],
-      "explanation": "Microtasks before macrotasks.",
-      "interviewTip": "Classic interview question."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-16",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What does `finally` do?",
       "options": [
         "Runs regardless of promise outcome",
         "Catches errors",
         "Cancels promise",
         "Returns value"
       ],
-      "correct": [0],
-      "explanation": "Runs after resolve or reject.",
-      "interviewTip": "No access to result."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-17",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What is callback hell?",
       "options": [
         "Deeply nested callbacks",
         "Promise chaining",
         "Async/await usage",
         "Event loop bug"
       ],
-      "correct": [0],
-      "explanation": "Hard to read and maintain.",
-      "interviewTip": "Promises solve it."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-18",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What does `await Promise.all([...])` do?",
       "options": [
         "Runs promises in parallel",
         "Runs sequentially",
         "Blocks thread",
         "Cancels slower promises"
       ],
-      "correct": [0],
-      "explanation": "Promises start immediately.",
-      "interviewTip": "Performance optimization."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-19",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "Why avoid `await` inside loops?",
       "options": [
         "Causes sequential execution",
         "Syntax error",
         "Memory leak",
         "Infinite loop"
       ],
-      "correct": [0],
-      "explanation": "Use Promise.all instead.",
-      "interviewTip": "Common performance issue."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-20",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What will be logged?",
       "code": "async function f() {\n  return Promise.resolve(1);\n}\nf().then(console.log);",
-      "options": ["1", "Promise", "undefined", "Error"],
-      "correct": [0],
-      "explanation": "Promise is flattened.",
-      "interviewTip": "Promise resolution."
+      "options": [
+        "1",
+        "Promise",
+        "undefined",
+        "Error"
+      ],
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-21",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What is a macrotask?",
       "options": [
         "setTimeout, setInterval",
         "Promise.then",
         "Microtask",
         "Call stack"
       ],
-      "correct": [0],
-      "explanation": "Scheduled via task queue.",
-      "interviewTip": "Lower priority than microtasks."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-22",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What happens if Promise rejects and no catch?",
       "options": [
         "Unhandled rejection",
         "Silent fail",
         "Program stops",
         "Ignored"
       ],
-      "correct": [0],
-      "explanation": "Leads to warnings/errors.",
-      "interviewTip": "Always handle rejections."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-23",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "What does `queueMicrotask` do?",
       "options": [
         "Schedules microtask",
         "Schedules macrotask",
         "Blocks execution",
         "Creates promise"
       ],
-      "correct": [0],
-      "explanation": "Runs before next macrotask.",
-      "interviewTip": "Advanced topic."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-24",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "Why is async code hard to debug?",
       "options": [
         "Execution order is non-linear",
         "JS has no debugger",
         "Promises hide errors",
         "Single thread"
       ],
-      "correct": [0],
-      "explanation": "Async flow is harder to trace.",
-      "interviewTip": "Use async stack traces."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "js-async-25",
       "stageId": "js_async",
       "type": "single",
-      "prompt": "Best practice for async code?",
       "options": [
         "Use async/await + try/catch",
         "Nested callbacks",
         "Ignore errors",
         "Block thread"
       ],
-      "correct": [0],
-      "explanation": "Readable and maintainable.",
-      "interviewTip": "Production-ready approach."
+      "correct": [
+        0
+      ]
     }
   ]
 }

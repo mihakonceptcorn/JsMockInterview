@@ -4,22 +4,20 @@
       "id": "sb-01",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "What happens when you update a React state variable using its setter function?",
       "options": [
         "The browser window reloads to fetch new data.",
         "The component and its children are scheduled to re-render.",
         "The variable is updated, but the UI remains the same until a manual refresh.",
         "The entire application state is reset to its initial values."
       ],
-      "correct": [1],
-      "explanation": "Calling a state setter notifies React that the underlying data has changed, triggering a re-render to synchronize the UI with the new data.",
-      "interviewTip": "Remember that state updates are asynchronous and batched for performance."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "sb-02",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "What is the correct way to initialize a state variable 'count' to 0?",
       "code": "import { useState } from 'react';",
       "options": [
         "const [count, setCount] = useState(0);",
@@ -27,41 +25,44 @@
         "let [count, setCount] = useState(0);",
         "const [setCount, count] = useState(0);"
       ],
-      "correct": [0],
-      "explanation": "useState returns an array where the first element is the current state and the second is the updater function. We use array destructuring to name them.",
-      "interviewTip": "Always use 'const' for state variables because you should never mutate them directly; only the setter should change them."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "sb-03",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "What will be the value of 'count' displayed in the UI after clicking the button once?",
       "code": "function Counter() {\n  const [count, setCount] = useState(0);\n  function handleClick() {\n    setCount(count + 1);\n    setCount(count + 1);\n    setCount(count + 1);\n  }\n  return <button onClick={handleClick}>{count}</button>;\n}",
-      "options": ["3", "0", "1", "undefined"],
-      "correct": [2],
-      "explanation": "Because 'count' is captured from the current render's scope, all three calls see 'count' as 0. React batches these, and the result is 0 + 1.",
-      "interviewTip": "This is a classic 'Stale Closure' example. To fix this, use the functional update pattern: setCount(prev => prev + 1)."
+      "options": [
+        "3",
+        "0",
+        "1",
+        "undefined"
+      ],
+      "correct": [
+        2
+      ]
     },
     {
       "id": "sb-04",
       "stageId": "state_basics",
       "type": "multiple",
-      "prompt": "Which of the following are true regarding the Rules of Hooks?",
       "options": [
         "Hooks must be called at the top level of the component.",
         "Hooks can be called inside loops if the array length is constant.",
         "Hooks can only be called from React functional components or custom hooks.",
         "Hooks can be called inside 'if' statements if the condition is based on props."
       ],
-      "correct": [0, 2],
-      "explanation": "Hooks must follow a consistent call order. Placing them in loops or conditions breaks React's ability to track state correctly.",
-      "interviewTip": "If you need a conditional hook, put the condition *inside* the hook (like useEffect) rather than wrapping the hook itself."
+      "correct": [
+        0,
+        2
+      ]
     },
     {
       "id": "sb-05",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "How do you correctly update an object state while preserving existing fields?",
       "code": "const [user, setUser] = useState({ name: 'Alice', age: 25 });\n// Task: Update only the age to 26",
       "options": [
         "setUser({ age: 26 });",
@@ -69,15 +70,14 @@
         "setUser({ ...user, age: 26 });",
         "setUser(Object.assign(user, { age: 26 }));"
       ],
-      "correct": [2],
-      "explanation": "The setter function replaces the state entirely. To update a field, you must spread the existing state and overwrite the target field.",
-      "interviewTip": "Directly mutating 'user.age' fails because React uses Object.is to check for changes. If the object reference is the same, no render occurs."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "sb-06",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "What is the primary benefit of the 'Lazy Initializer' pattern?",
       "code": "const [data, setData] = useState(() => calculateExpensiveValue());",
       "options": [
         "It makes the state update asynchronously.",
@@ -85,15 +85,14 @@
         "It automatically caches the result in localStorage.",
         "It allows the state to be shared with other components."
       ],
-      "correct": [1],
-      "explanation": "If you pass an initial value directly, it is calculated every render. If you pass a function, React only executes it during the first render.",
-      "interviewTip": "Use this for expensive tasks like parsing large JSON from storage or complex mathematical computations."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "sb-07",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "How do you access the value of an input field in a 'Controlled Component'?",
       "code": "const [text, setText] = useState('');\n<input value={text} onChange={(e) => handleUpdate(e)} />",
       "options": [
         "e.target.value",
@@ -101,116 +100,114 @@
         "text.current",
         "this.input.value"
       ],
-      "correct": [0],
-      "explanation": "React's synthetic event object 'e' contains a 'target' property pointing to the DOM element, which has the 'value' property.",
-      "interviewTip": "In controlled components, the state is the 'single source of truth' for the input value."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "sb-08",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "What is a 'SyntheticEvent' in React?",
       "options": [
         "An event that is created by a library like Redux.",
         "A cross-browser wrapper around the browser’s native event.",
         "An event that doesn't actually exist in the DOM.",
         "A way to simulate user clicks during automated testing."
       ],
-      "correct": [1],
-      "explanation": "React creates these wrappers so that events behave identically across Chrome, Safari, Firefox, and Edge.",
-      "interviewTip": "You can still access the native browser event via 'e.nativeEvent' if absolutely necessary."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "sb-09",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "What will happen if you update state with the exact same value it currently holds?",
       "options": [
         "React will re-render exactly once more.",
         "React will bail out and skip the re-render entirely.",
         "The component will unmount and remount.",
         "The app will throw an 'IdentityError'."
       ],
-      "correct": [1],
-      "explanation": "React uses Object.is to compare the new state with the old. If they are identical, React avoids the unnecessary work of rendering.",
-      "interviewTip": "This is why mutating an array and calling setState(sameArray) doesn't work—the reference is identical."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "sb-10",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "Analyze the code. What is the console output after the button is clicked?",
       "code": "const [val, setVal] = useState(10);\nconst click = () => {\n  setVal(20);\n  console.log(val);\n};",
-      "options": ["20", "10", "undefined", "null"],
-      "correct": [1],
-      "explanation": "Setting state is asynchronous. The 'val' variable belongs to the current execution frame and doesn't change until the next render.",
-      "interviewTip": "If you need to perform an action after state updates, use the 'useEffect' hook."
+      "options": [
+        "20",
+        "10",
+        "undefined",
+        "null"
+      ],
+      "correct": [
+        1
+      ]
     },
     {
       "id": "sb-11",
       "stageId": "state_basics",
       "type": "multiple",
-      "prompt": "Which of these are valid ways to trigger a function when a user clicks a button?",
       "options": [
         "onClick={handleClick}",
         "onclick={handleClick}",
         "onClick={() => handleClick()}",
         "onClick={handleClick()}"
       ],
-      "correct": [0, 2],
-      "explanation": "Option A passes a reference. Option C creates an anonymous function. Option D is wrong because it executes the function *during* render.",
-      "interviewTip": "Watch out for 'onClick={handleClick()}'; it will cause an infinite loop if handleClick updates state."
+      "correct": [
+        0,
+        2
+      ]
     },
     {
       "id": "sb-12",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "How do you clear an interval created inside a component when using state timers?",
       "options": [
         "Call deleteInterval() in the button click.",
         "Use the cleanup function of a useEffect hook.",
         "Set the interval variable to null.",
         "React clears all intervals automatically on every render."
       ],
-      "correct": [1],
-      "explanation": "To prevent memory leaks and unexpected behavior, you must clear side effects like intervals when a component unmounts.",
-      "interviewTip": "This is a key part of the component lifecycle management."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "sb-13",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "What is 'State Lifting'?",
       "options": [
         "A way to make state globally available to all components.",
         "Moving state to the closest common parent of components that need to share it.",
         "Deleting state from a component to improve performance.",
         "Using a library like Redux to handle state."
       ],
-      "correct": [1],
-      "explanation": "When two sibling components need to stay in sync, you move the state to their parent and pass it back down via props.",
-      "interviewTip": "This is the standard way to share state without using Context."
+      "correct": [
+        1
+      ]
     },
     {
       "id": "sb-14",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "What is the default value of 'event.preventDefault()' in a form's 'onSubmit'?",
       "options": [
         "It stops the browser from reloading the page.",
         "It clears the state of all input fields.",
         "It validates the form data automatically.",
         "It prevents the user from clicking the submit button twice."
       ],
-      "correct": [0],
-      "explanation": "By default, HTML forms reload the page. In React 'Single Page Apps', we prevent this to handle the submission via JS.",
-      "interviewTip": "Always remember this in form handlers to avoid losing your application state."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "sb-15",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "How do you correctly handle a state update that depends on the previous state?",
       "code": "setCount(prev => prev + 1);",
       "options": [
         "Passing a function to the setter (Functional Update).",
@@ -218,39 +215,37 @@
         "Using a global variable for the calculation.",
         "Calling useState again."
       ],
-      "correct": [0],
-      "explanation": "Functional updates guarantee that you are working with the most recent state, even if multiple updates are queued.",
-      "interviewTip": "This pattern is essential when state updates are triggered rapidly (like in an interval or during high-frequency events)."
+      "correct": [
+        0
+      ]
     },
     {
       "id": "sb-16",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "Where can you define state in a functional component?",
       "options": [
         "Anywhere inside the function body.",
         "Inside event handlers.",
         "Only at the top level of the component function.",
         "Inside the return statement."
       ],
-      "correct": [2],
-      "explanation": "According to the Rules of Hooks, they must be called at the very top of your component function.",
-      "interviewTip": "React uses the call order to map state to the correct component instance."
+      "correct": [
+        2
+      ]
     },
     {
       "id": "sb-17",
       "stageId": "state_basics",
       "type": "single",
-      "prompt": "What is an 'Uncontrolled Component'?",
       "options": [
         "A component that doesn't use state and relies on the DOM (via Refs) for data.",
         "A component that has a bug causing it to re-render infinitely.",
         "A component that doesn't accept any props.",
         "A component that is not part of the Virtual DOM."
       ],
-      "correct": [0],
-      "explanation": "In uncontrolled components, the form data is handled by the DOM itself. You use 'useRef' to pull values when needed.",
-      "interviewTip": "Controlled components are usually preferred for complex forms, while uncontrolled are fine for simple, one-off inputs."
+      "correct": [
+        0
+      ]
     }
   ]
 }
