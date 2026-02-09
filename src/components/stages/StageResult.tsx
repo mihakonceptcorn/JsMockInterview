@@ -13,6 +13,7 @@ import { formatTime } from '@/helpers/formatTime';
 import { useDispatch, useSelector } from 'react-redux';
 import { setResult } from '@/store/resultsSlice';
 import { RootState } from '@/store';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface StageResultProps {
   onPress: () => void;
@@ -91,50 +92,58 @@ const StageResult: FC<StageResultProps> = ({
         <Text style={styles.titleSecondary}>{title}</Text>
 
         <View style={styles.statsContainer}>
-          <Text style={styles.statsTitle}>{getTitle}</Text>
+          <LinearGradient
+            colors={['#0B1F36', '#102C4C']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+          >
+            <View style={styles.innerContainer}>
+              <Text style={styles.statsTitle}>{getTitle}</Text>
 
-          <View style={styles.statsContainer}>
-            <View style={styles.row}>
-              <Circle
-                size={60}
-                indeterminate={false}
-                progress={score / total}
-                color={
-                  score / total <= 0.4
-                    ? COLORS.danger
-                    : score / total <= 0.7
-                      ? COLORS.middleBar
-                      : COLORS.success
-                }
-                unfilledColor={COLORS.successTransparent}
-                showsText={true}
-                formatText={() => `${score}/${total}`}
-                textStyle={{ fontSize: s(14), fontWeight: 'bold' }}
-                thickness={s(6)}
-              />
-              <View>
-                <Text style={styles.score}>
-                  {t('results.score')}:{' '}
-                  <Text
-                    style={{
-                      color: getColor,
-                    }}
-                  >
-                    {getScore}%
-                  </Text>
-                </Text>
-                <Text style={styles.time}>
-                  {t('results.time')}: {formatTime(time)}
-                </Text>
+              <View style={styles.statsInnerContainer}>
+                <View style={styles.row}>
+                  <Circle
+                    size={60}
+                    indeterminate={false}
+                    progress={score / total}
+                    color={
+                      score / total <= 0.4
+                        ? COLORS.danger
+                        : score / total <= 0.7
+                          ? COLORS.middleBar
+                          : COLORS.success
+                    }
+                    unfilledColor={COLORS.successTransparent}
+                    showsText={true}
+                    formatText={() => `${score}/${total}`}
+                    textStyle={{ fontSize: s(14), fontWeight: 'bold' }}
+                    thickness={s(6)}
+                  />
+                  <View>
+                    <Text style={styles.score}>
+                      {t('results.score')}:{' '}
+                      <Text
+                        style={{
+                          color: getColor,
+                        }}
+                      >
+                        {getScore}%
+                      </Text>
+                    </Text>
+                    <Text style={styles.time}>
+                      {t('results.time')}: {formatTime(time)}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+
+              <Text style={styles.recapTitle}>{t('results.recap_header')}</Text>
+              <View style={styles.recapInner}>
+                <Ionicons name="sunny" size={40} color={getColor} />
+                <Text style={styles.recapText}>{getMessage}</Text>
               </View>
             </View>
-          </View>
-
-          <Text style={styles.recapTitle}>{t('results.recap_header')}</Text>
-          <View style={styles.recapInner}>
-            <Ionicons name="sunny" size={40} color={getColor} />
-            <Text style={styles.recapText}>{getMessage}</Text>
-          </View>
+          </LinearGradient>
         </View>
 
         <View style={styles.actions}>
@@ -179,6 +188,17 @@ const styles = StyleSheet.create({
     gap: s(16),
   },
   statsContainer: {
+    borderWidth: 1,
+    borderColor: COLORS.borderColor,
+    borderRadius: vs(10),
+    marginTop: vs(10),
+    width: '100%',
+    overflow: 'hidden',
+  },
+  innerContainer: {
+    padding: s(10),
+  },
+  statsInnerContainer: {
     borderWidth: 1,
     borderColor: COLORS.borderColor,
     borderRadius: vs(10),
