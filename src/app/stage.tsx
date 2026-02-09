@@ -166,6 +166,7 @@ const Stage = () => {
                     <ProgressionBar
                       title={`${t('stage:questions')}: ${questionIndex + 1}/${questions.length}`}
                       progress={(questionIndex + 1) / questions.length}
+                      barColor={COLORS.textSecondary}
                     />
                   </View>
 

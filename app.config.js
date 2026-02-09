@@ -23,7 +23,7 @@ export default {
     userInterfaceStyle: 'dark',
     newArchEnabled: false,
     splash: {
-      image: './assets/icon.png',
+      image: './assets/iconSplash.png',
       resizeMode: 'contain',
       backgroundColor: '#071426',
     },

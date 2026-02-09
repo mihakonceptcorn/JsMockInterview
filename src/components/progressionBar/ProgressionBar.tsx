@@ -8,14 +8,16 @@ interface ProgressionBarProps {
   title: string;
   progress: number;
   isColor?: boolean;
+  barColor?: string;
 }
 
 const ProgressionBar: FC<ProgressionBarProps> = ({
   title,
   progress,
   isColor = false,
+  barColor = COLORS.success,
 }) => {
-  let color = COLORS.success;
+  let color = barColor;
 
   if (isColor) {
     color =
