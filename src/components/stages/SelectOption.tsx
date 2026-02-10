@@ -6,6 +6,7 @@ import { vs } from 'react-native-size-matters';
 interface SelectOptionProps {
   title: string;
   isSelected?: boolean;
+  isPlayStage?: boolean;
   onPress: () => void;
 }
 
@@ -13,11 +14,12 @@ const SelectOption: FC<SelectOptionProps> = ({
   isSelected,
   onPress,
   title,
+  isPlayStage = false,
 }) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.titleContainer}>
-        <RadioButton isSelected={isSelected} />
+        <RadioButton isSelected={isSelected} isPlayStage />
         <Text style={styles.title}>{title}</Text>
       </View>
     </TouchableOpacity>

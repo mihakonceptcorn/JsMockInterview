@@ -1,9 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import { COLORS } from '@/theme/colors';
 
-const RadioButton = ({ isSelected = false }) => {
+const RadioButton = ({ isSelected = false, isPlayStage = false }) => {
   return (
-    <View style={styles.outerCircle}>{isSelected && <View style={styles.innerCircle} />}</View>
+    <View style={styles.outerCircle}>
+      {isSelected && !isPlayStage && <View style={styles.innerCircle} />}
+      {isSelected && isPlayStage && (
+        <View style={styles.innerCirclePlay}>
+          <AntDesign name="check" size={14} color={COLORS.textPrimary} />
+        </View>
+      )}
+    </View>
   );
 };
 
@@ -25,5 +34,13 @@ const styles = StyleSheet.create({
     width: 12,
     borderRadius: 6,
     backgroundColor: '#ccc',
+  },
+  innerCirclePlay: {
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+    backgroundColor: COLORS.accent,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

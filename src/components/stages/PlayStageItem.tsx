@@ -129,6 +129,7 @@ const PlayStageItem: React.FC<PlayStageItemProps> = ({
                       onPress={() => {
                         onSelectOption(index);
                       }}
+                      isPlayStage
                     />
                   ))}
                 </View>
