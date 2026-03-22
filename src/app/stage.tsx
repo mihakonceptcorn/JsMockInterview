@@ -17,6 +17,7 @@ import { BackgroundLayout } from '@/components/layout/BackgroundLayout';
 import { COLORS } from '@/theme/colors';
 import { formatTime } from '@/helpers/formatTime';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useInAppReview } from '@/hooks/useInAppReview';
 
 type DataKey = keyof typeof dataMap;
 
@@ -46,6 +47,8 @@ const Stage = () => {
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
+
+  const { requestReviewIfNeeded } = useInAppReview();
 
   useEffect(() => {
     const interactionTask = InteractionManager.runAfterInteractions(() => {
@@ -105,6 +108,11 @@ const Stage = () => {
       if (timerRef.current) clearInterval(timerRef.current);
       setIsResult(true);
     }
+  };
+
+  const onBackToHomePressed = () => {
+    requestReviewIfNeeded();
+    router.replace('/');
   };
 
   const getCountdownColor = () => {
@@ -184,7 +192,7 @@ const Stage = () => {
                   title={displayTitle}
                   time={time}
                   mode={mode as 'practice' | 'interview'}
-                  onPress={() => router.replace('/')}
+                  onPress={onBackToHomePressed}
                 />
               )}
             </>
