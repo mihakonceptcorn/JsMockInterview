@@ -16,7 +16,7 @@ export default {
   expo: {
     name: 'JS Mock Interview',
     slug: 'js-mock-interview',
-    version: '1.0.0',
+    version: '1.0.1',
     orientation: 'portrait',
     icon: './assets/icon.png',
     backgroundColor: '#10203B',
